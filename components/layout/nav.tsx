@@ -32,13 +32,13 @@ export function Nav() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+      className={`fixed inset-x-0 top-0 z-50 border-b backdrop-blur-xl transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
         scrolled
-          ? "border-b border-line bg-ink/70 backdrop-blur-xl"
-          : "border-b border-transparent bg-transparent"
+          ? "border-line bg-ink/80"
+          : "border-paper/[0.06] bg-ink/25"
       }`}
     >
-      <nav className="shell flex h-20 items-center justify-between">
+      <nav className="shell flex h-20 items-center justify-between gap-8">
         <Link
           href="/"
           className="relative flex h-14 w-[180px] items-center"
@@ -58,12 +58,12 @@ export function Nav() {
           />
         </Link>
 
-        <ul className="hidden items-center gap-9 md:flex">
+        <ul className="hidden flex-1 items-center justify-center gap-10 md:flex">
           {navLinks.map((link) => (
             <li key={link.href}>
               <Link
                 href={link.href}
-                className="group relative text-sm text-paper/70 transition-colors duration-200 hover:text-paper"
+                className="group relative text-[0.8125rem] tracking-[0.02em] text-paper/65 transition-colors duration-200 hover:text-paper"
               >
                 {link.label}
                 <span className="absolute -bottom-1 left-0 h-px w-0 bg-accent transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:w-full" />

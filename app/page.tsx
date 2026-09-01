@@ -1,7 +1,9 @@
+import { Hero } from "@/components/sections/hero";
+
 /*
-  Placeholder only. Phase 3 replaces this with the real hero,
-  Phase 4 adds the remaining sections.
-  The section ids match the nav links so anchor scrolling works today.
+  Hero is real from this phase on.
+  The sections below stay as placeholders until Phase 4 fills them,
+  and keep their ids so nav anchors work today.
 */
 
 const placeholders = [
@@ -15,23 +17,13 @@ const placeholders = [
 export default function Home() {
   return (
     <>
-      <section className="flex min-h-dvh items-center">
-        <div className="shell">
-          <p className="section-label">Creative and technology studio</p>
-          <h1 className="mt-8 max-w-4xl font-display text-5xl leading-[1.05] text-paper md:text-7xl lg:text-8xl">
-            Where Brand Meets Intelligence
-          </h1>
-          <p className="mt-8 max-w-md text-base leading-relaxed text-muted">
-            Layout shell checkpoint. The hero lands in Phase 3.
-          </p>
-        </div>
-      </section>
+      <Hero />
 
       {placeholders.map((section) => (
         <section
           key={section.id}
           id={section.id}
-          className="border-t border-line py-32"
+          className="relative border-t border-line bg-ink py-32"
         >
           <div className="shell">
             <p className="section-label">{section.label}</p>

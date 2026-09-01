@@ -1,68 +1,52 @@
-BizBuzz Studio - Phase 2 (Layout Shell)
-=======================================
+BizBuzz Studio - Display font change
+====================================
 
-WHAT TO DO
-----------
-1. Extract this zip.
-2. Copy the folders "app", "components" and "data" into:
-      C:\BizBuzz\thebizbuzz-studio
-3. Windows will ask to replace existing files. Choose "Replace the files
-   in the destination". This is expected. It overwrites globals.css,
-   layout.tsx and page.tsx, and adds the new component files.
-4. Create the logo folder and drop logo.png in it:
-      mkdir public\images\logo
-5. Run:
-      cd /d C:\BizBuzz\thebizbuzz-studio
-      npm run dev
-6. Open http://localhost:3000
+Newsreader (serif) replaced with Space Grotesk.
+
+COMMANDS
+--------
+   cd /d C:\BizBuzz\thebizbuzz-studio
+   xcopy "C:\Users\DAR AL BARAKAH\Desktop\bizbuzz-font\*" "C:\BizBuzz\thebizbuzz-studio\" /E /Y
+
+Then Ctrl+Shift+R in the browser.
 
 
-FILES IN THIS PACKAGE
----------------------
-app/globals.css                       brand tokens, base styles, section label
-app/layout.tsx                        fonts, metadata, providers, nav, footer
-app/page.tsx                          temporary placeholder page
-components/layout/nav.tsx             fixed nav, scroll background, mobile menu
-components/layout/footer.tsx          footer with brand, nav, contact
-components/shared/smooth-scroll.tsx   Lenis momentum scroll
-components/shared/cursor.tsx          custom cursor, pointer devices only
-components/shared/magnetic.tsx        magnetic wrapper for CTAs
-data/site.ts                          nav links, contact, socials
+FILES
+-----
+app/layout.tsx              loads Space Grotesk instead of Newsreader
+app/globals.css             display token points at the new family
+components/sections/hero.tsx  weight, tracking and leading retuned
 
 
-WHAT YOU SHOULD SEE
--------------------
-- Dark background, off-white text
-- Logo top left, nav links top right, blue "Start a project" button
-- Nav is transparent at the top, gains a blurred dark bar once you scroll
-- Scrolling feels weighted, not snappy (that is Lenis)
-- A small dot follows the cursor, a ring lags behind and grows on links
-- Clicking a nav link glides to that section
-- Five placeholder sections, then the footer
-- Narrow the window: nav collapses to a hamburger, cursor disappears
+WHAT ELSE CHANGED
+-----------------
+The italic on "Intelligence" is gone. That was a serif move and Space
+Grotesk has no italic worth using.
+
+Headline is now medium weight instead of light, tracking is tighter
+(-0.045em), and the lines sit closer together (0.95 leading). Serifs
+want air; a geometric sans at display size wants the opposite. Loose
+tracking is the single commonest reason a big headline reads cheap.
 
 
-IF SOMETHING BREAKS
--------------------
-"Module not found: motion/react"
-   npm install motion
+IF YOU WANT TO TRY THE OTHER TWO
+--------------------------------
+In app/layout.tsx, line 2, swap the import and the function name:
 
-"Cannot find module lenis"
-   npm install lenis
+   Bricolage Grotesque:
+      import { Bricolage_Grotesque, Geist } from "next/font/google";
+      const spaceGrotesk = Bricolage_Grotesque({ ... });
 
-Logo does not appear
-   Check the file is at public\images\logo\logo.png exactly.
+   Instrument Sans:
+      import { Instrument_Sans, Geist } from "next/font/google";
+      const spaceGrotesk = Instrument_Sans({ ... });
 
-Colors look wrong or unstyled
-   globals.css did not get replaced. Copy it again and confirm the
-   file at app\globals.css starts with @import "tailwindcss";
-
-Fonts look like Times New Roman
-   Newsreader failed to download. Check your internet, restart dev server.
+Leave the variable name and everything else alone. Restart the dev
+server after a font swap, Next caches font files.
 
 
-COMMIT WHEN IT WORKS
---------------------
+COMMIT
+------
    git add .
-   git commit -m "Phase 2: layout shell, tokens, nav, footer, smooth scroll"
+   git commit -m "Swap display font to Space Grotesk"
    git push

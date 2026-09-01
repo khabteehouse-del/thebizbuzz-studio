@@ -20,7 +20,7 @@
   --color-line: rgba(245, 248, 255, 0.1);
 
   /* Typography */
-  --font-display: var(--font-newsreader), Georgia, serif;
+  --font-display: var(--font-display-family), ui-sans-serif, system-ui, sans-serif;
   --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
 
   /* Type scale */

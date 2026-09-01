@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Newsreader, Geist } from "next/font/google";
+import { Space_Grotesk, Geist } from "next/font/google";
 import { Nav } from "@/components/layout/nav";
 import { Footer } from "@/components/layout/footer";
 import { SmoothScroll } from "@/components/shared/smooth-scroll";
@@ -9,16 +9,15 @@ import "./globals.css";
 
 /*
   Two families, one job each.
-  Newsreader carries the editorial voice on headlines, Geist handles
-  everything functional. The pairing tracks the positioning directly:
-  a written, considered display face against a precise interface face.
+  Space Grotesk carries the headlines: geometric, slightly irregular,
+  it holds character at very large sizes where a neutral sans goes flat.
+  Geist handles everything functional.
 */
-const newsreader = Newsreader({
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
-  variable: "--font-newsreader",
+  variable: "--font-display-family",
   display: "swap",
-  weight: ["300", "400", "500"],
-  style: ["normal", "italic"],
+  weight: ["400", "500", "600", "700"],
 });
 
 const geist = Geist({
@@ -56,7 +55,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${newsreader.variable} ${geist.variable}`}>
+    <html lang="en" className={`${spaceGrotesk.variable} ${geist.variable}`}>
       <body className="min-h-dvh bg-ink text-paper antialiased">
         <SmoothScroll />
         <Cursor />

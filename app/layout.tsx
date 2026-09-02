@@ -4,6 +4,7 @@ import { Nav } from "@/components/layout/nav";
 import { Footer } from "@/components/layout/footer";
 import { SmoothScroll } from "@/components/shared/smooth-scroll";
 import { Cursor } from "@/components/shared/cursor";
+import { Grain } from "@/components/shared/grain";
 import { site } from "@/data/site";
 import "./globals.css";
 
@@ -58,6 +59,7 @@ export default function RootLayout({
     <html lang="en" className={`${spaceGrotesk.variable} ${geist.variable}`}>
       <body className="min-h-dvh bg-ink text-paper antialiased">
         <SmoothScroll />
+        <Grain />
         <Cursor />
         <Nav />
         <main>{children}</main>

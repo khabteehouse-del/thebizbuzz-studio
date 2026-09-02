@@ -13,6 +13,14 @@
   --color-ink: #0a0e1a;
   --color-ink-raised: #0e1424;
   --color-navy: #0a1f44;
+  /*
+    Section shades. Each sits within a few percent of the others.
+    The job is to mark a boundary, not to colour a block.
+  */
+  --color-ocean: #0c1c2b;
+  --color-deep: #0b1526;
+  /* Matt fill for interactive surfaces on hover. Flat, no gradient. */
+  --color-hover: #0e2a4a;
   --color-accent: #1e7fd6;
   --color-accent-soft: #4ea3ec;
   --color-paper: #f5f8ff;
@@ -20,7 +28,7 @@
   --color-line: rgba(245, 248, 255, 0.1);
 
   /* Typography */
-  --font-display: var(--font-display-family), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-newsreader), Georgia, serif;
   --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
 
   /* Type scale */
@@ -75,13 +83,79 @@
     color: var(--color-paper);
   }
 
+  /*
+    Keyboard focus. Visible on every interactive element, including the
+    ones with custom backgrounds where a default outline would vanish.
+  */
   :focus-visible {
     outline: 2px solid var(--color-accent);
     outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* The custom cursor hides the pointer, but never for keyboard users */
+  a:focus-visible,
+  button:focus-visible {
+    outline-color: var(--color-paper);
   }
 }
 
 @layer components {
+  /*
+    Growth arrow in the hero. Draws itself, holds at the peak, resets.
+    stroke-dashoffset and opacity only, so it runs on the compositor.
+  */
+  .growth-arrow__line {
+    stroke-dasharray: 120;
+    stroke-dashoffset: 120;
+    animation: growth-draw 3.6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  }
+
+  .growth-arrow__tip {
+    opacity: 0;
+    animation: growth-tip 3.6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  }
+
+  @keyframes growth-draw {
+    0% {
+      stroke-dashoffset: 120;
+    }
+    45% {
+      stroke-dashoffset: 0;
+    }
+    85% {
+      stroke-dashoffset: 0;
+    }
+    100% {
+      stroke-dashoffset: 120;
+    }
+  }
+
+  @keyframes growth-tip {
+    0%,
+    40% {
+      opacity: 0;
+    }
+    55%,
+    85% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  /* Reduced motion: the finished line, no drawing */
+  .growth-arrow--still .growth-arrow__line {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+
+  .growth-arrow--still .growth-arrow__tip {
+    animation: none;
+    opacity: 1;
+  }
+
   /*
     Editorial label that sits above every section.
     Small caps rather than all caps, per the brand direction.
@@ -95,6 +169,10 @@
     display: inline-flex;
     align-items: center;
     gap: 0.75rem;
+  }
+
+  .section-label.justify-center::before {
+    display: none;
   }
 
   .section-label::before {

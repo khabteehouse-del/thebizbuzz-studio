@@ -1,52 +1,45 @@
-BizBuzz Studio - Display font change
-====================================
+BizBuzz Studio - Farhan photo
+=============================
 
-Newsreader (serif) replaced with Space Grotesk.
-
-COMMANDS
---------
    cd /d C:\BizBuzz\thebizbuzz-studio
-   xcopy "C:\Users\DAR AL BARAKAH\Desktop\bizbuzz-font\*" "C:\BizBuzz\thebizbuzz-studio\" /E /Y
+   xcopy "C:\Users\DAR AL BARAKAH\Desktop\bizbuzz-farhan\*" "C:\BizBuzz\thebizbuzz-studio\" /E /Y
+   rmdir /s /q .next
+   npm run dev
 
-Then Ctrl+Shift+R in the browser.
-
-
-FILES
------
-app/layout.tsx              loads Space Grotesk instead of Newsreader
-app/globals.css             display token points at the new family
-components/sections/hero.tsx  weight, tracking and leading retuned
+The .next delete matters, Next caches optimised images hard.
 
 
-WHAT ELSE CHANGED
------------------
-The italic on "Intelligence" is gone. That was a serif move and Space
-Grotesk has no italic worth using.
-
-Headline is now medium weight instead of light, tracking is tighter
-(-0.045em), and the lines sit closer together (0.95 leading). Serifs
-want air; a geometric sans at display size wants the opposite. Loose
-tracking is the single commonest reason a big headline reads cheap.
+THE CROP
+--------
+Source was 1024x1024 square, output 900x1125 portrait to match the card.
+Crop biased 10 percent upward because his face sits high in the frame,
+which keeps the composition from cutting at the chin.
 
 
-IF YOU WANT TO TRY THE OTHER TWO
---------------------------------
-In app/layout.tsx, line 2, swap the import and the function name:
+ONE THING WORTH KNOWING
+-----------------------
+This photo is dark, moody and studio-lit on a near-black background.
+Yours is the same. Amrit's is bright, grey and evenly lit. Ghosia's is
+light and soft.
 
-   Bricolage Grotesque:
-      import { Bricolage_Grotesque, Geist } from "next/font/google";
-      const spaceGrotesk = Bricolage_Grotesque({ ... });
+So the team row now reads as two dark portraits and two light ones,
+which will look uneven side by side. It is the same issue I flagged
+when the first two went in.
 
-   Instrument Sans:
-      import { Instrument_Sans, Geist } from "next/font/google";
-      const spaceGrotesk = Instrument_Sans({ ... });
+Two ways to solve it, whenever you want to:
 
-Leave the variable name and everything else alone. Restart the dev
-server after a font swap, Next caches font files.
+   Brief Waqas to match one of the two looks, so the row is at least
+   three consistent out of four.
+
+   Or I apply a unified grade in code: desaturate slightly and add a
+   subtle navy tint on all four. That pulls them together regardless of
+   source and reads as a deliberate treatment rather than a mismatch.
+   One line, reversible.
+
+Say the word and I will add the grade. It is the cheaper fix and it
+works no matter what the remaining photos look like.
 
 
-COMMIT
-------
-   git add .
-   git commit -m "Swap display font to Space Grotesk"
-   git push
+STILL MISSING
+-------------
+Waqas Sheikh is the only partner still rendering as initials.

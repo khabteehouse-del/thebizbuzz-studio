@@ -19,11 +19,10 @@ export type NavLink = {
 };
 
 export const navLinks: NavLink[] = [
-  { label: "Work", href: "#work" },
-  { label: "Services", href: "#services" },
-  { label: "Approach", href: "#approach" },
-  { label: "Team", href: "#team" },
-  { label: "Contact", href: "#contact" },
+  { label: "Services", href: "/#tracks" },
+  { label: "Work", href: "/#work" },
+  { label: "Approach", href: "/#approach" },
+  { label: "Team", href: "/#team" },
 ];
 
 export type SocialLink = {
@@ -36,6 +35,36 @@ export type SocialLink = {
   Entries with an empty href are skipped automatically,
   so nothing renders until a real profile exists.
 */
+export type FooterLink = { label: string; href: string };
+
+/* Grouped so the footer mirrors the two tracks on the page */
+export const footerGroups: { title: string; links: FooterLink[] }[] = [
+  {
+    title: "Local",
+    links: [
+      { label: "Free listing check", href: "/tools/gbp-check" },
+      { label: "Local services", href: "/#local-services" },
+      { label: "Two ways in", href: "/#tracks" },
+    ],
+  },
+  {
+    title: "Studio",
+    links: [
+      { label: "Studio services", href: "/#studio-services" },
+      { label: "Our work", href: "/#work" },
+      { label: "How we work", href: "/#approach" },
+    ],
+  },
+  {
+    title: "Company",
+    links: [
+      { label: "Team", href: "/#team" },
+      { label: "Questions", href: "/#faq" },
+      { label: "Contact", href: "/#contact" },
+    ],
+  },
+];
+
 export const socialLinks: SocialLink[] = [
   { label: "LinkedIn", href: "" },
   { label: "Instagram", href: "" },

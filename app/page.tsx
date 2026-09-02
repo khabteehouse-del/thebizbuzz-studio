@@ -1,38 +1,33 @@
 import { Hero } from "@/components/sections/hero";
+import { Intro } from "@/components/sections/intro";
+import { Tracks } from "@/components/sections/tracks";
+import { Services } from "@/components/sections/services";
+import { ToolsStrip } from "@/components/sections/tools-strip";
+import { Work } from "@/components/sections/work";
+import { Approach } from "@/components/sections/approach";
+import { Team } from "@/components/sections/team";
+import { Faq } from "@/components/sections/faq";
+import { Cta } from "@/components/sections/cta";
 
 /*
-  Hero is real from this phase on.
-  The sections below stay as placeholders until Phase 4 fills them,
-  and keep their ids so nav anchors work today.
+  Order matters here. The fork sits third, directly after the positioning
+  statement, so a visitor knows which half of the company is theirs
+  before they have scrolled past two sections.
 */
-
-const placeholders = [
-  { id: "work", label: "Selected work", title: "Featured Work" },
-  { id: "services", label: "What we do", title: "Services" },
-  { id: "approach", label: "How we work", title: "Approach" },
-  { id: "team", label: "Who we are", title: "Team" },
-  { id: "contact", label: "Start here", title: "Contact" },
-];
 
 export default function Home() {
   return (
     <>
       <Hero />
-
-      {placeholders.map((section) => (
-        <section
-          key={section.id}
-          id={section.id}
-          className="relative border-t border-line bg-ink py-32"
-        >
-          <div className="shell">
-            <p className="section-label">{section.label}</p>
-            <h2 className="mt-6 font-display text-4xl text-paper md:text-5xl">
-              {section.title}
-            </h2>
-          </div>
-        </section>
-      ))}
+      <Intro />
+      <Tracks />
+      <Services />
+      <ToolsStrip />
+      <Work />
+      <Approach />
+      <Team />
+      <Faq />
+      <Cta />
     </>
   );
 }

@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { Menu, X } from "lucide-react";
 import { navLinks, site } from "@/data/site";
 import { Magnetic } from "@/components/shared/magnetic";
+import { Button } from "@/components/shared/button";
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
@@ -38,10 +39,10 @@ export function Nav() {
           : "border-paper/[0.06] bg-ink/25"
       }`}
     >
-      <nav className="shell flex h-20 items-center justify-between gap-8">
+      <nav className="shell flex h-24 items-center justify-between gap-8">
         <Link
           href="/"
-          className="relative flex h-14 w-[180px] items-center"
+          className="relative flex h-16 w-[230px] items-center"
           aria-label={`${site.name} home`}
         >
           {/*
@@ -53,7 +54,7 @@ export function Nav() {
             alt={site.name}
             fill
             priority
-            sizes="180px"
+            sizes="230px"
             className="object-contain object-left"
           />
         </Link>
@@ -72,14 +73,19 @@ export function Nav() {
           ))}
         </ul>
 
-        <div className="hidden md:block">
+        <div className="hidden items-center gap-6 md:flex">
+          <Link
+            href="/tools/gbp-check"
+            className="group flex items-center gap-2 text-[0.8125rem] text-[#4fd1c5] transition-colors duration-200 hover:text-paper"
+          >
+            Free listing check
+            <span className="h-px w-3 bg-[#4fd1c5] transition-all duration-300 group-hover:w-6" />
+          </Link>
+
           <Magnetic strength={12}>
-            <Link
-              href="#contact"
-              className="inline-flex h-10 items-center rounded-sm bg-accent px-5 text-sm font-medium text-paper transition-colors duration-200 hover:bg-accent-soft"
-            >
+            <Button href="#contact" variant="primary" size="md">
               Start a project
-            </Link>
+            </Button>
           </Magnetic>
         </div>
 
@@ -101,7 +107,7 @@ export function Nav() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="fixed inset-0 top-20 bg-ink md:hidden"
+            className="fixed inset-0 top-24 bg-ink md:hidden"
           >
             <div className="shell flex flex-col gap-2 pt-8">
               {navLinks.map((link) => (
@@ -115,12 +121,18 @@ export function Nav() {
                 </Link>
               ))}
               <Link
-                href="#contact"
+                href="/tools/gbp-check"
                 onClick={() => setOpen(false)}
-                className="mt-6 inline-flex h-12 items-center justify-center rounded-sm bg-accent px-6 text-sm font-medium text-paper"
+                className="border-b border-line py-4 font-display text-2xl text-[#4fd1c5]"
               >
-                Start a project
+                Free listing check
               </Link>
+
+              <div className="mt-8">
+                <Button href="#contact" variant="primary" size="lg">
+                  Start a project
+                </Button>
+              </div>
             </div>
           </motion.div>
         )}

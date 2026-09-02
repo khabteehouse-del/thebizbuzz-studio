@@ -1,50 +1,26 @@
-BizBuzz Studio - Live site fixes
-================================
+BizBuzz Studio - Team order
+===========================
 
    cd /d C:\BizBuzz\thebizbuzz-studio
-   xcopy "C:\Users\DAR AL BARAKAH\Desktop\bizbuzz-tweaks\*" "C:\BizBuzz\thebizbuzz-studio\" /E /Y
+   xcopy "C:\Users\DAR AL BARAKAH\Desktop\bizbuzz-teamorder\*" "C:\BizBuzz\thebizbuzz-studio\" /E /Y
    git add .
-   git commit -m "Fix arrow alignment and search metadata"
+   git commit -m "Reorder team"
    git push
 
-Vercel redeploys automatically on push. Two to three minutes.
 
+NEW ORDER
+---------
+   Faraz Akhtar
+   Amrit Hayat
+   Farhan Ahmed Qureshi
+   Waqas Sheikh
 
-1. ARROW ALIGNMENT
-   Lifted from 0.18em to 0.3em. If it is still low, raise it further in
-   components/sections/hero.tsx on the GrowthArrow className. It is in
-   em, so it holds at every screen width.
+   Ghosia Qureshi (specialist row, unchanged)
 
-2. SEARCH METADATA
-   This was the important one. Your page description said "A creative
-   and technology studio building brands, products and AI systems for
-   growing companies."
+Side effect worth knowing: the three partners with photos now sit
+together and the initials card falls at the end of the row rather than
+in the middle. That reads considerably better while Waqas's photo is
+still missing.
 
-   That is the studio half only. It is also the exact text Google shows
-   in search results and what appears when anyone shares the link. So a
-   clinic owner finding you through search was reading copy written for
-   startup founders, before ever reaching the page.
-
-   Now: "We get local businesses found on Google, and we build the
-   brands, websites and AI systems behind companies that are scaling up.
-   Karachi and Dubai."
-
-   It leads with the local half deliberately. That is the visitor most
-   likely to arrive from a cold search rather than a referral.
-
-3. TAGLINE REPETITION
-   Where Brand Meets Intelligence appeared three times on one page:
-   hero, footer heading, and the browser tab. Twice is a tagline, three
-   times is repetition.
-
-   The footer heading is now "Get found. Get built." which says what the
-   two tracks do rather than repeating the line above it. The hero and
-   the page title keep the tagline.
-
-
-ONE THING TO DO IN VERCEL
--------------------------
-Once this deploys, use Google's Rich Results test or just share the URL
-in a WhatsApp message to yourself. The preview card should show the new
-description. If it shows the old one, that is caching, and it clears on
-its own within a day.
+Order is just the sequence of entries in data/team.ts. Move an object
+up or down in that file and the page follows.

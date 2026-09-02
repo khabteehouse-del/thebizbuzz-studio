@@ -38,16 +38,6 @@ export const team: Member[] = [
     linkedin: "",
   },
   {
-    id: "waqas",
-    tier: "partner",
-    name: "Waqas Sheikh",
-    role: "Head of SEO and Search Growth",
-    focus:
-      "Technical search, content strategy and the measurement that ties both back to pipeline.",
-    image: null,
-    linkedin: "",
-  },
-  {
     id: "farhan",
     tier: "partner",
     name: "Farhan Ahmed Qureshi",
@@ -55,6 +45,16 @@ export const team: Member[] = [
     focus:
       "Client relationships and business development across the Emirates and the wider Gulf.",
     image: "/images/team/farhan.jpg",
+    linkedin: "",
+  },
+  {
+    id: "waqas",
+    tier: "partner",
+    name: "Waqas Sheikh",
+    role: "Head of SEO and Search Growth",
+    focus:
+      "Technical search, content strategy and the measurement that ties both back to pipeline.",
+    image: null,
     linkedin: "",
   },
   {

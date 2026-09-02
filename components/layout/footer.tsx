@@ -11,7 +11,7 @@ export function Footer() {
         <div className="grid gap-10 sm:grid-cols-2 md:gap-8 lg:grid-cols-[1.5fr_1fr_1fr_1fr_1.1fr]">
           <div>
             <p className="font-display text-2xl font-medium leading-tight tracking-[-0.02em] text-paper sm:text-3xl md:text-4xl">
-              {site.tagline}
+              Get found. Get built.
             </p>
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-muted">
               {site.description}

@@ -6,8 +6,14 @@
 export const site = {
   name: "BizBuzz",
   tagline: "Where Brand Meets Intelligence",
+  /*
+    This text is what Google shows in results and what appears when
+    anyone shares the link. It has to speak to both audiences, so it
+    leads with the local half: that is the visitor most likely to
+    arrive from a search rather than a referral.
+  */
   description:
-    "A creative and technology studio building brands, products and AI systems for growing companies.",
+    "We get local businesses found on Google, and we build the brands, websites and AI systems behind companies that are scaling up. Karachi and Dubai.",
   url: "https://thebizbuzz.studio",
   email: "contact@thebizbuzz.studio",
   locations: ["Karachi", "Dubai"],

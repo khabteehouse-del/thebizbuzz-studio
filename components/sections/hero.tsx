@@ -220,7 +220,7 @@ export function Hero() {
               <GrowthArrow
                 size={38}
                 sizeDesktop={96}
-                className="mb-[0.18em]"
+                className="mb-[0.3em]"
               />
             </div>
 

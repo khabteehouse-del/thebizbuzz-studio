@@ -11,6 +11,7 @@ import {
   type Answers,
 } from "@/lib/gbp-audit";
 import { site } from "@/data/site";
+import { LeadGate } from "@/components/tools/lead-gate";
 
 type Stage = "intro" | "questions" | "result";
 
@@ -42,6 +43,8 @@ export function GbpChecker() {
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState<Answers>({});
   const [business, setBusiness] = useState({ name: "", type: "", city: "" });
+  const [unlocked, setUnlocked] = useState(false);
+  const [emailedProspect, setEmailedProspect] = useState(false);
 
   const current = questions[step];
   const progress = ((step + 1) / questions.length) * 100;
@@ -62,6 +65,7 @@ export function GbpChecker() {
   function restart() {
     setAnswers({});
     setStep(0);
+    setUnlocked(false);
     setStage("intro");
   }
 
@@ -238,11 +242,35 @@ export function GbpChecker() {
           </p>
         </div>
 
+        {/* The gate sits between the score and the plan, never before it */}
+        {!unlocked && plan.length > 0 && (
+          <div className="mt-12">
+            <LeadGate
+              answers={answers}
+              seed={{
+                businessName: business.name,
+                businessType: business.type,
+                city: business.city,
+              }}
+              onUnlocked={(sent) => {
+                setEmailedProspect(sent);
+                setUnlocked(true);
+              }}
+            />
+          </div>
+        )}
+
         {/* The plan. Ranked by what each gap is actually costing them. */}
-        <div className="mt-12">
+        <div className={`mt-12 ${!unlocked && plan.length > 0 ? "hidden" : ""}`}>
           <p className="section-label">
             {plan.length > 0 ? "Your action plan" : "Nothing urgent"}
           </p>
+
+          {unlocked && emailedProspect && (
+            <p className="mt-5 text-sm leading-relaxed text-paper/70">
+              A copy is on its way to your inbox.
+            </p>
+          )}
 
           {plan.length === 0 && (
             <p className="mt-6 max-w-lg text-sm leading-relaxed text-muted">

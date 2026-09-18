@@ -5,6 +5,7 @@ import { Footer } from "@/components/layout/footer";
 import { SmoothScroll } from "@/components/shared/smooth-scroll";
 import { Cursor } from "@/components/shared/cursor";
 import { Grain } from "@/components/shared/grain";
+import { GbpWidget } from "@/components/tools/gbp-widget";
 import { site } from "@/data/site";
 import "./globals.css";
 
@@ -64,6 +65,7 @@ export default function RootLayout({
         <Nav />
         <main>{children}</main>
         <Footer />
+        <GbpWidget />
       </body>
     </html>
   );

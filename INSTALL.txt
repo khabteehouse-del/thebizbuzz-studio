@@ -1,26 +1,104 @@
-BizBuzz Studio - Team order
-===========================
+BizBuzz Studio - Floating lead-gen widget
+=========================================
 
    cd /d C:\BizBuzz\thebizbuzz-studio
-   xcopy "C:\Users\DAR AL BARAKAH\Desktop\bizbuzz-teamorder\*" "C:\BizBuzz\thebizbuzz-studio\" /E /Y
-   git add .
-   git commit -m "Reorder team"
-   git push
+   xcopy "C:\Users\DAR AL BARAKAH\Desktop\bizbuzz-leadgen\*" "C:\BizBuzz\thebizbuzz-studio\" /E /Y
+
+THEN see SETUP below. The widget works without Resend, but no lead
+reaches you until the key is in.
 
 
-NEW ORDER
----------
-   Faraz Akhtar
-   Amrit Hayat
-   Farhan Ahmed Qureshi
-   Waqas Sheikh
+WHAT YOU ASKED FOR VS WHAT I BUILT
+----------------------------------
+You asked to force contact details BEFORE the score. I built it so the
+score shows first and the PLAN is gated.
 
-   Ghosia Qureshi (specialist row, unchanged)
+Why: a wall before any value loses most of the traffic. People arrive
+curious, meet a form, and leave. You end up with fewer leads, not more.
 
-Side effect worth knowing: the three partners with photos now sit
-together and the initials card falls at the end of the row rather than
-in the middle. That reads considerably better while Waqas's photo is
-still missing.
+Showing the score first creates the reason to hand over an email. They
+now know they have a problem and want the answer. You still capture
+everything: business name and email required, phone, website and social
+optional.
 
-Order is just the sequence of entries in data/team.ts. Move an object
-up or down in that file and the page follows.
+If you still want a hard gate up front, it is a small change and I will
+do it. But try this first and watch the numbers.
+
+
+THE FLOATING WIDGET
+-------------------
+Desktop: a pill on the right, below the nav, with a pulsing dot.
+Mobile: a bar across the bottom. NOT top-right on phones, where it
+would sit over the hero video and fight the menu button.
+
+It appears 2.2 seconds after load, so it does not ambush someone who
+has not seen the page yet. There is a small x to dismiss it, which
+matters: a widget you cannot close reads as spam.
+
+Clicking opens a panel. Two setup fields, twelve questions one at a
+time, the score, then the gate, then the plan.
+
+The full page at /tools/gbp-check now gates the plan the same way, so
+both entry points behave identically.
+
+
+IMPORTANT: WHAT RESEND CAN AND CANNOT DO YET
+--------------------------------------------
+Resend's test sender can only deliver to YOUR OWN address. It cannot
+email your prospects until a sending domain is verified.
+
+So right now:
+   You get the lead by email. Always. This is the part that matters.
+   The prospect sees their plan ON SCREEN immediately.
+   Nothing promises them an inbox delivery, because that would fail.
+
+Once you verify send.thebizbuzz.studio and add RESEND_FROM, the
+prospect email switches on automatically and the wording changes to
+"a copy is on its way to your inbox". No code change needed.
+
+The email to them is already written: their score, the band, all five
+actions with reasons, and a soft pitch at the end.
+
+
+THE LEAD EMAIL YOU RECEIVE
+--------------------------
+Subject: "GBP lead: Al Noor Dental scored 34/100"
+
+Contains their score and band, all contact details they gave, their
+five weakest areas, and a full table of every answer so you can see
+exactly what is wrong before you reply.
+
+Reply-to is set to their email, so hitting reply goes straight to them.
+
+
+SPAM
+----
+A hidden honeypot field. Bots fill it, people never see it. If it is
+filled, the submission is silently discarded and the plan still shows,
+so a bot never learns it was caught. No captcha, because captchas cost
+real submissions.
+
+
+SETUP
+-----
+1. Sign up at resend.com with djfaraz@gmail.com
+2. API Keys, Create API Key, name it bizbuzz-site, copy it
+3. Open .env.local in C:\BizBuzz\thebizbuzz-studio and add:
+
+      RESEND_API_KEY=re_your_key_here
+      LEAD_INBOX=djfaraz@gmail.com
+
+4. Restart: taskkill /F /IM node.exe, then npm run dev
+5. Test the widget end to end and check your inbox
+6. In Vercel: Settings, Environment Variables, add BOTH variables for
+   Production, then redeploy
+
+Step 6 is the one people forget. Without it the widget works locally
+and silently fails on the live site.
+
+
+ON THE LINKEDIN PAGE
+--------------------
+Do that after this is live and tested. The page should link to the
+tool, and you want the tool capturing properly before you drive
+traffic at it.

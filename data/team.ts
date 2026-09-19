@@ -54,7 +54,7 @@ export const team: Member[] = [
     role: "Head of SEO and Search Growth",
     focus:
       "Technical search, content strategy and the measurement that ties both back to pipeline.",
-    image: null,
+    image: "/images/team/waqas.jpg",
     linkedin: "",
   },
   {

@@ -11,7 +11,7 @@ export function Approach() {
       */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-cover bg-center opacity-[0.09]"
+        className="pointer-events-none absolute inset-0 bg-cover bg-center opacity-[0.05]"
         style={{
           backgroundImage: "url(/images/banners/banner-3.jpg)",
           maskImage:
@@ -63,3 +63,4 @@ export function Approach() {
     </section>
   );
 }
+

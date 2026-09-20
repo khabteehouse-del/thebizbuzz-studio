@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { X, Sparkles } from "lucide-react";
+import { X } from "lucide-react";
 import {
   questions,
   scoreAnswers,
@@ -14,16 +14,19 @@ import { LeadGate } from "@/components/tools/lead-gate";
 
 type Stage = "start" | "questions" | "score" | "plan";
 
+const LOGO_BLUE = "#1dd5ff";
+
 /*
   Floating entry point for the GBP check.
 
-  Placement: below the nav on the right at desktop, a bottom bar on
-  mobile. Not top-right on phones, where it would sit over the hero
-  video and fight the menu button.
+  Launcher redesigned as a "reactor core": a glowing orb that breathes
+  on a 3s cycle (scale + glow expand/contract together) with two dashed
+  rings rotating around it at different speeds, plus two small orbiting
+  particles. On hover, the breathing stops, the core flares and locks
+  larger, and the rings/particles spin much faster, an "activation"
+  moment rather than a color change.
 
-  It collapses to a pill so it never blocks reading, and the panel is
-  scrollable because twelve questions plus a form will not fit a phone
-  screen.
+  The click-to-open panel below is untouched from the original.
 */
 export function GbpWidget() {
   const [open, setOpen] = useState(false);
@@ -34,7 +37,6 @@ export function GbpWidget() {
   const [emailed, setEmailed] = useState(false);
   const [dismissed, setDismissed] = useState(false);
 
-  /* Appear after the visitor has actually engaged with the page */
   const [ready, setReady] = useState(false);
   useEffect(() => {
     const timer = window.setTimeout(() => setReady(true), 2200);
@@ -72,7 +74,7 @@ export function GbpWidget() {
 
   return (
     <>
-      {/* Launcher */}
+      {/* Launcher: reactor core */}
       <AnimatePresence>
         {ready && !open && (
           <motion.div
@@ -86,32 +88,44 @@ export function GbpWidget() {
               <button
                 type="button"
                 onClick={() => setOpen(true)}
-                className="group flex w-full items-center gap-3 rounded-[3px] border px-5 py-3.5 backdrop-blur-xl transition-colors duration-300 md:w-auto"
+                className="reactor-widget group flex w-full items-center gap-[18px] rounded-[8px] border px-5 py-4 backdrop-blur-xl transition-colors duration-300 md:w-auto"
                 style={{
-                  borderColor: "#4fd1c555",
-                  backgroundColor: "rgba(13,42,43,0.85)",
+                  borderColor: `${LOGO_BLUE}40`,
+                  backgroundColor: "rgba(10,15,26,0.85)",
                 }}
               >
-                <span className="relative flex h-2 w-2 shrink-0">
+                <div className="reactor-core-wrap relative flex h-[52px] w-[52px] shrink-0 items-center justify-center">
+                  <div className="reactor-ring reactor-ring-outer absolute h-[52px] w-[52px] rounded-full border border-dashed"
+                       style={{ borderColor: `${LOGO_BLUE}59` }} />
+                  <div className="reactor-ring reactor-ring-mid absolute h-[38px] w-[38px] rounded-full border"
+                       style={{ borderColor: `${LOGO_BLUE}59` }} />
                   <span
-                    className="absolute inline-flex h-full w-full animate-ping rounded-full opacity-70"
-                    style={{ backgroundColor: "#4fd1c5" }}
+                    className="reactor-particle absolute h-[4px] w-[4px] rounded-full"
+                    style={{ backgroundColor: LOGO_BLUE, boxShadow: `0 0 6px 1px ${LOGO_BLUE}cc` }}
                   />
                   <span
-                    className="relative inline-flex h-2 w-2 rounded-full"
-                    style={{ backgroundColor: "#4fd1c5" }}
+                    className="reactor-particle reactor-particle-2 absolute h-[4px] w-[4px] rounded-full"
+                    style={{ backgroundColor: LOGO_BLUE, boxShadow: `0 0 6px 1px ${LOGO_BLUE}cc` }}
                   />
-                </span>
+                  <div
+                    className="reactor-core relative h-[16px] w-[16px] rounded-full"
+                    style={{
+                      background: `radial-gradient(circle, #bff3ff 0%, ${LOGO_BLUE} 55%, transparent 80%)`,
+                    }}
+                  />
+                </div>
 
-                <span className="flex-1 text-left text-[0.8125rem] font-medium text-paper md:flex-none">
-                  Score my Google listing
+                <span className="flex flex-col items-start gap-[3px] text-left">
+                  <span
+                    className="text-[10px] uppercase tracking-[0.14em]"
+                    style={{ color: `${LOGO_BLUE}d9` }}
+                  >
+                    Test your Google Business Profile, free in 60 seconds
+                  </span>
+                  <span className="text-[0.8125rem] font-medium text-paper">
+                    Free 60-second scan
+                  </span>
                 </span>
-
-                <Sparkles
-                  size={15}
-                  strokeWidth={1.7}
-                  style={{ color: "#4fd1c5" }}
-                />
               </button>
 
               <button
@@ -146,11 +160,10 @@ export function GbpWidget() {
               transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
               className="fixed inset-x-3 bottom-3 top-20 z-50 flex flex-col overflow-hidden rounded-[4px] border shadow-[0_30px_80px_-20px_rgba(0,0,0,0.9)] md:inset-x-auto md:bottom-auto md:right-6 md:top-28 md:h-[min(78vh,760px)] md:w-[430px]"
               style={{
-                borderColor: "#4fd1c544",
-                backgroundColor: "#0b1f22",
+                borderColor: `${LOGO_BLUE}44`,
+                backgroundColor: "#0a0f1a",
               }}
             >
-              {/* Header */}
               <div
                 className="flex shrink-0 items-center justify-between border-b px-6 py-4"
                 style={{ borderColor: "rgba(245,248,255,0.08)" }}
@@ -158,7 +171,7 @@ export function GbpWidget() {
                 <div className="flex items-center gap-3">
                   <span
                     className="h-1.5 w-1.5 rounded-full"
-                    style={{ backgroundColor: "#4fd1c5" }}
+                    style={{ backgroundColor: LOGO_BLUE }}
                   />
                   <p className="text-xs uppercase tracking-[0.14em] text-paper/70">
                     Listing check
@@ -176,12 +189,14 @@ export function GbpWidget() {
               </div>
 
               <div className="flex-1 overflow-y-auto px-6 py-6">
-                {/* ---------------- start ---------------- */}
                 {stage === "start" && (
                   <div>
                     <h2 className="font-display text-2xl font-medium leading-snug tracking-[-0.02em] text-paper">
-                      How good is your Google listing?
+                      Free 60-second scan
                     </h2>
+                    <p className="mt-2 text-base font-medium text-paper/80">
+                      Is your Google listing costing you leads?
+                    </p>
                     <p className="mt-4 text-sm leading-relaxed text-paper/60">
                       Twelve quick questions. You get a score out of 100 and
                       the five things costing you the most customers.
@@ -211,14 +226,13 @@ export function GbpWidget() {
                       disabled={!business.name.trim()}
                       onClick={() => setStage("questions")}
                       className="mt-7 h-12 w-full rounded-[2px] text-xs font-medium uppercase tracking-[0.12em] text-ink transition-opacity duration-300 disabled:cursor-not-allowed disabled:opacity-30"
-                      style={{ backgroundColor: "#4fd1c5" }}
+                      style={{ backgroundColor: LOGO_BLUE }}
                     >
                       Start
                     </button>
                   </div>
                 )}
 
-                {/* -------------- questions -------------- */}
                 {stage === "questions" && (
                   <div>
                     <div className="flex items-baseline justify-between text-xs text-muted">
@@ -233,7 +247,7 @@ export function GbpWidget() {
                     <div className="mt-3 h-px w-full bg-line">
                       <motion.div
                         className="h-px"
-                        style={{ backgroundColor: "#4fd1c5" }}
+                        style={{ backgroundColor: LOGO_BLUE }}
                         animate={{ width: `${progress}%` }}
                         transition={{ duration: 0.35 }}
                       />
@@ -268,7 +282,7 @@ export function GbpWidget() {
                             >
                               <span
                                 className="h-px w-3 shrink-0 transition-all duration-300 group-hover:w-6"
-                                style={{ backgroundColor: "#4fd1c5" }}
+                                style={{ backgroundColor: LOGO_BLUE }}
                               />
                               {option.label}
                             </button>
@@ -289,7 +303,6 @@ export function GbpWidget() {
                   </div>
                 )}
 
-                {/* ---------------- score ---------------- */}
                 {stage === "score" && (
                   <div>
                     <div
@@ -343,7 +356,6 @@ export function GbpWidget() {
                   </div>
                 )}
 
-                {/* ---------------- plan ---------------- */}
                 {stage === "plan" && (
                   <div>
                     <p className="section-label">Your action plan</p>
@@ -366,7 +378,7 @@ export function GbpWidget() {
                           <div className="flex gap-4">
                             <span
                               className="shrink-0 font-display text-sm"
-                              style={{ color: "#4fd1c5" }}
+                              style={{ color: LOGO_BLUE }}
                             >
                               0{index + 1}
                             </span>
@@ -401,6 +413,66 @@ export function GbpWidget() {
           </>
         )}
       </AnimatePresence>
+
+      <style jsx global>{`
+        @keyframes reactorBreathe {
+          0%, 100% {
+            transform: scale(0.85);
+            opacity: 0.7;
+            box-shadow: 0 0 10px 2px rgba(29, 213, 255, 0.35);
+          }
+          50% {
+            transform: scale(1.3);
+            opacity: 1;
+            box-shadow: 0 0 26px 8px rgba(29, 213, 255, 0.75);
+          }
+        }
+        @keyframes reactorSpin {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+        @keyframes reactorSpinRev {
+          from { transform: rotate(360deg); }
+          to { transform: rotate(0deg); }
+        }
+        @keyframes reactorOrbit {
+          from { transform: rotate(0deg) translateX(22px) rotate(0deg); }
+          to { transform: rotate(360deg) translateX(22px) rotate(-360deg); }
+        }
+        .reactor-core {
+          animation: reactorBreathe 3s ease-in-out infinite;
+        }
+        .reactor-ring-outer {
+          animation: reactorSpin 10s linear infinite;
+        }
+        .reactor-ring-mid {
+          animation: reactorSpinRev 7s linear infinite;
+        }
+        .reactor-particle {
+          top: 50%;
+          left: 50%;
+          transform-origin: 0 0;
+          animation: reactorOrbit 4.5s linear infinite;
+        }
+        .reactor-particle-2 {
+          animation-duration: 6s;
+          animation-direction: reverse;
+        }
+        .reactor-widget:hover .reactor-core {
+          animation: none;
+          transform: scale(1.35);
+          box-shadow: 0 0 30px 8px rgba(29, 213, 255, 0.85);
+        }
+        .reactor-widget:hover .reactor-ring-outer {
+          animation-duration: 3s;
+        }
+        .reactor-widget:hover .reactor-ring-mid {
+          animation-duration: 2.2s;
+        }
+        .reactor-widget:hover .reactor-particle {
+          animation-duration: 1.4s;
+        }
+      `}</style>
     </>
   );
 }

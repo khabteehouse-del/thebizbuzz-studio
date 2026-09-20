@@ -21,7 +21,7 @@ export const team: Member[] = [
     id: "faraz",
     tier: "partner",
     name: "Faraz Akhtar",
-    role: "Co-Founder, Head of Technology and AI Solutions",
+    role: "Founder & AI Solutions Lead",
     focus:
       "Two decades in enterprise IT, now building production AI systems. Owns the technical direction of every engagement.",
     image: "/images/team/faraz.jpg",

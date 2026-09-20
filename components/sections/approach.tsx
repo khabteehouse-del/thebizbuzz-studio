@@ -3,8 +3,25 @@ import { Reveal } from "@/components/shared/reveal";
 
 export function Approach() {
   return (
-    <section id="approach" className="bg-deep py-20 md:py-36">
-      <div className="shell">
+    <section id="approach" className="relative overflow-hidden bg-deep py-20 md:py-36">
+      {/*
+        Background flowing-light banner, subtle: low opacity, masked to
+        fade into the section's own background at top and bottom, so it
+        reads as texture rather than an inserted image.
+      */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-cover bg-center opacity-[0.09]"
+        style={{
+          backgroundImage: "url(/images/banners/banner-3.jpg)",
+          maskImage:
+            "linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%)",
+          WebkitMaskImage:
+            "linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%)",
+        }}
+      />
+
+      <div className="shell relative z-10">
         <div className="grid gap-16 md:grid-cols-[0.85fr_1.15fr] md:gap-20">
           <Reveal>
             <div className="md:sticky md:top-32">

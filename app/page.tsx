@@ -10,17 +10,18 @@ import { Faq } from "@/components/sections/faq";
 import { Cta } from "@/components/sections/cta";
 
 /*
-  Order matters here. The fork sits third, directly after the positioning
-  statement, so a visitor knows which half of the company is theirs
-  before they have scrolled past two sections.
+  Order matters here. Tracks now sits second, right after the hero, so
+  a visitor hits the actionable fork immediately. Intro's positioning
+  copy follows to reinforce whichever side they land on, rather than
+  sitting as abstract text before any decision point.
 */
 
 export default function Home() {
   return (
     <>
       <Hero />
-      <Intro />
       <Tracks />
+      <Intro />
       <Services />
       <ToolsStrip />
       <Work />

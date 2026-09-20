@@ -28,13 +28,6 @@ import { site } from "@/data/site";
 */
 const VIDEO_SPEED = 0.5;
 
-/*
-  Exact blue sampled from the official BizBuzz logo file, so "Buzz" in the
-  hero headline matches the logo's brand blue rather than the site's
-  slightly darker --color-accent token.
-*/
-const LOGO_BLUE = "#1dd5ff";
-
 export function Hero() {
   const ref = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -94,7 +87,7 @@ export function Hero() {
   return (
     <section
       ref={ref}
-      className={pinned ? "relative h-[115vh]" : "relative"}
+      className={pinned ? "relative h-[200vh]" : "relative"}
       aria-label="Introduction"
     >
       <div
@@ -119,7 +112,7 @@ export function Hero() {
 
           {/* Navy bloom, off-centre so the composition is not symmetrical */}
           <div
-            className="absolute left-[-10%] top-[-20%] h-[115vh] w-[80vh] rounded-full opacity-40 blur-[120px]"
+            className="absolute left-[-10%] top-[-20%] h-[80vh] w-[80vh] rounded-full opacity-40 blur-[120px]"
             style={{
               background:
                 "radial-gradient(circle, var(--color-navy) 0%, transparent 70%)",
@@ -128,7 +121,7 @@ export function Hero() {
 
           {/* Accent bloom, smaller and lower right */}
           <div
-            className="absolute bottom-[-15%] right-[-5%] h-[115vh] w-[55vh] rounded-full opacity-25 blur-[130px]"
+            className="absolute bottom-[-15%] right-[-5%] h-[55vh] w-[55vh] rounded-full opacity-25 blur-[130px]"
             style={{
               background:
                 "radial-gradient(circle, var(--color-accent) 0%, transparent 70%)",
@@ -176,7 +169,7 @@ export function Hero() {
                 repeat: Infinity,
                 ease: "easeInOut",
               }}
-              className="pointer-events-none absolute left-0 top-[38%] h-[115vh] w-[55vh] -translate-y-1/2 rounded-full blur-[120px]"
+              className="pointer-events-none absolute left-0 top-[38%] h-[45vh] w-[55vh] -translate-y-1/2 rounded-full blur-[120px]"
               style={{
                 background:
                   "radial-gradient(circle, var(--color-accent) 0%, transparent 70%)",
@@ -192,12 +185,12 @@ export function Hero() {
                   y: pinned ? headlineY : 0,
                   transformOrigin: "left center",
                 }}
-              className="relative flex italic font-display text-[clamp(3rem,16vw,16rem)] font-medium leading-[0.88] tracking-[-0.055em] text-paper md:text-[clamp(5.5rem,15vw,16rem)]"
+              className="relative flex font-display text-[clamp(3rem,16vw,16rem)] font-medium leading-[0.88] tracking-[-0.055em] text-paper md:text-[clamp(5.5rem,15vw,16rem)]"
             >
               {words.map((word, index) => (
                 <span
                   key={word.text}
-                  className={`inline-block pb-[0.14em] -mb-[0.14em] pr-[0.08em] align-bottom ${
+                  className={`inline-block pb-[0.14em] -mb-[0.14em] align-bottom ${
                     intro ? "overflow-hidden" : ""
                   }`}
                 >
@@ -209,8 +202,9 @@ export function Hero() {
                       delay: 0.15 + index * 0.08,
                       ease: [0.22, 1, 0.36, 1],
                     }}
-                    className="inline-block"
-                    style={word.accent ? { color: LOGO_BLUE } : undefined}
+                    className={`inline-block ${
+                      word.accent ? "text-accent" : "text-paper"
+                    }`}
                   >
                     {word.text}
                   </motion.span>
@@ -304,6 +298,3 @@ export function Hero() {
     </section>
   );
 }
-
-
-

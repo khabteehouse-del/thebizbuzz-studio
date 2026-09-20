@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { MapPin, Layers } from "lucide-react";
 import { Reveal } from "@/components/shared/reveal";
 
@@ -11,6 +12,10 @@ import { Reveal } from "@/components/shared/reveal";
 
   Each panel carries its own destination anchor, its own icon, an
   oversized track numeral, and a concrete next step at the bottom.
+
+  Anchor characters: woman outside the left edge of the "local" card
+  pointing right into it, man outside the right edge of the "studio"
+  card pointing left into it. Desktop only, no room on mobile/tablet.
 */
 
 const doors = [
@@ -35,6 +40,8 @@ const doors = [
     mark: "#4fd1c5",
     tint: "#0d2a2b",
     tintHover: "#123c3d",
+    anchorSrc: "/images/anchor/women-anchor.png",
+    anchorSide: "left" as const,
   },
   {
     id: "studio",
@@ -57,6 +64,8 @@ const doors = [
     mark: "#8b9dfa",
     tint: "#151a38",
     tintHover: "#1e2652",
+    anchorSrc: "/images/anchor/man-anchor.png",
+    anchorSide: "right" as const,
   },
 ];
 
@@ -75,7 +84,35 @@ export function Tracks() {
           </h2>
         </Reveal>
 
-        <div className="mt-16 grid gap-6 md:grid-cols-2 md:gap-8">
+        <div className="relative mt-16 grid gap-6 md:grid-cols-2 md:gap-8">
+          {/* Woman: outside the left edge of the local card, pointing right */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -left-8 bottom-0 z-20 hidden h-[300px] w-[140px] lg:block xl:-left-28 xl:h-[340px] xl:w-[160px]"
+          >
+            <Image
+              src="/images/anchor/women-anchor.png"
+              alt=""
+              fill
+              className="object-contain object-bottom opacity-90"
+              sizes="160px"
+            />
+          </div>
+
+          {/* Man: outside the right edge of the studio card, pointing left */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -right-8 bottom-0 z-20 hidden h-[300px] w-[140px] lg:block xl:-right-28 xl:h-[340px] xl:w-[160px]"
+          >
+            <Image
+              src="/images/anchor/man-anchor.png"
+              alt=""
+              fill
+              className="object-contain object-bottom opacity-90"
+              sizes="160px"
+            />
+          </div>
+
           {doors.map((door, index) => {
             const Icon = door.icon;
 

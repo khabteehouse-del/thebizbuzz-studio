@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { MapPin, Layers } from "lucide-react";
@@ -16,6 +18,10 @@ import { Reveal } from "@/components/shared/reveal";
   Anchor characters: woman outside the left edge of the "local" card
   pointing right into it, man outside the right edge of the "studio"
   card pointing left into it. Desktop only, no room on mobile/tablet.
+
+  The review proof is a <div> (not an <a>), since the whole card is
+  already a <Link>, and an anchor cannot contain another anchor. Clicking
+  it opens the Google Maps URL in a new tab via window.open instead.
 */
 
 const doors = [
@@ -35,13 +41,19 @@ const doors = [
     ],
     footnote: "Monthly retainers, priced for local business",
     tool: { label: "Free Google listing check", href: "/tools/gbp-check" },
+    review: {
+      quote:
+        "Mobile cranes with full safety and certification. Great service.",
+      client: "Sadat Transport & Contracting, Abu Dhabi",
+      rating: 4.9,
+      count: 40,
+      href: "https://www.google.com/maps/place/Sadat+Transport+%26+Contracting+General/@24.369346,54.4996095,17z",
+    },
     cta: "See local services",
     href: "#local-services",
     mark: "#4fd1c5",
     tint: "#0d2a2b",
     tintHover: "#123c3d",
-    anchorSrc: "/images/anchor/women-anchor.png",
-    anchorSide: "left" as const,
   },
   {
     id: "studio",
@@ -59,13 +71,12 @@ const doors = [
     ],
     footnote: "Scoped projects with a phase schedule up front",
     tool: null,
+    review: null,
     cta: "See studio services",
     href: "#studio-services",
     mark: "#8b9dfa",
     tint: "#151a38",
     tintHover: "#1e2652",
-    anchorSrc: "/images/anchor/man-anchor.png",
-    anchorSide: "right" as const,
   },
 ];
 
@@ -85,7 +96,6 @@ export function Tracks() {
         </Reveal>
 
         <div className="relative mt-16 grid gap-6 md:grid-cols-2 md:gap-8">
-          {/* Woman: outside the left edge of the local card, pointing right */}
           <div
             aria-hidden="true"
             className="pointer-events-none absolute -left-8 bottom-0 z-20 hidden h-[300px] w-[140px] lg:block xl:-left-28 xl:h-[340px] xl:w-[160px]"
@@ -99,7 +109,6 @@ export function Tracks() {
             />
           </div>
 
-          {/* Man: outside the right edge of the studio card, pointing left */}
           <div
             aria-hidden="true"
             className="pointer-events-none absolute -right-8 bottom-0 z-20 hidden h-[300px] w-[140px] lg:block xl:-right-28 xl:h-[340px] xl:w-[160px]"
@@ -126,7 +135,6 @@ export function Tracks() {
                     borderColor: `${door.mark}33`,
                   }}
                 >
-                  {/* Oversized numeral, sunk into the panel */}
                   <span
                     aria-hidden="true"
                     className="pointer-events-none absolute -right-3 -top-8 select-none font-display text-[7rem] font-medium leading-none tracking-[-0.05em] transition-opacity duration-500 group-hover:opacity-20 sm:text-[11rem] md:text-[15rem]"
@@ -204,6 +212,50 @@ export function Tracks() {
                       >
                         {door.tool.label}
                       </span>
+                    )}
+
+                    {door.review && (
+                      <div
+                        role="link"
+                        tabIndex={0}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          window.open(
+                            door.review!.href,
+                            "_blank",
+                            "noopener,noreferrer"
+                          );
+                        }}
+                        onKeyDown={(e) => {
+                          if (e.key === "Enter") {
+                            e.stopPropagation();
+                            window.open(
+                              door.review!.href,
+                              "_blank",
+                              "noopener,noreferrer"
+                            );
+                          }
+                        }}
+                        className="mt-4 block w-fit cursor-pointer rounded-[2px] border border-paper/10 bg-paper/[0.03] px-4 py-3 transition-colors duration-300 hover:bg-paper/[0.06]"
+                      >
+                        <div className="flex items-center gap-1.5">
+                          {Array.from({ length: 5 }).map((_, i) => (
+                            <span key={i} style={{ color: door.mark }}>
+                              ★
+                            </span>
+                          ))}
+                          <span className="ml-1 text-xs text-paper/70">
+                            {door.review.rating} ({door.review.count} reviews)
+                          </span>
+                        </div>
+                        <p className="mt-2 max-w-xs text-xs italic leading-relaxed text-paper/60">
+                          &ldquo;{door.review.quote}&rdquo;
+                        </p>
+                        <p className="mt-2 text-[0.6875rem] uppercase tracking-[0.1em] text-paper/40">
+                          {door.review.client}, verified on Google
+                        </p>
+                      </div>
                     )}
 
                     <span className="mt-auto flex items-center gap-3 pt-8 text-xs uppercase tracking-[0.12em] text-paper">

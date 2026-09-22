@@ -472,6 +472,17 @@ export function GbpWidget() {
         .reactor-widget:hover .reactor-particle {
           animation-duration: 1.4s;
         }
+        @media (max-width: 768px), (prefers-reduced-motion: reduce) {
+          .reactor-ring-outer,
+          .reactor-ring-mid,
+          .reactor-particle,
+          .reactor-particle-2 {
+            animation: none;
+          }
+          .reactor-core {
+            animation-duration: 4s;
+          }
+        }
       `}</style>
     </>
   );

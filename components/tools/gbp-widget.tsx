@@ -16,18 +16,6 @@ type Stage = "start" | "questions" | "score" | "plan";
 
 const LOGO_BLUE = "#1dd5ff";
 
-/*
-  Floating entry point for the GBP check.
-
-  Launcher redesigned as a "reactor core": a glowing orb that breathes
-  on a 3s cycle (scale + glow expand/contract together) with two dashed
-  rings rotating around it at different speeds, plus two small orbiting
-  particles. On hover, the breathing stops, the core flares and locks
-  larger, and the rings/particles spin much faster, an "activation"
-  moment rather than a color change.
-
-  The click-to-open panel below is untouched from the original.
-*/
 export function GbpWidget() {
   const [open, setOpen] = useState(false);
   const [stage, setStage] = useState<Stage>("start");
@@ -419,12 +407,10 @@ export function GbpWidget() {
           0%, 100% {
             transform: scale(0.85);
             opacity: 0.7;
-            box-shadow: 0 0 10px 2px rgba(29, 213, 255, 0.35);
           }
           50% {
             transform: scale(1.3);
             opacity: 1;
-            box-shadow: 0 0 26px 8px rgba(29, 213, 255, 0.75);
           }
         }
         @keyframes reactorSpin {
@@ -441,8 +427,9 @@ export function GbpWidget() {
         }
         .reactor-core {
           animation: reactorBreathe 3s ease-in-out infinite;
-          will-change: transform, opacity, box-shadow;
+          will-change: transform, opacity;
           transform: translateZ(0);
+          box-shadow: 0 0 16px 4px rgba(29, 213, 255, 0.55);
         }
         .reactor-ring-outer {
           animation: reactorSpin 10s linear infinite;

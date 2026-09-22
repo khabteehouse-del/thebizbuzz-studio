@@ -428,31 +428,39 @@ export function GbpWidget() {
           }
         }
         @keyframes reactorSpin {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
+          from { transform: rotate(0deg) translateZ(0); }
+          to { transform: rotate(360deg) translateZ(0); }
         }
         @keyframes reactorSpinRev {
-          from { transform: rotate(360deg); }
-          to { transform: rotate(0deg); }
+          from { transform: rotate(360deg) translateZ(0); }
+          to { transform: rotate(0deg) translateZ(0); }
         }
         @keyframes reactorOrbit {
-          from { transform: rotate(0deg) translateX(22px) rotate(0deg); }
-          to { transform: rotate(360deg) translateX(22px) rotate(-360deg); }
+          from { transform: rotate(0deg) translateX(22px) rotate(0deg) translateZ(0); }
+          to { transform: rotate(360deg) translateX(22px) rotate(-360deg) translateZ(0); }
         }
         .reactor-core {
           animation: reactorBreathe 3s ease-in-out infinite;
+          will-change: transform, opacity, box-shadow;
+          transform: translateZ(0);
         }
         .reactor-ring-outer {
           animation: reactorSpin 10s linear infinite;
+          will-change: transform;
+          backface-visibility: hidden;
         }
         .reactor-ring-mid {
           animation: reactorSpinRev 7s linear infinite;
+          will-change: transform;
+          backface-visibility: hidden;
         }
         .reactor-particle {
           top: 50%;
           left: 50%;
           transform-origin: 0 0;
           animation: reactorOrbit 4.5s linear infinite;
+          will-change: transform;
+          backface-visibility: hidden;
         }
         .reactor-particle-2 {
           animation-duration: 6s;
@@ -460,7 +468,7 @@ export function GbpWidget() {
         }
         .reactor-widget:hover .reactor-core {
           animation: none;
-          transform: scale(1.35);
+          transform: scale(1.35) translateZ(0);
           box-shadow: 0 0 30px 8px rgba(29, 213, 255, 0.85);
         }
         .reactor-widget:hover .reactor-ring-outer {
@@ -471,17 +479,6 @@ export function GbpWidget() {
         }
         .reactor-widget:hover .reactor-particle {
           animation-duration: 1.4s;
-        }
-        @media (max-width: 768px), (prefers-reduced-motion: reduce) {
-          .reactor-ring-outer,
-          .reactor-ring-mid,
-          .reactor-particle,
-          .reactor-particle-2 {
-            animation: none;
-          }
-          .reactor-core {
-            animation-duration: 4s;
-          }
         }
       `}</style>
     </>

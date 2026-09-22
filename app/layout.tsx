@@ -9,12 +9,6 @@ import { GbpWidget } from "@/components/tools/gbp-widget";
 import { site } from "@/data/site";
 import "./globals.css";
 
-/*
-  Two families, one job each.
-  Space Grotesk carries the headlines: geometric, slightly irregular,
-  it holds character at very large sizes where a neutral sans goes flat.
-  Geist handles everything functional.
-*/
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   variable: "--font-display-family",
@@ -59,13 +53,15 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${spaceGrotesk.variable} ${geist.variable}`}>
       <body className="min-h-dvh bg-ink text-paper antialiased">
-        <SmoothScroll />
-        <Grain />
-        <Cursor />
-        <Nav />
-        <main>{children}</main>
-        <Footer />
-        <GbpWidget />
+        <div style={{ willChange: "transform, opacity", transform: "translateZ(0)" }}>
+          <SmoothScroll />
+          <Grain />
+          <Cursor />
+          <Nav />
+          <main>{children}</main>
+          <Footer />
+          <GbpWidget />
+        </div>
       </body>
     </html>
   );

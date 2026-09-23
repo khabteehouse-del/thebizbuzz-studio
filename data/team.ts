@@ -67,7 +67,14 @@ export const team: Member[] = [
     image: "/images/team/ghosia.jpg",
     linkedin: "",
   },
+  {
+    id: "naseem",
+    tier: "specialist",
+    name: "Muhammad Naseem",
+    role: "Graphic & Brand Designer",
+    focus:
+      "Logo design, brand identity and visual assets, from posters and banners to social media and print collateral.",
+    image: "/images/team/naseem.jpg",
+    linkedin: "",
+  },
 ];
-
-export const partners = team.filter((m) => m.tier === "partner");
-export const specialists = team.filter((m) => m.tier === "specialist");

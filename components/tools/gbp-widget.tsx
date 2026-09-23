@@ -76,8 +76,6 @@ export function GbpWidget() {
   const band = bandFor(score);
   const plan = buildPlan(answers, 5);
 
-  // Durations in ms, exactly matching original design speeds.
-  // Hover speeds up all three, same as the original :hover rules.
   const breatheDur = hovered ? 3000 : 3000;
   const outerDur = hovered ? 3000 : 10000;
   const midDur = hovered ? 2200 : 7000;
@@ -107,7 +105,7 @@ export function GbpWidget() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 12 }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-x-4 bottom-5 z-40 md:inset-x-auto md:bottom-auto md:right-6 md:top-28"
+            className="fixed right-4 top-24 z-40 md:right-6 md:top-28"
           >
             <div className="relative">
               <button
@@ -115,7 +113,7 @@ export function GbpWidget() {
                 onClick={() => setOpen(true)}
                 onMouseEnter={() => setHovered(true)}
                 onMouseLeave={() => setHovered(false)}
-                className="group flex w-full items-center gap-[18px] rounded-[8px] border px-5 py-4 backdrop-blur-xl transition-colors duration-300 md:w-auto"
+                className="reactor-widget group flex items-center gap-3 rounded-[8px] border px-3 py-2.5 backdrop-blur-xl transition-colors duration-300 md:gap-[18px] md:px-5 md:py-4"
                 style={{
                   borderColor: `${LOGO_BLUE}40`,
                   backgroundColor: "rgba(10,15,26,0.85)",
@@ -171,7 +169,7 @@ export function GbpWidget() {
                   />
                 </div>
 
-                <span className="flex flex-col items-start gap-[3px] text-left">
+                <span className="hidden flex-col items-start gap-[3px] text-left md:flex">
                   <span
                     className="text-[10px] uppercase tracking-[0.14em]"
                     style={{ color: `${LOGO_BLUE}d9` }}

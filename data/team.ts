@@ -78,3 +78,6 @@ export const team: Member[] = [
     linkedin: "",
   },
 ];
+
+export const partners = team.filter((member) => member.tier === "partner");
+export const specialists = team.filter((member) => member.tier === "specialist");

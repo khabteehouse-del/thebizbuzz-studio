@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { Globe2, UserCheck, Sparkles } from "lucide-react";
 import { Reveal } from "@/components/shared/reveal";
 import { Orbs } from "@/components/shared/orbs";
@@ -21,7 +22,29 @@ const pillars = [
   },
 ];
 
+function usePulse(durationMs: number) {
+  const [t, setT] = useState(0);
+  useEffect(() => {
+    let raf: number;
+    const start = performance.now();
+    const tick = (now: number) => {
+      setT(now - start);
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, []);
+  const phase = (t % durationMs) / durationMs;
+  const wave = 0.5 - 0.5 * Math.cos(phase * 2 * Math.PI);
+  return {
+    opacity: 0.25 + 0.45 * wave,
+    scale: 0.9 + 0.25 * wave,
+  };
+}
+
 export function Intro() {
+  const pulse = usePulse(3000);
+
   return (
     <section className="relative overflow-hidden border-t border-line py-20 md:py-40">
       <div className="pointer-events-none absolute inset-0 -z-[5] bg-ink md:bg-gradient-to-b md:from-ink/85 md:via-ink/92 md:to-ink" />
@@ -40,10 +63,14 @@ export function Intro() {
           <div className="mt-16 grid gap-10 border-t border-line pt-12 md:grid-cols-3 md:gap-16">
             {pillars.map(({ Icon, text }, i) => (
               <div key={i}>
-                <div className="pillar-icon-wrap relative flex h-11 w-11 items-center justify-center">
+                <div className="relative flex h-11 w-11 items-center justify-center">
                   <span
-                    className="pillar-pulse pointer-events-none absolute inset-0 rounded-full"
-                    style={{ boxShadow: `0 0 0 1px ${LOGO_BLUE}` }}
+                    className="pointer-events-none absolute inset-0 rounded-full"
+                    style={{
+                      boxShadow: `0 0 0 1px ${LOGO_BLUE}`,
+                      opacity: pulse.opacity,
+                      transform: `scale(${pulse.scale})`,
+                    }}
                   />
                   <Icon size={19} strokeWidth={1.6} style={{ color: LOGO_BLUE }} />
                 </div>
@@ -55,16 +82,6 @@ export function Intro() {
           </div>
         </Reveal>
       </div>
-
-      <style jsx global>{`
-        @keyframes pillarPulse {
-          0%, 100% { opacity: 0.25; transform: scale(0.9); }
-          50% { opacity: 0.7; transform: scale(1.15); }
-        }
-        .pillar-pulse {
-          animation: pillarPulse 3s ease-in-out infinite;
-        }
-      `}</style>
     </section>
   );
 }

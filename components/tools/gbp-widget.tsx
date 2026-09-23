@@ -16,6 +16,21 @@ type Stage = "start" | "questions" | "score" | "plan";
 
 const LOGO_BLUE = "#1dd5ff";
 
+function useReactorClock() {
+  const [t, setT] = useState(0);
+  useEffect(() => {
+    let raf: number;
+    const start = performance.now();
+    const tick = (now: number) => {
+      setT(now - start);
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, []);
+  return t;
+}
+
 export function GbpWidget() {
   const [open, setOpen] = useState(false);
   const [stage, setStage] = useState<Stage>("start");
@@ -24,6 +39,8 @@ export function GbpWidget() {
   const [business, setBusiness] = useState({ name: "", type: "", city: "" });
   const [emailed, setEmailed] = useState(false);
   const [dismissed, setDismissed] = useState(false);
+  const [hovered, setHovered] = useState(false);
+  const t = useReactorClock();
 
   const [ready, setReady] = useState(false);
   useEffect(() => {
@@ -48,7 +65,6 @@ export function GbpWidget() {
   function choose(value: string) {
     const next = { ...answers, [current.id]: value };
     setAnswers(next);
-
     if (step < questions.length - 1) {
       setStep(step + 1);
     } else {
@@ -59,6 +75,27 @@ export function GbpWidget() {
   const score = stage === "start" ? 0 : scoreAnswers(answers);
   const band = bandFor(score);
   const plan = buildPlan(answers, 5);
+
+  // Durations in ms, exactly matching original design speeds.
+  // Hover speeds up all three, same as the original :hover rules.
+  const breatheDur = hovered ? 3000 : 3000;
+  const outerDur = hovered ? 3000 : 10000;
+  const midDur = hovered ? 2200 : 7000;
+  const p1Dur = hovered ? 1400 : 4500;
+  const p2Dur = hovered ? 1400 : 6000;
+
+  const breathePhase = (t % breatheDur) / breatheDur;
+  const breatheScale = hovered
+    ? 1.35
+    : 0.85 + 0.45 * (0.5 - 0.5 * Math.cos(breathePhase * 2 * Math.PI));
+  const breatheOpacity = hovered
+    ? 1
+    : 0.7 + 0.3 * (0.5 - 0.5 * Math.cos(breathePhase * 2 * Math.PI));
+
+  const outerAngle = ((t % outerDur) / outerDur) * 360;
+  const midAngle = 360 - ((t % midDur) / midDur) * 360;
+  const p1Angle = ((t % p1Dur) / p1Dur) * 360;
+  const p2Angle = 360 - ((t % p2Dur) / p2Dur) * 360;
 
   return (
     <>
@@ -76,29 +113,60 @@ export function GbpWidget() {
               <button
                 type="button"
                 onClick={() => setOpen(true)}
-                className="reactor-widget group flex w-full items-center gap-[18px] rounded-[8px] border px-5 py-4 backdrop-blur-xl transition-colors duration-300 md:w-auto"
+                onMouseEnter={() => setHovered(true)}
+                onMouseLeave={() => setHovered(false)}
+                className="group flex w-full items-center gap-[18px] rounded-[8px] border px-5 py-4 backdrop-blur-xl transition-colors duration-300 md:w-auto"
                 style={{
                   borderColor: `${LOGO_BLUE}40`,
                   backgroundColor: "rgba(10,15,26,0.85)",
                 }}
               >
-                <div className="reactor-core-wrap relative flex h-[52px] w-[52px] shrink-0 items-center justify-center">
-                  <div className="reactor-ring reactor-ring-outer absolute h-[52px] w-[52px] rounded-full border border-dashed"
-                       style={{ borderColor: `${LOGO_BLUE}59` }} />
-                  <div className="reactor-ring reactor-ring-mid absolute h-[38px] w-[38px] rounded-full border"
-                       style={{ borderColor: `${LOGO_BLUE}59` }} />
-                  <span
-                    className="reactor-particle absolute h-[4px] w-[4px] rounded-full"
-                    style={{ backgroundColor: LOGO_BLUE, boxShadow: `0 0 6px 1px ${LOGO_BLUE}cc` }}
-                  />
-                  <span
-                    className="reactor-particle reactor-particle-2 absolute h-[4px] w-[4px] rounded-full"
-                    style={{ backgroundColor: LOGO_BLUE, boxShadow: `0 0 6px 1px ${LOGO_BLUE}cc` }}
+                <div className="relative flex h-[52px] w-[52px] shrink-0 items-center justify-center">
+                  <div
+                    className="absolute h-[52px] w-[52px] rounded-full border border-dashed"
+                    style={{
+                      borderColor: `${LOGO_BLUE}59`,
+                      transform: `rotate(${outerAngle}deg)`,
+                    }}
                   />
                   <div
-                    className="reactor-core relative h-[16px] w-[16px] rounded-full"
+                    className="absolute h-[38px] w-[38px] rounded-full border"
+                    style={{
+                      borderColor: `${LOGO_BLUE}59`,
+                      transform: `rotate(${midAngle}deg)`,
+                    }}
+                  />
+                  <span
+                    className="absolute h-[4px] w-[4px] rounded-full"
+                    style={{
+                      backgroundColor: LOGO_BLUE,
+                      boxShadow: `0 0 6px 1px ${LOGO_BLUE}cc`,
+                      top: "50%",
+                      left: "50%",
+                      transformOrigin: "0 0",
+                      transform: `rotate(${p1Angle}deg) translateX(22px) rotate(${-p1Angle}deg)`,
+                    }}
+                  />
+                  <span
+                    className="absolute h-[4px] w-[4px] rounded-full"
+                    style={{
+                      backgroundColor: LOGO_BLUE,
+                      boxShadow: `0 0 6px 1px ${LOGO_BLUE}cc`,
+                      top: "50%",
+                      left: "50%",
+                      transformOrigin: "0 0",
+                      transform: `rotate(${p2Angle}deg) translateX(22px) rotate(${-p2Angle}deg)`,
+                    }}
+                  />
+                  <div
+                    className="relative h-[16px] w-[16px] rounded-full"
                     style={{
                       background: `radial-gradient(circle, #bff3ff 0%, ${LOGO_BLUE} 55%, transparent 80%)`,
+                      transform: `scale(${breatheScale})`,
+                      opacity: breatheOpacity,
+                      boxShadow: hovered
+                        ? `0 0 30px 8px rgba(29, 213, 255, 0.85)`
+                        : `0 0 16px 4px rgba(29, 213, 255, 0.55)`,
                     }}
                   />
                 </div>
@@ -194,17 +262,13 @@ export function GbpWidget() {
                       <MiniField
                         label="Business name"
                         value={business.name}
-                        onChange={(v) =>
-                          setBusiness({ ...business, name: v })
-                        }
+                        onChange={(v) => setBusiness({ ...business, name: v })}
                         placeholder="Al Noor Dental"
                       />
                       <MiniField
                         label="What kind of business"
                         value={business.type}
-                        onChange={(v) =>
-                          setBusiness({ ...business, type: v })
-                        }
+                        onChange={(v) => setBusiness({ ...business, type: v })}
                         placeholder="Dental clinic"
                       />
                     </div>
@@ -401,73 +465,6 @@ export function GbpWidget() {
           </>
         )}
       </AnimatePresence>
-
-      <style jsx global>{`
-        @keyframes reactorBreathe {
-          0%, 100% {
-            transform: scale(0.85);
-            opacity: 0.7;
-          }
-          50% {
-            transform: scale(1.3);
-            opacity: 1;
-          }
-        }
-        @keyframes reactorSpin {
-          from { transform: rotate(0deg) translateZ(0); }
-          to { transform: rotate(360deg) translateZ(0); }
-        }
-        @keyframes reactorSpinRev {
-          from { transform: rotate(360deg) translateZ(0); }
-          to { transform: rotate(0deg) translateZ(0); }
-        }
-        @keyframes reactorOrbit {
-          from { transform: rotate(0deg) translateX(22px) rotate(0deg) translateZ(0); }
-          to { transform: rotate(360deg) translateX(22px) rotate(-360deg) translateZ(0); }
-        }
-        .reactor-core {
-          animation: reactorBreathe 3s ease-in-out infinite;
-          will-change: transform, opacity;
-          transform: translateZ(0);
-          box-shadow: 0 0 16px 4px rgba(29, 213, 255, 0.55);
-        }
-        .reactor-ring-outer {
-          animation: reactorSpin 10s linear infinite;
-          will-change: transform;
-          backface-visibility: hidden;
-        }
-        .reactor-ring-mid {
-          animation: reactorSpinRev 7s linear infinite;
-          will-change: transform;
-          backface-visibility: hidden;
-        }
-        .reactor-particle {
-          top: 50%;
-          left: 50%;
-          transform-origin: 0 0;
-          animation: reactorOrbit 4.5s linear infinite;
-          will-change: transform;
-          backface-visibility: hidden;
-        }
-        .reactor-particle-2 {
-          animation-duration: 6s;
-          animation-direction: reverse;
-        }
-        .reactor-widget:hover .reactor-core {
-          animation: none;
-          transform: scale(1.35) translateZ(0);
-          box-shadow: 0 0 30px 8px rgba(29, 213, 255, 0.85);
-        }
-        .reactor-widget:hover .reactor-ring-outer {
-          animation-duration: 3s;
-        }
-        .reactor-widget:hover .reactor-ring-mid {
-          animation-duration: 2.2s;
-        }
-        .reactor-widget:hover .reactor-particle {
-          animation-duration: 1.4s;
-        }
-      `}</style>
     </>
   );
 }

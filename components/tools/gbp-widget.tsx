@@ -16,21 +16,18 @@ type Stage = "start" | "questions" | "score" | "plan";
 
 const LOGO_BLUE = "#1dd5ff";
 
-function useReactorClock() {
-  const [t, setT] = useState(0);
-  useEffect(() => {
-    let raf: number;
-    const start = performance.now();
-    const tick = (now: number) => {
-      setT(now - start);
-      raf = requestAnimationFrame(tick);
-    };
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
-  }, []);
-  return t;
-}
+/*
+  Floating entry point for the GBP check.
 
+  Launcher redesigned as a "reactor core": a glowing orb that breathes
+  on a 3s cycle (scale + glow expand/contract together) with two dashed
+  rings rotating around it at different speeds, plus two small orbiting
+  particles. On hover, the breathing stops, the core flares and locks
+  larger, and the rings/particles spin much faster, an "activation"
+  moment rather than a color change.
+
+  The click-to-open panel below is untouched from the original.
+*/
 export function GbpWidget() {
   const [open, setOpen] = useState(false);
   const [stage, setStage] = useState<Stage>("start");
@@ -39,8 +36,6 @@ export function GbpWidget() {
   const [business, setBusiness] = useState({ name: "", type: "", city: "" });
   const [emailed, setEmailed] = useState(false);
   const [dismissed, setDismissed] = useState(false);
-  const [hovered, setHovered] = useState(false);
-  const t = useReactorClock();
 
   const [ready, setReady] = useState(false);
   useEffect(() => {
@@ -65,6 +60,7 @@ export function GbpWidget() {
   function choose(value: string) {
     const next = { ...answers, [current.id]: value };
     setAnswers(next);
+
     if (step < questions.length - 1) {
       setStep(step + 1);
     } else {
@@ -76,25 +72,6 @@ export function GbpWidget() {
   const band = bandFor(score);
   const plan = buildPlan(answers, 5);
 
-  const breatheDur = hovered ? 3000 : 3000;
-  const outerDur = hovered ? 3000 : 10000;
-  const midDur = hovered ? 2200 : 7000;
-  const p1Dur = hovered ? 1400 : 4500;
-  const p2Dur = hovered ? 1400 : 6000;
-
-  const breathePhase = (t % breatheDur) / breatheDur;
-  const breatheScale = hovered
-    ? 1.35
-    : 0.85 + 0.45 * (0.5 - 0.5 * Math.cos(breathePhase * 2 * Math.PI));
-  const breatheOpacity = hovered
-    ? 1
-    : 0.7 + 0.3 * (0.5 - 0.5 * Math.cos(breathePhase * 2 * Math.PI));
-
-  const outerAngle = ((t % outerDur) / outerDur) * 360;
-  const midAngle = 360 - ((t % midDur) / midDur) * 360;
-  const p1Angle = ((t % p1Dur) / p1Dur) * 360;
-  const p2Angle = 360 - ((t % p2Dur) / p2Dur) * 360;
-
   return (
     <>
       {/* Launcher: reactor core */}
@@ -105,66 +82,35 @@ export function GbpWidget() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 12 }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-x-4 top-20 z-40 md:inset-x-auto md:bottom-auto md:right-6 md:top-28"
+            className="fixed inset-x-4 bottom-5 z-40 md:inset-x-auto md:bottom-auto md:right-6 md:top-28"
           >
             <div className="relative">
               <button
                 type="button"
                 onClick={() => setOpen(true)}
-                onMouseEnter={() => setHovered(true)}
-                onMouseLeave={() => setHovered(false)}
                 className="reactor-widget group flex w-full items-center gap-[18px] rounded-[8px] border px-5 py-4 backdrop-blur-xl transition-colors duration-300 md:w-auto"
                 style={{
                   borderColor: `${LOGO_BLUE}40`,
                   backgroundColor: "rgba(10,15,26,0.85)",
                 }}
               >
-                <div className="relative flex h-[52px] w-[52px] shrink-0 items-center justify-center">
-                  <div
-                    className="absolute h-[52px] w-[52px] rounded-full border border-dashed"
-                    style={{
-                      borderColor: `${LOGO_BLUE}59`,
-                      transform: `rotate(${outerAngle}deg)`,
-                    }}
-                  />
-                  <div
-                    className="absolute h-[38px] w-[38px] rounded-full border"
-                    style={{
-                      borderColor: `${LOGO_BLUE}59`,
-                      transform: `rotate(${midAngle}deg)`,
-                    }}
+                <div className="reactor-core-wrap relative flex h-[52px] w-[52px] shrink-0 items-center justify-center">
+                  <div className="reactor-ring reactor-ring-outer absolute h-[52px] w-[52px] rounded-full border border-dashed"
+                       style={{ borderColor: `${LOGO_BLUE}59` }} />
+                  <div className="reactor-ring reactor-ring-mid absolute h-[38px] w-[38px] rounded-full border"
+                       style={{ borderColor: `${LOGO_BLUE}59` }} />
+                  <span
+                    className="reactor-particle absolute h-[4px] w-[4px] rounded-full"
+                    style={{ backgroundColor: LOGO_BLUE, boxShadow: `0 0 6px 1px ${LOGO_BLUE}cc` }}
                   />
                   <span
-                    className="absolute h-[4px] w-[4px] rounded-full"
-                    style={{
-                      backgroundColor: LOGO_BLUE,
-                      boxShadow: `0 0 6px 1px ${LOGO_BLUE}cc`,
-                      top: "50%",
-                      left: "50%",
-                      transformOrigin: "0 0",
-                      transform: `rotate(${p1Angle}deg) translateX(22px) rotate(${-p1Angle}deg)`,
-                    }}
-                  />
-                  <span
-                    className="absolute h-[4px] w-[4px] rounded-full"
-                    style={{
-                      backgroundColor: LOGO_BLUE,
-                      boxShadow: `0 0 6px 1px ${LOGO_BLUE}cc`,
-                      top: "50%",
-                      left: "50%",
-                      transformOrigin: "0 0",
-                      transform: `rotate(${p2Angle}deg) translateX(22px) rotate(${-p2Angle}deg)`,
-                    }}
+                    className="reactor-particle reactor-particle-2 absolute h-[4px] w-[4px] rounded-full"
+                    style={{ backgroundColor: LOGO_BLUE, boxShadow: `0 0 6px 1px ${LOGO_BLUE}cc` }}
                   />
                   <div
-                    className="relative h-[16px] w-[16px] rounded-full"
+                    className="reactor-core relative h-[16px] w-[16px] rounded-full"
                     style={{
                       background: `radial-gradient(circle, #bff3ff 0%, ${LOGO_BLUE} 55%, transparent 80%)`,
-                      transform: `scale(${breatheScale})`,
-                      opacity: breatheOpacity,
-                      boxShadow: hovered
-                        ? `0 0 30px 8px rgba(29, 213, 255, 0.85)`
-                        : `0 0 16px 4px rgba(29, 213, 255, 0.55)`,
                     }}
                   />
                 </div>
@@ -260,13 +206,17 @@ export function GbpWidget() {
                       <MiniField
                         label="Business name"
                         value={business.name}
-                        onChange={(v) => setBusiness({ ...business, name: v })}
+                        onChange={(v) =>
+                          setBusiness({ ...business, name: v })
+                        }
                         placeholder="Al Noor Dental"
                       />
                       <MiniField
                         label="What kind of business"
                         value={business.type}
-                        onChange={(v) => setBusiness({ ...business, type: v })}
+                        onChange={(v) =>
+                          setBusiness({ ...business, type: v })
+                        }
                         placeholder="Dental clinic"
                       />
                     </div>
@@ -463,6 +413,66 @@ export function GbpWidget() {
           </>
         )}
       </AnimatePresence>
+
+      <style jsx global>{`
+        @keyframes reactorBreathe {
+          0%, 100% {
+            transform: scale(0.85);
+            opacity: 0.7;
+            box-shadow: 0 0 10px 2px rgba(29, 213, 255, 0.35);
+          }
+          50% {
+            transform: scale(1.3);
+            opacity: 1;
+            box-shadow: 0 0 26px 8px rgba(29, 213, 255, 0.75);
+          }
+        }
+        @keyframes reactorSpin {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+        @keyframes reactorSpinRev {
+          from { transform: rotate(360deg); }
+          to { transform: rotate(0deg); }
+        }
+        @keyframes reactorOrbit {
+          from { transform: rotate(0deg) translateX(22px) rotate(0deg); }
+          to { transform: rotate(360deg) translateX(22px) rotate(-360deg); }
+        }
+        .reactor-core {
+          animation: reactorBreathe 3s ease-in-out infinite;
+        }
+        .reactor-ring-outer {
+          animation: reactorSpin 10s linear infinite;
+        }
+        .reactor-ring-mid {
+          animation: reactorSpinRev 7s linear infinite;
+        }
+        .reactor-particle {
+          top: 50%;
+          left: 50%;
+          transform-origin: 0 0;
+          animation: reactorOrbit 4.5s linear infinite;
+        }
+        .reactor-particle-2 {
+          animation-duration: 6s;
+          animation-direction: reverse;
+        }
+        .reactor-widget:hover .reactor-core {
+          animation: none;
+          transform: scale(1.35);
+          box-shadow: 0 0 30px 8px rgba(29, 213, 255, 0.85);
+        }
+        .reactor-widget:hover .reactor-ring-outer {
+          animation-duration: 3s;
+        }
+        .reactor-widget:hover .reactor-ring-mid {
+          animation-duration: 2.2s;
+        }
+        .reactor-widget:hover .reactor-particle {
+          animation-duration: 1.4s;
+        }
+      `}</style>
     </>
   );
 }

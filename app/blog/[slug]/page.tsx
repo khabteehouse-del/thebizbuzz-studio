@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { blogPosts } from "@/data/blog";
@@ -29,6 +30,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: "article",
       publishedTime: post.date,
       url: `${site.url}/blog/${post.slug}`,
+      images: post.image ? [`${site.url}${post.image}`] : undefined,
     },
   };
 }
@@ -44,6 +46,7 @@ export default async function BlogPostPage({ params }: Props) {
     headline: post.title,
     description: post.description,
     datePublished: post.date,
+    image: post.image ? `${site.url}${post.image}` : undefined,
     author: {
       "@type": "Organization",
       name: "BizBuzz",
@@ -100,6 +103,19 @@ export default async function BlogPostPage({ params }: Props) {
             </span>
           ))}
         </div>
+
+        {post.image && (
+          <div className="relative mt-10 aspect-[16/9] overflow-hidden rounded-sm border border-line">
+            <Image
+              src={post.image}
+              alt={post.title}
+              fill
+              sizes="(min-width: 768px) 768px, 92vw"
+              className="object-cover"
+              priority
+            />
+          </div>
+        )}
 
         <div className="mt-12 space-y-6">
           {post.body.map((paragraph, i) => (

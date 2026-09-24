@@ -1,42 +1,99 @@
-export type BlogPost = {
-  slug: string;
-  title: string;
-  description: string;
-  date: string;
-  readTime: string;
-  tags: string[];
-  body: string[];
+import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
+import { blogPosts } from "@/data/blog";
+import { site } from "@/data/site";
+
+export const metadata: Metadata = {
+  title: "Blog",
+  description:
+    "Notes on local search, AI systems and building things that actually ship, from the BizBuzz team.",
+  alternates: {
+    canonical: `${site.url}/blog`,
+  },
 };
 
-export const blogPosts: BlogPost[] = [
-  {
-    slug: "google-business-profile-not-showing-up",
-    title: "Why Your Google Business Profile Isn't Showing Up in Local Search",
-    description:
-      "The most common reasons local businesses disappear from the map pack, and the fixes that actually move the needle.",
-    date: "2026-09-20",
-    readTime: "5 min read",
-    tags: ["Local SEO", "Google Business Profile"],
-    body: [
-      "A business can have a great product and still be invisible online. The most common cause is a Google Business Profile that was set up once and never touched again. Google rewards activity: recent photos, fresh posts, answered questions, and reviews that get a response.",
-      "Category selection matters more than most owners realize. Choosing a broad category over a specific one is one of the fastest ways to lose ranking to a competitor who picked correctly. A dental clinic listed as \"Health\" instead of \"Dental Clinic\" is competing in the wrong race entirely.",
-      "Citations, meaning your business name, address and phone number appearing consistently across directories, also play a role. Inconsistent listings (a wrong old address on one site, a different phone number on another) quietly erode trust signals that Google uses to rank local results.",
-      "The fix is rarely a redesign. It's usually a proper setup, a consistent posting habit, and a review strategy that doesn't rely on asking once and hoping. Most of what we cover in a listing audit takes an afternoon to fix, not a month.",
-    ],
-  },
-  {
-    slug: "what-ai-integrated-actually-means",
-    title: "AI-Integrated Websites: What It Actually Means",
-    description:
-      "Past the buzzword: what a genuinely AI-integrated business system looks like versus a chatbot bolted onto a homepage.",
-    date: "2026-09-10",
-    readTime: "4 min read",
-    tags: ["AI Systems", "Product"],
-    body: [
-      "\"AI-integrated\" gets used to describe everything from a genuinely useful retrieval system to a chatbot widget that answers three FAQ questions badly. The difference isn't the technology, it's whether the system is grounded in your actual data and verified before it reaches a user.",
-      "A real AI-integrated system does specific jobs: answering questions from your own documents instead of guessing, automating a workflow that used to take a person hours, or surfacing insight from data you already have but never had time to analyze.",
-      "The guardrails matter as much as the model. Citation verification, bounded retries, and clear escalation paths to a human are what separate a production system from a demo that looks impressive in a five-minute call and falls apart on real use.",
-      "If a vendor can't explain what happens when the AI is wrong, that's the question to ask before signing anything.",
-    ],
-  },
-];
+export default function BlogPage() {
+  const sorted = [...blogPosts].sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
+
+  return (
+    <section className="bg-ink py-20 md:py-36">
+      <div className="shell">
+        <p className="section-label">Blog</p>
+        <h1 className="mt-7 max-w-2xl font-display text-3xl font-medium leading-[1.08] tracking-[-0.03em] text-paper sm:text-4xl md:text-6xl">
+          Notes on local search and AI systems
+        </h1>
+        <p className="mt-6 max-w-xl text-base leading-relaxed text-muted">
+          What we learn building for clients and shipping our own products.
+        </p>
+
+        <div className="mt-16 grid gap-px bg-line md:grid-cols-2">
+          {sorted.map((post) => (
+            <article
+              key={post.slug}
+              className="group relative h-full bg-ink p-7 transition-colors duration-500 md:p-10"
+            >
+              {post.image && (
+                <div className="relative mb-6 aspect-[16/9] overflow-hidden rounded-sm border border-line">
+                  <Image
+                    src={post.image}
+                    alt={post.title}
+                    fill
+                    sizes="(min-width: 768px) 46vw, 92vw"
+                    className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                  />
+                </div>
+              )}
+
+              <div className="flex items-center gap-3 text-xs text-muted">
+                <time dateTime={post.date}>
+                  {new Date(post.date).toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  })}
+                </time>
+                <span>·</span>
+                <span>{post.readTime}</span>
+              </div>
+
+              <h2 className="mt-4 font-display text-xl font-medium tracking-[-0.02em] text-paper md:text-2xl">
+                <Link
+                  href={`/blog/${post.slug}`}
+                  className="transition-colors duration-300 hover:text-accent-soft"
+                >
+                  {post.title}
+                </Link>
+              </h2>
+
+              <p className="mt-4 text-sm leading-relaxed text-paper/60">
+                {post.description}
+              </p>
+
+              <div className="mt-6 flex flex-wrap gap-2">
+                {post.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="rounded-sm border border-line px-3 py-1.5 text-xs text-paper/60"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              <Link
+                href={`/blog/${post.slug}`}
+                className="mt-6 inline-flex items-center gap-2 text-sm text-paper transition-colors duration-200 hover:text-accent-soft"
+              >
+                Read more
+                <span className="h-px w-4 bg-accent transition-all duration-300 group-hover:w-7" />
+              </Link>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

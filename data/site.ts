@@ -28,6 +28,7 @@ export const navLinks: NavLink[] = [
   { label: "Services", href: "/#tracks" },
   { label: "Work", href: "/#work" },
   { label: "Approach", href: "/#approach" },
+  { label: "Blog", href: "/blog" },
   { label: "Team", href: "/#team" },
 ];
 
@@ -65,6 +66,7 @@ export const footerGroups: { title: string; links: FooterLink[] }[] = [
     title: "Company",
     links: [
       { label: "Team", href: "/#team" },
+      { label: "Blog", href: "/blog" },
       { label: "Questions", href: "/#faq" },
       { label: "Contact", href: "/#contact" },
     ],

@@ -34,6 +34,7 @@ export const blogPosts: BlogPost[] = [
     date: "2026-09-20",
     readTime: "5 min read",
     tags: ["Local SEO", "Google Business Profile"],
+    image: "/images/blog/gbp-local-search.jpg",
     body: [
       "A business can have a great product and still be invisible online. The most common cause is a Google Business Profile that was set up once and never touched again. Google rewards activity: recent photos, fresh posts, answered questions, and reviews that get a response.",
       "Category selection matters more than most owners realize. Choosing a broad category over a specific one is one of the fastest ways to lose ranking to a competitor who picked correctly. A dental clinic listed as \"Health\" instead of \"Dental Clinic\" is competing in the wrong race entirely.",

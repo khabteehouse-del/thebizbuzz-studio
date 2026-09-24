@@ -5,10 +5,27 @@ export type BlogPost = {
   date: string;
   readTime: string;
   tags: string[];
+  image?: string;
   body: string[];
 };
 
 export const blogPosts: BlogPost[] = [
+  {
+    slug: "anthropic-openai-price-cuts-september-2026",
+    title: "Anthropic and OpenAI Both Cut Flagship AI Prices in the Same Week",
+    description:
+      "What the latest round of price cuts from the two biggest AI labs actually means for businesses building on these models.",
+    date: "2026-09-23",
+    readTime: "4 min read",
+    tags: ["AI News", "AI Systems"],
+    image: "/images/blog/ai-price-cuts.jpg",
+    body: [
+      "Anthropic and OpenAI both lowered pricing on their flagship models within hours of each other this week, a coincidence that says more about where the AI market is heading than either announcement alone. Claude Opus 5.5 landed at a lower rate than its predecessor while posting stronger results on coding and computer-use benchmarks. OpenAI's GPT-6 Sol arrived at a competitive price point of its own, alongside a cheaper Luna variant aimed at high-volume, lower-complexity tasks.",
+      "For businesses building AI-integrated products, this matters more than it might first appear. A year ago, running a production AI system with strong reasoning capability meant either accepting high per-token costs or compromising on model quality. That tradeoff is shrinking fast. Systems that were cost-prohibitive to run at scale six months ago are now realistic to deploy.",
+      "It also changes the calculus on build-versus-buy decisions. Cheaper flagship models make it more viable to route complex, judgment-heavy tasks to a top-tier model while reserving simpler, high-volume tasks for a lighter one, a tiered approach rather than a single model doing everything. That's the same dual-tier thinking behind systems like our own FluxorX build: deterministic handling where precision matters, model reasoning where it doesn't.",
+      "The practical takeaway for anyone evaluating an AI vendor or build right now: pricing that felt fixed a quarter ago isn't anymore. Worth revisiting any AI cost assumptions baked into a proposal or budget from earlier this year.",
+    ],
+  },
   {
     slug: "google-business-profile-not-showing-up",
     title: "Why Your Google Business Profile Isn't Showing Up in Local Search",

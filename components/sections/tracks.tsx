@@ -65,9 +65,9 @@ const doors = [
     body: "Companies scaling past whatever they started with. Identity, product and AI systems built to production standard, not to demo standard.",
     points: [
       "Brand identity and creative",
-      "Web and product design",
-      "Growth marketing",
       "AI-integrated solutions",
+      "Growth marketing",
+      "Web and product design",
     ],
     footnote: "Scoped projects with a phase schedule up front",
     tool: null,
@@ -237,16 +237,22 @@ export function Tracks() {
                             );
                           }
                         }}
-                        className="mt-4 block w-fit cursor-pointer rounded-[2px] border border-paper/10 bg-paper/[0.03] px-4 py-3 transition-colors duration-300 hover:bg-paper/[0.06]"
+                        className="mt-4 block w-fit cursor-pointer rounded-[3px] border border-[#fbbf24]/30 bg-[#fbbf24]/[0.07] px-4 py-3.5 transition-colors duration-300 hover:bg-[#fbbf24]/[0.12]"
                       >
-                        <div className="flex items-center gap-1.5">
+                        <div className="flex items-center gap-1">
                           {Array.from({ length: 5 }).map((_, i) => (
-                            <span key={i} style={{ color: door.mark }}>
+                            <span
+                              key={i}
+                              className="text-lg leading-none text-[#fbbf24] drop-shadow-[0_0_6px_rgba(251,191,36,0.5)]"
+                            >
                               ★
                             </span>
                           ))}
-                          <span className="ml-1 text-xs text-paper/70">
-                            {door.review.rating} ({door.review.count} reviews)
+                          <span className="ml-1.5 text-sm font-medium text-paper">
+                            {door.review.rating}
+                          </span>
+                          <span className="text-xs text-paper/60">
+                            ({door.review.count} reviews)
                           </span>
                         </div>
                         <p className="mt-2 max-w-xs text-xs italic leading-relaxed text-paper/60">

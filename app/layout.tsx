@@ -10,6 +10,17 @@ import { GbpWidget } from "@/components/tools/gbp-widget";
 import { site } from "@/data/site";
 import "./globals.css";
 
+/*
+  next/font/google needs a live connection to fonts.gstatic.com at
+  build/dev time. If that's blocked on your machine or network (some
+  ISPs/firewalls/antivirus block it for Node specifically), dev will
+  crash with a 500 even though the real font renders fine elsewhere
+  (e.g. on Vercel's build servers for production). If that happens
+  locally, see the fallback stacks already wired into globals.css
+  (--font-sans/--font-display) as the escape hatch, or self-host the
+  two font files via next/font/local instead of next/font/google.
+*/
+
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   variable: "--font-display-family",

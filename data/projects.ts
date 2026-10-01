@@ -9,6 +9,15 @@ export type Project = {
   image: string | null;
   live: string | null;
   repo: string | null;
+  /* Short, documented/measured figures only. 2-4 per project. */
+  stats: { label: string; value: string }[];
+  /*
+    How the screenshot sits in its 16:9 frame. Defaults to "cover" (fills
+    the frame, crops overflow). Use "contain" for a screenshot whose aspect
+    ratio differs enough from 16:9 that cropping would cut off real content
+    (e.g. DentiVue's taller login-screen capture).
+  */
+  imageFit?: "cover" | "contain";
 };
 
 export const projects: Project[] = [
@@ -24,6 +33,10 @@ export const projects: Project[] = [
     image: "/images/work/fluxorx.jpg",
     live: "https://fluxorx.vercel.app",
     repo: "https://github.com/khabteehouse-del/fluxorx",
+    stats: [
+      { label: "Acceptance criteria met", value: "19 of 19" },
+      { label: "Delivery time", value: "48 hours" },
+    ],
   },
   {
     id: "veridoc",
@@ -37,6 +50,10 @@ export const projects: Project[] = [
     image: "/images/work/veridoc.jpg",
     live: "https://veridoc-two.vercel.app",
     repo: "https://github.com/khabteehouse-del/veridoc",
+    stats: [
+      { label: "Review time", value: "~12 seconds" },
+      { label: "Manual average", value: "92 minutes" },
+    ],
   },
   {
     id: "pulsariq",
@@ -50,6 +67,10 @@ export const projects: Project[] = [
     image: "/images/work/pulsariq.jpg",
     live: "https://pulsariq.vercel.app",
     repo: "https://github.com/khabteehouse-del/pulsariq",
+    stats: [
+      { label: "Answer time", value: "< 2 seconds" },
+      { label: "Context precision", value: "93.33% (vs 0.70 target)" },
+    ],
   },
   {
     id: "dentivue",
@@ -63,5 +84,12 @@ export const projects: Project[] = [
     image: "/images/work/dentivue.jpg",
     live: "https://project-dentivue.lovable.app",
     repo: null,
+    stats: [
+      { label: "Input photos", value: "2" },
+      { label: "Clinical workup", value: "16 fields" },
+      { label: "Outcome variants", value: "3" },
+      { label: "Review time", value: "under 5 minutes" },
+    ],
+    imageFit: "contain",
   },
 ];

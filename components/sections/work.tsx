@@ -34,7 +34,11 @@ export function Work() {
                           alt={`${project.name} interface`}
                           fill
                           sizes="(min-width: 768px) 46vw, 92vw"
-                          className="object-cover object-top transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]"
+                          className={`${
+                            project.imageFit === "contain"
+                              ? "object-contain p-3"
+                              : "object-cover object-top"
+                          } transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]`}
                         />
                       ) : (
                         <div className="flex h-full w-full flex-col items-center justify-center gap-3">
@@ -75,6 +79,21 @@ export function Work() {
                         </li>
                       ))}
                     </ul>
+
+                    {project.stats.length > 0 && (
+                      <dl className="mt-8 grid grid-cols-2 gap-x-6 gap-y-5 border-t border-line pt-7 sm:grid-cols-4 md:grid-cols-2">
+                        {project.stats.map((stat) => (
+                          <div key={stat.label}>
+                            <dt className="text-[0.6875rem] uppercase tracking-[0.1em] text-muted/70">
+                              {stat.label}
+                            </dt>
+                            <dd className="mt-1.5 font-display text-lg font-medium tracking-[-0.01em] text-paper md:text-xl">
+                              {stat.value}
+                            </dd>
+                          </div>
+                        ))}
+                      </dl>
+                    )}
 
                     <div className="mt-9 flex flex-wrap gap-6">
                       {project.live && (

@@ -75,7 +75,7 @@ export function Hero() {
 
   const headlineScale = useTransform(scrollYProgress, [0, 1], [1, 0.86]);
   const headlineY = useTransform(scrollYProgress, [0, 1], [0, -60]);
-  const contentOpacity = useTransform(scrollYProgress, [0, 0.65], [1, 0]);
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.92], [1, 0]);
   const veilOpacity = useTransform(scrollYProgress, [0, 1], [0, 0.65]);
 
   /*
@@ -94,7 +94,7 @@ export function Hero() {
   return (
     <section
       ref={ref}
-      className={pinned ? "relative h-[115vh]" : "relative"}
+      className={pinned ? "relative h-[106vh]" : "relative"}
       aria-label="Introduction"
     >
       <div
@@ -112,7 +112,7 @@ export function Hero() {
             playsInline
             preload="metadata"
             poster="/images/hero-poster.jpg"
-            className="absolute inset-0 h-full w-full object-cover opacity-40 md:fixed md:-z-10"
+            className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-40 md:fixed md:-z-10"
           >
             <source src="/video/hero.mp4" type="video/mp4" />
           </video>

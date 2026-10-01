@@ -88,39 +88,39 @@ export function GbpWidget() {
               <button
                 type="button"
                 onClick={() => setOpen(true)}
-                className="reactor-widget group flex w-full items-center gap-[18px] rounded-[8px] border px-5 py-4 backdrop-blur-xl transition-colors duration-300 md:w-auto"
+                className="reactor-widget group flex w-full items-center gap-3.5 rounded-[7px] border px-4 py-3 backdrop-blur-xl transition-colors duration-300 md:w-auto"
                 style={{
                   borderColor: `${LOGO_BLUE}40`,
                   backgroundColor: "rgba(10,15,26,0.85)",
                 }}
               >
-                <div className="reactor-core-wrap relative flex h-[52px] w-[52px] shrink-0 items-center justify-center">
-                  <div className="reactor-ring reactor-ring-outer absolute h-[52px] w-[52px] rounded-full border border-dashed"
+                <div className="reactor-core-wrap relative flex h-10 w-10 shrink-0 items-center justify-center">
+                  <div className="reactor-ring reactor-ring-outer absolute h-10 w-10 rounded-full border border-dashed"
                        style={{ borderColor: `${LOGO_BLUE}59` }} />
-                  <div className="reactor-ring reactor-ring-mid absolute h-[38px] w-[38px] rounded-full border"
+                  <div className="reactor-ring reactor-ring-mid absolute h-[29px] w-[29px] rounded-full border"
                        style={{ borderColor: `${LOGO_BLUE}59` }} />
                   <span
-                    className="reactor-particle absolute h-[4px] w-[4px] rounded-full"
+                    className="reactor-particle absolute h-[3px] w-[3px] rounded-full"
                     style={{ backgroundColor: LOGO_BLUE, boxShadow: `0 0 6px 1px ${LOGO_BLUE}cc` }}
                   />
                   <span
-                    className="reactor-particle reactor-particle-2 absolute h-[4px] w-[4px] rounded-full"
+                    className="reactor-particle reactor-particle-2 absolute h-[3px] w-[3px] rounded-full"
                     style={{ backgroundColor: LOGO_BLUE, boxShadow: `0 0 6px 1px ${LOGO_BLUE}cc` }}
                   />
                   <div
-                    className="reactor-core relative h-[16px] w-[16px] rounded-full"
+                    className="reactor-core relative h-3 w-3 rounded-full"
                     style={{
                       background: `radial-gradient(circle, #bff3ff 0%, ${LOGO_BLUE} 55%, transparent 80%)`,
                     }}
                   />
                 </div>
 
-                <span className="flex flex-col items-start gap-[3px] text-left">
+                <span className="flex flex-col items-start gap-0.5 text-left">
                   <span
-                    className="text-[10px] uppercase tracking-[0.14em]"
+                    className="text-[9px] uppercase tracking-[0.14em]"
                     style={{ color: `${LOGO_BLUE}d9` }}
                   >
-                    Test your Google Business Profile, free in 60 seconds
+                    Test your Google Business Profile
                   </span>
                   <span className="text-[0.8125rem] font-medium text-paper">
                     Free 60-second scan

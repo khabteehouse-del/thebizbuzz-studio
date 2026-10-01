@@ -1,3 +1,20 @@
+import {
+  MapPin,
+  Search,
+  Star,
+  Globe,
+  Palette,
+  Sparkles,
+  TrendingUp,
+  LayoutGrid,
+  Share2,
+  PlayCircle,
+  Clapperboard,
+  Wand2,
+  Radar,
+  type LucideIcon,
+} from "lucide-react";
+
 export type Track = "local" | "studio";
 
 export type Service = {
@@ -9,6 +26,9 @@ export type Service = {
   tint: string;
   tintHover: string;
   mark: string;
+  icon: LucideIcon;
+  /* Optional: shown only on a tile that spans the full grid width. */
+  image?: string;
 };
 
 /*
@@ -41,6 +61,7 @@ export const services: Service[] = [
     tint: "#0d2a2b",
     tintHover: "#123c3d",
     mark: "#4fd1c5",
+    icon: MapPin,
   },
   {
     id: "local-seo",
@@ -57,6 +78,7 @@ export const services: Service[] = [
     tint: "#0c2830",
     tintHover: "#113a45",
     mark: "#54c8d8",
+    icon: Search,
   },
   {
     id: "reviews",
@@ -73,6 +95,7 @@ export const services: Service[] = [
     tint: "#0d2536",
     tintHover: "#12354d",
     mark: "#4eb8ec",
+    icon: Star,
   },
   {
     id: "local-web",
@@ -89,6 +112,41 @@ export const services: Service[] = [
     tint: "#0d2137",
     tintHover: "#12304e",
     mark: "#4ea3ec",
+    icon: Globe,
+  },
+  {
+    id: "social-media",
+    track: "local",
+    title: "Social media management",
+    summary:
+      "Organic and paid run as one system: a posting cadence that doesn't go quiet, and ad spend put where it actually returns.",
+    capabilities: [
+      "Organic content and posting cadence",
+      "Paid social campaigns",
+      "Community management",
+      "Performance reporting",
+    ],
+    tint: "#0f2a22",
+    tintHover: "#153c30",
+    mark: "#5fdba8",
+    icon: Share2,
+  },
+  {
+    id: "youtube",
+    track: "local",
+    title: "YouTube management and monetization",
+    summary:
+      "Channel strategy, upload cadence and monetization setup, for businesses that want an actual audience on video, not just uploads.",
+    capabilities: [
+      "Channel setup and strategy",
+      "Upload cadence and video SEO",
+      "Monetization and ad revenue setup",
+      "Analytics and growth tracking",
+    ],
+    tint: "#2a1416",
+    tintHover: "#3c1c1f",
+    mark: "#ef5350",
+    icon: PlayCircle,
   },
 
   /* ---------------- Studio ---------------- */
@@ -102,43 +160,46 @@ export const services: Service[] = [
       "Identity systems and guidelines",
       "Naming and messaging",
       "Campaign and social creative",
-      "Presentation and pitch design",
+      "Presentation, print and packaging design",
     ],
     tint: "#211a33",
     tintHover: "#2f2449",
     mark: "#a98cf0",
+    icon: Palette,
   },
   {
-    id: "web",
+    id: "ugc-ads",
     track: "studio",
-    title: "Web and product design",
+    title: "UGC ad content",
     summary:
-      "Sites and interfaces that carry your positioning rather than describe it. Built to load fast and hold up as you grow.",
+      "Short-form, testimonial-style ad content built to perform on paid social, not polished brand films people skip past.",
     capabilities: [
-      "Marketing sites and landing pages",
-      "Web applications and dashboards",
-      "E-commerce builds",
-      "Performance and Core Web Vitals",
+      "Scripted and testimonial-style UGC",
+      "Short-form video ads",
+      "Hook-first editing for paid social",
+      "Variants built for A/B testing",
     ],
-    tint: "#1c1a38",
-    tintHover: "#282550",
-    mark: "#9a95f5",
+    tint: "#2a1c30",
+    tintHover: "#3a2744",
+    mark: "#e085d9",
+    icon: Clapperboard,
   },
   {
-    id: "growth",
+    id: "ai-content",
     track: "studio",
-    title: "Growth marketing",
+    title: "AI content and video creation",
     summary:
-      "Search, content and paid working as one system, measured against revenue rather than impressions.",
+      "AI-assisted writing and video production for teams that need volume without losing one consistent voice.",
     capabilities: [
-      "Technical and content SEO",
-      "Copywriting and long-form content",
-      "Paid search and social",
-      "Analytics and attribution",
+      "AI-assisted content writing",
+      "AI video generation and editing",
+      "Brand voice consistency at scale",
+      "Repurposing across formats and platforms",
     ],
-    tint: "#181c3a",
-    tintHover: "#222853",
-    mark: "#8b9dfa",
+    tint: "#15233a",
+    tintHover: "#1e304f",
+    mark: "#6fa8f5",
+    icon: Wand2,
   },
   {
     id: "ai",
@@ -155,6 +216,59 @@ export const services: Service[] = [
     tint: "#151a38",
     tintHover: "#1e2652",
     mark: "#7c8ff8",
+    icon: Sparkles,
+  },
+  {
+    id: "growth",
+    track: "studio",
+    title: "Growth marketing",
+    summary:
+      "Search, content and paid working as one system, measured against revenue rather than impressions.",
+    capabilities: [
+      "Technical and content SEO",
+      "Copywriting and long-form content",
+      "Paid search and social",
+      "Analytics and attribution",
+    ],
+    tint: "#181c3a",
+    tintHover: "#222853",
+    mark: "#8b9dfa",
+    icon: TrendingUp,
+  },
+  {
+    id: "geo-aeo",
+    track: "studio",
+    title: "Generative and answer engine optimization",
+    summary:
+      "Getting found inside AI answers and chat assistants, not just the traditional search results page.",
+    capabilities: [
+      "Generative engine optimization (GEO)",
+      "Answer engine optimization (AEO)",
+      "Structured content built for AI citation",
+      "Monitoring AI-driven visibility",
+    ],
+    tint: "#201a38",
+    tintHover: "#2c2450",
+    mark: "#b388f0",
+    icon: Radar,
+  },
+  {
+    id: "web",
+    track: "studio",
+    title: "Web and product design",
+    summary:
+      "Sites and interfaces that carry your positioning rather than describe it. Built to load fast and hold up as you grow.",
+    capabilities: [
+      "Marketing sites and landing pages",
+      "Web applications and dashboards",
+      "E-commerce builds",
+      "Performance and Core Web Vitals",
+    ],
+    tint: "#1c1a38",
+    tintHover: "#282550",
+    mark: "#9a95f5",
+    icon: LayoutGrid,
+    image: "/images/services/web-product-design.jpg",
   },
 ];
 

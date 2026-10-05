@@ -28,13 +28,6 @@ import { site } from "@/data/site";
 */
 const VIDEO_SPEED = 0.5;
 
-/*
-  Exact blue sampled from the official BizBuzz logo file, so "Buzz" in the
-  hero headline matches the logo's brand blue rather than the site's
-  slightly darker --color-accent token.
-*/
-const LOGO_BLUE = "#1dd5ff";
-
 export function Hero() {
   const ref = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -243,9 +236,12 @@ export function Hero() {
                       ease: [0.22, 1, 0.36, 1],
                     }}
                     className="inline-block"
-                    style={word.accent ? { color: LOGO_BLUE } : undefined}
                   >
-                    {word.text}
+                    {word.accent ? (
+                      <span className="buzz-word">{word.text}</span>
+                    ) : (
+                      word.text
+                    )}
                   </motion.span>
                 </span>
               ))}

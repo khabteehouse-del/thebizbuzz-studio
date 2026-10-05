@@ -66,7 +66,8 @@ export function Hero() {
     applySpeed();
     video.addEventListener("loadeddata", applySpeed);
     return () => video.removeEventListener("loadeddata", applySpeed);
-  }, []);
+    // The video only mounts on desktop, so re-run when that changes
+  }, [pinned]);
 
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -104,18 +105,35 @@ export function Hero() {
       >
         {/* Background stack: video, colour blooms, bottom fade, scroll veil */}
         <div className="absolute inset-0 -z-10 bg-ink">
-          <video
-            ref={videoRef}
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
-            poster="/images/hero-poster.jpg"
-            className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-40 md:fixed md:-z-10"
-          >
-            <source src="/video/hero.mp4" type="video/mp4" />
-          </video>
+          {/*
+            Desktop plays the loop. Phones and reduced-motion users get the
+            poster only, so they never download the video.
+
+            The video is absolute inside the hero, not fixed. This page sits
+            inside a transformed wrapper (layout.tsx), and a fixed element
+            inside a transform is sized to the whole page, which zoomed the
+            video about 8x and turned the fine dots into blurry blobs.
+          */}
+          {pinned ? (
+            <video
+              ref={videoRef}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              poster="/images/hero-poster.jpg"
+              className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-40"
+            >
+              <source src="/video/hero.mp4" type="video/mp4" />
+            </video>
+          ) : (
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0 bg-cover bg-center opacity-40"
+              style={{ backgroundImage: "url(/images/hero-poster.jpg)" }}
+            />
+          )}
 
           {/* Navy bloom, off-centre so the composition is not symmetrical */}
           <div

@@ -38,13 +38,13 @@ export function Button({
 
   const skin =
     variant === "primary"
-      ? "bg-[#0b1224] shadow-[0_0_30px_rgba(29,213,255,0.18)] hover:shadow-[0_0_44px_rgba(29,213,255,0.38)]"
+      ? "bg-[#0b1224] shadow-[0_0_18px_rgba(29,213,255,0.08)] hover:shadow-[0_0_26px_rgba(29,213,255,0.18)]"
       : "bg-white/[0.03] shadow-[inset_0_0_0_1px_rgba(245,248,255,0.12)] backdrop-blur-sm hover:shadow-[inset_0_0_0_1px_rgba(245,248,255,0.25)]";
 
   const style = {
     "--fuse-color": variant === "primary" ? "#1dd5ff" : "#a9c7ff",
-    "--fuse-duration": variant === "primary" ? "4.5s" : "5.5s",
-    "--fuse-delay": variant === "primary" ? "0s" : "-2s",
+    "--fuse-duration": variant === "primary" ? "7s" : "8.5s",
+    "--fuse-delay": variant === "primary" ? "0s" : "-3s",
   } as CSSProperties;
 
   const content = (

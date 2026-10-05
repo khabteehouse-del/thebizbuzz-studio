@@ -279,12 +279,14 @@ body {
   background: conic-gradient(
     from var(--fuse-angle),
     transparent 0deg,
-    transparent 230deg,
-    color-mix(in srgb, var(--fuse-color) 35%, transparent) 290deg,
-    var(--fuse-color) 345deg,
-    #ffffff 360deg
+    transparent 200deg,
+    color-mix(in srgb, var(--fuse-color) 8%, transparent) 245deg,
+    color-mix(in srgb, var(--fuse-color) 28%, transparent) 290deg,
+    color-mix(in srgb, var(--fuse-color) 65%, transparent) 330deg,
+    var(--fuse-color) 356deg,
+    color-mix(in srgb, #ffffff 70%, var(--fuse-color)) 360deg
   );
-  animation: fuse-burn var(--fuse-duration, 4.5s) linear var(--fuse-delay, 0s) infinite;
+  animation: fuse-burn var(--fuse-duration, 7s) linear var(--fuse-delay, 0s) infinite;
 }
 
 /* The sharp ring: only the 1.5px edge shows */
@@ -297,8 +299,8 @@ body {
 
 /* The glow: the same spark, blurred and sitting just outside */
 .fuse-btn::after {
-  filter: blur(9px);
-  opacity: 0.55;
+  filter: blur(7px);
+  opacity: 0.22;
   z-index: -1;
 }
 

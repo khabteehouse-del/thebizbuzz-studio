@@ -122,44 +122,52 @@ export function Hero() {
             screens it is not stretched to fill the width; the side edges
             fade into the background instead (see .hero-video in globals.css).
           */}
-          {videoSrc ? (
-            <video
-              key={videoSrc}
-              ref={videoRef}
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="auto"
-              poster="/images/hero-poster.jpg"
-              src={videoSrc}
-              className="hero-video pointer-events-none absolute left-1/2 top-0 h-full w-full max-w-[2000px] -translate-x-1/2 object-cover opacity-40"
-            />
-          ) : (
+          {/*
+            Video and colour blooms sit in one masked layer that fades to
+            nothing at the bottom, so the hero ends on the plain page
+            colour instead of on the edge of the video. The next section
+            is opaque ink, so any leftover tint here showed as a hard line.
+          */}
+          <div className="absolute inset-0 [mask-image:linear-gradient(to_bottom,#000_0%,#000_55%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_bottom,#000_0%,#000_55%,transparent_100%)]">
+            {videoSrc ? (
+              <video
+                key={videoSrc}
+                ref={videoRef}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="auto"
+                poster="/images/hero-poster.jpg"
+                src={videoSrc}
+                className="hero-video pointer-events-none absolute left-1/2 top-0 h-full w-full max-w-[2000px] -translate-x-1/2 object-cover opacity-40"
+              />
+            ) : (
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 bg-cover bg-center opacity-40"
+                style={{ backgroundImage: "url(/images/hero-poster.jpg)" }}
+              />
+            )}
+
+            {/* Navy bloom, off-centre so the composition is not symmetrical */}
             <div
-              aria-hidden="true"
-              className="pointer-events-none absolute inset-0 bg-cover bg-center opacity-40"
-              style={{ backgroundImage: "url(/images/hero-poster.jpg)" }}
+              className="absolute left-[-10%] top-[-20%] h-[115vh] w-[80vh] rounded-full opacity-40 blur-[120px]"
+              style={{
+                background:
+                  "radial-gradient(circle, var(--color-navy) 0%, transparent 70%)",
+              }}
             />
-          )}
 
-          {/* Navy bloom, off-centre so the composition is not symmetrical */}
-          <div
-            className="absolute left-[-10%] top-[-20%] h-[115vh] w-[80vh] rounded-full opacity-40 blur-[120px]"
-            style={{
-              background:
-                "radial-gradient(circle, var(--color-navy) 0%, transparent 70%)",
-            }}
-          />
-
-          {/* Accent bloom, smaller and lower right */}
-          <div
-            className="absolute bottom-[-15%] right-[-5%] h-[115vh] w-[55vh] rounded-full opacity-25 blur-[130px]"
-            style={{
-              background:
-                "radial-gradient(circle, var(--color-accent) 0%, transparent 70%)",
-            }}
-          />
+            {/* Accent bloom, smaller and lower right */}
+            <div
+              className="absolute bottom-[-15%] right-[-5%] h-[115vh] w-[55vh] rounded-full opacity-25 blur-[130px]"
+              style={{
+                background:
+                  "radial-gradient(circle, var(--color-accent) 0%, transparent 70%)",
+              }}
+            />
+          </div>
 
           {/* Top scrim: gives the nav something to sit on over the video */}
           <div className="absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-ink via-ink/60 to-transparent" />

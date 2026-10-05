@@ -322,13 +322,23 @@ export function Hero() {
               className="mt-9 flex flex-wrap items-center gap-3 md:mt-11 md:gap-4"
             >
               <Magnetic strength={14}>
-                <Button href="#contact" variant="primary" size="lg">
+                <Button
+                  href="#contact"
+                  variant="primary"
+                  size="lg"
+                  className="w-[15rem] justify-between md:w-[17rem]"
+                >
                   Start a project
                 </Button>
               </Magnetic>
 
               <Magnetic strength={14}>
-                <Button href="#work" variant="ghost" size="lg">
+                <Button
+                  href="#work"
+                  variant="ghost"
+                  size="lg"
+                  className="w-[15rem] justify-between md:w-[17rem]"
+                >
                   See our work
                 </Button>
               </Magnetic>

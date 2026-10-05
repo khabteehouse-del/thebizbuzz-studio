@@ -7,6 +7,8 @@ type ButtonProps = {
   variant?: "primary" | "ghost";
   size?: "md" | "lg";
   external?: boolean;
+  /* Extra classes, e.g. a fixed width so two buttons in a row match */
+  className?: string;
 };
 
 /*
@@ -26,12 +28,13 @@ export function Button({
   variant = "primary",
   size = "md",
   external = false,
+  className = "",
 }: ButtonProps) {
   /* Narrower padding on small screens so two buttons still fit a row */
   const dimensions =
     size === "lg"
-      ? "h-[3.4rem] pl-6 pr-2 text-[0.75rem] md:h-[3.6rem] md:pl-8 md:text-[0.8125rem]"
-      : "h-12 pl-6 pr-1.5 text-xs md:pl-7";
+      ? "h-[2.9rem] pl-6 pr-1 text-[0.75rem] md:h-[3.1rem] md:pl-8 md:text-[0.8125rem]"
+      : "h-10 pl-5 pr-1 text-xs md:pl-6";
 
   const base =
     "fuse-btn group/btn relative isolate inline-flex items-center justify-center gap-4 rounded-full font-medium uppercase tracking-[0.14em] text-paper transition-shadow duration-300";
@@ -69,7 +72,7 @@ export function Button({
         href={href}
         target="_blank"
         rel="noopener noreferrer"
-        className={`${base} ${skin} ${dimensions}`}
+        className={`${base} ${skin} ${dimensions} ${className}`}
         style={style}
       >
         {content}
@@ -78,7 +81,7 @@ export function Button({
   }
 
   return (
-    <Link href={href} className={`${base} ${skin} ${dimensions}`} style={style}>
+    <Link href={href} className={`${base} ${skin} ${dimensions} ${className}`} style={style}>
       {content}
     </Link>
   );

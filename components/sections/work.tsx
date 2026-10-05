@@ -37,7 +37,9 @@ export function Work() {
                           className={`${
                             project.imageFit === "contain"
                               ? "object-contain p-3"
-                              : "object-cover object-top"
+                              : project.imageFit === "fill-top"
+                                ? "object-cover object-[50%_30%]"
+                                : "object-cover object-top"
                           } transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]`}
                         />
                       ) : (

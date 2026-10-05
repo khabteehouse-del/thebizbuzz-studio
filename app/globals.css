@@ -325,6 +325,14 @@ body {
 */
 .buzz-word {
   display: inline-block;
+  /*
+    Italic letters lean past their own box. background-clip: text only
+    paints inside the box, so the last Z's top-right corner was being cut
+    off. The extra right padding gives the gradient room to cover the
+    overhang; the negative margin gives the layout most of it back.
+  */
+  padding-right: 0.1em;
+  margin-right: -0.04em;
   background: linear-gradient(90deg, #0d93fd 0%, #11e1f7 100%);
   -webkit-background-clip: text;
   background-clip: text;

@@ -131,8 +131,13 @@ export default function RootLayout({
           <Nav />
           <main>{children}</main>
           <Footer />
-          <GbpWidget />
         </div>
+        {/*
+          Kept outside the transformed wrapper on purpose. A transform on an
+          ancestor turns position: fixed into position: absolute relative to
+          that ancestor, which made the panel page-sized and blank on phones.
+        */}
+        <GbpWidget />
       </body>
     </html>
   );

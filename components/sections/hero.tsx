@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 import { Magnetic } from "@/components/shared/magnetic";
 import { Button } from "@/components/shared/button";
@@ -53,6 +53,18 @@ export function Hero() {
   */
   const intro = isDesktop && !reduceMotion;
 
+  /*
+    Which video file to load. Chosen once on mount, so a desktop never
+    downloads the phone file and a phone never downloads the desktop one.
+    Until then the poster shows, which is also the video's own poster, so
+    nothing visibly changes when the video takes over.
+  */
+  const [videoSrc, setVideoSrc] = useState<string | null>(null);
+  useEffect(() => {
+    const desktop = window.matchMedia("(min-width: 768px)").matches;
+    setVideoSrc(desktop ? "/video/hero.mp4" : "/video/hero-mobile.mp4");
+  }, []);
+
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
@@ -66,8 +78,7 @@ export function Hero() {
     applySpeed();
     video.addEventListener("loadeddata", applySpeed);
     return () => video.removeEventListener("loadeddata", applySpeed);
-    // The video only mounts on desktop, so re-run when that changes
-  }, [pinned]);
+  }, [videoSrc]);
 
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -106,8 +117,8 @@ export function Hero() {
         {/* Background stack: video, colour blooms, bottom fade, scroll veil */}
         <div className="absolute inset-0 -z-10 bg-ink">
           {/*
-            Desktop plays the loop. Phones and reduced-motion users get the
-            poster only, so they never download the video.
+            Everyone gets the loop. Desktop loads the 1080p file, phones load
+            a smaller portrait file cropped from the centre of the same video.
 
             The video is absolute inside the hero, not fixed. This page sits
             inside a transformed wrapper (layout.tsx), and a fixed element
@@ -118,8 +129,9 @@ export function Hero() {
             screens it is not stretched to fill the width; the side edges
             fade into the background instead (see .hero-video in globals.css).
           */}
-          {pinned ? (
+          {videoSrc ? (
             <video
+              key={videoSrc}
               ref={videoRef}
               autoPlay
               muted
@@ -127,10 +139,9 @@ export function Hero() {
               playsInline
               preload="auto"
               poster="/images/hero-poster.jpg"
+              src={videoSrc}
               className="hero-video pointer-events-none absolute left-1/2 top-0 h-full w-full max-w-[2000px] -translate-x-1/2 object-cover opacity-40"
-            >
-              <source src="/video/hero.mp4" type="video/mp4" />
-            </video>
+            />
           ) : (
             <div
               aria-hidden="true"

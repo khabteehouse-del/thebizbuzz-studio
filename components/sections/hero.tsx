@@ -217,6 +217,15 @@ export function Hero() {
                   scale: pinned ? headlineScale : 1,
                   y: pinned ? headlineY : 0,
                   transformOrigin: "left center",
+                  /*
+                    Depth without decoration: a tight contact shadow for
+                    weight, and a wide soft one so the word lifts off the
+                    background. On the headline rather than per word,
+                    because the gradient Buzz needs a filter, not
+                    text-shadow, and its buzz animation owns its own filter.
+                  */
+                  filter:
+                    "drop-shadow(0 2px 3px rgba(0,0,0,0.55)) drop-shadow(0 20px 36px rgba(0,0,0,0.5))",
                 }}
               className="relative flex italic font-display text-[clamp(3rem,16vw,16rem)] font-medium leading-[0.88] tracking-[-0.055em] text-paper md:text-[clamp(5.5rem,15vw,16rem)]"
             >
@@ -267,7 +276,7 @@ export function Hero() {
                 delay: 0.55,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="mt-5 font-display text-lg font-medium tracking-[-0.015em] text-paper/70 md:mt-7 md:text-3xl"
+              className="mt-5 font-display text-lg font-medium tracking-[-0.015em] text-paper/90 [text-shadow:0_2px_8px_rgba(0,0,0,0.6)] md:mt-7 md:text-3xl"
             >
               Where Brand Meets Intelligence
             </motion.p>

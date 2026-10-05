@@ -248,3 +248,115 @@ body {
     );
   }
 }
+
+/*
+  Burning-fuse border for the buttons.
+
+  A bright spark runs around the pill's edge with a glowing trail behind
+  it and an unlit ring ahead of it, like a lit wick. The angle is a real
+  animated custom property, so the spark follows the curve of the ends
+  instead of cutting across them.
+*/
+@property --fuse-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes fuse-burn {
+  to {
+    --fuse-angle: 360deg;
+  }
+}
+
+.fuse-btn::before,
+.fuse-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: conic-gradient(
+    from var(--fuse-angle),
+    transparent 0deg,
+    transparent 200deg,
+    color-mix(in srgb, var(--fuse-color) 8%, transparent) 245deg,
+    color-mix(in srgb, var(--fuse-color) 28%, transparent) 290deg,
+    color-mix(in srgb, var(--fuse-color) 65%, transparent) 330deg,
+    var(--fuse-color) 356deg,
+    color-mix(in srgb, #ffffff 70%, var(--fuse-color)) 360deg
+  );
+  animation: fuse-burn var(--fuse-duration, 7s) linear var(--fuse-delay, 0s) infinite;
+}
+
+/* The sharp ring: only the 1.5px edge shows */
+.fuse-btn::before {
+  padding: 1.5px;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+}
+
+/* The glow: the same spark, blurred and sitting just outside */
+.fuse-btn::after {
+  filter: blur(7px);
+  opacity: 0.22;
+  z-index: -1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fuse-btn::before,
+  .fuse-btn::after {
+    animation: none;
+    --fuse-angle: 120deg;
+  }
+}
+
+/*
+  "Buzz" in the hero headline.
+
+  Colour is the logo's own gradient, sampled from the logo file: azure
+  #0d93fd on the left to turquoise #11e1f7 on the right.
+
+  Every few seconds it buzzes: a fast low-amplitude shake, then rest. No
+  filter inside the animation: animating a filter on gradient-clipped text
+  made browsers paint the element's box as a white rectangle. Most of the cycle is stillness on purpose, so the
+  word reads as an event rather than constant jitter. Amplitude is in em
+  so it scales with the headline.
+*/
+.buzz-word {
+  display: inline-block;
+  /*
+    Italic letters lean past their own box. background-clip: text only
+    paints inside the box, so the last Z's top-right corner was being cut
+    off. The extra right padding gives the gradient room to cover the
+    overhang; the negative margin gives the layout most of it back.
+  */
+  padding-right: 0.1em;
+  margin-right: -0.04em;
+  background: linear-gradient(90deg, #0d93fd 0%, #11e1f7 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: buzz 6.5s ease-in-out 3.2s infinite;
+}
+
+@keyframes buzz {
+  0%, 9%, 100% {
+    transform: translate(0, 0) rotate(0);
+  }
+  1% { transform: translate(-0.008em, 0.004em) rotate(-0.25deg); }
+  2% { transform: translate(0.01em, -0.004em) rotate(0.3deg); }
+  3% { transform: translate(-0.01em, 0.003em) rotate(-0.3deg); }
+  4% { transform: translate(0.008em, -0.003em) rotate(0.25deg); }
+  5% { transform: translate(-0.007em, 0.004em) rotate(-0.2deg); }
+  6% { transform: translate(0.006em, -0.002em) rotate(0.15deg); }
+  7% { transform: translate(-0.003em, 0.001em) rotate(-0.08deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .buzz-word {
+    animation: none;
+  }
+}

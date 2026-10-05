@@ -199,6 +199,12 @@ export function Hero() {
               produce the hard band a gradient sweep does. Only opacity
               animates, which the compositor handles without re-rendering
               the blur.
+
+              This glow is not part of the background stack, so it is not
+              covered by the bottom fade. On a phone it was tall enough to
+              reach past the end of the hero, where the next section (solid
+              ink) cut it off in a straight line. It is shorter below the
+              md breakpoint and its top and bottom are masked to nothing.
             */}
             <motion.div
               aria-hidden="true"
@@ -210,7 +216,7 @@ export function Hero() {
                 repeat: Infinity,
                 ease: "easeInOut",
               }}
-              className="pointer-events-none absolute left-0 top-[38%] h-[115vh] w-[55vh] -translate-y-1/2 rounded-full blur-[120px]"
+              className="pointer-events-none absolute left-0 top-[38%] h-[80vh] w-[55vh] -translate-y-1/2 rounded-full blur-[120px] [mask-image:linear-gradient(to_bottom,transparent_0%,#000_25%,#000_60%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_bottom,transparent_0%,#000_25%,#000_60%,transparent_100%)] md:h-[115vh]"
               style={{
                 background:
                   "radial-gradient(circle, var(--color-accent) 0%, transparent 70%)",

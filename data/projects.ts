@@ -15,9 +15,12 @@ export type Project = {
     How the screenshot sits in its 16:9 frame. Defaults to "cover" (fills
     the frame, crops overflow). Use "contain" for a screenshot whose aspect
     ratio differs enough from 16:9 that cropping would cut off real content
-    (e.g. DentiVue's taller login-screen capture).
+    (e.g. DentiVue's taller login-screen capture). "fill-top" fills the frame
+    like cover but crops mostly from the bottom (30% from the top), so a
+    capture only slightly taller than 16:9 keeps its logo and loses only
+    the least important bottom strip. DentiVue uses it.
   */
-  imageFit?: "cover" | "contain";
+  imageFit?: "cover" | "contain" | "fill-top";
 };
 
 export const projects: Project[] = [
@@ -82,6 +85,7 @@ export const projects: Project[] = [
       "Regenerates only the mouth region, client-side, preserving patient identity. Pairs the visual with Claude-generated clinical reasoning, positioned as patient communication rather than medical diagnosis.",
     stack: ["Vision AI", "Claude", "Client-side inference"],
     image: "/images/work/dentivue.jpg",
+    imageFit: "fill-top",
     live: "https://project-dentivue.lovable.app",
     repo: null,
     stats: [
@@ -90,6 +94,5 @@ export const projects: Project[] = [
       { label: "Outcome variants", value: "3" },
       { label: "Review time", value: "under 5 minutes" },
     ],
-    imageFit: "contain",
   },
 ];

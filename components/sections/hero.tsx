@@ -113,6 +113,10 @@ export function Hero() {
             inside a transformed wrapper (layout.tsx), and a fixed element
             inside a transform is sized to the whole page, which zoomed the
             video about 8x and turned the fine dots into blurry blobs.
+
+            Its width is capped at 2000px and it sits centred. On ultrawide
+            screens it is not stretched to fill the width; the side edges
+            fade into the background instead (see .hero-video in globals.css).
           */}
           {pinned ? (
             <video
@@ -123,7 +127,7 @@ export function Hero() {
               playsInline
               preload="auto"
               poster="/images/hero-poster.jpg"
-              className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-40"
+              className="hero-video pointer-events-none absolute left-1/2 top-0 h-full w-full max-w-[2000px] -translate-x-1/2 object-cover opacity-40"
             >
               <source src="/video/hero.mp4" type="video/mp4" />
             </video>

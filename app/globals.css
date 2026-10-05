@@ -224,3 +224,27 @@ body {
   overflow-x: hidden;
   max-width: 100vw;
 }
+
+/*
+  Hero background video. The file is 1600x900, so past a 2000px width it is
+  not stretched any further. It stays centred at 2000px and its side edges
+  fade into the page, which keeps the fine dots sharp on ultrawide screens.
+*/
+@media (min-width: 2001px) {
+  .hero-video {
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      #000 18%,
+      #000 82%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      #000 18%,
+      #000 82%,
+      transparent 100%
+    );
+  }
+}

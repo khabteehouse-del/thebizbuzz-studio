@@ -318,8 +318,9 @@ body {
   Colour is the logo's own gradient, sampled from the logo file: azure
   #0d93fd on the left to turquoise #11e1f7 on the right.
 
-  Every few seconds it buzzes: a fast low-amplitude shake with a brief
-  glow pulse, then rest. Most of the cycle is stillness on purpose, so the
+  Every few seconds it buzzes: a fast low-amplitude shake, then rest. No
+  filter inside the animation: animating a filter on gradient-clipped text
+  made browsers paint the element's box as a white rectangle. Most of the cycle is stillness on purpose, so the
   word reads as an event rather than constant jitter. Amplitude is in em
   so it scales with the headline.
 */
@@ -344,14 +345,10 @@ body {
 @keyframes buzz {
   0%, 9%, 100% {
     transform: translate(0, 0) rotate(0);
-    filter: drop-shadow(0 0 0 rgba(17, 225, 247, 0));
   }
   1% { transform: translate(-0.008em, 0.004em) rotate(-0.25deg); }
   2% { transform: translate(0.01em, -0.004em) rotate(0.3deg); }
-  3% {
-    transform: translate(-0.01em, 0.003em) rotate(-0.3deg);
-    filter: drop-shadow(0 0 0.14em rgba(17, 225, 247, 0.55));
-  }
+  3% { transform: translate(-0.01em, 0.003em) rotate(-0.3deg); }
   4% { transform: translate(0.008em, -0.003em) rotate(0.25deg); }
   5% { transform: translate(-0.007em, 0.004em) rotate(-0.2deg); }
   6% { transform: translate(0.006em, -0.002em) rotate(0.15deg); }

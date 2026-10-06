@@ -7,6 +7,8 @@ type RevealProps = {
   children: ReactNode;
   delay?: number;
   className?: string;
+  /* Slide in from a side instead of rising (desktop only) */
+  from?: "left" | "right";
 };
 
 /*
@@ -28,7 +30,7 @@ type RevealProps = {
 
   The animation is a nicety. The text is the product.
 */
-export function Reveal({ children, delay = 0, className }: RevealProps) {
+export function Reveal({ children, delay = 0, className, from }: RevealProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
   const [animate, setAnimate] = useState(false);
@@ -81,7 +83,13 @@ export function Reveal({ children, delay = 0, className }: RevealProps) {
         animate
           ? {
               opacity: visible ? 1 : 0,
-              transform: visible ? "translateY(0)" : "translateY(24px)",
+              transform: visible
+                ? "translate(0, 0)"
+                : from === "left"
+                  ? "translateX(-56px)"
+                  : from === "right"
+                    ? "translateX(56px)"
+                    : "translateY(24px)",
               transition: `opacity 0.7s cubic-bezier(0.22,1,0.36,1) ${delay}s, transform 0.7s cubic-bezier(0.22,1,0.36,1) ${delay}s`,
             }
           : undefined

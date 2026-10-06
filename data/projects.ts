@@ -2,6 +2,10 @@ export type Project = {
   id: string;
   name: string;
   category: string;
+  /* "client" is built for a real client; "product" is our own build */
+  kind: "client" | "product";
+  /* One line shown on the tile; the long text sits behind "Details" */
+  blurb: string;
   problem: string;
   solution: string;
   stack: string[];
@@ -25,7 +29,27 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    id: "mb-autoparts",
+    kind: "client",
+    blurb:
+      "Inventory and operations system for a Miami auto parts business.",
+    name: "MB Auto Parts",
+    category: "Client build, Miami USA",
+    problem:
+      "Running a parts business means knowing what is in stock, what just came in and what is selling, without digging through spreadsheets.",
+    solution:
+      "A custom inventory system with a live operations dashboard, incoming and outgoing stock, low-stock alerts, sales and cashflow analytics, Excel export and an admin sign-in.",
+    stack: ["Inventory", "Low-stock alerts", "Sales analytics", "Excel export"],
+    image: "/images/work/mb-autoparts.jpg",
+    live: null,
+    repo: null,
+    stats: [],
+  },
+  {
     id: "fluxorx",
+    kind: "product",
+    blurb:
+      "Enterprise AI dashboard: exact numbers where it matters, Claude reasoning for the rest.",
     name: "FluxorX",
     category: "Enterprise AI systems",
     problem:
@@ -43,6 +67,9 @@ export const projects: Project[] = [
   },
   {
     id: "veridoc",
+    kind: "product",
+    blurb:
+      "An autonomous agent that reviews contracts and checks every conclusion against the source.",
     name: "VeriDoc",
     category: "Autonomous AI agents",
     problem:
@@ -60,6 +87,9 @@ export const projects: Project[] = [
   },
   {
     id: "pulsariq",
+    kind: "product",
+    blurb:
+      "Cited answers from internal documents in under two seconds, self-hosted.",
     name: "PulsarIQ",
     category: "Self-hosted enterprise RAG",
     problem:
@@ -77,6 +107,9 @@ export const projects: Project[] = [
   },
   {
     id: "dentivue",
+    kind: "product",
+    blurb:
+      "Shows a dental patient the likely outcome while keeping their identity private.",
     name: "DentiVue",
     category: "Clinical vision AI",
     problem:

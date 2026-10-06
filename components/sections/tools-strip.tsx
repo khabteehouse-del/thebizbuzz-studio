@@ -98,7 +98,7 @@ export function ToolsStrip() {
               </ul>
             </div>
 
-            <Button href="/tools/gbp-check" size="lg" className="w-full sm:w-auto">
+            <Button href="/tools/gbp-check" size="lg" accent="#4fd1c5" className="w-full sm:w-auto">
               Run the check
             </Button>
           </div>

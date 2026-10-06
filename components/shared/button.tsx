@@ -9,6 +9,9 @@ type ButtonProps = {
   external?: boolean;
   /* Extra classes, e.g. a fixed width so two buttons in a row match */
   className?: string;
+  /* Optional accent for bands that are not the default blue, e.g. the
+     teal free-tool band. Leave out everywhere else. */
+  accent?: string;
 };
 
 /*
@@ -29,6 +32,7 @@ export function Button({
   size = "md",
   external = false,
   className = "",
+  accent,
 }: ButtonProps) {
   /* Narrower padding on small screens so two buttons still fit a row */
   const dimensions =
@@ -45,7 +49,10 @@ export function Button({
       : "bg-white/[0.03] shadow-[inset_0_0_0_1px_rgba(245,248,255,0.12)] backdrop-blur-sm hover:shadow-[inset_0_0_0_1px_rgba(245,248,255,0.25)]";
 
   const style = {
-    "--fuse-color": variant === "primary" ? "#1dd5ff" : "#a9c7ff",
+    "--fuse-color": accent ?? (variant === "primary" ? "#1dd5ff" : "#a9c7ff"),
+    ...(accent
+      ? { backgroundColor: "#082022", boxShadow: `0 0 22px ${accent}33` }
+      : {}),
     "--fuse-duration": variant === "primary" ? "7s" : "8.5s",
     "--fuse-delay": variant === "primary" ? "0s" : "-3s",
   } as CSSProperties;
@@ -60,6 +67,7 @@ export function Button({
             ? "bg-gradient-to-br from-[#1dd5ff] to-accent text-[#06101f]"
             : "bg-white/10 text-paper"
         }`}
+        style={accent ? { backgroundImage: `linear-gradient(135deg, ${accent}, #2a9d93)`, color: "#06191a" } : undefined}
       >
         &rarr;
       </span>

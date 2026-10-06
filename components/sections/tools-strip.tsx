@@ -1,6 +1,6 @@
 import { Button } from "@/components/shared/button";
 import { Reveal } from "@/components/shared/reveal";
-import { ScorePreview } from "@/components/shared/score-preview";
+import Image from "next/image";
 
 /*
   A single free tool, given its own band on the page.
@@ -39,14 +39,27 @@ export function ToolsStrip() {
         }}
       />
 
+      {/* Picture: on desktop it fills the right of the band, on phones it
+          sits above the text. Edges fade into the band colour. */}
+      <div
+        aria-hidden="true"
+        className="relative -mt-20 mb-10 h-64 w-full md:absolute md:inset-y-0 md:right-0 md:m-0 md:h-auto md:w-[60%]"
+      >
+        <Image
+          src="/images/free-tool-hero.webp"
+          alt=""
+          fill
+          sizes="(min-width: 768px) 60vw, 100vw"
+          className="object-cover object-[75%_20%] md:object-right"
+        />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#0d2a2b_0%,rgba(13,42,43,0.85)_12%,transparent_45%)] max-md:hidden" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_bottom,#0d2a2b_0%,transparent_18%,transparent_75%,#0d2a2b_100%)]" />
+      </div>
+
       <div className="shell relative z-10">
         <Reveal>
-          <div className="flex flex-col items-start gap-8 md:flex-row md:items-center md:gap-14">
-            <div className="shrink-0 self-center">
-              <ScorePreview colour="#4fd1c5" />
-            </div>
-
-            <div className="max-w-xl md:flex-1">
+          <div className="flex flex-col items-start gap-8 md:max-w-[48%]">
+            <div className="max-w-xl">
               <p
                 className="text-xs uppercase tracking-[0.14em]"
                 style={{ color: "#4fd1c5", opacity: 0.85 }}
@@ -85,7 +98,7 @@ export function ToolsStrip() {
               </ul>
             </div>
 
-            <Button href="/tools/gbp-check" size="lg" className="w-full shrink-0 sm:w-auto">
+            <Button href="/tools/gbp-check" size="lg" className="w-full sm:w-auto">
               Run the check
             </Button>
           </div>

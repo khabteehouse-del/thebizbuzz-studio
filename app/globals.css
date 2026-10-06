@@ -490,9 +490,37 @@ body {
   30% { opacity: 0.85; transform: scaleX(1.25); box-shadow: 0 0 5px var(--mark); }
 }
 
+/*
+  Service card icons (services.tsx). Thirteen different lucide icons, so
+  one effect that suits any shape: each icon draws itself, holds with a
+  soft glow in its colour, erases, and goes again. Cards start 0.4s apart
+  (--i is the card index) so they do not all move at once.
+  Dash length 80 is longer than any stroke in a 24px icon.
+*/
+.svc-icon svg {
+  animation: svc-glow 5s ease-in-out calc(var(--i) * 0.4s) infinite both;
+}
+.svc-icon svg * {
+  stroke-dasharray: 80;
+  animation: svc-draw 5s ease-in-out calc(var(--i) * 0.4s) infinite both;
+}
+@keyframes svc-draw {
+  0% { stroke-dashoffset: 80; }
+  20%, 78% { stroke-dashoffset: 0; }
+  92%, 100% { stroke-dashoffset: -80; }
+}
+@keyframes svc-glow {
+  0%, 100% { filter: drop-shadow(0 0 0 transparent); }
+  20% { filter: drop-shadow(0 0 6px var(--mark)); }
+  30%, 78% { filter: drop-shadow(0 0 3px var(--mark)); }
+  92% { filter: drop-shadow(0 0 0 transparent); }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .pin-body, .pin-dot, .pin-ripple, .layer-top, .layer-bot, .dash-glow {
+  .pin-body, .pin-dot, .pin-ripple, .layer-top, .layer-bot, .dash-glow,
+  .svc-icon svg, .svc-icon svg * {
     animation: none;
   }
+  .svc-icon svg * { stroke-dasharray: none; }
   .dash-glow { opacity: 0.85; }
 }

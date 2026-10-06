@@ -1,5 +1,7 @@
 "use client";
 
+import { useRef } from "react";
+import { useInView } from "motion/react";
 import Link from "next/link";
 import Image from "next/image";
 import { MapPin, Layers } from "lucide-react";
@@ -23,6 +25,30 @@ import { Reveal } from "@/components/shared/reveal";
   already a <Link>, and an anchor cannot contain another anchor. Clicking
   it opens the Google Maps URL in a new tab via window.open instead.
 */
+
+/*
+  Five stars that power up one at a time when the review card scrolls
+  into view: each starts dim, flares white-hot with a wide glow, then
+  settles to a steady warm glow. The stagger is in globals.css (.star).
+*/
+function PoweredStars() {
+  const ref = useRef<HTMLSpanElement>(null);
+  const lit = useInView(ref, { once: true, amount: 0.8 });
+
+  return (
+    <span ref={ref} className="flex items-center gap-1" aria-hidden="true">
+      {Array.from({ length: 5 }).map((_, i) => (
+        <span
+          key={i}
+          className={`star text-lg leading-none ${lit ? "star-lit" : ""}`}
+          style={{ "--i": i } as React.CSSProperties}
+        >
+          ★
+        </span>
+      ))}
+    </span>
+  );
+}
 
 const doors = [
   {
@@ -240,14 +266,7 @@ export function Tracks() {
                         className="mt-4 block w-fit cursor-pointer rounded-[3px] border border-[#fbbf24]/30 bg-[#fbbf24]/[0.07] px-4 py-3.5 transition-colors duration-300 hover:bg-[#fbbf24]/[0.12]"
                       >
                         <div className="flex items-center gap-1">
-                          {Array.from({ length: 5 }).map((_, i) => (
-                            <span
-                              key={i}
-                              className="text-lg leading-none text-[#fbbf24] drop-shadow-[0_0_6px_rgba(251,191,36,0.5)]"
-                            >
-                              ★
-                            </span>
-                          ))}
+                          <PoweredStars />
                           <span className="ml-1.5 text-sm font-medium text-paper">
                             {door.review.rating}
                           </span>

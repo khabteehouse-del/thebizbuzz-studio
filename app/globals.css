@@ -360,3 +360,49 @@ body {
     animation: none;
   }
 }
+
+/*
+  Review stars that power up one by one (see PoweredStars in tracks.tsx).
+  Dim and unlit until the card is in view, then each star flares and
+  settles into a steady glow, 0.22s apart.
+*/
+.star {
+  display: inline-block;
+  color: #fbbf24;
+  opacity: 0.18;
+}
+
+.star-lit {
+  animation: star-power 1s cubic-bezier(0.22, 1, 0.36, 1) calc(var(--i) * 0.22s) both;
+}
+
+@keyframes star-power {
+  0% {
+    opacity: 0.18;
+    transform: scale(0.85);
+    text-shadow: 0 0 0 rgba(251, 191, 36, 0);
+  }
+  35% {
+    opacity: 1;
+    transform: scale(1.35);
+    text-shadow:
+      0 0 10px #fff6c8,
+      0 0 22px rgba(251, 191, 36, 0.95),
+      0 0 40px rgba(251, 191, 36, 0.6);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    text-shadow: 0 0 8px rgba(251, 191, 36, 0.6);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .star {
+    opacity: 1;
+    text-shadow: 0 0 8px rgba(251, 191, 36, 0.6);
+  }
+  .star-lit {
+    animation: none;
+  }
+}

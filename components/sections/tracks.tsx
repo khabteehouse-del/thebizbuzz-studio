@@ -5,6 +5,7 @@ import { useInView } from "motion/react";
 import Link from "next/link";
 import Image from "next/image";
 import { Reveal } from "@/components/shared/reveal";
+import { projects } from "@/data/projects";
 
 /*
   The fork. The most important section on the page.
@@ -133,6 +134,7 @@ const doors = [
       count: 40,
       href: "https://www.google.com/maps/place/Sadat+Transport+%26+Contracting+General/@24.369346,54.4996095,17z",
     },
+    featuredProject: null,
     cta: "See local services",
     href: "#local-services",
     mark: "#4fd1c5",
@@ -156,6 +158,8 @@ const doors = [
     footnote: "Scoped projects with a phase schedule up front",
     tool: null,
     review: null,
+    /* Real project from data/projects.ts, shown where the local card has its review */
+    featuredProject: "fluxorx",
     cta: "See studio services",
     href: "#studio-services",
     mark: "#8b9dfa",
@@ -347,6 +351,53 @@ export function Tracks() {
                         </p>
                       </div>
                     )}
+
+                    {door.featuredProject && (() => {
+                      const project = projects.find(
+                        (p) => p.id === door.featuredProject
+                      );
+                      if (!project) return null;
+
+                      return (
+                        <div
+                          className="mt-5 w-full max-w-md rounded-[3px] border px-4 py-3.5"
+                          style={{
+                            borderColor: `${door.mark}40`,
+                            backgroundColor: `${door.mark}12`,
+                          }}
+                        >
+                          <div className="min-w-0">
+                            <p
+                              className="text-[0.6875rem] uppercase tracking-[0.14em]"
+                              style={{ color: door.mark }}
+                            >
+                              Recent build
+                            </p>
+                            <p className="mt-1.5 font-display text-lg font-medium leading-tight text-paper">
+                              {project.name}
+                            </p>
+                            <p className="text-xs text-paper/55">
+                              {project.category}
+                            </p>
+                            <dl className="mt-3 grid gap-1.5">
+                              {project.stats.slice(0, 2).map((stat) => (
+                                <div
+                                  key={stat.label}
+                                  className="flex items-baseline gap-2 text-xs"
+                                >
+                                  <dt className="font-medium text-paper">
+                                    {stat.value}
+                                  </dt>
+                                  <dd className="text-paper/50">
+                                    {stat.label.toLowerCase()}
+                                  </dd>
+                                </div>
+                              ))}
+                            </dl>
+                          </div>
+                        </div>
+                      );
+                    })()}
 
                     <span className="mt-auto flex items-center gap-3 pt-8 text-xs uppercase tracking-[0.12em] text-paper">
                       {door.cta}

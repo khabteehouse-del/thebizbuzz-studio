@@ -190,7 +190,7 @@ export function Hero() {
               transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
               className="section-label"
             >
-              Creative and technology studio
+              Brand, search and AI engineering
             </motion.p>
 
             {/*
@@ -306,9 +306,9 @@ export function Hero() {
               }}
               className="mt-6 max-w-md text-sm leading-relaxed text-muted md:mt-8 md:text-base"
             >
-              A creative and technology studio in Karachi and Dubai. We get
-              businesses found, and we build what people find when they get
-              there.
+              Brand, search and production AI for companies in the Gulf and
+              Pakistan. Scoped in writing, built in measured phases, handed
+              over fully owned.
             </motion.p>
 
             <motion.div

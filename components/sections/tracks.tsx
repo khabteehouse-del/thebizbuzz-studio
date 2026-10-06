@@ -116,8 +116,8 @@ const doors = [
     icon: AnimatedPin,
     eyebrow: "Local track",
     title: "For local businesses",
-    line: "Get found by people nearby who are ready to buy.",
-    body: "Clinics, salons, restaurants, showrooms and shops. We put you on the map, keep you there, and turn the search into a walk-in.",
+    line: "Own the map pack for what people near you actually search.",
+    body: "Clinics, salons, restaurants, showrooms and shops. Profile, citations, reviews and a site that converts, run as one system and reported on calls, direction requests and bookings.",
     points: [
       "Google Business Profile",
       "Local search and maps",
@@ -147,15 +147,15 @@ const doors = [
     icon: AnimatedLayers,
     eyebrow: "Studio track",
     title: "For growing brands",
-    line: "Build the brand and the systems behind it.",
-    body: "Companies scaling past whatever they started with. Identity, product and AI systems built to production standard, not to demo standard.",
+    line: "Brand, product and AI infrastructure, designed together.",
+    body: "For companies past their first version. Identity, web and product surfaces and AI systems, scoped against written acceptance criteria and built to production standard, not demo standard.",
     points: [
       "Brand identity and creative",
       "AI-integrated solutions",
       "Growth marketing",
       "Web and product design",
     ],
-    footnote: "Scoped projects with a phase schedule up front",
+    footnote: "Scoped projects with written acceptance criteria and a phase schedule up front",
     tool: null,
     review: null,
     /* Real project from data/projects.ts, shown where the local card has its review */
@@ -179,7 +179,7 @@ export function Tracks() {
         <Reveal>
           <p className="section-label">Two ways in</p>
           <h2 className="mt-7 max-w-3xl font-display text-[1.75rem] font-medium leading-[1.15] tracking-[-0.03em] text-paper sm:text-3xl md:text-5xl">
-            We do two things. Pick the one that sounds like you.
+            Two practices, one standard of work.
           </h2>
         </Reveal>
 

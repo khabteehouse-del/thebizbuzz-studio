@@ -12,22 +12,22 @@ export const approach: Step[] = [
   {
     id: "01",
     title: "Understand the business",
-    body: "Before design or code, we work out what the company actually sells, who decides to buy, and what is currently getting in the way. Most projects fail here rather than in execution.",
+    body: "Before design or code we establish what the company sells, who decides to buy, and what is constraining growth. Output: a written brief and the metrics the engagement will be judged on. Most projects fail here rather than in execution.",
   },
   {
     id: "02",
     title: "Define the system",
-    body: "We agree the shape of the work up front: what gets built, what it needs to do, how success is measured. Written down, so nobody is guessing three weeks in.",
+    body: "Architecture, scope and acceptance criteria are agreed in writing before build begins: what gets built, what it must do, how it is measured. Nobody is guessing three weeks in.",
   },
   {
     id: "03",
     title: "Build in checkpoints",
-    body: "Work ships in phases, each one a working state you can see and react to. No four-week silences ending in a reveal that misses.",
+    body: "Work ships in phases, each a working state you can review. Progress is reported against the acceptance criteria, not against effort. No four-week silences ending in a reveal that misses.",
   },
   {
     id: "04",
     title: "Hand over properly",
-    body: "You get the code, the accounts, the documentation and the ability to run it without us. We would rather be kept than depended on.",
+    body: "Code, accounts, documentation and runbooks transfer to you, along with the ability to operate it without us. We would rather be retained than depended on.",
   },
 ];
 
@@ -78,7 +78,19 @@ export const faq: FaqItem[] = [
     id: "ai",
     question: "What does AI-integrated actually mean here?",
     answer:
-      "Production systems, not demonstrations. Retrieval over your own documents, agents that complete real workflows, automation wired into what you already run. Our own products are public and you can use them before deciding whether we know what we are doing.",
+      "Production systems rather than demonstrations: retrieval over private documents, agents that complete real workflows, and automation wired into what you already run. Acceptance criteria and evaluation are defined before build. Our own systems are public, with measured results, so you can test them before deciding whether we know what we are doing.",
+  },
+  {
+    id: "measure",
+    question: "How do you measure success?",
+    answer:
+      "The metrics are written into the brief before work starts, and we report against those, not against activity. Local work: calls, direction requests, bookings and map pack position. Studio work: acceptance criteria met, performance budgets, and for growth programmes, qualified pipeline.",
+  },
+  {
+    id: "security",
+    question: "How do you handle security and data residency?",
+    answer:
+      "Where data cannot leave your infrastructure we deploy self-hosted, as in our own PulsarIQ build. Access control, logging and data residency are agreed in the scoping step, before any build begins.",
   },
   {
     id: "ownership",

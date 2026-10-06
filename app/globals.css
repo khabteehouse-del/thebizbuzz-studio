@@ -616,65 +616,13 @@ body {
 /*
   Performance.
 
-  1. Animations inside a section that is off screen are paused
-     (OffscreenPause sets data-offscreen on the section).
-
-  2. On touch devices the effects that redraw pixels every frame are swapped
-     for ones that only move or fade. Those are the glow shadows, the glow
-     filter on the service icons, the self-drawing strokes and the animated
-     gradient ring on the buttons. They made iPhones scroll slowly. Desktop
-     keeps the full versions.
+  Animations inside a section that is off screen are paused
+  (OffscreenPause sets data-offscreen on the section). Nothing changes
+  visually: an effect is simply not being drawn while nobody can see it,
+  and it is already running again by the time its section scrolls in.
 */
 section[data-offscreen] *,
 section[data-offscreen] *::before,
 section[data-offscreen] *::after {
   animation-play-state: paused !important;
-}
-
-@media (hover: none) {
-  /* Dashes: fade only, no animated shadow */
-  .dash-glow {
-    animation: dash-fade 4s ease-in-out calc(var(--i) * 0.35s) infinite;
-    box-shadow: none;
-  }
-
-  /* Service icons: no glow filter, no stroke redraw, a slow breathe */
-  .svc-icon svg {
-    animation: svc-breathe 5s ease-in-out calc(var(--i) * 0.4s) infinite;
-  }
-  .svc-icon svg * {
-    animation: none;
-    stroke-dasharray: none;
-  }
-
-  /* Buttons: still ring, no blurred glow copy, no per-frame gradient */
-  .fuse-btn::before {
-    animation: none;
-    --fuse-angle: 300deg;
-  }
-  .fuse-btn::after {
-    display: none;
-  }
-
-  /* Stars: fade and pop, with a fixed soft glow instead of an animated one */
-  .star-lit {
-    animation: star-lite 4.5s cubic-bezier(0.22, 1, 0.36, 1) calc(var(--i) * 0.22s) infinite both;
-    text-shadow: 0 0 8px rgba(251, 191, 36, 0.6);
-  }
-}
-
-@keyframes dash-fade {
-  0%, 55%, 100% { opacity: 0.4; transform: scaleX(1); }
-  12% { opacity: 1; transform: scaleX(1.7); }
-  30% { opacity: 0.85; transform: scaleX(1.25); }
-}
-@keyframes svc-breathe {
-  0%, 100% { opacity: 0.7; }
-  50% { opacity: 1; }
-}
-@keyframes star-lite {
-  0% { opacity: 0.18; transform: scale(0.85); }
-  8% { opacity: 1; transform: scale(1.35); }
-  18%, 78% { opacity: 1; transform: scale(1); }
-  92%, 100% { opacity: 0.18; transform: scale(0.85); }
 }

@@ -17,7 +17,8 @@ type Props = {
 };
 
 /*
-  A heading that decodes itself when it scrolls into view.
+  A heading that decodes itself every time it scrolls into view, whether
+  you are scrolling down to it or back up past it.
 
   Every letter starts as a cycling cyan glyph and locks into its real
   character from left to right, with a cyan glow behind the word that
@@ -28,15 +29,20 @@ type Props = {
   always takes exactly the space of its final text.
 
   Safe without JavaScript and for reduced motion: the real text is what
-  the server renders, and it is only hidden once the page is running, the
-  word has not yet scrolled into view, and motion is allowed.
+  the server renders, and it is only hidden once the page is running, motion is
+  allowed, and the word is off screen waiting to be played.
 */
 export function DecodeText({ text, className = "" }: Props) {
   const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, amount: 0.6 });
+  /* Plays once about a third of the word is on screen... */
+  const inView = useInView(ref, { amount: 0.35 });
+  /* ...and re-arms once it has fully left, so it plays on every pass,
+     scrolling down or back up. */
+  const onScreen = useInView(ref, { amount: "some" });
   const frame = useRef<number | null>(null);
 
   const [armed, setArmed] = useState(false);
+  const [primed, setPrimed] = useState(false);
   const [resolved, setResolved] = useState(text.length);
   const [glyphs, setGlyphs] = useState<string[]>([]);
   const [running, setRunning] = useState(false);
@@ -86,17 +92,27 @@ export function DecodeText({ text, className = "" }: Props) {
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     setArmed(true);
+    setPrimed(true);
     setResolved(0);
     return () => {
       if (frame.current !== null) cancelAnimationFrame(frame.current);
     };
   }, []);
 
+  /* Fully off screen: reset so the next pass decodes again */
   useEffect(() => {
-    if (armed && inView) run();
-  }, [armed, inView, run]);
+    if (armed && !onScreen) setPrimed(true);
+  }, [armed, onScreen]);
 
-  const hidden = armed && !inView;
+  useEffect(() => {
+    if (armed && primed && inView) {
+      setPrimed(false);
+      run();
+    }
+  }, [armed, primed, inView, run]);
+
+  /* Hidden only while waiting off screen to be played */
+  const hidden = armed && primed;
 
   return (
     <span

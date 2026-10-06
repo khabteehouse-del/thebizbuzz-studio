@@ -126,7 +126,7 @@ export default function RootLayout({
 
         <div style={{ willChange: "transform, opacity", transform: "translateZ(0)" }}>
           <SmoothScroll />
-          <Grain />
+          {/* TEST BRANCH: grain removed to check iPhone rendering */}
           <Cursor />
           <Nav />
           <main>{children}</main>

@@ -612,3 +612,10 @@ body {
     display: none;
   }
 }
+
+/* TEST BRANCH (do not merge): all CSS looping animations off, to check iPhone rendering */
+*,
+*::before,
+*::after {
+  animation: none !important;
+}

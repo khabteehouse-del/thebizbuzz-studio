@@ -12,6 +12,23 @@ import Image from "next/image";
 export function ToolsStrip() {
   return (
     <section className="relative overflow-hidden border-y border-line bg-[#0d2a2b] py-20 md:py-28">
+      {/* Picture: sits under the glows so they tint it, which keeps it
+          blended with the band. Fades into the band colour at the edges. */}
+      <div
+        aria-hidden="true"
+        className="relative -mt-20 mb-10 h-64 w-full md:absolute md:inset-y-0 md:right-0 md:m-0 md:h-auto md:w-[60%]"
+      >
+        <Image
+          src="/images/free-tool-hero.webp"
+          alt=""
+          fill
+          sizes="(min-width: 768px) 60vw, 100vw"
+          className="object-cover object-[75%_20%] md:object-right"
+        />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#0d2a2b_0%,rgba(13,42,43,0.9)_15%,rgba(13,42,43,0.5)_32%,transparent_60%)] max-md:hidden" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_bottom,#0d2a2b_0%,transparent_18%,transparent_75%,#0d2a2b_100%)]" />
+      </div>
+
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-x-0 top-0 h-px"
@@ -38,23 +55,6 @@ export function ToolsStrip() {
           opacity: 0.16,
         }}
       />
-
-      {/* Picture: on desktop it fills the right of the band, on phones it
-          sits above the text. Edges fade into the band colour. */}
-      <div
-        aria-hidden="true"
-        className="relative -mt-20 mb-10 h-64 w-full md:absolute md:inset-y-0 md:right-0 md:m-0 md:h-auto md:w-[60%]"
-      >
-        <Image
-          src="/images/free-tool-hero.webp"
-          alt=""
-          fill
-          sizes="(min-width: 768px) 60vw, 100vw"
-          className="object-cover object-[75%_20%] md:object-right"
-        />
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#0d2a2b_0%,rgba(13,42,43,0.85)_12%,transparent_45%)] max-md:hidden" />
-        <div className="absolute inset-0 bg-[linear-gradient(to_bottom,#0d2a2b_0%,transparent_18%,transparent_75%,#0d2a2b_100%)]" />
-      </div>
 
       <div className="shell relative z-10">
         <Reveal>

@@ -524,3 +524,91 @@ body {
   .svc-icon svg * { stroke-dasharray: none; }
   .dash-glow { opacity: 0.85; }
 }
+
+/*
+  How we work: orbit rings behind the heading, and a light pulse down the
+  timeline (see approach.tsx). Transform and opacity only, looping, and
+  still under reduced motion.
+*/
+.orbit-ring {
+  position: absolute;
+  border: 1px solid rgba(78, 163, 236, 0.18);
+  border-radius: 9999px;
+}
+.orbit-a {
+  inset: 0;
+  animation: orbit-spin 70s linear infinite;
+}
+.orbit-b {
+  inset: 14%;
+  border-color: rgba(139, 157, 250, 0.2);
+  border-style: dashed;
+  animation: orbit-spin 48s linear infinite reverse;
+}
+.orbit-c {
+  inset: 30%;
+  border-color: rgba(29, 213, 255, 0.28);
+  animation: orbit-spin 30s linear infinite;
+}
+.orbit-dot {
+  position: absolute;
+  top: -3px;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  margin-left: -3px;
+  border-radius: 9999px;
+}
+.orbit-dot-cyan {
+  background: #1dd5ff;
+  box-shadow: 0 0 10px 3px rgba(29, 213, 255, 0.6);
+}
+.orbit-dot-indigo {
+  background: #8b9dfa;
+  box-shadow: 0 0 10px 3px rgba(139, 157, 250, 0.55);
+}
+.orbit-dot-white {
+  width: 4px;
+  height: 4px;
+  margin-left: -2px;
+  background: #fff;
+  box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.5);
+}
+/* Second node on the same ring, on the opposite side */
+.orbit-dot-far {
+  top: auto;
+  bottom: -2px;
+}
+@keyframes orbit-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.signal-pulse {
+  position: absolute;
+  left: -1px;
+  top: 0;
+  width: 3px;
+  height: 18%;
+  border-radius: 9999px;
+  background: linear-gradient(to bottom, transparent, rgba(29, 213, 255, 0.85) 80%, #fff);
+  box-shadow: 0 0 12px 2px rgba(29, 213, 255, 0.55);
+  animation: signal-run 5.5s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+/* 18% tall, so 560% of its own height is the full length of the track */
+@keyframes signal-run {
+  0% { transform: translateY(-110%); opacity: 0; }
+  8% { opacity: 1; }
+  88% { opacity: 1; }
+  100% { transform: translateY(560%); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orbit-a, .orbit-b, .orbit-c, .signal-pulse {
+    animation: none;
+  }
+  .signal-pulse {
+    display: none;
+  }
+}

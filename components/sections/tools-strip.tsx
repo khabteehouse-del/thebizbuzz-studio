@@ -44,7 +44,7 @@ export function ToolsStrip() {
               <p className="mt-5 text-sm leading-relaxed text-paper/60 md:text-base">
                 Twelve questions about your profile. You get a score out of
                 100, the three things costing you the most customers, and a
-                written plan. No account, no email required.
+                written plan. No account needed.
               </p>
             </div>
 

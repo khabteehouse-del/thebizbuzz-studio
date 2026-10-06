@@ -13,7 +13,7 @@ export const site = {
     arrive from a search rather than a referral.
   */
   description:
-    "We get local businesses found on Google, and we build the brands, websites and AI systems behind companies that are scaling up. Karachi and Dubai.",
+    "Local search for businesses, and brand, web and production AI systems for companies that are scaling. A founder-led studio in Karachi and Dubai.",
   url: "https://thebizbuzz.studio",
   email: "contact@thebizbuzz.studio",
   locations: ["Karachi", "Dubai"],

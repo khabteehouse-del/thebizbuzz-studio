@@ -10,7 +10,7 @@ const LOGO_BLUE = "#1dd5ff";
 const pillars = [
   {
     Icon: Globe2,
-    text: "Based in Karachi with a presence in Dubai, working with local businesses across Pakistan and with brands across the Gulf and further out.",
+    text: "Karachi and Dubai. Local search for businesses across Pakistan, brand and AI engagements for companies across the Gulf and beyond, delivered remotely by default.",
   },
   {
     Icon: UserCheck,
@@ -18,7 +18,7 @@ const pillars = [
   },
   {
     Icon: Sparkles,
-    text: "Our own AI products are live and public. You can judge the engineering before you commission any of it.",
+    text: "Our own AI systems are live and public, with their measured results on the Work section. Judge the engineering before you commission any of it.",
   },
 ];
 
@@ -53,9 +53,10 @@ export function Intro() {
       <div className="shell relative z-10">
         <Reveal>
           <p className="max-w-4xl font-display text-xl font-medium leading-[1.4] tracking-[-0.02em] text-paper sm:text-2xl md:text-4xl md:leading-[1.3]">
-            We get businesses found, and we build what people find when they
-            get there. Local visibility at one end, brand and AI systems at
-            the other, run by one small team.
+            Two practices under one roof. Local search run as a measurable
+            ranking discipline, and brand, product and AI systems engineered
+            to production standard. One small founder-led team, accountable
+            for the result.
           </p>
         </Reveal>
 

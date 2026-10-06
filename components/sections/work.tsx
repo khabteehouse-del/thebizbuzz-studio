@@ -13,9 +13,9 @@ export function Work() {
             Systems we built and shipped
           </h2>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-muted">
-            Every project below is live and public. Open them, use them, then
-            decide whether we are worth a conversation. Local client results
-            are published separately, with permission.
+            Each build below is live and public, with its measured results.
+            Open them, test them, and judge the engineering before we speak.
+            Local client results are published separately, with permission.
           </p>
         </Reveal>
 

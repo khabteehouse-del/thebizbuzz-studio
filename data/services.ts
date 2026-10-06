@@ -51,7 +51,7 @@ export const services: Service[] = [
     track: "local",
     title: "Google Business Profile",
     summary:
-      "Your listing is the first thing a nearby customer sees. We set it up properly, keep it active, and stop it slipping down the map.",
+      "The listing is the first surface a nearby buyer sees, and it often outranks your own website for local queries. We configure it correctly, keep it active, and defend its position.",
     capabilities: [
       "Profile setup and verification",
       "Categories, services and attributes",
@@ -68,7 +68,7 @@ export const services: Service[] = [
     track: "local",
     title: "Local search and maps",
     summary:
-      "Ranking in the map pack for what people in your area actually search, not for vanity keywords nobody types.",
+      "Map pack visibility for the queries your customers actually type, built on consistent citations, location pages and a read of what the top three competitors do that you do not.",
     capabilities: [
       "Map pack ranking",
       "Citations and directory listings",
@@ -85,7 +85,7 @@ export const services: Service[] = [
     track: "local",
     title: "Reviews and reputation",
     summary:
-      "Reviews decide whether someone walks in or scrolls past. We build a system that earns them steadily instead of asking once and hoping.",
+      "Review volume, recency and response rate all feed ranking and conversion. We build a repeatable request system and a response protocol, instead of asking once and hoping.",
     capabilities: [
       "Review generation systems",
       "Response templates and handling",
@@ -102,7 +102,7 @@ export const services: Service[] = [
     track: "local",
     title: "Websites that convert",
     summary:
-      "A fast, honest site that turns the visit into a call, a booking or a walk-in. No template, no clutter.",
+      "Fast, mobile-first sites built around the enquiry: a call, a booking or a walk-in. Local schema and search setup included. No template, no clutter.",
     capabilities: [
       "Business and service sites",
       "Booking and enquiry flows",
@@ -119,7 +119,7 @@ export const services: Service[] = [
     track: "local",
     title: "Social media management",
     summary:
-      "Organic and paid run as one system: a posting cadence that doesn't go quiet, and ad spend put where it actually returns.",
+      "Organic and paid run as one system: a posting cadence that holds, and ad spend allocated against measured return.",
     capabilities: [
       "Organic content and posting cadence",
       "Paid social campaigns",
@@ -155,7 +155,7 @@ export const services: Service[] = [
     track: "studio",
     title: "Brand identity and creative",
     summary:
-      "The system underneath the logo. Naming, voice, colour, type and the rules that keep it consistent everywhere it appears.",
+      "The system underneath the logo: naming, voice, colour, type and the rules that keep it consistent at every touchpoint.",
     capabilities: [
       "Identity systems and guidelines",
       "Naming and messaging",
@@ -189,7 +189,7 @@ export const services: Service[] = [
     track: "studio",
     title: "AI content and video creation",
     summary:
-      "AI-assisted writing and video production for teams that need volume without losing one consistent voice.",
+      "AI-assisted writing and video production for teams that need volume without losing a single consistent voice, with review gates before anything ships.",
     capabilities: [
       "AI-assisted content writing",
       "AI video generation and editing",
@@ -206,7 +206,7 @@ export const services: Service[] = [
     track: "studio",
     title: "AI-integrated solutions",
     summary:
-      "Production AI systems, not demos. Retrieval, agents and automation built with the guardrails that make them safe to put in front of a client.",
+      "Production AI systems with evaluation and guardrails: retrieval over private data, agents that complete real workflows, and deployments built to survive security and compliance review.",
     capabilities: [
       "Retrieval systems over private data",
       "Autonomous agents and workflows",
@@ -223,7 +223,7 @@ export const services: Service[] = [
     track: "studio",
     title: "Growth marketing",
     summary:
-      "Search, content and paid working as one system, measured against revenue rather than impressions.",
+      "Technical SEO, content and paid search run as one programme and measured against pipeline and revenue, not impressions.",
     capabilities: [
       "Technical and content SEO",
       "Copywriting and long-form content",
@@ -240,7 +240,7 @@ export const services: Service[] = [
     track: "studio",
     title: "Generative and answer engine optimization",
     summary:
-      "Getting found inside AI answers and chat assistants, not just the traditional search results page.",
+      "Visibility inside AI answers and assistants, not just the results page: structured, citable content and monitoring of how models describe you.",
     capabilities: [
       "Generative engine optimization (GEO)",
       "Answer engine optimization (AEO)",
@@ -257,7 +257,7 @@ export const services: Service[] = [
     track: "studio",
     title: "Web and product design",
     summary:
-      "Sites and interfaces that carry your positioning rather than describe it. Built to load fast and hold up as you grow.",
+      "Sites and product interfaces that carry the positioning rather than describe it. Engineered for Core Web Vitals and for the load you will have in a year, not the load you have today.",
     capabilities: [
       "Marketing sites and landing pages",
       "Web applications and dashboards",

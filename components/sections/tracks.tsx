@@ -29,7 +29,8 @@ import { Reveal } from "@/components/shared/reveal";
 /*
   Five stars that power up one at a time when the review card scrolls
   into view: each starts dim, flares white-hot with a wide glow, then
-  settles to a steady warm glow. The stagger is in globals.css (.star).
+  settles to a steady warm glow, powers down and goes again on a loop.
+  The stagger and timing are in globals.css (.star).
 */
 function PoweredStars() {
   const ref = useRef<HTMLSpanElement>(null);

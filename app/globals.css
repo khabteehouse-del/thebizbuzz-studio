@@ -360,3 +360,167 @@ body {
     animation: none;
   }
 }
+
+/*
+  Review stars that power up one by one (see PoweredStars in tracks.tsx).
+  Dim and unlit until the card is in view, then each star flares and
+  settles into a steady glow, 0.22s apart, and the whole sequence loops.
+*/
+.star {
+  display: inline-block;
+  color: #fbbf24;
+  opacity: 0.18;
+}
+
+.star-lit {
+  animation: star-power 4.5s cubic-bezier(0.22, 1, 0.36, 1) calc(var(--i) * 0.22s) infinite both;
+}
+
+/*
+  One 4.5s cycle per star: dim, flare, settle into a steady glow, hold,
+  then power down so the next lap can start. The 0.22s stagger above
+  keeps them lighting left to right on every lap.
+*/
+@keyframes star-power {
+  0% {
+    opacity: 0.18;
+    transform: scale(0.85);
+    text-shadow: 0 0 0 rgba(251, 191, 36, 0);
+  }
+  8% {
+    opacity: 1;
+    transform: scale(1.35);
+    text-shadow:
+      0 0 10px #fff6c8,
+      0 0 22px rgba(251, 191, 36, 0.95),
+      0 0 40px rgba(251, 191, 36, 0.6);
+  }
+  18% {
+    opacity: 1;
+    transform: scale(1);
+    text-shadow: 0 0 8px rgba(251, 191, 36, 0.6);
+  }
+  78% {
+    opacity: 1;
+    transform: scale(1);
+    text-shadow: 0 0 8px rgba(251, 191, 36, 0.6);
+  }
+  92%,
+  100% {
+    opacity: 0.18;
+    transform: scale(0.85);
+    text-shadow: 0 0 0 rgba(251, 191, 36, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .star {
+    opacity: 1;
+    text-shadow: 0 0 8px rgba(251, 191, 36, 0.6);
+  }
+  .star-lit {
+    animation: none;
+  }
+}
+
+/*
+  Track card icons (see AnimatedPin and AnimatedLayers in tracks.tsx).
+  Everything loops and everything is transform or opacity.
+*/
+.pin-body {
+  animation: pin-hop 3.6s ease-in-out infinite;
+}
+.pin-dot,
+.pin-ripple {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.pin-dot {
+  animation: pin-dot 3.6s ease-in-out infinite;
+}
+.pin-ripple {
+  opacity: 0;
+  animation: pin-ripple 3.6s ease-out infinite;
+}
+
+@keyframes pin-hop {
+  0%, 46%, 100% { transform: translateY(0); }
+  15% { transform: translateY(-2.4px); }
+  30% { transform: translateY(0); }
+  38% { transform: translateY(-0.8px); }
+}
+@keyframes pin-dot {
+  0%, 100% { transform: scale(1); }
+  30% { transform: scale(1.4); }
+  45% { transform: scale(1); }
+}
+@keyframes pin-ripple {
+  0%, 28% { opacity: 0; transform: scale(0.3); }
+  32% { opacity: 0.9; }
+  100% { opacity: 0; transform: scale(2.6); }
+}
+
+.layer-top {
+  animation: layer-top 4.2s ease-in-out infinite;
+}
+.layer-bot {
+  animation: layer-bot 4.2s ease-in-out infinite;
+}
+@keyframes layer-top {
+  0%, 15%, 70%, 100% { transform: translateY(0); }
+  35%, 52% { transform: translateY(-2.2px); }
+}
+@keyframes layer-bot {
+  0%, 15%, 70%, 100% { transform: translateY(0); }
+  35%, 52% { transform: translateY(2.2px); }
+}
+
+/*
+  The small dash beside each service lights up in turn, top to bottom,
+  then fades, and the run repeats.
+*/
+.dash-glow {
+  transform-origin: left center;
+  opacity: 0.4;
+  animation: dash-glow 4s ease-in-out calc(var(--i) * 0.35s) infinite;
+}
+@keyframes dash-glow {
+  0%, 55%, 100% { opacity: 0.4; transform: scaleX(1); box-shadow: 0 0 0 transparent; }
+  12% { opacity: 1; transform: scaleX(1.7); box-shadow: 0 0 8px var(--mark), 0 0 16px var(--mark); }
+  30% { opacity: 0.85; transform: scaleX(1.25); box-shadow: 0 0 5px var(--mark); }
+}
+
+/*
+  Service card icons (services.tsx). Thirteen different lucide icons, so
+  one effect that suits any shape: each icon draws itself, holds with a
+  soft glow in its colour, erases, and goes again. Cards start 0.4s apart
+  (--i is the card index) so they do not all move at once.
+  Dash length 80 is longer than any stroke in a 24px icon.
+*/
+.svc-icon svg {
+  animation: svc-glow 5s ease-in-out calc(var(--i) * 0.4s) infinite both;
+}
+.svc-icon svg * {
+  stroke-dasharray: 80;
+  animation: svc-draw 5s ease-in-out calc(var(--i) * 0.4s) infinite both;
+}
+@keyframes svc-draw {
+  0% { stroke-dashoffset: 80; }
+  20%, 78% { stroke-dashoffset: 0; }
+  92%, 100% { stroke-dashoffset: -80; }
+}
+@keyframes svc-glow {
+  0%, 100% { filter: drop-shadow(0 0 0 transparent); }
+  20% { filter: drop-shadow(0 0 6px var(--mark)); }
+  30%, 78% { filter: drop-shadow(0 0 3px var(--mark)); }
+  92% { filter: drop-shadow(0 0 0 transparent); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pin-body, .pin-dot, .pin-ripple, .layer-top, .layer-bot, .dash-glow,
+  .svc-icon svg, .svc-icon svg * {
+    animation: none;
+  }
+  .svc-icon svg * { stroke-dasharray: none; }
+  .dash-glow { opacity: 0.85; }
+}

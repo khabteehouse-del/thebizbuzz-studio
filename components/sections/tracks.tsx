@@ -1,9 +1,11 @@
 "use client";
 
+import { useRef } from "react";
+import { useInView } from "motion/react";
 import Link from "next/link";
 import Image from "next/image";
-import { MapPin, Layers } from "lucide-react";
 import { Reveal } from "@/components/shared/reveal";
+import { projects } from "@/data/projects";
 
 /*
   The fork. The most important section on the page.
@@ -24,11 +26,94 @@ import { Reveal } from "@/components/shared/reveal";
   it opens the Google Maps URL in a new tab via window.open instead.
 */
 
+/*
+  Five stars that power up one at a time when the review card scrolls
+  into view: each starts dim, flares white-hot with a wide glow, then
+  settles to a steady warm glow, powers down and goes again on a loop.
+  The stagger and timing are in globals.css (.star).
+*/
+function PoweredStars() {
+  const ref = useRef<HTMLSpanElement>(null);
+  const lit = useInView(ref, { once: true, amount: 0.8 });
+
+  return (
+    <span ref={ref} className="flex items-center gap-1" aria-hidden="true">
+      {Array.from({ length: 5 }).map((_, i) => (
+        <span
+          key={i}
+          className={`star text-lg leading-none ${lit ? "star-lit" : ""}`}
+          style={{ "--i": i } as React.CSSProperties}
+        >
+          ★
+        </span>
+      ))}
+    </span>
+  );
+}
+
+type IconProps = { size?: number; strokeWidth?: number };
+
+/*
+  The two track icons, drawn here instead of imported so their parts can
+  move on their own. Same shapes as the lucide MapPin and Layers they
+  replace. All motion is transform and opacity in globals.css (.pin-*,
+  .layer-*), looping, and off under reduced motion.
+
+  Pin: hops, lands, and a ripple spreads from its tip.
+  Layers: the top and bottom sheets slide apart, then stack back.
+*/
+function AnimatedPin({ size = 19, strokeWidth = 1.6 }: IconProps) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={strokeWidth}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      overflow="visible"
+      aria-hidden="true"
+    >
+      <ellipse className="pin-ripple" cx="12" cy="22" rx="4" ry="1.2" />
+      <g className="pin-body">
+        <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
+        <circle className="pin-dot" cx="12" cy="10" r="3" />
+      </g>
+    </svg>
+  );
+}
+
+function AnimatedLayers({ size = 19, strokeWidth = 1.6 }: IconProps) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={strokeWidth}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      overflow="visible"
+      aria-hidden="true"
+    >
+      <path
+        className="layer-top"
+        d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"
+      />
+      <path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65" />
+      <path className="layer-bot" d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65" />
+    </svg>
+  );
+}
+
 const doors = [
   {
     id: "local",
     numeral: "01",
-    icon: MapPin,
+    icon: AnimatedPin,
     eyebrow: "Local track",
     title: "For local businesses",
     line: "Get found by people nearby who are ready to buy.",
@@ -49,6 +134,7 @@ const doors = [
       count: 40,
       href: "https://www.google.com/maps/place/Sadat+Transport+%26+Contracting+General/@24.369346,54.4996095,17z",
     },
+    featuredProject: null,
     cta: "See local services",
     href: "#local-services",
     mark: "#4fd1c5",
@@ -58,7 +144,7 @@ const doors = [
   {
     id: "studio",
     numeral: "02",
-    icon: Layers,
+    icon: AnimatedLayers,
     eyebrow: "Studio track",
     title: "For growing brands",
     line: "Build the brand and the systems behind it.",
@@ -72,6 +158,8 @@ const doors = [
     footnote: "Scoped projects with a phase schedule up front",
     tool: null,
     review: null,
+    /* Real project from data/projects.ts, shown where the local card has its review */
+    featuredProject: "fluxorx",
     cta: "See studio services",
     href: "#studio-services",
     mark: "#8b9dfa",
@@ -184,14 +272,21 @@ export function Tracks() {
                     </p>
 
                     <ul className="mt-9 grid gap-2.5 border-t border-paper/10 pt-8">
-                      {door.points.map((point) => (
+                      {door.points.map((point, pointIndex) => (
                         <li
                           key={point}
                           className="flex items-start gap-3 text-sm text-paper/70"
                         >
                           <span
-                            className="mt-2 h-px w-3 shrink-0"
-                            style={{ backgroundColor: door.mark }}
+                            aria-hidden="true"
+                            className="dash-glow mt-2 h-px w-3 shrink-0"
+                            style={
+                              {
+                                backgroundColor: door.mark,
+                                "--mark": door.mark,
+                                "--i": pointIndex,
+                              } as React.CSSProperties
+                            }
                           />
                           {point}
                         </li>
@@ -240,14 +335,7 @@ export function Tracks() {
                         className="mt-4 block w-fit cursor-pointer rounded-[3px] border border-[#fbbf24]/30 bg-[#fbbf24]/[0.07] px-4 py-3.5 transition-colors duration-300 hover:bg-[#fbbf24]/[0.12]"
                       >
                         <div className="flex items-center gap-1">
-                          {Array.from({ length: 5 }).map((_, i) => (
-                            <span
-                              key={i}
-                              className="text-lg leading-none text-[#fbbf24] drop-shadow-[0_0_6px_rgba(251,191,36,0.5)]"
-                            >
-                              ★
-                            </span>
-                          ))}
+                          <PoweredStars />
                           <span className="ml-1.5 text-sm font-medium text-paper">
                             {door.review.rating}
                           </span>
@@ -264,7 +352,70 @@ export function Tracks() {
                       </div>
                     )}
 
-                    <span className="mt-auto flex items-center gap-3 pt-8 text-xs uppercase tracking-[0.12em] text-paper">
+                    {door.featuredProject && (() => {
+                      const project = projects.find(
+                        (p) => p.id === door.featuredProject
+                      );
+                      if (!project) return null;
+
+                      /*
+                        Sits at the bottom of the card, directly above the
+                        call to action, at roughly the height of the local
+                        card's tool button plus review box, so the two cards
+                        line up across. mt-auto pushes it down; the CTA
+                        below drops its own mt-auto when this is present.
+                      */
+                      return (
+                        <div
+                          className="relative mt-8 h-48 w-full max-w-[29.5rem] overflow-hidden rounded-[3px] border md:mt-auto"
+                          style={{ borderColor: `${door.mark}40` }}
+                        >
+                          <Image
+                            src="/images/work/fluxorx-phase2.jpg"
+                            alt={`${project.name} architecture and deployment overview`}
+                            fill
+                            sizes="(min-width: 768px) 30rem, 92vw"
+                            className="object-cover object-[50%_35%]"
+                          />
+                          <div
+                            aria-hidden="true"
+                            className="absolute inset-0 bg-gradient-to-t from-ink via-ink/70 to-transparent"
+                          />
+                          <div className="absolute inset-x-0 bottom-0 p-4">
+                            <p
+                              className="text-[0.6875rem] uppercase tracking-[0.14em]"
+                              style={{ color: door.mark }}
+                            >
+                              Recent build
+                            </p>
+                            <p className="mt-1 font-display text-lg font-medium leading-tight text-paper">
+                              {project.name}
+                              <span className="ml-2 text-xs font-normal text-paper/60">
+                                {project.category}
+                              </span>
+                            </p>
+                            <p className="mt-1.5 flex flex-wrap gap-x-4 gap-y-0.5 text-xs">
+                              {project.stats.slice(0, 2).map((stat) => (
+                                <span key={stat.label}>
+                                  <span className="font-medium text-paper">
+                                    {stat.value}
+                                  </span>{" "}
+                                  <span className="text-paper/55">
+                                    {stat.label.toLowerCase()}
+                                  </span>
+                                </span>
+                              ))}
+                            </p>
+                          </div>
+                        </div>
+                      );
+                    })()}
+
+                    <span
+                      className={`flex items-center gap-3 pt-8 text-xs uppercase tracking-[0.12em] text-paper ${
+                        door.featuredProject ? "" : "mt-auto"
+                      }`}
+                    >
                       {door.cta}
                       <span
                         className="h-px w-6 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:w-12"

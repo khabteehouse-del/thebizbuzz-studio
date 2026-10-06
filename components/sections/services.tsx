@@ -49,12 +49,16 @@ function Tile({
         <div className="relative">
           <div className="flex items-center justify-between gap-4">
             <span
-              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[3px] border transition-colors duration-500"
-              style={{
-                borderColor: `${service.mark}55`,
-                color: service.mark,
-                backgroundColor: isHovered ? `${service.mark}1a` : "transparent",
-              }}
+              className="svc-icon flex h-10 w-10 shrink-0 items-center justify-center rounded-[3px] border transition-colors duration-500"
+              style={
+                {
+                  borderColor: `${service.mark}55`,
+                  color: service.mark,
+                  backgroundColor: isHovered ? `${service.mark}1a` : "transparent",
+                  "--mark": service.mark,
+                  "--i": index,
+                } as React.CSSProperties
+              }
             >
               <service.icon size={18} strokeWidth={1.6} />
             </span>
@@ -85,17 +89,21 @@ function Tile({
           </p>
 
           <ul className="mt-7 space-y-2.5">
-            {service.capabilities.map((item) => (
+            {service.capabilities.map((item, k) => (
               <li
                 key={item}
                 className="flex items-start gap-3 text-sm text-paper/60 transition-colors duration-500 group-hover:text-paper/85"
               >
                 <span
-                  className="mt-2 h-px w-3 shrink-0 transition-opacity duration-500"
-                  style={{
-                    backgroundColor: service.mark,
-                    opacity: isHovered ? 1 : 0.7,
-                  }}
+                  aria-hidden="true"
+                  className="dash-glow mt-2 h-px w-3 shrink-0"
+                  style={
+                    {
+                      backgroundColor: service.mark,
+                      "--mark": service.mark,
+                      "--i": k,
+                    } as React.CSSProperties
+                  }
                 />
                 {item}
               </li>

@@ -612,3 +612,31 @@ body {
     display: none;
   }
 }
+
+/*
+  iPhone and iPad rendering (WebKit on iOS only; every other browser is
+  untouched, and nothing changes visually).
+
+  The whole page sits inside one wrapper forced onto its own layer
+  (will-change and a transform). On iOS that makes a single layer as tall
+  as the entire page, and Safari cannot paint it fast enough while
+  scrolling, so content arrives late and cards show cut off. Dropping the
+  forced layer on iOS lets Safari tile the page normally. As a side effect
+  the fixed pieces (grain, nav) become properly viewport-fixed, which is
+  how they were designed to work.
+
+  Animations in a section that is off screen are also paused there
+  (OffscreenPause sets data-offscreen on each section).
+*/
+@supports (-webkit-touch-callout: none) {
+  .page-wrap {
+    will-change: auto !important;
+    transform: none !important;
+  }
+
+  section[data-offscreen] *,
+  section[data-offscreen] *::before,
+  section[data-offscreen] *::after {
+    animation-play-state: paused !important;
+  }
+}

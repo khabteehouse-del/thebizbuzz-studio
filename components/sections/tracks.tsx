@@ -358,48 +358,64 @@ export function Tracks() {
                       );
                       if (!project) return null;
 
+                      /*
+                        Sits at the bottom of the card, directly above the
+                        call to action, at roughly the height of the local
+                        card's tool button plus review box, so the two cards
+                        line up across. mt-auto pushes it down; the CTA
+                        below drops its own mt-auto when this is present.
+                      */
                       return (
                         <div
-                          className="mt-5 w-full max-w-md rounded-[3px] border px-4 py-3.5"
-                          style={{
-                            borderColor: `${door.mark}40`,
-                            backgroundColor: `${door.mark}12`,
-                          }}
+                          className="relative mt-8 h-48 w-full max-w-[29.5rem] overflow-hidden rounded-[3px] border md:mt-auto"
+                          style={{ borderColor: `${door.mark}40` }}
                         >
-                          <div className="min-w-0">
+                          <Image
+                            src="/images/work/fluxorx-phase2.jpg"
+                            alt={`${project.name} architecture and deployment overview`}
+                            fill
+                            sizes="(min-width: 768px) 30rem, 92vw"
+                            className="object-cover object-[50%_35%]"
+                          />
+                          <div
+                            aria-hidden="true"
+                            className="absolute inset-0 bg-gradient-to-t from-ink via-ink/70 to-transparent"
+                          />
+                          <div className="absolute inset-x-0 bottom-0 p-4">
                             <p
                               className="text-[0.6875rem] uppercase tracking-[0.14em]"
                               style={{ color: door.mark }}
                             >
                               Recent build
                             </p>
-                            <p className="mt-1.5 font-display text-lg font-medium leading-tight text-paper">
+                            <p className="mt-1 font-display text-lg font-medium leading-tight text-paper">
                               {project.name}
+                              <span className="ml-2 text-xs font-normal text-paper/60">
+                                {project.category}
+                              </span>
                             </p>
-                            <p className="text-xs text-paper/55">
-                              {project.category}
-                            </p>
-                            <dl className="mt-3 grid gap-1.5">
+                            <p className="mt-1.5 flex flex-wrap gap-x-4 gap-y-0.5 text-xs">
                               {project.stats.slice(0, 2).map((stat) => (
-                                <div
-                                  key={stat.label}
-                                  className="flex items-baseline gap-2 text-xs"
-                                >
-                                  <dt className="font-medium text-paper">
+                                <span key={stat.label}>
+                                  <span className="font-medium text-paper">
                                     {stat.value}
-                                  </dt>
-                                  <dd className="text-paper/50">
+                                  </span>{" "}
+                                  <span className="text-paper/55">
                                     {stat.label.toLowerCase()}
-                                  </dd>
-                                </div>
+                                  </span>
+                                </span>
                               ))}
-                            </dl>
+                            </p>
                           </div>
                         </div>
                       );
                     })()}
 
-                    <span className="mt-auto flex items-center gap-3 pt-8 text-xs uppercase tracking-[0.12em] text-paper">
+                    <span
+                      className={`flex items-center gap-3 pt-8 text-xs uppercase tracking-[0.12em] text-paper ${
+                        door.featuredProject ? "" : "mt-auto"
+                      }`}
+                    >
                       {door.cta}
                       <span
                         className="h-px w-6 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:w-12"

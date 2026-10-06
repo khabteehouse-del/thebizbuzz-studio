@@ -612,3 +612,13 @@ body {
     display: none;
   }
 }
+
+/* TEST BRANCH (do not merge): all blur effects off, to check iPhone rendering */
+[class*="blur-["],
+[class*="blur-xl"] {
+  display: none !important;
+}
+[class*="backdrop-blur"] {
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+}

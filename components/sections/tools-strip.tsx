@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Button } from "@/components/shared/button";
 import { Reveal } from "@/components/shared/reveal";
 import { ScorePreview } from "@/components/shared/score-preview";
 
@@ -85,23 +85,9 @@ export function ToolsStrip() {
               </ul>
             </div>
 
-            <Link
-              href="/tools/gbp-check"
-              className="fuse-btn group/btn relative isolate inline-flex h-[3.1rem] w-full shrink-0 items-center justify-center gap-3 rounded-[2px] px-7 text-[0.75rem] font-semibold uppercase tracking-[0.12em] text-ink shadow-[0_0_32px_-4px_rgba(79,209,197,0.6)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_44px_-2px_rgba(79,209,197,0.85)] sm:w-auto md:h-[3.4rem] md:px-10 md:text-[0.8125rem]"
-              style={
-                {
-                  backgroundColor: "#4fd1c5",
-                  "--fuse-color": "#ffffff",
-                  "--fuse-duration": "6s",
-                } as React.CSSProperties
-              }
-            >
-              <span className="relative z-10">Run the check</span>
-              <span
-                aria-hidden="true"
-                className="relative z-10 h-px w-4 bg-ink transition-all duration-400 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover/btn:w-7"
-              />
-            </Link>
+            <Button href="/tools/gbp-check" size="lg" className="w-full shrink-0 sm:w-auto">
+              Run the check
+            </Button>
           </div>
         </Reveal>
       </div>

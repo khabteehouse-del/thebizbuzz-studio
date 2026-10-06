@@ -4,7 +4,6 @@ import { useRef } from "react";
 import { useInView } from "motion/react";
 import Link from "next/link";
 import Image from "next/image";
-import { MapPin, Layers } from "lucide-react";
 import { Reveal } from "@/components/shared/reveal";
 
 /*
@@ -51,11 +50,69 @@ function PoweredStars() {
   );
 }
 
+type IconProps = { size?: number; strokeWidth?: number };
+
+/*
+  The two track icons, drawn here instead of imported so their parts can
+  move on their own. Same shapes as the lucide MapPin and Layers they
+  replace. All motion is transform and opacity in globals.css (.pin-*,
+  .layer-*), looping, and off under reduced motion.
+
+  Pin: hops, lands, and a ripple spreads from its tip.
+  Layers: the top and bottom sheets slide apart, then stack back.
+*/
+function AnimatedPin({ size = 19, strokeWidth = 1.6 }: IconProps) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={strokeWidth}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      overflow="visible"
+      aria-hidden="true"
+    >
+      <ellipse className="pin-ripple" cx="12" cy="22" rx="4" ry="1.2" />
+      <g className="pin-body">
+        <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
+        <circle className="pin-dot" cx="12" cy="10" r="3" />
+      </g>
+    </svg>
+  );
+}
+
+function AnimatedLayers({ size = 19, strokeWidth = 1.6 }: IconProps) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={strokeWidth}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      overflow="visible"
+      aria-hidden="true"
+    >
+      <path
+        className="layer-top"
+        d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"
+      />
+      <path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65" />
+      <path className="layer-bot" d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65" />
+    </svg>
+  );
+}
+
 const doors = [
   {
     id: "local",
     numeral: "01",
-    icon: MapPin,
+    icon: AnimatedPin,
     eyebrow: "Local track",
     title: "For local businesses",
     line: "Get found by people nearby who are ready to buy.",
@@ -85,7 +142,7 @@ const doors = [
   {
     id: "studio",
     numeral: "02",
-    icon: Layers,
+    icon: AnimatedLayers,
     eyebrow: "Studio track",
     title: "For growing brands",
     line: "Build the brand and the systems behind it.",
@@ -211,14 +268,21 @@ export function Tracks() {
                     </p>
 
                     <ul className="mt-9 grid gap-2.5 border-t border-paper/10 pt-8">
-                      {door.points.map((point) => (
+                      {door.points.map((point, pointIndex) => (
                         <li
                           key={point}
                           className="flex items-start gap-3 text-sm text-paper/70"
                         >
                           <span
-                            className="mt-2 h-px w-3 shrink-0"
-                            style={{ backgroundColor: door.mark }}
+                            aria-hidden="true"
+                            className="dash-glow mt-2 h-px w-3 shrink-0"
+                            style={
+                              {
+                                backgroundColor: door.mark,
+                                "--mark": door.mark,
+                                "--i": pointIndex,
+                              } as React.CSSProperties
+                            }
                           />
                           {point}
                         </li>

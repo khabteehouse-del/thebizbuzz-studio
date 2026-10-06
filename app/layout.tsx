@@ -7,6 +7,7 @@ import { SmoothScroll } from "@/components/shared/smooth-scroll";
 import { Cursor } from "@/components/shared/cursor";
 import { Grain } from "@/components/shared/grain";
 import { GbpWidget } from "@/components/tools/gbp-widget";
+import { OffscreenPause } from "@/components/shared/offscreen-pause";
 import { site } from "@/data/site";
 import "./globals.css";
 
@@ -126,6 +127,7 @@ export default function RootLayout({
 
         <div style={{ willChange: "transform, opacity", transform: "translateZ(0)" }}>
           <SmoothScroll />
+          <OffscreenPause />
           <Grain />
           <Cursor />
           <Nav />

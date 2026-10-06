@@ -124,7 +124,8 @@ export default function RootLayout({
           />
         </noscript>
 
-        <div style={{ willChange: "transform, opacity", transform: "translateZ(0)" }}>
+        {/* TEST BRANCH: page wrapper without the forced layer, to check iPhone rendering */}
+        <div>
           <SmoothScroll />
           <Grain />
           <Cursor />

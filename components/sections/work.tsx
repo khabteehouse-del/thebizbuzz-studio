@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { projects } from "@/data/projects";
 import { Reveal } from "@/components/shared/reveal";
+import { DecodeText } from "@/components/shared/decode-text";
 
 export function Work() {
   return (
@@ -60,7 +61,7 @@ export function Work() {
                     <p className="section-label">{project.category}</p>
 
                     <h3 className="mt-6 font-display text-2xl font-medium tracking-[-0.03em] text-paper sm:text-3xl md:text-5xl">
-                      {project.name}
+                      <DecodeText text={project.name} />
                     </h3>
 
                     <p className="mt-6 text-sm leading-relaxed text-paper/75 md:text-base">

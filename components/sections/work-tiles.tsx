@@ -66,6 +66,21 @@ function Tile({ project }: { project: Project }) {
       data-open={open ? "true" : "false"}
       className="work-tile group relative aspect-[16/10] cursor-pointer overflow-hidden rounded-xl border border-line bg-paper/[0.03] outline-none transition-[border-color,box-shadow,transform] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] focus-visible:border-accent [@media(hover:hover)]:hover:-translate-y-1 [@media(hover:hover)]:hover:border-paper/25 [@media(hover:hover)]:hover:shadow-[0_24px_60px_-24px_rgba(0,0,0,0.85)] md:aspect-[16/9]"
     >
+      {!project.image && (
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 flex items-center justify-center"
+          style={{
+            background:
+              "radial-gradient(circle at 50% 42%, rgba(79,209,197,0.22), transparent 60%), linear-gradient(135deg, #0d2a2b, #0a1a24)",
+          }}
+        >
+          <svg viewBox="0 0 24 24" className="h-20 w-20 text-[#4fd1c5]/70" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M12 21s7-6.2 7-11.2A7 7 0 0 0 5 9.8C5 14.8 12 21 12 21z" />
+            <circle cx="12" cy="10" r="2.6" />
+          </svg>
+        </div>
+      )}
       {project.image && (
         <Image
           src={project.image}

@@ -43,7 +43,8 @@ function Tile({ project }: { project: Project }) {
         }
         if (e.key === "Escape") setOpen(false);
       }}
-      className="group relative aspect-[16/10] cursor-pointer overflow-hidden rounded-xl border border-line bg-paper/[0.03] outline-none transition-[border-color,box-shadow,transform] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] focus-visible:border-accent [@media(hover:hover)]:hover:-translate-y-1 [@media(hover:hover)]:hover:border-paper/25 [@media(hover:hover)]:hover:shadow-[0_24px_60px_-24px_rgba(0,0,0,0.85)] md:aspect-[16/9]"
+      data-open={open ? "true" : "false"}
+      className="work-tile group relative aspect-[16/10] cursor-pointer overflow-hidden rounded-xl border border-line bg-paper/[0.03] outline-none transition-[border-color,box-shadow,transform] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] focus-visible:border-accent [@media(hover:hover)]:hover:-translate-y-1 [@media(hover:hover)]:hover:border-paper/25 [@media(hover:hover)]:hover:shadow-[0_24px_60px_-24px_rgba(0,0,0,0.85)] md:aspect-[16/9]"
     >
       {project.image && (
         <Image
@@ -82,23 +83,19 @@ function Tile({ project }: { project: Project }) {
       </div>
 
       {/* Detail panel */}
-      <div
-        className={`absolute inset-0 flex flex-col overflow-y-auto bg-[#0a0e1a]/[0.97] p-5 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] md:p-6 [@media(hover:hover)]:group-hover:translate-y-0 group-focus-within:translate-y-0 ${
-          open ? "translate-y-0" : "translate-y-full"
-        }`}
-      >
-        <p className="section-label">{project.category}</p>
-        <h3 className="mt-2 font-display text-lg font-medium tracking-[-0.02em] text-paper md:text-xl">
+      <div className="work-panel absolute inset-0 flex flex-col overflow-y-auto bg-[#0a0e1a]/[0.97] p-5 md:p-6">
+        <p className="section-label panel-item" style={{ "--i": 0 } as React.CSSProperties}>{project.category}</p>
+        <h3 style={{ "--i": 1 } as React.CSSProperties} className="panel-item mt-2 font-display text-lg font-medium tracking-[-0.02em] text-paper md:text-xl">
           {project.name}
         </h3>
-        <p className="mt-3 text-[0.8125rem] leading-relaxed text-paper/75">
+        <p style={{ "--i": 2 } as React.CSSProperties} className="panel-item mt-3 text-[0.8125rem] leading-relaxed text-paper/75">
           {project.problem}
         </p>
-        <p className="mt-2 text-[0.8125rem] leading-relaxed text-muted">
+        <p style={{ "--i": 3 } as React.CSSProperties} className="panel-item mt-2 text-[0.8125rem] leading-relaxed text-muted">
           {project.solution}
         </p>
 
-        <ul className="mt-3 flex flex-wrap gap-1.5">
+        <ul style={{ "--i": 4 } as React.CSSProperties} className="panel-item mt-3 flex flex-wrap gap-1.5">
           {project.stack.map((tech) => (
             <li
               key={tech}
@@ -110,7 +107,7 @@ function Tile({ project }: { project: Project }) {
         </ul>
 
         {project.stats.length > 0 && (
-          <dl className="mt-3 flex flex-wrap gap-x-6 gap-y-2 border-t border-line pt-3">
+          <dl style={{ "--i": 5 } as React.CSSProperties} className="panel-item mt-3 flex flex-wrap gap-x-6 gap-y-2 border-t border-line pt-3">
             {project.stats.map((stat) => (
               <div key={stat.label}>
                 <dt className="text-[0.5625rem] uppercase tracking-[0.1em] text-muted/70">
@@ -124,7 +121,7 @@ function Tile({ project }: { project: Project }) {
           </dl>
         )}
 
-        <div className="mt-auto flex flex-wrap items-center gap-x-5 gap-y-1 pt-4 text-sm">
+        <div style={{ "--i": 6 } as React.CSSProperties} className="panel-item mt-auto flex flex-wrap items-center gap-x-5 gap-y-1 pt-4 text-sm">
           {project.live && (
             <a
               href={project.live}

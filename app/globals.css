@@ -612,3 +612,65 @@ body {
     display: none;
   }
 }
+
+/*
+  Work tiles: the detail panel eases up over the picture and its lines
+  arrive one after another, so pointing at a tile feels smooth instead of
+  snapping open. Touch devices open it with a tap, same motion.
+*/
+.work-panel {
+  transform: translateY(32%);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.6s ease,
+    visibility 0s linear 0.85s;
+}
+
+.panel-item {
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: 0s;
+}
+
+.work-tile[data-open="true"] .work-panel,
+.work-tile:focus-within .work-panel {
+  transform: none;
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0s;
+}
+
+.work-tile[data-open="true"] .panel-item,
+.work-tile:focus-within .panel-item {
+  opacity: 1;
+  transform: none;
+  transition-delay: calc(0.2s + var(--i, 0) * 0.07s);
+}
+
+@media (hover: hover) {
+  .work-tile:hover .work-panel {
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0.06s, 0.06s, 0s;
+  }
+
+  .work-tile:hover .panel-item {
+    opacity: 1;
+    transform: none;
+    transition-delay: calc(0.22s + var(--i, 0) * 0.07s);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .work-panel,
+  .panel-item {
+    transition-duration: 0.01s;
+    transition-delay: 0s !important;
+  }
+}

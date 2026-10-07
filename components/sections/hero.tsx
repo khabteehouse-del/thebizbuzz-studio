@@ -138,7 +138,7 @@ export function Hero() {
                 loop
                 playsInline
                 preload="auto"
-                poster="/images/hero-poster.jpg"
+                poster="/images/hero-poster.webp"
                 src={videoSrc}
                 className="hero-video pointer-events-none absolute left-1/2 top-0 h-full w-full max-w-[2000px] -translate-x-1/2 object-cover opacity-40"
               />
@@ -146,7 +146,7 @@ export function Hero() {
               <div
                 aria-hidden="true"
                 className="pointer-events-none absolute inset-0 bg-cover bg-center opacity-40"
-                style={{ backgroundImage: "url(/images/hero-poster.jpg)" }}
+                style={{ backgroundImage: "url(/images/hero-poster.webp)" }}
               />
             )}
 

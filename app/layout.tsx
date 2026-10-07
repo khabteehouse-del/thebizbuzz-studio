@@ -94,18 +94,11 @@ export default function RootLayout({
           })(window,document,'script','dataLayer','GTM-NR2FWM8L');`}
         </Script>
 
-        {/* Google tag (gtag.js) for GA4 */}
-        <Script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-CKHWKZ10L3"
-          strategy="afterInteractive"
-        />
-        <Script id="ga4" strategy="afterInteractive">
-          {`window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-CKHWKZ10L3');`}
-        </Script>
+        {/*
+          GA4 is configured inside Tag Manager, so it is not loaded a second
+          time here. Loading it directly as well counted every visit twice
+          and added about 175 KB of script.
+        */}
 
         {/* Organization schema */}
         <script

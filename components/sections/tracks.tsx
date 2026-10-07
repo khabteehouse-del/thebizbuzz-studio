@@ -293,7 +293,7 @@ export function Tracks() {
                       ))}
                     </ul>
 
-                    <p className="mt-8 text-xs leading-relaxed text-paper/40">
+                    <p className="mt-8 text-xs leading-relaxed text-paper/65">
                       {door.footnote}
                     </p>
 
@@ -346,7 +346,7 @@ export function Tracks() {
                         <p className="mt-2 max-w-xs text-xs italic leading-relaxed text-paper/60">
                           &ldquo;{door.review.quote}&rdquo;
                         </p>
-                        <p className="mt-2 text-[0.6875rem] uppercase tracking-[0.1em] text-paper/40">
+                        <p className="mt-2 text-[0.6875rem] uppercase tracking-[0.1em] text-paper/65">
                           {door.review.client}, verified on Google
                         </p>
                       </div>

@@ -686,3 +686,129 @@ body {
   width: 0;
   height: 0;
 }
+
+/*
+  Work tile names, old tube TV style.
+
+  Resting: a faint red and blue fringe on the letter edges, like colour
+  bleed on a CRT. Lit (one name at a time, or on hover): a soft cyan
+  phosphor halo, a quick flicker, and a scanline bar sweeping down.
+  First appearance: a power-on, a thin bright line that stretches open.
+*/
+.crt-title {
+  position: relative;
+  display: inline-block;
+  clip-path: inset(-0.6em -0.6em -0.6em -0.6em);
+  text-shadow:
+    -0.6px 0 rgba(255, 70, 90, 0.28),
+    0.6px 0 rgba(0, 210, 255, 0.3);
+  transition: text-shadow 0.9s ease;
+}
+
+.crt-title::after {
+  content: "";
+  position: absolute;
+  left: -0.2em;
+  right: -0.2em;
+  top: 0;
+  height: 0.55em;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(79, 209, 197, 0.32),
+    transparent
+  );
+  opacity: 0;
+  pointer-events: none;
+}
+
+.crt-title.is-lit,
+.crt-title:hover {
+  text-shadow:
+    -1px 0 rgba(255, 70, 90, 0.42),
+    1px 0 rgba(0, 220, 255, 0.5),
+    0 0 14px rgba(79, 209, 197, 0.55),
+    0 0 34px rgba(79, 209, 197, 0.25);
+  animation: crt-flicker 0.55s steps(1, end) 1;
+}
+
+.crt-title.is-lit::after,
+.crt-title:hover::after {
+  animation: crt-sweep 1.7s ease-in-out 1;
+}
+
+.crt-wait {
+  opacity: 0;
+}
+
+.crt-on {
+  transform-origin: 50% 55%;
+  animation: crt-power-on 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes crt-power-on {
+  0% {
+    opacity: 0;
+    transform: scale(0.15, 0.01);
+    text-shadow: 0 0 22px rgba(255, 255, 255, 0.95);
+  }
+  12% {
+    opacity: 1;
+    transform: scale(0.35, 0.012);
+    color: #fff;
+  }
+  38% {
+    opacity: 1;
+    transform: scale(1, 0.02);
+    text-shadow: 0 0 26px rgba(79, 209, 197, 0.95);
+  }
+  62% {
+    transform: scale(1, 1.1);
+    text-shadow: 0 0 20px rgba(79, 209, 197, 0.7);
+  }
+  80% {
+    transform: scale(1, 0.97);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1, 1);
+  }
+}
+
+@keyframes crt-flicker {
+  0% { opacity: 0.8; }
+  20% { opacity: 1; }
+  38% { opacity: 0.88; }
+  55% { opacity: 1; }
+  75% { opacity: 0.94; }
+  100% { opacity: 1; }
+}
+
+@keyframes crt-sweep {
+  0% {
+    opacity: 0;
+    transform: translateY(-60%);
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(160%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .crt-title,
+  .crt-title::after {
+    animation: none !important;
+    transition: none;
+  }
+
+  .crt-wait {
+    opacity: 1;
+  }
+}

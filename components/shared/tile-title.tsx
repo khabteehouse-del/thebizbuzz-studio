@@ -1,29 +1,38 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { DecodeText } from "@/components/shared/decode-text";
 
 /*
-  The project name on a work tile.
+  The project name on a work tile, styled like an old tube TV.
 
-  First time it scrolls into view the letters rise and fade in one after
-  another, a calm reveal that stays easy on the eye when there are many
-  tiles. After that it is plain text, and pointing at it plays the
-  original decode effect as a small reward.
+  1. Power-on: the first time the name scrolls into view it appears as a
+     thin bright line that stretches open into the full text, then settles.
+  2. Phosphor glow: names carry a faint red and blue fringe on the letter
+     edges. The parent lights one name at a time (lit), with a soft cyan
+     halo, a quick flicker and a scanline bar sweeping down it. Pointing at
+     a name lights it too.
 
-  Safe by design: the name is real text from the first paint, only hidden
+  Only text shadows, opacity and transforms are used, so it is light on
+  phones. The name is real text from the first paint; it is hidden only
   once the page is running and the name is still below the fold, and a
   timer forces it visible no matter what.
 */
-export function TileTitle({ text }: { text: string }) {
+export function TileTitle({
+  text,
+  lit = false,
+  delay = 0,
+}: {
+  text: string;
+  lit?: boolean;
+  delay?: number;
+}) {
   const ref = useRef<HTMLSpanElement>(null);
-  /* "idle": plain text, "wait": hidden below the fold, "show": revealing */
-  const [phase, setPhase] = useState<"idle" | "wait" | "show">("idle");
-  const [done, setDone] = useState(false);
+  /* "idle": plain text, "wait": hidden below the fold, "on": power-on, "done" */
+  const [phase, setPhase] = useState<"idle" | "wait" | "on" | "done">("idle");
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setDone(true);
+      setPhase("done");
       return;
     }
 
@@ -36,17 +45,18 @@ export function TileTitle({ text }: { text: string }) {
     };
 
     if (inView()) {
-      setDone(true);
+      setPhase("done");
       return;
     }
 
     setPhase("wait");
 
     let raf = 0;
+    let settle = 0;
     const reveal = () => {
-      setPhase("show");
+      setPhase("on");
       cleanup();
-      window.setTimeout(() => setDone(true), 1400);
+      settle = window.setTimeout(() => setPhase("done"), delay + 1300);
     };
     const check = () => {
       raf = 0;
@@ -65,42 +75,21 @@ export function TileTitle({ text }: { text: string }) {
 
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
-    return cleanup;
-  }, []);
-
-  if (done) {
-    return <DecodeText text={text} hoverOnly />;
-  }
-
-  const words = text.split(" ");
-  let index = 0;
+    return () => {
+      cleanup();
+      window.clearTimeout(settle);
+    };
+  }, [delay]);
 
   return (
-    <span ref={ref} aria-label={text}>
-      {words.map((word, w) => (
-        <span key={w} aria-hidden="true">
-          <span className="inline-block whitespace-nowrap">
-            {word.split("").map((ch) => {
-              const i = index++;
-              return (
-                <span
-                  key={i}
-                  className="inline-block"
-                  style={{
-                    opacity: phase === "wait" ? 0 : 1,
-                    transform:
-                      phase === "wait" ? "translateY(0.4em)" : "translateY(0)",
-                    transition: `opacity 0.6s ease ${i * 40}ms, transform 0.7s cubic-bezier(0.22,1,0.36,1) ${i * 40}ms`,
-                  }}
-                >
-                  {ch}
-                </span>
-              );
-            })}
-          </span>
-          {w < words.length - 1 ? " " : null}
-        </span>
-      ))}
+    <span
+      ref={ref}
+      className={`crt-title ${phase === "wait" ? "crt-wait" : ""} ${
+        phase === "on" ? "crt-on" : ""
+      } ${lit && phase === "done" ? "is-lit" : ""}`}
+      style={{ animationDelay: phase === "on" ? `${delay}ms` : undefined }}
+    >
+      {text}
     </span>
   );
 }

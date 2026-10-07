@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import type { Project } from "@/data/projects";
 import { Reveal } from "@/components/shared/reveal";
@@ -16,18 +16,71 @@ import { TileTitle } from "@/components/shared/tile-title";
   The text is always in the page, so nothing is hidden from search.
 */
 export function WorkTiles({ items }: { items: Project[] }) {
+  const gridRef = useRef<HTMLDivElement>(null);
+  const [lit, setLit] = useState(-1);
+
+  /* One name glows at a time, passing down the list while the grid is on
+     screen. Stopped for reduced motion and when the tab is hidden. */
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const grid = gridRef.current;
+    if (!grid || items.length === 0) return;
+
+    let timer = 0;
+    let n = -1;
+    const tick = () => {
+      if (document.hidden) return;
+      n = (n + 1) % items.length;
+      setLit(n);
+    };
+    const start = () => {
+      if (!timer) {
+        tick();
+        timer = window.setInterval(tick, 2600);
+      }
+    };
+    const stop = () => {
+      window.clearInterval(timer);
+      timer = 0;
+      setLit(-1);
+    };
+
+    let observer: IntersectionObserver | null = null;
+    try {
+      observer = new IntersectionObserver(
+        (entries) => (entries.some((e) => e.isIntersecting) ? start() : stop()),
+        { threshold: 0.1 }
+      );
+      observer.observe(grid);
+    } catch {
+      start();
+    }
+    return () => {
+      observer?.disconnect();
+      window.clearInterval(timer);
+    };
+  }, [items.length]);
+
   return (
-    <div className="grid gap-5 md:grid-cols-2 md:gap-6">
+    <div ref={gridRef} className="grid gap-5 md:grid-cols-2 md:gap-6">
       {items.map((project, index) => (
         <Reveal key={project.id} delay={(index % 2) * 0.08}>
-          <Tile project={project} />
+          <Tile project={project} lit={lit === index} order={index % 2} />
         </Reveal>
       ))}
     </div>
   );
 }
 
-function Tile({ project }: { project: Project }) {
+function Tile({
+  project,
+  lit,
+  order,
+}: {
+  project: Project;
+  lit: boolean;
+  order: number;
+}) {
   const [open, setOpen] = useState(false);
   const client = project.kind === "client";
 
@@ -36,7 +89,7 @@ function Tile({ project }: { project: Project }) {
       <header className="mb-3 flex items-start justify-between gap-4 px-1 md:mb-4">
         <div className="min-w-0">
           <h3 className="font-display text-2xl font-medium tracking-[-0.03em] text-paper md:text-3xl">
-            <TileTitle text={project.name} />
+            <TileTitle text={project.name} lit={lit} delay={order * 220} />
           </h3>
           <p className="mt-1.5 text-sm text-paper/60">{project.blurb}</p>
         </div>

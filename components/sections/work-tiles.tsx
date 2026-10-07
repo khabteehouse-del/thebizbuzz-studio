@@ -4,7 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import type { Project } from "@/data/projects";
 import { Reveal } from "@/components/shared/reveal";
-import { DecodeText } from "@/components/shared/decode-text";
+import { TileTitle } from "@/components/shared/tile-title";
 
 /*
   Landscape project tiles in a two-column grid.
@@ -36,7 +36,7 @@ function Tile({ project }: { project: Project }) {
       <header className="mb-3 flex items-start justify-between gap-4 px-1 md:mb-4">
         <div className="min-w-0">
           <h3 className="font-display text-2xl font-medium tracking-[-0.03em] text-paper md:text-3xl">
-            <DecodeText text={project.name} watch />
+            <TileTitle text={project.name} />
           </h3>
           <p className="mt-1.5 text-sm text-paper/60">{project.blurb}</p>
         </div>

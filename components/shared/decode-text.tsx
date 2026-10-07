@@ -20,6 +20,8 @@ type Props = {
     Used by the work tiles so the name always plays and never stays blank.
   */
   watch?: boolean;
+  /* Never plays by itself: the word is plain until you point at it */
+  hoverOnly?: boolean;
 };
 
 /*
@@ -38,7 +40,12 @@ type Props = {
   the server renders, and it is only hidden once the page is running, motion is
   allowed, and the word is off screen waiting to be played.
 */
-export function DecodeText({ text, className = "", watch = false }: Props) {
+export function DecodeText({
+  text,
+  className = "",
+  watch = false,
+  hoverOnly = false,
+}: Props) {
   const ref = useRef<HTMLSpanElement>(null);
   /* Plays once about a third of the word is on screen... */
   const inView = useInView(ref, { amount: 0.35 });
@@ -98,6 +105,7 @@ export function DecodeText({ text, className = "", watch = false }: Props) {
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     setArmed(true);
+    if (hoverOnly) return;
     setPrimed(true);
     setResolved(0);
     return () => {
@@ -107,11 +115,11 @@ export function DecodeText({ text, className = "", watch = false }: Props) {
 
   /* Fully off screen: reset so the next pass decodes again */
   useEffect(() => {
-    if (armed && !onScreen) setPrimed(true);
-  }, [armed, onScreen]);
+    if (armed && !hoverOnly && !onScreen) setPrimed(true);
+  }, [armed, hoverOnly, onScreen]);
 
   useEffect(() => {
-    if (armed && primed && inView) {
+    if (armed && !hoverOnly && primed && inView) {
       setPrimed(false);
       run();
     }
@@ -120,7 +128,7 @@ export function DecodeText({ text, className = "", watch = false }: Props) {
   /* Position check on scroll: plays when the word is on screen, re-arms
      once it has left, whatever the visibility observer reports */
   useEffect(() => {
-    if (!watch || !armed) return;
+    if (!watch || !armed || hoverOnly) return;
     let raf = 0;
 
     const check = () => {
@@ -154,7 +162,7 @@ export function DecodeText({ text, className = "", watch = false }: Props) {
       window.removeEventListener("resize", onScroll);
       if (raf) cancelAnimationFrame(raf);
     };
-  }, [watch, armed, run]);
+  }, [watch, armed, hoverOnly, run]);
 
   /* Hidden only while waiting off screen to be played */
   const hidden = armed && primed;

@@ -150,10 +150,10 @@ const doors = [
     line: "Brand, product and AI infrastructure, designed together.",
     body: "For companies past their first version. Identity, web and product surfaces and AI systems, scoped against written acceptance criteria and built to production standard, not demo standard.",
     points: [
-      "Brand identity and creative",
       "AI-integrated solutions",
-      "Growth marketing",
       "Web and product design",
+      "Growth marketing",
+      "Brand identity and creative",
     ],
     footnote: "Scoped projects with written acceptance criteria and a phase schedule up front",
     tool: null,

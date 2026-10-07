@@ -151,57 +151,6 @@ export const services: Service[] = [
 
   /* ---------------- Studio ---------------- */
   {
-    id: "brand",
-    track: "studio",
-    title: "Brand identity and creative",
-    summary:
-      "The system underneath the logo: naming, voice, colour, type and the rules that keep it consistent at every touchpoint.",
-    capabilities: [
-      "Identity systems and guidelines",
-      "Naming and messaging",
-      "Campaign and social creative",
-      "Presentation, print and packaging design",
-    ],
-    tint: "#211a33",
-    tintHover: "#2f2449",
-    mark: "#a98cf0",
-    icon: Palette,
-  },
-  {
-    id: "ugc-ads",
-    track: "studio",
-    title: "UGC ad content",
-    summary:
-      "Short-form, testimonial-style ad content built to perform on paid social, not polished brand films people skip past.",
-    capabilities: [
-      "Scripted and testimonial-style UGC",
-      "Short-form video ads",
-      "Hook-first editing for paid social",
-      "Variants built for A/B testing",
-    ],
-    tint: "#2a1c30",
-    tintHover: "#3a2744",
-    mark: "#e085d9",
-    icon: Clapperboard,
-  },
-  {
-    id: "ai-content",
-    track: "studio",
-    title: "AI content and video creation",
-    summary:
-      "AI-assisted writing and video production for teams that need volume without losing a single consistent voice, with review gates before anything ships.",
-    capabilities: [
-      "AI-assisted content writing",
-      "AI video generation and editing",
-      "Brand voice consistency at scale",
-      "Repurposing across formats and platforms",
-    ],
-    tint: "#15233a",
-    tintHover: "#1e304f",
-    mark: "#6fa8f5",
-    icon: Wand2,
-  },
-  {
     id: "ai",
     track: "studio",
     title: "AI-integrated solutions",
@@ -217,6 +166,23 @@ export const services: Service[] = [
     tintHover: "#1e2652",
     mark: "#7c8ff8",
     icon: Sparkles,
+  },
+  {
+    id: "geo-aeo",
+    track: "studio",
+    title: "Generative and answer engine optimization",
+    summary:
+      "Visibility inside AI answers and assistants, not just the results page: structured, citable content and monitoring of how models describe you.",
+    capabilities: [
+      "Generative engine optimization (GEO)",
+      "Answer engine optimization (AEO)",
+      "Structured content built for AI citation",
+      "Monitoring AI-driven visibility",
+    ],
+    tint: "#201a38",
+    tintHover: "#2c2450",
+    mark: "#b388f0",
+    icon: Radar,
   },
   {
     id: "growth",
@@ -236,21 +202,55 @@ export const services: Service[] = [
     icon: TrendingUp,
   },
   {
-    id: "geo-aeo",
+    id: "brand",
     track: "studio",
-    title: "Generative and answer engine optimization",
+    title: "Brand identity and creative",
     summary:
-      "Visibility inside AI answers and assistants, not just the results page: structured, citable content and monitoring of how models describe you.",
+      "The system underneath the logo: naming, voice, colour, type and the rules that keep it consistent at every touchpoint.",
     capabilities: [
-      "Generative engine optimization (GEO)",
-      "Answer engine optimization (AEO)",
-      "Structured content built for AI citation",
-      "Monitoring AI-driven visibility",
+      "Identity systems and guidelines",
+      "Naming and messaging",
+      "Campaign and social creative",
+      "Presentation, print and packaging design",
     ],
-    tint: "#201a38",
-    tintHover: "#2c2450",
-    mark: "#b388f0",
-    icon: Radar,
+    tint: "#211a33",
+    tintHover: "#2f2449",
+    mark: "#a98cf0",
+    icon: Palette,
+  },
+  {
+    id: "ai-content",
+    track: "studio",
+    title: "AI content and video creation",
+    summary:
+      "AI-assisted writing and video production for teams that need volume without losing a single consistent voice, with review gates before anything ships.",
+    capabilities: [
+      "AI-assisted content writing",
+      "AI video generation and editing",
+      "Brand voice consistency at scale",
+      "Repurposing across formats and platforms",
+    ],
+    tint: "#15233a",
+    tintHover: "#1e304f",
+    mark: "#6fa8f5",
+    icon: Wand2,
+  },
+  {
+    id: "ugc-ads",
+    track: "studio",
+    title: "UGC ad content",
+    summary:
+      "Short-form, testimonial-style ad content built to perform on paid social, not polished brand films people skip past.",
+    capabilities: [
+      "Scripted and testimonial-style UGC",
+      "Short-form video ads",
+      "Hook-first editing for paid social",
+      "Variants built for A/B testing",
+    ],
+    tint: "#2a1c30",
+    tintHover: "#3a2744",
+    mark: "#e085d9",
+    icon: Clapperboard,
   },
   {
     id: "web",

@@ -20,8 +20,6 @@ type Props = {
     Used by the work tiles so the name always plays and never stays blank.
   */
   watch?: boolean;
-  /* Half the time and no glow: a quick, soft flicker for lists of names */
-  quick?: boolean;
 };
 
 /*
@@ -40,14 +38,7 @@ type Props = {
   the server renders, and it is only hidden once the page is running, motion is
   allowed, and the word is off screen waiting to be played.
 */
-export function DecodeText({
-  text,
-  className = "",
-  watch = false,
-  quick = false,
-}: Props) {
-  const startMs = quick ? START_MS / 2 : START_MS;
-  const stepMs = quick ? STEP_MS / 2 : STEP_MS;
+export function DecodeText({ text, className = "", watch = false }: Props) {
   const ref = useRef<HTMLSpanElement>(null);
   /* Plays once about a third of the word is on screen... */
   const inView = useInView(ref, { amount: 0.35 });
@@ -83,7 +74,7 @@ export function DecodeText({
       const elapsed = now - begin;
       const done = Math.max(
         0,
-        Math.min(text.length, Math.floor((elapsed - startMs) / stepMs) + 1)
+        Math.min(text.length, Math.floor((elapsed - START_MS) / STEP_MS) + 1)
       );
       setResolved(done);
 
@@ -101,7 +92,7 @@ export function DecodeText({
     }
 
     frame.current = requestAnimationFrame(tick);
-  }, [text, randomGlyphs, startMs, stepMs]);
+  }, [text, randomGlyphs]);
 
   /* Arm only once JavaScript is running and motion is allowed */
   useEffect(() => {
@@ -189,17 +180,13 @@ export function DecodeText({
         <span
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 whitespace-nowrap"
-          style={
-            quick
-              ? undefined
-              : {
-                  /* Glow fades out as the letters lock in */
-                  textShadow: `0 0 24px rgba(29,213,255,${(
-                    0.55 *
-                    (1 - resolved / Math.max(text.length, 1))
-                  ).toFixed(2)})`,
-                }
-          }
+          style={{
+            /* Glow fades out as the letters lock in */
+            textShadow: `0 0 24px rgba(29,213,255,${(
+              0.55 *
+              (1 - resolved / Math.max(text.length, 1))
+            ).toFixed(2)})`,
+          }}
         >
           {text.split("").map((char, i) => {
             if (char === " ") return " ";
@@ -212,7 +199,7 @@ export function DecodeText({
                     ? undefined
                     : {
                         color: "#1dd5ff",
-                        opacity: hidden ? 0 : quick ? 0.7 : 0.9,
+                        opacity: hidden ? 0 : 0.9,
                       }
                 }
               >

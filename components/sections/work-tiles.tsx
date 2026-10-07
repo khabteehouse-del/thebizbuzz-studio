@@ -36,7 +36,7 @@ function Tile({ project }: { project: Project }) {
       <header className="mb-3 flex items-start justify-between gap-4 px-1 md:mb-4">
         <div className="min-w-0">
           <h3 className="font-display text-2xl font-medium tracking-[-0.03em] text-paper md:text-3xl">
-            <DecodeText text={project.name} watch quick />
+            <DecodeText text={project.name} watch />
           </h3>
           <p className="mt-1.5 text-sm text-paper/60">{project.blurb}</p>
         </div>

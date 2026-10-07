@@ -29,11 +29,11 @@ export default function BlogPage() {
           What we learn building for clients and shipping our own products.
         </p>
 
-        <div className="mt-16 grid gap-px bg-line md:grid-cols-2">
+        <div className="mt-16 grid gap-5 md:grid-cols-2 md:gap-6">
           {sorted.map((post) => (
             <article
               key={post.slug}
-              className="group relative h-full bg-ink p-7 transition-colors duration-500 md:p-10"
+              className="group relative h-full rounded-xl border border-line bg-ink p-7 transition-colors duration-500 hover:border-paper/20 md:p-10"
             >
               {post.image && (
                 <div className="relative mb-6 aspect-[16/9] overflow-hidden rounded-sm border border-line">

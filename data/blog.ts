@@ -50,6 +50,7 @@ export const blogPosts: BlogPost[] = [
     date: "2026-09-10",
     readTime: "4 min read",
     tags: ["AI Systems", "Product"],
+    image: "/images/blog/ai-integrated-websites.jpg",
     body: [
       "\"AI-integrated\" gets used to describe everything from a genuinely useful retrieval system to a chatbot widget that answers three FAQ questions badly. The difference isn't the technology, it's whether the system is grounded in your actual data and verified before it reaches a user.",
       "A real AI-integrated system does specific jobs: answering questions from your own documents instead of guessing, automating a workflow that used to take a person hours, or surfacing insight from data you already have but never had time to analyze.",

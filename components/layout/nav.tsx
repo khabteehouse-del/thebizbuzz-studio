@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "motion/react";
@@ -12,6 +13,9 @@ import { Button } from "@/components/shared/button";
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => setMounted(true), []);
 
   useEffect(() => {
     function onScroll() {
@@ -100,43 +104,54 @@ export function Nav() {
         </button>
       </nav>
 
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
-            className="fixed inset-0 top-24 bg-ink md:hidden"
-          >
-            <div className="shell flex flex-col gap-2 pt-8">
-              {navLinks.map((link) => (
+      {/*
+        The menu panel is rendered at the top of the page, outside the
+        header. The header uses backdrop blur, and any element inside a
+        blurred (or transformed) parent loses its screen-sized fixed
+        position, so the panel collapsed and the links floated over the
+        hero with no background.
+      */}
+      {mounted &&
+        createPortal(
+        <AnimatePresence>
+          {open && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              className="fixed inset-x-0 bottom-0 top-24 z-40 overflow-y-auto bg-ink md:hidden"
+            >
+              <div className="shell flex flex-col gap-2 pt-8">
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setOpen(false)}
+                    className="border-b border-line py-4 font-display text-2xl text-paper"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
                 <Link
-                  key={link.href}
-                  href={link.href}
+                  href="/tools/gbp-check"
                   onClick={() => setOpen(false)}
-                  className="border-b border-line py-4 font-display text-2xl text-paper"
+                  className="border-b border-line py-4 font-display text-2xl text-[#4fd1c5]"
                 >
-                  {link.label}
+                  Free listing check
                 </Link>
-              ))}
-              <Link
-                href="/tools/gbp-check"
-                onClick={() => setOpen(false)}
-                className="border-b border-line py-4 font-display text-2xl text-[#4fd1c5]"
-              >
-                Free listing check
-              </Link>
 
-              <div className="mt-8">
-                <Button href="#contact" variant="primary" size="lg">
-                  Start a project
-                </Button>
+                <div className="mt-8" onClick={() => setOpen(false)}>
+                  <Button href="#contact" variant="primary" size="lg">
+                    Start a project
+                  </Button>
+                </div>
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>,
+          document.body
         )}
-      </AnimatePresence>
     </header>
   );
 }

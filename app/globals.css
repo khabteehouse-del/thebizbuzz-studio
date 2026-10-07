@@ -692,7 +692,7 @@ body {
 
   Resting: a faint red and blue fringe on the letter edges, like colour
   bleed on a CRT. Lit (one name at a time, or on hover): a soft cyan
-  phosphor halo, a quick flicker, and a scanline bar sweeping down.
+  phosphor halo, a quick flicker, and a glowing line that draws under the name and fades.
   First appearance: a power-on, a thin bright line that stretches open.
 */
 .crt-title {
@@ -708,17 +708,21 @@ body {
 .crt-title::after {
   content: "";
   position: absolute;
-  left: -0.2em;
-  right: -0.2em;
-  top: 0;
-  height: 0.55em;
+  left: 0;
+  right: 0;
+  bottom: -0.1em;
+  height: 2px;
+  border-radius: 2px;
   background: linear-gradient(
-    to bottom,
+    90deg,
     transparent,
-    rgba(79, 209, 197, 0.32),
+    rgba(125, 232, 220, 0.95) 50%,
     transparent
   );
+  box-shadow: 0 0 10px rgba(79, 209, 197, 0.8), 0 0 22px rgba(79, 209, 197, 0.4);
   opacity: 0;
+  transform: scaleX(0);
+  transform-origin: 50% 50%;
   pointer-events: none;
 }
 
@@ -734,7 +738,7 @@ body {
 
 .crt-title.is-lit::after,
 .crt-title:hover::after {
-  animation: crt-sweep 1.7s ease-in-out 1;
+  animation: crt-underline 1.9s ease-in-out 1;
 }
 
 .crt-wait {
@@ -784,20 +788,22 @@ body {
   100% { opacity: 1; }
 }
 
-@keyframes crt-sweep {
+@keyframes crt-underline {
   0% {
     opacity: 0;
-    transform: translateY(-60%);
+    transform: scaleX(0);
   }
-  15% {
+  30% {
     opacity: 1;
+    transform: scaleX(1);
   }
-  85% {
+  70% {
     opacity: 1;
+    transform: scaleX(1);
   }
   100% {
     opacity: 0;
-    transform: translateY(160%);
+    transform: scaleX(1);
   }
 }
 

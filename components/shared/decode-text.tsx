@@ -14,6 +14,12 @@ const SCRAMBLE_MS = 45;
 type Props = {
   text: string;
   className?: string;
+  /*
+    Also check the word's position on scroll, in case the browser's own
+    visibility check never fires (words inside clipped, rounded cards).
+    Used by the work tiles so the name always plays and never stays blank.
+  */
+  watch?: boolean;
 };
 
 /*
@@ -32,7 +38,7 @@ type Props = {
   the server renders, and it is only hidden once the page is running, motion is
   allowed, and the word is off screen waiting to be played.
 */
-export function DecodeText({ text, className = "" }: Props) {
+export function DecodeText({ text, className = "", watch = false }: Props) {
   const ref = useRef<HTMLSpanElement>(null);
   /* Plays once about a third of the word is on screen... */
   const inView = useInView(ref, { amount: 0.35 });
@@ -110,6 +116,45 @@ export function DecodeText({ text, className = "" }: Props) {
       run();
     }
   }, [armed, primed, inView, run]);
+
+  /* Position check on scroll: plays when the word is on screen, re-arms
+     once it has left, whatever the visibility observer reports */
+  useEffect(() => {
+    if (!watch || !armed) return;
+    let raf = 0;
+
+    const check = () => {
+      raf = 0;
+      const el = ref.current;
+      if (!el) return;
+      const r = el.getBoundingClientRect();
+      const vh = window.innerHeight;
+      const visible = r.bottom > 0 && r.top < vh * 0.92;
+      const gone = r.bottom < -40 || r.top > vh + 40;
+      if (visible) {
+        setPrimed((p) => {
+          if (p) run();
+          return false;
+        });
+      } else if (gone) {
+        setPrimed(true);
+      }
+    };
+
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(check);
+    };
+
+    const first = window.setTimeout(check, 500);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.clearTimeout(first);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, [watch, armed, run]);
 
   /* Hidden only while waiting off screen to be played */
   const hidden = armed && primed;

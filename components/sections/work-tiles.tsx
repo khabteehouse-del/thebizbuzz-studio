@@ -74,7 +74,7 @@ function Tile({ project }: { project: Project }) {
           {client ? "Client work" : "Own product"}
         </span>
         <h3 className="mt-2 font-display text-xl font-medium tracking-[-0.03em] text-paper md:text-2xl">
-          <DecodeText text={project.name} />
+          <DecodeText text={project.name} watch />
         </h3>
         <p className="mt-1 line-clamp-1 text-xs text-paper/65 md:text-sm">
           {project.blurb}

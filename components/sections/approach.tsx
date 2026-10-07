@@ -97,8 +97,9 @@ export function Approach() {
               {approach.map((step, index) => {
                 const isHovered = hovered === step.id;
                 return (
-                  <Reveal key={step.id} delay={index * 0.06}>
-                    <li
+                  <li key={step.id}>
+                    <Reveal delay={index * 0.06}>
+                    <div
                       onMouseEnter={() => setHovered(step.id)}
                       onMouseLeave={() => setHovered(null)}
                       className="group relative rounded-[4px] py-6 pl-[52px] pr-4 transition-colors duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] md:py-9 md:pl-[66px]"
@@ -137,8 +138,9 @@ export function Approach() {
                       <p className="mt-3 max-w-lg text-sm leading-relaxed text-muted transition-colors duration-500 group-hover:text-paper/70 md:text-base">
                         {step.body}
                       </p>
-                    </li>
-                  </Reveal>
+                    </div>
+                    </Reveal>
+                  </li>
                 );
               })}
             </ol>

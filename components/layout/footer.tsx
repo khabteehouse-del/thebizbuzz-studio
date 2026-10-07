@@ -1,9 +1,9 @@
 import Link from "next/link";
-import { footerGroups, site, socialLinks } from "@/data/site";
+import { footerGroups, site } from "@/data/site";
+import { SocialLinks } from "@/components/shared/social-links";
 
 export function Footer() {
   const year = new Date().getFullYear();
-  const activeSocials = socialLinks.filter((link) => link.href.length > 0);
 
   return (
     <footer className="relative overflow-hidden border-t border-line bg-ink">
@@ -52,22 +52,9 @@ export function Footer() {
               </li>
             </ul>
 
-            {activeSocials.length > 0 && (
-              <ul className="mt-8 flex gap-5">
-                {activeSocials.map((link) => (
-                  <li key={link.label}>
-                    <a
-                      href={link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-sm text-paper/70 transition-colors duration-200 hover:text-paper"
-                    >
-                      {link.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            )}
+            <div className="mt-6">
+              <SocialLinks variant="list" />
+            </div>
           </div>
         </div>
 

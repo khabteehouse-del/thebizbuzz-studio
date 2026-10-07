@@ -35,6 +35,8 @@ export const navLinks: NavLink[] = [
 export type SocialLink = {
   label: string;
   href: string;
+  /* Shown next to the icon in the footer */
+  handle: string;
 };
 
 /*
@@ -74,7 +76,14 @@ export const footerGroups: { title: string; links: FooterLink[] }[] = [
 ];
 
 export const socialLinks: SocialLink[] = [
-  { label: "LinkedIn", href: "" },
-  { label: "Instagram", href: "" },
-  { label: "Behance", href: "" },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/company/bizbuzzstudio",
+    handle: "BizBuzz Studio",
+  },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/bizbuzz.studio/",
+    handle: "@bizbuzz.studio",
+  },
 ];

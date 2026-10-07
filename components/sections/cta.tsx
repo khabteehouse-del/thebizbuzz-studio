@@ -4,6 +4,7 @@ import { Reveal } from "@/components/shared/reveal";
 import { Orbs } from "@/components/shared/orbs";
 import { Magnetic } from "@/components/shared/magnetic";
 import { Button } from "@/components/shared/button";
+import { SocialLinks } from "@/components/shared/social-links";
 
 export function Cta() {
   return (
@@ -41,6 +42,13 @@ export function Cta() {
               >
                 Or look at the work first
               </Link>
+            </div>
+
+            <div className="mt-10 flex items-center gap-4">
+              <span className="text-xs uppercase tracking-[0.14em] text-muted">
+                Follow along
+              </span>
+              <SocialLinks variant="round" />
             </div>
           </div>
         </Reveal>

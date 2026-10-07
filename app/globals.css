@@ -674,3 +674,18 @@ body {
     transition-delay: 0s !important;
   }
 }
+
+/* Detail panel scrollbar: present for function, invisible to the eye */
+.work-panel {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+
+.work-panel::-webkit-scrollbar {
+  width: 6px;
+}
+
+.work-panel::-webkit-scrollbar-track,
+.work-panel::-webkit-scrollbar-thumb {
+  background: transparent;
+}

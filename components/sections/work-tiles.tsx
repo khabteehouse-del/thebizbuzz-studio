@@ -32,6 +32,26 @@ function Tile({ project }: { project: Project }) {
   const client = project.kind === "client";
 
   return (
+    <div>
+      <header className="mb-3 flex items-start justify-between gap-4 px-1 md:mb-4">
+        <div className="min-w-0">
+          <h3 className="font-display text-2xl font-medium tracking-[-0.03em] text-paper md:text-3xl">
+            <DecodeText text={project.name} watch />
+          </h3>
+          <p className="mt-1.5 text-sm text-paper/60">{project.blurb}</p>
+        </div>
+        <span
+          className="mt-1.5 shrink-0 rounded-full px-2.5 py-0.5 text-[0.625rem] font-medium uppercase tracking-[0.14em]"
+          style={
+            client
+              ? { backgroundColor: "rgba(79,209,197,0.18)", color: "#7de8dc", boxShadow: "inset 0 0 0 1px rgba(79,209,197,0.45)" }
+              : { backgroundColor: "rgba(10,14,26,0.6)", color: "rgba(245,248,255,0.7)", boxShadow: "inset 0 0 0 1px rgba(245,248,255,0.18)" }
+          }
+        >
+          {client ? "Client work" : "Own product"}
+        </span>
+      </header>
+
     <article
       tabIndex={0}
       onClick={() => setOpen((v) => !v)}
@@ -61,26 +81,6 @@ function Tile({ project }: { project: Project }) {
           } transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] [@media(hover:hover)]:group-hover:scale-[1.05]`}
         />
       )}
-
-      {/* Name strip over the picture */}
-      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink via-ink/85 to-transparent px-5 pb-4 pt-16 md:px-6 md:pb-5">
-        <span
-          className="inline-block rounded-full px-2.5 py-0.5 text-[0.625rem] font-medium uppercase tracking-[0.14em]"
-          style={
-            client
-              ? { backgroundColor: "rgba(79,209,197,0.18)", color: "#7de8dc", boxShadow: "inset 0 0 0 1px rgba(79,209,197,0.45)" }
-              : { backgroundColor: "rgba(10,14,26,0.6)", color: "rgba(245,248,255,0.7)", boxShadow: "inset 0 0 0 1px rgba(245,248,255,0.18)" }
-          }
-        >
-          {client ? "Client work" : "Own product"}
-        </span>
-        <h3 className="mt-2 font-display text-xl font-medium tracking-[-0.03em] text-paper md:text-2xl">
-          <DecodeText text={project.name} watch />
-        </h3>
-        <p className="mt-1 line-clamp-1 text-xs text-paper/65 md:text-sm">
-          {project.blurb}
-        </p>
-      </div>
 
       {/* Detail panel */}
       <div className="work-panel absolute inset-0 flex flex-col overflow-y-auto bg-[#0a0e1a]/[0.97] p-5 md:p-6">
@@ -151,5 +151,6 @@ function Tile({ project }: { project: Project }) {
         </div>
       </div>
     </article>
+    </div>
   );
 }

@@ -29,23 +29,6 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    id: "mb-autoparts",
-    kind: "client",
-    blurb:
-      "Inventory and operations system for a Miami auto parts business.",
-    name: "MB Auto Parts",
-    category: "Client build, Miami USA",
-    problem:
-      "Running a parts business means knowing what is in stock, what just came in and what is selling, without digging through spreadsheets.",
-    solution:
-      "A custom inventory system with a live operations dashboard, incoming and outgoing stock, low-stock alerts, sales and cashflow analytics, Excel export and an admin sign-in.",
-    stack: ["Inventory", "Low-stock alerts", "Sales analytics", "Excel export"],
-    image: "/images/work/mb-autoparts.jpg",
-    live: null,
-    repo: null,
-    stats: [],
-  },
-  {
     id: "fluxorx",
     kind: "product",
     blurb:
@@ -127,5 +110,22 @@ export const projects: Project[] = [
       { label: "Outcome variants", value: "3" },
       { label: "Review time", value: "under 5 minutes" },
     ],
+  },
+  {
+    id: "mb-autoparts",
+    kind: "client",
+    blurb:
+      "Inventory and operations system for a Miami auto parts business.",
+    name: "MB Auto Parts",
+    category: "Client build, Miami USA",
+    problem:
+      "Running a parts business means knowing what is in stock, what just came in and what is selling, without digging through spreadsheets.",
+    solution:
+      "A custom inventory system with a live operations dashboard, incoming and outgoing stock, low-stock alerts, sales and cashflow analytics, Excel export and an admin sign-in.",
+    stack: ["Inventory", "Low-stock alerts", "Sales analytics", "Excel export"],
+    image: "/images/work/mb-autoparts.jpg",
+    live: null,
+    repo: null,
+    stats: [],
   },
 ];

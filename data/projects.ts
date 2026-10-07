@@ -115,18 +115,18 @@ export const projects: Project[] = [
     id: "sadat-transport",
     kind: "client",
     blurb:
-      "Google Business Profile optimization for a transport and contracting company.",
+      "Google Business Profile optimization for a heavy equipment, crane and transport company.",
     name: "Sadat Transport & Contracting",
     category: "Client work, local search",
     problem:
-      "A local business is only as visible as its Google listing: the profile, categories, photos and details customers see the moment they search.",
+      "Customers searching for crane rental, heavy equipment and transport find a company through its Google listing first: the profile, services, photos and reviews they see before they call.",
     solution:
       "We optimized their Google Business Profile so the listing is complete, accurate and ready to be found when customers search for their services.",
-    stack: ["Google Business Profile", "Local search"],
+    stack: ["Google Business Profile", "Local search", "Reviews"],
     image: null,
     live: null,
     repo: null,
-    stats: [],
+    stats: [{ label: "Google rating today", value: "4.9 from 40 reviews" }],
   },
   {
     id: "mb-autoparts",

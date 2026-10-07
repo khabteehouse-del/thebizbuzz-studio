@@ -123,7 +123,8 @@ export const projects: Project[] = [
     solution:
       "We optimized their Google Business Profile so the listing is complete, accurate and ready to be found when customers search for their services.",
     stack: ["Google Business Profile", "Local search", "Reviews"],
-    image: null,
+    image: "/images/work/sadat-crane.jpg",
+    imageFit: "fill-top",
     live: null,
     repo: null,
     stats: [{ label: "Google rating today", value: "4.9 from 40 reviews" }],

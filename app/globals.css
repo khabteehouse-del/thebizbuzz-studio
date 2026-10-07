@@ -675,17 +675,14 @@ body {
   }
 }
 
-/* Detail panel scrollbar: present for function, invisible to the eye */
+/* Detail panel scrollbar: fully hidden, the panel still scrolls */
 .work-panel {
-  scrollbar-width: thin;
-  scrollbar-color: transparent transparent;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .work-panel::-webkit-scrollbar {
-  width: 6px;
-}
-
-.work-panel::-webkit-scrollbar-track,
-.work-panel::-webkit-scrollbar-thumb {
-  background: transparent;
+  display: none;
+  width: 0;
+  height: 0;
 }

@@ -374,7 +374,8 @@ export function Tracks() {
                             src="/images/work/fluxorx-phase2.jpg"
                             alt={`${project.name} architecture and deployment overview`}
                             fill
-                            sizes="(min-width: 768px) 30rem, 92vw"
+                            sizes="(min-width: 768px) 30rem, 84vw"
+                            quality={60}
                             className="object-cover object-[50%_35%]"
                           />
                           <div

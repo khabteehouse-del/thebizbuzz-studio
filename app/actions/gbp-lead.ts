@@ -167,6 +167,7 @@ export async function submitGbpLead(
      Runs after the response is sent, so it never slows the visitor down
      and can never make this action fail. Skipped when keys are absent. */
   const pipelineMessage = [
+    "This person completed the BizBuzz Google Business Profile checker and asked for their action plan, so treat them as a warm inbound lead. A lower checker score means a bigger need for help.",
     `GBP check score ${score}/100 (${band.label}).`,
     lead.businessType ? `Type: ${lead.businessType}.` : "",
     lead.city ? `City: ${lead.city}.` : "",

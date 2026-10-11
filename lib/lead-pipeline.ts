@@ -50,6 +50,10 @@ const SERVICES = [
 const URGENCY = ["high", "medium", "low"];
 const BUDGET = ["explicit", "implied", "none"];
 
+function log(step: string, detail: string) {
+  console.error(`[lead-pipeline] ${step}: ${detail}`.slice(0, 600));
+}
+
 const DEFAULT_MODEL = "gemini-3.8-flash";
 const FALLBACK_NOTE = "Auto-classification failed. Review this lead manually.";
 
@@ -154,7 +158,10 @@ export function parseClassification(text: string): Classification | null {
 
 async function classify(lead: PipelineLead): Promise<GeminiOutcome | null> {
   const key = process.env.GEMINI_API_KEY;
-  if (!key) return null;
+  if (!key) {
+    log("gemini", "GEMINI_API_KEY is missing, pipeline skipped");
+    return null;
+  }
   const model = process.env.GEMINI_MODEL || DEFAULT_MODEL;
   const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`;
 
@@ -189,6 +196,8 @@ async function classify(lead: PipelineLead): Promise<GeminiOutcome | null> {
         body,
       });
       if (!response.ok) {
+        const errText = await response.text().catch(() => "");
+        log("gemini", `attempt ${attempt + 1} status ${response.status} ${errText}`);
         await new Promise((r) => setTimeout(r, 1000 * (attempt + 1)));
         continue;
       }
@@ -209,7 +218,8 @@ async function classify(lead: PipelineLead): Promise<GeminiOutcome | null> {
         inputTokens: data.usageMetadata?.promptTokenCount ?? 0,
         outputTokens: data.usageMetadata?.candidatesTokenCount ?? 0,
       };
-    } catch {
+    } catch (err) {
+      log("gemini", `attempt ${attempt + 1} threw ${String(err)}`);
       await new Promise((r) => setTimeout(r, 1000 * (attempt + 1)));
     }
   }
@@ -230,7 +240,10 @@ async function hubspot(
   leadId: string
 ): Promise<string> {
   const token = process.env.HUBSPOT_TOKEN;
-  if (!token) return "";
+  if (!token) {
+    log("hubspot", "HUBSPOT_TOKEN is missing, step skipped");
+    return "";
+  }
   const headers = {
     "Content-Type": "application/json",
     Authorization: `Bearer ${token}`,
@@ -258,7 +271,10 @@ async function hubspot(
       }),
     }
   );
-  if (!upsert.ok) return "";
+  if (!upsert.ok) {
+    log("hubspot", `upsert status ${upsert.status} ${await upsert.text().catch(() => "")}`);
+    return "";
+  }
   const data = (await upsert.json()) as { results?: { id?: string }[] };
   const contactId = data.results?.[0]?.id;
   if (!contactId) return "";
@@ -301,8 +317,11 @@ async function hubspot(
 async function supabase(row: Record<string, unknown>): Promise<void> {
   const url = process.env.SUPABASE_URL;
   const key = process.env.SUPABASE_SERVICE_KEY;
-  if (!url || !key) return;
-  await timedFetch(`${url.replace(/\/+$/, "")}/rest/v1/leads`, {
+  if (!url || !key) {
+    log("supabase", "SUPABASE_URL or SUPABASE_SERVICE_KEY is missing, step skipped");
+    return;
+  }
+  const res = await timedFetch(`${url.replace(/\/+$/, "")}/rest/v1/leads`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -312,6 +331,9 @@ async function supabase(row: Record<string, unknown>): Promise<void> {
     },
     body: JSON.stringify(row),
   });
+  if (!res.ok) {
+    log("supabase", `insert status ${res.status} ${await res.text().catch(() => "")}`);
+  }
 }
 
 async function langfuse(
@@ -322,14 +344,17 @@ async function langfuse(
 ): Promise<void> {
   const pk = process.env.LANGFUSE_PUBLIC_KEY;
   const sk = process.env.LANGFUSE_SECRET_KEY;
-  if (!pk || !sk) return;
+  if (!pk || !sk) {
+    log("langfuse", "LANGFUSE keys are missing, step skipped");
+    return;
+  }
   const host = (process.env.LANGFUSE_HOST || "https://cloud.langfuse.com").replace(
     /\/+$/,
     ""
   );
   const traceId = `tr-${leadId}`;
   const now = new Date().toISOString();
-  await timedFetch(`${host}/api/public/ingestion`, {
+  const res = await timedFetch(`${host}/api/public/ingestion`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -380,6 +405,9 @@ async function langfuse(
       ],
     }),
   });
+  if (!res.ok) {
+    log("langfuse", `ingestion status ${res.status} ${await res.text().catch(() => "")}`);
+  }
 }
 
 /*
@@ -412,7 +440,8 @@ export async function runLeadPipeline(input: PipelineLead): Promise<void> {
     if (!c.spam) {
       try {
         contactId = await hubspot(lead, c, leadId);
-      } catch {
+      } catch (err) {
+        log("hubspot", `threw ${String(err)}`);
         contactId = "";
       }
     }
@@ -440,16 +469,16 @@ export async function runLeadPipeline(input: PipelineLead): Promise<void> {
         trace_id: `tr-${leadId}`,
         received_at: new Date().toISOString(),
       });
-    } catch {
-      /* ignored on purpose */
+    } catch (err) {
+      log("supabase", `threw ${String(err)}`);
     }
 
     try {
       await langfuse(lead, c, outcome, leadId);
-    } catch {
-      /* ignored on purpose */
+    } catch (err) {
+      log("langfuse", `threw ${String(err)}`);
     }
-  } catch {
-    /* never let the pipeline affect the caller */
+  } catch (err) {
+    log("pipeline", `threw ${String(err)}`);
   }
 }

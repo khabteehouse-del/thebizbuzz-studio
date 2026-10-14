@@ -49,14 +49,16 @@ function Tile({
         aria-pressed={flipped}
         aria-label={`${service.title}. Shows what is included.`}
         data-flipped={flipped}
-        className="group block h-[17rem] w-full text-left [perspective:1400px] focus-visible:outline-none"
+        className={`group block h-[17rem] w-full rounded-2xl text-left focus-visible:outline-none ${
+          spanFull ? "[perspective:4000px]" : "[perspective:1400px]"
+        }`}
       >
         <span
-          className="relative block h-full w-full transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] group-focus-visible:[transform:rotateY(180deg)] group-data-[flipped=true]:[transform:rotateY(180deg)] motion-reduce:[transform:none]! motion-reduce:transition-none"
+          className="pointer-events-none relative block h-full w-full transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] group-focus-visible:[transform:rotateY(180deg)] group-data-[flipped=true]:[transform:rotateY(180deg)] motion-reduce:[transform:none]! motion-reduce:transition-none"
         >
           {/* Front */}
           <span
-            className="absolute inset-0 flex overflow-hidden p-7 [backface-visibility:hidden] motion-reduce:transition-opacity motion-reduce:group-hover:opacity-0 motion-reduce:group-focus-visible:opacity-0 motion-reduce:group-data-[flipped=true]:opacity-0 md:p-8"
+            className="absolute inset-0 flex overflow-hidden rounded-2xl p-7 [backface-visibility:hidden] motion-reduce:transition-opacity motion-reduce:group-hover:opacity-0 motion-reduce:group-focus-visible:opacity-0 motion-reduce:group-data-[flipped=true]:opacity-0 md:p-8"
             style={{ backgroundColor: service.tint }}
           >
             {glow}
@@ -128,7 +130,7 @@ function Tile({
 
           {/* Back */}
           <span
-            className="absolute inset-0 flex overflow-hidden border p-7 [backface-visibility:hidden] [transform:rotateY(180deg)] motion-reduce:opacity-0 motion-reduce:transition-opacity motion-reduce:[transform:none] motion-reduce:group-hover:opacity-100 motion-reduce:group-focus-visible:opacity-100 motion-reduce:group-data-[flipped=true]:opacity-100 md:p-8"
+            className="absolute inset-0 flex overflow-hidden rounded-2xl border p-7 [backface-visibility:hidden] [transform:rotateY(180deg)] motion-reduce:opacity-0 motion-reduce:transition-opacity motion-reduce:[transform:none] motion-reduce:group-hover:opacity-100 motion-reduce:group-focus-visible:opacity-100 motion-reduce:group-data-[flipped=true]:opacity-100 md:p-8"
             style={{
               backgroundColor: service.tintHover,
               borderColor: `${service.mark}66`,
@@ -142,7 +144,16 @@ function Tile({
               >
                 {service.title}
               </span>
-              <span className="mt-4 block space-y-2.5">
+              {showImage && (
+                <span className="mt-4 hidden max-w-xl text-base leading-relaxed text-paper/80 lg:block">
+                  {service.summary}
+                </span>
+              )}
+              <span
+                className={`mt-4 block space-y-2.5 ${
+                  showImage ? "lg:mt-auto lg:grid lg:grid-cols-2 lg:gap-x-10 lg:space-y-0 lg:gap-y-2.5" : ""
+                }`}
+              >
                 {service.capabilities.map((item) => (
                   <span
                     key={item}
@@ -199,7 +210,7 @@ export function Services() {
             </div>
           </Reveal>
 
-          <div className="mt-px grid gap-px bg-line md:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {localServices.map((service, index) => (
               <Tile
                 key={service.id}
@@ -224,7 +235,7 @@ export function Services() {
             </div>
           </Reveal>
 
-          <div className="mt-px grid gap-px bg-line md:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {studioServices.map((service, index) => (
               <Tile
                 key={service.id}

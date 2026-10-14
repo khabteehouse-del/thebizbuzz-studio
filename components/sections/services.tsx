@@ -49,10 +49,12 @@ function Tile({
         aria-pressed={flipped}
         aria-label={`${service.title}. Shows what is included.`}
         data-flipped={flipped}
-        className="group block h-[17rem] w-full text-left [perspective:1400px] focus-visible:outline-none"
+        className={`group block h-[17rem] w-full text-left focus-visible:outline-none ${
+          spanFull ? "[perspective:4000px]" : "[perspective:1400px]"
+        }`}
       >
         <span
-          className="relative block h-full w-full transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] group-focus-visible:[transform:rotateY(180deg)] group-data-[flipped=true]:[transform:rotateY(180deg)] motion-reduce:[transform:none]! motion-reduce:transition-none"
+          className="pointer-events-none relative block h-full w-full transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] group-focus-visible:[transform:rotateY(180deg)] group-data-[flipped=true]:[transform:rotateY(180deg)] motion-reduce:[transform:none]! motion-reduce:transition-none"
         >
           {/* Front */}
           <span

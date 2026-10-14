@@ -142,7 +142,16 @@ function Tile({
               >
                 {service.title}
               </span>
-              <span className="mt-4 block space-y-2.5">
+              {showImage && (
+                <span className="mt-4 hidden max-w-xl text-base leading-relaxed text-paper/80 lg:block">
+                  {service.summary}
+                </span>
+              )}
+              <span
+                className={`mt-4 block space-y-2.5 ${
+                  showImage ? "lg:mt-auto lg:grid lg:grid-cols-2 lg:gap-x-10 lg:space-y-0 lg:gap-y-2.5" : ""
+                }`}
+              >
                 {service.capabilities.map((item) => (
                   <span
                     key={item}

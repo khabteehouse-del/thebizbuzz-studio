@@ -101,7 +101,6 @@ export const projects: Project[] = [
       "We designed and launched a boutique storefront in a single night: an editorial hero, a collection page, a story page, refund policy, cart and a WhatsApp ordering button, all tuned to the brand's soft, warm look.",
     stack: ["Web design", "Storefront", "WhatsApp ordering"],
     image: "/images/work/qadir-q.jpg",
-    imageFit: "contain",
     live: "https://preview--qadirq-handmade-bags.lovable.app/",
     repo: null,
     stats: [{ label: "Brief to live", value: "One night" }],

@@ -1,5 +1,7 @@
 "use server";
 
+import { after } from "next/server";
+import { runLeadPipeline } from "@/lib/lead-pipeline";
 import { questions, scoreAnswers, bandFor, buildPlan } from "@/lib/gbp-audit";
 import type { Answers } from "@/lib/gbp-audit";
 
@@ -160,6 +162,31 @@ export async function submitGbpLead(
       error: "We could not send that just now. Please try again shortly.",
     };
   }
+
+  /* ---------- Lead pipeline (scoring, CRM, database, tracing) ----------
+     Runs after the response is sent, so it never slows the visitor down
+     and can never make this action fail. Skipped when keys are absent. */
+  const pipelineMessage = [
+    "This person completed the BizBuzz Google Business Profile checker and asked for their action plan, so treat them as a warm inbound lead. A lower checker score means a bigger need for help.",
+    `GBP check score ${score}/100 (${band.label}).`,
+    lead.businessType ? `Type: ${lead.businessType}.` : "",
+    lead.city ? `City: ${lead.city}.` : "",
+    lead.website ? `Website: ${lead.website}.` : "",
+    lead.social ? `Social: ${lead.social}.` : "",
+    `Weakest areas: ${plan.map((item) => item.question).join("; ")}.`,
+  ]
+    .filter(Boolean)
+    .join(" ");
+
+  after(() =>
+    runLeadPipeline({
+      email: lead.email,
+      phone: lead.phone,
+      business: lead.businessName,
+      message: pipelineMessage,
+      source: "gbp-checker",
+    })
+  );
 
   /* ---------- 2. The plan to the prospect ---------- */
   if (!verifiedFrom) {

@@ -89,6 +89,23 @@ export const projects: Project[] = [
     ],
   },
   {
+    id: "qadir-q",
+    kind: "client",
+    blurb:
+      "A premium brand site for a Karachi handmade bag atelier, designed and launched in one night.",
+    name: "Qadir Q",
+    category: "Web design, handmade bags",
+    problem:
+      "A handcrafted pearl, crystal and beaded bag atelier needed a website that felt as refined as its work, and needed it quickly.",
+    solution:
+      "We designed and launched a boutique storefront in a single night: an editorial hero, a collection page, a story page, refund policy, cart and a WhatsApp ordering button, all tuned to the brand's soft, warm look.",
+    stack: ["Web design", "Storefront", "WhatsApp ordering"],
+    image: "/images/work/qadir-q.jpg",
+    live: "https://preview--qadirq-handmade-bags.lovable.app/",
+    repo: null,
+    stats: [{ label: "Brief to live", value: "One night" }],
+  },
+  {
     id: "dentivue",
     kind: "product",
     blurb:

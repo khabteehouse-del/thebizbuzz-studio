@@ -49,7 +49,7 @@ function Tile({
         aria-pressed={flipped}
         aria-label={`${service.title}. Shows what is included.`}
         data-flipped={flipped}
-        className={`group block h-[17rem] w-full text-left focus-visible:outline-none ${
+        className={`group block h-[17rem] w-full rounded-2xl text-left focus-visible:outline-none ${
           spanFull ? "[perspective:4000px]" : "[perspective:1400px]"
         }`}
       >
@@ -58,7 +58,7 @@ function Tile({
         >
           {/* Front */}
           <span
-            className="absolute inset-0 flex overflow-hidden p-7 [backface-visibility:hidden] motion-reduce:transition-opacity motion-reduce:group-hover:opacity-0 motion-reduce:group-focus-visible:opacity-0 motion-reduce:group-data-[flipped=true]:opacity-0 md:p-8"
+            className="absolute inset-0 flex overflow-hidden rounded-2xl p-7 [backface-visibility:hidden] motion-reduce:transition-opacity motion-reduce:group-hover:opacity-0 motion-reduce:group-focus-visible:opacity-0 motion-reduce:group-data-[flipped=true]:opacity-0 md:p-8"
             style={{ backgroundColor: service.tint }}
           >
             {glow}
@@ -130,7 +130,7 @@ function Tile({
 
           {/* Back */}
           <span
-            className="absolute inset-0 flex overflow-hidden border p-7 [backface-visibility:hidden] [transform:rotateY(180deg)] motion-reduce:opacity-0 motion-reduce:transition-opacity motion-reduce:[transform:none] motion-reduce:group-hover:opacity-100 motion-reduce:group-focus-visible:opacity-100 motion-reduce:group-data-[flipped=true]:opacity-100 md:p-8"
+            className="absolute inset-0 flex overflow-hidden rounded-2xl border p-7 [backface-visibility:hidden] [transform:rotateY(180deg)] motion-reduce:opacity-0 motion-reduce:transition-opacity motion-reduce:[transform:none] motion-reduce:group-hover:opacity-100 motion-reduce:group-focus-visible:opacity-100 motion-reduce:group-data-[flipped=true]:opacity-100 md:p-8"
             style={{
               backgroundColor: service.tintHover,
               borderColor: `${service.mark}66`,
@@ -210,7 +210,7 @@ export function Services() {
             </div>
           </Reveal>
 
-          <div className="mt-px grid gap-px bg-line md:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {localServices.map((service, index) => (
               <Tile
                 key={service.id}
@@ -235,7 +235,7 @@ export function Services() {
             </div>
           </Reveal>
 
-          <div className="mt-px grid gap-px bg-line md:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {studioServices.map((service, index) => (
               <Tile
                 key={service.id}

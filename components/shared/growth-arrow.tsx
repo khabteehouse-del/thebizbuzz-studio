@@ -31,20 +31,28 @@ export function GrowthArrow({
   const isDesktop = useMediaQuery("(min-width: 768px)");
   const height = isDesktop ? sizeDesktop : size;
 
+  /*
+    The shadow sits on a wrapper rather than on the svg itself, which is
+    the more reliable place for a CSS filter. The wrapper also takes the
+    margins from the hero.
+  */
   return (
+    <span
+      className={`inline-flex shrink-0 ${className ?? ""}`}
+      style={{
+        /* Same three shadow layers as the headline, plus a light blue glow. */
+        filter:
+          "drop-shadow(0 0 12px rgba(55, 181, 255, 0.35)) drop-shadow(0 3px 3px rgba(0, 0, 0, 0.8)) drop-shadow(0 12px 16px rgba(0, 0, 0, 0.6)) drop-shadow(0 30px 46px rgba(0, 0, 0, 0.65))",
+      }}
+    >
     <svg
       viewBox="0 0 110 70"
       aria-hidden="true"
-      className={`growth-arrow shrink-0 overflow-visible ${
+      shapeRendering="geometricPrecision"
+      className={`growth-arrow overflow-visible ${
         reduceMotion ? "growth-arrow--still" : ""
-      } ${className ?? ""}`}
-      style={{
-        height,
-        width: (height * 110) / 70,
-        /* Same three shadow layers as the headline, plus a light blue glow. */
-        filter:
-          "drop-shadow(0 0 10px rgba(55, 181, 255, 0.3)) drop-shadow(0 2px 2px rgba(0, 0, 0, 0.7)) drop-shadow(0 10px 14px rgba(0, 0, 0, 0.5)) drop-shadow(0 28px 44px rgba(0, 0, 0, 0.6))",
-      }}
+      }`}
+      style={{ height, width: (height * 110) / 70 }}
     >
       <defs>
         <linearGradient
@@ -88,5 +96,6 @@ export function GrowthArrow({
         strokeLinejoin="round"
       />
     </svg>
+    </span>
   );
 }

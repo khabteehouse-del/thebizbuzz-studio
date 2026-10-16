@@ -11,7 +11,6 @@ import {
 import { createPortal } from "react-dom";
 import Image from "next/image";
 import { ArrowLeft, ArrowRight, X } from "lucide-react";
-import { unbounded } from "@/app/design/font";
 import {
   designCategories,
   designs,
@@ -224,7 +223,7 @@ function Viewer({
       role="dialog"
       aria-modal="true"
       aria-label={`${design.title}, ${index + 1} of ${total}`}
-      className={`dz-viewer ${unbounded.variable}`}
+      className="dz-viewer"
       data-lenis-prevent
       onClick={(event) => {
         if (event.target === event.currentTarget) onClose();

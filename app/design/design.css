@@ -37,9 +37,9 @@
 }
 
 .dz-display {
-  font-family: var(--font-unbounded), var(--font-sans), system-ui, sans-serif;
-  font-weight: 600;
-  letter-spacing: -0.025em;
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -0.03em;
 }
 
 /* Frosted panel. The solid fallback keeps text readable where blur is missing. */
@@ -189,7 +189,7 @@
   margin-top: 1.5rem;
   max-width: 17ch;
   font-size: clamp(2.05rem, 7.4vw, 5.6rem);
-  line-height: 1.04;
+  line-height: 1;
   overflow-wrap: break-word;
 }
 
@@ -226,7 +226,7 @@
 }
 
 .dz-stat b {
-  font-family: var(--font-unbounded), var(--font-sans), sans-serif;
+  font-family: var(--font-display);
   font-weight: 600;
   color: var(--dz-blush);
   margin-right: 0.4rem;
@@ -250,7 +250,7 @@
   min-height: 2.75rem;
   border-radius: 999px;
   padding: 0.5rem 1.15rem;
-  font-family: var(--font-unbounded), var(--font-sans), sans-serif;
+  font-family: var(--font-display);
   font-size: 0.68rem;
   font-weight: 500;
   letter-spacing: 0.1em;
@@ -369,7 +369,7 @@
 }
 
 .dz-card-title {
-  font-family: var(--font-unbounded), var(--font-sans), sans-serif;
+  font-family: var(--font-display);
   font-size: 0.8rem;
   font-weight: 600;
   letter-spacing: -0.01em;
@@ -628,7 +628,7 @@
   height: 3.1rem;
   border-radius: 999px;
   padding: 0 0.25rem 0 2rem;
-  font-family: var(--font-unbounded), var(--font-sans), sans-serif;
+  font-family: var(--font-display);
   font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.12em;

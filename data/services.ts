@@ -33,7 +33,15 @@ export type Service = {
   /* Optional: the front shows this logo instead of the icon and title. */
   logo?: { src: string; alt: string; width: number; height: number };
   /* Optional: the back shows this picture instead of the capability list. */
-  backImage?: { image: string; alt: string; width: number; height: number };
+  backImage?: {
+    image: string;
+    alt: string;
+    width: number;
+    height: number;
+    /* "contain" keeps a tall picture whole instead of cropping it. */
+    fit?: "cover" | "contain";
+    background?: string;
+  };
   /* Optional small label on the tile front, for example a product that is still in build. */
   badge?: string;
   /*
@@ -198,9 +206,11 @@ export const services: Service[] = [
     },
     backImage: {
       image: "/images/services/mizar-back.webp",
-      alt: "The Mizar M between you and your customer, each on its own orbit.",
-      width: 708,
-      height: 420,
+      alt: "The Mizar app on a phone showing a new urgent lead, with a call back button and a take the job button.",
+      width: 690,
+      height: 800,
+      fit: "contain",
+      background: "#090f1e",
     },
     badge: "In build",
     link: {

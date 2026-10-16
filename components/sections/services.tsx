@@ -96,7 +96,7 @@ function Tile({
   const link = service.link;
   /* A tile back can be a full picture: the design gallery, or a product shot. */
   const art = gallery
-    ? { image: gallery.image, alt: gallery.alt, width: gallery.width, height: gallery.height }
+    ? { image: gallery.image, alt: gallery.alt, width: gallery.width, height: gallery.height, fit: "cover" as const, background: "#12030a" }
     : service.backImage;
   const artCta = gallery?.cta ?? link?.cta;
 
@@ -220,7 +220,7 @@ function Tile({
         <span
           className="absolute inset-0 overflow-hidden rounded-2xl border [backface-visibility:hidden] [transform:rotateY(180deg)] motion-reduce:opacity-0 motion-reduce:transition-opacity motion-reduce:[transform:none] motion-reduce:group-hover:opacity-100 motion-reduce:group-focus-visible:opacity-100 motion-reduce:group-data-[flipped=true]:opacity-100"
           style={{
-            backgroundColor: "#12030a",
+            backgroundColor: art.background ?? "#12030a",
             borderColor: `${service.mark}66`,
           }}
         >
@@ -230,7 +230,7 @@ function Tile({
             width={art.width}
             height={art.height}
             sizes="(min-width: 1024px) 34vw, (min-width: 768px) 50vw, 100vw"
-            className="h-full w-full object-cover"
+            className={`h-full w-full ${art.fit === "contain" ? "object-contain" : "object-cover"}`}
           />
           <span
             aria-hidden="true"

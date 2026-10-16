@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 export default function DesignPage() {
   return (
     <div className="dz">
-      <section className="dz-hero dz-portal">
+      <section className="dz-hero">
         {/* Decorative depth: red light and a receding grid floor. */}
         <div className="dz-stage" aria-hidden="true">
           <span className="dz-orb dz-orb--a" />

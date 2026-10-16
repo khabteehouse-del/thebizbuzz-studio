@@ -120,26 +120,17 @@
 .dz-floor::before {
   content: "";
   position: absolute;
-  inset: -64px 0 0 0;
+  inset: 0;
   background-image:
     linear-gradient(rgba(255, 77, 98, 0.34) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 77, 98, 0.34) 1px, transparent 1px);
   background-size: 64px 64px;
-  animation: dz-floor 6s linear infinite;
-  will-change: transform;
-}
-
-@keyframes dz-floor {
-  to {
-    transform: translateY(64px);
-  }
 }
 
 .dz-orb {
   position: absolute;
   border-radius: 50%;
-  animation: dz-drift 16s ease-in-out infinite alternate;
-  will-change: transform;
+  animation: dz-drift 28s ease-in-out infinite alternate;
 }
 
 .dz-orb--a {
@@ -156,8 +147,8 @@
   top: 2rem;
   right: -12rem;
   background: radial-gradient(circle, rgba(158, 18, 48, 0.5) 0%, transparent 68%);
-  animation-duration: 20s;
-  animation-delay: -6s;
+  animation-duration: 34s;
+  animation-delay: -9s;
 }
 
 .dz-orb--c {
@@ -166,8 +157,7 @@
   bottom: 8rem;
   left: 28%;
   background: radial-gradient(circle, rgba(255, 77, 98, 0.2) 0%, transparent 70%);
-  animation-duration: 24s;
-  animation-delay: -11s;
+  animation: none;
 }
 
 @keyframes dz-drift {
@@ -176,20 +166,26 @@
   }
 }
 
-/* Plays once when the page opens: the page "opens" from a point. */
-.dz-portal {
-  animation: dz-portal 1s var(--dz-ease) backwards;
+/* Plays once when the page opens. Opacity and transform only, so it stays
+   smooth: no clip-path, no filters, nothing that repaints the hero. */
+.dz-hero .dz-shell > * {
+  animation: dz-rise 0.8s var(--dz-ease) backwards;
 }
 
-@keyframes dz-portal {
-  from {
-    clip-path: circle(0% at 50% 18%);
-    opacity: 0;
-  }
-  to {
-    clip-path: circle(140% at 50% 18%);
-    opacity: 1;
-  }
+.dz-hero .dz-shell > :nth-child(2) {
+  animation-delay: 80ms;
+}
+
+.dz-hero .dz-shell > :nth-child(3) {
+  animation-delay: 160ms;
+}
+
+.dz-hero .dz-shell > :nth-child(4) {
+  animation-delay: 240ms;
+}
+
+.dz-hero .dz-shell > :nth-child(5) {
+  animation-delay: 320ms;
 }
 
 .dz-back {
@@ -731,9 +727,8 @@ body:has(.dz) footer > div[aria-hidden="true"] p {
 /* ------------------------------------------------------------------ */
 
 @media (prefers-reduced-motion: reduce) {
-  .dz-floor::before,
   .dz-orb,
-  .dz-portal,
+  .dz-hero .dz-shell > *,
   .dz-card,
   .dz-viewer {
     animation: none;

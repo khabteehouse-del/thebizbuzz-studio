@@ -229,7 +229,7 @@ export function Hero() {
               }}
             />
 
-            <div className="mt-6 flex items-end gap-3 md:mt-8 md:gap-5">
+            <div className="mt-6 flex items-baseline gap-3 md:mt-8 md:gap-5">
               <motion.h1
                 style={{
                   scale: pinned ? headlineScale : 1,
@@ -277,16 +277,15 @@ export function Hero() {
               {/*
                 Sits at the end of the word, matching the logo where the
                 growth mark rises off the final letter rather than
-                leading the name. The bottom margin lifts the tail onto the
-                baseline of the last Z: the headline's baseline sits about
-                0.091 of its font size above the box bottom (that size is
-                15vw from md up, 16vw below), less the share of the arrow's
-                own height under its tail.
+                leading the name. The row aligns on the text baseline, so
+                the arrow rests on the bottom of the last Z whatever font
+                is loaded. The negative bottom margin drops the arrow's box
+                by the share of its height that sits under the tail.
               */}
               <GrowthArrow
                 size={38}
                 sizeDesktop={96}
-                className="mb-[calc(1.46vw-3.9px)] -ml-4 md:mb-[calc(1.37vw-9.9px)] md:-ml-8"
+                className="-mb-[3.9px] -ml-4 md:-mb-[9.9px] md:-ml-8"
               />
             </div>
 

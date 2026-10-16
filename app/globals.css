@@ -107,14 +107,11 @@
     then fades away before the line resets, so nothing ever snaps.
     stroke-dashoffset, opacity and transform only, so it stays cheap.
   */
-  .growth-arrow__line {
-    stroke-dasharray: 120;
-    stroke-dashoffset: 120;
-    animation: growth-draw 6s infinite;
-  }
-
   .growth-arrow__shaft {
-    animation: growth-fade 6s ease-in-out infinite;
+    clip-path: inset(-12% 100% -12% -6%);
+    animation:
+      growth-reveal 6s infinite,
+      growth-fade 6s ease-in-out infinite;
   }
 
   .growth-arrow__tip {
@@ -122,19 +119,19 @@
     animation: growth-tip 6s ease-in-out infinite;
   }
 
-  @keyframes growth-draw {
+  @keyframes growth-reveal {
     0% {
-      stroke-dashoffset: 120;
+      clip-path: inset(-12% 100% -12% -6%);
       animation-timing-function: cubic-bezier(0.45, 0.05, 0.2, 1);
     }
     42% {
-      stroke-dashoffset: 0;
+      clip-path: inset(-12% -6% -12% -6%);
     }
     99% {
-      stroke-dashoffset: 0;
+      clip-path: inset(-12% -6% -12% -6%);
     }
     100% {
-      stroke-dashoffset: 120;
+      clip-path: inset(-12% 100% -12% -6%);
     }
   }
 
@@ -166,15 +163,11 @@
   }
 
   /* Reduced motion: the finished line, no drawing */
-  .growth-arrow--still .growth-arrow__line {
-    animation: none;
-    stroke-dashoffset: 0;
-  }
-
   .growth-arrow--still .growth-arrow__tip,
   .growth-arrow--still .growth-arrow__shaft {
     animation: none;
     opacity: 1;
+    clip-path: none;
   }
 
   /*

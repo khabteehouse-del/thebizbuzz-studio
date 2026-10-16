@@ -1,11 +1,78 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import type { Service } from "@/data/services";
 import { localServices, studioServices } from "@/data/services";
 import { Reveal } from "@/components/shared/reveal";
 import { Orbs } from "@/components/shared/orbs";
+
+/* Touch screens cannot hover, and few people tap a tile that does not look
+   tappable. So on touch, a tile flips by itself once it has rested under the
+   middle of the screen. The timings are deliberate:
+   - IN: a fast flick past a tile (over roughly 600px per second) never flips
+     it, because the tile leaves the middle before this delay runs out (tested:
+     800px/s and up never flips, about 500px/s and below does). A
+     slow scroll or a pause flips it.
+   - OUT: a short grace, so a tile does not snap back on a tiny wobble. */
+const AUTO_FLIP_IN_MS = 500;
+const AUTO_FLIP_OUT_MS = 250;
+/* A thin line across the middle of the screen. Only the tile under that line
+   counts, so on a one-column phone layout one tile is flipped at a time. */
+const MIDDLE_LINE = "-49% 0px -49% 0px";
+
+function useAutoFlip(
+  ref: React.RefObject<HTMLElement | null>,
+  setFlipped: (value: boolean) => void,
+) {
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || typeof IntersectionObserver === "undefined") return;
+
+    const touch = window.matchMedia("(hover: none)");
+    const calm = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let io: IntersectionObserver | null = null;
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    let wasInside = false;
+
+    const stop = () => {
+      io?.disconnect();
+      io = null;
+      clearTimeout(timer);
+      wasInside = false;
+    };
+
+    const start = () => {
+      stop();
+      /* Devices that hover keep hover. People who asked for less motion keep
+         tap only, because content that changes by itself is not what they chose. */
+      if (!touch.matches || calm.matches) return;
+      io = new IntersectionObserver(
+        ([entry]) => {
+          const inside = entry.isIntersecting;
+          clearTimeout(timer);
+          if (!inside && !wasInside) return;
+          wasInside = inside;
+          timer = setTimeout(
+            () => setFlipped(inside),
+            inside ? AUTO_FLIP_IN_MS : AUTO_FLIP_OUT_MS,
+          );
+        },
+        { rootMargin: MIDDLE_LINE },
+      );
+      io.observe(el);
+    };
+
+    start();
+    touch.addEventListener("change", start);
+    calm.addEventListener("change", start);
+    return () => {
+      stop();
+      touch.removeEventListener("change", start);
+      calm.removeEventListener("change", start);
+    };
+  }, [ref, setFlipped]);
+}
 
 function Tile({
   service,
@@ -20,6 +87,8 @@ function Tile({
   /* Touch devices have no hover, so a tap flips the tile. On devices that
      hover, the flip follows the pointer and a click does nothing extra. */
   const [flipped, setFlipped] = useState(false);
+  const tileRef = useRef<HTMLButtonElement>(null);
+  useAutoFlip(tileRef, setFlipped);
   const showImage = spanFull && Boolean(service.image);
 
   const toggle = () => {
@@ -44,6 +113,7 @@ function Tile({
       className={spanFull ? "md:col-span-2 lg:col-span-3" : undefined}
     >
       <button
+        ref={tileRef}
         type="button"
         onClick={toggle}
         aria-pressed={flipped}

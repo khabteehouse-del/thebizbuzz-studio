@@ -262,9 +262,10 @@ export const services: Service[] = [
       position: "50% 50%",
       background: "#05070d",
       bullets: [
-        "Search and answers over your private documents",
-        "Agents that finish real workflows",
-        "Self-hosted, built for security review",
+        "Exact numbers where they matter",
+        "Every conclusion checked against the source",
+        "Cited answers in under 2 seconds, self-hosted",
+        "Patient identity kept private",
       ],
     },
     link: { href: site.whatsapp.aiHref, cta: "Contact us about enterprise AI", external: true },

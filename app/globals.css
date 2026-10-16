@@ -104,7 +104,7 @@
   /*
     Growth arrow in the hero. One 6s loop, see growth-arrow.tsx: the swoosh
     draws segment by segment, the head and the shadow arrive near the peak,
-    everything holds, then fades before the loop restarts.
+    everything holds, then the whole mark fades before the loop restarts.
     Opacity only, so it stays cheap and sharp.
   */
   .growth-arrow__seg {
@@ -112,281 +112,900 @@
   }
 
   .growth-arrow__seg--0 {
-    animation: ga-seg-0 6s ease-out infinite;
+    animation: ga-seg-0 6s linear infinite;
   }
 
   .growth-arrow__seg--1 {
-    animation: ga-seg-1 6s ease-out infinite;
+    animation: ga-seg-1 6s linear infinite;
   }
 
   .growth-arrow__seg--2 {
-    animation: ga-seg-2 6s ease-out infinite;
+    animation: ga-seg-2 6s linear infinite;
   }
 
   .growth-arrow__seg--3 {
-    animation: ga-seg-3 6s ease-out infinite;
+    animation: ga-seg-3 6s linear infinite;
   }
 
   .growth-arrow__seg--4 {
-    animation: ga-seg-4 6s ease-out infinite;
+    animation: ga-seg-4 6s linear infinite;
   }
 
   .growth-arrow__seg--5 {
-    animation: ga-seg-5 6s ease-out infinite;
+    animation: ga-seg-5 6s linear infinite;
   }
 
   .growth-arrow__seg--6 {
-    animation: ga-seg-6 6s ease-out infinite;
+    animation: ga-seg-6 6s linear infinite;
   }
 
   .growth-arrow__seg--7 {
-    animation: ga-seg-7 6s ease-out infinite;
+    animation: ga-seg-7 6s linear infinite;
   }
 
   .growth-arrow__seg--8 {
-    animation: ga-seg-8 6s ease-out infinite;
+    animation: ga-seg-8 6s linear infinite;
   }
 
   .growth-arrow__seg--9 {
-    animation: ga-seg-9 6s ease-out infinite;
+    animation: ga-seg-9 6s linear infinite;
   }
 
   .growth-arrow__seg--10 {
-    animation: ga-seg-10 6s ease-out infinite;
+    animation: ga-seg-10 6s linear infinite;
   }
 
   .growth-arrow__seg--11 {
-    animation: ga-seg-11 6s ease-out infinite;
+    animation: ga-seg-11 6s linear infinite;
   }
 
   .growth-arrow__seg--12 {
-    animation: ga-seg-12 6s ease-out infinite;
+    animation: ga-seg-12 6s linear infinite;
   }
 
   .growth-arrow__seg--13 {
-    animation: ga-seg-13 6s ease-out infinite;
+    animation: ga-seg-13 6s linear infinite;
   }
 
   .growth-arrow__seg--14 {
-    animation: ga-seg-14 6s ease-out infinite;
+    animation: ga-seg-14 6s linear infinite;
   }
 
   .growth-arrow__seg--15 {
-    animation: ga-seg-15 6s ease-out infinite;
+    animation: ga-seg-15 6s linear infinite;
   }
 
   .growth-arrow__seg--16 {
-    animation: ga-seg-16 6s ease-out infinite;
+    animation: ga-seg-16 6s linear infinite;
   }
 
   .growth-arrow__seg--17 {
-    animation: ga-seg-17 6s ease-out infinite;
+    animation: ga-seg-17 6s linear infinite;
   }
 
   .growth-arrow__seg--18 {
-    animation: ga-seg-18 6s ease-out infinite;
+    animation: ga-seg-18 6s linear infinite;
   }
 
   .growth-arrow__seg--19 {
-    animation: ga-seg-19 6s ease-out infinite;
+    animation: ga-seg-19 6s linear infinite;
+  }
+
+  .growth-arrow__seg--20 {
+    animation: ga-seg-20 6s linear infinite;
+  }
+
+  .growth-arrow__seg--21 {
+    animation: ga-seg-21 6s linear infinite;
+  }
+
+  .growth-arrow__seg--22 {
+    animation: ga-seg-22 6s linear infinite;
+  }
+
+  .growth-arrow__seg--23 {
+    animation: ga-seg-23 6s linear infinite;
+  }
+
+  .growth-arrow__seg--24 {
+    animation: ga-seg-24 6s linear infinite;
+  }
+
+  .growth-arrow__seg--25 {
+    animation: ga-seg-25 6s linear infinite;
+  }
+
+  .growth-arrow__seg--26 {
+    animation: ga-seg-26 6s linear infinite;
+  }
+
+  .growth-arrow__seg--27 {
+    animation: ga-seg-27 6s linear infinite;
+  }
+
+  .growth-arrow__seg--28 {
+    animation: ga-seg-28 6s linear infinite;
+  }
+
+  .growth-arrow__seg--29 {
+    animation: ga-seg-29 6s linear infinite;
+  }
+
+  .growth-arrow__seg--30 {
+    animation: ga-seg-30 6s linear infinite;
+  }
+
+  .growth-arrow__seg--31 {
+    animation: ga-seg-31 6s linear infinite;
+  }
+
+  .growth-arrow__seg--32 {
+    animation: ga-seg-32 6s linear infinite;
+  }
+
+  .growth-arrow__seg--33 {
+    animation: ga-seg-33 6s linear infinite;
+  }
+
+  .growth-arrow__seg--34 {
+    animation: ga-seg-34 6s linear infinite;
+  }
+
+  .growth-arrow__seg--35 {
+    animation: ga-seg-35 6s linear infinite;
+  }
+
+  .growth-arrow__seg--36 {
+    animation: ga-seg-36 6s linear infinite;
+  }
+
+  .growth-arrow__seg--37 {
+    animation: ga-seg-37 6s linear infinite;
+  }
+
+  .growth-arrow__seg--38 {
+    animation: ga-seg-38 6s linear infinite;
+  }
+
+  .growth-arrow__seg--39 {
+    animation: ga-seg-39 6s linear infinite;
+  }
+
+  .growth-arrow__seg--40 {
+    animation: ga-seg-40 6s linear infinite;
+  }
+
+  .growth-arrow__seg--41 {
+    animation: ga-seg-41 6s linear infinite;
+  }
+
+  .growth-arrow__seg--42 {
+    animation: ga-seg-42 6s linear infinite;
+  }
+
+  .growth-arrow__seg--43 {
+    animation: ga-seg-43 6s linear infinite;
+  }
+
+  .growth-arrow__seg--44 {
+    animation: ga-seg-44 6s linear infinite;
+  }
+
+  .growth-arrow__seg--45 {
+    animation: ga-seg-45 6s linear infinite;
+  }
+
+  .growth-arrow__seg--46 {
+    animation: ga-seg-46 6s linear infinite;
+  }
+
+  .growth-arrow__seg--47 {
+    animation: ga-seg-47 6s linear infinite;
+  }
+
+  .growth-arrow__seg--48 {
+    animation: ga-seg-48 6s linear infinite;
+  }
+
+  .growth-arrow__seg--49 {
+    animation: ga-seg-49 6s linear infinite;
+  }
+
+  .growth-arrow__seg--50 {
+    animation: ga-seg-50 6s linear infinite;
+  }
+
+  .growth-arrow__seg--51 {
+    animation: ga-seg-51 6s linear infinite;
+  }
+
+  .growth-arrow__seg--52 {
+    animation: ga-seg-52 6s linear infinite;
+  }
+
+  .growth-arrow__seg--53 {
+    animation: ga-seg-53 6s linear infinite;
+  }
+
+  .growth-arrow__seg--54 {
+    animation: ga-seg-54 6s linear infinite;
+  }
+
+  .growth-arrow__seg--55 {
+    animation: ga-seg-55 6s linear infinite;
+  }
+
+  .growth-arrow__seg--56 {
+    animation: ga-seg-56 6s linear infinite;
+  }
+
+  .growth-arrow__seg--57 {
+    animation: ga-seg-57 6s linear infinite;
+  }
+
+  .growth-arrow__seg--58 {
+    animation: ga-seg-58 6s linear infinite;
+  }
+
+  .growth-arrow__seg--59 {
+    animation: ga-seg-59 6s linear infinite;
   }
 
   @keyframes ga-seg-0 {
     0%,
-    1.0% {
+    1.00% {
       opacity: 0;
     }
-    2.2%,
+    1.80%,
     100% {
       opacity: 1;
     }
   }
+
   @keyframes ga-seg-1 {
     0%,
-    2.8% {
+    1.03% {
       opacity: 0;
     }
-    4.0%,
+    1.83%,
     100% {
       opacity: 1;
     }
   }
+
   @keyframes ga-seg-2 {
     0%,
-    4.6% {
+    1.12% {
       opacity: 0;
     }
-    5.8%,
+    1.92%,
     100% {
       opacity: 1;
     }
   }
+
   @keyframes ga-seg-3 {
     0%,
-    6.4% {
+    1.26% {
       opacity: 0;
     }
-    7.6%,
+    2.06%,
     100% {
       opacity: 1;
     }
   }
+
   @keyframes ga-seg-4 {
     0%,
-    8.2% {
+    1.47% {
       opacity: 0;
     }
-    9.4%,
+    2.27%,
     100% {
       opacity: 1;
     }
   }
+
   @keyframes ga-seg-5 {
     0%,
-    10.0% {
+    1.72% {
       opacity: 0;
     }
-    11.2%,
+    2.52%,
     100% {
       opacity: 1;
     }
   }
+
   @keyframes ga-seg-6 {
     0%,
-    11.8% {
+    2.02% {
       opacity: 0;
     }
-    13.0%,
+    2.82%,
     100% {
       opacity: 1;
     }
   }
+
   @keyframes ga-seg-7 {
     0%,
-    13.6% {
+    2.37% {
       opacity: 0;
     }
-    14.8%,
+    3.17%,
     100% {
       opacity: 1;
     }
   }
+
   @keyframes ga-seg-8 {
     0%,
-    15.4% {
+    2.77% {
       opacity: 0;
     }
-    16.6%,
+    3.57%,
     100% {
       opacity: 1;
     }
   }
+
   @keyframes ga-seg-9 {
     0%,
-    17.2% {
+    3.22% {
       opacity: 0;
     }
-    18.4%,
+    4.02%,
     100% {
       opacity: 1;
     }
   }
+
   @keyframes ga-seg-10 {
     0%,
-    19.0% {
+    3.70% {
       opacity: 0;
     }
-    20.2%,
+    4.50%,
     100% {
       opacity: 1;
     }
   }
+
   @keyframes ga-seg-11 {
     0%,
-    20.8% {
+    4.23% {
       opacity: 0;
     }
-    22.0%,
+    5.03%,
     100% {
       opacity: 1;
     }
   }
+
   @keyframes ga-seg-12 {
     0%,
-    22.6% {
+    4.80% {
       opacity: 0;
     }
-    23.8%,
+    5.60%,
     100% {
       opacity: 1;
     }
   }
+
   @keyframes ga-seg-13 {
     0%,
-    24.4% {
+    5.40% {
       opacity: 0;
     }
-    25.6%,
+    6.20%,
     100% {
       opacity: 1;
     }
   }
+
   @keyframes ga-seg-14 {
     0%,
-    26.2% {
+    6.03% {
       opacity: 0;
     }
-    27.4%,
+    6.83%,
     100% {
       opacity: 1;
     }
   }
+
   @keyframes ga-seg-15 {
     0%,
-    28.0% {
+    6.70% {
       opacity: 0;
     }
-    29.2%,
+    7.50%,
     100% {
       opacity: 1;
     }
   }
+
   @keyframes ga-seg-16 {
     0%,
-    29.8% {
+    7.40% {
       opacity: 0;
     }
-    31.0%,
+    8.20%,
     100% {
       opacity: 1;
     }
   }
+
   @keyframes ga-seg-17 {
     0%,
-    31.6% {
+    8.13% {
       opacity: 0;
     }
-    32.8%,
+    8.93%,
     100% {
       opacity: 1;
     }
   }
+
   @keyframes ga-seg-18 {
     0%,
-    33.4% {
+    8.88% {
       opacity: 0;
     }
-    34.6%,
+    9.68%,
     100% {
       opacity: 1;
     }
   }
+
   @keyframes ga-seg-19 {
     0%,
-    35.2% {
+    9.66% {
       opacity: 0;
     }
-    36.4%,
+    10.46%,
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes ga-seg-20 {
+    0%,
+    10.46% {
+      opacity: 0;
+    }
+    11.26%,
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes ga-seg-21 {
+    0%,
+    11.28% {
+      opacity: 0;
+    }
+    12.08%,
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes ga-seg-22 {
+    0%,
+    12.12% {
+      opacity: 0;
+    }
+    12.92%,
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes ga-seg-23 {
+    0%,
+    12.98% {
+      opacity: 0;
+    }
+    13.78%,
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes ga-seg-24 {
+    0%,
+    13.85% {
+      opacity: 0;
+    }
+    14.65%,
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes ga-seg-25 {
+    0%,
+    14.73% {
+      opacity: 0;
+    }
+    15.53%,
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes ga-seg-26 {
+    0%,
+    15.62% {
+      opacity: 0;
+    }
+    16.42%,
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes ga-seg-27 {
+    0%,
+    16.52% {
+      opacity: 0;
+    }
+    17.32%,
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes ga-seg-28 {
+    0%,
+    17.43% {
+      opacity: 0;
+    }
+    18.23%,
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes ga-seg-29 {
+    0%,
+    18.34% {
+      opacity: 0;
+    }
+    19.14%,
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes ga-seg-30 {
+    0%,
+    19.25% {
+      opacity: 0;
+    }
+    20.05%,
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes ga-seg-31 {
+    0%,
+    20.16% {
+      opacity: 0;
+    }
+    20.96%,
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes ga-seg-32 {
+    0%,
+    21.07% {
+      opacity: 0;
+    }
+    21.87%,
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes ga-seg-33 {
+    0%,
+    21.98% {
+      opacity: 0;
+    }
+    22.78%,
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes ga-seg-34 {
+    0%,
+    22.88% {
+      opacity: 0;
+    }
+    23.68%,
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes ga-seg-35 {
+    0%,
+    23.77% {
+      opacity: 0;
+    }
+    24.57%,
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes ga-seg-36 {
+    0%,
+    24.65% {
+      opacity: 0;
+    }
+    25.45%,
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes ga-seg-37 {
+    0%,
+    25.52% {
+      opacity: 0;
+    }
+    26.32%,
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes ga-seg-38 {
+    0%,
+    26.38% {
+      opacity: 0;
+    }
+    27.18%,
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes ga-seg-39 {
+    0%,
+    27.22% {
+      opacity: 0;
+    }
+    28.02%,
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes ga-seg-40 {
+    0%,
+    28.04% {
+      opacity: 0;
+    }
+    28.84%,
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes ga-seg-41 {
+    0%,
+    28.84% {
+      opacity: 0;
+    }
+    29.64%,
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes ga-seg-42 {
+    0%,
+    29.62% {
+      opacity: 0;
+    }
+    30.42%,
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes ga-seg-43 {
+    0%,
+    30.37% {
+      opacity: 0;
+    }
+    31.17%,
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes ga-seg-44 {
+    0%,
+    31.10% {
+      opacity: 0;
+    }
+    31.90%,
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes ga-seg-45 {
+    0%,
+    31.80% {
+      opacity: 0;
+    }
+    32.60%,
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes ga-seg-46 {
+    0%,
+    32.47% {
+      opacity: 0;
+    }
+    33.27%,
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes ga-seg-47 {
+    0%,
+    33.10% {
+      opacity: 0;
+    }
+    33.90%,
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes ga-seg-48 {
+    0%,
+    33.70% {
+      opacity: 0;
+    }
+    34.50%,
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes ga-seg-49 {
+    0%,
+    34.27% {
+      opacity: 0;
+    }
+    35.07%,
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes ga-seg-50 {
+    0%,
+    34.80% {
+      opacity: 0;
+    }
+    35.60%,
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes ga-seg-51 {
+    0%,
+    35.28% {
+      opacity: 0;
+    }
+    36.08%,
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes ga-seg-52 {
+    0%,
+    35.73% {
+      opacity: 0;
+    }
+    36.53%,
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes ga-seg-53 {
+    0%,
+    36.13% {
+      opacity: 0;
+    }
+    36.93%,
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes ga-seg-54 {
+    0%,
+    36.48% {
+      opacity: 0;
+    }
+    37.28%,
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes ga-seg-55 {
+    0%,
+    36.78% {
+      opacity: 0;
+    }
+    37.58%,
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes ga-seg-56 {
+    0%,
+    37.03% {
+      opacity: 0;
+    }
+    37.83%,
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes ga-seg-57 {
+    0%,
+    37.24% {
+      opacity: 0;
+    }
+    38.04%,
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes ga-seg-58 {
+    0%,
+    37.38% {
+      opacity: 0;
+    }
+    38.18%,
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes ga-seg-59 {
+    0%,
+    37.47% {
+      opacity: 0;
+    }
+    38.27%,
     100% {
       opacity: 1;
     }
@@ -397,8 +1016,15 @@
     animation: ga-tip 6s ease-in-out infinite;
   }
 
+  /* The whole mark fades as one unit, so overlapping segments never show seams. */
+  .growth-arrow__mark {
+    animation: ga-mark 6s ease-in-out infinite;
+  }
+
+  /* The shadow is its own layer: only its opacity changes, so the blur is not redrawn. */
   .growth-arrow__shadow {
     opacity: 0;
+    will-change: opacity;
     animation: ga-shadow 6s ease-in-out infinite;
   }
 
@@ -411,11 +1037,6 @@
     100% {
       opacity: 1;
     }
-  }
-
-  /* The whole mark fades as one unit, so overlapping segments never show seams. */
-  .growth-arrow__mark {
-    animation: ga-mark 6s ease-in-out infinite;
   }
 
   @keyframes ga-mark {
@@ -448,7 +1069,7 @@
   .growth-arrow--still .growth-arrow__seg,
   .growth-arrow--still .growth-arrow__mark,
   .growth-arrow--still .growth-arrow__tip,
-  .growth-arrow--still .growth-arrow__shadow {
+  .growth-arrow--still.growth-arrow__shadow {
     animation: none;
     opacity: 1;
   }

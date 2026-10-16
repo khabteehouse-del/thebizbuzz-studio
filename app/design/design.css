@@ -599,14 +599,22 @@
 }
 
 .dz-cta-btn {
+  /* The burning-fuse border is the site's own .fuse-btn effect (globals.css).
+     Only its colour is set here. It borrows the button's own pale red for now,
+     so nothing new is introduced. Change --fuse-color to recolour the spark. */
+  --fuse-color: #ffc9d0;
+  --fuse-duration: 7s;
+  --fuse-delay: 0s;
+
   position: relative;
+  isolation: isolate;
   display: inline-flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 1rem;
   margin-top: 2rem;
-  min-height: 3.1rem;
+  height: 3.1rem;
   border-radius: 999px;
-  padding: 0.8rem 1.8rem;
+  padding: 0 0.25rem 0 2rem;
   font-family: var(--font-unbounded), var(--font-sans), sans-serif;
   font-size: 0.72rem;
   font-weight: 600;
@@ -621,6 +629,26 @@
   transition:
     transform 0.3s var(--dz-ease),
     box-shadow 0.3s;
+}
+
+/* Round arrow badge at the right end, as on the main page buttons. */
+.dz-cta-arrow {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  height: calc(100% - 0.5rem);
+  aspect-ratio: 1;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 0.875rem;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.18);
+  transition: transform 0.3s var(--dz-ease);
+}
+
+.dz-cta-btn:hover .dz-cta-arrow {
+  transform: translateX(2px);
 }
 
 .dz-cta-btn:hover {

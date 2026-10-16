@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { DesignGallery } from "@/components/design/gallery";
 import { designCategories, designCredit, designs } from "@/data/designs";
 
@@ -62,9 +62,11 @@ export default function DesignPage() {
             Tell us what you are building and we will come back with a
             direction.
           </p>
-          <Link href="/#contact" className="dz-cta-btn">
-            Start a project
-            <ArrowRight size={16} aria-hidden="true" />
+          <Link href="/#contact" className="dz-cta-btn fuse-btn">
+            <span className="relative z-10">Start a project</span>
+            <span className="dz-cta-arrow" aria-hidden="true">
+              &rarr;
+            </span>
           </Link>
         </div>
 

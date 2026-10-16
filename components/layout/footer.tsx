@@ -47,6 +47,16 @@ export function Footer() {
                   {site.email}
                 </a>
               </li>
+              <li>
+                <a
+                  href={site.whatsapp.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-paper/70 transition-colors duration-200 hover:text-paper"
+                >
+                  WhatsApp {site.whatsapp.display}
+                </a>
+              </li>
               <li className="text-sm text-muted">
                 {site.locations.join(", ")}
               </li>

@@ -1,4 +1,5 @@
 import { designTileHero } from "./designs";
+import { site } from "./site";
 import {
   MapPin,
   Search,
@@ -13,6 +14,7 @@ import {
   Clapperboard,
   Wand2,
   Radar,
+  AudioLines,
   type LucideIcon,
 } from "lucide-react";
 
@@ -28,8 +30,13 @@ export type Service = {
   tintHover: string;
   mark: string;
   icon: LucideIcon;
-  /* Optional: shown only on a tile that spans the full grid width. */
-  image?: string;
+  /* Optional small label on the tile front, for example a product that is still in build. */
+  badge?: string;
+  /*
+    Optional: the whole tile becomes a link, and the back shows a call to
+    action strip under the capability list.
+  */
+  link?: { href: string; cta: string; external?: boolean };
   /*
     Optional: the tile back shows one design instead of the capability list,
     and the whole tile links to the page. Used by the design gallery.
@@ -164,6 +171,29 @@ export const services: Service[] = [
 
   /* ---------------- Studio ---------------- */
   {
+    id: "mizar",
+    track: "studio",
+    title: "Mizar",
+    summary:
+      "An AI business assistant with a built-in AI receptionist. Made for mobile service professionals. Say it. Mizar does it.",
+    capabilities: [
+      "Answers calls and messages while you are on the job",
+      "Collects the details and books the visit",
+      "Keeps your day in order, by voice",
+      "Built for beauticians, painters, vets and every pro who comes to the customer",
+    ],
+    tint: "#241d12",
+    tintHover: "#33291a",
+    mark: "#f2c879",
+    icon: AudioLines,
+    badge: "In build",
+    link: {
+      href: site.whatsapp.href,
+      cta: "Join the early list",
+      external: true,
+    },
+  },
+  {
     id: "ai",
     track: "studio",
     title: "AI-integrated solutions",
@@ -289,7 +319,6 @@ export const services: Service[] = [
     tintHover: "#282550",
     mark: "#9a95f5",
     icon: LayoutGrid,
-    image: "/images/services/web-product-design.jpg",
   },
 ];
 

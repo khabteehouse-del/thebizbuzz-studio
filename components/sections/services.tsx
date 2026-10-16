@@ -79,30 +79,31 @@ function useAutoFlip(
 function Tile({
   service,
   index,
-  spanFull,
+  half,
 }: {
   service: Service;
   index: number;
-  /* True for the last tile when it carries an image: it takes a full row. */
-  spanFull?: boolean;
+  /* True for the last two tiles of a group: each takes half a row, so the
+     final row has no gap. */
+  half?: boolean;
 }) {
   /* Touch devices have no hover, so a tap flips the tile. On devices that
      hover, the flip follows the pointer and a click does nothing extra. */
   const [flipped, setFlipped] = useState(false);
   const tileRef = useRef<HTMLDivElement>(null);
   useAutoFlip(tileRef, setFlipped);
-  const showImage = spanFull && Boolean(service.image);
   const gallery = service.gallery;
+  const link = service.link;
 
   const toggle = () => {
     if (window.matchMedia("(hover: hover)").matches) return;
     setFlipped((v) => !v);
   };
 
-  /* A tile with a gallery is a real link. On a device that hovers, a click
+  /* A tile with a gallery or a link is a real link. On a device that hovers, a click
      goes straight to the page. On touch, a tap on a tile that has not
      flipped yet flips it first, and the next tap goes in. */
-  const onGalleryClick = (event: React.MouseEvent) => {
+  const onLinkClick = (event: React.MouseEvent) => {
     if (window.matchMedia("(hover: hover)").matches) return;
     if (!flipped) {
       event.preventDefault();
@@ -111,7 +112,7 @@ function Tile({
   };
 
   const tileClass = `group block h-[17rem] w-full rounded-2xl text-left focus-visible:outline-none ${
-    spanFull ? "[perspective:4000px]" : "[perspective:1400px]"
+    half ? "[perspective:2000px]" : "[perspective:1400px]"
   }`;
 
   const glow = (
@@ -148,11 +149,24 @@ function Tile({
             >
               <service.icon size={18} strokeWidth={1.6} />
             </span>
-            <span
-              className="shrink-0 font-display text-xs"
-              style={{ color: service.mark, opacity: 0.75 }}
-            >
-              0{index + 1}
+            <span className="flex shrink-0 items-center gap-3">
+              {service.badge && (
+                <span
+                  className="rounded-full border px-2.5 py-0.5 font-display text-[10px] uppercase tracking-[0.14em]"
+                  style={{
+                    color: service.mark,
+                    borderColor: `${service.mark}66`,
+                  }}
+                >
+                  {service.badge}
+                </span>
+              )}
+              <span
+                className="font-display text-xs"
+                style={{ color: service.mark, opacity: 0.75 }}
+              >
+                0{index + 1}
+              </span>
             </span>
           </span>
           <span className="mt-5 block font-display text-xl font-medium tracking-[-0.02em] text-paper md:text-2xl">
@@ -164,9 +178,7 @@ function Tile({
             style={{ backgroundColor: service.mark, opacity: 0.6 }}
           />
           <span
-            className={`mt-4 block text-sm leading-relaxed text-paper/65 ${
-              showImage ? "max-w-md lg:max-w-[46%]" : "line-clamp-4"
-            }`}
+            className="mt-4 block line-clamp-4 text-sm leading-relaxed text-paper/65"
           >
             {service.summary}
           </span>
@@ -174,29 +186,13 @@ function Tile({
             className="mt-auto pt-4 font-display text-[11px] uppercase tracking-[0.18em]"
             style={{ color: service.mark }}
           >
-            {gallery ? "See our work +" : "What is included +"}
+            {gallery
+              ? "See our work +"
+              : link
+                ? "What it does +"
+                : "What is included +"}
           </span>
         </span>
-        {showImage && (
-          <span
-            className="absolute inset-y-0 right-0 hidden w-[44%] overflow-hidden lg:block"
-            aria-hidden="true"
-          >
-            <Image
-              src={service.image!}
-              alt=""
-              fill
-              sizes="40vw"
-              className="object-cover"
-            />
-            <span
-              className="absolute inset-0"
-              style={{
-                background: `linear-gradient(90deg, ${service.tint} 0%, transparent 45%), linear-gradient(135deg, ${service.mark}40 0%, transparent 60%)`,
-              }}
-            />
-          </span>
-        )}
       </span>
 
       {/* Back */}
@@ -257,16 +253,7 @@ function Tile({
             >
               {service.title}
             </span>
-            {showImage && (
-              <span className="mt-4 hidden max-w-xl text-base leading-relaxed text-paper/80 lg:block">
-                {service.summary}
-              </span>
-            )}
-            <span
-              className={`mt-4 block space-y-2.5 ${
-                showImage ? "lg:mt-auto lg:grid lg:grid-cols-2 lg:gap-x-10 lg:space-y-0 lg:gap-y-2.5" : ""
-              }`}
-            >
+            <span className="mt-4 block space-y-2.5">
               {service.capabilities.map((item) => (
                 <span
                   key={item}
@@ -281,6 +268,24 @@ function Tile({
                 </span>
               ))}
             </span>
+            {link && (
+              <span
+                className="mt-auto flex items-center justify-between gap-3 rounded-xl border px-4 py-2.5"
+                style={{
+                  borderColor: `${service.mark}55`,
+                  backgroundColor: "rgba(0,0,0,0.25)",
+                }}
+              >
+                <span className="font-display text-sm font-medium text-paper">
+                  {link.cta}
+                </span>
+                <ArrowUpRight
+                  size={16}
+                  aria-hidden="true"
+                  style={{ color: service.mark }}
+                />
+              </span>
+            )}
           </span>
         </span>
       )}
@@ -290,19 +295,32 @@ function Tile({
   return (
     <Reveal
       delay={index * 0.05}
-      className={spanFull ? "md:col-span-2 lg:col-span-3" : undefined}
+      className={half ? "lg:col-span-3" : "lg:col-span-2"}
     >
       <div ref={tileRef}>
         {gallery ? (
           <Link
             href={gallery.href}
-            onClick={onGalleryClick}
+            onClick={onLinkClick}
             data-flipped={flipped}
             aria-label={`${service.title}. Opens the design gallery.`}
             className={tileClass}
           >
             {faces}
           </Link>
+        ) : link ? (
+          <a
+            href={link.href}
+            onClick={onLinkClick}
+            data-flipped={flipped}
+            aria-label={`${service.title}, in build. ${link.cta} on WhatsApp.`}
+            className={tileClass}
+            {...(link.external
+              ? { target: "_blank", rel: "noopener noreferrer" }
+              : {})}
+          >
+            {faces}
+          </a>
         ) : (
           <button
             type="button"
@@ -332,7 +350,7 @@ export function Services() {
         <Reveal>
           <p className="section-label">What we do</p>
           <h2 className="mt-7 max-w-2xl font-display text-3xl font-medium leading-[1.08] tracking-[-0.03em] text-paper sm:text-4xl md:text-6xl">
-            Thirteen services, two tracks, one team
+            Thirteen services, a flagship product, one team
           </h2>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-muted">
             Most agencies hand you off between departments. Here the people who
@@ -354,13 +372,12 @@ export function Services() {
             </div>
           </Reveal>
 
-          <div className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-6">
             {localServices.map((service, index) => (
               <Tile
                 key={service.id}
                 service={service}
                 index={index}
-                spanFull={index === localServices.length - 1 && Boolean(service.image)}
               />
             ))}
           </div>
@@ -379,13 +396,13 @@ export function Services() {
             </div>
           </Reveal>
 
-          <div className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-6">
             {studioServices.map((service, index) => (
               <Tile
                 key={service.id}
                 service={service}
                 index={index}
-                spanFull={index === studioServices.length - 1 && Boolean(service.image)}
+                half={index >= studioServices.length - 2}
               />
             ))}
           </div>

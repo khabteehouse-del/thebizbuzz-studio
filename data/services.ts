@@ -31,7 +31,13 @@ export type Service = {
   mark: string;
   icon: LucideIcon;
   /* Optional: the front shows this logo instead of the icon and title. */
-  logo?: { src: string; alt: string; width: number; height: number };
+  logo?: {
+    src: string;
+    alt: string;
+    width: number;
+    height: number;
+    animated?: boolean;
+  };
   /* Optional: the back shows this picture instead of the capability list. */
   backImage?: {
     image: string;
@@ -205,6 +211,8 @@ export const services: Service[] = [
     logo: {
       src: "/images/services/mizar-logo.webp",
       alt: "Mizar",
+      /* Drawn as an animated SVG on the tile; the picture is the fallback. */
+      animated: true,
       width: 1192,
       height: 344,
     },

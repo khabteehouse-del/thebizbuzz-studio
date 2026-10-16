@@ -8,6 +8,7 @@ import type { Service } from "@/data/services";
 import { localServices, studioServices } from "@/data/services";
 import { Reveal } from "@/components/shared/reveal";
 import { Orbs } from "@/components/shared/orbs";
+import { MizarLogo } from "@/components/shared/mizar-logo";
 
 /* Touch screens cannot hover, and few people tap a tile that does not look
    tappable. So on touch, a tile flips by itself once it has rested under the
@@ -176,14 +177,18 @@ function Tile({
           </span>
           {service.logo ? (
             <span className="mt-2 flex min-h-0 flex-1 items-center">
-              <Image
-                src={service.logo.src}
-                alt={service.logo.alt}
-                width={service.logo.width}
-                height={service.logo.height}
-                sizes="(min-width: 1024px) 24vw, 70vw"
-                className="h-auto w-[60%] max-w-[13.5rem]"
-              />
+              {service.logo.animated ? (
+                <MizarLogo className="h-auto w-[60%] max-w-[13.5rem]" />
+              ) : (
+                <Image
+                  src={service.logo.src}
+                  alt={service.logo.alt}
+                  width={service.logo.width}
+                  height={service.logo.height}
+                  sizes="(min-width: 1024px) 24vw, 70vw"
+                  className="h-auto w-[60%] max-w-[13.5rem]"
+                />
+              )}
             </span>
           ) : (
             <>

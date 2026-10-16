@@ -70,7 +70,7 @@ export default function DesignPage() {
           </Link>
         </div>
 
-        <p className="dz-credit">Design by {designCredit}</p>
+        <p className="dz-credit">Crafted by the {designCredit}</p>
       </section>
     </div>
   );

@@ -7,6 +7,8 @@ export type BlogPost = {
   tags: string[];
   image?: string;
   body: string[];
+  /* Where the facts came from. Shown as a Sources line under the post. */
+  sources?: { label: string; url: string }[];
 };
 
 export const blogPosts: BlogPost[] = [
@@ -26,6 +28,11 @@ export const blogPosts: BlogPost[] = [
       "Pricing starts at $2 per million input tokens and $10 per million output tokens during an introductory period, with cached input tokens at 95% off. After that period the rates double to $4 and $20. If you are budgeting an AI build on Argon, plan around the higher figure, not the launch price.",
       "There is a security angle too. Argon can find, validate and patch vulnerabilities on its own, so Google ships the public version with cyber guardrails and keeps an unrestricted version for vetted defenders. For businesses, the takeaway is the same as with every major release: a stronger model does not replace a well-designed system around it. Retrieval, verification and clear human handoffs still decide whether an AI product works on real data.",
     ],
+    sources: [
+      { label: "Google (Gemini 4 Argon announcement)", url: "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/" },
+      { label: "American Bazaar", url: "https://americanbazaaronline.com/2026/10/14/google-releases-gemini-4-argon-ai-model-490048/" },
+      { label: "Digit", url: "https://www.digit.in/news/general/google-rolls-out-gemini-4-argon-ai-model-after-restricted-release-check-capabilities-and-availability.html" },
+    ],
   },
   {
     slug: "anthropic-openai-price-cuts-september-2026",
@@ -41,6 +48,10 @@ export const blogPosts: BlogPost[] = [
       "For businesses building AI-integrated products, this matters more than it might first appear. A year ago, running a production AI system with strong reasoning capability meant either accepting high per-token costs or compromising on model quality. That tradeoff is shrinking fast. Systems that were cost-prohibitive to run at scale six months ago are now realistic to deploy.",
       "It also changes the calculus on build-versus-buy decisions. Cheaper flagship models make it more viable to route complex, judgment-heavy tasks to a top-tier model while reserving simpler, high-volume tasks for a lighter one, a tiered approach rather than a single model doing everything. That's the same dual-tier thinking behind systems like our own FluxorX build: deterministic handling where precision matters, model reasoning where it doesn't.",
       "The practical takeaway for anyone evaluating an AI vendor or build right now: pricing that felt fixed a quarter ago isn't anymore. Worth revisiting any AI cost assumptions baked into a proposal or budget from earlier this year.",
+    ],
+    sources: [
+      { label: "SiliconANGLE", url: "https://siliconangle.com/2026-09-22/anthropic-releases-claude-opus-5-5-and-openai-counters-with-two-cheaper-gpt-6-models/" },
+      { label: "Simon Willison", url: "https://simonwillison.net/2026/Sep/22/opus-and-sol-and-luna/" },
     ],
   },
   {

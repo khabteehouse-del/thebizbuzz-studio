@@ -124,6 +124,25 @@ export default async function BlogPostPage({ params }: Props) {
             </p>
           ))}
         </div>
+
+        {post.sources && post.sources.length > 0 && (
+          <p className="mt-10 border-t border-line pt-6 text-sm leading-relaxed text-paper/55">
+            <span className="text-paper/75">Sources: </span>
+            {post.sources.map((src, i) => (
+              <span key={src.url}>
+                {i > 0 && ", "}
+                <a
+                  href={src.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline decoration-paper/30 underline-offset-4 transition-colors hover:text-paper"
+                >
+                  {src.label}
+                </a>
+              </span>
+            ))}
+          </p>
+        )}
       </div>
     </article>
   );

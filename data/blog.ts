@@ -18,6 +18,7 @@ export const blogPosts: BlogPost[] = [
     date: "2026-10-13",
     readTime: "4 min read",
     tags: ["AI News", "LLM Upgrades"],
+    image: "/images/blog/gemini-4-argon.jpg",
     body: [
       "Google made Gemini 4 Argon generally available on October 13, 2026, after introducing it on September 30 to a small group of trusted cyber defenders through its Fairwind Program. It is now reachable through the paid Gemini API, Google's business platforms, and the Gemini app and AI Mode in Search for AI Pro and Ultra subscribers. Google describes it as its frontier model for real-world coding, enterprise knowledge work and cyber defense.",
       "The headline numbers are Google's own claims. Argon scores 77.9% on DeepSWE v1.1, which Google calls a new state of the art for software engineering agents, and 91.7% on LVBench for long video understanding. It ranks first on Zapier's AutomationBench at 51.3%. The output limit also jumps to 1 million tokens, up from 64,000, which matters for long migrations and large generated reports. As with any vendor benchmark, these are worth checking against your own workload.",

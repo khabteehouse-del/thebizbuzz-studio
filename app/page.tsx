@@ -4,6 +4,7 @@ import { Tracks } from "@/components/sections/tracks";
 import { Services } from "@/components/sections/services";
 import { ToolsStrip } from "@/components/sections/tools-strip";
 import { Work } from "@/components/sections/work";
+import { BlogStrip } from "@/components/sections/blog-strip";
 import { Approach } from "@/components/sections/approach";
 import { Team } from "@/components/sections/team";
 import { Faq } from "@/components/sections/faq";
@@ -25,6 +26,7 @@ export default function Home() {
       <Services />
       <ToolsStrip />
       <Work />
+      <BlogStrip />
       <Approach />
       <Team />
       <Faq />

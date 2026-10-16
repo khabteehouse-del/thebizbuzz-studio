@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { DesignGallery } from "@/components/design/gallery";
-import { designCategories, designCredit, designs } from "@/data/designs";
+import { designCredit } from "@/data/designs";
 
 export const metadata: Metadata = {
   title: "Design studio",
@@ -42,15 +42,6 @@ export default function DesignPage() {
             Identity systems, logos, flyers and posters from the BizBuzz design
             team. Filter by discipline, then open any piece full screen.
           </p>
-
-          <div className="dz-stats">
-            <span className="dz-stat dz-glass">
-              <b>{designs.length}</b>pieces
-            </span>
-            <span className="dz-stat dz-glass">
-              <b>{designCategories.length}</b>disciplines
-            </span>
-          </div>
         </div>
       </section>
 

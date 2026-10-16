@@ -257,28 +257,6 @@
   color: var(--dz-muted);
 }
 
-.dz-stats {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-top: 2.25rem;
-}
-
-.dz-stat {
-  border-radius: 999px;
-  padding: 0.55rem 1.1rem;
-  font-size: 0.75rem;
-  letter-spacing: 0.04em;
-  color: var(--dz-text);
-}
-
-.dz-stat b {
-  font-family: var(--font-display);
-  font-weight: 600;
-  color: var(--dz-blush);
-  margin-right: 0.4rem;
-}
-
 /* ------------------------------------------------------------------ */
 /* Filters                                                             */
 /* ------------------------------------------------------------------ */

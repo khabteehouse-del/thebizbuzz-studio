@@ -42,9 +42,10 @@
   font-style: italic;
   text-transform: uppercase;
   letter-spacing: -0.02em;
-  /* Same depth as the landing headline: contact shadow plus a wide soft one. */
-  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.55))
-    drop-shadow(0 20px 36px rgba(0, 0, 0, 0.5));
+  /* Landing-style depth. The soft layers are red because a black shadow cannot show on this dark ground. */
+  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.7))
+    drop-shadow(0 0 26px rgba(224, 36, 63, 0.38))
+    drop-shadow(0 18px 40px rgba(224, 36, 63, 0.26));
 }
 
 /* Frosted panel. The solid fallback keeps text readable where blur is missing. */
@@ -206,6 +207,43 @@
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.dz-morph {
+  display: inline-block;
+  width: 0.6em;
+  height: 0.6em;
+  margin-left: 0.28em;
+  vertical-align: baseline;
+  background: linear-gradient(135deg, #ffc9d0 0%, #ff4d62 38%, #9e1230 100%);
+  box-shadow:
+    inset 0 2px 3px rgba(255, 255, 255, 0.45),
+    inset 0 -6px 10px rgba(90, 14, 32, 0.5),
+    0 0 22px rgba(255, 77, 98, 0.5);
+  border-radius: 50%;
+  transform: translateY(0.02em);
+  animation: dz-morph 12s ease-in-out infinite;
+  will-change: border-radius, transform;
+}
+
+@keyframes dz-morph {
+  0%,
+  100% {
+    border-radius: 50%;
+    transform: translateY(0.02em) rotate(0deg);
+  }
+  25% {
+    border-radius: 24%;
+    transform: translateY(0.02em) rotate(45deg);
+  }
+  50% {
+    border-radius: 50% 0 50% 0;
+    transform: translateY(0.02em) rotate(90deg);
+  }
+  75% {
+    border-radius: 50% 50% 50% 0;
+    transform: translateY(0.02em) rotate(135deg);
+  }
 }
 
 .dz-lede {
@@ -739,6 +777,7 @@ body:has(.dz) footer > div[aria-hidden="true"] p {
 
 @media (prefers-reduced-motion: reduce) {
   .dz-orb,
+  .dz-morph,
   .dz-portal,
   .dz-card,
   .dz-viewer {

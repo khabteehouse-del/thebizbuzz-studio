@@ -1,0 +1,749 @@
+/*
+  Design studio gallery (/design).
+
+  Everything here is scoped to the .dz classes, so the blue BizBuzz palette
+  used on the rest of the site is untouched. The nav and footer pick up the
+  maroon only while a .dz page is on screen (see the body:has(.dz) rules at
+  the bottom).
+*/
+
+/* The viewer is rendered on <body>, outside .dz, so it needs the tokens too. */
+.dz,
+.dz-viewer {
+  --dz-ink: #12030a;
+  --dz-wine: #2a0612;
+  --dz-maroon: #5a0e20;
+  --dz-crimson: #9e1230;
+  --dz-red: #e0243f;
+  --dz-glow: #ff4d62;
+  --dz-blush: #ffc9d0;
+  --dz-text: #fdf1f3;
+  --dz-muted: #d3a9b1;
+  --dz-line: rgba(255, 196, 204, 0.18);
+  --dz-ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.dz {
+  position: relative;
+  isolation: isolate;
+  min-height: 100dvh;
+  overflow-x: clip;
+  color: var(--dz-text);
+  background:
+    radial-gradient(1100px 650px at 50% -8%, #4d0b1d 0%, transparent 62%),
+    radial-gradient(800px 600px at 100% 40%, rgba(158, 18, 48, 0.28) 0%, transparent 70%),
+    radial-gradient(700px 500px at 0% 75%, rgba(90, 14, 32, 0.45) 0%, transparent 70%),
+    linear-gradient(180deg, #12030a 0%, #1a0510 55%, #12030a 100%);
+}
+
+.dz-display {
+  font-family: var(--font-unbounded), var(--font-sans), system-ui, sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+/* Frosted panel. The solid fallback keeps text readable where blur is missing. */
+.dz-glass {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.11), rgba(255, 255, 255, 0.03));
+  border: 1px solid var(--dz-line);
+  box-shadow:
+    0 12px 44px rgba(0, 0, 0, 0.38),
+    inset 0 1px 0 rgba(255, 255, 255, 0.14);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  backdrop-filter: blur(16px) saturate(140%);
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .dz-glass {
+    background: rgba(58, 10, 24, 0.9);
+  }
+}
+
+.dz-shell {
+  width: 100%;
+  max-width: 80rem;
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+@media (min-width: 640px) {
+  .dz-shell {
+    padding-inline: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .dz-shell {
+    padding-inline: 3rem;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Hero                                                                */
+/* ------------------------------------------------------------------ */
+
+.dz-hero {
+  position: relative;
+  padding-top: 8.5rem;
+  padding-bottom: 3.5rem;
+}
+
+@media (min-width: 768px) {
+  .dz-hero {
+    padding-top: 12rem;
+    padding-bottom: 5rem;
+  }
+}
+
+/* The "new dimension": a glowing floor grid that recedes to the horizon. */
+.dz-stage {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.dz-floor {
+  position: absolute;
+  left: -25%;
+  right: -25%;
+  bottom: 0;
+  height: 62%;
+  transform: perspective(520px) rotateX(63deg);
+  transform-origin: 50% 100%;
+  -webkit-mask-image: linear-gradient(to top, #000 8%, transparent 92%);
+  mask-image: linear-gradient(to top, #000 8%, transparent 92%);
+  overflow: hidden;
+}
+
+.dz-floor::before {
+  content: "";
+  position: absolute;
+  inset: -64px 0 0 0;
+  background-image:
+    linear-gradient(rgba(255, 77, 98, 0.34) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 77, 98, 0.34) 1px, transparent 1px);
+  background-size: 64px 64px;
+  animation: dz-floor 6s linear infinite;
+  will-change: transform;
+}
+
+@keyframes dz-floor {
+  to {
+    transform: translateY(64px);
+  }
+}
+
+.dz-orb {
+  position: absolute;
+  border-radius: 50%;
+  animation: dz-drift 16s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.dz-orb--a {
+  width: 38rem;
+  height: 38rem;
+  top: -14rem;
+  left: -10rem;
+  background: radial-gradient(circle, rgba(224, 36, 63, 0.38) 0%, transparent 68%);
+}
+
+.dz-orb--b {
+  width: 32rem;
+  height: 32rem;
+  top: 2rem;
+  right: -12rem;
+  background: radial-gradient(circle, rgba(158, 18, 48, 0.5) 0%, transparent 68%);
+  animation-duration: 20s;
+  animation-delay: -6s;
+}
+
+.dz-orb--c {
+  width: 26rem;
+  height: 26rem;
+  bottom: 8rem;
+  left: 28%;
+  background: radial-gradient(circle, rgba(255, 77, 98, 0.2) 0%, transparent 70%);
+  animation-duration: 24s;
+  animation-delay: -11s;
+}
+
+@keyframes dz-drift {
+  to {
+    transform: translate3d(3rem, 2rem, 0) scale(1.08);
+  }
+}
+
+/* Plays once when the page opens: the page "opens" from a point. */
+.dz-portal {
+  animation: dz-portal 1s var(--dz-ease) backwards;
+}
+
+@keyframes dz-portal {
+  from {
+    clip-path: circle(0% at 50% 18%);
+    opacity: 0;
+  }
+  to {
+    clip-path: circle(140% at 50% 18%);
+    opacity: 1;
+  }
+}
+
+.dz-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.8125rem;
+  color: var(--dz-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.dz-back:hover {
+  color: var(--dz-text);
+}
+
+.dz-kicker {
+  display: flex;
+  width: fit-content;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 2.25rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--dz-glow);
+}
+
+.dz-kicker::before {
+  content: "";
+  width: 2rem;
+  height: 1px;
+  background: var(--dz-glow);
+}
+
+.dz-title {
+  margin-top: 1.5rem;
+  max-width: 17ch;
+  font-size: clamp(2.05rem, 7.4vw, 5.6rem);
+  line-height: 1.04;
+  overflow-wrap: break-word;
+}
+
+.dz-title em {
+  font-style: normal;
+  color: var(--dz-glow);
+  background: linear-gradient(100deg, #ff9aa8 0%, #ff4d62 45%, #e0243f 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dz-lede {
+  margin-top: 1.4rem;
+  max-width: 34rem;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--dz-muted);
+}
+
+.dz-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2.25rem;
+}
+
+.dz-stat {
+  border-radius: 999px;
+  padding: 0.55rem 1.1rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  color: var(--dz-text);
+}
+
+.dz-stat b {
+  font-family: var(--font-unbounded), var(--font-sans), sans-serif;
+  font-weight: 600;
+  color: var(--dz-blush);
+  margin-right: 0.4rem;
+}
+
+/* ------------------------------------------------------------------ */
+/* Filters                                                             */
+/* ------------------------------------------------------------------ */
+
+.dz-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 2rem;
+}
+
+.dz-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 2.75rem;
+  border-radius: 999px;
+  padding: 0.5rem 1.15rem;
+  font-family: var(--font-unbounded), var(--font-sans), sans-serif;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--dz-text);
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--dz-line);
+  transition:
+    background 0.3s var(--dz-ease),
+    border-color 0.3s,
+    transform 0.3s var(--dz-ease),
+    box-shadow 0.3s;
+}
+
+.dz-chip:hover {
+  border-color: rgba(255, 77, 98, 0.6);
+  transform: translateY(-2px);
+}
+
+.dz-chip[aria-pressed="true"] {
+  background: linear-gradient(135deg, var(--dz-crimson), var(--dz-red));
+  border-color: rgba(255, 154, 168, 0.7);
+  box-shadow: 0 8px 30px rgba(224, 36, 63, 0.4);
+}
+
+.dz-chip small {
+  font-size: 0.66rem;
+  opacity: 0.75;
+}
+
+/* ------------------------------------------------------------------ */
+/* Grid and cards                                                      */
+/* ------------------------------------------------------------------ */
+
+.dz-grid {
+  column-count: 1;
+  column-gap: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .dz-grid {
+    column-count: 2;
+  }
+}
+
+@media (min-width: 1024px) {
+  .dz-grid {
+    column-count: 3;
+  }
+}
+
+.dz-card {
+  position: relative;
+  display: block;
+  width: 100%;
+  margin: 0 0 1.25rem;
+  padding: 0;
+  overflow: hidden;
+  break-inside: avoid;
+  border-radius: 20px;
+  border: 1px solid var(--dz-line);
+  background: #1d0610;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  box-shadow: 0 14px 44px rgba(0, 0, 0, 0.45);
+  transition:
+    transform 0.55s var(--dz-ease),
+    box-shadow 0.55s var(--dz-ease),
+    border-color 0.4s;
+  animation: dz-rise 0.7s var(--dz-ease) backwards;
+  animation-delay: calc(var(--i, 0) * 60ms);
+}
+
+@keyframes dz-rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+}
+
+.dz-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 0.9s var(--dz-ease);
+}
+
+.dz-card:focus-visible {
+  outline: 2px solid var(--dz-blush);
+  outline-offset: 3px;
+}
+
+.dz-card-cap {
+  position: absolute;
+  inset: auto 0.65rem 0.65rem 0.65rem;
+  border-radius: 14px;
+  padding: 0.7rem 0.9rem;
+  background: rgba(18, 3, 10, 0.62);
+  border: 1px solid rgba(255, 196, 204, 0.16);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .dz-card-cap {
+    background: rgba(18, 3, 10, 0.88);
+  }
+}
+
+.dz-card-title,
+.dz-card-meta,
+.dz-card-line {
+  display: block;
+}
+
+.dz-card-title {
+  font-family: var(--font-unbounded), var(--font-sans), sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  color: var(--dz-text);
+}
+
+.dz-card-meta {
+  margin-top: 0.25rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--dz-blush);
+}
+
+.dz-card-line {
+  margin-top: 0.4rem;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: var(--dz-muted);
+}
+
+.dz-badge {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  border-radius: 999px;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  color: var(--dz-text);
+  background: rgba(18, 3, 10, 0.7);
+  border: 1px solid rgba(255, 196, 204, 0.22);
+}
+
+/* Touch screens: keep the image clear. The caption shows in the viewer. */
+@media (hover: none) {
+  .dz-card .dz-card-line {
+    display: none;
+  }
+}
+
+/* Devices that hover: lift on hover and reveal the one-line caption. */
+@media (hover: hover) {
+  .dz-card:hover {
+    transform: translateY(-7px);
+    border-color: rgba(255, 77, 98, 0.6);
+    box-shadow:
+      0 28px 80px rgba(224, 36, 63, 0.3),
+      0 0 0 1px rgba(255, 77, 98, 0.25);
+  }
+
+  .dz-card:hover img {
+    transform: scale(1.045);
+  }
+
+  .dz-card .dz-card-line {
+    display: grid;
+    grid-template-rows: 0fr;
+    margin-top: 0;
+    opacity: 0;
+    transition:
+      grid-template-rows 0.45s var(--dz-ease),
+      opacity 0.35s,
+      margin-top 0.45s var(--dz-ease);
+  }
+
+  .dz-card .dz-card-line > span {
+    overflow: hidden;
+  }
+
+  .dz-card:hover .dz-card-line,
+  .dz-card:focus-visible .dz-card-line {
+    grid-template-rows: 1fr;
+    margin-top: 0.4rem;
+    opacity: 1;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Viewer                                                              */
+/* ------------------------------------------------------------------ */
+
+.dz-viewer {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 4.5rem 1rem 5.5rem;
+  background: rgba(14, 2, 7, 0.95);
+  color: var(--dz-text);
+  animation: dz-fade 0.3s ease backwards;
+}
+
+@keyframes dz-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+.dz-viewer-figure {
+  display: flex;
+  min-height: 0;
+  max-width: min(76rem, 100%);
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+}
+
+.dz-viewer-figure img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  border-radius: 14px;
+  box-shadow: 0 30px 100px rgba(0, 0, 0, 0.7);
+}
+
+.dz-viewer-info {
+  display: flex;
+  width: min(44rem, 100%);
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-radius: 16px;
+  padding: 0.9rem 1.1rem;
+}
+
+.dz-viewer-btn {
+  display: inline-flex;
+  height: 3rem;
+  width: 3rem;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: var(--dz-text);
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid var(--dz-line);
+  transition:
+    background 0.25s,
+    transform 0.25s var(--dz-ease),
+    border-color 0.25s;
+}
+
+.dz-viewer-btn:hover {
+  background: linear-gradient(135deg, var(--dz-crimson), var(--dz-red));
+  border-color: rgba(255, 154, 168, 0.7);
+  transform: scale(1.06);
+}
+
+.dz-viewer-btn:focus-visible,
+.dz-chip:focus-visible,
+.dz-cta-btn:focus-visible,
+.dz-back:focus-visible {
+  outline: 2px solid var(--dz-blush);
+  outline-offset: 3px;
+}
+
+.dz-viewer-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.dz-viewer-nav {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.dz-viewer-count {
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: var(--dz-muted);
+  white-space: nowrap;
+}
+
+/* ------------------------------------------------------------------ */
+/* Closing call to action                                              */
+/* ------------------------------------------------------------------ */
+
+.dz-cta {
+  position: relative;
+  margin-top: 4.5rem;
+  overflow: hidden;
+  border-radius: 28px;
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .dz-cta {
+    margin-top: 6rem;
+    padding: 4rem 3rem;
+  }
+}
+
+.dz-cta::before {
+  content: "";
+  position: absolute;
+  inset: -40% 10% auto;
+  height: 80%;
+  background: radial-gradient(closest-side, rgba(224, 36, 63, 0.4), transparent);
+  pointer-events: none;
+}
+
+.dz-cta h2 {
+  position: relative;
+  margin-inline: auto;
+  max-width: 20ch;
+  font-size: clamp(1.45rem, 4.4vw, 2.7rem);
+  line-height: 1.12;
+}
+
+.dz-cta p {
+  position: relative;
+  margin: 1.1rem auto 0;
+  max-width: 30rem;
+  line-height: 1.65;
+  color: var(--dz-muted);
+}
+
+.dz-cta-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 2rem;
+  min-height: 3.1rem;
+  border-radius: 999px;
+  padding: 0.8rem 1.8rem;
+  font-family: var(--font-unbounded), var(--font-sans), sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #fff;
+  text-decoration: none;
+  background: linear-gradient(135deg, var(--dz-crimson), var(--dz-red));
+  box-shadow:
+    0 14px 40px rgba(224, 36, 63, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28);
+  transition:
+    transform 0.3s var(--dz-ease),
+    box-shadow 0.3s;
+}
+
+.dz-cta-btn:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 20px 54px rgba(255, 77, 98, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28);
+}
+
+.dz-credit {
+  margin-top: 2.5rem;
+  text-align: center;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--dz-muted);
+}
+
+.dz-bottom {
+  padding-bottom: 5rem;
+}
+
+/* ------------------------------------------------------------------ */
+/* Nav and footer take the page colours while a .dz page is open        */
+/* ------------------------------------------------------------------ */
+
+body:has(.dz) {
+  background-color: #12030a;
+}
+
+body:has(.dz) header {
+  background-color: rgba(18, 3, 10, 0.62);
+  border-color: rgba(255, 196, 204, 0.12);
+}
+
+body:has(.dz) footer {
+  background: linear-gradient(180deg, #12030a 0%, #200612 100%);
+  border-top-color: rgba(255, 196, 204, 0.14);
+}
+
+body:has(.dz) footer .text-muted {
+  color: #cfa4ad;
+}
+
+body:has(.dz) footer .section-label {
+  color: #ff8d9b;
+}
+
+body:has(.dz) footer .section-label::before {
+  background-color: #ff4d62;
+}
+
+body:has(.dz) footer a:hover {
+  color: #fff;
+}
+
+/* The big BizBuzz name keeps its exact size and crop, in the page's red. */
+body:has(.dz) footer > div[aria-hidden="true"] p {
+  color: rgba(255, 77, 98, 0.3);
+  background: linear-gradient(180deg, rgba(255, 77, 98, 0.46) 0%, rgba(158, 18, 48, 0.1) 78%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ------------------------------------------------------------------ */
+/* Motion preferences                                                  */
+/* ------------------------------------------------------------------ */
+
+@media (prefers-reduced-motion: reduce) {
+  .dz-floor::before,
+  .dz-orb,
+  .dz-portal,
+  .dz-card,
+  .dz-viewer {
+    animation: none;
+  }
+
+  .dz-card,
+  .dz-card img,
+  .dz-chip,
+  .dz-viewer-btn,
+  .dz-cta-btn {
+    transition: none;
+  }
+}

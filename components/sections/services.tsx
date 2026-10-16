@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 import type { Service } from "@/data/services";
 import { localServices, studioServices } from "@/data/services";
 import { Reveal } from "@/components/shared/reveal";
@@ -87,14 +89,30 @@ function Tile({
   /* Touch devices have no hover, so a tap flips the tile. On devices that
      hover, the flip follows the pointer and a click does nothing extra. */
   const [flipped, setFlipped] = useState(false);
-  const tileRef = useRef<HTMLButtonElement>(null);
+  const tileRef = useRef<HTMLDivElement>(null);
   useAutoFlip(tileRef, setFlipped);
   const showImage = spanFull && Boolean(service.image);
+  const gallery = service.gallery;
 
   const toggle = () => {
     if (window.matchMedia("(hover: hover)").matches) return;
     setFlipped((v) => !v);
   };
+
+  /* A tile with a gallery is a real link. On a device that hovers, a click
+     goes straight to the page. On touch, a tap on a tile that has not
+     flipped yet flips it first, and the next tap goes in. */
+  const onGalleryClick = (event: React.MouseEvent) => {
+    if (window.matchMedia("(hover: hover)").matches) return;
+    if (!flipped) {
+      event.preventDefault();
+      setFlipped(true);
+    }
+  };
+
+  const tileClass = `group block h-[17rem] w-full rounded-2xl text-left focus-visible:outline-none ${
+    spanFull ? "[perspective:4000px]" : "[perspective:1400px]"
+  }`;
 
   const glow = (
     <div
@@ -107,141 +125,197 @@ function Tile({
     />
   );
 
+  const faces = (
+    <span className="pointer-events-none relative block h-full w-full transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] group-focus-visible:[transform:rotateY(180deg)] group-data-[flipped=true]:[transform:rotateY(180deg)] motion-reduce:[transform:none]! motion-reduce:transition-none">
+      {/* Front */}
+      <span
+        className="absolute inset-0 flex overflow-hidden rounded-2xl p-7 [backface-visibility:hidden] motion-reduce:transition-opacity motion-reduce:group-hover:opacity-0 motion-reduce:group-focus-visible:opacity-0 motion-reduce:group-data-[flipped=true]:opacity-0 md:p-8"
+        style={{ backgroundColor: service.tint }}
+      >
+        {glow}
+        <span className="relative flex w-full flex-col">
+          <span className="flex items-center justify-between gap-4">
+            <span
+              className="svc-icon flex h-10 w-10 shrink-0 items-center justify-center rounded-[3px] border"
+              style={
+                {
+                  borderColor: `${service.mark}55`,
+                  color: service.mark,
+                  "--mark": service.mark,
+                  "--i": index,
+                } as React.CSSProperties
+              }
+            >
+              <service.icon size={18} strokeWidth={1.6} />
+            </span>
+            <span
+              className="shrink-0 font-display text-xs"
+              style={{ color: service.mark, opacity: 0.75 }}
+            >
+              0{index + 1}
+            </span>
+          </span>
+          <span className="mt-5 block font-display text-xl font-medium tracking-[-0.02em] text-paper md:text-2xl">
+            {service.title}
+          </span>
+          <span
+            aria-hidden="true"
+            className="mt-4 block h-px w-10"
+            style={{ backgroundColor: service.mark, opacity: 0.6 }}
+          />
+          <span
+            className={`mt-4 block text-sm leading-relaxed text-paper/65 ${
+              showImage ? "max-w-md lg:max-w-[46%]" : "line-clamp-4"
+            }`}
+          >
+            {service.summary}
+          </span>
+          <span
+            className="mt-auto pt-4 font-display text-[11px] uppercase tracking-[0.18em]"
+            style={{ color: service.mark }}
+          >
+            {gallery ? "See our work +" : "What is included +"}
+          </span>
+        </span>
+        {showImage && (
+          <span
+            className="absolute inset-y-0 right-0 hidden w-[44%] overflow-hidden lg:block"
+            aria-hidden="true"
+          >
+            <Image
+              src={service.image!}
+              alt=""
+              fill
+              sizes="40vw"
+              className="object-cover"
+            />
+            <span
+              className="absolute inset-0"
+              style={{
+                background: `linear-gradient(90deg, ${service.tint} 0%, transparent 45%), linear-gradient(135deg, ${service.mark}40 0%, transparent 60%)`,
+              }}
+            />
+          </span>
+        )}
+      </span>
+
+      {/* Back */}
+      {gallery ? (
+        <span
+          className="absolute inset-0 overflow-hidden rounded-2xl border [backface-visibility:hidden] [transform:rotateY(180deg)] motion-reduce:opacity-0 motion-reduce:transition-opacity motion-reduce:[transform:none] motion-reduce:group-hover:opacity-100 motion-reduce:group-focus-visible:opacity-100 motion-reduce:group-data-[flipped=true]:opacity-100"
+          style={{
+            backgroundColor: "#12030a",
+            borderColor: `${service.mark}66`,
+          }}
+        >
+          <Image
+            src={gallery.image}
+            alt={gallery.alt}
+            width={gallery.width}
+            height={gallery.height}
+            sizes="(min-width: 1024px) 34vw, (min-width: 768px) 50vw, 100vw"
+            className="h-full w-full object-cover"
+          />
+          <span
+            aria-hidden="true"
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(180deg, rgba(18,3,10,0) 50%, rgba(18,3,10,0.88) 100%)",
+            }}
+          />
+          <span
+            className="absolute inset-x-3 bottom-3 flex items-center justify-between gap-3 rounded-xl border px-4 py-3"
+            style={{
+              backgroundColor: "rgba(18,3,10,0.82)",
+              borderColor: "rgba(255,196,204,0.22)",
+            }}
+          >
+            <span className="font-display text-sm font-medium text-paper">
+              {gallery.cta}
+            </span>
+            <ArrowUpRight
+              size={18}
+              aria-hidden="true"
+              style={{ color: "#ff7a8a" }}
+            />
+          </span>
+        </span>
+      ) : (
+        <span
+          className="absolute inset-0 flex overflow-hidden rounded-2xl border p-7 [backface-visibility:hidden] [transform:rotateY(180deg)] motion-reduce:opacity-0 motion-reduce:transition-opacity motion-reduce:[transform:none] motion-reduce:group-hover:opacity-100 motion-reduce:group-focus-visible:opacity-100 motion-reduce:group-data-[flipped=true]:opacity-100 md:p-8"
+          style={{
+            backgroundColor: service.tintHover,
+            borderColor: `${service.mark}66`,
+          }}
+        >
+          {glow}
+          <span className="relative flex w-full flex-col">
+            <span
+              className="font-display text-sm font-medium"
+              style={{ color: service.mark }}
+            >
+              {service.title}
+            </span>
+            {showImage && (
+              <span className="mt-4 hidden max-w-xl text-base leading-relaxed text-paper/80 lg:block">
+                {service.summary}
+              </span>
+            )}
+            <span
+              className={`mt-4 block space-y-2.5 ${
+                showImage ? "lg:mt-auto lg:grid lg:grid-cols-2 lg:gap-x-10 lg:space-y-0 lg:gap-y-2.5" : ""
+              }`}
+            >
+              {service.capabilities.map((item) => (
+                <span
+                  key={item}
+                  className="flex items-start gap-3 text-sm text-paper/85"
+                >
+                  <span
+                    aria-hidden="true"
+                    className="mt-2 h-px w-3 shrink-0"
+                    style={{ backgroundColor: service.mark }}
+                  />
+                  {item}
+                </span>
+              ))}
+            </span>
+          </span>
+        </span>
+      )}
+    </span>
+  );
+
   return (
     <Reveal
       delay={index * 0.05}
       className={spanFull ? "md:col-span-2 lg:col-span-3" : undefined}
     >
-      <button
-        ref={tileRef}
-        type="button"
-        onClick={toggle}
-        aria-pressed={flipped}
-        aria-label={`${service.title}. Shows what is included.`}
-        data-flipped={flipped}
-        className={`group block h-[17rem] w-full rounded-2xl text-left focus-visible:outline-none ${
-          spanFull ? "[perspective:4000px]" : "[perspective:1400px]"
-        }`}
-      >
-        <span
-          className="pointer-events-none relative block h-full w-full transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] group-focus-visible:[transform:rotateY(180deg)] group-data-[flipped=true]:[transform:rotateY(180deg)] motion-reduce:[transform:none]! motion-reduce:transition-none"
-        >
-          {/* Front */}
-          <span
-            className="absolute inset-0 flex overflow-hidden rounded-2xl p-7 [backface-visibility:hidden] motion-reduce:transition-opacity motion-reduce:group-hover:opacity-0 motion-reduce:group-focus-visible:opacity-0 motion-reduce:group-data-[flipped=true]:opacity-0 md:p-8"
-            style={{ backgroundColor: service.tint }}
+      <div ref={tileRef}>
+        {gallery ? (
+          <Link
+            href={gallery.href}
+            onClick={onGalleryClick}
+            data-flipped={flipped}
+            aria-label={`${service.title}. Opens the design gallery.`}
+            className={tileClass}
           >
-            {glow}
-            <span className="relative flex w-full flex-col">
-              <span className="flex items-center justify-between gap-4">
-                <span
-                  className="svc-icon flex h-10 w-10 shrink-0 items-center justify-center rounded-[3px] border"
-                  style={
-                    {
-                      borderColor: `${service.mark}55`,
-                      color: service.mark,
-                      "--mark": service.mark,
-                      "--i": index,
-                    } as React.CSSProperties
-                  }
-                >
-                  <service.icon size={18} strokeWidth={1.6} />
-                </span>
-                <span
-                  className="shrink-0 font-display text-xs"
-                  style={{ color: service.mark, opacity: 0.75 }}
-                >
-                  0{index + 1}
-                </span>
-              </span>
-              <span className="mt-5 block font-display text-xl font-medium tracking-[-0.02em] text-paper md:text-2xl">
-                {service.title}
-              </span>
-              <span
-                aria-hidden="true"
-                className="mt-4 block h-px w-10"
-                style={{ backgroundColor: service.mark, opacity: 0.6 }}
-              />
-              <span
-                className={`mt-4 block text-sm leading-relaxed text-paper/65 ${
-                  showImage ? "max-w-md lg:max-w-[46%]" : "line-clamp-4"
-                }`}
-              >
-                {service.summary}
-              </span>
-              <span
-                className="mt-auto pt-4 font-display text-[11px] uppercase tracking-[0.18em]"
-                style={{ color: service.mark }}
-              >
-                What is included +
-              </span>
-            </span>
-            {showImage && (
-              <span
-                className="absolute inset-y-0 right-0 hidden w-[44%] overflow-hidden lg:block"
-                aria-hidden="true"
-              >
-                <Image
-                  src={service.image!}
-                  alt=""
-                  fill
-                  sizes="40vw"
-                  className="object-cover"
-                />
-                <span
-                  className="absolute inset-0"
-                  style={{
-                    background: `linear-gradient(90deg, ${service.tint} 0%, transparent 45%), linear-gradient(135deg, ${service.mark}40 0%, transparent 60%)`,
-                  }}
-                />
-              </span>
-            )}
-          </span>
-
-          {/* Back */}
-          <span
-            className="absolute inset-0 flex overflow-hidden rounded-2xl border p-7 [backface-visibility:hidden] [transform:rotateY(180deg)] motion-reduce:opacity-0 motion-reduce:transition-opacity motion-reduce:[transform:none] motion-reduce:group-hover:opacity-100 motion-reduce:group-focus-visible:opacity-100 motion-reduce:group-data-[flipped=true]:opacity-100 md:p-8"
-            style={{
-              backgroundColor: service.tintHover,
-              borderColor: `${service.mark}66`,
-            }}
+            {faces}
+          </Link>
+        ) : (
+          <button
+            type="button"
+            onClick={toggle}
+            aria-pressed={flipped}
+            aria-label={`${service.title}. Shows what is included.`}
+            data-flipped={flipped}
+            className={tileClass}
           >
-            {glow}
-            <span className="relative flex w-full flex-col">
-              <span
-                className="font-display text-sm font-medium"
-                style={{ color: service.mark }}
-              >
-                {service.title}
-              </span>
-              {showImage && (
-                <span className="mt-4 hidden max-w-xl text-base leading-relaxed text-paper/80 lg:block">
-                  {service.summary}
-                </span>
-              )}
-              <span
-                className={`mt-4 block space-y-2.5 ${
-                  showImage ? "lg:mt-auto lg:grid lg:grid-cols-2 lg:gap-x-10 lg:space-y-0 lg:gap-y-2.5" : ""
-                }`}
-              >
-                {service.capabilities.map((item) => (
-                  <span
-                    key={item}
-                    className="flex items-start gap-3 text-sm text-paper/85"
-                  >
-                    <span
-                      aria-hidden="true"
-                      className="mt-2 h-px w-3 shrink-0"
-                      style={{ backgroundColor: service.mark }}
-                    />
-                    {item}
-                  </span>
-                ))}
-              </span>
-            </span>
-          </span>
-        </span>
-      </button>
+            {faces}
+          </button>
+        )}
+      </div>
     </Reveal>
   );
 }

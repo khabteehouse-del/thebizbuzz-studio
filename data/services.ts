@@ -1,3 +1,4 @@
+import { designTileHero } from "./designs";
 import {
   MapPin,
   Search,
@@ -29,6 +30,18 @@ export type Service = {
   icon: LucideIcon;
   /* Optional: shown only on a tile that spans the full grid width. */
   image?: string;
+  /*
+    Optional: the tile back shows one design instead of the capability list,
+    and the whole tile links to the page. Used by the design gallery.
+  */
+  gallery?: {
+    href: string;
+    cta: string;
+    image: string;
+    alt: string;
+    width: number;
+    height: number;
+  };
 };
 
 /*
@@ -217,6 +230,14 @@ export const services: Service[] = [
     tintHover: "#2f2449",
     mark: "#a98cf0",
     icon: Palette,
+    gallery: {
+      href: "/design",
+      cta: "Enter the design studio",
+      image: designTileHero.src,
+      alt: designTileHero.alt,
+      width: designTileHero.width,
+      height: designTileHero.height,
+    },
   },
   {
     id: "ai-content",

@@ -282,7 +282,7 @@ export function Hero() {
               <GrowthArrow
                 size={38}
                 sizeDesktop={96}
-                className="mb-[0.3em]"
+                className="mb-[0.3em] -ml-4 md:-ml-8"
               />
             </div>
 

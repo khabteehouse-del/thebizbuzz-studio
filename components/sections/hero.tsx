@@ -229,7 +229,7 @@ export function Hero() {
               }}
             />
 
-            <div className="mt-6 flex items-end gap-3 md:mt-8 md:gap-5">
+            <div className="mt-6 flex items-baseline gap-3 md:mt-8 md:gap-5">
               <motion.h1
                 style={{
                   scale: pinned ? headlineScale : 1,
@@ -243,7 +243,7 @@ export function Hero() {
                     text-shadow, and its buzz animation owns its own filter.
                   */
                   filter:
-                    "drop-shadow(0 2px 3px rgba(0,0,0,0.55)) drop-shadow(0 20px 36px rgba(0,0,0,0.5))",
+                    "drop-shadow(0 2px 2px rgba(0,0,0,0.7)) drop-shadow(0 10px 14px rgba(0,0,0,0.5)) drop-shadow(0 28px 44px rgba(0,0,0,0.6))",
                 }}
               className="relative flex italic font-display text-[clamp(3rem,16vw,16rem)] font-medium leading-[0.88] tracking-[-0.055em] text-paper md:text-[clamp(5.5rem,15vw,16rem)]"
             >
@@ -277,12 +277,15 @@ export function Hero() {
               {/*
                 Sits at the end of the word, matching the logo where the
                 growth mark rises off the final letter rather than
-                leading the name.
+                leading the name. The row aligns on the text baseline, so
+                the arrow rests on the bottom of the last Z whatever font
+                is loaded. The negative bottom margin drops the arrow's box
+                by the share of its height that sits under the tail.
               */}
               <GrowthArrow
                 size={38}
                 sizeDesktop={96}
-                className="mb-[0.3em]"
+                className="-mb-[5.5px] -ml-6 md:-mb-[12px] md:-ml-12"
               />
             </div>
 

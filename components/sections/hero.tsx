@@ -277,12 +277,16 @@ export function Hero() {
               {/*
                 Sits at the end of the word, matching the logo where the
                 growth mark rises off the final letter rather than
-                leading the name.
+                leading the name. The bottom margin lifts the tail onto the
+                baseline of the last Z: the headline's baseline sits about
+                0.091 of its font size above the box bottom (that size is
+                15vw from md up, 16vw below), less the share of the arrow's
+                own height under its tail.
               */}
               <GrowthArrow
                 size={38}
                 sizeDesktop={96}
-                className="mb-[0.3em] -ml-4 md:-ml-8"
+                className="mb-[calc(1.46vw-3.9px)] -ml-4 md:mb-[calc(1.37vw-9.9px)] md:-ml-8"
               />
             </div>
 

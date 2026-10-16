@@ -255,13 +255,19 @@ export const services: Service[] = [
     icon: Sparkles,
     backImage: {
       image: "/images/services/ai-back.webp",
-      alt: "Veridoc, a private document intelligence product we built, shown as a glowing shield and checkmark logo.",
-      width: 560,
-      height: 400,
+      alt: "Four AI products we have built: FluxorX, Veridoc, PulsarIQ and DentiVue.",
+      width: 870,
+      height: 540,
       fit: "cover",
       position: "50% 50%",
       background: "#05070d",
+      bullets: [
+        "Search and answers over your private documents",
+        "Agents that finish real workflows",
+        "Self-hosted, built for security review",
+      ],
     },
+    link: { href: site.whatsapp.aiHref, cta: "Contact us about enterprise AI", external: true },
   },
   {
     id: "geo-aeo",

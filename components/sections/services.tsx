@@ -327,7 +327,13 @@ function Tile({
       delay={index * 0.05}
       className={half ? "lg:col-span-3" : "lg:col-span-2"}
     >
-      <div ref={tileRef} className="group/tile relative">
+      {/* The wrapper is a hover group too, so a link laid over the tile
+            (the Mizar strip) does not end the hover and flip the tile back. */}
+      <div
+        ref={tileRef}
+        data-flipped={flipped}
+        className="group group/tile relative"
+      >
         {gallery ? (
           <Link
             href={gallery.href}

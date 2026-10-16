@@ -201,8 +201,8 @@ export const services: Service[] = [
     logo: {
       src: "/images/services/mizar-logo.webp",
       alt: "Mizar",
-      width: 1200,
-      height: 352,
+      width: 1192,
+      height: 344,
     },
     backImage: {
       image: "/images/services/mizar-back.webp",

@@ -94,6 +94,11 @@ function Tile({
   useAutoFlip(tileRef, setFlipped);
   const gallery = service.gallery;
   const link = service.link;
+  /* A tile back can be a full picture: the design gallery, or a product shot. */
+  const art = gallery
+    ? { image: gallery.image, alt: gallery.alt, width: gallery.width, height: gallery.height }
+    : service.backImage;
+  const artCta = gallery?.cta ?? link?.cta;
 
   const toggle = () => {
     if (window.matchMedia("(hover: hover)").matches) return;
@@ -169,14 +174,29 @@ function Tile({
               </span>
             </span>
           </span>
-          <span className="mt-5 block font-display text-xl font-medium tracking-[-0.02em] text-paper md:text-2xl">
-            {service.title}
-          </span>
-          <span
-            aria-hidden="true"
-            className="mt-4 block h-px w-10"
-            style={{ backgroundColor: service.mark, opacity: 0.6 }}
-          />
+          {service.logo ? (
+            <span className="mt-4 flex flex-1 items-center">
+              <Image
+                src={service.logo.src}
+                alt={service.logo.alt}
+                width={service.logo.width}
+                height={service.logo.height}
+                sizes="(min-width: 1024px) 24vw, 70vw"
+                className="h-auto w-[78%] max-w-[17rem]"
+              />
+            </span>
+          ) : (
+            <>
+              <span className="mt-5 block font-display text-xl font-medium tracking-[-0.02em] text-paper md:text-2xl">
+                {service.title}
+              </span>
+              <span
+                aria-hidden="true"
+                className="mt-4 block h-px w-10"
+                style={{ backgroundColor: service.mark, opacity: 0.6 }}
+              />
+            </>
+          )}
           <span
             className="mt-4 block line-clamp-4 text-sm leading-relaxed text-paper/65"
           >
@@ -196,7 +216,7 @@ function Tile({
       </span>
 
       {/* Back */}
-      {gallery ? (
+      {art ? (
         <span
           className="absolute inset-0 overflow-hidden rounded-2xl border [backface-visibility:hidden] [transform:rotateY(180deg)] motion-reduce:opacity-0 motion-reduce:transition-opacity motion-reduce:[transform:none] motion-reduce:group-hover:opacity-100 motion-reduce:group-focus-visible:opacity-100 motion-reduce:group-data-[flipped=true]:opacity-100"
           style={{
@@ -205,10 +225,10 @@ function Tile({
           }}
         >
           <Image
-            src={gallery.image}
-            alt={gallery.alt}
-            width={gallery.width}
-            height={gallery.height}
+            src={art.image}
+            alt={art.alt}
+            width={art.width}
+            height={art.height}
             sizes="(min-width: 1024px) 34vw, (min-width: 768px) 50vw, 100vw"
             className="h-full w-full object-cover"
           />
@@ -228,7 +248,7 @@ function Tile({
             }}
           >
             <span className="font-display text-sm font-medium text-paper">
-              {gallery.cta}
+              {artCta}
             </span>
             <ArrowUpRight
               size={18}
@@ -326,10 +346,12 @@ function Tile({
           <a
             href={link.href}
             aria-label={`${link.cta} on WhatsApp`}
-            className={`absolute inset-x-7 bottom-7 z-10 h-[2.9rem] rounded-xl focus-visible:outline focus-visible:outline-2 md:inset-x-8 md:bottom-8 ${
+            className={`absolute z-10 h-[2.9rem] rounded-xl transition-[visibility] duration-0 focus-visible:outline focus-visible:outline-2 ${
+              art ? "inset-x-3 bottom-3" : "inset-x-7 bottom-7 md:inset-x-8 md:bottom-8"
+            } ${
               flipped
-                ? "pointer-events-auto"
-                : "pointer-events-none group-hover/tile:pointer-events-auto"
+                ? "visible delay-700"
+                : "invisible group-hover/tile:visible group-hover/tile:delay-700"
             }`}
             {...(link.external
               ? { target: "_blank", rel: "noopener noreferrer" }

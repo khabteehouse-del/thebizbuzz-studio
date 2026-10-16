@@ -30,6 +30,10 @@ export type Service = {
   tintHover: string;
   mark: string;
   icon: LucideIcon;
+  /* Optional: the front shows this logo instead of the icon and title. */
+  logo?: { src: string; alt: string; width: number; height: number };
+  /* Optional: the back shows this picture instead of the capability list. */
+  backImage?: { image: string; alt: string; width: number; height: number };
   /* Optional small label on the tile front, for example a product that is still in build. */
   badge?: string;
   /*
@@ -182,10 +186,22 @@ export const services: Service[] = [
       "Keeps your day in order, by voice",
       "Built for beauticians, painters, vets and every pro who comes to the customer",
     ],
-    tint: "#241d12",
-    tintHover: "#33291a",
-    mark: "#f2c879",
+    tint: "#0a0e1a",
+    tintHover: "#0a0e1a",
+    mark: "#4ea3ec",
     icon: AudioLines,
+    logo: {
+      src: "/images/services/mizar-logo.webp",
+      alt: "Mizar",
+      width: 1200,
+      height: 352,
+    },
+    backImage: {
+      image: "/images/services/mizar-back.webp",
+      alt: "The Mizar M between you and your customer, each on its own orbit.",
+      width: 708,
+      height: 420,
+    },
     badge: "In build",
     link: {
       href: site.whatsapp.href,

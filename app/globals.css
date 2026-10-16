@@ -102,56 +102,323 @@
 
 @layer components {
   /*
-    Growth arrow in the hero. One 6s cycle: the swoosh draws itself with a
-    long ease-out, the head pops in as it arrives, the whole mark holds,
-    then fades away before the line resets, so nothing ever snaps.
-    stroke-dashoffset, opacity and transform only, so it stays cheap.
+    Growth arrow in the hero. One 6s loop, see growth-arrow.tsx: the swoosh
+    draws segment by segment, the head and the shadow arrive near the peak,
+    everything holds, then fades before the loop restarts.
+    Opacity only, so it stays cheap and sharp.
   */
-  .growth-arrow__shaft {
-    clip-path: inset(-12% 100% -12% -6%);
-    animation:
-      growth-reveal 6s infinite,
-      growth-fade 6s ease-in-out infinite;
+  .growth-arrow__seg {
+    opacity: 0;
+  }
+
+  .growth-arrow__seg--0 {
+    animation: ga-seg-0 6s ease-out infinite;
+  }
+
+  .growth-arrow__seg--1 {
+    animation: ga-seg-1 6s ease-out infinite;
+  }
+
+  .growth-arrow__seg--2 {
+    animation: ga-seg-2 6s ease-out infinite;
+  }
+
+  .growth-arrow__seg--3 {
+    animation: ga-seg-3 6s ease-out infinite;
+  }
+
+  .growth-arrow__seg--4 {
+    animation: ga-seg-4 6s ease-out infinite;
+  }
+
+  .growth-arrow__seg--5 {
+    animation: ga-seg-5 6s ease-out infinite;
+  }
+
+  .growth-arrow__seg--6 {
+    animation: ga-seg-6 6s ease-out infinite;
+  }
+
+  .growth-arrow__seg--7 {
+    animation: ga-seg-7 6s ease-out infinite;
+  }
+
+  .growth-arrow__seg--8 {
+    animation: ga-seg-8 6s ease-out infinite;
+  }
+
+  .growth-arrow__seg--9 {
+    animation: ga-seg-9 6s ease-out infinite;
+  }
+
+  .growth-arrow__seg--10 {
+    animation: ga-seg-10 6s ease-out infinite;
+  }
+
+  .growth-arrow__seg--11 {
+    animation: ga-seg-11 6s ease-out infinite;
+  }
+
+  .growth-arrow__seg--12 {
+    animation: ga-seg-12 6s ease-out infinite;
+  }
+
+  .growth-arrow__seg--13 {
+    animation: ga-seg-13 6s ease-out infinite;
+  }
+
+  .growth-arrow__seg--14 {
+    animation: ga-seg-14 6s ease-out infinite;
+  }
+
+  .growth-arrow__seg--15 {
+    animation: ga-seg-15 6s ease-out infinite;
+  }
+
+  .growth-arrow__seg--16 {
+    animation: ga-seg-16 6s ease-out infinite;
+  }
+
+  .growth-arrow__seg--17 {
+    animation: ga-seg-17 6s ease-out infinite;
+  }
+
+  .growth-arrow__seg--18 {
+    animation: ga-seg-18 6s ease-out infinite;
+  }
+
+  .growth-arrow__seg--19 {
+    animation: ga-seg-19 6s ease-out infinite;
+  }
+
+  @keyframes ga-seg-0 {
+    0%,
+    1.0% {
+      opacity: 0;
+    }
+    2.2%,
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes ga-seg-1 {
+    0%,
+    2.8% {
+      opacity: 0;
+    }
+    4.0%,
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes ga-seg-2 {
+    0%,
+    4.6% {
+      opacity: 0;
+    }
+    5.8%,
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes ga-seg-3 {
+    0%,
+    6.4% {
+      opacity: 0;
+    }
+    7.6%,
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes ga-seg-4 {
+    0%,
+    8.2% {
+      opacity: 0;
+    }
+    9.4%,
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes ga-seg-5 {
+    0%,
+    10.0% {
+      opacity: 0;
+    }
+    11.2%,
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes ga-seg-6 {
+    0%,
+    11.8% {
+      opacity: 0;
+    }
+    13.0%,
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes ga-seg-7 {
+    0%,
+    13.6% {
+      opacity: 0;
+    }
+    14.8%,
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes ga-seg-8 {
+    0%,
+    15.4% {
+      opacity: 0;
+    }
+    16.6%,
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes ga-seg-9 {
+    0%,
+    17.2% {
+      opacity: 0;
+    }
+    18.4%,
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes ga-seg-10 {
+    0%,
+    19.0% {
+      opacity: 0;
+    }
+    20.2%,
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes ga-seg-11 {
+    0%,
+    20.8% {
+      opacity: 0;
+    }
+    22.0%,
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes ga-seg-12 {
+    0%,
+    22.6% {
+      opacity: 0;
+    }
+    23.8%,
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes ga-seg-13 {
+    0%,
+    24.4% {
+      opacity: 0;
+    }
+    25.6%,
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes ga-seg-14 {
+    0%,
+    26.2% {
+      opacity: 0;
+    }
+    27.4%,
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes ga-seg-15 {
+    0%,
+    28.0% {
+      opacity: 0;
+    }
+    29.2%,
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes ga-seg-16 {
+    0%,
+    29.8% {
+      opacity: 0;
+    }
+    31.0%,
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes ga-seg-17 {
+    0%,
+    31.6% {
+      opacity: 0;
+    }
+    32.8%,
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes ga-seg-18 {
+    0%,
+    33.4% {
+      opacity: 0;
+    }
+    34.6%,
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes ga-seg-19 {
+    0%,
+    35.2% {
+      opacity: 0;
+    }
+    36.4%,
+    100% {
+      opacity: 1;
+    }
   }
 
   .growth-arrow__tip {
     opacity: 0;
-    animation: growth-tip 6s ease-in-out infinite;
+    animation: ga-tip 6s ease-in-out infinite;
   }
 
-  @keyframes growth-reveal {
-    0% {
-      clip-path: inset(-12% 100% -12% -6%);
-      animation-timing-function: cubic-bezier(0.45, 0.05, 0.2, 1);
-    }
-    42% {
-      clip-path: inset(-12% -6% -12% -6%);
-    }
-    99% {
-      clip-path: inset(-12% -6% -12% -6%);
-    }
-    100% {
-      clip-path: inset(-12% 100% -12% -6%);
-    }
+  .growth-arrow__shadow {
+    opacity: 0;
+    animation: ga-shadow 6s ease-in-out infinite;
   }
 
-  /* Opacity only: scaling the head up from small makes it blurry while it grows. */
-  @keyframes growth-tip {
+  @keyframes ga-tip {
     0%,
-    36% {
+    38% {
       opacity: 0;
     }
-    46%,
-    82% {
+    47%,
+    100% {
       opacity: 1;
     }
-    95%,
-    100% {
-      opacity: 0;
-    }
   }
 
-  @keyframes growth-fade {
+  /* The whole mark fades as one unit, so overlapping segments never show seams. */
+  .growth-arrow__mark {
+    animation: ga-mark 6s ease-in-out infinite;
+  }
+
+  @keyframes ga-mark {
     0%,
     82% {
       opacity: 1;
@@ -162,12 +429,28 @@
     }
   }
 
-  /* Reduced motion: the finished line, no drawing */
+  @keyframes ga-shadow {
+    0%,
+    38% {
+      opacity: 0;
+    }
+    47%,
+    82% {
+      opacity: 1;
+    }
+    95%,
+    100% {
+      opacity: 0;
+    }
+  }
+
+  /* Reduced motion: the finished mark, no drawing */
+  .growth-arrow--still .growth-arrow__seg,
+  .growth-arrow--still .growth-arrow__mark,
   .growth-arrow--still .growth-arrow__tip,
-  .growth-arrow--still .growth-arrow__shaft {
+  .growth-arrow--still .growth-arrow__shadow {
     animation: none;
     opacity: 1;
-    clip-path: none;
   }
 
   /*

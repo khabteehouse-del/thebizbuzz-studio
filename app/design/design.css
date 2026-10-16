@@ -90,6 +90,9 @@
 
 .dz-hero {
   position: relative;
+  /* Fill the first screen so the filters only appear after scrolling. */
+  min-height: 100vh;
+  min-height: 100svh;
   padding-top: 8.5rem;
   padding-bottom: 3.5rem;
 }

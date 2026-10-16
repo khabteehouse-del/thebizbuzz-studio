@@ -241,15 +241,21 @@ function Tile({
             }}
           />
           <span
-            className="absolute inset-x-3 bottom-3 flex items-center justify-between gap-3 rounded-xl border px-4 py-3 backdrop-blur-sm"
-            style={{
-              backgroundColor: gallery
-                ? "rgba(18,3,10,0.82)"
-                : `${service.mark}38`,
-              borderColor: gallery
-                ? "rgba(255,196,204,0.22)"
-                : `${service.mark}99`,
-            }}
+            className="absolute inset-x-3 bottom-3 flex items-center justify-between gap-3 rounded-xl border px-4 py-3"
+            style={
+              gallery
+                ? {
+                    backgroundColor: "rgba(18,3,10,0.82)",
+                    borderColor: "rgba(255,196,204,0.22)",
+                  }
+                : {
+                    /* A solid dark base under the tint. No blur here: backdrop filters
+                       make a flipped face show through its own back. */
+                    backgroundColor: "rgba(9,15,30,0.92)",
+                    backgroundImage: `linear-gradient(${service.mark}38, ${service.mark}38)`,
+                    borderColor: `${service.mark}99`,
+                  }
+            }
           >
             <span className="font-display text-sm font-medium text-paper">
               {artCta}

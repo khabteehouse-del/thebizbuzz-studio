@@ -241,10 +241,14 @@ function Tile({
             }}
           />
           <span
-            className="absolute inset-x-3 bottom-3 flex items-center justify-between gap-3 rounded-xl border px-4 py-3"
+            className="absolute inset-x-3 bottom-3 flex items-center justify-between gap-3 rounded-xl border px-4 py-3 backdrop-blur-sm"
             style={{
-              backgroundColor: "rgba(18,3,10,0.82)",
-              borderColor: "rgba(255,196,204,0.22)",
+              backgroundColor: gallery
+                ? "rgba(18,3,10,0.82)"
+                : `${service.mark}38`,
+              borderColor: gallery
+                ? "rgba(255,196,204,0.22)"
+                : `${service.mark}99`,
             }}
           >
             <span className="font-display text-sm font-medium text-paper">
@@ -253,7 +257,7 @@ function Tile({
             <ArrowUpRight
               size={18}
               aria-hidden="true"
-              style={{ color: "#ff7a8a" }}
+              style={{ color: gallery ? "#ff7a8a" : service.mark }}
             />
           </span>
         </span>
@@ -346,12 +350,13 @@ function Tile({
           <a
             href={link.href}
             aria-label={`${link.cta} on WhatsApp`}
-            className={`absolute z-10 h-[2.9rem] rounded-xl transition-[visibility] duration-0 focus-visible:outline focus-visible:outline-2 ${
+            style={{ "--c": service.mark } as React.CSSProperties}
+            className={`absolute z-10 h-[2.9rem] cursor-pointer rounded-xl border border-transparent transition-[visibility,background-color,border-color,box-shadow] [transition-duration:0s,200ms,200ms,200ms] hover:border-[var(--c)] hover:bg-[color-mix(in_srgb,var(--c)_28%,transparent)] hover:shadow-[0_0_26px_-2px_var(--c)] active:scale-[0.99] focus-visible:outline focus-visible:outline-2 ${
               art ? "inset-x-3 bottom-3" : "inset-x-7 bottom-7 md:inset-x-8 md:bottom-8"
             } ${
               flipped
-                ? "visible delay-700"
-                : "invisible group-hover/tile:visible group-hover/tile:delay-700"
+                ? "visible [transition-delay:700ms,0s,0s,0s]"
+                : "invisible group-hover/tile:visible group-hover/tile:[transition-delay:700ms,0s,0s,0s]"
             }`}
             {...(link.external
               ? { target: "_blank", rel: "noopener noreferrer" }

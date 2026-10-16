@@ -43,6 +43,11 @@ export default function DesignPage() {
             team. Filter by discipline, then open any piece full screen.
           </p>
         </div>
+
+        <div className="dz-scroll" aria-hidden="true">
+          <span>Scroll</span>
+          <i />
+        </div>
       </section>
 
       <section className="dz-shell dz-bottom" aria-label="Design gallery">

@@ -97,7 +97,49 @@
 @media (min-width: 768px) {
   .dz-hero {
     padding-top: 12rem;
-    padding-bottom: 5rem;
+    padding-bottom: 8rem;
+  }
+}
+
+/* Scroll cue, same as the landing page, in this page's colours. */
+.dz-scroll {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .dz-scroll {
+    position: absolute;
+    inset-inline: 0;
+    bottom: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    pointer-events: none;
+    animation: dz-scroll-in 1s ease 1.2s both;
+  }
+
+  .dz-scroll span {
+    font-variant-caps: all-small-caps;
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    color: var(--dz-muted);
+  }
+
+  .dz-scroll i {
+    display: block;
+    width: 1px;
+    height: 2.5rem;
+    background: linear-gradient(to bottom, var(--dz-red), transparent);
+  }
+}
+
+@keyframes dz-scroll-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 
@@ -759,6 +801,7 @@ body:has(.dz) footer > div[aria-hidden="true"] p {
 @media (prefers-reduced-motion: reduce) {
   .dz-orb,
   .dz-morph,
+  .dz-scroll,
   .dz-portal,
   .dz-card,
   .dz-viewer {

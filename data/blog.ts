@@ -11,6 +11,22 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "gemini-4-argon-google-frontier-model",
+    title: "Gemini 4 Argon: Google's New Frontier Model Is Now Open to Everyone",
+    description:
+      "Google has opened Gemini 4 Argon to developers, enterprises and subscribers after a restricted first release. Here is what it does and what it costs.",
+    date: "2026-10-13",
+    readTime: "4 min read",
+    tags: ["AI News", "LLM Upgrades"],
+    body: [
+      "Google made Gemini 4 Argon generally available on October 13, 2026, after introducing it on September 30 to a small group of trusted cyber defenders through its Fairwind Program. It is now reachable through the paid Gemini API, Google's business platforms, and the Gemini app and AI Mode in Search for AI Pro and Ultra subscribers. Google describes it as its frontier model for real-world coding, enterprise knowledge work and cyber defense.",
+      "The headline numbers are Google's own claims. Argon scores 77.9% on DeepSWE v1.1, which Google calls a new state of the art for software engineering agents, and 91.7% on LVBench for long video understanding. It ranks first on Zapier's AutomationBench at 51.3%. The output limit also jumps to 1 million tokens, up from 64,000, which matters for long migrations and large generated reports. As with any vendor benchmark, these are worth checking against your own workload.",
+      "The practical examples are more interesting than the scores. Google says its agents are migrating C and C++ code to Rust, including the 800,000 line Fuchsia Zircon kernel, and that internal teams using Argon through its Antigravity coding tool shipped over 35% more AI-assisted code submissions while cutting rollbacks by nearly a third. Early testers named include Deloitte, LexisNexis and Ambience Healthcare.",
+      "Pricing starts at $2 per million input tokens and $10 per million output tokens during an introductory period, with cached input tokens at 95% off. After that period the rates double to $4 and $20. If you are budgeting an AI build on Argon, plan around the higher figure, not the launch price.",
+      "There is a security angle too. Argon can find, validate and patch vulnerabilities on its own, so Google ships the public version with cyber guardrails and keeps an unrestricted version for vetted defenders. For businesses, the takeaway is the same as with every major release: a stronger model does not replace a well-designed system around it. Retrieval, verification and clear human handoffs still decide whether an AI product works on real data.",
+    ],
+  },
+  {
     slug: "anthropic-openai-price-cuts-september-2026",
     title: "Anthropic and OpenAI Both Cut Flagship AI Prices in the Same Week",
     description:

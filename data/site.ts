@@ -21,6 +21,8 @@ export const site = {
   whatsapp: {
     display: "+92 313 3330908",
     href: "https://wa.me/923133330908?text=Hi%20BizBuzz%2C%20I%20found%20you%20on%20your%20website.",
+    mizarHref:
+      "https://wa.me/923133330908?text=Hi%20BizBuzz%2C%20I%27d%20like%20early%20access%20to%20Mizar.",
   },
 } as const;
 

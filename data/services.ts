@@ -214,8 +214,8 @@ export const services: Service[] = [
     },
     badge: "In build",
     link: {
-      href: site.whatsapp.href,
-      cta: "Join the early list",
+      href: site.whatsapp.mizarHref,
+      cta: "Message us for early access",
       external: true,
     },
   },

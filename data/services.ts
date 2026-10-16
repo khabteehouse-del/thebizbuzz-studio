@@ -1,3 +1,5 @@
+import { designTileHero } from "./designs";
+import { site } from "./site";
 import {
   MapPin,
   Search,
@@ -12,6 +14,7 @@ import {
   Clapperboard,
   Wand2,
   Radar,
+  AudioLines,
   type LucideIcon,
 } from "lucide-react";
 
@@ -27,8 +30,47 @@ export type Service = {
   tintHover: string;
   mark: string;
   icon: LucideIcon;
-  /* Optional: shown only on a tile that spans the full grid width. */
-  image?: string;
+  /* Optional: the front shows this logo instead of the icon and title. */
+  logo?: {
+    src: string;
+    alt: string;
+    width: number;
+    height: number;
+    animated?: boolean;
+  };
+  /* Optional: the back shows this picture instead of the capability list. */
+  backImage?: {
+    image: string;
+    alt: string;
+    width: number;
+    height: number;
+    /* "contain" keeps a tall picture whole instead of cropping it. */
+    fit?: "cover" | "contain";
+    background?: string;
+    /* CSS object-position, to choose which part of a cropped picture shows. */
+    position?: string;
+    /* A few short lines laid over the top of the picture. */
+    bullets?: string[];
+  };
+  /* Optional small label on the tile front, for example a product that is still in build. */
+  badge?: string;
+  /*
+    Optional: the whole tile becomes a link, and the back shows a call to
+    action strip under the capability list.
+  */
+  link?: { href: string; cta: string; external?: boolean };
+  /*
+    Optional: the tile back shows one design instead of the capability list,
+    and the whole tile links to the page. Used by the design gallery.
+  */
+  gallery?: {
+    href: string;
+    cta: string;
+    image: string;
+    alt: string;
+    width: number;
+    height: number;
+  };
 };
 
 /*
@@ -151,6 +193,51 @@ export const services: Service[] = [
 
   /* ---------------- Studio ---------------- */
   {
+    id: "mizar",
+    track: "studio",
+    title: "Mizar",
+    summary:
+      "AI business assistant with a built-in AI receptionist. Made for mobile service professionals.",
+    capabilities: [
+      "Answers calls and messages while you are on the job",
+      "Collects the details and books the visit",
+      "Keeps your day in order, by voice",
+      "Built for beauticians, painters, vets and every pro who comes to the customer",
+    ],
+    tint: "#0a0e1a",
+    tintHover: "#0a0e1a",
+    mark: "#4ea3ec",
+    icon: AudioLines,
+    logo: {
+      src: "/images/services/mizar-logo.webp",
+      alt: "Mizar",
+      /* Drawn as an animated SVG on the tile; the picture is the fallback. */
+      animated: true,
+      width: 1192,
+      height: 344,
+    },
+    backImage: {
+      image: "/images/services/mizar-back.webp",
+      alt: "The Mizar app on a phone showing a new urgent lead, with a call back button and a take the job button.",
+      width: 690,
+      height: 800,
+      fit: "cover",
+      position: "50% 42%",
+      background: "#090f1e",
+      bullets: [
+        "Answers calls and messages for you",
+        "Collects the details and books the job",
+        "Keeps your day in order, by voice",
+      ],
+    },
+    badge: "In build",
+    link: {
+      href: site.whatsapp.mizarHref,
+      cta: "Message us for early access",
+      external: true,
+    },
+  },
+  {
     id: "ai",
     track: "studio",
     title: "AI-integrated solutions",
@@ -217,6 +304,14 @@ export const services: Service[] = [
     tintHover: "#2f2449",
     mark: "#a98cf0",
     icon: Palette,
+    gallery: {
+      href: "/design",
+      cta: "Enter the design studio",
+      image: designTileHero.src,
+      alt: designTileHero.alt,
+      width: designTileHero.width,
+      height: designTileHero.height,
+    },
   },
   {
     id: "ai-content",
@@ -268,7 +363,6 @@ export const services: Service[] = [
     tintHover: "#282550",
     mark: "#9a95f5",
     icon: LayoutGrid,
-    image: "/images/services/web-product-design.jpg",
   },
 ];
 

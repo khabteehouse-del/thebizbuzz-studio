@@ -1,0 +1,63 @@
+/* Soft breathing glow around the whole logo, kept low so the white letters stay crisp. */
+.mizar-logo {
+  display: block;
+  overflow: visible;
+  filter: drop-shadow(0 0 8px rgba(55, 181, 255, 0.28));
+  animation: mizar-glow 6.5s ease-in-out infinite;
+}
+
+/* The two stars twinkle on their own timing. Different lengths mean the
+   pair never falls into a repeating pattern, so it reads as random. */
+.mizar-star {
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform, opacity;
+}
+
+.mizar-star--a {
+  animation: mizar-twinkle 4.3s ease-in-out 0.4s infinite;
+}
+
+.mizar-star--b {
+  animation: mizar-twinkle 5.9s ease-in-out 2.1s infinite;
+}
+
+@keyframes mizar-twinkle {
+  0%,
+  62%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    filter: none;
+  }
+  70% {
+    opacity: 0.55;
+    transform: scale(0.88);
+  }
+  82% {
+    opacity: 1;
+    transform: scale(1.14);
+    filter: drop-shadow(0 0 7px #6fe3ff) drop-shadow(0 0 16px #37b5ff);
+  }
+  92% {
+    opacity: 1;
+    transform: scale(1.03);
+  }
+}
+
+@keyframes mizar-glow {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 6px rgba(55, 181, 255, 0.2));
+  }
+  50% {
+    filter: drop-shadow(0 0 14px rgba(55, 181, 255, 0.42));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mizar-logo,
+  .mizar-star {
+    animation: none;
+  }
+}

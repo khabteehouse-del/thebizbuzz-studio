@@ -36,6 +36,17 @@ export function Cta() {
                 </Button>
               </Magnetic>
 
+              <Magnetic strength={14}>
+                <Button
+                  href={site.whatsapp.href}
+                  variant="ghost"
+                  size="lg"
+                  external
+                >
+                  WhatsApp us
+                </Button>
+              </Magnetic>
+
               <Link
                 href="#work"
                 className="text-sm text-muted transition-colors duration-200 hover:text-paper"

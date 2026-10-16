@@ -35,8 +35,11 @@ export default function DesignPage() {
 
           <p className="dz-kicker">BizBuzz Design Studio</p>
           <h1 className="dz-title dz-display">
-            Where brands get their <em>shape</em>
-            <span className="dz-morph" aria-hidden="true" />
+            <span className="dz-line">Where brands</span>
+            <span className="dz-line dz-line--shape">
+              get their <em>shape</em>
+              <span className="dz-morph" aria-hidden="true" />
+            </span>
           </h1>
           <p className="dz-lede">
             Identity systems, logos, flyers and posters from the BizBuzz design

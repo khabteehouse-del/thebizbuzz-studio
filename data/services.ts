@@ -191,7 +191,7 @@ export const services: Service[] = [
     track: "studio",
     title: "Mizar",
     summary:
-      "An AI business assistant with a built-in AI receptionist. Made for mobile service professionals. Say it. Mizar does it.",
+      "AI business assistant with a built-in AI receptionist. Made for mobile service professionals.",
     capabilities: [
       "Answers calls and messages while you are on the job",
       "Collects the details and books the visit",

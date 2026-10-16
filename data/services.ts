@@ -253,6 +253,15 @@ export const services: Service[] = [
     tintHover: "#1e2652",
     mark: "#7c8ff8",
     icon: Sparkles,
+    backImage: {
+      image: "/images/services/ai-back.webp",
+      alt: "Veridoc, a private document intelligence product we built, shown as a glowing shield and checkmark logo.",
+      width: 560,
+      height: 400,
+      fit: "cover",
+      position: "50% 50%",
+      background: "#05070d",
+    },
   },
   {
     id: "geo-aeo",

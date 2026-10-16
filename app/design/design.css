@@ -267,9 +267,10 @@
 
 .dz-morph {
   display: inline-block;
-  width: 0.6em;
-  height: 0.6em;
-  margin-left: 0.28em;
+  /* Same height as the capitals of the larger word before it. */
+  width: 0.82em;
+  height: 0.86em;
+  margin-left: 0.22em;
   vertical-align: baseline;
   background:
     radial-gradient(circle at 30% 26%, rgba(255, 255, 255, 0.5) 0, rgba(255, 255, 255, 0) 32%),

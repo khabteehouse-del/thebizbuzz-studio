@@ -297,7 +297,7 @@ function Tile({
       delay={index * 0.05}
       className={half ? "lg:col-span-3" : "lg:col-span-2"}
     >
-      <div ref={tileRef}>
+      <div ref={tileRef} className="group/tile relative">
         {gallery ? (
           <Link
             href={gallery.href}
@@ -308,19 +308,6 @@ function Tile({
           >
             {faces}
           </Link>
-        ) : link ? (
-          <a
-            href={link.href}
-            onClick={onLinkClick}
-            data-flipped={flipped}
-            aria-label={`${service.title}, in build. ${link.cta} on WhatsApp.`}
-            className={tileClass}
-            {...(link.external
-              ? { target: "_blank", rel: "noopener noreferrer" }
-              : {})}
-          >
-            {faces}
-          </a>
         ) : (
           <button
             type="button"
@@ -332,6 +319,22 @@ function Tile({
           >
             {faces}
           </button>
+        )}
+
+        {/* Only the strip on the back is a link, so the rest of the tile just flips. */}
+        {link && (
+          <a
+            href={link.href}
+            aria-label={`${link.cta} on WhatsApp`}
+            className={`absolute inset-x-7 bottom-7 z-10 h-[2.9rem] rounded-xl focus-visible:outline focus-visible:outline-2 md:inset-x-8 md:bottom-8 ${
+              flipped
+                ? "pointer-events-auto"
+                : "pointer-events-none group-hover/tile:pointer-events-auto"
+            }`}
+            {...(link.external
+              ? { target: "_blank", rel: "noopener noreferrer" }
+              : {})}
+          />
         )}
       </div>
     </Reveal>

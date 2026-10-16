@@ -130,7 +130,6 @@
 .dz-orb {
   position: absolute;
   border-radius: 50%;
-  animation: dz-drift 28s ease-in-out infinite alternate;
 }
 
 .dz-orb--a {
@@ -147,8 +146,6 @@
   top: 2rem;
   right: -12rem;
   background: radial-gradient(circle, rgba(158, 18, 48, 0.5) 0%, transparent 68%);
-  animation-duration: 34s;
-  animation-delay: -9s;
 }
 
 .dz-orb--c {
@@ -157,36 +154,8 @@
   bottom: 8rem;
   left: 28%;
   background: radial-gradient(circle, rgba(255, 77, 98, 0.2) 0%, transparent 70%);
-  animation: none;
 }
 
-@keyframes dz-drift {
-  to {
-    transform: translate3d(3rem, 2rem, 0) scale(1.08);
-  }
-}
-
-/* Plays once when the page opens. Opacity and transform only, so it stays
-   smooth: no clip-path, no filters, nothing that repaints the hero. */
-.dz-hero .dz-shell > * {
-  animation: dz-rise 0.8s var(--dz-ease) backwards;
-}
-
-.dz-hero .dz-shell > :nth-child(2) {
-  animation-delay: 80ms;
-}
-
-.dz-hero .dz-shell > :nth-child(3) {
-  animation-delay: 160ms;
-}
-
-.dz-hero .dz-shell > :nth-child(4) {
-  animation-delay: 240ms;
-}
-
-.dz-hero .dz-shell > :nth-child(5) {
-  animation-delay: 320ms;
-}
 
 .dz-back {
   display: inline-flex;
@@ -727,8 +696,6 @@ body:has(.dz) footer > div[aria-hidden="true"] p {
 /* ------------------------------------------------------------------ */
 
 @media (prefers-reduced-motion: reduce) {
-  .dz-orb,
-  .dz-hero .dz-shell > *,
   .dz-card,
   .dz-viewer {
     animation: none;

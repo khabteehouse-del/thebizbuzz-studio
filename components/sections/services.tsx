@@ -96,7 +96,7 @@ function Tile({
   const link = service.link;
   /* A tile back can be a full picture: the design gallery, or a product shot. */
   const art = gallery
-    ? { image: gallery.image, alt: gallery.alt, width: gallery.width, height: gallery.height, fit: "cover" as const, background: "#12030a" }
+    ? { image: gallery.image, alt: gallery.alt, width: gallery.width, height: gallery.height, fit: "cover" as const, background: "#12030a", position: undefined, bullets: undefined }
     : service.backImage;
   const artCta = gallery?.cta ?? link?.cta;
 
@@ -231,7 +231,34 @@ function Tile({
             height={art.height}
             sizes="(min-width: 1024px) 34vw, (min-width: 768px) 50vw, 100vw"
             className={`h-full w-full ${art.fit === "contain" ? "object-contain" : "object-cover"}`}
+            style={art.position ? { objectPosition: art.position } : undefined}
           />
+          {art.bullets && (
+            <>
+              <span
+                aria-hidden="true"
+                className="absolute inset-x-0 top-0 h-[62%]"
+                style={{
+                  background: `linear-gradient(180deg, ${art.background ?? "#090f1e"} 0%, ${art.background ?? "#090f1e"}f2 38%, transparent 100%)`,
+                }}
+              />
+              <span className="absolute inset-x-5 top-5 block space-y-2">
+                {art.bullets.map((item) => (
+                  <span
+                    key={item}
+                    className="flex items-start gap-3 text-[13px] leading-snug text-paper/90"
+                  >
+                    <span
+                      aria-hidden="true"
+                      className="mt-[0.6em] h-px w-3 shrink-0"
+                      style={{ backgroundColor: service.mark }}
+                    />
+                    {item}
+                  </span>
+                ))}
+              </span>
+            </>
+          )}
           <span
             aria-hidden="true"
             className="absolute inset-0"

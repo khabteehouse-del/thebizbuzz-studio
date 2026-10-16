@@ -41,6 +41,10 @@ export type Service = {
     /* "contain" keeps a tall picture whole instead of cropping it. */
     fit?: "cover" | "contain";
     background?: string;
+    /* CSS object-position, to choose which part of a cropped picture shows. */
+    position?: string;
+    /* A few short lines laid over the top of the picture. */
+    bullets?: string[];
   };
   /* Optional small label on the tile front, for example a product that is still in build. */
   badge?: string;
@@ -209,8 +213,14 @@ export const services: Service[] = [
       alt: "The Mizar app on a phone showing a new urgent lead, with a call back button and a take the job button.",
       width: 690,
       height: 800,
-      fit: "contain",
+      fit: "cover",
+      position: "50% 42%",
       background: "#090f1e",
+      bullets: [
+        "Answers calls and messages for you",
+        "Collects the details and books the job",
+        "Keeps your day in order, by voice",
+      ],
     },
     badge: "In build",
     link: {

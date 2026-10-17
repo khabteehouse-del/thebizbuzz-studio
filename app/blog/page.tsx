@@ -7,7 +7,7 @@ import { site } from "@/data/site";
 export const metadata: Metadata = {
   title: "Blog",
   description:
-    "Notes on local search, AI systems and building things that actually ship, from the BizBuzz team.",
+    "Sourced tech news from the BizBuzz team: AI, big tech, cybersecurity and more, and what each story means for your business.",
   alternates: {
     canonical: `${site.url}/blog`,
   },
@@ -23,10 +23,10 @@ export default function BlogPage() {
       <div className="shell">
         <p className="section-label">Blog</p>
         <h1 className="mt-7 max-w-2xl font-display text-3xl font-medium leading-[1.08] tracking-[-0.03em] text-paper sm:text-4xl md:text-6xl">
-          Notes on local search and AI systems
+          Tech news, in plain English
         </h1>
         <p className="mt-6 max-w-xl text-base leading-relaxed text-muted">
-          What we learn building for clients and shipping our own products.
+          The stories in information technology that matter to businesses, with sources, and what each one means for you.
         </p>
 
         <div className="mt-16 grid gap-5 md:grid-cols-2 md:gap-6">

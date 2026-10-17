@@ -713,12 +713,13 @@
     linear-gradient(180deg, rgba(255, 255, 255, 0.26) 0%, rgba(255, 255, 255, 0) 52%),
     linear-gradient(135deg, #b3163a 0%, var(--dz-red) 100%);
   box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.35) inset,
-    0 -3px 6px rgba(80, 4, 20, 0.45) inset,
-    0 2px 0 #7a0c25,
-    0 6px 0 rgba(90, 8, 28, 0.55),
-    0 18px 34px rgba(224, 36, 63, 0.42),
-    0 30px 60px rgba(0, 0, 0, 0.45);
+    0 1px 0 rgba(255, 255, 255, 0.38) inset,
+    0 -4px 8px rgba(70, 3, 18, 0.55) inset,
+    0 2px 0 #6a0a21,
+    0 6px 0 #3b0613,
+    0 10px 14px rgba(0, 0, 0, 0.6),
+    0 22px 34px rgba(0, 0, 0, 0.65),
+    0 26px 50px rgba(224, 36, 63, 0.38);
   transition:
     transform 0.3s var(--dz-ease),
     box-shadow 0.3s;
@@ -750,22 +751,24 @@
 .dz-cta-btn:hover {
   transform: translateY(-3px);
   box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.4) inset,
-    0 -3px 6px rgba(80, 4, 20, 0.4) inset,
-    0 2px 0 #7a0c25,
-    0 9px 0 rgba(90, 8, 28, 0.5),
-    0 24px 42px rgba(255, 77, 98, 0.5),
-    0 34px 64px rgba(0, 0, 0, 0.45);
+    0 1px 0 rgba(255, 255, 255, 0.42) inset,
+    0 -4px 8px rgba(70, 3, 18, 0.5) inset,
+    0 2px 0 #6a0a21,
+    0 9px 0 #3b0613,
+    0 14px 18px rgba(0, 0, 0, 0.6),
+    0 30px 44px rgba(0, 0, 0, 0.65),
+    0 32px 60px rgba(255, 77, 98, 0.46);
 }
 
 .dz-cta-btn:active {
   transform: translateY(3px);
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.3) inset,
-    0 -2px 5px rgba(80, 4, 20, 0.5) inset,
-    0 0 0 #7a0c25,
-    0 2px 0 rgba(90, 8, 28, 0.55),
-    0 8px 18px rgba(224, 36, 63, 0.4);
+    0 -3px 6px rgba(70, 3, 18, 0.6) inset,
+    0 0 0 #6a0a21,
+    0 2px 0 #3b0613,
+    0 5px 8px rgba(0, 0, 0, 0.6),
+    0 10px 18px rgba(224, 36, 63, 0.35);
 }
 
 .dz-credit {
@@ -815,31 +818,47 @@ body:has(.dz) footer a:hover {
   color: #fff;
 }
 
-/* The menu's "Start a project" button takes the page's red, with the same depth. */
+/* The menu's "Start a project" button is the same red raised button as the one
+   in the call to action, scaled to the menu's size. */
 body:has(.dz) header a.fuse-btn {
   --fuse-color: #ffc9d0 !important;
+  color: #fff;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 55%),
-    linear-gradient(135deg, #3a0816, #5a0e20) !important;
+    linear-gradient(180deg, rgba(255, 255, 255, 0.26) 0%, rgba(255, 255, 255, 0) 52%),
+    linear-gradient(135deg, #b3163a 0%, #e0243f 100%) !important;
   box-shadow:
-    0 1px 0 rgba(255, 201, 208, 0.22) inset,
-    0 -2px 5px rgba(0, 0, 0, 0.4) inset,
-    0 8px 22px rgba(224, 36, 63, 0.28) !important;
+    0 1px 0 rgba(255, 255, 255, 0.38) inset,
+    0 -3px 6px rgba(70, 3, 18, 0.55) inset,
+    0 2px 0 #6a0a21,
+    0 4px 0 #3b0613,
+    0 8px 12px rgba(0, 0, 0, 0.6),
+    0 14px 24px rgba(0, 0, 0, 0.55),
+    0 16px 34px rgba(224, 36, 63, 0.34) !important;
+  transition: transform 0.3s var(--dz-ease), box-shadow 0.3s;
 }
 
 body:has(.dz) header a.fuse-btn:hover {
+  transform: translateY(-2px);
   box-shadow:
-    0 1px 0 rgba(255, 201, 208, 0.3) inset,
-    0 -2px 5px rgba(0, 0, 0, 0.4) inset,
-    0 10px 30px rgba(255, 77, 98, 0.42) !important;
+    0 1px 0 rgba(255, 255, 255, 0.42) inset,
+    0 -3px 6px rgba(70, 3, 18, 0.5) inset,
+    0 2px 0 #6a0a21,
+    0 6px 0 #3b0613,
+    0 12px 16px rgba(0, 0, 0, 0.6),
+    0 20px 30px rgba(0, 0, 0, 0.55),
+    0 20px 44px rgba(255, 77, 98, 0.44) !important;
+}
+
+body:has(.dz) header a.fuse-btn:active {
+  transform: translateY(2px);
 }
 
 body:has(.dz) header a.fuse-btn > span:last-child {
-  background-image: linear-gradient(135deg, #b3163a, #e0243f) !important;
+  background-image: linear-gradient(160deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.12)) !important;
   color: #fff !important;
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.4),
-    0 2px 6px rgba(70, 4, 18, 0.45);
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    0 3px 8px rgba(70, 4, 18, 0.5);
 }
 
 /* The big BizBuzz name keeps its exact size and crop, in the page's red. */

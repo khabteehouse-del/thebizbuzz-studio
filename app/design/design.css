@@ -686,10 +686,10 @@
 }
 
 .dz-cta-btn {
-  /* The burning-fuse border is the site's own .fuse-btn effect (globals.css).
-     Only its colour is set here. It borrows the button's own pale red for now,
-     so nothing new is introduced. Change --fuse-color to recolour the spark. */
-  --fuse-color: #ffc9d0;
+  /* Same button as the rest of the site (dark pill, burning-fuse border, round
+     arrow badge), recoloured to the page's red. The spark is the site's own
+     .fuse-btn effect (globals.css). */
+  --fuse-color: #ff4d62;
   --fuse-duration: 7s;
   --fuse-delay: 0s;
 
@@ -703,23 +703,14 @@
   border-radius: 999px;
   padding: 0 0.25rem 0 2rem;
   font-family: var(--font-display);
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #fff;
+  color: var(--dz-text);
   text-decoration: none;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.26) 0%, rgba(255, 255, 255, 0) 52%),
-    linear-gradient(135deg, #b3163a 0%, var(--dz-red) 100%);
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.38) inset,
-    0 -4px 8px rgba(70, 3, 18, 0.55) inset,
-    0 2px 0 #6a0a21,
-    0 6px 0 #3b0613,
-    0 10px 14px rgba(0, 0, 0, 0.6),
-    0 22px 34px rgba(0, 0, 0, 0.65),
-    0 26px 50px rgba(224, 36, 63, 0.38);
+  background: #1a0510;
+  box-shadow: 0 0 18px rgba(255, 77, 98, 0.1);
   transition:
     transform 0.3s var(--dz-ease),
     box-shadow 0.3s;
@@ -736,11 +727,8 @@
   justify-content: center;
   border-radius: 50%;
   font-size: 0.875rem;
-  color: #fff;
-  background: linear-gradient(160deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.12));
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.5),
-    0 3px 8px rgba(70, 4, 18, 0.45);
+  color: #1a0309;
+  background: linear-gradient(135deg, #ff6b7d, #e0243f);
   transition: transform 0.3s var(--dz-ease);
 }
 
@@ -749,26 +737,7 @@
 }
 
 .dz-cta-btn:hover {
-  transform: translateY(-3px);
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.42) inset,
-    0 -4px 8px rgba(70, 3, 18, 0.5) inset,
-    0 2px 0 #6a0a21,
-    0 9px 0 #3b0613,
-    0 14px 18px rgba(0, 0, 0, 0.6),
-    0 30px 44px rgba(0, 0, 0, 0.65),
-    0 32px 60px rgba(255, 77, 98, 0.46);
-}
-
-.dz-cta-btn:active {
-  transform: translateY(3px);
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.3) inset,
-    0 -3px 6px rgba(70, 3, 18, 0.6) inset,
-    0 0 0 #6a0a21,
-    0 2px 0 #3b0613,
-    0 5px 8px rgba(0, 0, 0, 0.6),
-    0 10px 18px rgba(224, 36, 63, 0.35);
+  box-shadow: 0 0 26px rgba(255, 77, 98, 0.24);
 }
 
 .dz-credit {
@@ -818,47 +787,21 @@ body:has(.dz) footer a:hover {
   color: #fff;
 }
 
-/* The menu's "Start a project" button is the same red raised button as the one
-   in the call to action, scaled to the menu's size. */
+/* The menu's "Start a project" button keeps the site's flat fuse-button look,
+   recoloured to the page's red (same as the one in the call to action). */
 body:has(.dz) header a.fuse-btn {
-  --fuse-color: #ffc9d0 !important;
-  color: #fff;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.26) 0%, rgba(255, 255, 255, 0) 52%),
-    linear-gradient(135deg, #b3163a 0%, #e0243f 100%) !important;
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.38) inset,
-    0 -3px 6px rgba(70, 3, 18, 0.55) inset,
-    0 2px 0 #6a0a21,
-    0 4px 0 #3b0613,
-    0 8px 12px rgba(0, 0, 0, 0.6),
-    0 14px 24px rgba(0, 0, 0, 0.55),
-    0 16px 34px rgba(224, 36, 63, 0.34) !important;
-  transition: transform 0.3s var(--dz-ease), box-shadow 0.3s;
+  --fuse-color: #ff4d62 !important;
+  background: #1a0510 !important;
+  box-shadow: 0 0 18px rgba(255, 77, 98, 0.1) !important;
 }
 
 body:has(.dz) header a.fuse-btn:hover {
-  transform: translateY(-2px);
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.42) inset,
-    0 -3px 6px rgba(70, 3, 18, 0.5) inset,
-    0 2px 0 #6a0a21,
-    0 6px 0 #3b0613,
-    0 12px 16px rgba(0, 0, 0, 0.6),
-    0 20px 30px rgba(0, 0, 0, 0.55),
-    0 20px 44px rgba(255, 77, 98, 0.44) !important;
-}
-
-body:has(.dz) header a.fuse-btn:active {
-  transform: translateY(2px);
+  box-shadow: 0 0 26px rgba(255, 77, 98, 0.24) !important;
 }
 
 body:has(.dz) header a.fuse-btn > span:last-child {
-  background-image: linear-gradient(160deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.12)) !important;
-  color: #fff !important;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.5),
-    0 3px 8px rgba(70, 4, 18, 0.5);
+  background-image: linear-gradient(135deg, #ff6b7d, #e0243f) !important;
+  color: #1a0309 !important;
 }
 
 /* The big BizBuzz name keeps its exact size and crop, in the page's red. */

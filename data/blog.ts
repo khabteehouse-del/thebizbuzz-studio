@@ -13,6 +13,28 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "microsoft-record-patch-tuesday-october-2026",
+    title: "Microsoft Patches a Record 1,413 Flaws in One Update",
+    description:
+      "Microsoft's October 2026 Patch Tuesday set a new record for vulnerabilities fixed in a single release, including one Windows flaw already being exploited.",
+    date: "2026-10-18",
+    readTime: "4 min read",
+    tags: ["Cybersecurity", "Tech News"],
+    image: "/images/blog/microsoft-record-patch-tuesday-october-2026.jpg",
+    body: [
+      "On October 14, 2026, Microsoft released its monthly security update with fixes for 1,413 vulnerabilities, according to SecurityWeek and CyberScoop. CyberScoop reports that the previous annual record was 1,261, set in 2020, so this one release is larger than any full year before it. Counts vary slightly by outlet: BleepingComputer reports 1,411 because it counts only flaws released on Patch Tuesday itself and leaves out 348 fixed earlier in October.",
+      "Most of the fixes are in Windows (1,102, about 78%), followed by Office (134), developer tools (61) and SharePoint Server (36). One flaw is already being exploited. CVE-2026-96951 is a Windows Shell security feature bypass that lets a file avoid the Mark of the Web warning, the tag that makes SmartScreen and Office Protected View treat downloaded files with caution. SecurityWeek says an attacker would likely send a crafted file by email or chat and need the user to open it. CISA added it to its Known Exploited Vulnerabilities catalog on October 13 with an October 16 deadline for US federal agencies. The sources name no threat actor and give no details of the attacks.",
+      "The reason for the surge is the interesting part. SecurityWeek says the increase is largely driven by AI. Dustin Childs of the Zero Day Initiative told CyberScoop that AI is partly responsible mainly by shortening the time between a bug existing and someone finding it, not by creating new bugs. He added that hundreds of CVEs in one release used to be the exception and is now the baseline. Microsoft also introduced \"risk cohorts\", groups of vulnerabilities that call for a similar assessment, to help customers prioritize. Microsoft's own wording is that cohorts are a starting point, not a final decision.",
+      "Two other flaws were publicly disclosed before fixes shipped: a .NET Framework bypass of Windows Defender Application Control (CVE-2026-108398) and a denial-of-service issue in the MessagePack-CSharp component (CVE-2026-92707). SecurityWeek says Microsoft rates exploitation of the first as unlikely.",
+      "For businesses, the takeaway is that patch volume is now too large to treat every item equally. Patch the actively exploited flaw first, then internet-facing systems and email-exposed users, and use a risk-based order for the rest. Check that your update process can handle a heavy month, keep an accurate list of devices and software, and remind staff not to open unexpected files even when a download warning is missing. If an IT provider manages your updates, ask how they prioritize and how fast they patch known exploited flaws.",
+    ],
+    sources: [
+      { label: "SecurityWeek", url: "https://www.securityweek.com/microsoft-patches-record-1413-vulnerabilities-including-exploited-windows-zero-day/" },
+      { label: "CyberScoop", url: "https://cyberscoop.com/microsoft-patch-tuesday-october-2026/" },
+      { label: "BleepingComputer", url: "https://www.bleepingcomputer.com/news/microsoft/microsoft-october-2026-patch-tuesday-fixes-1-411-flaws-3-zero-days/" },
+    ],
+  },
+  {
     slug: "pakistan-techcrunch-disrupt-2026",
     title: "Pakistan Takes 20 Tech Companies to TechCrunch Disrupt 2026",
     description:

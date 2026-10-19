@@ -41,7 +41,7 @@ export function Button({
       : "h-9 pl-5 pr-0 text-xs md:pl-6";
 
   const base =
-    "fuse-btn group/btn relative isolate inline-flex items-center justify-center gap-4 rounded-md font-medium uppercase tracking-[0.14em] text-paper transition-shadow duration-300";
+    "fuse-btn group/btn relative isolate inline-flex items-center justify-between gap-4 rounded-md font-medium uppercase tracking-[0.14em] text-paper transition-shadow duration-300";
 
   const skin =
     variant === "primary"

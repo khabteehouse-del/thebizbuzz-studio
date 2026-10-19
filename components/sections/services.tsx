@@ -407,18 +407,24 @@ function Tile({
             )}
             {link && (
               <span
-                className="mt-auto flex items-center justify-between gap-3 rounded-xl border px-4 py-2.5"
+                className="relative mt-auto flex items-center justify-between gap-3 overflow-hidden rounded-xl border px-4 py-2.5"
                 style={{
                   borderColor: `${service.mark}55`,
                   backgroundColor: "rgba(0,0,0,0.25)",
                 }}
               >
-                <span className="font-display text-sm font-medium text-paper">
+                <span
+                  aria-hidden="true"
+                  className="cta-sweep"
+                  style={{ "--sweep": `${service.mark}4d` } as React.CSSProperties}
+                />
+                <span className="relative font-display text-sm font-medium text-paper">
                   {link.cta}
                 </span>
                 <ArrowUpRight
                   size={16}
                   aria-hidden="true"
+                  className="relative"
                   style={{ color: service.mark }}
                 />
               </span>

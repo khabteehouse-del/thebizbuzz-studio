@@ -189,7 +189,7 @@ export function Tracks() {
             className="pointer-events-none absolute -left-8 bottom-0 z-20 hidden h-[300px] w-[140px] lg:block xl:-left-28 xl:h-[340px] xl:w-[160px]"
           >
             <Image
-              src="/images/anchor/women-anchor.png"
+              src="/images/anchor/women-anchor-v2.png"
               alt=""
               fill
               className="object-contain object-bottom opacity-90"

@@ -13,6 +13,28 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "taiwan-ai-chip-smuggling-crime",
+    title: "Taiwan Moves to Make AI Chip Smuggling to China a Crime",
+    description:
+      "Taiwan's economy minister says AI servers and advanced chips will be added to the controlled goods list, so unauthorized shipments to China would become a criminal offense.",
+    date: "2026-10-19",
+    readTime: "4 min read",
+    tags: ["Tech News", "Semiconductors"],
+    image: "/images/blog/taiwan-ai-chip-smuggling-crime.jpg",
+    body: [
+      "Taiwan plans to make it a crime to ship AI servers and advanced semiconductors to China without authorization. Economy Minister Kung Ming-hsin confirmed the plan in an interview with Bloomberg, reported on October 17, 2026, according to Trending Topics and 24/7 Wall St. The idea is to add these products to the controlled goods list under Taiwan's Foreign Trade Act.",
+      "Today, Taiwan relies on a company blacklist. Huawei and SMIC have needed permits since mid-2025. The new approach would cover the whole Chinese market instead of named firms. Trending Topics reports that unauthorized shipments have so far counted only as an administrative violation, and the change would turn them into a criminal matter. Kung said the controls would give enforcement agencies \"more legal tools\" and would correspond with US measures, according to 24/7 Wall St.",
+      "This is a plan, not yet a law. Forkast reports that DPP legislator Chung Chia-pin has drafted an amendment with a mainland China semiconductor clause, and it still has to pass the legislature. The sources say no start date, final product list or penalty schedule has been set. Forkast adds that existing strategic high-tech goods rules allow up to five years in prison, but does not say what the new offense would carry. The current framework stays in place until lawmakers act.",
+      "The background is a US trade deal. Per Trending Topics, Taiwan and the US agreed in January to cut US tariffs on most Taiwanese goods from 20% to 15%, with Taiwanese firms pledging $250 billion in US investment. Taiwan's semiconductor exports hit a record $87.2 billion in September, up 60.9% from a year earlier, the same report says. Bloomberg, as cited there, reports that Nvidia chips reach Chinese buyers through Southeast Asian smuggling networks. 24/7 Wall St. notes that Nvidia's current revenue outlook already excludes China data center compute revenue. Nvidia and the other companies named in the coverage have not been accused of wrongdoing in this plan.",
+      "For businesses, the takeaway is that the AI hardware supply chain is becoming a compliance topic, not only a price and availability one. If you buy or resell servers, GPUs or networking gear, or sell cloud and AI services built on them, check where the equipment comes from and where it ends up, and keep records. Ask suppliers about export-control status before signing large orders, and plan for longer lead times if rules tighten. For everyone else, expect these rules to keep shaping what AI hardware costs and how quickly it arrives.",
+    ],
+    sources: [
+      { label: "24/7 Wall St.", url: "https://247wallst.com/investing/2026/10/17/smuggling-nvidia-chips-into-china-is-about-to-become-a-crime-in-taiwan/" },
+      { label: "Forkast", url: "https://forkast.news/taiwan-moves-to-criminalize-ai-chip-smuggling-to-china-under-foreign-trade-act/" },
+      { label: "Trending Topics", url: "https://www.trendingtopics.eu/taiwan-wants-to-make-a-i-chip-smuggling-to-china-a-crime/" },
+    ],
+  },
+  {
     slug: "microsoft-record-patch-tuesday-october-2026",
     title: "Microsoft Patches a Record 1,413 Flaws in One Update",
     description:

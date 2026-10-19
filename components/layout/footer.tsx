@@ -85,7 +85,14 @@ export function Footer() {
         aria-hidden="true"
         className="pointer-events-none select-none px-6 md:px-12"
       >
-        <p className="translate-y-[18%] whitespace-nowrap text-center font-display text-[clamp(4rem,22vw,26rem)] font-medium leading-none tracking-[-0.055em] text-paper/[0.05]">
+        <p
+          className="translate-y-[18%] whitespace-nowrap bg-clip-text text-center font-display text-[clamp(4rem,22vw,26rem)] font-medium leading-none tracking-[-0.055em] text-transparent"
+          style={{
+            /* Starts on the original faint grey, ends on the brand cyan (#6de2fc) so it lifts slightly */
+            backgroundImage:
+              "linear-gradient(90deg, rgba(245,248,255,0.05) 0%, rgba(245,248,255,0.05) 38%, rgba(109,226,252,0.20) 72%, rgba(109,226,252,0.42) 100%)",
+          }}
+        >
           {site.name}
         </p>
       </div>

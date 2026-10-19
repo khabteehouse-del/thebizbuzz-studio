@@ -294,7 +294,15 @@ function Tile({
                   }
             }
           >
-            {gallery && <span aria-hidden="true" className="cta-sweep" />}
+            <span
+              aria-hidden="true"
+              className="cta-sweep"
+              style={
+                gallery
+                  ? undefined
+                  : ({ "--sweep": `${service.mark}4d` } as React.CSSProperties)
+              }
+            />
             <span className="font-display relative text-sm font-medium text-paper">
               {artCta}
             </span>

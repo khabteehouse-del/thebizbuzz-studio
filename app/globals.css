@@ -1821,6 +1821,7 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .ta { animation: none !important; }
+}
 
 /* Design studio bar: slow light sweep and arrow nudge, only while the tile is showing its back. */
 .cta-sweep {

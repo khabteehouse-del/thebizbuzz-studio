@@ -11,14 +11,7 @@ import { submitSpecialist } from "@/app/actions/specialist";
   needs a skill we do not have in house. It never promises work or pay.
 */
 
-const CHIPS = [
-  "Photography",
-  "3D and motion",
-  "Translation",
-  "Legal and finance",
-  "Voice talent",
-  "Events",
-];
+const CHIPS = ["Photography", "3D and motion", "Translation", "Legal and finance"];
 
 const FIELD =
   "w-full rounded-lg border border-white/15 bg-white/5 px-3.5 py-3 text-base text-paper placeholder:text-paper/40 focus:border-[#7cc4ff] focus:outline-none sm:text-sm";
@@ -64,21 +57,26 @@ export function SpecialistCard({ index }: { index: number }) {
 
   return (
     <Reveal delay={index * 0.06}>
-      <div className="flex h-full flex-col rounded-sm border border-dashed border-[#7cc4ff]/40 bg-[#7cc4ff]/[0.04] p-6 shadow-[0_0_40px_-18px_#7cc4ff] sm:p-7">
-        <span
-          aria-hidden="true"
-          className="flex h-12 w-12 items-center justify-center rounded-full border border-dashed border-[#7cc4ff]/60 text-[#7cc4ff]"
-        >
-          <Plus size={22} strokeWidth={1.6} />
-        </span>
-        <h3 className="mt-5 font-display text-lg font-medium tracking-[-0.01em] text-paper">
-          Join our specialist network
-        </h3>
-        <p className="mt-3 text-sm leading-relaxed text-muted">
-          Some projects need a specialist we do not have in house. Tell us what
-          you do well, and we will reach out when a project fits.
+      <div className="flex h-full flex-col rounded-sm border border-dashed border-[#7cc4ff]/40 bg-[#7cc4ff]/[0.04] p-5 shadow-[0_0_40px_-18px_#7cc4ff]">
+        <div className="flex items-center gap-3">
+          <span
+            aria-hidden="true"
+            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-dashed border-[#7cc4ff]/60 text-[#7cc4ff]"
+          >
+            <Plus size={18} strokeWidth={1.6} />
+          </span>
+          <h3 className="font-display text-base font-medium leading-snug tracking-[-0.01em] text-paper">
+            Join our specialist network
+          </h3>
+        </div>
+        <p className="mt-4 text-sm leading-relaxed text-muted">
+          Need a skill we do not have in house? Tell us what you do well, and
+          we will reach out when a project fits.
         </p>
-        <ul className="mt-4 flex flex-wrap gap-2" aria-label="Examples of specialists we call on">
+        <ul
+          className="mt-4 flex flex-wrap gap-2"
+          aria-label="Examples of specialists we call on"
+        >
           {CHIPS.map((chip) => (
             <li
               key={chip}
@@ -88,19 +86,21 @@ export function SpecialistCard({ index }: { index: number }) {
             </li>
           ))}
         </ul>
-        <button
-          type="button"
-          onClick={() => {
-            setDone(false);
-            setOpen(true);
-          }}
-          className="mt-6 inline-flex min-h-12 w-full items-center justify-center rounded-lg border border-[#7cc4ff]/60 bg-[#7cc4ff]/15 px-4 py-3 font-display text-sm font-medium text-paper transition-colors hover:bg-[#7cc4ff]/25 focus-visible:outline focus-visible:outline-2 sm:mt-auto"
-        >
-          Add yourself to the list
-        </button>
-        <p className="mt-3 text-xs text-paper/50">
-          Project-based. No obligation on either side.
-        </p>
+        <div className="mt-auto pt-5">
+          <button
+            type="button"
+            onClick={() => {
+              setDone(false);
+              setOpen(true);
+            }}
+            className="inline-flex min-h-12 w-full items-center justify-center rounded-lg border border-[#7cc4ff]/60 bg-[#7cc4ff]/15 px-4 py-3 font-display text-sm font-medium text-paper transition-colors hover:bg-[#7cc4ff]/25 focus-visible:outline focus-visible:outline-2"
+          >
+            Add yourself to the list
+          </button>
+          <p className="mt-3 text-xs text-paper/50">
+            Project-based. No obligation.
+          </p>
+        </div>
       </div>
 
       <dialog

@@ -235,23 +235,70 @@ function drawBack(g: CanvasRenderingContext2D, L: Layers, t: number) {
   g.restore();
 }
 
-/* Now and then the whole dial catches the light like a glass dome: a soft glow
-   rises across the face from the upper left, with a curved highlight along the
-   inside of the rim. It sits in front of everything, as real glass would. */
+/* The glass has a slow pulse: every few seconds the whole dial catches the light. */
+const DOME_PERIOD = 8;
+const DOME_LENGTH = 3;
+const DOME_BASE = 0.14;
+
+function domePulse(t: number) {
+  const cycle = Math.floor(t / DOME_PERIOD);
+  const p = (t - cycle * DOME_PERIOD) / DOME_LENGTH;
+  const on = p >= 0 && p <= 1;
+  return {
+    cycle,
+    p: on ? p : 0,
+    pulse: on ? Math.pow(Math.sin(Math.PI * p), 2) : 0,
+  };
+}
+
+/* Light spilling out past the ring, only while the glass is catching the light. */
+function drawHalo(g: CanvasRenderingContext2D, t: number) {
+  const { pulse } = domePulse(t);
+  if (pulse < 0.01) return;
+  const halo = g.createRadialGradient(0, 0, 0.85, 0, 0, 0.965);
+  halo.addColorStop(0, `rgba(${SKY},${0.34 * pulse})`);
+  halo.addColorStop(0.4, `rgba(${SKY},${0.13 * pulse})`);
+  halo.addColorStop(1, `rgba(${SKY},0)`);
+  g.fillStyle = halo;
+  /* Only the band outside the ring, never the face. */
+  g.beginPath();
+  g.arc(0, 0, 0.965, 0, TAU);
+  g.arc(0, 0, 0.85, 0, TAU, true);
+  g.fill("evenodd");
+}
+
+/* The glass dome, in front of everything as real glass would be: a bright rim,
+   a slightly darker edge so the face looks curved, and a soft highlight in the
+   upper left that is always faintly there and flares with the pulse. */
 function drawDome(g: CanvasRenderingContext2D, t: number) {
-  const PERIOD = 8;
-  const LENGTH = 3;
-  const cycle = Math.floor(t / PERIOD);
-  const p = (t - cycle * PERIOD) / LENGTH;
-  if (p < 0 || p > 1) return;
-  const inten = Math.pow(Math.sin(Math.PI * p), 2);
-  /* The light drifts a little during the glow, and differs slightly each time. */
-  const drift = -0.05 + p * 0.1 + (((cycle * 2.399) % 1) - 0.5) * 0.1;
+  const { cycle, p, pulse } = domePulse(t);
+  const inten = DOME_BASE + (1 - DOME_BASE) * pulse;
+  /* The light drifts a little while it flares, and differs slightly each time. */
+  const drift = (-0.05 + p * 0.1 + (((cycle * 2.399) % 1) - 0.5) * 0.1) * pulse;
+
+  /* Rim: brightest where the light hits, from the upper left. */
+  const rim = g.createLinearGradient(-0.6, -0.6, 0.6, 0.6);
+  rim.addColorStop(0, `rgba(${PALE},${0.5 + 0.3 * pulse})`);
+  rim.addColorStop(0.5, `rgba(${LIGHT},0.14)`);
+  rim.addColorStop(1, `rgba(${LIGHT},0.2)`);
+  g.beginPath();
+  g.arc(0, 0, 0.862, 0, TAU);
+  g.lineWidth = 0.004;
+  g.strokeStyle = rim;
+  g.stroke();
 
   g.save();
   g.beginPath();
   g.arc(0, 0, 0.835, 0, TAU);
   g.clip();
+
+  /* Curved edge: a little deeper blue towards the rim. */
+  const edge = g.createRadialGradient(0, 0, 0.55, 0, 0, 0.835);
+  edge.addColorStop(0, "rgba(6,24,60,0)");
+  edge.addColorStop(1, "rgba(6,24,60,0.34)");
+  g.fillStyle = edge;
+  g.fillRect(-1, -1, 2, 2);
+
   g.globalCompositeOperation = "lighter";
 
   const cx = -0.42 + drift;
@@ -343,6 +390,7 @@ function drawFrame(
   /* Back layer sits furthest away, so it shifts the most against the pointer. */
   ctx.save();
   ctx.translate(-tx * 0.03, -ty * 0.03);
+  drawHalo(ctx, t);
   drawBack(ctx, L, t);
   ctx.restore();
 

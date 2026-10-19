@@ -87,8 +87,9 @@ function buildLayers(S: number, family: string): Layers {
   {
     const g = face.getContext("2d")!;
     const gr = g.createLinearGradient(0, numY - 0.2 * S, 0, numY + 0.2 * S);
-    gr.addColorStop(0, "#161c28");
-    gr.addColorStop(1, "#04060b");
+    /* The site's own navy (--color-navy), with a touch of --color-hover on top. */
+    gr.addColorStop(0, "#0e2a4a");
+    gr.addColorStop(1, "#0a1f44");
     drawNumeral(g, gr);
   }
 

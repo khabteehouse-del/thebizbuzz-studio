@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, useTransition } from "react";
 import Image from "next/image";
 import { Users, X } from "lucide-react";
 import { Reveal } from "@/components/shared/reveal";
+import { Magnetic } from "@/components/shared/magnetic";
 import { submitSpecialist } from "@/app/actions/specialist";
 
 /*
@@ -131,16 +132,33 @@ export function SpecialistCard({ index }: { index: number }) {
                 className="h-auto w-full [-webkit-mask-image:linear-gradient(to_bottom,black_93%,transparent_100%)] [mask-image:linear-gradient(to_bottom,black_93%,transparent_100%)]"
               />
             </div>
-            <button
-              type="button"
-              onClick={() => {
-                setDone(false);
-                setOpen(true);
-              }}
-              className="inline-flex min-h-12 w-full max-w-[15rem] items-center justify-center rounded-lg border border-[#7cc4ff]/60 bg-[#7cc4ff]/15 px-4 py-3 font-display text-sm font-medium text-paper transition-colors hover:bg-[#7cc4ff]/25 focus-visible:outline focus-visible:outline-2"
-            >
-              Add yourself to the list
-            </button>
+            {/* Same look as the hero buttons: lit fuse around the edge, round arrow
+                badge, drifts toward the pointer. Opens the form instead of a link. */}
+            <Magnetic strength={14} className="mt-1 flex w-full justify-center">
+              <button
+                type="button"
+                onClick={() => {
+                  setDone(false);
+                  setOpen(true);
+                }}
+                style={
+                  {
+                    "--fuse-color": "#1dd5ff",
+                    "--fuse-duration": "7s",
+                    "--fuse-delay": "0s",
+                  } as React.CSSProperties
+                }
+                className="fuse-btn group/btn relative isolate inline-flex h-[2.9rem] min-w-max items-center justify-center gap-3 rounded-full bg-[#0b1224] pl-5 pr-1 text-[0.7rem] font-medium uppercase tracking-[0.1em] text-paper shadow-[0_0_18px_rgba(29,213,255,0.08)] transition-shadow duration-300 hover:shadow-[0_0_26px_rgba(29,213,255,0.18)] focus-visible:outline focus-visible:outline-2 md:h-[3.1rem] md:text-[0.75rem]"
+              >
+                <span className="relative z-10">Add yourself to the list</span>
+                <span
+                  aria-hidden="true"
+                  className="relative z-10 flex aspect-square h-[calc(100%-0.5rem)] items-center justify-center rounded-full bg-gradient-to-br from-[#1dd5ff] to-accent text-sm text-[#06101f] transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover/btn:translate-x-0.5"
+                >
+                  &rarr;
+                </span>
+              </button>
+            </Magnetic>
           </div>
         </div>
       </div>

@@ -114,10 +114,11 @@ export function SpecialistCard({ index }: { index: number }) {
           className="relative mt-3 flex flex-1 items-end justify-center"
         >
           <Image
-            src="/images/anchor/specialist-pointing-v3.png"
+            src="/images/anchor/specialist-pointing-v4.png"
             alt=""
-            width={560}
-            height={529}
+            width={1029}
+            height={969}
+            quality={90}
             sizes="(min-width: 1024px) 17rem, 80vw"
             className="h-auto w-full max-w-[17rem] [-webkit-mask-image:linear-gradient(to_bottom,black_93%,transparent_100%)] [mask-image:linear-gradient(to_bottom,black_93%,transparent_100%)]"
           />

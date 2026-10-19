@@ -424,7 +424,7 @@ function Tile({
               onClose={() => setPlayerOpen(false)}
               videos={service.samples.videos}
               heading={service.samples.heading}
-              accent={service.mark}
+              accent="#7cc4ff"
             />
           </>
         )}

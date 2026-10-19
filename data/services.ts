@@ -20,6 +20,20 @@ import {
 
 export type Track = "local" | "studio";
 
+/* Which drawn picture sits behind the list on the back of a tile (see tile-art.tsx). */
+export type ArtId =
+  | "gbp"
+  | "local-seo"
+  | "reviews"
+  | "local-web"
+  | "social-media"
+  | "youtube"
+  | "geo-aeo"
+  | "growth"
+  | "ai-content"
+  | "ugc-ads"
+  | "web";
+
 export type Service = {
   id: string;
   track: Track;
@@ -38,6 +52,8 @@ export type Service = {
     height: number;
     animated?: boolean;
   };
+  /* Optional: a picture drawn in code behind the capability list on the back. */
+  backArt?: ArtId;
   /* Optional: the back shows this picture instead of the capability list. */
   backImage?: {
     image: string;
@@ -110,6 +126,7 @@ export const services: Service[] = [
     tintHover: "#123c3d",
     mark: "#4fd1c5",
     icon: MapPin,
+    backArt: "gbp",
   },
   {
     id: "local-seo",
@@ -127,6 +144,7 @@ export const services: Service[] = [
     tintHover: "#113a45",
     mark: "#54c8d8",
     icon: Search,
+    backArt: "local-seo",
   },
   {
     id: "reviews",
@@ -144,6 +162,7 @@ export const services: Service[] = [
     tintHover: "#12354d",
     mark: "#4eb8ec",
     icon: Star,
+    backArt: "reviews",
   },
   {
     id: "local-web",
@@ -161,6 +180,7 @@ export const services: Service[] = [
     tintHover: "#12304e",
     mark: "#4ea3ec",
     icon: Globe,
+    backArt: "local-web",
   },
   {
     id: "social-media",
@@ -178,6 +198,7 @@ export const services: Service[] = [
     tintHover: "#153c30",
     mark: "#5fdba8",
     icon: Share2,
+    backArt: "social-media",
   },
   {
     id: "youtube",
@@ -195,6 +216,7 @@ export const services: Service[] = [
     tintHover: "#3c1c1f",
     mark: "#ef5350",
     icon: PlayCircle,
+    backArt: "youtube",
   },
 
   /* ---------------- Studio ---------------- */
@@ -292,6 +314,7 @@ export const services: Service[] = [
     tintHover: "#2c2450",
     mark: "#b388f0",
     icon: Radar,
+    backArt: "geo-aeo",
   },
   {
     id: "growth",
@@ -309,6 +332,7 @@ export const services: Service[] = [
     tintHover: "#222853",
     mark: "#8b9dfa",
     icon: TrendingUp,
+    backArt: "growth",
   },
   {
     id: "brand",
@@ -351,6 +375,7 @@ export const services: Service[] = [
     tintHover: "#1e304f",
     mark: "#6fa8f5",
     icon: Wand2,
+    backArt: "ai-content",
   },
   {
     id: "ugc-ads",
@@ -393,6 +418,7 @@ export const services: Service[] = [
     tintHover: "#282550",
     mark: "#9a95f5",
     icon: LayoutGrid,
+    backArt: "web",
   },
 ];
 

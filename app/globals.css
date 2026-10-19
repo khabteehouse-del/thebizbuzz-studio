@@ -1764,3 +1764,61 @@ body {
     animation-play-state: paused !important;
   }
 }
+
+/*
+  Tile back pictures (components/shared/tile-art.tsx).
+  Every moving part is class "ta" plus one ta-* class. Motion plays only while
+  the tile is hovered, focused or flipped, and is off for reduced motion. The
+  resting look of each shape is its finished look, so nothing is hidden.
+*/
+.ta {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation-duration: var(--t, 3.6s);
+  animation-delay: var(--d, 0s);
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-play-state: paused;
+}
+.group:hover .ta,
+.group:focus-visible .ta,
+.group[data-flipped="true"] .ta {
+  animation-play-state: running;
+}
+.ta-ping { animation-name: ta-ping; animation-timing-function: ease-out; --t: 2.6s; }
+.ta-grow-x { animation-name: ta-grow-x; transform-origin: 0 50%; }
+.ta-grow-y { animation-name: ta-grow-y; transform-origin: 50% 100%; }
+.ta-pop { animation-name: ta-pop; }
+.ta-twinkle { animation-name: ta-twinkle; --t: 3s; }
+.ta-glow { animation-name: ta-glow; --t: 2.4s; }
+.ta-float { animation-name: ta-float; animation-timing-function: ease-out; --t: 3.2s; }
+.ta-bob { animation-name: ta-bob; --t: 4s; }
+.ta-dash { animation-name: ta-dash; --t: 4.4s; }
+.ta-ring { animation-name: ta-ring; --t: 4.4s; }
+.ta-scan { animation-name: ta-scan; animation-timing-function: linear; --t: 5s; }
+.ta-cursor { animation-name: ta-cursor; --t: 3s; }
+.ta-dot { animation-name: ta-dot; --t: 1.2s; }
+.ta-rise { animation-name: ta-rise; --t: 2s; }
+.ta-heart { animation-name: ta-heart; --t: 1.8s; }
+.ta-spin { animation-name: ta-spin; animation-timing-function: linear; --t: 14s; }
+
+@keyframes ta-ping { 0% { transform: scale(0.4); opacity: 0.9; } 100% { transform: scale(1.5); opacity: 0; } }
+@keyframes ta-grow-x { 0% { transform: scaleX(0.06); } 45%, 80% { transform: scaleX(1); } 100% { transform: scaleX(0.06); } }
+@keyframes ta-grow-y { 0% { transform: scaleY(0.12); } 45%, 80% { transform: scaleY(1); } 100% { transform: scaleY(0.12); } }
+@keyframes ta-pop { 0%, 12% { transform: scale(0.3); opacity: 0.25; } 30% { transform: scale(1.18); opacity: 1; } 42%, 88% { transform: scale(1); opacity: 1; } 100% { transform: scale(0.3); opacity: 0.25; } }
+@keyframes ta-twinkle { 0%, 100% { opacity: 0.45; transform: scale(0.92); } 50% { opacity: 1; transform: scale(1.06); } }
+@keyframes ta-glow { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
+@keyframes ta-float { 0% { transform: translateY(0) scale(0.5); opacity: 0; } 25% { opacity: 1; } 100% { transform: translateY(-26px) scale(0.5); opacity: 0; } }
+@keyframes ta-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+@keyframes ta-dash { 0% { stroke-dashoffset: 1; } 55%, 85% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: 1; } }
+@keyframes ta-ring { 0% { stroke-dashoffset: 1; } 55%, 85% { stroke-dashoffset: 0.06; } 100% { stroke-dashoffset: 1; } }
+@keyframes ta-scan { 0% { transform: translateX(0); } 100% { transform: translateX(290px); } }
+@keyframes ta-cursor { 0%, 100% { transform: translate(14px, 8px); } 45%, 60% { transform: translate(0, 0); } }
+@keyframes ta-dot { 0%, 100% { opacity: 0.3; transform: translateY(0); } 50% { opacity: 1; transform: translateY(-3px); } }
+@keyframes ta-rise { 0%, 100% { transform: translateY(2px); opacity: 0.6; } 50% { transform: translateY(-3px); opacity: 1; } }
+@keyframes ta-heart { 0%, 100% { transform: scale(1); } 40% { transform: scale(1.35); } }
+@keyframes ta-spin { to { transform: rotate(360deg); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .ta { animation: none !important; }
+}

@@ -701,7 +701,7 @@
   margin-top: 2rem;
   height: 3.1rem;
   border-radius: 6px;
-  padding: 0 0.25rem 0 2rem;
+  padding: 0 1.5px 0 2rem;
   font-family: var(--font-display);
   font-size: 0.75rem;
   font-weight: 500;
@@ -721,11 +721,11 @@
   position: relative;
   z-index: 1;
   display: flex;
-  height: calc(100% - 0.5rem);
+  height: calc(100% - 3px);
   aspect-ratio: 1;
   align-items: center;
   justify-content: center;
-  border-radius: 4px;
+  border-radius: 3px 5px 5px 3px;
   font-size: 0.875rem;
   color: #1a0309;
   background: linear-gradient(135deg, #ff6b7d, #e0243f);

@@ -437,7 +437,7 @@ export function Services() {
 
           {/* Large screens only: on phones it would add page length. */}
           <Reveal delay={0.15} className="hidden lg:block">
-            <ServicesDial />
+            <ServicesDial className="lg:translate-y-6" />
           </Reveal>
         </div>
 

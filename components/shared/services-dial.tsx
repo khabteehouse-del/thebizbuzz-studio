@@ -81,14 +81,14 @@ function buildLayers(S: number, family: string): Layers {
   };
 
   const body = makeCanvas(S);
-  drawNumeral(body.getContext("2d")!, "#1d7ed6");
+  drawNumeral(body.getContext("2d")!, "#5b6b86");
 
   const face = makeCanvas(S);
   {
     const g = face.getContext("2d")!;
     const gr = g.createLinearGradient(0, numY - 0.2 * S, 0, numY + 0.2 * S);
     gr.addColorStop(0, "#ffffff");
-    gr.addColorStop(1, "#b9d6ff");
+    gr.addColorStop(1, "#c3cee0");
     drawNumeral(g, gr);
   }
 

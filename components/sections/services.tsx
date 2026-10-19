@@ -316,7 +316,7 @@ function Tile({
         </span>
       ) : (
         <span
-          className="absolute inset-0 flex overflow-hidden rounded-2xl border p-7 [backface-visibility:hidden] [transform:rotateY(180deg)] motion-reduce:opacity-0 motion-reduce:transition-opacity motion-reduce:[transform:none] motion-reduce:group-hover:opacity-100 motion-reduce:group-focus-visible:opacity-100 motion-reduce:group-data-[flipped=true]:opacity-100 md:p-8"
+          className="@container absolute inset-0 flex overflow-hidden rounded-2xl border p-7 [backface-visibility:hidden] [transform:rotateY(180deg)] motion-reduce:opacity-0 motion-reduce:transition-opacity motion-reduce:[transform:none] motion-reduce:group-hover:opacity-100 motion-reduce:group-focus-visible:opacity-100 motion-reduce:group-data-[flipped=true]:opacity-100 md:p-8"
           style={{
             backgroundColor: service.tintHover,
             borderColor: `${service.mark}66`,
@@ -330,7 +330,7 @@ function Tile({
               className={`pointer-events-none absolute ${
                 service.samples || service.review
                   ? /* Beside the list: right side, level with the text, clear of the samples strip. */
-                    `right-5 top-[3.4rem] w-[40%] md:right-7 ${
+                    `right-5 top-[3.4rem] w-[40%] opacity-30 @[22rem]:opacity-100 md:right-7 ${
                       service.review
                         ? "bottom-[7.45rem] md:bottom-[7.75rem]"
                         : "bottom-[5.25rem] md:bottom-[5.5rem]"
@@ -396,19 +396,20 @@ function Tile({
                   className="cta-sweep"
                   style={{ "--sweep": "rgba(251,191,36,0.24)" } as React.CSSProperties}
                 />
-                <span className="relative flex items-center gap-1">
+                <span className="relative flex items-center gap-1 whitespace-nowrap">
                   <PoweredStars starClass="text-sm" />
                   <span className="ml-1 text-sm font-medium text-paper">
                     {service.review.rating}
                   </span>
                   <span className="text-[11px] text-paper/60">
-                    ({service.review.count} reviews on Google)
+                    ({service.review.count} reviews
+                    <span className="hidden @[21rem]:inline"> on Google</span>)
                   </span>
                 </span>
                 <span className="relative mt-1 line-clamp-2 text-xs italic leading-snug text-paper/70">
                   &ldquo;{service.review.quote}&rdquo;
                 </span>
-                <span className="relative mt-1 truncate text-[10px] uppercase tracking-[0.08em] text-paper/60">
+                <span className="relative mt-1 truncate text-[9px] uppercase tracking-[0.03em] text-paper/60 @[21rem]:text-[10px] @[21rem]:tracking-[0.08em]">
                   {service.review.client}
                 </span>
               </span>

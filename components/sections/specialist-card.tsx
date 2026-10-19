@@ -148,12 +148,12 @@ export function SpecialistCard({ index }: { index: number }) {
                     "--fuse-delay": "0s",
                   } as React.CSSProperties
                 }
-                className="fuse-btn group/btn relative isolate inline-flex h-[2.9rem] min-w-max items-center justify-center gap-3 rounded-md bg-[#0b1224] pl-5 pr-[1.5px] text-[0.7rem] font-medium uppercase tracking-[0.1em] text-paper shadow-[0_0_18px_rgba(29,213,255,0.08)] transition-shadow duration-300 hover:shadow-[0_0_26px_rgba(29,213,255,0.18)] focus-visible:outline focus-visible:outline-2 md:h-[3.1rem] md:text-[0.75rem]"
+                className="fuse-btn group/btn relative isolate inline-flex h-10 min-w-max items-center justify-center gap-3 rounded-md bg-[#0b1224] pl-5 pr-0 text-[0.7rem] font-medium uppercase tracking-[0.1em] text-paper shadow-[0_0_18px_rgba(29,213,255,0.08)] transition-shadow duration-300 hover:shadow-[0_0_26px_rgba(29,213,255,0.18)] focus-visible:outline focus-visible:outline-2 md:h-[2.6rem] md:text-[0.75rem]"
               >
                 <span className="relative z-10">Add yourself to the list</span>
                 <span
                   aria-hidden="true"
-                  className="relative z-10 flex aspect-square h-[calc(100%-3px)] items-center justify-center rounded-[3px_5px_5px_3px] bg-gradient-to-br from-[#1dd5ff] to-accent text-sm text-[#06101f] transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover/btn:translate-x-0.5"
+                  className="relative z-10 flex aspect-square h-full items-center justify-center rounded-l-[3px] rounded-r-md bg-gradient-to-br from-[#1dd5ff] to-accent text-sm text-[#06101f] transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover/btn:translate-x-0.5"
                 >
                   &rarr;
                 </span>

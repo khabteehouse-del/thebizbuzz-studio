@@ -68,7 +68,7 @@ export function SpecialistCard({ index }: { index: number }) {
       {/* Phone: the figure peeks over the top edge of the card and points down at it. */}
       <div
         aria-hidden="true"
-        className="relative -mb-px ml-auto mr-6 h-36 w-28 shrink-0 overflow-hidden lg:hidden"
+        className="relative z-10 -mb-3 ml-auto mr-6 h-36 w-28 shrink-0 overflow-hidden lg:hidden"
       >
         <Image
           src="/images/anchor/specialist-anchor.png"

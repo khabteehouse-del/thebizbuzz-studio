@@ -40,6 +40,32 @@ export function VideoModal({
     if (!open && dialog.open) dialog.close();
   }, [open]);
 
+  /* Belt and braces for the smooth scroller: wheel and touch events that start
+     inside the dialog never reach the page-level listener. */
+  useEffect(() => {
+    const dialog = dialogRef.current;
+    if (!dialog) return;
+    const stop = (event: Event) => event.stopPropagation();
+    dialog.addEventListener("wheel", stop, { passive: true });
+    dialog.addEventListener("touchmove", stop, { passive: true });
+    return () => {
+      dialog.removeEventListener("wheel", stop);
+      dialog.removeEventListener("touchmove", stop);
+    };
+  }, []);
+
+  /* Freeze the page behind the player (the site's smooth scroller would
+     otherwise keep scrolling it). */
+  useEffect(() => {
+    if (!open) return;
+    const root = document.documentElement;
+    const previous = root.style.overflow;
+    root.style.overflow = "hidden";
+    return () => {
+      root.style.overflow = previous;
+    };
+  }, [open]);
+
   const close = () => {
     videoRef.current?.pause();
     onClose();
@@ -59,7 +85,8 @@ export function VideoModal({
         if (e.target === dialogRef.current) close();
       }}
       aria-label={heading}
-      className="m-auto w-[min(92vw,46rem)] max-w-none rounded-2xl border border-white/15 bg-[#0b1020] p-0 text-paper backdrop:bg-black/75 backdrop:backdrop-blur-sm"
+      data-lenis-prevent
+      className="m-auto overscroll-contain w-[min(92vw,46rem)] max-w-none rounded-2xl border border-white/15 bg-[#0b1020] p-0 text-paper backdrop:bg-black/75 backdrop:backdrop-blur-sm"
     >
       {open && (
         <div className="p-3 sm:p-4">

@@ -17,8 +17,8 @@ import { projects } from "@/data/projects";
   Each panel carries its own destination anchor, its own icon, an
   oversized track numeral, and a concrete next step at the bottom.
 
-  Anchor characters: woman outside the left edge of the "local" card
-  pointing right into it, man outside the right edge of the "studio"
+  Anchor characters: woman outside the left edge of the first card
+  pointing right into it, man outside the right edge of the second
   card pointing left into it. Desktop only, no room on mobile/tablet.
 
   The review proof is a <div> (not an <a>), since the whole card is
@@ -111,10 +111,35 @@ function AnimatedLayers({ size = 19, strokeWidth = 1.6 }: IconProps) {
 
 const doors = [
   {
-    id: "local",
+    id: "studio",
     numeral: "01",
+    icon: AnimatedLayers,
+    eyebrow: "Brand and AI",
+    title: "For growing brands",
+    line: "Brand, product and AI infrastructure, designed together.",
+    body: "For companies past their first version. Identity, web and product surfaces and AI systems, scoped against written acceptance criteria and built to production standard, not demo standard.",
+    points: [
+      "AI-integrated solutions",
+      "Web and product design",
+      "Growth marketing",
+      "Brand identity and creative",
+    ],
+    footnote: "Scoped projects with written acceptance criteria and a phase schedule up front",
+    tool: null,
+    review: null,
+    /* Real project from data/projects.ts, shown where the local card has its review */
+    featuredProject: "fluxorx",
+    cta: "See studio services",
+    href: "#studio-services",
+    mark: "#8b9dfa",
+    tint: "#151a38",
+    tintHover: "#1e2652",
+  },
+  {
+    id: "local",
+    numeral: "02",
     icon: AnimatedPin,
-    eyebrow: "Local track",
+    eyebrow: "Local growth",
     title: "For local businesses",
     line: "Own the map pack for what people near you actually search.",
     body: "Clinics, salons, restaurants, showrooms and shops. Profile, citations, reviews and a site that converts, run as one system and reported on calls, direction requests and bookings.",
@@ -140,31 +165,6 @@ const doors = [
     mark: "#4fd1c5",
     tint: "#0d2a2b",
     tintHover: "#123c3d",
-  },
-  {
-    id: "studio",
-    numeral: "02",
-    icon: AnimatedLayers,
-    eyebrow: "Studio track",
-    title: "For growing brands",
-    line: "Brand, product and AI infrastructure, designed together.",
-    body: "For companies past their first version. Identity, web and product surfaces and AI systems, scoped against written acceptance criteria and built to production standard, not demo standard.",
-    points: [
-      "AI-integrated solutions",
-      "Web and product design",
-      "Growth marketing",
-      "Brand identity and creative",
-    ],
-    footnote: "Scoped projects with written acceptance criteria and a phase schedule up front",
-    tool: null,
-    review: null,
-    /* Real project from data/projects.ts, shown where the local card has its review */
-    featuredProject: "fluxorx",
-    cta: "See studio services",
-    href: "#studio-services",
-    mark: "#8b9dfa",
-    tint: "#151a38",
-    tintHover: "#1e2652",
   },
 ];
 

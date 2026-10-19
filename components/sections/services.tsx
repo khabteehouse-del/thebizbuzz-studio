@@ -277,7 +277,7 @@ function Tile({
             }}
           />
           <span
-            className="absolute inset-x-3 bottom-3 flex items-center justify-between gap-3 rounded-xl border px-4 py-3"
+            className="absolute inset-x-3 bottom-3 flex items-center justify-between gap-3 overflow-hidden rounded-xl border px-4 py-3"
             style={
               gallery
                 ? {
@@ -293,12 +293,14 @@ function Tile({
                   }
             }
           >
-            <span className="font-display text-sm font-medium text-paper">
+            {gallery && <span aria-hidden="true" className="cta-sweep" />}
+            <span className="font-display relative text-sm font-medium text-paper">
               {artCta}
             </span>
             <ArrowUpRight
               size={18}
               aria-hidden="true"
+              className={gallery ? "cta-nudge relative" : "relative"}
               style={{ color: gallery ? "#ff7a8a" : service.mark }}
             />
           </span>
@@ -490,32 +492,8 @@ export function Services() {
           </Reveal>
         </div>
 
-        {/* Local track */}
-        <div id="local-services" className="mt-20 scroll-mt-28">
-          <Reveal>
-            <div className="flex flex-wrap items-baseline gap-x-5 gap-y-2 border-b border-line pb-5">
-              <h3 className="font-display text-2xl font-medium tracking-[-0.02em] text-paper md:text-3xl">
-                For local businesses
-              </h3>
-              <p className="text-sm text-muted">
-                Clinics, salons, restaurants, showrooms, shops
-              </p>
-            </div>
-          </Reveal>
-
-          <div className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-6">
-            {localServices.map((service, index) => (
-              <Tile
-                key={service.id}
-                service={service}
-                index={index}
-              />
-            ))}
-          </div>
-        </div>
-
         {/* Studio track */}
-        <div id="studio-services" className="mt-24 scroll-mt-28">
+        <div id="studio-services" className="mt-20 scroll-mt-28">
           <Reveal>
             <div className="flex flex-wrap items-baseline gap-x-5 gap-y-2 border-b border-line pb-5">
               <h3 className="font-display text-2xl font-medium tracking-[-0.02em] text-paper md:text-3xl">
@@ -534,6 +512,30 @@ export function Services() {
                 service={service}
                 index={index}
                 half={index >= studioServices.length - 2}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Local track */}
+        <div id="local-services" className="mt-24 scroll-mt-28">
+          <Reveal>
+            <div className="flex flex-wrap items-baseline gap-x-5 gap-y-2 border-b border-line pb-5">
+              <h3 className="font-display text-2xl font-medium tracking-[-0.02em] text-paper md:text-3xl">
+                For local businesses
+              </h3>
+              <p className="text-sm text-muted">
+                Clinics, salons, restaurants, showrooms, shops
+              </p>
+            </div>
+          </Reveal>
+
+          <div className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-6">
+            {localServices.map((service, index) => (
+              <Tile
+                key={service.id}
+                service={service}
+                index={index}
               />
             ))}
           </div>

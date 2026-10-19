@@ -18,9 +18,9 @@ import { useEffect, useRef } from "react";
 const TAU = Math.PI * 2;
 const N = 13;
 const BLUE = "59,130,246";
-const TEAL = "45,212,191";
-const LIGHT = "156,226,230";
-const PALE = "205,245,238";
+const SKY = "78,163,236";
+const LIGHT = "156,196,255";
+const PALE = "214,232,255";
 
 /* Half the depth of the numeral, in canvas units (the canvas edge is 1). */
 const DEPTH = 0.154;
@@ -39,7 +39,7 @@ type Layers = {
   bezel: HTMLCanvasElement;
 };
 
-type Speck = { x: number; y: number; z: number; teal: boolean; phase: number };
+type Speck = { x: number; y: number; z: number; sky: boolean; phase: number };
 
 function makeCanvas(S: number) {
   const c = document.createElement("canvas");
@@ -81,21 +81,21 @@ function buildLayers(S: number, family: string): Layers {
   };
 
   const body = makeCanvas(S);
-  drawNumeral(body.getContext("2d")!, "#0b2138");
+  drawNumeral(body.getContext("2d")!, "#1d7ed6");
 
   const face = makeCanvas(S);
   {
     const g = face.getContext("2d")!;
     const gr = g.createLinearGradient(0, numY - 0.2 * S, 0, numY + 0.2 * S);
     gr.addColorStop(0, "#ffffff");
-    gr.addColorStop(1, "#a9f0e4");
+    gr.addColorStop(1, "#b9d6ff");
     drawNumeral(g, gr);
   }
 
   const shNum = makeCanvas(S);
   {
     const g = shNum.getContext("2d")!;
-    g.shadowColor = "rgba(0,6,16,0.95)";
+    g.shadowColor = "rgba(22,76,176,0.95)";
     g.shadowBlur = 0.024 * S;
     g.shadowOffsetX = OFF;
     drawNumeral(g, "#000", -OFF);
@@ -105,9 +105,9 @@ function buildLayers(S: number, family: string): Layers {
   {
     const g = word.getContext("2d")!;
     const gr = g.createLinearGradient(0, wordY - wordPx * 0.6, 0, wordY + wordPx * 0.6);
-    gr.addColorStop(0, "#d9fbf5");
-    gr.addColorStop(1, "#43dcc6");
-    g.shadowColor = `rgba(${TEAL},0.7)`;
+    gr.addColorStop(0, "#e6f1ff");
+    gr.addColorStop(1, "#6fb4ff");
+    g.shadowColor = `rgba(${SKY},0.7)`;
     g.shadowBlur = 0.02 * S;
     drawWord(g, gr);
   }
@@ -115,7 +115,7 @@ function buildLayers(S: number, family: string): Layers {
   const shWord = makeCanvas(S);
   {
     const g = shWord.getContext("2d")!;
-    g.shadowColor = "rgba(0,6,16,0.95)";
+    g.shadowColor = "rgba(22,76,176,0.95)";
     g.shadowBlur = 0.012 * S;
     g.shadowOffsetX = OFF;
     drawWord(g, "#000", -OFF);
@@ -156,8 +156,8 @@ function drawBack(g: CanvasRenderingContext2D, L: Layers, t: number) {
   const th = -Math.PI / 2 + t * 1.4;
 
   const gd = g.createRadialGradient(0, 0, 0, 0, 0, 0.92);
-  gd.addColorStop(0, `rgba(${TEAL},0.24)`);
-  gd.addColorStop(0.55, `rgba(${TEAL},0.1)`);
+  gd.addColorStop(0, `rgba(${SKY},0.24)`);
+  gd.addColorStop(0.55, `rgba(${SKY},0.1)`);
   gd.addColorStop(0.86, `rgba(${BLUE},0.12)`);
   gd.addColorStop(1, `rgba(${BLUE},0)`);
   g.fillStyle = gd;
@@ -170,11 +170,11 @@ function drawBack(g: CanvasRenderingContext2D, L: Layers, t: number) {
   g.drawImage(L.bezel, -1, -1, 2, 2);
   g.restore();
 
-  ring(g, 0.9, 0.003, `rgba(${TEAL},0.18)`);
-  ring(g, 0.84, 0.036, "rgba(8,44,60,0.45)");
-  ring(g, 0.84, 0.004, `rgba(${TEAL},0.16)`);
+  ring(g, 0.9, 0.003, `rgba(${SKY},0.1)`);
+  ring(g, 0.84, 0.036, `rgba(${BLUE},0.22)`);
+  ring(g, 0.84, 0.004, `rgba(${SKY},0.09)`);
 
-  /* Comet: deep blue tail, teal body, pale head, with a teal glow. */
+  /* Comet: deep blue tail, sky blue body, pale head, with a soft blue glow. */
   const seg = 40;
   const span = TAU * 0.44;
   const blur = 0.02 * L.S;
@@ -186,17 +186,17 @@ function drawBack(g: CanvasRenderingContext2D, L: Layers, t: number) {
     let cr: number, cg: number, cb: number;
     if (f < 0.88) {
       const k = f / 0.88;
-      cr = lerp(59, 45, k);
-      cg = lerp(130, 212, k);
-      cb = lerp(246, 191, k);
+      cr = lerp(59, 78, k);
+      cg = lerp(130, 163, k);
+      cb = lerp(246, 236, k);
     } else {
       const k = (f - 0.88) / 0.12;
-      cr = lerp(45, 215, k);
-      cg = lerp(212, 250, k);
-      cb = lerp(191, 244, k);
+      cr = lerp(78, 222, k);
+      cg = lerp(163, 236, k);
+      cb = lerp(236, 255, k);
     }
     if (f > 0.72) {
-      g.shadowColor = `rgba(${TEAL},0.9)`;
+      g.shadowColor = `rgba(${SKY},0.9)`;
       g.shadowBlur = blur;
     } else {
       g.shadowColor = "transparent";
@@ -216,8 +216,8 @@ function drawBack(g: CanvasRenderingContext2D, L: Layers, t: number) {
   const hy = Math.sin(th) * 0.84;
   const hg = g.createRadialGradient(hx, hy, 0, hx, hy, 0.09);
   hg.addColorStop(0, `rgba(${PALE},0.95)`);
-  hg.addColorStop(0.4, `rgba(${TEAL},0.4)`);
-  hg.addColorStop(1, `rgba(${TEAL},0)`);
+  hg.addColorStop(0.4, `rgba(${SKY},0.4)`);
+  hg.addColorStop(1, `rgba(${SKY},0)`);
   g.fillStyle = hg;
   g.beginPath();
   g.arc(hx, hy, 0.09, 0, TAU);
@@ -227,10 +227,10 @@ function drawBack(g: CanvasRenderingContext2D, L: Layers, t: number) {
   g.save();
   g.rotate(-t * 0.5);
   g.setLineDash([0.02, 0.07]);
-  ring(g, 0.68, 0.007, `rgba(${TEAL},0.3)`);
+  ring(g, 0.68, 0.007, `rgba(${SKY},0.17)`);
   g.restore();
   g.setLineDash([]);
-  ring(g, 0.62, 0.002, `rgba(${LIGHT},0.14)`);
+  ring(g, 0.62, 0.002, `rgba(${LIGHT},0.075)`);
 
   /* One dot per service, lit as the comet passes. */
   for (let i = 0; i < N; i++) {
@@ -240,8 +240,8 @@ function drawBack(g: CanvasRenderingContext2D, L: Layers, t: number) {
     const dy = Math.sin(d) * 0.915;
     if (lit > 0.3) {
       const dg = g.createRadialGradient(dx, dy, 0, dx, dy, 0.05);
-      dg.addColorStop(0, `rgba(${TEAL},${0.6 * lit})`);
-      dg.addColorStop(1, `rgba(${TEAL},0)`);
+      dg.addColorStop(0, `rgba(${SKY},${0.6 * lit})`);
+      dg.addColorStop(1, `rgba(${SKY},0)`);
       g.fillStyle = dg;
       g.beginPath();
       g.arc(dx, dy, 0.05, 0, TAU);
@@ -260,7 +260,7 @@ function drawFront(g: CanvasRenderingContext2D, t: number) {
   g.save();
   g.rotate(t * 0.22);
   g.lineWidth = 0.01;
-  g.strokeStyle = `rgba(${LIGHT},0.26)`;
+  g.strokeStyle = `rgba(${LIGHT},0.135)`;
   for (let i = 0; i < N; i++) {
     const a = (i * TAU) / N;
     g.beginPath();
@@ -285,7 +285,7 @@ function drawSpecks(
     const x = p.x * c - p.y * s - tx * p.z * 0.12;
     const y = p.x * s + p.y * c - ty * p.z * 0.12;
     const a = 0.35 + 0.45 * (0.5 + 0.5 * Math.sin(t * 0.8 + p.phase));
-    g.fillStyle = `rgba(${p.teal ? TEAL : BLUE},${a})`;
+    g.fillStyle = `rgba(${p.sky ? SKY : BLUE},${a})`;
     g.beginPath();
     g.arc(x, y, 0.004 + 0.005 * (p.z + 1), 0, TAU);
     g.fill();
@@ -383,7 +383,7 @@ export function ServicesDial({ className = "" }: { className?: string }) {
         x: Math.cos(a) * r,
         y: Math.sin(a) * r,
         z: Math.random() * 2 - 1,
-        teal: Math.random() > 0.4,
+        sky: Math.random() > 0.4,
         phase: Math.random() * TAU,
       };
     });

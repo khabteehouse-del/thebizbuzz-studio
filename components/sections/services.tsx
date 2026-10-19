@@ -277,7 +277,7 @@ function Tile({
             }}
           />
           <span
-            className="absolute inset-x-3 bottom-3 flex items-center justify-between gap-3 rounded-xl border px-4 py-3"
+            className="absolute inset-x-3 bottom-3 flex items-center justify-between gap-3 overflow-hidden rounded-xl border px-4 py-3"
             style={
               gallery
                 ? {
@@ -293,12 +293,14 @@ function Tile({
                   }
             }
           >
-            <span className="font-display text-sm font-medium text-paper">
+            {gallery && <span aria-hidden="true" className="cta-sweep" />}
+            <span className="font-display relative text-sm font-medium text-paper">
               {artCta}
             </span>
             <ArrowUpRight
               size={18}
               aria-hidden="true"
+              className={gallery ? "cta-nudge relative" : "relative"}
               style={{ color: gallery ? "#ff7a8a" : service.mark }}
             />
           </span>

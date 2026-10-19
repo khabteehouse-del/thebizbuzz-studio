@@ -41,7 +41,7 @@ export function Button({
       : "h-10 pl-5 pr-1 text-xs md:pl-6";
 
   const base =
-    "fuse-btn group/btn relative isolate inline-flex items-center justify-center gap-4 rounded-full font-medium uppercase tracking-[0.14em] text-paper transition-shadow duration-300";
+    "fuse-btn group/btn relative isolate inline-flex items-center justify-center gap-4 rounded-md font-medium uppercase tracking-[0.14em] text-paper transition-shadow duration-300";
 
   const skin =
     variant === "primary"
@@ -62,7 +62,7 @@ export function Button({
       <span className="relative z-10">{children}</span>
       <span
         aria-hidden="true"
-        className={`relative z-10 flex aspect-square h-[calc(100%-0.5rem)] items-center justify-center rounded-full text-sm transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover/btn:translate-x-0.5 ${
+        className={`relative z-10 flex aspect-square h-[calc(100%-0.5rem)] items-center justify-center rounded-[4px] text-sm transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover/btn:translate-x-0.5 ${
           variant === "primary"
             ? "bg-gradient-to-br from-[#1dd5ff] to-accent text-[#06101f]"
             : "bg-white/10 text-paper"

@@ -97,9 +97,9 @@ export function VideoModal({
                   aria-pressed={i === current}
                   className="rounded-lg border px-3 py-2 text-left text-xs transition-colors"
                   style={{
-                    borderColor: i === current ? accent : "rgba(255,255,255,0.15)",
+                    borderColor: i === current ? accent : `${accent}44`,
                     backgroundColor:
-                      i === current ? "rgba(255,255,255,0.08)" : "transparent",
+                      i === current ? `${accent}33` : `${accent}0f`,
                   }}
                 >
                   <span className="block font-medium text-paper">{v.title}</span>

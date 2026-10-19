@@ -9,6 +9,7 @@ import { localServices, studioServices } from "@/data/services";
 import { Reveal } from "@/components/shared/reveal";
 import { Orbs } from "@/components/shared/orbs";
 import { MizarLogo } from "@/components/shared/mizar-logo";
+import { ServicesDial } from "@/components/shared/services-dial";
 
 /* Touch screens cannot hover, and few people tap a tile that does not look
    tappable. So on touch, a tile flips by itself once it has rested under the
@@ -421,17 +422,24 @@ export function Services() {
       <Orbs tone="navy" intensity={1.15} />
 
       <div className="shell relative z-10">
-        <Reveal>
-          <p className="section-label">What we do</p>
-          <h2 className="mt-7 max-w-2xl font-display text-3xl font-medium leading-[1.08] tracking-[-0.03em] text-paper sm:text-4xl md:text-6xl">
-            Thirteen services, a flagship product, one team
-          </h2>
-          <p className="mt-6 max-w-xl text-base leading-relaxed text-muted">
-            Most agencies hand you off between departments. Here the people who
-            build the brand talk to the people who build the system, because
-            they sit in the same room.
-          </p>
-        </Reveal>
+        <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,27rem)]">
+          <Reveal>
+            <p className="section-label">What we do</p>
+            <h2 className="mt-7 max-w-2xl font-display text-3xl font-medium leading-[1.08] tracking-[-0.03em] text-paper sm:text-4xl md:text-6xl">
+              Thirteen services, a flagship product, one team
+            </h2>
+            <p className="mt-6 max-w-xl text-base leading-relaxed text-muted">
+              Most agencies hand you off between departments. Here the people
+              who build the brand talk to the people who build the system,
+              because they sit in the same room.
+            </p>
+          </Reveal>
+
+          {/* Large screens only: on phones it would add page length. */}
+          <Reveal delay={0.15} className="hidden lg:block">
+            <ServicesDial />
+          </Reveal>
+        </div>
 
         {/* Local track */}
         <div id="local-services" className="mt-20 scroll-mt-28">

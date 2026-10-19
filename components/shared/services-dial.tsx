@@ -26,8 +26,6 @@ const PALE = "214,232,255";
 const DEPTH = 0.154;
 
 const lerp = (a: number, b: number, f: number) => Math.round(a + (b - a) * f);
-const angOf = (i: number) => -Math.PI / 2 + (i * TAU) / N;
-const since = (theta: number, a: number) => (((theta - a) % TAU) + TAU) % TAU;
 
 type Layers = {
   S: number;
@@ -154,7 +152,7 @@ function ring(g: CanvasRenderingContext2D, r: number, w: number, col: string) {
   g.stroke();
 }
 
-/* Everything behind the numeral: glow, scale, track, comet, inner rings, dots. */
+/* Everything behind the numeral: glow, track, comet and inner rings. */
 function drawBack(g: CanvasRenderingContext2D, L: Layers, t: number) {
   const th = -Math.PI / 2 + t * 1.4;
 
@@ -228,27 +226,6 @@ function drawBack(g: CanvasRenderingContext2D, L: Layers, t: number) {
   g.restore();
   g.setLineDash([]);
   ring(g, 0.62, 0.002, `rgba(${LIGHT},0.075)`);
-
-  /* One dot per service, lit as the comet passes. */
-  for (let i = 0; i < N; i++) {
-    const d = angOf(i);
-    const lit = Math.exp(-since(th, d) / 1.2);
-    const dx = Math.cos(d) * 0.915;
-    const dy = Math.sin(d) * 0.915;
-    if (lit > 0.3) {
-      const dg = g.createRadialGradient(dx, dy, 0, dx, dy, 0.05);
-      dg.addColorStop(0, `rgba(${SKY},${0.6 * lit})`);
-      dg.addColorStop(1, `rgba(${SKY},0)`);
-      g.fillStyle = dg;
-      g.beginPath();
-      g.arc(dx, dy, 0.05, 0, TAU);
-      g.fill();
-    }
-    g.fillStyle = `rgba(${lit > 0.5 ? PALE : LIGHT},${0.2 + 0.7 * lit})`;
-    g.beginPath();
-    g.arc(dx, dy, 0.007 + 0.009 * lit, 0, TAU);
-    g.fill();
-  }
 }
 
 /* Now and then the whole dial catches the light like a glass dome: a soft glow
@@ -433,7 +410,7 @@ export function ServicesDial({ className = "" }: { className?: string }) {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const specks: Speck[] = Array.from({ length: 36 }, () => {
       const a = Math.random() * TAU;
-      const r = Math.sqrt(Math.random()) * 0.9;
+      const r = Math.sqrt(Math.random()) * 0.76;
       return {
         x: Math.cos(a) * r,
         y: Math.sin(a) * r,

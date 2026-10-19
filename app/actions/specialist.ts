@@ -13,7 +13,7 @@ export type SpecialistResult = { ok: true } | { ok: false; error: string };
        never make the form fail.
 
   Only what is needed is collected: name, email, speciality, portfolio,
-  and optional phone and rate.
+  phone or WhatsApp, and an optional short intro (200 words at most).
 */
 
 const TEST_SENDER = "onboarding@resend.dev";
@@ -45,7 +45,7 @@ export async function submitSpecialist(
   const phone = clean(formData.get("phone"), 40);
   const speciality = clean(formData.get("speciality"), 160);
   const portfolio = clean(formData.get("portfolio"), 300);
-  const rate = clean(formData.get("rate"), 80);
+  const intro = clean(formData.get("intro"), 1600);
   const consent = formData.get("consent") === "on";
 
   if (name.length < 2) return { ok: false, error: "Please add your name." };
@@ -58,6 +58,14 @@ export async function submitSpecialist(
       ok: false,
       error: "Please add a portfolio link that starts with https://",
     };
+  const digits = phone.replace(/\D/g, "");
+  if (!/^[+\d][\d\s\-().+]*$/.test(phone) || digits.length < 7 || digits.length > 15)
+    return {
+      ok: false,
+      error: "Please add a phone or WhatsApp number we can reach you on.",
+    };
+  if (intro && intro.split(" ").length > 200)
+    return { ok: false, error: "Please keep your intro to 200 words or fewer." };
   if (!consent)
     return { ok: false, error: "Please tick the box so we can keep your details." };
 
@@ -73,10 +81,10 @@ export async function submitSpecialist(
       <h1 style="font-size:26px;margin:8px 0 18px">${escapeHtml(name)}: ${escapeHtml(speciality)}</h1>
       <p style="font-size:14px;line-height:1.8;color:#333;margin:0">
         Email: <a href="mailto:${escapeHtml(email)}">${escapeHtml(email)}</a><br>
-        ${phone ? `Phone: ${escapeHtml(phone)}<br>` : ""}
-        Portfolio: ${escapeHtml(portfolio)}<br>
-        ${rate ? `Rate: ${escapeHtml(rate)}<br>` : ""}
+        Phone or WhatsApp: ${escapeHtml(phone)}<br>
+        Portfolio: ${escapeHtml(portfolio)}
       </p>
+      ${intro ? `<p style="font-size:14px;line-height:1.7;color:#333;margin:18px 0 0"><strong>About them</strong><br>${escapeHtml(intro)}</p>` : ""}
       <p style="font-size:13px;color:#777;margin:24px 0 0">
         They agreed to be kept on file for project-based work. Reply to reach them.
       </p>
@@ -126,7 +134,7 @@ export async function submitSpecialist(
             phone,
             speciality,
             portfolio,
-            rate,
+            intro,
             consent: true,
             received_at: new Date().toISOString(),
           }),

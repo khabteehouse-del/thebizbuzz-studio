@@ -11,7 +11,6 @@ import { submitSpecialist } from "@/app/actions/specialist";
   needs a skill we do not have in house. It never promises work or pay.
 */
 
-const CHIPS = ["Photography", "3D and motion", "Translation", "Legal and finance"];
 
 const FIELD =
   "w-full rounded-lg border border-white/15 bg-white/5 px-3.5 py-3 text-base text-paper placeholder:text-paper/40 focus:border-[#7cc4ff] focus:outline-none sm:text-sm";
@@ -21,6 +20,8 @@ export function SpecialistCard({ index }: { index: number }) {
   const [open, setOpen] = useState(false);
   const [done, setDone] = useState(false);
   const [error, setError] = useState("");
+  const [intro, setIntro] = useState("");
+  const words = intro.trim() ? intro.trim().split(/\s+/).length : 0;
   const [pending, startTransition] = useTransition();
 
   useEffect(() => {
@@ -40,12 +41,17 @@ export function SpecialistCard({ index }: { index: number }) {
     const form = event.currentTarget;
     const data = new FormData(form);
     setError("");
+    if (words > 200) {
+      setError("Please keep your intro to 200 words or fewer.");
+      return;
+    }
     startTransition(async () => {
       try {
         const result = await submitSpecialist(data);
         if (result.ok) {
           setDone(true);
           form.reset();
+          setIntro("");
         } else {
           setError(result.error);
         }
@@ -73,19 +79,6 @@ export function SpecialistCard({ index }: { index: number }) {
           Need a skill we do not have in house? Tell us what you do well, and
           we will reach out when a project fits.
         </p>
-        <ul
-          className="mt-4 flex flex-wrap gap-2"
-          aria-label="Examples of specialists we call on"
-        >
-          {CHIPS.map((chip) => (
-            <li
-              key={chip}
-              className="rounded-full border border-[#7cc4ff]/30 px-3 py-1 text-xs text-[#7cc4ff]"
-            >
-              {chip}
-            </li>
-          ))}
-        </ul>
         <div className="mt-auto pt-5">
           <button
             type="button"
@@ -178,16 +171,27 @@ export function SpecialistCard({ index }: { index: number }) {
                   Portfolio link
                   <input name="portfolio" type="url" required maxLength={300} placeholder="https://" inputMode="url" className={FIELD} />
                 </label>
-                <div className="grid gap-3 sm:grid-cols-2">
-                  <label className="grid gap-1.5 text-xs text-paper/70">
-                    Phone or WhatsApp (optional)
-                    <input name="phone" type="tel" maxLength={40} autoComplete="tel" className={FIELD} />
-                  </label>
-                  <label className="grid gap-1.5 text-xs text-paper/70">
-                    Rate range (optional)
-                    <input name="rate" maxLength={80} placeholder="For example: per day or per project" className={FIELD} />
-                  </label>
-                </div>
+                <label className="grid gap-1.5 text-xs text-paper/70">
+                  Phone or WhatsApp
+                  <input name="phone" type="tel" required maxLength={40} autoComplete="tel" inputMode="tel" placeholder="Include your country code" className={FIELD} />
+                </label>
+                <label className="grid gap-1.5 text-xs text-paper/70">
+                  <span className="flex items-center justify-between">
+                    <span>About you (optional)</span>
+                    <span className={words > 200 ? "text-[#ff8a8a]" : "text-paper/50"}>
+                      {words}/200 words
+                    </span>
+                  </span>
+                  <textarea
+                    name="intro"
+                    rows={4}
+                    maxLength={1600}
+                    value={intro}
+                    onChange={(e) => setIntro(e.target.value)}
+                    placeholder="A short intro: what you do, who you have worked with."
+                    className={FIELD}
+                  />
+                </label>
                 <label className="flex items-start gap-3 text-xs leading-relaxed text-paper/70">
                   <input name="consent" type="checkbox" required className="mt-0.5 h-5 w-5 shrink-0 accent-[#7cc4ff]" />
                   I agree BizBuzz may keep these details to contact me about project work.

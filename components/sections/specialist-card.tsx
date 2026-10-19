@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, useTransition } from "react";
+import Image from "next/image";
 import { Plus, X } from "lucide-react";
 import { Reveal } from "@/components/shared/reveal";
 import { submitSpecialist } from "@/app/actions/specialist";
@@ -63,7 +64,21 @@ export function SpecialistCard({ index }: { index: number }) {
 
   return (
     <Reveal delay={index * 0.06}>
-      <div className="flex h-full flex-col rounded-sm border border-dashed border-[#7cc4ff]/40 bg-[#7cc4ff]/[0.04] p-5 shadow-[0_0_40px_-18px_#7cc4ff]">
+      <div className="flex h-full flex-col">
+      {/* Phone: the figure peeks over the top edge of the card and points down at it. */}
+      <div
+        aria-hidden="true"
+        className="relative -mb-px ml-auto mr-6 h-36 w-28 shrink-0 overflow-hidden lg:hidden"
+      >
+        <Image
+          src="/images/anchor/specialist-anchor.png"
+          alt=""
+          fill
+          sizes="112px"
+          className="scale-x-[-1] object-cover object-top"
+        />
+      </div>
+      <div className="flex flex-1 flex-col rounded-sm border border-dashed border-[#7cc4ff]/40 bg-[#7cc4ff]/[0.04] p-5 shadow-[0_0_40px_-18px_#7cc4ff]">
         <div className="flex items-center gap-3">
           <span
             aria-hidden="true"
@@ -94,6 +109,7 @@ export function SpecialistCard({ index }: { index: number }) {
             Project-based. No obligation.
           </p>
         </div>
+      </div>
       </div>
 
       <dialog

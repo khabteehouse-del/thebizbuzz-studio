@@ -460,7 +460,7 @@ export const services: Service[] = [
       cta: "See previews",
       heading: "Sites and apps by BizBuzz",
       items: [
-        { src: "/images/work/qadir-q.jpg", title: "Qadir Q", caption: "Handmade bags", alt: "Qadir Q handmade bags website, home page", width: 1024, height: 576 },
+        { src: "/images/work/qadir-q-v2.jpg", title: "Qadir Q", caption: "Handmade bags", alt: "Qadir Q handmade bags website, home page", width: 703, height: 925 },
         { src: "/images/work/mb-autoparts.jpg", title: "MB Auto Parts", caption: "Inventory system", alt: "MB Auto Parts operations dashboard", width: 1827, height: 845 },
         { src: "/images/work/fluxorx.jpg", title: "FluxorX", caption: "Enterprise AI", alt: "FluxorX sign-in page", width: 1600, height: 753 },
         { src: "/images/work/veridoc.jpg", title: "VeriDoc", caption: "Autonomous AI agents", alt: "VeriDoc contract review agent", width: 1600, height: 752 },

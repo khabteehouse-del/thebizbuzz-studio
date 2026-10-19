@@ -3,6 +3,7 @@ import type { Member } from "@/data/team";
 import { partners, specialists } from "@/data/team";
 import { Reveal } from "@/components/shared/reveal";
 import { Orbs } from "@/components/shared/orbs";
+import { SpecialistCard } from "@/components/sections/specialist-card";
 
 /*
   Two rows, deliberately separated.
@@ -125,6 +126,7 @@ export function Team() {
                   compact
                 />
               ))}
+              <SpecialistCard index={specialists.length} />
             </div>
           </div>
         )}

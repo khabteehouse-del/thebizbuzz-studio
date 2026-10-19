@@ -400,7 +400,6 @@ export const services: Service[] = [
         { src: "/video/eventbox-1.mp4", poster: "/video/eventbox-1.jpg", title: "The Event Box, commercial 1", length: "0:26" },
         { src: "/video/eventbox-2.mp4", poster: "/video/eventbox-2.jpg", title: "The Event Box, commercial 2", length: "0:56" },
         { src: "/video/sindh-youth.mp4", poster: "/video/sindh-youth.jpg", title: "Sindh Youth Innovation and Incubation Competition", length: "1:09" },
-        { src: "/video/red-factor.mp4", poster: "/video/red-factor.jpg", title: "Red Factor Ketchup", length: "0:05" },
       ],
     },
   },

@@ -117,7 +117,7 @@ export function VideoModal({
           {videos.length > 1 && (
             <div
               className={`mt-3 grid gap-2 ${
-                videos.length === 3 ? "grid-cols-1 sm:grid-cols-3" : "grid-cols-2"
+                videos.length >= 3 ? "grid-cols-1 sm:grid-cols-3" : "grid-cols-2"
               }`}
             >
               {videos.map((v, i) => (

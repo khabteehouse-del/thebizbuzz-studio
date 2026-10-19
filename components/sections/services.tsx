@@ -324,7 +324,7 @@ function Tile({
                   ? /* Beside the list: right side, level with the text, clear of the samples strip. */
                     `right-5 top-[3.4rem] w-[40%] md:right-7 ${
                       service.review
-                        ? "bottom-[8.6rem] md:bottom-[8.9rem]"
+                        ? "bottom-[7.95rem] md:bottom-[8.25rem]"
                         : "bottom-[5.25rem] md:bottom-[5.5rem]"
                     } [-webkit-mask-image:linear-gradient(to_right,transparent_0%,black_22%)] [mask-image:linear-gradient(to_right,transparent_0%,black_22%)]`
                   : "inset-x-0 bottom-0 h-[41%] w-full [-webkit-mask-image:linear-gradient(to_bottom,transparent_0%,black_18%)] [mask-image:linear-gradient(to_bottom,transparent_0%,black_18%)]"
@@ -340,7 +340,7 @@ function Tile({
             </span>
             {/* A tile with a drawn picture gets a slightly tighter list, so the picture has room. */}
             <span
-              className={`block ${service.backArt ? "mt-3 space-y-2" : "mt-4 space-y-2.5"}`}
+              className={`block ${service.backArt ? (service.review ? "mt-3 space-y-1.5" : "mt-3 space-y-2") : "mt-4 space-y-2.5"}`}
             >
               {service.capabilities.map((item) => (
                 <span
@@ -372,7 +372,7 @@ function Tile({
             )}
             {service.review && (
               <span
-                className="mt-auto flex h-[5.75rem] flex-col justify-center rounded-xl border px-4"
+                className="mt-auto flex h-[5.1rem] flex-col justify-center rounded-xl border px-4"
                 style={{
                   borderColor: "rgba(251,191,36,0.35)",
                   backgroundColor: "rgba(251,191,36,0.08)",
@@ -387,10 +387,10 @@ function Tile({
                     ({service.review.count} reviews on Google)
                   </span>
                 </span>
-                <span className="mt-1.5 line-clamp-2 text-xs italic leading-snug text-paper/70">
+                <span className="mt-1 line-clamp-2 text-xs italic leading-snug text-paper/70">
                   &ldquo;{service.review.quote}&rdquo;
                 </span>
-                <span className="mt-1.5 truncate text-[10px] uppercase tracking-[0.08em] text-paper/60">
+                <span className="mt-1 truncate text-[10px] uppercase tracking-[0.08em] text-paper/60">
                   {service.review.client}
                 </span>
               </span>
@@ -500,7 +500,7 @@ function Tile({
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`Read the Google reviews for ${service.review.client}`}
-            className={`absolute z-10 h-[5.75rem] cursor-pointer rounded-xl border border-transparent transition-[visibility,background-color,box-shadow] [transition-duration:0s,200ms,200ms] hover:bg-[#fbbf24]/10 hover:shadow-[0_0_26px_-2px_#fbbf24] focus-visible:outline focus-visible:outline-2 ${
+            className={`absolute z-10 h-[5.1rem] cursor-pointer rounded-xl border border-transparent transition-[visibility,background-color,box-shadow] [transition-duration:0s,200ms,200ms] hover:bg-[#fbbf24]/10 hover:shadow-[0_0_26px_-2px_#fbbf24] focus-visible:outline focus-visible:outline-2 ${
               flipped
                 ? "visible [transition-delay:700ms,0s,0s]"
                 : "invisible group-hover/tile:visible group-hover/tile:[transition-delay:700ms,0s,0s]"

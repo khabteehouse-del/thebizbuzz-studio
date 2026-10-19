@@ -375,7 +375,15 @@ export const services: Service[] = [
     tintHover: "#1e304f",
     mark: "#6fa8f5",
     icon: Wand2,
-    backArt: "ai-content",
+    samples: {
+      cta: "See samples",
+      heading: "AI video samples by BizBuzz",
+      videos: [
+        { src: "/video/eventbox-1.mp4", poster: "/video/eventbox-1.jpg", title: "The Event Box, commercial 1", length: "0:26" },
+        { src: "/video/eventbox-2.mp4", poster: "/video/eventbox-2.jpg", title: "Relivo Pharmaceuticals, sample (mockup product)", length: "0:56" },
+        { src: "/video/sindh-youth.mp4", poster: "/video/sindh-youth.jpg", title: "Sindh Youth Innovation and Incubation Competition", length: "1:09" },
+      ],
+    },
   },
   {
     id: "ugc-ads",
@@ -395,11 +403,8 @@ export const services: Service[] = [
     icon: Clapperboard,
     samples: {
       cta: "See samples",
-      heading: "Commercials by BizBuzz",
+      heading: "UGC and event content by BizBuzz",
       videos: [
-        { src: "/video/eventbox-1.mp4", poster: "/video/eventbox-1.jpg", title: "The Event Box, commercial 1", length: "0:26" },
-        { src: "/video/eventbox-2.mp4", poster: "/video/eventbox-2.jpg", title: "The Event Box, commercial 2", length: "0:56" },
-        { src: "/video/sindh-youth.mp4", poster: "/video/sindh-youth.jpg", title: "Sindh Youth Innovation and Incubation Competition", length: "1:09" },
         { src: "/video/ifr-lahore.mp4", poster: "/video/ifr-lahore.jpg", title: "IFR Lahore 2026, event highlights", length: "2:59" },
       ],
     },

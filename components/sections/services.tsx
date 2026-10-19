@@ -10,6 +10,7 @@ import { Reveal } from "@/components/shared/reveal";
 import { Orbs } from "@/components/shared/orbs";
 import { MizarLogo } from "@/components/shared/mizar-logo";
 import { VideoModal } from "@/components/shared/video-modal";
+import { PoweredStars } from "@/components/shared/review-card";
 import { ServicesDial } from "@/components/shared/services-dial";
 import { TileArt } from "@/components/shared/tile-art";
 
@@ -293,7 +294,15 @@ function Tile({
                   }
             }
           >
-            {gallery && <span aria-hidden="true" className="cta-sweep" />}
+            <span
+              aria-hidden="true"
+              className="cta-sweep"
+              style={
+                gallery
+                  ? undefined
+                  : ({ "--sweep": `${service.mark}4d` } as React.CSSProperties)
+              }
+            />
             <span className="font-display relative text-sm font-medium text-paper">
               {artCta}
             </span>
@@ -318,7 +327,16 @@ function Tile({
             <TileArt
               id={service.backArt}
               color={service.mark}
-              className="pointer-events-none absolute inset-x-0 bottom-0 h-[41%] w-full [-webkit-mask-image:linear-gradient(to_bottom,transparent_0%,black_18%)] [mask-image:linear-gradient(to_bottom,transparent_0%,black_18%)]"
+              className={`pointer-events-none absolute ${
+                service.samples || service.review
+                  ? /* Beside the list: right side, level with the text, clear of the samples strip. */
+                    `right-5 top-[3.4rem] w-[40%] md:right-7 ${
+                      service.review
+                        ? "bottom-[7.45rem] md:bottom-[7.75rem]"
+                        : "bottom-[5.25rem] md:bottom-[5.5rem]"
+                    } [-webkit-mask-image:linear-gradient(to_right,transparent_0%,black_22%)] [mask-image:linear-gradient(to_right,transparent_0%,black_22%)]`
+                  : "inset-x-0 bottom-0 h-[41%] w-full [-webkit-mask-image:linear-gradient(to_bottom,transparent_0%,black_18%)] [mask-image:linear-gradient(to_bottom,transparent_0%,black_18%)]"
+              }`}
             />
           )}
           <span className="relative flex w-full flex-col">
@@ -330,7 +348,7 @@ function Tile({
             </span>
             {/* A tile with a drawn picture gets a slightly tighter list, so the picture has room. */}
             <span
-              className={`block ${service.backArt ? "mt-3 space-y-2" : "mt-4 space-y-2.5"}`}
+              className={`block ${service.backArt ? (service.review ? "mt-3 space-y-1.5" : "mt-3 space-y-2") : "mt-4 space-y-2.5"}`}
             >
               {service.capabilities.map((item) => (
                 <span
@@ -348,32 +366,73 @@ function Tile({
             </span>
             {service.samples && (
               <span
-                className="mt-auto flex h-[2.9rem] items-center justify-between gap-3 rounded-xl border px-4"
+                className="relative mt-auto flex h-[2.9rem] items-center justify-between gap-3 overflow-hidden rounded-xl border px-4"
                 style={{
                   borderColor: `${service.mark}88`,
                   backgroundColor: `${service.mark}26`,
                 }}
               >
-                <span className="font-display text-sm font-medium text-paper">
+                <span
+                  aria-hidden="true"
+                  className="cta-sweep"
+                  style={{ "--sweep": `${service.mark}4d` } as React.CSSProperties}
+                />
+                <span className="relative font-display text-sm font-medium text-paper">
                   {service.samples.cta}
                 </span>
-                <Play size={16} aria-hidden="true" style={{ color: service.mark }} />
+                <Play size={16} aria-hidden="true" className="relative" style={{ color: service.mark }} />
+              </span>
+            )}
+            {service.review && (
+              <span
+                className="relative -mb-2 mt-auto flex h-[5.1rem] flex-col justify-center overflow-hidden rounded-xl border px-4"
+                style={{
+                  borderColor: "rgba(251,191,36,0.35)",
+                  backgroundColor: "rgba(251,191,36,0.08)",
+                }}
+              >
+                <span
+                  aria-hidden="true"
+                  className="cta-sweep"
+                  style={{ "--sweep": "rgba(251,191,36,0.24)" } as React.CSSProperties}
+                />
+                <span className="relative flex items-center gap-1">
+                  <PoweredStars starClass="text-sm" />
+                  <span className="ml-1 text-sm font-medium text-paper">
+                    {service.review.rating}
+                  </span>
+                  <span className="text-[11px] text-paper/60">
+                    ({service.review.count} reviews on Google)
+                  </span>
+                </span>
+                <span className="relative mt-1 line-clamp-2 text-xs italic leading-snug text-paper/70">
+                  &ldquo;{service.review.quote}&rdquo;
+                </span>
+                <span className="relative mt-1 truncate text-[10px] uppercase tracking-[0.08em] text-paper/60">
+                  {service.review.client}
+                </span>
               </span>
             )}
             {link && (
               <span
-                className="mt-auto flex items-center justify-between gap-3 rounded-xl border px-4 py-2.5"
+                className="relative mt-auto flex items-center justify-between gap-3 overflow-hidden rounded-xl border px-4 py-2.5"
                 style={{
                   borderColor: `${service.mark}55`,
                   backgroundColor: "rgba(0,0,0,0.25)",
                 }}
               >
-                <span className="font-display text-sm font-medium text-paper">
+                <span
+                  aria-hidden="true"
+                  className="cta-sweep"
+                  style={{ "--sweep": `${service.mark}4d` } as React.CSSProperties}
+                />
+                <span className="relative font-display text-sm font-medium text-paper">
                   {link.cta}
                 </span>
                 <ArrowUpRight
                   size={16}
                   aria-hidden="true"
+                  className="relative"
                   style={{ color: service.mark }}
                 />
               </span>
@@ -457,6 +516,19 @@ function Tile({
             {...(link.external
               ? { target: "_blank", rel: "noopener noreferrer" }
               : {})}
+          />
+        )}
+        {service.review && (
+          <a
+            href={service.review.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Read the Google reviews for ${service.review.client}`}
+            className={`absolute z-10 h-[5.1rem] cursor-pointer rounded-xl border border-transparent transition-[visibility,background-color,box-shadow] [transition-duration:0s,200ms,200ms] hover:bg-[#fbbf24]/10 hover:shadow-[0_0_26px_-2px_#fbbf24] focus-visible:outline focus-visible:outline-2 ${
+              flipped
+                ? "visible [transition-delay:700ms,0s,0s]"
+                : "invisible group-hover/tile:visible group-hover/tile:[transition-delay:700ms,0s,0s]"
+            } inset-x-7 bottom-5 md:inset-x-8 md:bottom-6`}
           />
         )}
       </div>

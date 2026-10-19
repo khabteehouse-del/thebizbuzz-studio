@@ -375,6 +375,7 @@ export const services: Service[] = [
     tintHover: "#1e304f",
     mark: "#6fa8f5",
     icon: Wand2,
+    backArt: "ai-content",
     samples: {
       cta: "See samples",
       heading: "AI video samples by BizBuzz",
@@ -401,6 +402,7 @@ export const services: Service[] = [
     tintHover: "#3a2744",
     mark: "#e085d9",
     icon: Clapperboard,
+    backArt: "ugc-ads",
     samples: {
       cta: "See samples",
       heading: "UGC and event content by BizBuzz",

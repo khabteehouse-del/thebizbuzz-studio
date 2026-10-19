@@ -318,7 +318,12 @@ function Tile({
             <TileArt
               id={service.backArt}
               color={service.mark}
-              className="pointer-events-none absolute inset-x-0 bottom-0 h-[41%] w-full [-webkit-mask-image:linear-gradient(to_bottom,transparent_0%,black_18%)] [mask-image:linear-gradient(to_bottom,transparent_0%,black_18%)]"
+              className={`pointer-events-none absolute inset-x-0 w-full [-webkit-mask-image:linear-gradient(to_bottom,transparent_0%,black_18%)] [mask-image:linear-gradient(to_bottom,transparent_0%,black_18%)] ${
+                service.samples
+                  ? /* Smaller picture that sits just above the samples strip. */
+                    "bottom-[5.05rem] h-[25%] md:bottom-[5.3rem]"
+                  : "bottom-0 h-[41%]"
+              }`}
             />
           )}
           <span className="relative flex w-full flex-col">

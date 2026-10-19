@@ -34,6 +34,7 @@ type Layers = {
   body: HTMLCanvasElement;
   face: HTMLCanvasElement;
   word: HTMLCanvasElement;
+  wordBody: HTMLCanvasElement;
   shNum: HTMLCanvasElement;
   shWord: HTMLCanvasElement;
 };
@@ -64,7 +65,12 @@ function buildLayers(S: number, family: string): Layers {
   };
 
   /* "SERVICES" drawn letter by letter so the spacing is wide and even. */
-  const drawWord = (g: CanvasRenderingContext2D, fill: string | CanvasGradient, dx = 0) => {
+  const drawWord = (
+    g: CanvasRenderingContext2D,
+    fill: string | CanvasGradient,
+    dx = 0,
+    outline = false,
+  ) => {
     const text = "SERVICES";
     g.font = `700 ${wordPx}px ${family}`;
     g.textBaseline = "middle";
@@ -73,8 +79,11 @@ function buildLayers(S: number, family: string): Layers {
     const total = widths.reduce((a, b) => a + b, 0) + track * (text.length - 1);
     let x = (S - total) / 2 + dx;
     g.fillStyle = fill;
+    g.strokeStyle = fill;
+    g.lineJoin = "round";
     [...text].forEach((ch, i) => {
-      g.fillText(ch, x, wordY);
+      if (outline) g.strokeText(ch, x, wordY);
+      else g.fillText(ch, x, wordY);
       x += widths[i] + track;
     });
   };
@@ -87,7 +96,7 @@ function buildLayers(S: number, family: string): Layers {
     g.textAlign = "center";
     g.textBaseline = "middle";
     g.lineJoin = "round";
-    g.lineWidth = 0.007 * S;
+    g.lineWidth = 0.004 * S;
     g.strokeStyle = `rgb(${LIGHT})`;
     g.strokeText("13", S / 2, numY);
   }
@@ -102,7 +111,7 @@ function buildLayers(S: number, family: string): Layers {
     drawNumeral(g, gr);
     /* A thin light rim keeps the dark numeral crisp against the glow. */
     g.lineJoin = "round";
-    g.lineWidth = 0.006 * S;
+    g.lineWidth = 0.003 * S;
     g.strokeStyle = `rgba(${PALE},0.95)`;
     g.strokeText("13", S / 2, numY);
   }
@@ -116,15 +125,23 @@ function buildLayers(S: number, family: string): Layers {
     drawNumeral(g, "#000", -OFF);
   }
 
+  /* SERVICES gets the same look as the 13: navy face, thin light rim, outline depth. */
+  const wordBody = makeCanvas(S);
+  {
+    const g = wordBody.getContext("2d")!;
+    g.lineWidth = 0.0022 * S;
+    drawWord(g, `rgb(${LIGHT})`, 0, true);
+  }
+
   const word = makeCanvas(S);
   {
     const g = word.getContext("2d")!;
     const gr = g.createLinearGradient(0, wordY - wordPx * 0.6, 0, wordY + wordPx * 0.6);
-    gr.addColorStop(0, "#e6f1ff");
-    gr.addColorStop(1, "#6fb4ff");
-    g.shadowColor = `rgba(${SKY},0.7)`;
-    g.shadowBlur = 0.02 * S;
+    gr.addColorStop(0, "#0e2a4a");
+    gr.addColorStop(1, "#0a1f44");
     drawWord(g, gr);
+    g.lineWidth = 0.0016 * S;
+    drawWord(g, `rgba(${PALE},0.95)`, 0, true);
   }
 
   const shWord = makeCanvas(S);
@@ -136,7 +153,7 @@ function buildLayers(S: number, family: string): Layers {
     drawWord(g, "#000", -OFF);
   }
 
-  return { S, body, face, word, shNum, shWord };
+  return { S, body, face, word, wordBody, shNum, shWord };
 }
 
 function ring(g: CanvasRenderingContext2D, r: number, w: number, col: string) {
@@ -237,11 +254,61 @@ function drawBack(g: CanvasRenderingContext2D, L: Layers, t: number) {
       g.arc(dx, dy, 0.05, 0, TAU);
       g.fill();
     }
-    g.fillStyle = `rgba(${lit > 0.5 ? PALE : LIGHT},${0.3 + 0.7 * lit})`;
+    g.fillStyle = `rgba(${lit > 0.5 ? PALE : LIGHT},${0.2 + 0.7 * lit})`;
     g.beginPath();
-    g.arc(dx, dy, 0.011 + 0.012 * lit, 0, TAU);
+    g.arc(dx, dy, 0.007 + 0.009 * lit, 0, TAU);
     g.fill();
   }
+}
+
+/* A bright glint that catches the ring now and then, like sunlight on a watch glass. */
+function drawGlint(g: CanvasRenderingContext2D, S: number, t: number) {
+  const PERIOD = 7;
+  const LENGTH = 1.5;
+  const cycle = Math.floor(t / PERIOD);
+  const p = (t - cycle * PERIOD) / LENGTH;
+  if (p < 0 || p > 1) return;
+  const inten = Math.pow(Math.sin(Math.PI * p), 2);
+  /* Always on the upper left, where the light would hit, but never twice the same. */
+  const a = -2.8 + ((cycle * 2.399) % 1) * 0.7 + p * 0.55;
+  const x = Math.cos(a) * 0.84;
+  const y = Math.sin(a) * 0.84;
+
+  g.save();
+  g.globalCompositeOperation = "lighter";
+  g.lineCap = "round";
+  g.beginPath();
+  g.arc(0, 0, 0.84, a - 0.3, a + 0.3);
+  g.lineWidth = 0.008;
+  g.strokeStyle = `rgba(${PALE},${0.28 * inten})`;
+  g.stroke();
+  g.shadowColor = `rgba(${PALE},${inten})`;
+  g.shadowBlur = 0.018 * S;
+  g.beginPath();
+  g.arc(0, 0, 0.84, a - 0.1, a + 0.1);
+  g.lineWidth = 0.014;
+  g.strokeStyle = `rgba(255,255,255,${0.85 * inten})`;
+  g.stroke();
+  g.shadowBlur = 0;
+
+  /* Four-point sparkle at the brightest spot. */
+  const len = 0.012 + 0.085 * inten;
+  g.strokeStyle = `rgba(255,255,255,${0.9 * inten})`;
+  g.lineWidth = 0.004;
+  g.beginPath();
+  g.moveTo(x - len, y);
+  g.lineTo(x + len, y);
+  g.moveTo(x, y - len);
+  g.lineTo(x, y + len);
+  g.stroke();
+  g.lineWidth = 0.0025;
+  g.beginPath();
+  g.moveTo(x - len * 0.45, y - len * 0.45);
+  g.lineTo(x + len * 0.45, y + len * 0.45);
+  g.moveTo(x - len * 0.45, y + len * 0.45);
+  g.lineTo(x + len * 0.45, y - len * 0.45);
+  g.stroke();
+  g.restore();
 }
 
 /* Thirteen short arcs in front of the numeral, for depth. */
@@ -274,10 +341,10 @@ function drawSpecks(
   for (const p of specks) {
     const x = p.x * c - p.y * s - tx * p.z * 0.12;
     const y = p.x * s + p.y * c - ty * p.z * 0.12;
-    const a = 0.35 + 0.45 * (0.5 + 0.5 * Math.sin(t * 0.8 + p.phase));
+    const a = 0.3 + 0.35 * (0.5 + 0.5 * Math.sin(t * 0.8 + p.phase));
     g.fillStyle = `rgba(${p.sky ? SKY : BLUE},${a})`;
     g.beginPath();
-    g.arc(x, y, 0.004 + 0.005 * (p.z + 1), 0, TAU);
+    g.arc(x, y, 0.003 + 0.004 * (p.z + 1), 0, TAU);
     g.fill();
   }
   g.globalCompositeOperation = "source-over";
@@ -301,6 +368,7 @@ function drawFrame(
   ctx.save();
   ctx.translate(-tx * 0.03, -ty * 0.03);
   drawBack(ctx, L, t);
+  drawGlint(ctx, L.S, t);
   ctx.restore();
 
   drawSpecks(ctx, specks, t, tx, ty);
@@ -322,16 +390,24 @@ function drawFrame(
   ctx.drawImage(L.shNum, -1, -1, 2, 2);
   ctx.restore();
 
-  for (let i = 0; i < N; i++) {
-    const d = (i / (N - 1)) * 2 - 1;
-    const last = i === N - 1;
-    ctx.save();
-    ctx.translate(d * DEPTH * sinY, bob - d * DEPTH * sinP);
-    ctx.scale(cosY, 1);
-    ctx.globalAlpha = last ? 1 : 0.05 + 0.08 * (i / N);
-    ctx.drawImage(last ? L.face : L.body, -1, -1, 2, 2);
-    ctx.restore();
-  }
+  /* Outline copies stacked back through the figure, then the face on top. */
+  const stack = (
+    bodyImg: HTMLCanvasElement,
+    faceImg: HTMLCanvasElement,
+    depth = DEPTH,
+  ) => {
+    for (let i = 0; i < N; i++) {
+      const d = (i / (N - 1)) * 2 - 1;
+      const last = i === N - 1;
+      ctx.save();
+      ctx.translate(d * depth * sinY, bob - d * depth * sinP);
+      ctx.scale(cosY, 1);
+      ctx.globalAlpha = last ? 1 : 0.05 + 0.08 * (i / N);
+      ctx.drawImage(last ? faceImg : bodyImg, -1, -1, 2, 2);
+      ctx.restore();
+    }
+  };
+  stack(L.body, L.face);
 
   /* The word has its own tight shadow that travels with it. The 13 keeps the
      wider shadow cast on the dial. */
@@ -342,11 +418,7 @@ function drawFrame(
   ctx.drawImage(L.shWord, -1, -1, 2, 2);
   ctx.restore();
 
-  ctx.save();
-  ctx.translate(DEPTH * sinY, bob - DEPTH * sinP);
-  ctx.scale(cosY, 1);
-  ctx.drawImage(L.word, -1, -1, 2, 2);
-  ctx.restore();
+  stack(L.wordBody, L.word, DEPTH * 0.45);
 
   ctx.save();
   ctx.translate(tx * 0.04, ty * 0.04);
@@ -366,7 +438,7 @@ export function ServicesDial({ className = "" }: { className?: string }) {
     if (!ctx) return;
 
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const specks: Speck[] = Array.from({ length: 110 }, () => {
+    const specks: Speck[] = Array.from({ length: 36 }, () => {
       const a = Math.random() * TAU;
       const r = Math.sqrt(Math.random()) * 0.9;
       return {

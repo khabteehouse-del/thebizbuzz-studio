@@ -40,6 +40,20 @@ export function VideoModal({
     if (!open && dialog.open) dialog.close();
   }, [open]);
 
+  /* Belt and braces for the smooth scroller: wheel and touch events that start
+     inside the dialog never reach the page-level listener. */
+  useEffect(() => {
+    const dialog = dialogRef.current;
+    if (!dialog) return;
+    const stop = (event: Event) => event.stopPropagation();
+    dialog.addEventListener("wheel", stop, { passive: true });
+    dialog.addEventListener("touchmove", stop, { passive: true });
+    return () => {
+      dialog.removeEventListener("wheel", stop);
+      dialog.removeEventListener("touchmove", stop);
+    };
+  }, []);
+
   /* Freeze the page behind the player (the site's smooth scroller would
      otherwise keep scrolling it). */
   useEffect(() => {

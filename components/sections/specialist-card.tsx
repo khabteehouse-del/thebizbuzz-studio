@@ -32,6 +32,20 @@ export function SpecialistCard({ index }: { index: number }) {
     if (!open && dialog.open) dialog.close();
   }, [open]);
 
+  /* Belt and braces for the smooth scroller: wheel and touch events that start
+     inside the dialog never reach the page-level listener. */
+  useEffect(() => {
+    const dialog = dialogRef.current;
+    if (!dialog) return;
+    const stop = (event: Event) => event.stopPropagation();
+    dialog.addEventListener("wheel", stop, { passive: true });
+    dialog.addEventListener("touchmove", stop, { passive: true });
+    return () => {
+      dialog.removeEventListener("wheel", stop);
+      dialog.removeEventListener("touchmove", stop);
+    };
+  }, []);
+
   /* The site uses smooth scrolling that captures the mouse wheel for the
      page. While the form is open, freeze the page behind it (the form itself
      opts out of the smooth scroller with data-lenis-prevent). */
@@ -100,7 +114,7 @@ export function SpecialistCard({ index }: { index: number }) {
           className="relative mt-3 flex flex-1 items-end justify-center"
         >
           <Image
-            src="/images/anchor/specialist-pointing.png"
+            src="/images/anchor/specialist-pointing-v3.png"
             alt=""
             width={560}
             height={529}

@@ -107,14 +107,17 @@ export function SpecialistCard({ index }: { index: number }) {
         </h3>
 
         <div className="mt-5 grid flex-1 items-end gap-5 sm:grid-cols-2 sm:gap-6">
-          {/* Left: the message, left aligned and strong */}
-          <div className="flex h-full flex-col justify-between gap-6 sm:self-stretch">
-            <p className="font-display text-lg font-medium leading-snug text-paper sm:text-xl">
+          {/* Left: the message in a rounded box, justified, standard size */}
+          <div className="flex h-full flex-col justify-center rounded-2xl border border-white/10 bg-white/[0.04] p-5 sm:self-stretch sm:p-6">
+            <p className="text-justify text-sm leading-7 text-paper/90 [hyphens:auto] sm:text-[15px]">
               Need a skill we do not have in house? Tell us what you do well,
-              and we will reach out when a project fits.
-            </p>
-            <p className="hidden text-xs text-paper/55 sm:block">
-              Project-based. No obligation.
+              and we will reach out when a project fits. From time to time our
+              clients need specialist expertise beyond our core team, and we
+              keep a trusted list of independent professionals we can call on
+              for the right brief. Share your portfolio and a short
+              introduction. If your work is a match, we will contact you
+              directly to discuss scope, timeline and terms. Work is
+              project-based, with no obligation on either side.
             </p>
           </div>
 
@@ -141,9 +144,6 @@ export function SpecialistCard({ index }: { index: number }) {
             >
               Add yourself to the list
             </button>
-            <p className="mt-3 text-xs text-paper/55 sm:hidden">
-              Project-based. No obligation.
-            </p>
           </div>
         </div>
       </div>

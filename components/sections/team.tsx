@@ -127,19 +127,6 @@ export function Team() {
                 />
               ))}
               <SpecialistCard index={specialists.length} />
-              {/* PC: the figure stands in the empty fourth column and points left at the card. */}
-              <div
-                aria-hidden="true"
-                className="pointer-events-none relative z-10 hidden -translate-x-10 lg:block"
-              >
-                <Image
-                  src="/images/anchor/specialist-anchor.png"
-                  alt=""
-                  fill
-                  sizes="240px"
-                  className="object-contain object-[left_bottom]"
-                />
-              </div>
             </div>
           </div>
         )}

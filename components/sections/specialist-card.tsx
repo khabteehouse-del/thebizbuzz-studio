@@ -64,21 +64,7 @@ export function SpecialistCard({ index }: { index: number }) {
 
   return (
     <Reveal delay={index * 0.06}>
-      <div className="flex h-full flex-col">
-      {/* Phone: the figure peeks over the top edge of the card and points down at it. */}
-      <div
-        aria-hidden="true"
-        className="relative z-10 -mb-3 ml-auto mr-6 h-44 w-28 shrink-0 overflow-hidden lg:hidden"
-      >
-        <Image
-          src="/images/anchor/specialist-anchor.png"
-          alt=""
-          fill
-          sizes="112px"
-          className="object-cover object-top"
-        />
-      </div>
-      <div className="flex flex-1 flex-col rounded-sm border border-dashed border-[#7cc4ff]/40 bg-[#7cc4ff]/[0.04] p-5 shadow-[0_0_40px_-18px_#7cc4ff]">
+      <div className="flex h-full flex-col rounded-sm border border-dashed border-[#7cc4ff]/40 bg-[#7cc4ff]/[0.04] p-5 shadow-[0_0_40px_-18px_#7cc4ff]">
         <div className="flex items-center gap-3">
           <span
             aria-hidden="true"
@@ -94,7 +80,22 @@ export function SpecialistCard({ index }: { index: number }) {
           Need a skill we do not have in house? Tell us what you do well, and
           we will reach out when a project fits.
         </p>
-        <div className="mt-auto pt-5">
+        {/* She points at the button right under her. The bottom fades so she
+            appears to rise out of the button area. */}
+        <div
+          aria-hidden="true"
+          className="relative mt-3 flex flex-1 items-end justify-center"
+        >
+          <Image
+            src="/images/anchor/specialist-pointing.png"
+            alt=""
+            width={560}
+            height={529}
+            sizes="(min-width: 1024px) 17rem, 80vw"
+            className="h-auto w-full max-w-[17rem] [-webkit-mask-image:linear-gradient(to_bottom,black_93%,transparent_100%)] [mask-image:linear-gradient(to_bottom,black_93%,transparent_100%)]"
+          />
+        </div>
+        <div className="pt-1">
           <button
             type="button"
             onClick={() => {
@@ -109,7 +110,6 @@ export function SpecialistCard({ index }: { index: number }) {
             Project-based. No obligation.
           </p>
         </div>
-      </div>
       </div>
 
       <dialog

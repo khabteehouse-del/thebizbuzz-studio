@@ -477,7 +477,7 @@ export function Services() {
           <Reveal>
             <p className="section-label">What we do</p>
             <h2 className="mt-7 max-w-2xl font-display text-3xl font-medium leading-[1.08] tracking-[-0.03em] text-paper sm:text-4xl md:text-6xl">
-              Thirteen services, a flagship product, one team
+              Thirteen services, one team, built to ship
             </h2>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-muted">
               Most agencies hand you off between departments. Here the people

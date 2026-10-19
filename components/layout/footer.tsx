@@ -69,9 +69,14 @@ export function Footer() {
         </div>
 
         <div className="mt-16 flex flex-col gap-3 border-t border-line pt-8 text-xs text-muted md:flex-row md:items-center md:justify-between">
-          <p>
-            {year} {site.name}. All rights reserved.
-          </p>
+          <div className="space-y-1.5">
+            <p>
+              {year} {site.name}. All rights reserved.
+            </p>
+            <p className="text-muted/80">
+              Website designed and operated by {site.name}.
+            </p>
+          </div>
           <p>Karachi, Pakistan and Dubai, UAE</p>
         </div>
       </div>

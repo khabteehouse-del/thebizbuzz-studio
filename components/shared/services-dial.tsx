@@ -36,7 +36,6 @@ type Layers = {
   word: HTMLCanvasElement;
   shNum: HTMLCanvasElement;
   shWord: HTMLCanvasElement;
-  bezel: HTMLCanvasElement;
 };
 
 type Speck = { x: number; y: number; z: number; sky: boolean; phase: number };
@@ -80,8 +79,18 @@ function buildLayers(S: number, family: string): Layers {
     });
   };
 
+  /* Depth is a faint light-blue outline, repeated back through the numeral. */
   const body = makeCanvas(S);
-  drawNumeral(body.getContext("2d")!, "#5b6b86");
+  {
+    const g = body.getContext("2d")!;
+    g.font = `700 ${numPx}px ${family}`;
+    g.textAlign = "center";
+    g.textBaseline = "middle";
+    g.lineJoin = "round";
+    g.lineWidth = 0.007 * S;
+    g.strokeStyle = `rgb(${LIGHT})`;
+    g.strokeText("13", S / 2, numY);
+  }
 
   const face = makeCanvas(S);
   {
@@ -91,6 +100,11 @@ function buildLayers(S: number, family: string): Layers {
     gr.addColorStop(0, "#0e2a4a");
     gr.addColorStop(1, "#0a1f44");
     drawNumeral(g, gr);
+    /* A thin light rim keeps the dark numeral crisp against the glow. */
+    g.lineJoin = "round";
+    g.lineWidth = 0.006 * S;
+    g.strokeStyle = `rgba(${PALE},0.95)`;
+    g.strokeText("13", S / 2, numY);
   }
 
   const shNum = makeCanvas(S);
@@ -122,26 +136,7 @@ function buildLayers(S: number, family: string): Layers {
     drawWord(g, "#000", -OFF);
   }
 
-  /* The watch-style scale around the edge turns very slowly, so draw it once. */
-  const bezel = makeCanvas(S);
-  {
-    const g = bezel.getContext("2d")!;
-    const u = S / 2;
-    g.setTransform(u, 0, 0, u, u, u);
-    for (let i = 0; i < 120; i++) {
-      const a = (i * TAU) / 120;
-      const long = i % 10 === 0;
-      const r0 = long ? 0.95 : 0.968;
-      g.strokeStyle = `rgba(${PALE},${long ? 0.6 : 0.2})`;
-      g.lineWidth = long ? 0.006 : 0.003;
-      g.beginPath();
-      g.moveTo(Math.cos(a) * r0, Math.sin(a) * r0);
-      g.lineTo(Math.cos(a) * 0.99, Math.sin(a) * 0.99);
-      g.stroke();
-    }
-  }
-
-  return { S, body, face, word, shNum, shWord, bezel };
+  return { S, body, face, word, shNum, shWord };
 }
 
 function ring(g: CanvasRenderingContext2D, r: number, w: number, col: string) {
@@ -166,12 +161,6 @@ function drawBack(g: CanvasRenderingContext2D, L: Layers, t: number) {
   g.arc(0, 0, 0.92, 0, TAU);
   g.fill();
 
-  g.save();
-  g.rotate(t * 0.03);
-  g.drawImage(L.bezel, -1, -1, 2, 2);
-  g.restore();
-
-  ring(g, 0.9, 0.003, `rgba(${SKY},0.1)`);
   ring(g, 0.84, 0.036, `rgba(${BLUE},0.22)`);
   ring(g, 0.84, 0.004, `rgba(${SKY},0.09)`);
 
@@ -205,7 +194,7 @@ function drawBack(g: CanvasRenderingContext2D, L: Layers, t: number) {
     }
     g.beginPath();
     g.arc(0, 0, 0.84, a0, a1 + 0.012);
-    g.lineWidth = 0.005 + 0.014 * f;
+    g.lineWidth = 0.0025 + 0.007 * f;
     g.strokeStyle = `rgba(${cr},${cg},${cb},${f * f})`;
     g.stroke();
   }
@@ -215,13 +204,13 @@ function drawBack(g: CanvasRenderingContext2D, L: Layers, t: number) {
 
   const hx = Math.cos(th) * 0.84;
   const hy = Math.sin(th) * 0.84;
-  const hg = g.createRadialGradient(hx, hy, 0, hx, hy, 0.09);
+  const hg = g.createRadialGradient(hx, hy, 0, hx, hy, 0.05);
   hg.addColorStop(0, `rgba(${PALE},0.95)`);
   hg.addColorStop(0.4, `rgba(${SKY},0.4)`);
   hg.addColorStop(1, `rgba(${SKY},0)`);
   g.fillStyle = hg;
   g.beginPath();
-  g.arc(hx, hy, 0.09, 0, TAU);
+  g.arc(hx, hy, 0.05, 0, TAU);
   g.fill();
 
   /* Inner rings turn the other way. */
@@ -339,7 +328,7 @@ function drawFrame(
     ctx.save();
     ctx.translate(d * DEPTH * sinY, bob - d * DEPTH * sinP);
     ctx.scale(cosY, 1);
-    ctx.globalAlpha = last ? 1 : 0.34 + 0.3 * (i / N);
+    ctx.globalAlpha = last ? 1 : 0.05 + 0.08 * (i / N);
     ctx.drawImage(last ? L.face : L.body, -1, -1, 2, 2);
     ctx.restore();
   }

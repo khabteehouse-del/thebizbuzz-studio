@@ -3,13 +3,14 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, Play } from "lucide-react";
+import { ArrowUpRight, Eye, Play } from "lucide-react";
 import type { Service } from "@/data/services";
 import { localServices, studioServices } from "@/data/services";
 import { Reveal } from "@/components/shared/reveal";
 import { Orbs } from "@/components/shared/orbs";
 import { MizarLogo } from "@/components/shared/mizar-logo";
 import { VideoModal } from "@/components/shared/video-modal";
+import { PreviewModal } from "@/components/shared/preview-modal";
 import { PoweredStars } from "@/components/shared/review-card";
 import { ServicesDial } from "@/components/shared/services-dial";
 import { TileArt } from "@/components/shared/tile-art";
@@ -328,7 +329,7 @@ function Tile({
               id={service.backArt}
               color={service.mark}
               className={`pointer-events-none absolute ${
-                service.samples || service.review
+                service.samples || service.review || service.previews
                   ? /* Beside the list: right side, level with the text, clear of the samples strip. */
                     `right-5 top-[3.4rem] w-[40%] opacity-30 @[22rem]:opacity-100 md:right-7 ${
                       service.review
@@ -364,7 +365,7 @@ function Tile({
                 </span>
               ))}
             </span>
-            {service.samples && (
+            {(service.samples || service.previews) && (
               <span
                 className="relative mt-auto flex h-[2.9rem] items-center justify-between gap-3 overflow-hidden rounded-xl border px-4"
                 style={{
@@ -378,9 +379,13 @@ function Tile({
                   style={{ "--sweep": `${service.mark}4d` } as React.CSSProperties}
                 />
                 <span className="relative font-display text-sm font-medium text-paper">
-                  {service.samples.cta}
+                  {(service.samples ?? service.previews)!.cta}
                 </span>
-                <Play size={16} aria-hidden="true" className="relative" style={{ color: service.mark }} />
+                {service.samples ? (
+                  <Play size={16} aria-hidden="true" className="relative" style={{ color: service.mark }} />
+                ) : (
+                  <Eye size={16} aria-hidden="true" className="relative" style={{ color: service.mark }} />
+                )}
               </span>
             )}
             {service.review && (
@@ -498,6 +503,28 @@ function Tile({
               videos={service.samples.videos}
               heading={service.samples.heading}
               accent="#7cc4ff"
+            />
+          </>
+        )}
+        {service.previews && (
+          <>
+            <button
+              type="button"
+              onClick={() => setPlayerOpen(true)}
+              aria-label={`${service.previews.cta}: ${service.title}`}
+              style={{ "--c": service.mark } as React.CSSProperties}
+              className={`absolute z-10 h-[2.9rem] cursor-pointer rounded-xl border border-transparent transition-[visibility,background-color,box-shadow] [transition-duration:0s,200ms,200ms] hover:bg-[color-mix(in_srgb,var(--c)_28%,transparent)] hover:shadow-[0_0_26px_-2px_var(--c)] focus-visible:outline focus-visible:outline-2 ${
+                flipped
+                  ? "visible [transition-delay:700ms,0s,0s]"
+                  : "invisible group-hover/tile:visible group-hover/tile:[transition-delay:700ms,0s,0s]"
+              } inset-x-7 bottom-7 md:inset-x-8 md:bottom-8`}
+            />
+            <PreviewModal
+              open={playerOpen}
+              onClose={() => setPlayerOpen(false)}
+              previews={service.previews.items}
+              heading={service.previews.heading}
+              accent={service.mark}
             />
           </>
         )}

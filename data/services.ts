@@ -75,6 +75,19 @@ export type Service = {
     action strip under the capability list.
   */
   link?: { href: string; cta: string; external?: boolean };
+  /* Optional: the back shows a "See previews" strip that opens screenshots of shipped sites. */
+  previews?: {
+    cta: string;
+    heading: string;
+    items: {
+      src: string;
+      title: string;
+      caption: string;
+      alt: string;
+      width: number;
+      height: number;
+    }[];
+  };
   /* Optional: the back shows a verified Google review that opens the Maps listing. */
   review?: {
     quote: string;
@@ -443,6 +456,15 @@ export const services: Service[] = [
     mark: "#9a95f5",
     icon: LayoutGrid,
     backArt: "web",
+    previews: {
+      cta: "See previews",
+      heading: "Sites and apps by BizBuzz",
+      items: [
+        { src: "/images/work/qadir-q.jpg", title: "Qadir Q", caption: "Handmade bags", alt: "Qadir Q handmade bags website, home page", width: 1024, height: 576 },
+        { src: "/images/work/mb-autoparts.jpg", title: "MB Auto Parts", caption: "Inventory system", alt: "MB Auto Parts operations dashboard", width: 1827, height: 845 },
+        { src: "/images/work/fluxorx.jpg", title: "FluxorX", caption: "Enterprise AI", alt: "FluxorX sign-in page", width: 1600, height: 753 },
+      ],
+    },
   },
 ];
 

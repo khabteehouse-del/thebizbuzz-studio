@@ -37,11 +37,11 @@ export function Button({
   /* Narrower padding on small screens so two buttons still fit a row */
   const dimensions =
     size === "lg"
-      ? "h-10 pl-6 pr-0 text-[0.75rem] md:h-[2.6rem] md:pl-8 md:text-[0.8125rem]"
-      : "h-9 pl-5 pr-0 text-xs md:pl-6";
+      ? "h-10 pl-0 pr-0 text-[0.75rem] md:h-[2.6rem] md:text-[0.8125rem]"
+      : "h-9 pl-0 pr-0 text-xs";
 
   const base =
-    "fuse-btn group/btn relative isolate inline-flex items-center justify-between gap-4 rounded-md font-medium uppercase tracking-[0.14em] text-paper transition-shadow duration-300";
+    "fuse-btn group/btn relative isolate inline-flex items-center justify-between gap-0 rounded-md font-medium uppercase tracking-[0.14em] text-paper transition-shadow duration-300";
 
   const skin =
     variant === "primary"
@@ -59,7 +59,13 @@ export function Button({
 
   const content = (
     <>
-      <span className="relative z-10">{children}</span>
+      <span
+        className={`relative z-10 flex-1 text-center ${
+          size === "lg" ? "px-6 md:px-8" : "px-5 md:px-6"
+        }`}
+      >
+        {children}
+      </span>
       <span
         aria-hidden="true"
         className={`relative z-10 flex aspect-square h-full items-center justify-center rounded-l-[3px] rounded-r-md text-sm transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover/btn:translate-x-0.5 ${

@@ -175,17 +175,29 @@ function drawBack(g: CanvasRenderingContext2D, L: Layers, t: number) {
   ring(g, 0.84, 0.036, `rgba(${BLUE},0.22)`);
   ring(g, 0.84, 0.004, `rgba(${SKY},0.09)`);
 
-  /* Loading light: a soft blue glow with a fading trail, no hard bright line. */
-  const seg = 36;
-  const span = TAU * 0.4;
-  const blur = 0.03 * L.S;
+  /* Comet: deep blue tail, sky blue body, pale head, with a soft blue glow. */
+  const seg = 40;
+  const span = TAU * 0.44;
+  const blur = 0.02 * L.S;
   g.lineCap = "round";
   for (let i = 0; i < seg; i++) {
     const a0 = th - span * (1 - i / seg);
     const a1 = th - span * (1 - (i + 1) / seg);
     const f = (i + 1) / seg;
-    if (f > 0.5) {
-      g.shadowColor = `rgba(${SKY},0.8)`;
+    let cr: number, cg: number, cb: number;
+    if (f < 0.88) {
+      const k = f / 0.88;
+      cr = lerp(59, 78, k);
+      cg = lerp(130, 163, k);
+      cb = lerp(246, 236, k);
+    } else {
+      const k = (f - 0.88) / 0.12;
+      cr = lerp(78, 222, k);
+      cg = lerp(163, 236, k);
+      cb = lerp(236, 255, k);
+    }
+    if (f > 0.72) {
+      g.shadowColor = `rgba(${SKY},0.9)`;
       g.shadowBlur = blur;
     } else {
       g.shadowColor = "transparent";
@@ -193,8 +205,8 @@ function drawBack(g: CanvasRenderingContext2D, L: Layers, t: number) {
     }
     g.beginPath();
     g.arc(0, 0, 0.84, a0, a1 + 0.012);
-    g.lineWidth = 0.008 + 0.014 * f;
-    g.strokeStyle = `rgba(${lerp(59, 78, f)},${lerp(130, 163, f)},${lerp(246, 236, f)},${0.55 * f * f})`;
+    g.lineWidth = 0.0025 + 0.007 * f;
+    g.strokeStyle = `rgba(${cr},${cg},${cb},${f * f})`;
     g.stroke();
   }
   g.shadowColor = "transparent";
@@ -203,12 +215,13 @@ function drawBack(g: CanvasRenderingContext2D, L: Layers, t: number) {
 
   const hx = Math.cos(th) * 0.84;
   const hy = Math.sin(th) * 0.84;
-  const hg = g.createRadialGradient(hx, hy, 0, hx, hy, 0.09);
-  hg.addColorStop(0, `rgba(${SKY},0.55)`);
+  const hg = g.createRadialGradient(hx, hy, 0, hx, hy, 0.05);
+  hg.addColorStop(0, `rgba(${PALE},0.95)`);
+  hg.addColorStop(0.4, `rgba(${SKY},0.4)`);
   hg.addColorStop(1, `rgba(${SKY},0)`);
   g.fillStyle = hg;
   g.beginPath();
-  g.arc(hx, hy, 0.09, 0, TAU);
+  g.arc(hx, hy, 0.05, 0, TAU);
   g.fill();
 
   /* Inner rings turn the other way. */

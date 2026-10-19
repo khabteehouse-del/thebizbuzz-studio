@@ -435,9 +435,9 @@ export function Services() {
             </p>
           </Reveal>
 
-          {/* Large screens only: on phones it would add page length. */}
-          <Reveal delay={0.15} className="hidden lg:block">
-            <ServicesDial className="lg:translate-y-6" />
+          {/* Small and centered on phones, full column beside the heading on large screens. */}
+          <Reveal delay={0.15}>
+            <ServicesDial className="mx-auto w-[16.5rem] max-w-full lg:w-full lg:translate-y-6" />
           </Reveal>
         </div>
 

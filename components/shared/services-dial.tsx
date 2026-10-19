@@ -316,6 +316,7 @@ function drawDome(g: CanvasRenderingContext2D, t: number) {
   const span = 1.2;
   const f = span / TAU;
   const streak = (width: number, peak: number, shrink: number) => {
+    if (typeof g.createConicGradient !== "function") return;
     const start = a0 + (span * (1 - shrink)) / 2;
     const fr = f * shrink;
     const cg = g.createConicGradient(start, 0, 0);
@@ -560,7 +561,7 @@ export function ServicesDial({ className = "" }: { className?: string }) {
     <div
       ref={boxRef}
       aria-hidden="true"
-      className={`relative aspect-square w-full ${className}`}
+      className={`relative aspect-square ${className}`}
     >
       <canvas
         ref={canvasRef}

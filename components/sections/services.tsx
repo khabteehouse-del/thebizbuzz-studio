@@ -3,12 +3,13 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Play } from "lucide-react";
 import type { Service } from "@/data/services";
 import { localServices, studioServices } from "@/data/services";
 import { Reveal } from "@/components/shared/reveal";
 import { Orbs } from "@/components/shared/orbs";
 import { MizarLogo } from "@/components/shared/mizar-logo";
+import { VideoModal } from "@/components/shared/video-modal";
 import { ServicesDial } from "@/components/shared/services-dial";
 
 /* Touch screens cannot hover, and few people tap a tile that does not look
@@ -92,6 +93,7 @@ function Tile({
   /* Touch devices have no hover, so a tap flips the tile. On devices that
      hover, the flip follows the pointer and a click does nothing extra. */
   const [flipped, setFlipped] = useState(false);
+  const [playerOpen, setPlayerOpen] = useState(false);
   const tileRef = useRef<HTMLDivElement>(null);
   useAutoFlip(tileRef, setFlipped);
   const gallery = service.gallery;
@@ -331,6 +333,20 @@ function Tile({
                 </span>
               ))}
             </span>
+            {service.samples && (
+              <span
+                className="mt-auto flex items-center justify-between gap-3 rounded-xl border px-4 py-2.5"
+                style={{
+                  borderColor: `${service.mark}88`,
+                  backgroundColor: `${service.mark}26`,
+                }}
+              >
+                <span className="font-display text-sm font-medium text-paper">
+                  {service.samples.cta}
+                </span>
+                <Play size={16} aria-hidden="true" style={{ color: service.mark }} />
+              </span>
+            )}
             {link && (
               <span
                 className="mt-auto flex items-center justify-between gap-3 rounded-xl border px-4 py-2.5"
@@ -390,6 +406,28 @@ function Tile({
           </button>
         )}
 
+        {/* Only the strip on the back opens the player, so the rest of the tile just flips. */}
+        {service.samples && (
+          <>
+            <button
+              type="button"
+              onClick={() => setPlayerOpen(true)}
+              aria-label={`${service.samples.cta}: play ${service.title} videos`}
+              className={`absolute z-10 h-[2.9rem] cursor-pointer rounded-xl border border-transparent transition-[visibility,background-color,border-color] [transition-duration:0s,200ms,200ms] hover:border-[#e085d9] hover:bg-[#e085d9]/20 focus-visible:outline focus-visible:outline-2 ${
+                flipped
+                  ? "visible [transition-delay:700ms,0s,0s]"
+                  : "invisible group-hover/tile:visible group-hover/tile:[transition-delay:700ms,0s,0s]"
+              } inset-x-7 bottom-7 md:inset-x-8 md:bottom-8`}
+            />
+            <VideoModal
+              open={playerOpen}
+              onClose={() => setPlayerOpen(false)}
+              videos={service.samples.videos}
+              heading={service.samples.heading}
+              accent={service.mark}
+            />
+          </>
+        )}
         {/* Only the strip on the back is a link, so the rest of the tile just flips. */}
         {link && (
           <a

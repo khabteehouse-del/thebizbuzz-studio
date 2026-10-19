@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState, useTransition } from "react";
 import Image from "next/image";
-import { Plus, X } from "lucide-react";
+import { Users, X } from "lucide-react";
 import { Reveal } from "@/components/shared/reveal";
 import { submitSpecialist } from "@/app/actions/specialist";
 
@@ -91,19 +91,20 @@ export function SpecialistCard({ index }: { index: number }) {
 
   return (
     <Reveal delay={index * 0.06}>
-      <div className="flex h-full flex-col rounded-sm border border-dashed border-[#7cc4ff]/40 bg-[#7cc4ff]/[0.04] p-5 shadow-[0_0_40px_-18px_#7cc4ff]">
-        <div className="flex items-center gap-3">
-          <span
-            aria-hidden="true"
-            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-dashed border-[#7cc4ff]/60 text-[#7cc4ff]"
-          >
-            <Plus size={18} strokeWidth={1.6} />
-          </span>
-          <h3 className="font-display text-base font-medium leading-snug tracking-[-0.01em] text-paper">
-            Join our specialist network
-          </h3>
-        </div>
-        <p className="mt-4 text-sm leading-relaxed text-muted">
+      <div className="relative flex h-full flex-col rounded-sm border border-dashed border-[#7cc4ff]/40 bg-[#7cc4ff]/[0.04] p-5 shadow-[0_0_40px_-18px_#7cc4ff]">
+        {/* A live badge in the top right corner: a soft ring pulses out from it. */}
+        <span
+          aria-hidden="true"
+          className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full border border-[#7cc4ff]/50 bg-[#7cc4ff]/10 text-[#7cc4ff]"
+        >
+          <span className="absolute inset-0 rounded-full border border-[#7cc4ff]/60 motion-safe:animate-ping" />
+          <span className="absolute -right-0.5 -top-0.5 h-2.5 w-2.5 rounded-full bg-[#4ade80] shadow-[0_0_8px_#4ade80] motion-safe:animate-pulse" />
+          <Users size={18} strokeWidth={1.6} />
+        </span>
+        <h3 className="max-w-[12rem] font-display text-lg font-medium leading-snug tracking-[-0.01em] text-paper">
+          Join our specialist network
+        </h3>
+        <p className="mt-3 text-sm leading-relaxed text-muted">
           Need a skill we do not have in house? Tell us what you do well, and
           we will reach out when a project fits.
         </p>

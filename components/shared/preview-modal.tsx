@@ -110,7 +110,7 @@ export function PreviewModal({
             />
           </div>
 
-          <div className="mt-3 grid grid-cols-3 gap-2">
+          <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-3">
             {previews.map((p, i) => (
               <button
                 key={p.src}

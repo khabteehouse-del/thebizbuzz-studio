@@ -358,27 +358,37 @@ function Tile({
             </span>
             {service.samples && (
               <span
-                className="mt-auto flex h-[2.9rem] items-center justify-between gap-3 rounded-xl border px-4"
+                className="relative mt-auto flex h-[2.9rem] items-center justify-between gap-3 overflow-hidden rounded-xl border px-4"
                 style={{
                   borderColor: `${service.mark}88`,
                   backgroundColor: `${service.mark}26`,
                 }}
               >
-                <span className="font-display text-sm font-medium text-paper">
+                <span
+                  aria-hidden="true"
+                  className="cta-sweep"
+                  style={{ "--sweep": `${service.mark}4d` } as React.CSSProperties}
+                />
+                <span className="relative font-display text-sm font-medium text-paper">
                   {service.samples.cta}
                 </span>
-                <Play size={16} aria-hidden="true" style={{ color: service.mark }} />
+                <Play size={16} aria-hidden="true" className="relative" style={{ color: service.mark }} />
               </span>
             )}
             {service.review && (
               <span
-                className="mt-auto flex h-[5.1rem] flex-col justify-center rounded-xl border px-4"
+                className="relative mt-auto flex h-[5.1rem] flex-col justify-center overflow-hidden rounded-xl border px-4"
                 style={{
                   borderColor: "rgba(251,191,36,0.35)",
                   backgroundColor: "rgba(251,191,36,0.08)",
                 }}
               >
-                <span className="flex items-center gap-1">
+                <span
+                  aria-hidden="true"
+                  className="cta-sweep"
+                  style={{ "--sweep": "rgba(251,191,36,0.24)" } as React.CSSProperties}
+                />
+                <span className="relative flex items-center gap-1">
                   <PoweredStars starClass="text-sm" />
                   <span className="ml-1 text-sm font-medium text-paper">
                     {service.review.rating}
@@ -387,10 +397,10 @@ function Tile({
                     ({service.review.count} reviews on Google)
                   </span>
                 </span>
-                <span className="mt-1 line-clamp-2 text-xs italic leading-snug text-paper/70">
+                <span className="relative mt-1 line-clamp-2 text-xs italic leading-snug text-paper/70">
                   &ldquo;{service.review.quote}&rdquo;
                 </span>
-                <span className="mt-1 truncate text-[10px] uppercase tracking-[0.08em] text-paper/60">
+                <span className="relative mt-1 truncate text-[10px] uppercase tracking-[0.08em] text-paper/60">
                   {service.review.client}
                 </span>
               </span>

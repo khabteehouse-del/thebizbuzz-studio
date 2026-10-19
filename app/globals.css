@@ -1831,7 +1831,7 @@ body {
   background: linear-gradient(
     105deg,
     transparent 35%,
-    rgba(255, 190, 200, 0.28) 50%,
+    var(--sweep, rgba(255, 190, 200, 0.28)) 50%,
     transparent 65%
   );
   transform: translateX(-120%);

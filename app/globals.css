@@ -1764,3 +1764,41 @@ body {
     animation-play-state: paused !important;
   }
 }
+
+/* Design studio bar: slow light sweep and arrow nudge, only while the tile is showing its back. */
+.cta-sweep {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 35%,
+    rgba(255, 190, 200, 0.28) 50%,
+    transparent 65%
+  );
+  transform: translateX(-120%);
+}
+.cta-nudge {
+  display: inline-block;
+}
+.group:hover .cta-sweep,
+.group:focus-visible .cta-sweep,
+.group[data-flipped="true"] .cta-sweep {
+  animation: cta-sweep 3.2s ease-in-out 0.6s infinite;
+}
+.group:hover .cta-nudge,
+.group:focus-visible .cta-nudge,
+.group[data-flipped="true"] .cta-nudge {
+  animation: cta-nudge 1.6s ease-in-out 0.6s infinite;
+}
+@keyframes cta-sweep {
+  0% { transform: translateX(-120%); }
+  45%, 100% { transform: translateX(120%); }
+}
+@keyframes cta-nudge {
+  0%, 60%, 100% { transform: translate(0, 0); }
+  80% { transform: translate(3px, -3px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cta-sweep, .cta-nudge { animation: none !important; }
+}

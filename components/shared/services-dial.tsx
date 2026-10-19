@@ -81,7 +81,7 @@ function buildLayers(S: number, family: string): Layers {
   };
 
   const body = makeCanvas(S);
-  drawNumeral(body.getContext("2d")!, "#1d7ed6");
+  drawNumeral(body.getContext("2d")!, "#0b2138");
 
   const face = makeCanvas(S);
   {
@@ -116,7 +116,7 @@ function buildLayers(S: number, family: string): Layers {
   {
     const g = shWord.getContext("2d")!;
     g.shadowColor = "rgba(0,6,16,0.95)";
-    g.shadowBlur = 0.022 * S;
+    g.shadowBlur = 0.012 * S;
     g.shadowOffsetX = OFF;
     drawWord(g, "#000", -OFF);
   }
@@ -170,9 +170,9 @@ function drawBack(g: CanvasRenderingContext2D, L: Layers, t: number) {
   g.drawImage(L.bezel, -1, -1, 2, 2);
   g.restore();
 
-  ring(g, 0.9, 0.003, `rgba(${TEAL},0.32)`);
-  ring(g, 0.84, 0.036, "rgba(8,44,60,0.75)");
-  ring(g, 0.84, 0.004, `rgba(${TEAL},0.3)`);
+  ring(g, 0.9, 0.003, `rgba(${TEAL},0.18)`);
+  ring(g, 0.84, 0.036, "rgba(8,44,60,0.45)");
+  ring(g, 0.84, 0.004, `rgba(${TEAL},0.16)`);
 
   /* Comet: deep blue tail, teal body, pale head, with a teal glow. */
   const seg = 40;
@@ -204,7 +204,7 @@ function drawBack(g: CanvasRenderingContext2D, L: Layers, t: number) {
     }
     g.beginPath();
     g.arc(0, 0, 0.84, a0, a1 + 0.012);
-    g.lineWidth = 0.012 + 0.032 * f;
+    g.lineWidth = 0.005 + 0.014 * f;
     g.strokeStyle = `rgba(${cr},${cg},${cb},${f * f})`;
     g.stroke();
   }
@@ -214,23 +214,23 @@ function drawBack(g: CanvasRenderingContext2D, L: Layers, t: number) {
 
   const hx = Math.cos(th) * 0.84;
   const hy = Math.sin(th) * 0.84;
-  const hg = g.createRadialGradient(hx, hy, 0, hx, hy, 0.15);
+  const hg = g.createRadialGradient(hx, hy, 0, hx, hy, 0.09);
   hg.addColorStop(0, `rgba(${PALE},0.95)`);
   hg.addColorStop(0.4, `rgba(${TEAL},0.4)`);
   hg.addColorStop(1, `rgba(${TEAL},0)`);
   g.fillStyle = hg;
   g.beginPath();
-  g.arc(hx, hy, 0.15, 0, TAU);
+  g.arc(hx, hy, 0.09, 0, TAU);
   g.fill();
 
   /* Inner rings turn the other way. */
   g.save();
   g.rotate(-t * 0.5);
   g.setLineDash([0.02, 0.07]);
-  ring(g, 0.68, 0.007, `rgba(${TEAL},0.55)`);
+  ring(g, 0.68, 0.007, `rgba(${TEAL},0.3)`);
   g.restore();
   g.setLineDash([]);
-  ring(g, 0.62, 0.002, `rgba(${LIGHT},0.25)`);
+  ring(g, 0.62, 0.002, `rgba(${LIGHT},0.14)`);
 
   /* One dot per service, lit as the comet passes. */
   for (let i = 0; i < N; i++) {
@@ -260,7 +260,7 @@ function drawFront(g: CanvasRenderingContext2D, t: number) {
   g.save();
   g.rotate(t * 0.22);
   g.lineWidth = 0.01;
-  g.strokeStyle = `rgba(${LIGHT},0.45)`;
+  g.strokeStyle = `rgba(${LIGHT},0.26)`;
   for (let i = 0; i < N; i++) {
     const a = (i * TAU) / N;
     g.beginPath();
@@ -330,7 +330,6 @@ function drawFrame(
   ctx.translate(sx, bob + 0.065);
   ctx.scale(cosY, 1);
   ctx.drawImage(L.shNum, -1, -1, 2, 2);
-  ctx.drawImage(L.shWord, -1, -1, 2, 2);
   ctx.restore();
 
   for (let i = 0; i < N; i++) {
@@ -343,6 +342,15 @@ function drawFrame(
     ctx.drawImage(last ? L.face : L.body, -1, -1, 2, 2);
     ctx.restore();
   }
+
+  /* The word has its own tight shadow that travels with it. The 13 keeps the
+     wider shadow cast on the dial. */
+  ctx.save();
+  ctx.translate(DEPTH * sinY + 0.012, bob - DEPTH * sinP + 0.022);
+  ctx.scale(cosY, 1);
+  ctx.globalAlpha = 0.95;
+  ctx.drawImage(L.shWord, -1, -1, 2, 2);
+  ctx.restore();
 
   ctx.save();
   ctx.translate(DEPTH * sinY, bob - DEPTH * sinP);

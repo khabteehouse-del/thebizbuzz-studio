@@ -137,7 +137,7 @@ export function Team() {
                   alt=""
                   fill
                   sizes="240px"
-                  className="scale-x-[-1] object-contain object-[left_bottom]"
+                  className="object-contain object-[left_bottom]"
                 />
               </div>
             </div>

@@ -68,14 +68,14 @@ export function SpecialistCard({ index }: { index: number }) {
       {/* Phone: the figure peeks over the top edge of the card and points down at it. */}
       <div
         aria-hidden="true"
-        className="relative z-10 -mb-3 ml-auto mr-6 h-36 w-28 shrink-0 overflow-hidden lg:hidden"
+        className="relative z-10 -mb-3 ml-auto mr-6 h-44 w-28 shrink-0 overflow-hidden lg:hidden"
       >
         <Image
           src="/images/anchor/specialist-anchor.png"
           alt=""
           fill
           sizes="112px"
-          className="scale-x-[-1] object-cover object-top"
+          className="object-cover object-top"
         />
       </div>
       <div className="flex flex-1 flex-col rounded-sm border border-dashed border-[#7cc4ff]/40 bg-[#7cc4ff]/[0.04] p-5 shadow-[0_0_40px_-18px_#7cc4ff]">

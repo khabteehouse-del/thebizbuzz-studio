@@ -492,16 +492,17 @@ export function ServicesDial({ className = "" }: { className?: string }) {
       drawFrame(ctx, layers, specks, t, cx, cy);
     };
 
-    const build = () => {
+    const build = (force = false) => {
       const r = box.getBoundingClientRect();
       if (!r.width) return;
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
       const S = Math.round(r.width * dpr);
-      if (layers && layers.S === S) return;
+      if (!force && layers && layers.S === S) return;
       canvas.width = canvas.height = S;
       const family = getComputedStyle(canvas).fontFamily || "sans-serif";
       layers = buildLayers(S, family);
-      if (reduce) draw(performance.now());
+      /* Always paint one frame at once, so it is never blank while waiting. */
+      draw(performance.now());
     };
 
     const loop = (now: number) => {
@@ -537,13 +538,18 @@ export function ServicesDial({ className = "" }: { className?: string }) {
 
     /* Wait for the site font so the numeral is drawn in it, not a fallback. */
     const family = getComputedStyle(canvas).fontFamily || "sans-serif";
+    const fontLoad =
+      document.fonts && document.fonts.load
+        ? document.fonts.load(`700 100px ${family}`).catch(() => undefined)
+        : Promise.resolve(undefined);
     const ready = Promise.race([
-      document.fonts.load(`700 100px ${family}`),
+      fontLoad,
       new Promise((res) => setTimeout(res, 1500)),
     ]);
     ready.then(() => {
       if (!alive) return;
-      build();
+      /* Rebuild now that the real font is there (the first paint may have used a fallback). */
+      build(true);
       if (!reduce) raf = requestAnimationFrame(loop);
     });
 

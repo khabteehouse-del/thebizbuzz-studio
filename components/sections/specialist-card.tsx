@@ -109,7 +109,7 @@ export function SpecialistCard({ index }: { index: number }) {
         <div className="mt-5 grid flex-1 items-stretch gap-5 sm:grid-cols-[1.15fr_1fr] sm:gap-6">
           {/* Left: the message in a rounded box. Same text style as the team descriptions. */}
           <div className="flex h-full flex-col justify-center rounded-2xl border border-white/10 bg-white/[0.04] p-5 sm:self-stretch">
-            <p className="text-justify text-sm leading-relaxed text-muted">
+            <p className="text-justify text-sm leading-relaxed text-paper">
               Need a skill we do not have in house? Tell us what you do well,
               and we will reach out when a project fits. Share your portfolio
               and a short introduction. If your work is a match, we will

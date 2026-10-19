@@ -106,23 +106,20 @@ export function SpecialistCard({ index }: { index: number }) {
           Join our specialist network
         </h3>
 
-        <div className="mt-5 grid flex-1 items-end gap-5 sm:grid-cols-2 sm:gap-6">
-          {/* Left: the message in a rounded box, justified, standard size */}
-          <div className="flex h-full flex-col justify-center rounded-2xl border border-white/10 bg-white/[0.04] p-5 sm:self-stretch sm:p-6">
-            <p className="text-justify text-sm leading-7 text-paper/90 [hyphens:auto] sm:text-[15px]">
+        <div className="mt-5 grid flex-1 items-stretch gap-5 sm:grid-cols-[1.15fr_1fr] sm:gap-6">
+          {/* Left: the message in a rounded box. Same text style as the team descriptions. */}
+          <div className="flex h-full flex-col justify-center rounded-2xl border border-white/10 bg-white/[0.04] p-5 sm:self-stretch">
+            <p className="text-justify text-sm leading-relaxed text-muted">
               Need a skill we do not have in house? Tell us what you do well,
-              and we will reach out when a project fits. From time to time our
-              clients need specialist expertise beyond our core team, and we
-              keep a trusted list of independent professionals we can call on
-              for the right brief. Share your portfolio and a short
-              introduction. If your work is a match, we will contact you
-              directly to discuss scope, timeline and terms. Work is
-              project-based, with no obligation on either side.
+              and we will reach out when a project fits. Share your portfolio
+              and a short introduction. If your work is a match, we will
+              contact you directly to discuss scope and terms. Project-based,
+              with no obligation on either side.
             </p>
           </div>
 
           {/* Right: her picture, with the button right under her pointing hands */}
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col items-center justify-end">
             <div aria-hidden="true" className="relative w-full max-w-[15rem]">
               <Image
                 src="/images/anchor/specialist-pointing-v4.png"

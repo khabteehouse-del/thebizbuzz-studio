@@ -335,7 +335,7 @@ function Tile({
             </span>
             {service.samples && (
               <span
-                className="mt-auto flex items-center justify-between gap-3 rounded-xl border px-4 py-2.5"
+                className="mt-auto flex h-[2.9rem] items-center justify-between gap-3 rounded-xl border px-4"
                 style={{
                   borderColor: `${service.mark}88`,
                   backgroundColor: `${service.mark}26`,
@@ -413,7 +413,7 @@ function Tile({
               type="button"
               onClick={() => setPlayerOpen(true)}
               aria-label={`${service.samples.cta}: play ${service.title} videos`}
-              className={`absolute z-10 h-[2.9rem] cursor-pointer rounded-xl border border-transparent transition-[visibility,background-color,border-color] [transition-duration:0s,200ms,200ms] hover:border-[#e085d9] hover:bg-[#e085d9]/20 focus-visible:outline focus-visible:outline-2 ${
+              className={`absolute z-10 h-[2.9rem] cursor-pointer rounded-xl border border-transparent transition-[visibility,background-color,box-shadow] [transition-duration:0s,200ms,200ms] hover:bg-[#e085d9]/20 hover:shadow-[0_0_26px_-2px_#e085d9] focus-visible:outline focus-visible:outline-2 ${
                 flipped
                   ? "visible [transition-delay:700ms,0s,0s]"
                   : "invisible group-hover/tile:visible group-hover/tile:[transition-delay:700ms,0s,0s]"

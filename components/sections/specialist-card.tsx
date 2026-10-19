@@ -90,54 +90,61 @@ export function SpecialistCard({ index }: { index: number }) {
   };
 
   return (
-    <Reveal delay={index * 0.06}>
-      <div className="relative flex h-full flex-col rounded-sm border border-dashed border-[#7cc4ff]/40 bg-[#7cc4ff]/[0.04] p-5 shadow-[0_0_40px_-18px_#7cc4ff]">
+    <Reveal delay={index * 0.06} className="sm:col-span-2">
+      <div className="relative flex h-full flex-col rounded-sm border border-dashed border-[#7cc4ff]/40 bg-[#7cc4ff]/[0.04] p-5 shadow-[0_0_40px_-18px_#7cc4ff] sm:p-7">
         {/* A live badge in the top right corner: a soft ring pulses out from it. */}
         <span
           aria-hidden="true"
-          className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full border border-[#7cc4ff]/50 bg-[#7cc4ff]/10 text-[#7cc4ff]"
+          className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full border border-[#7cc4ff]/50 bg-[#7cc4ff]/10 text-[#7cc4ff] sm:right-6 sm:top-6"
         >
           <span className="absolute inset-0 rounded-full border border-[#7cc4ff]/60 motion-safe:animate-ping" />
           <span className="absolute -right-0.5 -top-0.5 h-2.5 w-2.5 rounded-full bg-[#4ade80] shadow-[0_0_8px_#4ade80] motion-safe:animate-pulse" />
           <Users size={18} strokeWidth={1.6} />
         </span>
-        <h3 className="max-w-[12rem] font-display text-lg font-medium leading-snug tracking-[-0.01em] text-paper">
+
+        <h3 className="max-w-[calc(100%-3.5rem)] font-display text-xl font-medium leading-snug tracking-[-0.01em] text-paper sm:text-2xl">
           Join our specialist network
         </h3>
-        <p className="mt-3 text-sm leading-relaxed text-muted">
-          Need a skill we do not have in house? Tell us what you do well, and
-          we will reach out when a project fits.
-        </p>
-        {/* She points at the button right under her. The bottom fades so she
-            appears to rise out of the button area. */}
-        <div
-          aria-hidden="true"
-          className="relative mt-3 flex flex-1 items-end justify-center"
-        >
-          <Image
-            src="/images/anchor/specialist-pointing-v4.png"
-            alt=""
-            width={1029}
-            height={969}
-            quality={90}
-            sizes="(min-width: 1024px) 17rem, 80vw"
-            className="h-auto w-full max-w-[17rem] [-webkit-mask-image:linear-gradient(to_bottom,black_93%,transparent_100%)] [mask-image:linear-gradient(to_bottom,black_93%,transparent_100%)]"
-          />
-        </div>
-        <div className="pt-1">
-          <button
-            type="button"
-            onClick={() => {
-              setDone(false);
-              setOpen(true);
-            }}
-            className="inline-flex min-h-12 w-full items-center justify-center rounded-lg border border-[#7cc4ff]/60 bg-[#7cc4ff]/15 px-4 py-3 font-display text-sm font-medium text-paper transition-colors hover:bg-[#7cc4ff]/25 focus-visible:outline focus-visible:outline-2"
-          >
-            Add yourself to the list
-          </button>
-          <p className="mt-3 text-xs text-paper/50">
-            Project-based. No obligation.
-          </p>
+
+        <div className="mt-5 grid flex-1 items-end gap-5 sm:grid-cols-2 sm:gap-6">
+          {/* Left: the message, left aligned and strong */}
+          <div className="flex h-full flex-col justify-between gap-6 sm:self-stretch">
+            <p className="font-display text-lg font-medium leading-snug text-paper sm:text-xl">
+              Need a skill we do not have in house? Tell us what you do well,
+              and we will reach out when a project fits.
+            </p>
+            <p className="hidden text-xs text-paper/55 sm:block">
+              Project-based. No obligation.
+            </p>
+          </div>
+
+          {/* Right: her picture, with the button right under her pointing hands */}
+          <div className="flex flex-col items-center">
+            <div aria-hidden="true" className="relative w-full max-w-[15rem]">
+              <Image
+                src="/images/anchor/specialist-pointing-v4.png"
+                alt=""
+                width={1029}
+                height={969}
+                quality={90}
+                sizes="(min-width: 640px) 15rem, 70vw"
+                className="h-auto w-full [-webkit-mask-image:linear-gradient(to_bottom,black_93%,transparent_100%)] [mask-image:linear-gradient(to_bottom,black_93%,transparent_100%)]"
+              />
+            </div>
+            <button
+              type="button"
+              onClick={() => {
+                setDone(false);
+                setOpen(true);
+              }}
+              className="inline-flex min-h-12 w-full max-w-[15rem] items-center justify-center rounded-lg border border-[#7cc4ff]/60 bg-[#7cc4ff]/15 px-4 py-3 font-display text-sm font-medium text-paper transition-colors hover:bg-[#7cc4ff]/25 focus-visible:outline focus-visible:outline-2"
+            >
+              Add yourself to the list
+            </button>
+            <p className="mt-3 text-xs text-paper/55 sm:hidden">
+              Project-based. No obligation.
+            </p>
+          </div>
         </div>
       </div>
 

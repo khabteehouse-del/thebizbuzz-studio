@@ -64,7 +64,7 @@ export const team: Member[] = [
     role: "Content Writing Specialist",
     focus:
       "Writes the words that carry the work: site copy, service pages, campaigns and the long-form content behind search.",
-    image: "/images/team/ghosia-v2.jpg",
+    image: "/images/team/ghosia-v3.jpg",
     linkedin: "",
   },
   {

@@ -324,7 +324,7 @@ function Tile({
                   ? /* Beside the list: right side, level with the text, clear of the samples strip. */
                     `right-5 top-[3.4rem] w-[40%] md:right-7 ${
                       service.review
-                        ? "bottom-[7.95rem] md:bottom-[8.25rem]"
+                        ? "bottom-[7.45rem] md:bottom-[7.75rem]"
                         : "bottom-[5.25rem] md:bottom-[5.5rem]"
                     } [-webkit-mask-image:linear-gradient(to_right,transparent_0%,black_22%)] [mask-image:linear-gradient(to_right,transparent_0%,black_22%)]`
                   : "inset-x-0 bottom-0 h-[41%] w-full [-webkit-mask-image:linear-gradient(to_bottom,transparent_0%,black_18%)] [mask-image:linear-gradient(to_bottom,transparent_0%,black_18%)]"
@@ -377,7 +377,7 @@ function Tile({
             )}
             {service.review && (
               <span
-                className="relative mt-auto flex h-[5.1rem] flex-col justify-center overflow-hidden rounded-xl border px-4"
+                className="relative -mb-2 mt-auto flex h-[5.1rem] flex-col justify-center overflow-hidden rounded-xl border px-4"
                 style={{
                   borderColor: "rgba(251,191,36,0.35)",
                   backgroundColor: "rgba(251,191,36,0.08)",
@@ -514,7 +514,7 @@ function Tile({
               flipped
                 ? "visible [transition-delay:700ms,0s,0s]"
                 : "invisible group-hover/tile:visible group-hover/tile:[transition-delay:700ms,0s,0s]"
-            } inset-x-7 bottom-7 md:inset-x-8 md:bottom-8`}
+            } inset-x-7 bottom-5 md:inset-x-8 md:bottom-6`}
           />
         )}
       </div>

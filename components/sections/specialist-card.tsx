@@ -32,6 +32,19 @@ export function SpecialistCard({ index }: { index: number }) {
     if (!open && dialog.open) dialog.close();
   }, [open]);
 
+  /* The site uses smooth scrolling that captures the mouse wheel for the
+     page. While the form is open, freeze the page behind it (the form itself
+     opts out of the smooth scroller with data-lenis-prevent). */
+  useEffect(() => {
+    if (!open) return;
+    const root = document.documentElement;
+    const previous = root.style.overflow;
+    root.style.overflow = "hidden";
+    return () => {
+      root.style.overflow = previous;
+    };
+  }, [open]);
+
   const close = () => {
     setOpen(false);
     setError("");
@@ -123,7 +136,8 @@ export function SpecialistCard({ index }: { index: number }) {
           if (e.target === dialogRef.current) close();
         }}
         aria-label="Join our specialist network"
-        className="m-auto max-h-[92dvh] w-[min(94vw,30rem)] max-w-none overflow-y-auto rounded-2xl border border-white/15 bg-[#0b1020] p-0 text-paper backdrop:bg-black/75 backdrop:backdrop-blur-sm"
+        data-lenis-prevent
+        className="m-auto max-h-[92dvh] w-[min(94vw,30rem)] max-w-none overflow-y-auto overscroll-contain rounded-2xl border border-white/15 bg-[#0b1020] p-0 text-paper backdrop:bg-black/75 backdrop:backdrop-blur-sm"
       >
         {open && (
           <div className="p-5 sm:p-6">

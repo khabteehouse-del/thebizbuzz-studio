@@ -10,6 +10,7 @@ import { Reveal } from "@/components/shared/reveal";
 import { Orbs } from "@/components/shared/orbs";
 import { MizarLogo } from "@/components/shared/mizar-logo";
 import { ServicesDial } from "@/components/shared/services-dial";
+import { TileArt } from "@/components/shared/tile-art";
 
 /* Touch screens cannot hover, and few people tap a tile that does not look
    tappable. So on touch, a tile flips by itself once it has rested under the
@@ -309,6 +310,13 @@ function Tile({
           }}
         >
           {glow}
+          {service.backArt && (
+            <TileArt
+              id={service.backArt}
+              color={service.mark}
+              className="pointer-events-none absolute inset-x-0 bottom-0 h-[41%] w-full [-webkit-mask-image:linear-gradient(to_bottom,transparent_0%,black_18%)] [mask-image:linear-gradient(to_bottom,transparent_0%,black_18%)]"
+            />
+          )}
           <span className="relative flex w-full flex-col">
             <span
               className="font-display text-sm font-medium"
@@ -316,11 +324,14 @@ function Tile({
             >
               {service.title}
             </span>
-            <span className="mt-4 block space-y-2.5">
+            {/* A tile with a drawn picture gets a slightly tighter list, so the picture has room. */}
+            <span
+              className={`block ${service.backArt ? "mt-3 space-y-2" : "mt-4 space-y-2.5"}`}
+            >
               {service.capabilities.map((item) => (
                 <span
                   key={item}
-                  className="flex items-start gap-3 text-sm text-paper/85"
+                  className={`flex items-start gap-3 text-paper/85 ${service.backArt ? "text-[13px] leading-[18px]" : "text-sm"}`}
                 >
                   <span
                     aria-hidden="true"

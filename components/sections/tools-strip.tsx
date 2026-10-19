@@ -1,6 +1,5 @@
 import { Button } from "@/components/shared/button";
 import { Reveal } from "@/components/shared/reveal";
-import { ReviewCard } from "@/components/shared/review-card";
 import Image from "next/image";
 
 /*
@@ -10,14 +9,6 @@ import Image from "next/image";
   fill in a contact form will answer twelve questions about their own
   business, and the score gives them a reason to write in.
 */
-const review = {
-  quote: "Mobile cranes with full safety and certification. Great service.",
-  client: "Sadat Transport & Contracting, Abu Dhabi",
-  rating: 4.9,
-  count: 40,
-  href: "https://www.google.com/maps/place/Sadat+Transport+%26+Contracting+General/@24.369346,54.4996095,17z",
-};
-
 export function ToolsStrip() {
   return (
     <section className="relative overflow-hidden border-y border-line bg-[#0d2a2b] py-20 md:py-28">
@@ -110,8 +101,6 @@ export function ToolsStrip() {
             <Button href="/tools/gbp-check" size="lg" accent="#4fd1c5" className="w-full sm:w-auto">
               Run the check
             </Button>
-
-            <ReviewCard review={review} />
           </div>
         </Reveal>
       </div>

@@ -10,6 +10,7 @@ import { Reveal } from "@/components/shared/reveal";
 import { Orbs } from "@/components/shared/orbs";
 import { MizarLogo } from "@/components/shared/mizar-logo";
 import { VideoModal } from "@/components/shared/video-modal";
+import { PoweredStars } from "@/components/shared/review-card";
 import { ServicesDial } from "@/components/shared/services-dial";
 import { TileArt } from "@/components/shared/tile-art";
 
@@ -319,9 +320,13 @@ function Tile({
               id={service.backArt}
               color={service.mark}
               className={`pointer-events-none absolute ${
-                service.samples
+                service.samples || service.review
                   ? /* Beside the list: right side, level with the text, clear of the samples strip. */
-                    "right-5 top-[3.4rem] bottom-[5.25rem] w-[40%] md:right-7 md:bottom-[5.5rem] [-webkit-mask-image:linear-gradient(to_right,transparent_0%,black_22%)] [mask-image:linear-gradient(to_right,transparent_0%,black_22%)]"
+                    `right-5 top-[3.4rem] w-[40%] md:right-7 ${
+                      service.review
+                        ? "bottom-[8.6rem] md:bottom-[8.9rem]"
+                        : "bottom-[5.25rem] md:bottom-[5.5rem]"
+                    } [-webkit-mask-image:linear-gradient(to_right,transparent_0%,black_22%)] [mask-image:linear-gradient(to_right,transparent_0%,black_22%)]`
                   : "inset-x-0 bottom-0 h-[41%] w-full [-webkit-mask-image:linear-gradient(to_bottom,transparent_0%,black_18%)] [mask-image:linear-gradient(to_bottom,transparent_0%,black_18%)]"
               }`}
             />
@@ -363,6 +368,31 @@ function Tile({
                   {service.samples.cta}
                 </span>
                 <Play size={16} aria-hidden="true" style={{ color: service.mark }} />
+              </span>
+            )}
+            {service.review && (
+              <span
+                className="mt-auto flex h-[5.75rem] flex-col justify-center rounded-xl border px-4"
+                style={{
+                  borderColor: "rgba(251,191,36,0.35)",
+                  backgroundColor: "rgba(251,191,36,0.08)",
+                }}
+              >
+                <span className="flex items-center gap-1">
+                  <PoweredStars starClass="text-sm" />
+                  <span className="ml-1 text-sm font-medium text-paper">
+                    {service.review.rating}
+                  </span>
+                  <span className="text-[11px] text-paper/60">
+                    ({service.review.count} reviews on Google)
+                  </span>
+                </span>
+                <span className="mt-1.5 line-clamp-2 text-xs italic leading-snug text-paper/70">
+                  &ldquo;{service.review.quote}&rdquo;
+                </span>
+                <span className="mt-1.5 truncate text-[10px] uppercase tracking-[0.08em] text-paper/60">
+                  {service.review.client}
+                </span>
               </span>
             )}
             {link && (
@@ -462,6 +492,19 @@ function Tile({
             {...(link.external
               ? { target: "_blank", rel: "noopener noreferrer" }
               : {})}
+          />
+        )}
+        {service.review && (
+          <a
+            href={service.review.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Read the Google reviews for ${service.review.client}`}
+            className={`absolute z-10 h-[5.75rem] cursor-pointer rounded-xl border border-transparent transition-[visibility,background-color,box-shadow] [transition-duration:0s,200ms,200ms] hover:bg-[#fbbf24]/10 hover:shadow-[0_0_26px_-2px_#fbbf24] focus-visible:outline focus-visible:outline-2 ${
+              flipped
+                ? "visible [transition-delay:700ms,0s,0s]"
+                : "invisible group-hover/tile:visible group-hover/tile:[transition-delay:700ms,0s,0s]"
+            } inset-x-7 bottom-7 md:inset-x-8 md:bottom-8`}
           />
         )}
       </div>

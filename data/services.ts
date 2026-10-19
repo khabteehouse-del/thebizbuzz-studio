@@ -75,6 +75,14 @@ export type Service = {
     action strip under the capability list.
   */
   link?: { href: string; cta: string; external?: boolean };
+  /* Optional: the back shows a verified Google review that opens the Maps listing. */
+  review?: {
+    quote: string;
+    client: string;
+    rating: number;
+    count: number;
+    href: string;
+  };
   /* Optional: the back shows a "see samples" strip that opens a video player. */
   samples?: {
     cta: string;
@@ -127,6 +135,13 @@ export const services: Service[] = [
     mark: "#4fd1c5",
     icon: MapPin,
     backArt: "gbp",
+    review: {
+      quote: "Mobile cranes with full safety and certification. Great service.",
+      client: "Sadat Transport & Contracting, Abu Dhabi",
+      rating: 4.9,
+      count: 40,
+      href: "https://www.google.com/maps/place/Sadat+Transport+%26+Contracting+General/@24.369346,54.4996095,17z",
+    },
   },
   {
     id: "local-seo",

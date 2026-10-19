@@ -318,11 +318,11 @@ function Tile({
             <TileArt
               id={service.backArt}
               color={service.mark}
-              className={`pointer-events-none absolute inset-x-0 w-full [-webkit-mask-image:linear-gradient(to_bottom,transparent_0%,black_18%)] [mask-image:linear-gradient(to_bottom,transparent_0%,black_18%)] ${
+              className={`pointer-events-none absolute ${
                 service.samples
-                  ? /* Smaller picture that sits just above the samples strip. */
-                    "bottom-[5.05rem] h-[25%] md:bottom-[5.3rem]"
-                  : "bottom-0 h-[41%]"
+                  ? /* Beside the list: right side, level with the text, clear of the samples strip. */
+                    "right-5 top-[3.4rem] bottom-[5.25rem] w-[40%] md:right-7 md:bottom-[5.5rem] [-webkit-mask-image:linear-gradient(to_right,transparent_0%,black_22%)] [mask-image:linear-gradient(to_right,transparent_0%,black_22%)]"
+                  : "inset-x-0 bottom-0 h-[41%] w-full [-webkit-mask-image:linear-gradient(to_bottom,transparent_0%,black_18%)] [mask-image:linear-gradient(to_bottom,transparent_0%,black_18%)]"
               }`}
             />
           )}

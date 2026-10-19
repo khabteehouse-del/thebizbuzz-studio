@@ -156,14 +156,20 @@ function ring(g: CanvasRenderingContext2D, r: number, w: number, col: string) {
 function drawBack(g: CanvasRenderingContext2D, L: Layers, t: number) {
   const th = -Math.PI / 2 + t * 1.4;
 
-  const gd = g.createRadialGradient(0, 0, 0, 0, 0, 0.92);
+  /* Every glow stays inside the outer edge of the track ring. */
+  g.save();
+  g.beginPath();
+  g.arc(0, 0, 0.862, 0, TAU);
+  g.clip();
+
+  const gd = g.createRadialGradient(0, 0, 0, 0, 0, 0.86);
   gd.addColorStop(0, `rgba(${SKY},0.24)`);
   gd.addColorStop(0.55, `rgba(${SKY},0.1)`);
   gd.addColorStop(0.86, `rgba(${BLUE},0.12)`);
   gd.addColorStop(1, `rgba(${BLUE},0)`);
   g.fillStyle = gd;
   g.beginPath();
-  g.arc(0, 0, 0.92, 0, TAU);
+  g.arc(0, 0, 0.86, 0, TAU);
   g.fill();
 
   ring(g, 0.84, 0.036, `rgba(${BLUE},0.22)`);
@@ -226,6 +232,7 @@ function drawBack(g: CanvasRenderingContext2D, L: Layers, t: number) {
   g.restore();
   g.setLineDash([]);
   ring(g, 0.62, 0.002, `rgba(${LIGHT},0.075)`);
+  g.restore();
 }
 
 /* Now and then the whole dial catches the light like a glass dome: a soft glow
@@ -243,7 +250,7 @@ function drawDome(g: CanvasRenderingContext2D, t: number) {
 
   g.save();
   g.beginPath();
-  g.arc(0, 0, 0.9, 0, TAU);
+  g.arc(0, 0, 0.835, 0, TAU);
   g.clip();
   g.globalCompositeOperation = "lighter";
 

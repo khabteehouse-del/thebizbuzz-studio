@@ -8,8 +8,8 @@ import { SpecialistCard } from "@/components/sections/specialist-card";
 /*
   Two rows, deliberately separated.
 
-  Partners are the four founders and equity holders. Specialists work
-  with the team but hold no ownership, and the layout must never imply
+  Partners are the two founders, Faraz and Amrit. Everyone else works on
+  commission and share, and holds no ownership, and the layout must never imply
   otherwise: different heading, smaller cards, its own row.
 */
 
@@ -40,7 +40,7 @@ function Card({
                   ? "(min-width: 768px) 20vw, 45vw"
                   : "(min-width: 1024px) 22vw, (min-width: 640px) 45vw, 92vw"
               }
-              className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]"
+              className={`object-cover ${compact ? "object-top" : ""} transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]`}
             />
           ) : (
             <div className="flex h-full w-full items-center justify-center">
@@ -100,12 +100,13 @@ export function Team() {
             A small team, not a set of departments
           </h2>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-muted">
-            Four partners who each run their own side of the work, and the
-            specialists we bring in for the parts that need them.
+            Two partners who each run their own side of the work, and a
+            commission and share based team we bring in for the parts that
+            need them.
           </p>
         </Reveal>
 
-        <div className="mt-14 grid gap-x-6 gap-y-12 sm:grid-cols-2 sm:gap-x-10 md:mt-20 lg:grid-cols-4">
+        <div className="mt-14 grid gap-x-6 gap-y-12 sm:grid-cols-2 sm:gap-x-10 md:mt-20 lg:w-[calc(50%-1.25rem)]">
           {partners.map((member, index) => (
             <Card key={member.id} member={member} index={index} />
           ))}

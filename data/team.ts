@@ -3,8 +3,8 @@ export type Tier = "partner" | "specialist";
 export type Member = {
   id: string;
   /*
-    partner    equity holders and founders, shown in the main row
-    specialist works with the team, no ownership implied anywhere
+    partner    the two founders (Faraz and Amrit), shown in the main row
+    specialist commission and share based team members, no ownership implied
   */
   tier: Tier;
   name: string;
@@ -39,7 +39,7 @@ export const team: Member[] = [
   },
   {
     id: "farhan",
-    tier: "partner",
+    tier: "specialist",
     name: "Farhan Ahmed Qureshi",
     role: "Regional Director, UAE",
     focus:
@@ -49,7 +49,7 @@ export const team: Member[] = [
   },
   {
     id: "waqas",
-    tier: "partner",
+    tier: "specialist",
     name: "Waqas Sheikh",
     role: "Head of SEO and Search Growth",
     focus:

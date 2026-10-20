@@ -1950,3 +1950,55 @@ body {
   .scholar-page { opacity: 0; }
   .scholar-head { transform: rotate(2deg); }
 }
+
+/* Ship art (components/shared/ship-art.tsx) */
+.ship-art * {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@keyframes ship-tile {
+  0% { transform: translate(0, 0) scale(0.4); opacity: 0; }
+  8% { opacity: 1; transform: translate(4px, -8px) scale(1); }
+  100% { transform: translate(var(--dx, 170px), var(--dy, -100px)) scale(1.08); opacity: 0; }
+}
+@keyframes ship-flame {
+  0%, 100% { transform: scale(1, 1); opacity: 0.7; }
+  50% { transform: scale(1.25, 1.6); opacity: 1; }
+}
+@keyframes ship-glow {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 0.95; }
+}
+@keyframes ship-rocket {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-1.2px); }
+}
+@keyframes ship-star {
+  0%, 100% { opacity: 0.25; }
+  50% { opacity: 0.95; }
+}
+
+.ship-tile { animation: ship-tile 6.4s ease-out infinite; opacity: 0; }
+.ship-tile.t1 { --dx: 80px; --dy: -110px; }
+.ship-tile.t2 { --dx: 40px; --dy: -120px; animation-delay: 1.6s; }
+.ship-tile.t3 { --dx: 105px; --dy: -90px; animation-delay: 3.2s; }
+.ship-tile.t4 { --dx: 60px; --dy: -105px; animation-delay: 4.8s; }
+.ship-flame { animation: ship-flame 0.9s ease-in-out infinite; transform-origin: top center; }
+.ship-glow { animation: ship-glow 3s ease-in-out infinite; }
+.ship-rocket { animation: ship-rocket 2.4s ease-in-out infinite; }
+.ship-star { animation: ship-star 3.6s ease-in-out infinite; }
+.ship-star.s2 { animation-delay: 1.2s; }
+.ship-star.s3 { animation-delay: 2.4s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .ship-tile,
+  .ship-flame,
+  .ship-glow,
+  .ship-rocket,
+  .ship-star {
+    animation: none;
+  }
+  .ship-tile.t1 { opacity: 1; transform: translate(70px, -70px); }
+  .ship-tile.t2 { opacity: 0.7; transform: translate(40px, -105px); }
+}

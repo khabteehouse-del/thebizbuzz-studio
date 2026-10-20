@@ -1860,3 +1860,145 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .cta-sweep, .cta-nudge { animation: none !important; }
 }
+
+/*
+  Cyan glow theme for the blog (home strip, list and posts).
+  Dark navy at the top fades into the same cyan used in the footer wordmark.
+  Text tokens stay light, so every existing class keeps working.
+*/
+.blog-cyan {
+  background-color: #0a0e1a;
+  background-image: linear-gradient(
+    180deg,
+    #0a0e1a 0%,
+    #0b2236 45%,
+    #0e4a63 78%,
+    #1b7f9c 100%
+  );
+}
+
+.blog-cyan .blog-card {
+  background-color: rgba(10, 14, 26, 0.45);
+}
+
+/* Scholar landing art (components/shared/scholar-art.tsx) */
+.scholar-art * {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+/* Read the book, lift the head to the screen, come back. 10s loop. */
+@keyframes scholar-head {
+  0%, 36% { transform: rotate(6deg); }
+  46%, 82% { transform: rotate(-3deg); }
+  92%, 100% { transform: rotate(6deg); }
+}
+/* Rim light on the face edge strengthens while he looks at the screen */
+@keyframes scholar-rim {
+  0%, 36% { opacity: 0.35; }
+  46%, 82% { opacity: 0.95; }
+  92%, 100% { opacity: 0.35; }
+}
+@keyframes scholar-page {
+  0%, 28% { transform: scaleX(1); opacity: 0.9; }
+  34% { transform: scaleX(-1); opacity: 0.9; }
+  35%, 100% { transform: scaleX(1); opacity: 0; }
+}
+@keyframes scholar-glow {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 0.9; }
+}
+@keyframes scholar-lines {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+@keyframes scholar-bars {
+  0%, 100% { transform: scaleY(0.8); }
+  50% { transform: scaleY(1.15); }
+}
+@keyframes scholar-ring {
+  to { transform: rotate(360deg); }
+}
+@keyframes scholar-spark {
+  0% { transform: translateY(8px); opacity: 0; }
+  30% { opacity: 0.9; }
+  100% { transform: translateY(-16px); opacity: 0; }
+}
+
+.scholar-head { animation: scholar-head 10s ease-in-out infinite; transform-origin: 40% 92%; }
+.scholar-rim { animation: scholar-rim 10s ease-in-out infinite; }
+.scholar-page { animation: scholar-page 10s ease-in-out infinite; transform-origin: left center; }
+.scholar-glow { animation: scholar-glow 3.4s ease-in-out infinite; }
+.scholar-lines { animation: scholar-lines 2.6s ease-in-out infinite; }
+.scholar-bars { animation: scholar-bars 3.2s ease-in-out infinite; transform-origin: bottom; }
+.scholar-ring { animation: scholar-ring 24s linear infinite; }
+.scholar-spark { animation: scholar-spark 4.5s ease-out infinite; }
+.scholar-spark.s2 { animation-delay: 1.5s; }
+.scholar-spark.s3 { animation-delay: 3s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .scholar-head,
+  .scholar-rim,
+  .scholar-page,
+  .scholar-glow,
+  .scholar-lines,
+  .scholar-bars,
+  .scholar-ring,
+  .scholar-spark {
+    animation: none;
+  }
+  .scholar-page { opacity: 0; }
+  .scholar-head { transform: rotate(2deg); }
+}
+
+/* Ship art (components/shared/ship-art.tsx) */
+.ship-art * {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@keyframes ship-tile {
+  0% { transform: translate(0, 0) scale(0.4); opacity: 0; }
+  8% { opacity: 1; transform: translate(4px, -8px) scale(1); }
+  100% { transform: translate(var(--dx, 170px), var(--dy, -100px)) scale(1.08); opacity: 0; }
+}
+@keyframes ship-flame {
+  0%, 100% { transform: scale(1, 1); opacity: 0.7; }
+  50% { transform: scale(1.25, 1.6); opacity: 1; }
+}
+@keyframes ship-glow {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 0.95; }
+}
+@keyframes ship-rocket {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-1.2px); }
+}
+@keyframes ship-star {
+  0%, 100% { opacity: 0.25; }
+  50% { opacity: 0.95; }
+}
+
+.ship-tile { animation: ship-tile 6.4s ease-out infinite; opacity: 0; }
+.ship-tile.t1 { --dx: 80px; --dy: -110px; }
+.ship-tile.t2 { --dx: 40px; --dy: -120px; animation-delay: 1.6s; }
+.ship-tile.t3 { --dx: 105px; --dy: -90px; animation-delay: 3.2s; }
+.ship-tile.t4 { --dx: 60px; --dy: -105px; animation-delay: 4.8s; }
+.ship-flame { animation: ship-flame 0.9s ease-in-out infinite; transform-origin: top center; }
+.ship-glow { animation: ship-glow 3s ease-in-out infinite; }
+.ship-rocket { animation: ship-rocket 2.4s ease-in-out infinite; }
+.ship-star { animation: ship-star 3.6s ease-in-out infinite; }
+.ship-star.s2 { animation-delay: 1.2s; }
+.ship-star.s3 { animation-delay: 2.4s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .ship-tile,
+  .ship-flame,
+  .ship-glow,
+  .ship-rocket,
+  .ship-star {
+    animation: none;
+  }
+  .ship-tile.t1 { opacity: 1; transform: translate(70px, -70px); }
+  .ship-tile.t2 { opacity: 0.7; transform: translate(40px, -105px); }
+}

@@ -2001,4 +2001,16 @@ body {
   }
   .ship-tile.t1 { opacity: 1; transform: translate(70px, -70px); }
   .ship-tile.t2 { opacity: 0.7; transform: translate(40px, -105px); }
+
+  Performance.
+
+  Animations inside a section that is off screen are paused
+  (OffscreenPause sets data-offscreen on the section). Nothing changes
+  visually: an effect is simply not being drawn while nobody can see it,
+  and it is already running again by the time its section scrolls in.
+*/
+section[data-offscreen] *,
+section[data-offscreen] *::before,
+section[data-offscreen] *::after {
+  animation-play-state: paused !important;
 }

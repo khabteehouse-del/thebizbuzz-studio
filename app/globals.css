@@ -1860,3 +1860,23 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .cta-sweep, .cta-nudge { animation: none !important; }
 }
+
+/*
+  Cyan glow theme for the blog (home strip, list and posts).
+  Dark navy at the top fades into the same cyan used in the footer wordmark.
+  Text tokens stay light, so every existing class keeps working.
+*/
+.blog-cyan {
+  background-color: #0a0e1a;
+  background-image: linear-gradient(
+    180deg,
+    #0a0e1a 0%,
+    #0b2236 45%,
+    #0e4a63 78%,
+    #1b7f9c 100%
+  );
+}
+
+.blog-cyan .blog-card {
+  background-color: rgba(10, 14, 26, 0.45);
+}

@@ -100,7 +100,7 @@ export function Team() {
             A small team, not a set of departments
           </h2>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-muted">
-            Four partners who each run their own side of the work, and the
+            A small team who each run their own side of the work, and the
             specialists we bring in for the parts that need them.
           </p>
         </Reveal>

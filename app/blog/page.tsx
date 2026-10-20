@@ -19,7 +19,7 @@ export default function BlogPage() {
   );
 
   return (
-    <section className="bg-ink py-20 md:py-36">
+    <section className="blog-cream py-20 md:py-36">
       <div className="shell">
         <p className="section-label">Blog</p>
         <h1 className="mt-7 max-w-2xl font-display text-3xl font-medium leading-[1.08] tracking-[-0.03em] text-paper sm:text-4xl md:text-6xl">
@@ -33,7 +33,7 @@ export default function BlogPage() {
           {sorted.map((post) => (
             <article
               key={post.slug}
-              className="group relative h-full rounded-xl border border-line bg-ink p-7 transition-colors duration-500 hover:border-paper/20 md:p-10"
+              className="group relative h-full rounded-xl border border-line bg-white/50 p-7 transition-colors duration-500 hover:border-paper/20 md:p-10"
             >
               {post.image && (
                 <div className="relative mb-6 aspect-[16/9] overflow-hidden rounded-sm border border-line">

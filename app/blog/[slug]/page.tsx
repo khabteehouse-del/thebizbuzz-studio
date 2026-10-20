@@ -63,7 +63,7 @@ export default async function BlogPostPage({ params }: Props) {
   };
 
   return (
-    <article className="bg-ink py-20 md:py-32">
+    <article className="blog-cream py-20 md:py-32">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}

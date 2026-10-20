@@ -1860,3 +1860,19 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .cta-sweep, .cta-nudge { animation: none !important; }
 }
+
+/*
+  Milky yellow reading theme for the blog (home strip, list and posts).
+  It only re-points the colour tokens inside the element, so every existing
+  class (bg-ink, text-paper, border-line and so on) flips with no other edits.
+*/
+.blog-cream {
+  --color-ink: #fbf6e3;
+  --color-paper: #1a2540;
+  --color-muted: #6b6a5a;
+  --color-line: rgba(26, 37, 64, 0.14);
+  --color-accent: #1f6fbd;
+  --color-accent-soft: #1a5fa6;
+  background-color: var(--color-ink);
+  color: var(--color-paper);
+}

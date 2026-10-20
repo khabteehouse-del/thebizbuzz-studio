@@ -14,7 +14,7 @@ export function BlogStrip() {
     .slice(0, 3);
 
   return (
-    <section id="blog" className="bg-ink py-12 md:py-16">
+    <section id="blog" className="blog-cream py-12 md:py-16">
       <div className="shell">
         <div className="flex items-baseline justify-between gap-4">
           <p className="section-label">Latest from the blog</p>
@@ -31,7 +31,7 @@ export function BlogStrip() {
             <Link
               key={post.slug}
               href={`/blog/${post.slug}`}
-              className="group flex items-center gap-4 rounded-xl border border-line bg-ink p-3 transition-colors duration-300 hover:border-paper/20"
+              className="group flex items-center gap-4 rounded-xl border border-line bg-white/50 p-3 transition-colors duration-300 hover:border-paper/20"
             >
               {post.image && (
                 <div className="relative aspect-[16/10] w-24 shrink-0 overflow-hidden rounded-md border border-line sm:w-28">

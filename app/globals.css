@@ -1887,66 +1887,66 @@ body {
   transform-origin: center;
 }
 
-/* Eyes: read the book, glance at the screen, come back. 9s loop. */
-@keyframes scholar-look {
-  0%, 38% { transform: translate(-2px, 3px); }
-  46%, 84% { transform: translate(4px, -1px); }
-  92%, 100% { transform: translate(-2px, 3px); }
-}
+/* Read the book, lift the head to the screen, come back. 10s loop. */
 @keyframes scholar-head {
-  0%, 38% { transform: rotate(-2deg); }
-  46%, 84% { transform: rotate(2.5deg); }
-  92%, 100% { transform: rotate(-2deg); }
+  0%, 36% { transform: rotate(6deg); }
+  46%, 82% { transform: rotate(-3deg); }
+  92%, 100% { transform: rotate(6deg); }
 }
-@keyframes scholar-blink {
-  0%, 46%, 50%, 100% { transform: scaleY(1); }
-  48% { transform: scaleY(0.1); }
+/* Rim light on the face edge strengthens while he looks at the screen */
+@keyframes scholar-rim {
+  0%, 36% { opacity: 0.35; }
+  46%, 82% { opacity: 0.95; }
+  92%, 100% { opacity: 0.35; }
 }
 @keyframes scholar-page {
-  0%, 30% { transform: scaleX(1); opacity: 1; }
-  36% { transform: scaleX(-1); opacity: 1; }
-  37%, 100% { transform: scaleX(1); opacity: 0; }
+  0%, 28% { transform: scaleX(1); opacity: 0.9; }
+  34% { transform: scaleX(-1); opacity: 0.9; }
+  35%, 100% { transform: scaleX(1); opacity: 0; }
 }
 @keyframes scholar-glow {
-  0%, 100% { opacity: 0.55; }
-  50% { opacity: 1; }
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 0.9; }
 }
 @keyframes scholar-lines {
-  0%, 100% { opacity: 0.6; }
+  0%, 100% { opacity: 0.5; }
   50% { opacity: 1; }
 }
 @keyframes scholar-bars {
   0%, 100% { transform: scaleY(0.8); }
   50% { transform: scaleY(1.15); }
 }
+@keyframes scholar-ring {
+  to { transform: rotate(360deg); }
+}
 @keyframes scholar-spark {
   0% { transform: translateY(8px); opacity: 0; }
-  30% { opacity: 1; }
-  100% { transform: translateY(-14px); opacity: 0; }
+  30% { opacity: 0.9; }
+  100% { transform: translateY(-16px); opacity: 0; }
 }
 
-.scholar-look { animation: scholar-look 9s ease-in-out infinite; }
-.scholar-head { animation: scholar-head 9s ease-in-out infinite; }
-.scholar-blink { animation: scholar-blink 9s ease-in-out infinite; }
-.scholar-page { animation: scholar-page 9s ease-in-out infinite; transform-origin: left center; }
-.scholar-glow { animation: scholar-glow 3.2s ease-in-out infinite; }
-.scholar-lines { animation: scholar-lines 2.4s ease-in-out infinite; }
-.scholar-bars { animation: scholar-bars 3s ease-in-out infinite; transform-origin: bottom; }
-.scholar-spark { animation: scholar-spark 4s ease-out infinite; }
-.scholar-spark.s2 { animation-delay: 1.3s; }
-.scholar-spark.s3 { animation-delay: 2.6s; }
+.scholar-head { animation: scholar-head 10s ease-in-out infinite; transform-origin: 40% 92%; }
+.scholar-rim { animation: scholar-rim 10s ease-in-out infinite; }
+.scholar-page { animation: scholar-page 10s ease-in-out infinite; transform-origin: left center; }
+.scholar-glow { animation: scholar-glow 3.4s ease-in-out infinite; }
+.scholar-lines { animation: scholar-lines 2.6s ease-in-out infinite; }
+.scholar-bars { animation: scholar-bars 3.2s ease-in-out infinite; transform-origin: bottom; }
+.scholar-ring { animation: scholar-ring 24s linear infinite; }
+.scholar-spark { animation: scholar-spark 4.5s ease-out infinite; }
+.scholar-spark.s2 { animation-delay: 1.5s; }
+.scholar-spark.s3 { animation-delay: 3s; }
 
 @media (prefers-reduced-motion: reduce) {
-  .scholar-look,
   .scholar-head,
-  .scholar-blink,
+  .scholar-rim,
   .scholar-page,
   .scholar-glow,
   .scholar-lines,
   .scholar-bars,
+  .scholar-ring,
   .scholar-spark {
     animation: none;
   }
   .scholar-page { opacity: 0; }
-  .scholar-look { transform: translate(-2px, 3px); }
+  .scholar-head { transform: rotate(2deg); }
 }

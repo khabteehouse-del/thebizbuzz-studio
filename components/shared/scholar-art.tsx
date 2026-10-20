@@ -1,8 +1,9 @@
 /*
-  Landing art for the blog strip: an original, hand-drawn scholar character
-  (not based on any real person) who reads a book, then glances up at a
-  glowing screen, and back again. Pure SVG plus CSS keyframes (see globals.css),
-  so it is tiny, sharp on any screen and stops moving for reduced motion.
+  Landing art for the blog strip: an original silhouette of a thinker (not
+  based on any real person) reading a glowing book, then lifting his head to
+  a holographic screen, and back. Pure SVG plus CSS keyframes (see globals.css),
+  so it is tiny, sharp on any screen and holds still for reduced motion.
+  The cyan rim light is a shifted copy of each shape drawn behind the dark one.
 */
 export function ScholarArt({ className = "" }: { className?: string }) {
   return (
@@ -10,119 +11,112 @@ export function ScholarArt({ className = "" }: { className?: string }) {
       viewBox="0 0 340 210"
       className={className}
       role="img"
-      aria-label="A scholar reading a book and looking up at a glowing screen"
+      aria-label="A silhouetted thinker reading a book, then looking up at a glowing screen"
     >
       <defs>
         <radialGradient id="sc-glow" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="#6de2fc" stopOpacity="0.55" />
+          <stop offset="0%" stopColor="#6de2fc" stopOpacity="0.5" />
           <stop offset="100%" stopColor="#6de2fc" stopOpacity="0" />
         </radialGradient>
-        <linearGradient id="sc-screen" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#0f3a52" />
-          <stop offset="100%" stopColor="#0a1f33" />
+        <linearGradient id="sc-beam" x1="1" y1="0" x2="0" y2="0">
+          <stop offset="0%" stopColor="#6de2fc" stopOpacity="0.22" />
+          <stop offset="100%" stopColor="#6de2fc" stopOpacity="0" />
         </linearGradient>
+        <linearGradient id="sc-floor" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stopColor="#6de2fc" stopOpacity="0" />
+          <stop offset="55%" stopColor="#6de2fc" stopOpacity="0.8" />
+          <stop offset="100%" stopColor="#6de2fc" stopOpacity="0.1" />
+        </linearGradient>
+        <linearGradient id="sc-book" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#d9f6ff" />
+          <stop offset="100%" stopColor="#8fdcf2" />
+        </linearGradient>
+
+        {/* silhouette shapes, reused for the rim-light copy */}
+        <g id="sc-head-shape">
+          <ellipse cx="120" cy="80" rx="20" ry="25" />
+          <ellipse cx="139" cy="83" rx="5" ry="4.5" />
+          <ellipse cx="134" cy="99" rx="9" ry="6" />
+          <circle cx="103" cy="62" r="12" />
+          <circle cx="114" cy="53" r="13" />
+          <circle cx="128" cy="54" r="12" />
+          <circle cx="98" cy="76" r="11" />
+          <circle cx="100" cy="90" r="8" />
+          <circle cx="92" cy="58" r="7" />
+          <rect x="110" y="98" width="18" height="24" />
+        </g>
+        <g id="sc-body-shape">
+          <path d="M78 172 C74 140 90 120 114 116 L136 116 C152 120 164 134 166 154 L168 172 Z" />
+          <path d="M132 124 L158 146 L152 154 L126 134 Z" />
+        </g>
       </defs>
 
-      {/* screen glow */}
-      <ellipse className="scholar-glow" cx="262" cy="98" rx="86" ry="64" fill="url(#sc-glow)" />
+      {/* screen glow and light beam toward the thinker */}
+      <ellipse className="scholar-glow" cx="262" cy="96" rx="92" ry="68" fill="url(#sc-glow)" />
+      <path d="M222 70 L150 84 L150 146 L222 126 Z" fill="url(#sc-beam)" />
 
-      {/* desk */}
-      <rect x="14" y="170" width="312" height="9" rx="3" fill="#12304a" />
-      <rect x="40" y="179" width="8" height="24" fill="#0d2438" />
-      <rect x="292" y="179" width="8" height="24" fill="#0d2438" />
+      {/* floor line with a soft cyan sheen */}
+      <rect x="14" y="170" width="312" height="2" fill="url(#sc-floor)" />
 
-      {/* monitor */}
-      <rect x="212" y="58" width="104" height="72" rx="6" fill="#0a1626" stroke="#2a8fb0" strokeWidth="2" />
-      <rect x="218" y="64" width="92" height="60" rx="3" fill="url(#sc-screen)" />
-      <g className="scholar-lines" stroke="#6de2fc" strokeLinecap="round" strokeWidth="3">
-        <line x1="226" y1="76" x2="276" y2="76" />
-        <line x1="226" y1="86" x2="296" y2="86" opacity="0.7" />
-        <line x1="226" y1="96" x2="262" y2="96" opacity="0.7" />
-      </g>
-      <g fill="#6de2fc" className="scholar-bars">
-        <rect x="270" y="108" width="7" height="10" rx="1" />
-        <rect x="281" y="102" width="7" height="16" rx="1" />
-        <rect x="292" y="95" width="7" height="23" rx="1" />
-      </g>
-      <rect x="258" y="130" width="12" height="16" fill="#12304a" />
-      <rect x="244" y="144" width="40" height="6" rx="3" fill="#12304a" />
-
-      {/* drifting data sparks */}
-      <g fill="#a8f1ff">
-        <circle className="scholar-spark s1" cx="236" cy="52" r="2" />
-        <circle className="scholar-spark s2" cx="268" cy="48" r="1.6" />
-        <circle className="scholar-spark s3" cx="298" cy="54" r="2" />
-      </g>
-
-      {/* chair back */}
-      <rect x="62" y="104" width="22" height="66" rx="8" fill="#0d2438" />
-
-      {/* body: teal cardigan */}
-      <path d="M72 170 C70 136 88 118 118 116 C148 118 164 136 162 170 Z" fill="#1f7f8c" />
-      <path d="M118 118 L118 170" stroke="#145a66" strokeWidth="3" />
-      <circle cx="124" cy="138" r="2.4" fill="#0e3f49" />
-      <circle cx="124" cy="152" r="2.4" fill="#0e3f49" />
-      <path d="M104 118 L118 134 L132 118" fill="#eef4f8" />
-
-      {/* open book on the desk */}
+      {/* holographic screen */}
       <g>
-        <path d="M70 166 L116 156 L116 132 L70 142 Z" fill="#f4efe0" stroke="#c9bfa2" strokeWidth="1" />
-        <path d="M162 166 L116 156 L116 132 L162 142 Z" fill="#faf6ea" stroke="#c9bfa2" strokeWidth="1" />
-        <path d="M116 132 L116 156" stroke="#b3a782" strokeWidth="1.5" />
-        <g stroke="#9aa5ad" strokeWidth="1.2" strokeLinecap="round" opacity="0.8">
-          <line x1="76" y1="148" x2="108" y2="142" />
-          <line x1="76" y1="154" x2="108" y2="148" />
-          <line x1="124" y1="142" x2="156" y2="148" />
-          <line x1="124" y1="148" x2="156" y2="154" />
+        <rect x="216" y="52" width="102" height="82" rx="6" fill="#6de2fc" fillOpacity="0.07" stroke="#6de2fc" strokeOpacity="0.75" strokeWidth="1.4" />
+        <g className="scholar-lines" stroke="#6de2fc" strokeLinecap="round" strokeWidth="2.2">
+          <line x1="228" y1="66" x2="270" y2="66" />
+          <line x1="228" y1="75" x2="292" y2="75" opacity="0.6" />
+          <line x1="228" y1="84" x2="258" y2="84" opacity="0.6" />
         </g>
-        <path className="scholar-page" d="M116 132 L158 142 L158 164 L116 156 Z" fill="#fffdf4" stroke="#d8cfb3" strokeWidth="1" />
+        <g fill="#6de2fc" className="scholar-bars">
+          <rect x="268" y="112" width="7" height="10" rx="1" />
+          <rect x="279" y="105" width="7" height="17" rx="1" />
+          <rect x="290" y="97" width="7" height="25" rx="1" />
+        </g>
+        <circle className="scholar-ring" cx="240" cy="110" r="12" fill="none" stroke="#a8f1ff" strokeWidth="1.4" strokeDasharray="6 5" />
+        <circle cx="240" cy="110" r="3" fill="#a8f1ff" />
+        <rect x="262" y="134" width="4" height="14" fill="#6de2fc" fillOpacity="0.4" />
       </g>
 
-      {/* hands */}
-      <ellipse cx="86" cy="157" rx="8" ry="5" fill="#f2c9a5" />
-      <ellipse cx="150" cy="159" rx="8" ry="5" fill="#f2c9a5" />
+      {/* sparks rising from the screen */}
+      <g fill="#a8f1ff">
+        <circle className="scholar-spark s1" cx="232" cy="46" r="1.8" />
+        <circle className="scholar-spark s2" cx="266" cy="42" r="1.5" />
+        <circle className="scholar-spark s3" cx="300" cy="48" r="1.8" />
+      </g>
 
-      {/* head */}
+      {/* body: rim copy, then dark shape */}
+      <g fill="#6de2fc" opacity="0.55" transform="translate(2.2 -0.6)">
+        <use href="#sc-body-shape" />
+      </g>
+      <g fill="#050912">
+        <use href="#sc-body-shape" />
+      </g>
+
+      {/* glowing book held open on the lap */}
+      <g>
+        <ellipse cx="148" cy="160" rx="34" ry="8" fill="#6de2fc" fillOpacity="0.25" />
+        <path d="M118 160 L148 150 L148 130 L118 140 Z" fill="url(#sc-book)" />
+        <path d="M178 160 L148 150 L148 130 L178 140 Z" fill="url(#sc-book)" fillOpacity="0.9" />
+        <path d="M148 130 L148 150" stroke="#4aa9c4" strokeWidth="1.2" />
+        <g stroke="#4f9fb8" strokeWidth="1" strokeLinecap="round" opacity="0.7">
+          <line x1="124" y1="147" x2="143" y2="141" />
+          <line x1="124" y1="152" x2="143" y2="146" />
+          <line x1="154" y1="141" x2="173" y2="147" />
+          <line x1="154" y1="146" x2="173" y2="152" />
+        </g>
+        <path className="scholar-page" d="M148 130 L176 140 L176 158 L148 150 Z" fill="#effbff" />
+      </g>
+      {/* hands over the book */}
+      <ellipse cx="124" cy="156" rx="8" ry="4.5" fill="#050912" />
+      <ellipse cx="172" cy="157" rx="8" ry="4.5" fill="#050912" />
+
+      {/* head: rim copy brightens while he looks at the screen */}
       <g className="scholar-head">
-        {/* wild white hair, behind the face */}
-        <g fill="#f4f6f8">
-          <circle cx="92" cy="78" r="13" />
-          <circle cx="86" cy="64" r="11" />
-          <circle cx="98" cy="50" r="12" />
-          <circle cx="116" cy="44" r="13" />
-          <circle cx="134" cy="50" r="12" />
-          <circle cx="146" cy="64" r="11" />
-          <circle cx="142" cy="78" r="13" />
-          <circle cx="84" cy="48" r="7" />
-          <circle cx="150" cy="46" r="7" />
+        <g className="scholar-rim" fill="#6de2fc" transform="translate(2.4 -0.6)">
+          <use href="#sc-head-shape" />
         </g>
-        {/* face */}
-        <ellipse cx="118" cy="82" rx="27" ry="31" fill="#f2c9a5" />
-        <circle cx="91" cy="86" r="5" fill="#eab995" />
-        <circle cx="145" cy="86" r="5" fill="#eab995" />
-        {/* brows */}
-        <path d="M100 68 Q108 63 114 68" stroke="#e4e8ec" strokeWidth="3.4" fill="none" strokeLinecap="round" />
-        <path d="M122 68 Q128 63 136 68" stroke="#e4e8ec" strokeWidth="3.4" fill="none" strokeLinecap="round" />
-        {/* eyes with pupils that travel between book and screen */}
-        <circle cx="107" cy="78" r="9" fill="#ffffff" />
-        <circle cx="129" cy="78" r="9" fill="#ffffff" />
-        <g className="scholar-look">
-          <g className="scholar-blink">
-            <circle cx="107" cy="78" r="3.6" fill="#13233b" />
-            <circle cx="129" cy="78" r="3.6" fill="#13233b" />
-          </g>
+        <g fill="#050912">
+          <use href="#sc-head-shape" />
         </g>
-        {/* round glasses */}
-        <g fill="none" stroke="#223049" strokeWidth="2.4">
-          <circle cx="107" cy="78" r="10.5" />
-          <circle cx="129" cy="78" r="10.5" />
-          <path d="M117.5 78 L118.5 78" />
-          <path d="M96.5 76 L90 73" />
-          <path d="M139.5 76 L146 73" />
-        </g>
-        {/* nose and a soft smile */}
-        <path d="M118 84 Q122 92 117 95" stroke="#d9a57f" strokeWidth="2.2" fill="none" strokeLinecap="round" />
-        <path d="M108 102 Q118 108 128 102" stroke="#a8603f" strokeWidth="2.4" fill="none" strokeLinecap="round" />
       </g>
     </svg>
   );

@@ -1880,3 +1880,73 @@ body {
 .blog-cyan .blog-card {
   background-color: rgba(10, 14, 26, 0.45);
 }
+
+/* Scholar landing art (components/shared/scholar-art.tsx) */
+.scholar-art * {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+/* Eyes: read the book, glance at the screen, come back. 9s loop. */
+@keyframes scholar-look {
+  0%, 38% { transform: translate(-2px, 3px); }
+  46%, 84% { transform: translate(4px, -1px); }
+  92%, 100% { transform: translate(-2px, 3px); }
+}
+@keyframes scholar-head {
+  0%, 38% { transform: rotate(-2deg); }
+  46%, 84% { transform: rotate(2.5deg); }
+  92%, 100% { transform: rotate(-2deg); }
+}
+@keyframes scholar-blink {
+  0%, 46%, 50%, 100% { transform: scaleY(1); }
+  48% { transform: scaleY(0.1); }
+}
+@keyframes scholar-page {
+  0%, 30% { transform: scaleX(1); opacity: 1; }
+  36% { transform: scaleX(-1); opacity: 1; }
+  37%, 100% { transform: scaleX(1); opacity: 0; }
+}
+@keyframes scholar-glow {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
+}
+@keyframes scholar-lines {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+@keyframes scholar-bars {
+  0%, 100% { transform: scaleY(0.8); }
+  50% { transform: scaleY(1.15); }
+}
+@keyframes scholar-spark {
+  0% { transform: translateY(8px); opacity: 0; }
+  30% { opacity: 1; }
+  100% { transform: translateY(-14px); opacity: 0; }
+}
+
+.scholar-look { animation: scholar-look 9s ease-in-out infinite; }
+.scholar-head { animation: scholar-head 9s ease-in-out infinite; }
+.scholar-blink { animation: scholar-blink 9s ease-in-out infinite; }
+.scholar-page { animation: scholar-page 9s ease-in-out infinite; transform-origin: left center; }
+.scholar-glow { animation: scholar-glow 3.2s ease-in-out infinite; }
+.scholar-lines { animation: scholar-lines 2.4s ease-in-out infinite; }
+.scholar-bars { animation: scholar-bars 3s ease-in-out infinite; transform-origin: bottom; }
+.scholar-spark { animation: scholar-spark 4s ease-out infinite; }
+.scholar-spark.s2 { animation-delay: 1.3s; }
+.scholar-spark.s3 { animation-delay: 2.6s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .scholar-look,
+  .scholar-head,
+  .scholar-blink,
+  .scholar-page,
+  .scholar-glow,
+  .scholar-lines,
+  .scholar-bars,
+  .scholar-spark {
+    animation: none;
+  }
+  .scholar-page { opacity: 0; }
+  .scholar-look { transform: translate(-2px, 3px); }
+}

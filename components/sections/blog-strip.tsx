@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { blogPosts } from "@/data/blog";
+import { ScholarArt } from "@/components/shared/scholar-art";
 
 /*
   A slim "latest posts" strip. Kept short on purpose: one row of three
@@ -16,14 +17,17 @@ export function BlogStrip() {
   return (
     <section id="blog" className="blog-cyan py-12 md:py-16">
       <div className="shell">
-        <div className="flex items-baseline justify-between gap-4">
-          <p className="section-label">Latest from the blog</p>
-          <Link
-            href="/blog"
-            className="text-sm text-paper/70 transition-colors duration-200 hover:text-accent-soft"
-          >
-            View all posts
-          </Link>
+        <div className="flex flex-col items-center gap-4 md:flex-row md:items-center md:justify-between md:gap-8">
+          <div className="flex w-full items-baseline justify-between gap-4 md:w-auto md:flex-col md:items-start md:gap-4">
+            <p className="section-label">Latest from the blog</p>
+            <Link
+              href="/blog"
+              className="text-sm text-paper/70 transition-colors duration-200 hover:text-accent-soft"
+            >
+              View all posts
+            </Link>
+          </div>
+          <ScholarArt className="scholar-art h-auto w-48 shrink-0 sm:w-56 md:w-80" />
         </div>
 
         <div className="mt-6 grid gap-3 md:grid-cols-3 md:gap-4">

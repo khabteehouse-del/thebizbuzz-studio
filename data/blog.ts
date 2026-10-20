@@ -13,6 +13,28 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "nvidia-nemotron-3-5-open-agent-models",
+    title: "Nvidia Releases Open Nemotron 3.5 Models for Business AI Agents",
+    description:
+      "Nvidia has released three open-weight Nemotron 3.5 models aimed at running AI agents on a company's own servers or on a single AI PC.",
+    date: "2026-10-20",
+    readTime: "4 min read",
+    tags: ["AI News", "Tech News"],
+    image: "/images/blog/nvidia-nemotron-3-5-open-agent-models.jpg",
+    body: [
+      "On October 15, 2026, Nvidia announced Nemotron 3.5, a set of open models built for AI agents, according to Nvidia's own blog. TechCrunch followed with its coverage on October 19. The release has three parts: Nemotron 3.5 Super VL, a 120-billion-parameter multimodal model for enterprise agents; Bolt 74B-A9B, an edge model for local use; and Bolt E4B, a 4GB model for conversational agents that Nvidia says arrives on October 23.",
+      "The pitch is control. Nvidia says companies can post-train Super VL on their own data and run it on their own infrastructure. Super VL is available on Hugging Face, OpenRouter, ModelScope and Nvidia NIM. Bolt 74B-A9B uses 2-bit quantization to fit in 24GB of memory, so it can run on a workstation or an AI PC, and it works with tools such as Ollama, LM Studio, llama.cpp and vLLM. Nvidia's Kari Briski told TechCrunch that users can hand off everyday projects without sending those workloads to the cloud. Nvidia describes the models as open weights with open datasets and training recipes, but the sources we read do not state the license terms, so check the model pages before commercial use.",
+      "The performance numbers are Nvidia's own claims, and none have been independently verified in the coverage. Nvidia says Super VL matches its largest reasoning model on multimodal agent tasks with about one-fifth of the parameters, and delivers up to 5x the throughput of the next best model in its class on the Artificial Analysis Intelligence Index. It also says Bolt 74B-A9B ranks first among open models of its class on PinchBench and second on BrowseComp. TechCrunch reports that Nvidia says a post-trained Super VL finishes some agent tasks faster than models from Anthropic and OpenAI, but the article gives no benchmark figures for that.",
+      "Early users named by Nvidia and Techzine include Atlassian, CrowdStrike, Perplexity, Salesforce and Synopsys as integration partners, and Scale AI adapted the model for an EY due diligence agent. These are announced integrations, not published results. TechCrunch also notes that the big proprietary labs, which are Nvidia customers, are increasingly using other chips, so open models that run best on Nvidia hardware also support Nvidia's own business.",
+      "For businesses, the takeaway is that running AI agents on your own hardware is becoming a realistic option, not only a research project. It matters most when data cannot leave your network, such as contracts, financial records or customer files. Before you commit, test the model on your own documents, compare running costs against a hosted API, confirm the license allows your use, and plan for the hardware and staff time it takes to host and update a model. For many teams, a hosted model will stay simpler, but now there is a credible private alternative to price against it.",
+    ],
+    sources: [
+      { label: "NVIDIA Blog (Nemotron 3.5 announcement)", url: "https://blogs.nvidia.com/?p=98620" },
+      { label: "TechCrunch", url: "https://techcrunch.com/2026/10/19/nvidia-launches-new-open-models-to-run-agents-in-the-enterprise-and-on-pcs" },
+      { label: "Techzine", url: "https://www.techzine.eu/news/analytics/145037/nvidia-launches-nemotron-3-5-super-vl-and-bolt-for-ai-agents/" },
+    ],
+  },
+  {
     slug: "taiwan-ai-chip-smuggling-crime",
     title: "Taiwan Moves to Make AI Chip Smuggling to China a Crime",
     description:

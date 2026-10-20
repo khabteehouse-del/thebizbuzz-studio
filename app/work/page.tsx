@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function WorkPage() {
   return (
-    <div className="relative min-h-dvh bg-ink pb-24 pt-32 md:pb-32 md:pt-48">
+    <div className="blog-cyan relative min-h-dvh pb-24 pt-32 md:pb-32 md:pt-48">
       <div className="shell">
         <div className="flex flex-col gap-10 md:flex-row md:items-center md:justify-between md:gap-12">
           <div>

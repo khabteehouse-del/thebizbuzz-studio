@@ -13,6 +13,28 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "jpmorgan-jpm-coin-ethereum-deposit-token",
+    title: "JPMorgan Brings Its JPM Coin Deposit Token to Ethereum",
+    description:
+      "JPMorgan has extended its JPM Coin deposit token to the Ethereum network for institutional clients, a sign that bank money is moving onto public blockchains.",
+    date: "2026-10-21",
+    readTime: "4 min read",
+    tags: ["Crypto", "Tech News"],
+    image: "/images/blog/jpmorgan-jpm-coin-ethereum-deposit-token.jpg",
+    body: [
+      "On October 19, 2026, Kinexys by JPMorgan announced that JPM Coin (abbreviated JPMD) is now available on Ethereum for institutional clients, according to The Block and CryptoSlate. JPMD is a USD deposit token. It digitally represents a bank deposit on a blockchain, and the bank says it is meant to make onchain payments faster and more efficient.",
+      "This is an expansion, not a first launch. JPMD went live for institutional clients on Base, an Ethereum Layer 2 network, in November 2025, after a proof of concept that began in June 2025. It now supports peer-to-peer transfers across the Ethereum Virtual Machine ecosystem, including Base and Ethereum. Kinexys said Ethereum's established depth of onchain liquidity and tokenized assets makes it a natural next public blockchain. Emma Landriault, global head of Kinexys Labs, said: \"Tokenized financial infrastructure is no longer theoretical.\"",
+      "It is important to be clear about what this is not. JPMD is not a stablecoin and not available to the public. CryptoSlate reports that access stays tied to the bank's institutional client base and that no retail rollout was announced, so a public network does not mean every Ethereum wallet holder can use it. Coinpaprika adds that only counterparties vetted by the bank can hold or receive the token, although transfers are recorded on a public ledger. Neither source reported any transaction volumes for JPMD on Ethereum. For context, The Block cites Kinexys figures of more than $4 trillion in cumulative transactions and about $7 billion in average daily volume across its platform, which are the bank's own numbers.",
+      "JPMorgan has also put funds onchain. The Block and CryptoSlate report a tokenized money-market fund launched on Ethereum in December 2025 and a second in May 2026. Taken together, the company is building a set of products on public networks, though CryptoSlate notes that uses such as programmable treasury are potential, not live features.",
+      "For businesses, the takeaway is practical. If you pay suppliers, move money between countries or hold cash across several banks, tokenized bank deposits may eventually offer settlement outside normal banking hours. For now, this is limited to large institutions, so no action is needed today. It is still worth asking your bank whether it plans to offer similar services, and what its terms, fees and compliance checks would be. Treat vendor and bank claims about speed and savings as claims until you can test them on your own payment flows.",
+    ],
+    sources: [
+      { label: "The Block", url: "https://www.theblock.co/news/business/2026-10-19-jpmorgan-jpm-coin-deposit-token-ethereum-418874" },
+      { label: "CryptoSlate", url: "https://cryptoslate.com/jpmorgan-drops-jpm-coin-on-ethereum-with-zero-retail-access/" },
+      { label: "Coinpaprika", url: "https://coinpaprika.com/news/jpmorgan-puts-dollar-deposit-token-ethereum" },
+    ],
+  },
+  {
     slug: "nvidia-nemotron-3-5-open-agent-models",
     title: "Nvidia Releases Open Nemotron 3.5 Models for Business AI Agents",
     description:

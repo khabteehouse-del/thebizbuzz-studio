@@ -13,6 +13,28 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "google-cloud-london-outage-october-2026",
+    title: "Google Cloud London Outage Disrupts UK Banks and Retailers",
+    description:
+      "A power event in one Google Cloud London zone on October 20, 2026 caused hours of disruption for banks, delivery firms and retailers, and it is a reminder to test cloud resilience.",
+    date: "2026-10-22",
+    readTime: "4 min read",
+    tags: ["Tech News", "Cloud"],
+    image: "/images/blog/google-cloud-london-outage-october-2026.jpg",
+    body: [
+      "On Tuesday, October 20, 2026, Google Cloud suffered an outage in its London region (europe-west2). The Register reports that the problem began at about 06:08 UTC in one zone, europe-west2-b, which is one of three zones in the region. Google said on its status page that \"a power event caused an outage within europe-west2-b zone.\" Cisco ThousandEyes, which monitors internet and cloud performance, says it first saw the outage at about 06:10 UTC and saw services begin to recover at about 11:30 UTC.",
+      "The Register lists several Google Cloud services as affected, including Google Kubernetes Engine, Cloud Run, App Engine and BigQuery Data Transfer Service. It also names Lloyds Bank, HSBC, Royal Mail, Rightmove, DPD, BT, Screwfix and Revolut as customers hit by the disruption. ITPro adds that Revolut customers could not make card payments, withdraw cash or make transfers for several hours, and that Revolut said customer funds and data stayed secure. ITPro also reports that some HSBC customers could not log in through the app or online.",
+      "Google said at 14:03 UTC that the issue was mostly mitigated and normal service had resumed for most customers, though a very small number were still affected. ThousandEyes puts the time from onset to full resolution at about 7 hours 50 minutes. The exact cause is not yet confirmed in detail. Google has said it will publish an analysis after its internal investigation, but no date was given. ITPro reports that the Financial Conduct Authority and the Bank of England's Prudential Regulation Authority have asked for more information, since Google is designated under the UK's Critical Third Parties regime for financial services.",
+      "One point stands out. Only one of the region's three zones was named as failing, yet the effects reached many well-known companies. That suggests some of those services were not designed to keep running when a single zone is lost. We cannot say from the sources why each company was affected, and it would be wrong to blame any of them. What the reports do show is that a single provider, region or zone can become a single point of failure.",
+      "For businesses, the takeaway is practical. Find out which cloud region and zones your key systems run in, and whether they can keep running if one zone fails. Check that your backups and your payment or login providers do not depend on the same infrastructure as your main systems. Write a simple plan for what customers and staff see during an outage, and test it. Multi-zone design costs more, so decide which systems truly need it, such as payments, orders and customer support, and start there.",
+    ],
+    sources: [
+      { label: "The Register", url: "https://www.theregister.com/paas-and-iaas/2026/10/20/google-cloud-says-a-power-event-caused-todays-outage/5304160" },
+      { label: "Cisco ThousandEyes", url: "https://www.thousandeyes.com/blog/google-cloud-outage-analysis-october-20-2026" },
+      { label: "ITPro", url: "https://www.itpro.com/infrastructure/the-google-cloud-outage-explained-what-happened-who-was-affected-and-what-can-we-learn-from-the-incident" },
+    ],
+  },
+  {
     slug: "jpmorgan-jpm-coin-ethereum-deposit-token",
     title: "JPMorgan Brings Its JPM Coin Deposit Token to Ethereum",
     description:

@@ -13,6 +13,27 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "chrome-clickfix-enhanced-protection-october-2026",
+    title: "Chrome Adds Defenses Against ClickFix Copy-and-Paste Scams",
+    description:
+      "Google announced on October 20, 2026 that Chrome's Enhanced Protection now checks copied commands and uses a server-side Gemini model to flag scam pages.",
+    date: "2026-10-23",
+    readTime: "4 min read",
+    tags: ["Cybersecurity", "Tech News"],
+    image: "/images/blog/chrome-clickfix-enhanced-protection-october-2026.jpg",
+    body: [
+      "On October 20, 2026, Google published details of new Chrome protections against ClickFix, a scam where a fake error or verification page tells the user to copy a command and run it themselves. Google says the command shown on the page is often different from the one that is actually copied. Such commands usually call built-in system tools like PowerShell or cmd.exe to download malware. Because the download happens outside the browser, Chrome's normal download protections do not see it.",
+      "To close that gap, Chrome now watches for a suspicious command being copied. For users who have Enhanced Protection turned on, Chrome removes personal information from the clipboard content, sends it to Safe Browsing for analysis, and shows a warning if the verdict is dangerous. Google says the system is designed to be high precision so it does not get in the way of legitimate developer work. The post gives no rollout dates, regions or version numbers, and the feature applies only to users who have Enhanced Protection enabled.",
+      "Google also added a two-tier warning system for sites. Dangerous sites, which are high-confidence verdicts, keep the full-page red warning. Suspicious sites, which are lower-confidence verdicts, get a different design, so Chrome can warn about more pages without treating every one as a confirmed threat. In addition, Google moved its Gemini scam detection from an on-device model to a more powerful server-side model for all Enhanced Protection users. It now covers fake antivirus and fake browser update pages, as well as tech support scams. Google says page text is sent only when a site shows high-confidence scam indicators, and that it is processed ephemerally and never logged, retained or used to train models.",
+      "Google also claims that Enhanced Protection users are ten times safer from phishing, social engineering, notification abuse and other scams than Standard Protection users. This is Google's own figure, based on comparing the average number of safety warnings shown to each group, so treat it as a vendor claim and not an independent result. Enhanced Protection also sends more browsing data to Google, so some organizations will want to review that before turning it on.",
+      "For businesses, the takeaway is practical. Train staff that no legitimate website or browser will ever ask them to paste a command into a terminal, Run box or PowerShell window to fix a problem. Consider turning on Enhanced Protection, or setting it through your Chrome management policies, after checking it fits your privacy rules. Limit who can run PowerShell and command prompt on everyday work machines, and keep endpoint security tools active, because browser warnings are one layer and not a complete defense.",
+    ],
+    sources: [
+      { label: "Google Blog: Our latest defenses against evolving web scams", url: "https://blog.google/security/our-latest-defenses-against-evolving-web-scams/" },
+      { label: "Help Net Security", url: "https://www.helpnetsecurity.com/?p=388447" },
+    ],
+  },
+  {
     slug: "google-cloud-london-outage-october-2026",
     title: "Google Cloud London Outage Disrupts UK Banks and Retailers",
     description:

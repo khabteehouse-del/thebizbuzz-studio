@@ -28,6 +28,11 @@ import { site } from "@/data/site";
 */
 const VIDEO_SPEED = 0.5;
 
+/* Pre-selects the pathway in the enquiry form before the page scrolls to it */
+function choosePathway(pathway: "local" | "ai") {
+  window.dispatchEvent(new CustomEvent("enquiry-pathway", { detail: pathway }));
+}
+
 export function Hero() {
   const ref = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -328,26 +333,37 @@ export function Hero() {
               className="mt-9 flex flex-wrap items-center gap-3 md:mt-11 md:gap-4"
             >
               <Magnetic strength={14}>
-                <Button
-                  href="#contact"
-                  variant="primary"
-                  size="lg"
-                  className="w-[15rem] justify-between md:w-[17rem]"
-                >
-                  Start a project
-                </Button>
+                <span onClickCapture={() => choosePathway("local")}>
+                  <Button
+                    href="#contact"
+                    variant="primary"
+                    size="lg"
+                    className="w-[15rem] justify-between md:w-[17rem]"
+                  >
+                    For local businesses
+                  </Button>
+                </span>
               </Magnetic>
 
               <Magnetic strength={14}>
-                <Button
-                  href="#work"
-                  variant="ghost"
-                  size="lg"
-                  className="w-[15rem] justify-between md:w-[17rem]"
-                >
-                  See our work
-                </Button>
+                <span onClickCapture={() => choosePathway("ai")}>
+                  <Button
+                    href="#contact"
+                    variant="ghost"
+                    size="lg"
+                    className="w-[15rem] justify-between md:w-[17rem]"
+                  >
+                    For AI and software
+                  </Button>
+                </span>
               </Magnetic>
+
+              <a
+                href="#work"
+                className="px-1 text-xs uppercase tracking-[0.14em] text-paper/70 transition-colors duration-200 hover:text-paper"
+              >
+                See our work
+              </a>
             </motion.div>
           </motion.div>
         </div>

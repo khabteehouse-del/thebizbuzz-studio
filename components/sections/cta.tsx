@@ -5,6 +5,7 @@ import { Orbs } from "@/components/shared/orbs";
 import { Magnetic } from "@/components/shared/magnetic";
 import { Button } from "@/components/shared/button";
 import { SocialLinks } from "@/components/shared/social-links";
+import { EnquiryForm } from "@/components/sections/enquiry-form";
 
 export function Cta() {
   return (
@@ -13,6 +14,7 @@ export function Cta() {
 
       <div className="shell relative py-24 md:py-44">
         <Reveal>
+          <div className="grid gap-14 lg:grid-cols-[1.1fr_1fr] lg:items-start lg:gap-20">
           <div className="max-w-3xl">
             <p className="section-label">Start here</p>
             <h2 className="mt-8 font-display text-3xl font-medium leading-[1.08] tracking-[-0.035em] text-paper sm:text-4xl md:text-7xl">
@@ -61,6 +63,8 @@ export function Cta() {
               </span>
               <SocialLinks variant="round" />
             </div>
+          </div>
+          <EnquiryForm />
           </div>
         </Reveal>
       </div>

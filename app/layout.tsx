@@ -8,7 +8,7 @@ import { Cursor } from "@/components/shared/cursor";
 import { Grain } from "@/components/shared/grain";
 import { GbpWidget } from "@/components/tools/gbp-widget";
 import { OffscreenPause } from "@/components/shared/offscreen-pause";
-import { site } from "@/data/site";
+import { site, socialLinks } from "@/data/site";
 import "./globals.css";
 
 /*
@@ -48,11 +48,20 @@ export const metadata: Metadata = {
     url: site.url,
     siteName: site.name,
     type: "website",
+    images: [
+      {
+        url: "/images/og/home.jpg",
+        width: 1200,
+        height: 630,
+        alt: `${site.name}, ${site.tagline}`,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: `${site.name} | ${site.tagline}`,
     description: site.description,
+    images: ["/images/og/home.jpg"],
   },
   robots: {
     index: true,
@@ -68,16 +77,23 @@ const organizationSchema = {
   "@type": "Organization",
   name: "The Biz Buzz",
   alternateName: "Biz Buzz",
-  url: "https://www.thebizbuzz.studio/",
-  logo: "https://www.thebizbuzz.studio/images/logo/logo.png",
+  url: site.url,
+  logo: `${site.url}/images/logo/logo.png`,
+  description: site.description,
+  email: site.email,
+  address: [
+    { "@type": "PostalAddress", addressLocality: "Karachi", addressCountry: "PK" },
+    { "@type": "PostalAddress", addressLocality: "Dubai", addressCountry: "AE" },
+  ],
   contactPoint: {
     "@type": "ContactPoint",
-    telephone: "",
+    telephone: "+923133330908",
+    email: site.email,
     contactType: "customer service",
     areaServed: ["AE", "PK"],
     availableLanguage: "en",
   },
-  sameAs: "https://www.linkedin.com/company/bizbuzzstudio",
+  sameAs: socialLinks.map((link) => link.href),
 };
 
 export default function RootLayout({

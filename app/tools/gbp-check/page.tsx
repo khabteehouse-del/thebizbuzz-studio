@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "Free Google Business Profile check",
   description:
     "Twelve questions, two minutes. Find out what your Google listing is costing you in customers, and get a written plan to fix it.",
+  alternates: { canonical: "/tools/gbp-check" },
 };
 
 export default function GbpCheckPage() {

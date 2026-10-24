@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: "Our work",
   description:
     "AI systems and client builds from BizBuzz: enterprise AI, autonomous agents, self-hosted RAG, clinical vision and inventory systems.",
+  alternates: { canonical: "/work" },
 };
 
 export default function WorkPage() {

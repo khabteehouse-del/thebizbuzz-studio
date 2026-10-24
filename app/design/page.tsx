@@ -5,6 +5,7 @@ import { DesignGallery } from "@/components/design/gallery";
 import { designCredit } from "@/data/designs";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/design" },
   title: "Design studio",
   description:
     "Brand identity, logos, flyers and posters from the BizBuzz design team. Browse the work by discipline and open any piece full screen.",

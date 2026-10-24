@@ -13,6 +13,27 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "world-bank-pakistan-50m-startup-fund-october-2026",
+    title: "World Bank Plans $50M Fund of Funds for Pakistan Startups",
+    description:
+      "A World Bank project document reported on October 22, 2026 proposes a $50 million fund of funds to back venture capital firms investing in Pakistani startups.",
+    date: "2026-10-24",
+    readTime: "4 min read",
+    tags: ["Tech News", "Pakistan"],
+    image: "/images/blog/world-bank-pakistan-50m-startup-fund-october-2026.jpg",
+    body: [
+      "On October 22, 2026, Dawn reported on a World Bank project document for Pakistan called the Pakistan Entrepreneurship and Private Investment Catalyst Project. The project would help the country attract private investment and widen access to risk capital for innovative, high-growth firms. It is still at the concept stage. Dawn says approval by the World Bank Executive Board is expected in early 2027, so nothing has been approved or funded yet.",
+      "The core of the plan is a $50 million Fund of Funds. According to Dawn, the government would establish and capitalise it to support Pakistan's early-stage innovation and venture capital ecosystem. A fund of funds does not invest in companies directly. It puts money into professionally managed venture capital funds, which then back startups. Bloom Pakistan, which also reported on the plan, describes the same structure and says the fund is meant to strengthen the local venture capital market.",
+      "The stated goal is to draw in both domestic and international private investors and to address a long-standing gap in financing for early-stage and growth companies. Over time, the World Bank expects this to support company growth, innovation, productivity and job creation. The reports say the project has a national scope with no fixed location, and that the investment portfolio and operating arrangements are still to be worked out by the project team. No names of funds or managers have been given.",
+      "It is worth being careful about what this is not. It is a proposal, not a funding round, and the money would flow through venture funds rather than straight to individual startups. Founders should not expect cash soon. If the board approves it in 2027, the first practical effect would likely be more capital available to local venture funds, which can take time to reach companies.",
+      "For businesses, the takeaway is practical. If you run a startup or a tech company in Pakistan, keep your financials, product metrics and legal structure investor-ready, because new venture funds tend to favor companies that can show clean records. If you sell to startups, expect a possible rise in spending on software, cloud and digital services if funding grows. Watch for the board decision in early 2027 and for any announcement of which venture funds would receive the money.",
+    ],
+    sources: [
+      { label: "Dawn: World Bank to support Pakistani start-ups", url: "https://www.dawn.com/news/2038900/world-bank-to-support-pakistani-start-ups" },
+      { label: "Bloom Pakistan: Pakistan's Startups Could Get $50 Million in Funding From World Bank", url: "https://bloompakistan.com/pakistans-startups-could-get-50-million-in-funding-from-world-bank/" },
+    ],
+  },
+  {
     slug: "chrome-clickfix-enhanced-protection-october-2026",
     title: "Chrome Adds Defenses Against ClickFix Copy-and-Paste Scams",
     description:

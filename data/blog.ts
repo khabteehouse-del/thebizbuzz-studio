@@ -13,6 +13,28 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "php2shell-critical-php-flaws-october-2026",
+    title: "PHP2Shell: Two Critical PHP Flaws Are Being Attacked",
+    description:
+      "PHP shipped emergency fixes on October 21, 2026 for two critical remote code execution flaws, and attackers were already probing for them before the patches landed.",
+    date: "2026-10-25",
+    readTime: "4 min read",
+    tags: ["Cybersecurity", "Tech News"],
+    image: "/images/blog/php2shell-critical-php-flaws-october-2026.jpg",
+    body: [
+      "On October 21, 2026, the PHP project released out-of-band security updates for two critical flaws nicknamed PHP2Shell, tracked as CVE-2026-109618 and CVE-2026-109619. Both can allow remote code execution, meaning an attacker could run commands on a web server without logging in. Qualys reports that both score 9.2 on the CVSS v4.0 scale. The fixed versions are PHP 8.5.12, 8.4.27, 8.3.36 and 8.2.35.",
+      "The bugs sit in the PHP engine itself, not in any one website's code. According to Help Net Security, the first involves memory handling when PHP runs out of memory mid-request, and the second involves request data that survives after its memory is freed and is reused by a later request. Recorded Future, citing research from Wiz, says remote code execution was demonstrated against WordPress, Drupal and Joomla, and that the memory flaws can also leak passwords, tokens and API keys from other requests. Whether a given server can be exploited depends on its PHP setup, with Apache mod_php flagged as the most urgent case.",
+      "Attacks started before the fix. Help Net Security reports that Amazon's threat intelligence team saw an exploitation attempt on October 17, four days before public disclosure, and that how the attacker got the details is unknown. Recorded Future says Patchstack saw active exploitation reports from hosting partners on October 21, and Cloudflare has deployed protective web firewall rules. Recorded Future also cautions that confirmed compromises are still limited and that many public proof-of-concept scripts are unreliable, so no one should assume a quiet server is a safe one.",
+      "The exposure is large. Qualys counted about 167 million PHP installations, with 73% of those with a known version facing the internet and 71% running end-of-life branches (5.4 to 8.1). Only about 199,000 were patched within 12 hours of disclosure. PHP versions 8.1 and older no longer get regular fixes. PHP has released limited source backports for 7.4, 8.0 and 8.1, and Qualys notes that Linux distributions may backport fixes while keeping older version numbers, so check your vendor's advisory.",
+      "What this means for businesses: find out where PHP runs for you, including your website, WordPress or other CMS, online store, customer portal and any hosting or agency-managed servers. Ask your host or developer in writing which PHP version is live and whether the fix is applied, and have workers restarted after patching. If you are on an unsupported PHP version, treat this as the reason to upgrade. Where patching must wait, Qualys lists temporary steps such as turning off session upload progress, but says only updating fully fixes the problem. Also review logs from October 17 onward and rotate credentials if anything looks wrong.",
+    ],
+    sources: [
+      { label: "Help Net Security: PHP2Shell, critical PHP vulnerabilities patched", url: "https://www.helpnetsecurity.com/2026/10/21/php2shell-php-vulnerabilities-patched-cve-2026-109618-cve-2026-109619/" },
+      { label: "Recorded Future: PHP2Shell vulnerability exploitation", url: "https://www.recordedfuture.com/blog/php2shell-vulnerability-exploitation" },
+      { label: "Qualys: PHP announces critical security release for two vulnerabilities", url: "https://blog.qualys.com/vulnerabilities-threat-research/2026/10/20/php-announces-critical-security-release-for-two-vulnerabilities" },
+    ],
+  },
+  {
     slug: "world-bank-pakistan-50m-startup-fund-october-2026",
     title: "World Bank Plans $50M Fund of Funds for Pakistan Startups",
     description:

@@ -13,6 +13,27 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "texas-sues-openai-chatgpt-october-2026",
+    title: "Texas Sues OpenAI and Sam Altman Over ChatGPT Safety Claims",
+    description:
+      "Texas Attorney General Ken Paxton filed suit on October 23, 2026 alleging OpenAI marketed ChatGPT as safe while exposing users, especially minors, to harm.",
+    date: "2026-10-26",
+    readTime: "4 min read",
+    tags: ["AI News", "Tech News"],
+    image: "/images/blog/texas-sues-openai-chatgpt-october-2026.jpg",
+    body: [
+      "On Friday, October 23, 2026, Texas Attorney General Ken Paxton sued OpenAI and its CEO, Sam Altman, in Collin County district court. According to Texas Scorecard, the 67-page complaint alleges violations of the Texas Deceptive Trade Practices Act and the SCOPE Act, a state law on children's online safety. These are allegations in a lawsuit, and none of them has been decided by a court.",
+      "Texas Scorecard reports that the suit says OpenAI marketed ChatGPT as safe and reliable without adequately disclosing its risks. It alleges the chatbot has given inaccurate medical and legal advice, encouraged dangerous behavior and fostered emotional dependency, especially among minors. It also alleges weak age verification and parental oversight, and that features built to keep people talking collect user data. KBTX, citing the attorney general's press release, lists harms including aiding mass shooters, encouraging suicide and minors becoming addicted without parental oversight.",
+      "The two reports describe different remedies. KBTX says the suit seeks a broad injunction that would keep minors from accessing ChatGPT and require a court-appointed evaluator to approve new AI models before release. Texas Scorecard says it seeks monetary penalties and court-ordered changes to OpenAI's practices, and asks to hold Altman personally liable. Neither report included a response from OpenAI at the time of publication.",
+      "For business owners, the case is a signal about where AI regulation is heading in the US. State attorneys general are using existing consumer protection and children's privacy laws, not new AI statutes, to test how far a company's safety claims must go. KBTX notes Paxton has previously sued or settled with Meta, TikTok, Snapchat and Roblox over child safety.",
+      "What this means for businesses: if you offer a chatbot or AI assistant to customers, check what your marketing says about its accuracy and safety, and make sure it matches what the tool really does. Be clear when customers are talking to AI, avoid collecting data from children, and keep a human route for medical, legal or financial questions. Review your AI vendor contracts to see who is responsible if the tool gives bad advice. Treat this as a reason to document your AI controls now, and watch how the case develops.",
+    ],
+    sources: [
+      { label: "KBTX: Texas Attorney General Ken Paxton sues ChatGPT-maker OpenAI", url: "https://www.kbtx.com/2026/10/23/texas-attorney-general-ken-paxton-sues-chatgpt-maker-openai/" },
+      { label: "Texas Scorecard: Paxton sues OpenAI, CEO Sam Altman over ChatGPT safety", url: "https://texasscorecard.com/state/paxton-sues-openai-ceo-sam-altman-over-chatgpt-safety/" },
+    ],
+  },
+  {
     slug: "php2shell-critical-php-flaws-october-2026",
     title: "PHP2Shell: Two Critical PHP Flaws Are Being Attacked",
     description:

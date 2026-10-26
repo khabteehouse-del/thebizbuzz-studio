@@ -20,7 +20,7 @@ export const blogPosts: BlogPost[] = [
     date: "2026-10-26",
     readTime: "4 min read",
     tags: ["AI News", "Tech News"],
-    image: "/images/blog/texas-sues-openai-chatgpt-october-2026.jpg",
+    image: "/images/blog/texas-sues-openai-chatgpt-october-2026-real.jpg",
     body: [
       "On Friday, October 23, 2026, Texas Attorney General Ken Paxton sued OpenAI and its CEO, Sam Altman, in Collin County district court. According to Texas Scorecard, the 67-page complaint alleges violations of the Texas Deceptive Trade Practices Act and the SCOPE Act, a state law on children's online safety. These are allegations in a lawsuit, and none of them has been decided by a court.",
       "Texas Scorecard reports that the suit says OpenAI marketed ChatGPT as safe and reliable without adequately disclosing its risks. It alleges the chatbot has given inaccurate medical and legal advice, encouraged dangerous behavior and fostered emotional dependency, especially among minors. It also alleges weak age verification and parental oversight, and that features built to keep people talking collect user data. KBTX, citing the attorney general's press release, lists harms including aiding mass shooters, encouraging suicide and minors becoming addicted without parental oversight.",

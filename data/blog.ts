@@ -41,7 +41,7 @@ export const blogPosts: BlogPost[] = [
     date: "2026-10-25",
     readTime: "4 min read",
     tags: ["Cybersecurity", "Tech News"],
-    image: "/images/blog/php2shell-critical-php-flaws-october-2026.jpg",
+    image: "/images/blog/php2shell-critical-php-flaws-october-2026-real.jpg",
     body: [
       "On October 21, 2026, the PHP project released out-of-band security updates for two critical flaws nicknamed PHP2Shell, tracked as CVE-2026-109618 and CVE-2026-109619. Both can allow remote code execution, meaning an attacker could run commands on a web server without logging in. Qualys reports that both score 9.2 on the CVSS v4.0 scale. The fixed versions are PHP 8.5.12, 8.4.27, 8.3.36 and 8.2.35.",
       "The bugs sit in the PHP engine itself, not in any one website's code. According to Help Net Security, the first involves memory handling when PHP runs out of memory mid-request, and the second involves request data that survives after its memory is freed and is reused by a later request. Recorded Future, citing research from Wiz, says remote code execution was demonstrated against WordPress, Drupal and Joomla, and that the memory flaws can also leak passwords, tokens and API keys from other requests. Whether a given server can be exploited depends on its PHP setup, with Apache mod_php flagged as the most urgent case.",

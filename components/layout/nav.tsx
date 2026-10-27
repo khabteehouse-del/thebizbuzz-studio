@@ -7,7 +7,6 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "motion/react";
 import { Menu, X } from "lucide-react";
 import { navLinks, site } from "@/data/site";
-import { Magnetic } from "@/components/shared/magnetic";
 import { Button } from "@/components/shared/button";
 
 export function Nav() {
@@ -86,11 +85,9 @@ export function Nav() {
             <span className="h-px w-3 bg-[#4fd1c5] transition-all duration-300 group-hover:w-6" />
           </Link>
 
-          <Magnetic strength={12}>
-            <Button href="#contact" variant="primary" size="md">
-              Start a project
-            </Button>
-          </Magnetic>
+          <Button href="#contact" variant="primary" size="md">
+            Start a project
+          </Button>
         </div>
 
         <button

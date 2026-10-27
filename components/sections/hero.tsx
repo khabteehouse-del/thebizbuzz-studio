@@ -38,7 +38,15 @@ export function Hero() {
   const isDesktop = useMediaQuery("(min-width: 768px)");
   const reduceMotion = useMediaQuery("(prefers-reduced-motion: reduce)");
 
-  const pinned = isDesktop && !reduceMotion;
+  /*
+    Pinning needs the whole hero to fit inside one screen height. On a
+    short window (a laptop with a small browser, or a resized window) the
+    content is taller than the screen, and the fixed-height pinned panel
+    cut the top of the headline off under the nav. Below this height the
+    hero falls back to the normal flowing layout, so nothing is clipped.
+  */
+  const tallEnough = useMediaQuery("(min-height: 780px)");
+  const pinned = isDesktop && tallEnough && !reduceMotion;
 
   /*
     Entry animations run on desktop only.

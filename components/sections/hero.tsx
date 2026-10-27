@@ -358,12 +358,14 @@ export function Hero() {
                 </span>
               </Magnetic>
 
-              <a
-                href="#work"
-                className="px-1 text-xs uppercase tracking-[0.14em] text-paper/70 transition-colors duration-200 hover:text-paper"
-              >
-                See our work
-              </a>
+              <div className="basis-full pt-1">
+                <a
+                  href="#work"
+                  className="inline-block px-1 text-xs uppercase tracking-[0.14em] text-paper/70 transition-colors duration-200 hover:text-paper"
+                >
+                  See our work
+                </a>
+              </div>
             </motion.div>
           </motion.div>
         </div>
@@ -371,7 +373,7 @@ export function Hero() {
         {/* Scroll cue, fades out as soon as the visitor starts scrolling */}
         <motion.div
           style={{ opacity: pinned ? contentOpacity : 1 }}
-          className="hero-scroll-cue absolute inset-x-0 bottom-10 hidden justify-center"
+          className="absolute inset-x-0 bottom-10 hidden justify-center md:flex"
         >
           <motion.div
             initial={intro ? { opacity: 0 } : false}

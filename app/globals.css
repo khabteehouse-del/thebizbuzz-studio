@@ -2016,11 +2016,3 @@ section[data-offscreen] *::before,
 section[data-offscreen] *::after {
   animation-play-state: paused !important;
 }
-
-/* Scroll cue in the hero: only on wide AND tall screens, where it cannot
-   collide with the buttons and the "See our work" link above it. */
-@media (min-width: 768px) and (min-height: 900px) {
-  .hero-scroll-cue {
-    display: flex;
-  }
-}

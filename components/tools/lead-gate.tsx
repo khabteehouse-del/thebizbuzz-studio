@@ -83,7 +83,7 @@ export function LeadGate({ answers, seed, onUnlocked, compact }: GateProps) {
           label="Business name"
           value={lead.businessName}
           onChange={(v) => setLead({ ...lead, businessName: v })}
-          placeholder="Al Noor Clinic"
+          placeholder="Your business name"
         />
         <Field
           label="Email"

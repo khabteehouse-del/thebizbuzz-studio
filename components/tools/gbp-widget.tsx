@@ -233,7 +233,7 @@ export function GbpWidget() {
                         onChange={(v) =>
                           setBusiness({ ...business, name: v })
                         }
-                        placeholder="Al Noor Clinic"
+                        placeholder="Your business name"
                       />
                       <MiniField
                         label="What kind of business"
@@ -241,7 +241,7 @@ export function GbpWidget() {
                         onChange={(v) =>
                           setBusiness({ ...business, type: v })
                         }
-                        placeholder="Dental clinic"
+                        placeholder="Your type of business"
                       />
                     </div>
 

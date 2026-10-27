@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
-import { Magnetic } from "@/components/shared/magnetic";
 import { Button } from "@/components/shared/button";
 import { GrowthArrow } from "@/components/shared/growth-arrow";
 import { useMediaQuery } from "@/components/shared/use-media-query";
@@ -332,31 +331,27 @@ export function Hero() {
               }}
               className="mt-9 flex flex-wrap items-center gap-3 md:mt-11 md:gap-4"
             >
-              <Magnetic strength={14}>
-                <span onClickCapture={() => choosePathway("local")}>
-                  <Button
-                    href="#contact"
-                    variant="primary"
-                    size="lg"
-                    className="w-[15rem] justify-between md:w-[17rem]"
-                  >
-                    For local businesses
-                  </Button>
-                </span>
-              </Magnetic>
+              <span onClickCapture={() => choosePathway("local")}>
+                <Button
+                  href="#contact"
+                  variant="primary"
+                  size="lg"
+                  className="w-[15rem] justify-between md:w-[17rem]"
+                >
+                  For local businesses
+                </Button>
+              </span>
 
-              <Magnetic strength={14}>
-                <span onClickCapture={() => choosePathway("ai")}>
-                  <Button
-                    href="#contact"
-                    variant="ghost"
-                    size="lg"
-                    className="w-[15rem] justify-between md:w-[17rem]"
-                  >
-                    For AI and software
-                  </Button>
-                </span>
-              </Magnetic>
+              <span onClickCapture={() => choosePathway("ai")}>
+                <Button
+                  href="#contact"
+                  variant="ghost"
+                  size="lg"
+                  className="w-[15rem] justify-between md:w-[17rem]"
+                >
+                  For AI and software
+                </Button>
+              </span>
 
               <div className="basis-full pt-1">
                 <a

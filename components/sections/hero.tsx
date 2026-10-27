@@ -371,7 +371,7 @@ export function Hero() {
         {/* Scroll cue, fades out as soon as the visitor starts scrolling */}
         <motion.div
           style={{ opacity: pinned ? contentOpacity : 1 }}
-          className="absolute inset-x-0 bottom-10 hidden justify-center md:flex"
+          className="hero-scroll-cue absolute inset-x-0 bottom-10 hidden justify-center"
         >
           <motion.div
             initial={intro ? { opacity: 0 } : false}

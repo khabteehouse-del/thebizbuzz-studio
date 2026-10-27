@@ -13,6 +13,28 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "cftc-voluntary-crypto-exchange-registration-october-2026",
+    title: "CFTC Pushes Voluntary Registration for Crypto Exchanges",
+    description:
+      "With Congress stalled on a crypto market-structure law, CFTC Chairman Mike Selig said on October 26, 2026 that the agency is advancing a voluntary federal path for exchanges.",
+    date: "2026-10-27",
+    readTime: "4 min read",
+    tags: ["Crypto", "Tech News"],
+    image: "/images/blog/cftc-voluntary-crypto-exchange-registration-october-2026.jpg",
+    body: [
+      "On October 26, 2026, CFTC Chairman Mike Selig said in an X post and a Bloomberg TV interview that the US Commodity Futures Trading Commission is advancing a voluntary federal registration path for crypto exchanges, according to Crypto.news and The Crypto Times. He said the agency cannot force every exchange to register, and that exchanges which do not opt in would not be affected by these rules. This is a proposal stage plan, not a finished rule.",
+      "The background is a stalled bill. On September 15, 2026, the Senate voted 50 to 49 on a procedural motion to advance the CLARITY Act, short of the 60 votes needed, as reported by Crypto.news and The Crypto Times. The bill, which would have split oversight between the CFTC and the SEC and set registration rules for exchanges and brokers, remains on the Senate calendar. Selig said he was very disappointed that it did not reach the president.",
+      "Greenberg Traurig reports that the CFTC issued an advance notice of proposed rulemaking on October 5 with two parts. Regulation Crypto Asset Transactions (CTX) covers retail crypto purchases offered with leverage, margin or financing. Regulation Crypto Asset Markets (CAM) would create a tailored type of registered market where such trades could, but need not, be listed. The notice asks questions on custody, segregation of customer assets, proof of reserves, clearing and conflicts of interest when one group runs the exchange, custody and financing. Comments are due December 14, 2026, and the notice itself imposes no new requirements.",
+      "Several points are still open. According to Crypto.news, the consultation has not settled whether federal rules would override state requirements, or how customer assets would be treated in a bankruptcy. The SEC has its own separate proposal, from August 18, on exemptions for certain crypto investment contracts. Because nothing here is final, timelines and details could change after the comment period.",
+      "What this means for businesses: if your company accepts crypto payments, holds digital assets, or builds on an exchange or wallet provider, ask that provider whether it plans to register under a federal framework, and how it holds customer funds. Keep records of which platforms you use and what they disclose about custody and reserves. You do not need to change anything today, but you may want to submit comments through your industry group, and plan for compliance and counterparty reviews as the rules take shape.",
+    ],
+    sources: [
+      { label: "Greenberg Traurig: CFTC Seeks Comments on Proposed Framework for Retail Crypto Asset Trading and Markets", url: "https://www.gtlaw.com/en/insights/2026/10/cftc-seeks-comments-on-proposed-framework-for-retail-crypto-asset-trading-and-markets" },
+      { label: "Crypto.news: CFTC advances voluntary crypto exchange registration as Congress stalls", url: "https://crypto.news/cftc-voluntary-crypto-exchange-registration/" },
+      { label: "The Crypto Times: CFTC Advances Crypto Exchange Registration Plan After CLARITY Act Setback", url: "https://www.cryptotimes.io/2026/10/27/cftc-advances-crypto-exchange-registration-plan-after-clarity-act-setback/" },
+    ],
+  },
+  {
     slug: "texas-sues-openai-chatgpt-october-2026",
     title: "Texas Sues OpenAI and Sam Altman Over ChatGPT Safety Claims",
     description:

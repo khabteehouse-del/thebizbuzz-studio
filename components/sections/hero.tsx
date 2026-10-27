@@ -191,15 +191,6 @@ export function Hero() {
 
         <div className="shell w-full">
           <motion.div className="relative" style={{ opacity: pinned ? contentOpacity : 1 }}>
-            <motion.p
-              initial={intro ? { opacity: 0, y: 12 } : false}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-              className="section-label"
-            >
-              Brand, search and AI engineering
-            </motion.p>
-
             {/*
               Soft light behind the type, breathing on a long cycle.
               A blurred radial has no edges by definition, so it cannot
@@ -233,7 +224,7 @@ export function Hero() {
               }}
             />
 
-            <div className="mt-6 flex items-baseline gap-3 md:mt-8 md:gap-5">
+            <div className="flex items-baseline gap-3 md:gap-5">
               <motion.h1
                 style={{
                   scale: pinned ? headlineScale : 1,

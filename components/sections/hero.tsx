@@ -352,15 +352,6 @@ export function Hero() {
                   For AI and software
                 </Button>
               </span>
-
-              <div className="basis-full pt-1">
-                <a
-                  href="#work"
-                  className="inline-block px-1 text-xs uppercase tracking-[0.14em] text-paper/70 transition-colors duration-200 hover:text-paper"
-                >
-                  See our work
-                </a>
-              </div>
             </motion.div>
           </motion.div>
         </div>

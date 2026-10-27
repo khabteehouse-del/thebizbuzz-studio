@@ -14,7 +14,7 @@ export const site = {
   */
   description:
     "Local search for businesses, and brand, web and production AI systems for companies that are scaling. A founder-led studio in Karachi and Dubai.",
-  url: "https://thebizbuzz.studio",
+  url: "https://www.thebizbuzz.studio",
   email: "contact@thebizbuzz.studio",
   locations: ["Karachi", "Dubai"],
   /* Digits only for wa.me. The text pre-fills the chat so the first message is never blank. */

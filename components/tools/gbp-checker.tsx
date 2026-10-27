@@ -85,7 +85,7 @@ export function GbpChecker() {
               label="Business name"
               value={business.name}
               onChange={(v) => setBusiness({ ...business, name: v })}
-              placeholder="Al Noor Dental"
+              placeholder="Al Noor Clinic"
             />
             <Field
               label="What kind of business"

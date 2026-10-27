@@ -328,7 +328,7 @@ export function Hero() {
                 delay: 0.78,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="mt-9 flex flex-wrap items-center gap-3 md:mt-11 md:gap-4"
+              className="relative mt-9 flex flex-wrap items-center gap-3 md:mt-11 md:gap-4"
             >
               <span onClickCapture={() => choosePathway("local")}>
                 <Button
@@ -351,6 +351,12 @@ export function Hero() {
                   For AI and software
                 </Button>
               </span>
+
+              {/* The Google Business Profile check launcher lands here on wide screens */}
+              <div
+                id="gbp-hero-slot"
+                className="absolute left-1/2 top-1/2 ml-10 hidden -translate-y-1/2 xl:block"
+              />
             </motion.div>
           </motion.div>
         </div>

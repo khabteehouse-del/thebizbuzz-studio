@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "motion/react";
 import { X } from "lucide-react";
 import {
@@ -11,6 +13,7 @@ import {
   type Answers,
 } from "@/lib/gbp-audit";
 import { LeadGate } from "@/components/tools/lead-gate";
+import { useMediaQuery } from "@/components/shared/use-media-query";
 
 type Stage = "start" | "questions" | "score" | "plan";
 
@@ -36,6 +39,19 @@ export function GbpWidget() {
   const [business, setBusiness] = useState({ name: "", type: "", city: "" });
   const [emailed, setEmailed] = useState(false);
   const [dismissed, setDismissed] = useState(false);
+
+  /*
+    On the home page, on wide screens, the launcher sits in the hero next to
+    the two buttons (the hero provides an empty #gbp-hero-slot for it).
+    Everywhere else it floats top right as before. The panel and all the
+    state stay in this component either way.
+  */
+  const pathname = usePathname();
+  const wide = useMediaQuery("(min-width: 1280px)");
+  const [slot, setSlot] = useState<HTMLElement | null>(null);
+  useEffect(() => {
+    setSlot(wide ? document.getElementById("gbp-hero-slot") : null);
+  }, [wide, pathname]);
 
   const [ready, setReady] = useState(false);
   useEffect(() => {
@@ -72,9 +88,7 @@ export function GbpWidget() {
   const band = bandFor(score);
   const plan = buildPlan(answers, 5);
 
-  return (
-    <>
-      {/* Launcher: reactor core */}
+  const launcher = (
       <AnimatePresence>
         {ready && !open && (
           <motion.div
@@ -82,7 +96,11 @@ export function GbpWidget() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 12 }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-x-4 bottom-5 z-40 md:inset-x-auto md:bottom-auto md:right-6 md:top-28"
+            className={
+              slot
+                ? "relative"
+                : "fixed inset-x-4 bottom-5 z-40 md:inset-x-auto md:bottom-auto md:right-6 md:top-28"
+            }
           >
             <div className="relative">
               <button
@@ -140,6 +158,12 @@ export function GbpWidget() {
           </motion.div>
         )}
       </AnimatePresence>
+  );
+
+  return (
+    <>
+      {/* Launcher: reactor core */}
+      {slot ? createPortal(launcher, slot) : launcher}
 
       {/* Panel */}
       <AnimatePresence>
@@ -209,7 +233,7 @@ export function GbpWidget() {
                         onChange={(v) =>
                           setBusiness({ ...business, name: v })
                         }
-                        placeholder="Al Noor Dental"
+                        placeholder="Al Noor Clinic"
                       />
                       <MiniField
                         label="What kind of business"

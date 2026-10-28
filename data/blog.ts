@@ -13,6 +13,28 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "apple-m6-imac-macbook-pro-october-2026",
+    title: "Apple Launches M6 iMac and 14-Inch MacBook Pro",
+    description:
+      "Apple announced a new M6 iMac and an updated 14-inch MacBook Pro on October 27, 2026, with pre-orders opening October 28 and deliveries from November 6.",
+    date: "2026-10-28",
+    readTime: "4 min read",
+    tags: ["Tech News", "Hardware"],
+    image: "/images/blog/apple-m6-imac-macbook-pro-october-2026.jpg",
+    body: [
+      "On October 27, 2026, Apple announced a new 24-inch iMac and an updated 14-inch MacBook Pro, both built on its baseline M6 chip, according to Quartz and Techloy. Pre-orders open October 28, and deliveries and store stock arrive on November 6, as reported by Digital Trends. Both are updates to existing designs rather than redesigns.",
+      "The iMac starts at $1,499. Digital Trends reports that this base model has a 10-core CPU and 10-core GPU and two Thunderbolt 4 ports, and that a 12-core model costs $200 more and adds extra ports and faster 2.5Gb Ethernet. Techloy reports that the 4.5K display is unchanged from the previous model, while the iMac gains Wi-Fi 7 and Bluetooth 6. The 14-inch MacBook Pro starts at $1,999 with 16GB of memory and 1TB of storage, and keeps the same design as the M5 version, per Digital Trends.",
+      "The performance numbers come from Apple and have not been independently tested. Techloy lists Apple's claims that the new iMac is up to 5x faster at on-device AI work than the M4 iMac, up to 1.5x faster in Microsoft Excel, and up to 2x faster in graphics in some apps. For the MacBook Pro, Apple says graphics are up to 30% faster and AI workloads up to 25% faster than the M5 model. Real-world results will depend on your software, so wait for independent reviews before judging them.",
+      "Techloy also notes that a touchscreen MacBook Pro is only described as expected, and the article does not confirm it. Treat it as a rumor until Apple says otherwise. The emphasis on on-device AI is the clearest trend here: more of the AI work that once needed a cloud service can now run locally on ordinary office hardware.",
+      "What this means for businesses: if you have Macs due for replacement, the new iMac gives you a fixed price and a ship date to plan around, and the base MacBook Pro now starts with 16GB of memory. Do not buy on Apple's speed claims alone. Test the apps your team actually uses, and check that your security, device management and key software support the new machines before a bulk order. If your staff want to try local AI tools, newer hardware helps, but the real savings come from picking one clear task first and measuring the result.",
+    ],
+    sources: [
+      { label: "Quartz: Apple is launching new iMac and entry-level MacBook Pro with M6 chip", url: "https://qz.com/apple-m6-imac-entry-macbook-pro-launch-102726" },
+      { label: "Techloy: M6 iMac and MacBook Pro: Price, Release Date and Specs", url: "https://www.techloy.com/m6-macbook-pro-imac-price-release-date/" },
+      { label: "Digital Trends: How to pre-order Apple's new M6 iMac and 14-inch MacBook Pro", url: "https://www.digitaltrends.com/computing/how-to-pre-order-apples-new-m6-imac-and-14-inch-macbook-pro/" },
+    ],
+  },
+  {
     slug: "cftc-voluntary-crypto-exchange-registration-october-2026",
     title: "CFTC Pushes Voluntary Registration for Crypto Exchanges",
     description:

@@ -93,16 +93,6 @@ function Tile({
           </h3>
           <p className="mt-1.5 text-sm text-paper/60">{project.blurb}</p>
         </div>
-        <span
-          className="mt-1.5 shrink-0 rounded-full px-2.5 py-0.5 text-[0.625rem] font-medium uppercase tracking-[0.14em]"
-          style={
-            client
-              ? { backgroundColor: "rgba(79,209,197,0.18)", color: "#7de8dc", boxShadow: "inset 0 0 0 1px rgba(79,209,197,0.45)" }
-              : { backgroundColor: "rgba(10,14,26,0.6)", color: "rgba(245,248,255,0.7)", boxShadow: "inset 0 0 0 1px rgba(245,248,255,0.18)" }
-          }
-        >
-          {client ? "Client work" : "Own product"}
-        </span>
       </header>
 
     <article
@@ -149,6 +139,18 @@ function Tile({
           } transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] [@media(hover:hover)]:group-hover:scale-[1.05]`}
         />
       )}
+
+      {/* Tag sits on the card itself, top right. The detail panel covers it when open. */}
+      <span
+        className="absolute right-3 top-3 rounded-full px-2.5 py-1 text-[0.625rem] font-medium uppercase tracking-[0.14em] backdrop-blur-md"
+        style={
+          client
+            ? { backgroundColor: "rgba(8,30,34,0.72)", color: "#7de8dc", boxShadow: "inset 0 0 0 1px rgba(79,209,197,0.55)" }
+            : { backgroundColor: "rgba(10,14,26,0.72)", color: "rgba(245,248,255,0.85)", boxShadow: "inset 0 0 0 1px rgba(245,248,255,0.25)" }
+        }
+      >
+        {client ? "Client work" : "Own product"}
+      </span>
 
       {/* Detail panel */}
       <div className="work-panel absolute inset-0 flex flex-col overflow-y-auto bg-[#0a0e1a]/[0.97] p-5 md:p-6">

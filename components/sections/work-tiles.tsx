@@ -62,7 +62,7 @@ export function WorkTiles({ items }: { items: Project[] }) {
   }, [items.length]);
 
   return (
-    <div ref={gridRef} className="grid gap-5 md:grid-cols-2 md:gap-6">
+    <div ref={gridRef} className="grid gap-x-6 gap-y-12 md:grid-cols-2 md:gap-y-16">
       {items.map((project, index) => (
         <Reveal key={project.id} delay={(index % 2) * 0.08}>
           <Tile project={project} lit={lit === index} order={index % 2} />

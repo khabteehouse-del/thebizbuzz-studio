@@ -13,6 +13,51 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "microsoft-alphabet-cloud-earnings-october-2026",
+    title: "Microsoft and Google Cloud Surge as AI Spending Climbs",
+    description:
+      "Microsoft and Alphabet reported quarterly results on October 28, 2026, with Azure up 48% and Google Cloud revenue up 103% as both spent heavily on AI infrastructure.",
+    date: "2026-10-29",
+    readTime: "4 min read",
+    tags: ["Tech News", "Cloud"],
+    image: "/images/blog/microsoft-alphabet-cloud-earnings-october-2026.jpg",
+    body: [
+      "On October 28, 2026, Microsoft and Alphabet both reported quarterly results, and cloud was the headline for each. Fortune reports that Microsoft's revenue was $92.3 billion, up 19% from a year earlier, with Azure growing 48%. For Alphabet, 9to5Google reports revenue of $127.6 billion, up 25%, and Google Cloud revenue of $30.71 billion, compared with $15.16 billion a year earlier.",
+      "Alphabet CEO Sundar Pichai said, per 9to5Google: \"Google Cloud revenues grew 103%, powered by huge demand for our AI infrastructure and AI solutions.\" Fortune adds that the cloud unit's profit margin widened to 36.2%, and that Cloud's annual run rate is now over $70 billion.",
+      "The spending is large. Fortune reports that Alphabet's quarterly capital expenditure reached a record $51.4 billion, up from $24 billion a year earlier, and that free cash flow was negative $9.1 billion. Microsoft's quarterly capital expenditure was $45.2 billion, according to Fortune and The Motley Fool. Fortune notes that this was higher than the prior quarter but below what analysts had predicted. Fortune also reports that Alphabet's shares fell in after-hours trading while Microsoft's rose.",
+      "These are reported company results, and they show where the money is going: data centers, chips and the AI services that run on them. Both companies are betting that business demand for AI will keep growing fast enough to justify the cost. For customers, that demand also means capacity can be tight and prices and contract terms can change.",
+      "What this means for businesses: if you run on Azure, Google Cloud or another major cloud, review your contracts and usage now. Ask your provider about capacity commitments, price changes and where your AI workloads will run. Track your own cloud bill by team or project so growth does not surprise you. Before adopting a new AI service, run a small pilot with a clear goal and a spending cap, and keep your data in formats you can move if you ever need to switch.",
+    ],
+    sources: [
+      { label: "9to5Google: Alphabet reports Q3 2026 revenue of $127.6 billion", url: "https://9to5google.com/2026/10/28/alphabet-q3-2026-earnings/" },
+      { label: "Fortune: Alphabet's Google Cloud revenue doubles to $31 billion as cash flow stays deep red", url: "https://fortune.com/2026/10/28/alphabet-google-stock-drops-cloud-revenue-doubles-free-cash-flow-negative/" },
+      { label: "Fortune: Microsoft's cloud growth accelerates, and so too does the spending", url: "https://fortune.com/2026/10/28/microsofts-cloud-growth-accelerates-and-so-too-does-the-spending/" },
+      { label: "The Motley Fool: Microsoft and Alphabet just reported earnings, putting the AI boom to the test", url: "https://fool.com/investing/2026/10/28/microsoft-and-alphabet-just-reported-earnings-putting-the-ai-boom-to-the-test" },
+    ],
+  },
+  {
+    slug: "apple-m6-imac-macbook-pro-october-2026",
+    title: "Apple Launches M6 iMac and 14-Inch MacBook Pro",
+    description:
+      "Apple announced a new M6 iMac and an updated 14-inch MacBook Pro on October 27, 2026, with pre-orders opening October 28 and deliveries from November 6.",
+    date: "2026-10-28",
+    readTime: "4 min read",
+    tags: ["Tech News", "Hardware"],
+    image: "/images/blog/apple-m6-imac-macbook-pro-october-2026.jpg",
+    body: [
+      "On October 27, 2026, Apple announced a new 24-inch iMac and an updated 14-inch MacBook Pro, both built on its baseline M6 chip, according to Quartz and Techloy. Pre-orders open October 28, and deliveries and store stock arrive on November 6, as reported by Digital Trends. Both are updates to existing designs rather than redesigns.",
+      "The iMac starts at $1,499. Digital Trends reports that this base model has a 10-core CPU and 10-core GPU and two Thunderbolt 4 ports, and that a 12-core model costs $200 more and adds extra ports and faster 2.5Gb Ethernet. Techloy reports that the 4.5K display is unchanged from the previous model, while the iMac gains Wi-Fi 7 and Bluetooth 6. The 14-inch MacBook Pro starts at $1,999 with 16GB of memory and 1TB of storage, and keeps the same design as the M5 version, per Digital Trends.",
+      "The performance numbers come from Apple and have not been independently tested. Techloy lists Apple's claims that the new iMac is up to 5x faster at on-device AI work than the M4 iMac, up to 1.5x faster in Microsoft Excel, and up to 2x faster in graphics in some apps. For the MacBook Pro, Apple says graphics are up to 30% faster and AI workloads up to 25% faster than the M5 model. Real-world results will depend on your software, so wait for independent reviews before judging them.",
+      "Techloy also notes that a touchscreen MacBook Pro is only described as expected, and the article does not confirm it. Treat it as a rumor until Apple says otherwise. The emphasis on on-device AI is the clearest trend here: more of the AI work that once needed a cloud service can now run locally on ordinary office hardware.",
+      "What this means for businesses: if you have Macs due for replacement, the new iMac gives you a fixed price and a ship date to plan around, and the base MacBook Pro now starts with 16GB of memory. Do not buy on Apple's speed claims alone. Test the apps your team actually uses, and check that your security, device management and key software support the new machines before a bulk order. If your staff want to try local AI tools, newer hardware helps, but the real savings come from picking one clear task first and measuring the result.",
+    ],
+    sources: [
+      { label: "Quartz: Apple is launching new iMac and entry-level MacBook Pro with M6 chip", url: "https://qz.com/apple-m6-imac-entry-macbook-pro-launch-102726" },
+      { label: "Techloy: M6 iMac and MacBook Pro: Price, Release Date and Specs", url: "https://www.techloy.com/m6-macbook-pro-imac-price-release-date/" },
+      { label: "Digital Trends: How to pre-order Apple's new M6 iMac and 14-inch MacBook Pro", url: "https://www.digitaltrends.com/computing/how-to-pre-order-apples-new-m6-imac-and-14-inch-macbook-pro/" },
+    ],
+  },
+  {
     slug: "cftc-voluntary-crypto-exchange-registration-october-2026",
     title: "CFTC Pushes Voluntary Registration for Crypto Exchanges",
     description:

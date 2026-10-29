@@ -117,7 +117,7 @@ export const projects: Project[] = [
     solution:
       "Regenerates only the mouth region, client-side, preserving patient identity. Pairs the visual with Claude-generated clinical reasoning, positioned as patient communication rather than medical diagnosis.",
     stack: ["Vision AI", "Claude", "Client-side inference"],
-    image: "/images/work/dentivue-v2.jpg",
+    image: "/images/work/dentivue-v3.jpg",
     imageFit: "fill-top",
     live: "https://project-dentivue.lovable.app",
     repo: null,

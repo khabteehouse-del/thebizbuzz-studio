@@ -465,7 +465,7 @@ export const services: Service[] = [
         { src: "/images/work/fluxorx.jpg", title: "FluxorX", caption: "Enterprise AI", alt: "FluxorX sign-in page", width: 1600, height: 753 },
         { src: "/images/work/veridoc.jpg", title: "VeriDoc", caption: "Autonomous AI agents", alt: "VeriDoc contract review agent", width: 1600, height: 752 },
         { src: "/images/work/pulsariq.jpg", title: "PulsarIQ", caption: "Self-hosted enterprise RAG", alt: "PulsarIQ enterprise RAG platform", width: 1600, height: 746 },
-        { src: "/images/work/dentivue.jpg", title: "DentiVue", caption: "Clinical vision AI", alt: "DentiVue clinical vision AI", width: 965, height: 587 },
+        { src: "/images/work/dentivue-v2.jpg", title: "DentiVue", caption: "Clinical vision AI", alt: "DentiVue clinical vision AI", width: 1042, height: 602 },
       ],
     },
   },

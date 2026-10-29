@@ -40,7 +40,7 @@ export const projects: Project[] = [
     solution:
       "A dual-tier architecture that solves both. Deterministic queries for metrics that must be exact, Claude reasoning for everything conversational. Ships with observability, MCP tool exposure and cloud-native deployment across Docker, Azure and Kubernetes.",
     stack: ["Claude", "MCP", "Docker", "Azure", "Kubernetes"],
-    image: "/images/work/fluxorx.jpg",
+    image: "/images/work/fluxorx-v2.jpg",
     live: "https://fluxorx.vercel.app",
     repo: "https://github.com/khabteehouse-del/fluxorx",
     stats: [

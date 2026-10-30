@@ -393,3 +393,34 @@ export const blogPosts: BlogPost[] = [
     ],
   },
 ];
+/* Blog categories. A post's category is worked out from its tags, so new posts
+   are sorted automatically and no extra field is needed. The first rule that
+   matches wins. */
+export const blogCategories = [
+  "AI",
+  "Cybersecurity",
+  "Crypto",
+  "Cloud & Hardware",
+  "Pakistan & Gulf",
+  "Software & Platforms",
+  "Business & SEO",
+] as const;
+
+export type BlogCategory = (typeof blogCategories)[number];
+
+const categoryRules: { category: BlogCategory; tags: string[] }[] = [
+  { category: "Cybersecurity", tags: ["Cybersecurity"] },
+  { category: "Crypto", tags: ["Crypto", "Blockchain"] },
+  { category: "Pakistan & Gulf", tags: ["Pakistan", "UAE", "Gulf"] },
+  { category: "Business & SEO", tags: ["Local SEO", "Google Business Profile", "Product"] },
+  { category: "AI", tags: ["AI News", "AI Systems", "LLM Upgrades"] },
+  { category: "Cloud & Hardware", tags: ["Cloud", "Hardware", "Semiconductors"] },
+  { category: "Software & Platforms", tags: ["Software"] },
+];
+
+export function getBlogCategory(post: BlogPost): BlogCategory {
+  for (const rule of categoryRules) {
+    if (post.tags.some((t) => rule.tags.includes(t))) return rule.category;
+  }
+  return "Software & Platforms";
+}

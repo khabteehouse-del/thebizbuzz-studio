@@ -13,6 +13,28 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "chrome-gmail-enhanced-autofill-october-2026",
+    title: "Chrome Can Now Fill Forms Using Your Gmail Data",
+    description:
+      "Google began rolling out Chrome enhanced autofill on October 28, 2026, letting Gemini suggest order, tracking and flight details from Gmail, first in the US.",
+    date: "2026-10-30",
+    readTime: "4 min read",
+    tags: ["Tech News", "Software"],
+    image: "/images/blog/chrome-gmail-enhanced-autofill-october-2026.jpg",
+    body: [
+      "On October 28, 2026, Google announced enhanced autofill for Chrome. When you fill in an online form, Chrome can now suggest details pulled from your Gmail, such as order numbers, package tracking data and flight reservations. Google's Chrome product manager Amanda Lim wrote that it can \"automatically suggest information pulled directly from Gmail as you fill out online forms.\"",
+      "The feature runs on Gemini with Personal Intelligence, which lets Gemini read connected Google apps. Google says it is rolling out on desktop, Android and iOS, in the US only for now. It applies to people using Gemini in Chrome who have Personal Intelligence turned on. Notebookcheck reports that a personal Google account is needed, and that work, school and supervised accounts are excluded. Personal Intelligence is also not available in the European Economic Area, Switzerland or the UK, according to the same report.",
+      "On privacy, Google's statement is short: \"sensitive data is encrypted and you remain in control.\" Per Google, users can manage whether enhanced autofill is on and what it can access in Chrome settings. Notebookcheck describes the path as Autofill and passwords, then Enhanced autofill, and says Gemini's access to Gmail can be removed by disconnecting Gmail under Connected Apps in Gemini settings. Google's post does not say whether Gmail content is used to train models, and Notebookcheck notes that point is left open. Forbes adds that the value of the feature depends on how much users trust Google with inbox access.",
+      "It also lands in a period of security attention on AI browsers. Notebookcheck notes that in August, researchers showed a single email could hijack five AI browsers, including Gemini in Chrome. That is context, not a finding about this feature, and no problem with enhanced autofill has been reported in the sources we read.",
+      "What this means for businesses: browsers are becoming AI assistants with access to email, so treat them as part of your security setup. Decide whether staff may connect work mail to AI features, and set that through your admin controls rather than leaving it to each person. Check what data your managed browsers share with AI features and whether model training is switched off. Keep personal and company accounts separate, and brief your team that a form suggestion drawn from an email should still be checked before it is submitted.",
+    ],
+    sources: [
+      { label: "Google: Chrome's enhanced autofill helps you fill out forms with suggestions pulled from Gmail", url: "https://blog.google/products-and-platforms/products/chrome/enhanced-autofill-gmail/" },
+      { label: "Forbes: Google Confirms Chrome AI Can Crawl Your Gmail Inbox For Autofill Data", url: "https://www.forbes.com/sites/daveywinder/2026/10/29/google-confirms-chrome-ai-can-crawl-your-gmail-inbox-for-autofill-data/" },
+      { label: "Notebookcheck: Google Chrome autofill can now pull details from your Gmail", url: "https://www.notebookcheck.net/Google-Chrome-autofill-can-now-pull-details-from-your-Gmail.1437131.0.html" },
+    ],
+  },
+  {
     slug: "microsoft-alphabet-cloud-earnings-october-2026",
     title: "Microsoft and Google Cloud Surge as AI Spending Climbs",
     description:

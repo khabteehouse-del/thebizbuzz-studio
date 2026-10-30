@@ -149,7 +149,7 @@ export function Hero() {
                 muted
                 loop
                 playsInline
-                preload="auto"
+                preload="metadata"
                 poster="/images/hero-poster.webp"
                 src={videoSrc}
                 className="hero-video pointer-events-none absolute left-1/2 top-0 h-full w-full max-w-[2000px] -translate-x-1/2 object-cover opacity-40"

@@ -9,8 +9,17 @@ import { localServices, studioServices } from "@/data/services";
 import { Reveal } from "@/components/shared/reveal";
 import { Orbs } from "@/components/shared/orbs";
 import { MizarLogo } from "@/components/shared/mizar-logo";
-import { VideoModal } from "@/components/shared/video-modal";
-import { PreviewModal } from "@/components/shared/preview-modal";
+import dynamic from "next/dynamic";
+
+/* The two players load only when a visitor first opens one, so they stay out of the first page load. */
+const VideoModal = dynamic(
+  () => import("@/components/shared/video-modal").then((m) => m.VideoModal),
+  { ssr: false }
+);
+const PreviewModal = dynamic(
+  () => import("@/components/shared/preview-modal").then((m) => m.PreviewModal),
+  { ssr: false }
+);
 import { PoweredStars } from "@/components/shared/review-card";
 import { ServicesDial } from "@/components/shared/services-dial";
 import { TileArt } from "@/components/shared/tile-art";
@@ -97,6 +106,7 @@ function Tile({
      hover, the flip follows the pointer and a click does nothing extra. */
   const [flipped, setFlipped] = useState(false);
   const [playerOpen, setPlayerOpen] = useState(false);
+  const [playerLoaded, setPlayerLoaded] = useState(false);
   const tileRef = useRef<HTMLDivElement>(null);
   useAutoFlip(tileRef, setFlipped);
   const gallery = service.gallery;
@@ -489,7 +499,10 @@ function Tile({
           <>
             <button
               type="button"
-              onClick={() => setPlayerOpen(true)}
+              onClick={() => {
+                setPlayerLoaded(true);
+                setPlayerOpen(true);
+              }}
               aria-label={`${service.samples.cta}: play ${service.title} videos`}
               className={`absolute z-10 h-[2.9rem] cursor-pointer rounded-xl border border-transparent transition-[visibility,background-color,box-shadow] [transition-duration:0s,200ms,200ms] hover:bg-[#e085d9]/20 hover:shadow-[0_0_26px_-2px_#e085d9] focus-visible:outline focus-visible:outline-2 ${
                 flipped
@@ -497,6 +510,7 @@ function Tile({
                   : "invisible group-hover/tile:visible group-hover/tile:[transition-delay:700ms,0s,0s]"
               } inset-x-7 bottom-7 md:inset-x-8 md:bottom-8`}
             />
+            {playerLoaded && (
             <VideoModal
               open={playerOpen}
               onClose={() => setPlayerOpen(false)}
@@ -504,13 +518,17 @@ function Tile({
               heading={service.samples.heading}
               accent="#7cc4ff"
             />
+            )}
           </>
         )}
         {service.previews && (
           <>
             <button
               type="button"
-              onClick={() => setPlayerOpen(true)}
+              onClick={() => {
+                setPlayerLoaded(true);
+                setPlayerOpen(true);
+              }}
               aria-label={`${service.previews.cta}: ${service.title}`}
               style={{ "--c": service.mark } as React.CSSProperties}
               className={`absolute z-10 h-[2.9rem] cursor-pointer rounded-xl border border-transparent transition-[visibility,background-color,box-shadow] [transition-duration:0s,200ms,200ms] hover:bg-[color-mix(in_srgb,var(--c)_28%,transparent)] hover:shadow-[0_0_26px_-2px_var(--c)] focus-visible:outline focus-visible:outline-2 ${
@@ -519,6 +537,7 @@ function Tile({
                   : "invisible group-hover/tile:visible group-hover/tile:[transition-delay:700ms,0s,0s]"
               } inset-x-7 bottom-7 md:inset-x-8 md:bottom-8`}
             />
+            {playerLoaded && (
             <PreviewModal
               open={playerOpen}
               onClose={() => setPlayerOpen(false)}
@@ -526,6 +545,7 @@ function Tile({
               heading={service.previews.heading}
               accent={service.mark}
             />
+            )}
           </>
         )}
         {/* Only the strip on the back is a link, so the rest of the tile just flips. */}

@@ -3,7 +3,12 @@ import type { Member } from "@/data/team";
 import { partners, specialists } from "@/data/team";
 import { Reveal } from "@/components/shared/reveal";
 import { Orbs } from "@/components/shared/orbs";
-import { SpecialistCard } from "@/components/sections/specialist-card";
+import dynamic from "next/dynamic";
+
+/* Below the fold and only needed once a visitor reaches this row. Still server-rendered. */
+const SpecialistCard = dynamic(() =>
+  import("@/components/sections/specialist-card").then((m) => m.SpecialistCard)
+);
 
 /*
   Two rows, deliberately separated.

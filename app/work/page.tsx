@@ -3,6 +3,7 @@ import { projects } from "@/data/projects";
 import { WorkTiles } from "@/components/sections/work-tiles";
 import { Button } from "@/components/shared/button";
 import { ShipArt } from "@/components/shared/ship-art";
+import { BreadcrumbSchema } from "@/components/shared/breadcrumb-schema";
 
 export const metadata: Metadata = {
   title: "Our work",
@@ -14,6 +15,7 @@ export const metadata: Metadata = {
 export default function WorkPage() {
   return (
     <div className="blog-cyan relative min-h-dvh pb-24 pt-32 md:pb-32 md:pt-48">
+      <BreadcrumbSchema items={[{ name: "Work", path: "/work" }]} />
       <div className="shell">
         <div className="flex flex-col gap-10 md:flex-row md:items-center md:justify-between md:gap-12">
           <div>

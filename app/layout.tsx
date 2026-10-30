@@ -41,10 +41,10 @@ export const metadata: Metadata = {
     default: `${site.name} | ${site.tagline}`,
     template: `%s | ${site.name}`,
   },
-  description: site.description,
+  description: site.seoDescription,
   openGraph: {
     title: `${site.name} | ${site.tagline}`,
-    description: site.description,
+    description: site.seoDescription,
     url: site.url,
     siteName: site.name,
     type: "website",
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: `${site.name} | ${site.tagline}`,
-    description: site.description,
+    description: site.seoDescription,
     images: ["/images/og/home.jpg"],
   },
   robots: {
@@ -96,6 +96,17 @@ const organizationSchema = {
   sameAs: socialLinks.map((link) => link.href),
 };
 
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: site.name,
+  alternateName: "The Biz Buzz",
+  url: site.url,
+  inLanguage: "en",
+  description: site.seoDescription,
+  publisher: { "@type": "Organization", name: "The Biz Buzz", url: site.url },
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
@@ -121,6 +132,11 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+        {/* WebSite schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
       </head>
       <body className="min-h-dvh bg-ink text-paper antialiased">

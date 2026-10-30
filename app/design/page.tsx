@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { DesignGallery } from "@/components/design/gallery";
 import { designCredit } from "@/data/designs";
+import { BreadcrumbSchema } from "@/components/shared/breadcrumb-schema";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/design" },
@@ -20,6 +21,7 @@ export const metadata: Metadata = {
 export default function DesignPage() {
   return (
     <div className="dz">
+      <BreadcrumbSchema items={[{ name: "Design studio", path: "/design" }]} />
       <section className="dz-hero dz-portal">
         {/* Decorative depth: soft red light. */}
         <div className="dz-stage" aria-hidden="true">

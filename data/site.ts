@@ -14,6 +14,14 @@ export const site = {
   */
   description:
     "Local search for businesses, and brand, web and production AI systems for companies that are scaling. A founder-led studio in Karachi and Dubai.",
+  /*
+    Search and link-preview text. Kept apart from `description` above,
+    which is also shown in the footer. Keyword targets: digital
+    marketing, AI solutions.
+  */
+  seoTitle: "BizBuzz | Digital Marketing and AI Solutions",
+  seoDescription:
+    "Founder-led studio in Karachi and Dubai. Digital marketing and AI solutions that position your brand: local search, web, brand and production AI.",
   url: "https://www.thebizbuzz.studio",
   email: "contact@thebizbuzz.studio",
   locations: ["Karachi", "Dubai"],

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { blogPosts } from "@/data/blog";
 import { site } from "@/data/site";
+import { BreadcrumbSchema } from "@/components/shared/breadcrumb-schema";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -67,6 +68,12 @@ export default async function BlogPostPage({ params }: Props) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      <BreadcrumbSchema
+        items={[
+          { name: "Blog", path: "/blog" },
+          { name: post.title, path: `/blog/${post.slug}` },
+        ]}
       />
 
       <div className="shell max-w-3xl">

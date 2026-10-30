@@ -4,6 +4,7 @@ import Link from "next/link";
 import { blogPosts } from "@/data/blog";
 import { site } from "@/data/site";
 import { ScholarArt } from "@/components/shared/scholar-art";
+import { BreadcrumbSchema } from "@/components/shared/breadcrumb-schema";
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -21,6 +22,7 @@ export default function BlogPage() {
 
   return (
     <section className="blog-cyan py-20 md:py-36">
+      <BreadcrumbSchema items={[{ name: "Blog", path: "/blog" }]} />
       <div className="shell">
         <div className="flex flex-col gap-10 md:flex-row md:items-center md:justify-between md:gap-12">
           <div>

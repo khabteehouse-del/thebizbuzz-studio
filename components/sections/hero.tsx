@@ -315,7 +315,7 @@ export function Hero() {
               }}
               className="mt-6 max-w-md text-sm leading-relaxed text-muted md:mt-8 md:text-base"
             >
-              Brand, search and production AI for companies in the Gulf and
+              Digital marketing and AI solutions for companies in the Gulf and
               Pakistan. Scoped in writing, built in measured phases, handed
               over fully owned.
             </motion.p>

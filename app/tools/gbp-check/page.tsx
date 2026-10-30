@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { GbpChecker } from "@/components/tools/gbp-checker";
 import { MapPinPulse } from "@/components/shared/map-pin-pulse";
+import { BreadcrumbSchema } from "@/components/shared/breadcrumb-schema";
 
 export const metadata: Metadata = {
   title: "Free Google Business Profile check",
@@ -12,6 +13,7 @@ export const metadata: Metadata = {
 export default function GbpCheckPage() {
   return (
     <div className="relative min-h-dvh bg-ink pb-24 pt-32 md:pb-32 md:pt-48">
+      <BreadcrumbSchema items={[{ name: "Free Google Business Profile check", path: "/tools/gbp-check" }]} />
       <div className="shell">
         <div className="mx-auto max-w-2xl text-center">
           <div className="mb-8 flex justify-center">

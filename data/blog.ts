@@ -13,6 +13,28 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "binance-6-3-billion-hack-north-korea-october-2026",
+    title: "Binance Reports a $6.3 Billion Hack, the Largest on Record",
+    description:
+      "Binance confirmed a security incident on October 29, 2026, and TRM Labs puts the theft at about $6.36 billion across ten blockchains, which it links with high confidence to North Korea's TraderTraitor group.",
+    date: "2026-11-01",
+    readTime: "4 min read",
+    tags: ["Crypto", "Cybersecurity"],
+    image: "/images/blog/binance-6-3-billion-hack-north-korea-october-2026.jpg",
+    body: [
+      "On October 29, 2026, Binance, the world's largest crypto exchange, confirmed a security incident in which hackers took about $6.3 billion in crypto. TRM Labs, a blockchain intelligence firm, estimates roughly $6.36 billion left Binance wallets across ten blockchains, most of it in about 20 minutes starting at 20:05 UTC. TRM calls it the largest crypto theft on record, about four times the $1.5 billion Bybit hack of February 2025. Binance suspended withdrawals on several networks, said user funds are safe, and said it will cover all customer losses.",
+      "On who did it, the sources are careful. TRM attributes the attack with high confidence to TraderTraitor, a North Korean hacking unit linked to the Lazarus Group, and Chainalysis' CEO has said the same. The FBI blamed the 2025 Bybit hack on that unit. Binance itself has not named anyone: co-CEO Richard Teng said its investigation has not attributed responsibility to any individual, and North Korea routinely denies involvement in hacking. Treat the attribution as an assessment by private firms, not a finding by Binance or a government for this case.",
+      "On how, only part is known. Binance first pointed to a possibly compromised engineer's laptop, and later said further investigation found additional points of breach. It says it found no evidence of a wallet private key leak, and it has not published a root cause. TRM's own analysis suggests the attacker likely gained control of Binance's hot wallet signing infrastructure, and that preparation began at least 36 hours earlier. That is TRM's assessment, not a confirmed Binance finding.",
+      "Recovery is under way but incomplete. TRM counts about $2.7 billion frozen as of early October 30 UTC, including about 1.77 billion USDT frozen by Tether and about 825 million USDC frozen by Circle. Reuters, cited by Al Jazeera, puts the total near $3 billion. TRM says the attacker still holds about $2.4 billion in assets beyond issuers' reach and has begun swapping and moving funds. Binance has said the loss figure may continue to increase and that it expects to resume withdrawals shortly. Figures are still moving, so check the sources below for updates.",
+      "What this means for businesses: this was an attack on a major exchange's own signing and wallet systems, not on a retail customer, so the lesson is about operational security. If your company holds crypto or accepts crypto payments, ask how much sits on any single exchange, who holds the approval keys, and what your plan is if withdrawals freeze for days. Staff laptops and developer machines are an entry point, so apply the same access controls, device checks and signing limits you would use for bank credentials. Keep a written incident plan that covers who is told, who pays, and how customers are informed.",
+    ],
+    sources: [
+      { label: "TRM Labs: North Korea Steals USD 6.36 Billion From Binance in the Largest Hack in History", url: "https://www.trmlabs.com/resources/blog/north-korea-steals-usd-6-36-billion-from-binance-in-the-largest-hack-in-history" },
+      { label: "Al Jazeera: Binance says $6.3bn stolen in biggest crypto heist in history", url: "https://www.aljazeera.com/news/2026/10/30/binance-says-6-3bn-stolen-in-biggest-crypto-heist-in-history-what-we-know" },
+      { label: "CBS News: $6.3 billion Binance hack was likely work of North Korea, blockchain intel firms say", url: "https://www.cbsnews.com/news/binance-hack-north-korea/" },
+    ],
+  },
+  {
     slug: "dubai-ai-festival-scale-ai-sandbox-october-2026",
     title: "Dubai AI Festival: Scale AI Opens in UAE, New AI Sandbox",
     description:

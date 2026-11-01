@@ -13,6 +13,50 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "binance-6-3-billion-hack-north-korea-october-2026",
+    title: "Binance Reports a $6.3 Billion Hack, the Largest on Record",
+    description:
+      "Binance confirmed a security incident on October 29, 2026, and TRM Labs puts the theft at about $6.36 billion across ten blockchains, which it links with high confidence to North Korea's TraderTraitor group.",
+    date: "2026-11-01",
+    readTime: "4 min read",
+    tags: ["Crypto", "Cybersecurity"],
+    image: "/images/blog/binance-6-3-billion-hack-north-korea-october-2026.jpg",
+    body: [
+      "On October 29, 2026, Binance, the world's largest crypto exchange, confirmed a security incident in which hackers took about $6.3 billion in crypto. TRM Labs, a blockchain intelligence firm, estimates roughly $6.36 billion left Binance wallets across ten blockchains, most of it in about 20 minutes starting at 20:05 UTC. TRM calls it the largest crypto theft on record, about four times the $1.5 billion Bybit hack of February 2025. Binance suspended withdrawals on several networks, said user funds are safe, and said it will cover all customer losses.",
+      "On who did it, the sources are careful. TRM attributes the attack with high confidence to TraderTraitor, a North Korean hacking unit linked to the Lazarus Group, and Chainalysis' CEO has said the same. The FBI blamed the 2025 Bybit hack on that unit. Binance itself has not named anyone: co-CEO Richard Teng said its investigation has not attributed responsibility to any individual, and North Korea routinely denies involvement in hacking. Treat the attribution as an assessment by private firms, not a finding by Binance or a government for this case.",
+      "On how, only part is known. Binance first pointed to a possibly compromised engineer's laptop, and later said further investigation found additional points of breach. It says it found no evidence of a wallet private key leak, and it has not published a root cause. TRM's own analysis suggests the attacker likely gained control of Binance's hot wallet signing infrastructure, and that preparation began at least 36 hours earlier. That is TRM's assessment, not a confirmed Binance finding.",
+      "Recovery is under way but incomplete. TRM counts about $2.7 billion frozen as of early October 30 UTC, including about 1.77 billion USDT frozen by Tether and about 825 million USDC frozen by Circle. Reuters, cited by Al Jazeera, puts the total near $3 billion. TRM says the attacker still holds about $2.4 billion in assets beyond issuers' reach and has begun swapping and moving funds. Binance has said the loss figure may continue to increase and that it expects to resume withdrawals shortly. Figures are still moving, so check the sources below for updates.",
+      "What this means for businesses: this was an attack on a major exchange's own signing and wallet systems, not on a retail customer, so the lesson is about operational security. If your company holds crypto or accepts crypto payments, ask how much sits on any single exchange, who holds the approval keys, and what your plan is if withdrawals freeze for days. Staff laptops and developer machines are an entry point, so apply the same access controls, device checks and signing limits you would use for bank credentials. Keep a written incident plan that covers who is told, who pays, and how customers are informed.",
+    ],
+    sources: [
+      { label: "TRM Labs: North Korea Steals USD 6.36 Billion From Binance in the Largest Hack in History", url: "https://www.trmlabs.com/resources/blog/north-korea-steals-usd-6-36-billion-from-binance-in-the-largest-hack-in-history" },
+      { label: "Al Jazeera: Binance says $6.3bn stolen in biggest crypto heist in history", url: "https://www.aljazeera.com/news/2026/10/30/binance-says-6-3bn-stolen-in-biggest-crypto-heist-in-history-what-we-know" },
+      { label: "CBS News: $6.3 billion Binance hack was likely work of North Korea, blockchain intel firms say", url: "https://www.cbsnews.com/news/binance-hack-north-korea/" },
+    ],
+  },
+  {
+    slug: "dubai-ai-festival-scale-ai-sandbox-october-2026",
+    title: "Dubai AI Festival: Scale AI Opens in UAE, New AI Sandbox",
+    description:
+      "At the Dubai AI Festival in late October 2026, Scale AI launched a UAE entity at DIFC, Dubai raised its AI Campus targets and the Dubai Future Foundation opened an AI Sandbox.",
+    date: "2026-10-31",
+    readTime: "4 min read",
+    tags: ["Tech News", "UAE"],
+    image: "/images/blog/dubai-ai-festival-scale-ai-sandbox-october-2026.jpg",
+    body: [
+      "The third Dubai AI Festival was held in downtown Dubai in the last week of October 2026. Fortune reports more than 20,000 participants from 100 countries, 500 investors and 200 exhibitors, including more than 100 Chinese technology companies. Crown Prince Sheikh Hamdan bin Mohammed bin Rashid Al Maktoum toured the pavilions on opening day and raised the targets for the Dubai AI Campus to more than 1,000 specialized AI companies and over 5,000 highly skilled jobs by 2030.",
+      "The biggest corporate news was Scale AI. According to Unite.AI, the company formally launched its UAE entity on October 26, 2026, based at the Dubai International Financial Centre (DIFC). Scale says it builds evaluations and benchmarks for frontier AI labs and will apply the same approach to UAE institutions: define what a system must reliably do, test it before and after launch, build in human oversight, and train local teams to run the systems. Scale also signed a memorandum of understanding with Presight on October 8 at AI Everything in Abu Dhabi, covering agentic AI for government and enterprise and continuous evaluation of AI agents in live operations. An MoU is an intention to explore, not a delivered product.",
+      "A separate announcement targets the regulation problem. On October 28, the Dubai Future Foundation launched an AI Sandbox through Sandbox Dubai, working with government bodies including the Dubai Centre for Artificial Intelligence. It is open to startups, SMEs and established firms building AI products in areas such as education, healthcare, transport, logistics, tourism, media and government services. Products must be at minimum viable product stage or beyond and ready for commercialization. Participants get regulatory guidance and, depending on the case and subject to approval by the relevant authorities, possible regulatory exemptions, while regulators gather evidence on where rules need updating.",
+      "The campus numbers give some scale. Fortune says the Dubai AI Campus, launched in May 2024, now has more than 500 AI companies, over AED 1 billion (about $272 million) in private equity and venture capital investment, and more than 2,000 specialized technology jobs. The Sandbox announcement cites a Microsoft report ranking the UAE first globally for AI use among its working-age population, at 73.3% compared with 18.8% globally. These are figures from the sources named below, and we have not verified them independently.",
+      "What this means for businesses: the Gulf is building the testing, evaluation and regulatory layers around AI, not only the data centers. If you sell or build AI products for UAE customers, check whether the sandbox fits your product stage and sector. If you buy AI, the Scale approach is a useful checklist wherever you operate: define what the system must do, test it before and after launch, keep human review in place and train your own staff. Treat partnership announcements as signals, and look for live deployments before planning around them.",
+    ],
+    sources: [
+      { label: "Unite.AI: Scale AI Formally Launches UAE Entity at Dubai AI Festival", url: "https://www.unite.ai/scale-ai-formally-launches-uae-entity-at-dubai-ai-festival/" },
+      { label: "Fortune: Global AI leaders gather in Dubai as the emirate expands its ambitions", url: "https://fortune.com/2026/10/28/global-ai-leaders-gather-dubai-emirate-expands-ambitions-ai-festival/" },
+      { label: "TechAfrica News: Dubai Future Foundation Launches AI Sandbox", url: "https://techafricanews.com/2026/10/28/dubai-future-foundation-launches-ai-sandbox-to-help-companies-navigate-regulation/" },
+    ],
+  },
+  {
     slug: "chrome-gmail-enhanced-autofill-october-2026",
     title: "Chrome Can Now Fill Forms Using Your Gmail Data",
     description:

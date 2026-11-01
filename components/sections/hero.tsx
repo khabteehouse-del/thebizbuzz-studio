@@ -233,7 +233,7 @@ export function Hero() {
             />
 
             <div className="flex items-baseline gap-3 md:gap-5">
-              <motion.h1
+              <motion.div
                 style={{
                   scale: pinned ? headlineScale : 1,
                   y: pinned ? headlineY : 0,
@@ -275,7 +275,7 @@ export function Hero() {
                   </motion.span>
                 </span>
               ))}
-              </motion.h1>
+              </motion.div>
 
               {/*
                 Sits at the end of the word, matching the logo where the
@@ -305,7 +305,7 @@ export function Hero() {
               Where Brand Meets Intelligence
             </motion.p>
 
-            <motion.p
+            <motion.div
               initial={intro ? { opacity: 0, y: 16 } : false}
               animate={{ opacity: 1, y: 0 }}
               transition={{
@@ -315,10 +315,14 @@ export function Hero() {
               }}
               className="mt-6 max-w-md text-sm leading-relaxed text-muted md:mt-8 md:text-base"
             >
-              Digital marketing and AI solutions for companies in the Gulf and
-              Pakistan. Scoped in writing, built in measured phases, handed
-              over fully owned.
-            </motion.p>
+              {/* The page heading. Styled exactly like the text around it, so it reads as part of the paragraph. */}
+              <h1 className="inline">
+                Digital Marketing Services &amp; AI Solutions for companies in
+                the Gulf and Pakistan.
+              </h1>{" "}
+              Scoped in writing, built in measured phases, handed over fully
+              owned.
+            </motion.div>
 
             <motion.div
               initial={intro ? { opacity: 0, y: 16 } : false}

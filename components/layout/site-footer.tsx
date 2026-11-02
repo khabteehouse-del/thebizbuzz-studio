@@ -22,23 +22,23 @@ export function SiteFooter({ lang }: { lang: Lang }) {
     { label: c.nav.cta, href: path("contact", lang) },
   ];
 
-  const linkClass = "text-ink-soft underline-offset-4 hover:text-ink hover:underline";
+  const linkClass = "text-paper/75 underline-offset-4 hover:text-paper hover:underline";
   const titleClass = "text-xs font-bold uppercase tracking-[0.16em] text-muted";
 
   return (
-    <footer className="border-t-2 border-ink bg-cream">
+    <footer className="border-t border-line bg-deep">
       <div className="shell grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-4">
         <div>
           <Link href={path("home", lang)} className="flex items-center gap-3">
             <LogoMark />
-            <span className="font-display text-xl font-extrabold tracking-tight text-ink">
+            <span className="font-display text-xl font-medium tracking-tight text-paper">
               {site.name}
             </span>
           </Link>
-          <p className="mt-4 max-w-xs text-base leading-relaxed text-ink-soft">
+          <p className="mt-4 max-w-xs text-base leading-relaxed text-paper/75">
             {c.footer.tagline}
           </p>
-          <p className="mt-4 text-sm font-semibold text-ink">{c.footer.remote}</p>
+          <p className="mt-4 text-sm font-semibold text-paper">{c.footer.remote}</p>
         </div>
 
         <div>
@@ -81,8 +81,8 @@ export function SiteFooter({ lang }: { lang: Lang }) {
         </div>
       </div>
 
-      <div className="border-t-2 border-ink">
-        <div className="shell flex flex-col gap-2 py-6 text-sm text-ink-soft md:flex-row md:items-center md:justify-between">
+      <div className="border-t border-line">
+        <div className="shell flex flex-col gap-2 py-6 text-sm text-paper/75 md:flex-row md:items-center md:justify-between">
           <p>
             © {year} {site.name}. {c.footer.rights}
           </p>
@@ -92,7 +92,7 @@ export function SiteFooter({ lang }: { lang: Lang }) {
               href={site.parent.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-bold text-ink underline underline-offset-4"
+              className="font-bold text-paper underline underline-offset-4"
             >
               {site.parent.name}
             </a>

@@ -14,10 +14,10 @@ export function ServicePage({ lang, service }: { lang: Lang; service: ServiceKey
 
   return (
     <>
-      <section className="border-b-2 border-ink bg-canvas py-14 md:py-24">
+      <section className="border-b border-line bg-ink py-14 md:py-24">
         <div className="shell max-w-4xl">
           <p className={eyebrow}>{s.eyebrow}</p>
-          <h1 className="mt-6 font-display text-4xl font-extrabold leading-[1.05] tracking-tight text-ink md:text-6xl">
+          <h1 className="mt-6 font-display text-4xl font-medium leading-[1.05] tracking-tight text-paper md:text-6xl">
             <Marked text={s.h1} mark={s.h1Mark} />
           </h1>
           <p className={`${lead} mt-6 max-w-2xl`}>{s.intro}</p>
@@ -27,44 +27,44 @@ export function ServicePage({ lang, service }: { lang: Lang; service: ServiceKey
         </div>
       </section>
 
-      <section className={`${section} bg-cream`}>
+      <section className={`${section} bg-deep`}>
         <div className="shell">
           <h2 className={`${h2} max-w-3xl`}>{s.featuresTitle}</h2>
           <ul className="mt-10 grid gap-6 md:grid-cols-2">
             {s.features.map((f) => (
               <li key={f.title} className={card}>
-                <p className="font-display text-xl font-extrabold text-ink">{f.title}</p>
-                <p className="mt-3 text-base leading-relaxed text-ink-soft">{f.text}</p>
+                <p className="font-display text-xl font-medium text-paper">{f.title}</p>
+                <p className="mt-3 text-base leading-relaxed text-paper/75">{f.text}</p>
               </li>
             ))}
           </ul>
         </div>
       </section>
 
-      <section className={`${section} bg-canvas`}>
+      <section className={`${section} bg-ink`}>
         <div className="shell">
           <h2 className={`${h2} max-w-3xl`}>{s.stepsTitle}</h2>
           <ol className="mt-10 grid gap-6 md:grid-cols-3">
             {s.steps.map((step, i) => (
               <li key={step.title} className={card}>
-                <span className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-ink bg-sun font-display text-lg font-extrabold">
+                <span className="flex h-11 w-11 items-center justify-center rounded-full border border-line bg-amber font-display text-lg font-medium text-ink">
                   {i + 1}
                 </span>
-                <p className="mt-5 font-display text-xl font-extrabold text-ink">{step.title}</p>
-                <p className="mt-3 text-base leading-relaxed text-ink-soft">{step.text}</p>
+                <p className="mt-5 font-display text-xl font-medium text-paper">{step.title}</p>
+                <p className="mt-3 text-base leading-relaxed text-paper/75">{step.text}</p>
               </li>
             ))}
           </ol>
         </div>
       </section>
 
-      <section className={`${section} bg-mint`}>
+      <section className={`${section} bg-ocean`}>
         <div className="shell max-w-3xl">
           <h2 className={h2}>{s.fitTitle}</h2>
           <ul className="mt-8 space-y-4">
             {s.fit.map((line) => (
-              <li key={line} className="flex gap-3 text-lg text-ink">
-                <span className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2 border-ink bg-white">
+              <li key={line} className="flex gap-3 text-lg text-paper">
+                <span className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-line bg-raised">
                   <Check size={14} aria-hidden="true" />
                 </span>
                 {line}
@@ -74,9 +74,9 @@ export function ServicePage({ lang, service }: { lang: Lang; service: ServiceKey
         </div>
       </section>
 
-      <section className="on-dark bg-ink py-16 text-white md:py-24">
+      <section className="on-dark bg-navy py-16 text-white md:py-24">
         <div className="shell text-center">
-          <h2 className="mx-auto max-w-3xl font-display text-3xl font-extrabold leading-tight tracking-tight md:text-5xl">
+          <h2 className="mx-auto max-w-3xl font-display text-3xl font-medium leading-tight tracking-tight md:text-5xl">
             {s.ctaTitle}
           </h2>
           <p className="mx-auto mt-5 max-w-2xl text-lg text-white/80">{s.ctaText}</p>

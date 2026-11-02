@@ -98,35 +98,35 @@ export async function submitContact(input: ContactInput): Promise<ContactResult>
   }
 
   const html = `
-    <div style="font-family:system-ui,sans-serif;max-width:640px">
-      <p style="font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:#777;margin:0">
-        New enquiry from the Accentuate site
-      </p>
-      <h1 style="font-size:26px;margin:8px 0 0">${escapeHtml(name)}${
-        business ? `, ${escapeHtml(business)}` : ""
-      }</h1>
-      <p style="font-size:15px;color:#333;margin:6px 0 4px">Topic: <strong>${escapeHtml(
-        label
-      )}</strong></p>
-      <p style="font-size:15px;color:#333;margin:0 0 24px">Site language: <strong>${
-        lang === "es" ? "Spanish" : "English"
-      }</strong></p>
-      <p style="font-size:14px;line-height:1.7;color:#333;margin:0 0 24px">
-        ${
-          isEmail
-            ? `Email: <a href="mailto:${escapeHtml(contact)}">${escapeHtml(contact)}</a>`
-            : `Phone: ${escapeHtml(contact)}`
-        }
-      </p>
-      ${
-        message
-          ? `<h2 style="font-size:15px;margin:0 0 8px">What they want to change</h2>
+ <div style="font-family:system-ui,sans-serif;max-width:640px">
+ <p style="font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:#777;margin:0">
+ New enquiry from the Accentuate site
+ </p>
+ <h1 style="font-size:26px;margin:8px 0 0">${escapeHtml(name)}${
+ business ? `, ${escapeHtml(business)}` : ""
+ }</h1>
+ <p style="font-size:15px;color:#333;margin:6px 0 4px">Topic: <strong>${escapeHtml(
+ label
+ )}</strong></p>
+ <p style="font-size:15px;color:#333;margin:0 0 24px">Site language: <strong>${
+ lang === "es" ? "Spanish" : "English"
+ }</strong></p>
+ <p style="font-size:14px;line-height:1.7;color:#333;margin:0 0 24px">
+ ${
+ isEmail
+ ? `Email: <a href="mailto:${escapeHtml(contact)}">${escapeHtml(contact)}</a>`
+ : `Phone: ${escapeHtml(contact)}`
+ }
+ </p>
+ ${
+ message
+ ? `<h2 style="font-size:15px;margin:0 0 8px">What they want to change</h2>
       <p style="font-size:14px;line-height:1.7;color:#333;white-space:pre-wrap;margin:0">${escapeHtml(
         message
       )}</p>`
-          : ""
-      }
-    </div>`;
+ : ""
+ }
+ </div>`;
 
   try {
     const response = await fetch("https://api.resend.com/emails", {

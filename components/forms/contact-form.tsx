@@ -33,7 +33,7 @@ const TOPICS: Exclude<ContactTopic, "mizar">[] = [
 ];
 
 const inputClass =
-  "mt-2 w-full rounded-md border-2 border-ink bg-white px-4 py-3 text-base text-ink focus:outline-none focus-visible:outline-none focus:ring-4 focus:ring-violet/30";
+  "mt-2 w-full rounded border border-line bg-raised px-4 py-3 text-base text-paper focus:outline-none focus-visible:outline-none focus:ring-4 focus:ring-accent/40";
 
 export function ContactForm({ lang, kind, labels, submitLabel, doneTitle }: Props) {
   const [topic, setTopic] = useState<Exclude<ContactTopic, "mizar">>("audit");
@@ -80,15 +80,15 @@ export function ContactForm({ lang, kind, labels, submitLabel, doneTitle }: Prop
     return (
       <div
         role="status"
-        className="rounded-xl border-2 border-ink bg-white p-7 shadow-[6px_6px_0_0_var(--color-ink)] md:p-9"
+        className="rounded border border-line bg-raised p-7 md:p-9"
       >
-        <span className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-ink bg-mint text-ink">
+        <span className="flex h-11 w-11 items-center justify-center rounded-full border border-line bg-ocean text-teal">
           <Check size={22} aria-hidden="true" />
         </span>
-        <p className="mt-5 font-display text-2xl font-extrabold text-ink">
+        <p className="mt-5 font-display text-2xl font-medium text-paper">
           {doneTitle ?? labels.doneTitle}
         </p>
-        <p className="mt-3 text-base leading-relaxed text-ink-soft">
+        <p className="mt-3 text-base leading-relaxed text-paper/75">
           {labels.doneText}
         </p>
       </div>
@@ -98,11 +98,11 @@ export function ContactForm({ lang, kind, labels, submitLabel, doneTitle }: Prop
   return (
     <form
       onSubmit={submit}
-      className="rounded-xl border-2 border-ink bg-white p-6 shadow-[6px_6px_0_0_var(--color-ink)] md:p-9"
+      className="rounded border border-line bg-raised p-6 md:p-9"
     >
       {kind === "contact" && (
         <fieldset>
-          <legend className="text-sm font-bold text-ink">{labels.topicLabel}</legend>
+          <legend className="text-sm font-bold text-paper">{labels.topicLabel}</legend>
           <div className="mt-3 grid gap-3 sm:grid-cols-2">
             {TOPICS.map((id) => (
               <label key={id} className="block cursor-pointer">
@@ -114,7 +114,7 @@ export function ContactForm({ lang, kind, labels, submitLabel, doneTitle }: Prop
                   onChange={() => setTopic(id)}
                   className="peer sr-only"
                 />
-                <span className="flex min-h-12 items-center rounded-md border-2 border-ink bg-canvas px-4 py-2 text-sm font-semibold text-ink transition peer-checked:bg-ink peer-checked:text-white peer-focus-visible:outline peer-focus-visible:outline-[3px] peer-focus-visible:outline-offset-2 peer-focus-visible:outline-violet">
+                <span className="flex min-h-12 items-center rounded border border-line bg-ink px-4 py-2 text-sm font-semibold text-paper transition peer-checked:border-accent peer-checked:bg-accent peer-checked:text-white peer-focus-visible:outline peer-focus-visible:outline-[3px] peer-focus-visible:outline-offset-2 peer-focus-visible:outline-accent-soft">
                   {labels.topics[id]}
                 </span>
               </label>
@@ -125,7 +125,7 @@ export function ContactForm({ lang, kind, labels, submitLabel, doneTitle }: Prop
 
       <div className={kind === "contact" ? "mt-6 space-y-5" : "space-y-5"}>
         <label className="block">
-          <span className="text-sm font-bold text-ink">{labels.nameLabel}</span>
+          <span className="text-sm font-bold text-paper">{labels.nameLabel}</span>
           <input
             type="text"
             required
@@ -137,7 +137,7 @@ export function ContactForm({ lang, kind, labels, submitLabel, doneTitle }: Prop
         </label>
 
         <label className="block">
-          <span className="text-sm font-bold text-ink">{labels.contactLabel}</span>
+          <span className="text-sm font-bold text-paper">{labels.contactLabel}</span>
           <input
             type="text"
             required
@@ -152,7 +152,7 @@ export function ContactForm({ lang, kind, labels, submitLabel, doneTitle }: Prop
         {kind === "contact" && (
           <>
             <label className="block">
-              <span className="text-sm font-bold text-ink">
+              <span className="text-sm font-bold text-paper">
                 {labels.businessLabel}
                 <span className="ml-2 font-normal text-muted">({labels.optional})</span>
               </span>
@@ -166,7 +166,7 @@ export function ContactForm({ lang, kind, labels, submitLabel, doneTitle }: Prop
             </label>
 
             <label className="block">
-              <span className="text-sm font-bold text-ink">{labels.messageLabel}</span>
+              <span className="text-sm font-bold text-paper">{labels.messageLabel}</span>
               <span className="ml-2 text-sm text-muted">{labels.messageHint}</span>
               <textarea
                 required
@@ -194,7 +194,7 @@ export function ContactForm({ lang, kind, labels, submitLabel, doneTitle }: Prop
       </div>
 
       {error && (
-        <p role="alert" className="mt-5 text-sm font-semibold text-[#b3261e]">
+        <p role="alert" className="mt-5 text-sm font-semibold text-[#ff8a80]">
           {errorText(error)}
         </p>
       )}
@@ -202,7 +202,7 @@ export function ContactForm({ lang, kind, labels, submitLabel, doneTitle }: Prop
       <button
         type="submit"
         disabled={sending}
-        className="mt-7 inline-flex min-h-12 w-full items-center justify-center rounded-md border-2 border-ink bg-coral px-6 py-3 text-base font-bold text-ink shadow-[4px_4px_0_0_var(--color-ink)] transition duration-150 enabled:hover:translate-x-[2px] enabled:hover:translate-y-[2px] enabled:hover:shadow-[2px_2px_0_0_var(--color-ink)] disabled:cursor-not-allowed disabled:opacity-60"
+        className="mt-7 inline-flex min-h-12 w-full items-center justify-center rounded border border-line bg-accent px-6 py-3 text-base font-semibold text-white transition duration-200 enabled:hover:bg-accent-soft disabled:cursor-not-allowed disabled:opacity-60"
       >
         {sending ? labels.sending : (submitLabel ?? labels.submit)}
       </button>

@@ -2,7 +2,7 @@ import { chip } from "@/components/ui-kit/styles";
 
 /*
   Decorative picture for the hero: a bar chart where the last bar is picked
-  out in coral. It carries no numbers on purpose, it is an illustration of
+  out in blue. It carries no numbers on purpose, it is an illustration of
   the idea and not a claim about results.
 */
 
@@ -17,12 +17,12 @@ type Props = {
 export function HeroArt({ title, chips, caption }: Props) {
   return (
     <div className="relative mx-auto w-full max-w-md lg:max-w-none" aria-hidden="true">
-      <div className="absolute -right-6 -top-6 h-40 w-40 rounded-full bg-sun md:h-52 md:w-52" />
-      <div className="absolute -bottom-5 -left-5 h-24 w-24 rotate-12 rounded-xl bg-violet md:h-32 md:w-32" />
+      <div className="absolute -right-10 -top-10 h-56 w-56 rounded-full bg-accent/25 blur-3xl md:h-72 md:w-72" />
+      <div className="absolute -bottom-10 -left-10 h-40 w-40 rounded-full bg-amber/15 blur-3xl md:h-56 md:w-56" />
 
-      <div className="relative rounded-2xl border-2 border-ink bg-white p-6 shadow-[8px_8px_0_0_var(--color-ink)] md:p-8">
+      <div className="relative rounded border border-line bg-raised p-6 md:p-8">
         <div className="flex items-center justify-between gap-3">
-          <p className="font-display text-lg font-bold text-ink md:text-xl">{title}</p>
+          <p className="font-display text-lg font-medium text-paper md:text-xl">{title}</p>
           <span className="shrink-0 text-xs font-semibold uppercase tracking-widest text-muted">
             {caption}
           </span>
@@ -32,11 +32,11 @@ export function HeroArt({ title, chips, caption }: Props) {
           {bars.map((pct, i) => {
             const last = i === bars.length - 1;
             const high = i > 3 && !last;
-            const tone = last ? "bg-coral" : high ? "bg-lilac" : "bg-canvas";
+            const tone = last ? "border-accent-soft bg-accent" : high ? "bg-navy" : "bg-ink";
             return (
               <div
                 key={i}
-                className={`flex-1 rounded-t-md border-2 border-ink ${tone}`}
+                className={`flex-1 rounded-t-sm border border-line ${tone}`}
                 style={{ height: `${pct}%` }}
               />
             );

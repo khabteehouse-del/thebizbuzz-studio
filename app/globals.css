@@ -10,22 +10,24 @@
 */
 
 @theme {
-  --color-canvas: #fff8ef;
-  --color-cream: #ffeed9;
-  --color-ink: #0b1b3f;
-  --color-ink-soft: #33415f;
-  --color-muted: #55627f;
-  --color-line: rgba(11, 27, 63, 0.14);
+  /* Same family as BizBuzz: deep ink and navy, one blue accent. */
+  --color-ink: #0a0e1a;
+  --color-raised: #0e1424;
+  --color-navy: #0a1f44;
+  --color-ocean: #0c1c2b;
+  --color-deep: #0b1526;
+  --color-paper: #f5f8ff;
+  --color-muted: #8794ad;
+  --color-line: rgba(245, 248, 255, 0.12);
 
-  --color-coral: #ff5a36;
-  --color-sun: #ffc23d;
-  --color-violet: #5b3df5;
-  --color-violet-deep: #3f27c9;
-  --color-lilac: #ece8ff;
-  --color-teal: #00b39b;
-  --color-mint: #d8f7f0;
+  --color-accent: #1e7fd6;
+  --color-accent-soft: #4ea3ec;
 
-  --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+  /* The Accentuate difference: one warm highlighter, used sparingly */
+  --color-amber: #ffbf3f;
+  --color-teal: #2dd4bf;
+
+  --font-display: var(--font-newsreader), Georgia, serif;
   --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
 }
 
@@ -37,27 +39,33 @@
   }
 
   body {
-    background-color: var(--color-canvas);
-    color: var(--color-ink);
+    background-color: var(--color-ink);
+    color: var(--color-paper);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
 
   ::selection {
-    background-color: var(--color-sun);
+    background-color: var(--color-amber);
     color: var(--color-ink);
   }
 
   /* Keyboard focus must always be visible */
   :focus-visible {
-    outline: 3px solid var(--color-violet);
+    outline: 2px solid var(--color-accent-soft);
     outline-offset: 3px;
     border-radius: 4px;
   }
 
   .on-dark :focus-visible {
     outline-color: #ffffff;
+  }
+
+  button,
+  input,
+  textarea {
+    font: inherit;
   }
 
   summary::-webkit-details-marker {
@@ -80,28 +88,28 @@
   }
 
   /*
-    The highlighter swipe. Only the lower part of the text is coloured, so
-    the letters stay fully readable on top of it. It wraps cleanly across
-    two lines on small screens.
+    The highlighter swipe. The word turns amber and gets a soft band
+    under it. It wraps cleanly across two lines on small screens.
   */
   .mark {
+    color: var(--color-amber);
     background-image: linear-gradient(
-      transparent 58%,
-      var(--color-sun) 58%,
-      var(--color-sun) 92%,
-      transparent 92%
+      transparent 70%,
+      rgba(255, 191, 63, 0.28) 70%,
+      rgba(255, 191, 63, 0.28) 94%,
+      transparent 94%
     );
-    padding-inline: 0.08em;
+    padding-inline: 0.06em;
     -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
   }
 
-  /* On dark backgrounds the whole word is highlighted instead */
+  /* On the blue band the whole word is highlighted instead */
   .mark-block {
-    background-color: var(--color-sun);
+    background-color: var(--color-amber);
     color: var(--color-ink);
     padding-inline: 0.15em;
-    border-radius: 6px;
+    border-radius: 3px;
     -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
   }

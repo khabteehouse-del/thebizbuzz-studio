@@ -54,7 +54,7 @@ export function SiteHeader({
   }
 
   return (
-    <header className="sticky top-0 z-50 border-b-2 border-ink bg-canvas/95 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-line bg-ink/95 backdrop-blur">
       <div className="shell flex h-16 items-center justify-between gap-4 md:h-20">
         <Link
           href={homeHref}
@@ -64,7 +64,7 @@ export function SiteHeader({
         >
           <LogoMark />
           <span className="flex flex-col leading-none">
-            <span className="font-display text-xl font-extrabold tracking-tight text-ink">
+            <span className="font-display text-xl font-medium tracking-tight text-paper">
               {brandMain}
             </span>
             <span className="mt-1 text-[0.62rem] font-bold uppercase tracking-[0.2em] text-muted">
@@ -79,9 +79,9 @@ export function SiteHeader({
               key={item.href}
               href={item.href}
               aria-current={isActive(item.href) ? "page" : undefined}
-              className={`rounded-md px-3 py-2 text-[0.95rem] font-semibold transition hover:bg-lilac ${
-                isActive(item.href) ? "bg-lilac text-violet-deep" : "text-ink"
-              }`}
+              className={`rounded px-3 py-2 text-[0.95rem] font-semibold transition hover:bg-navy ${
+ isActive(item.href) ? "bg-navy text-accent-soft" : "text-paper"
+ }`}
             >
               {item.label}
             </Link>
@@ -94,7 +94,7 @@ export function SiteHeader({
             hrefLang={other}
             lang={other}
             aria-label={switchAria}
-            className="inline-flex min-h-11 items-center gap-1.5 rounded-md border-2 border-ink bg-white px-3 text-sm font-bold text-ink transition hover:bg-sun"
+            className="inline-flex min-h-11 items-center gap-1.5 rounded border border-line bg-raised px-3 text-sm font-semibold text-paper transition hover:border-paper/40 hover:bg-white/5"
           >
             <Globe size={16} aria-hidden="true" />
             {switchLabel}
@@ -102,7 +102,7 @@ export function SiteHeader({
 
           <Link
             href={cta.href}
-            className="hidden min-h-11 items-center rounded-md border-2 border-ink bg-coral px-4 text-sm font-bold text-ink shadow-[3px_3px_0_0_var(--color-ink)] transition hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[2px_2px_0_0_var(--color-ink)] md:inline-flex"
+            className="hidden min-h-11 items-center rounded border border-line bg-accent px-4 text-sm font-bold text-white transition md:inline-flex"
           >
             {cta.label}
           </Link>
@@ -113,7 +113,7 @@ export function SiteHeader({
             aria-expanded={open}
             aria-controls="mobile-menu"
             aria-label={open ? menuClose : menuOpen}
-            className="inline-flex h-11 w-11 items-center justify-center rounded-md border-2 border-ink bg-white text-ink lg:hidden"
+            className="inline-flex h-11 w-11 items-center justify-center rounded border border-line bg-raised text-paper lg:hidden"
           >
             {open ? <X size={22} aria-hidden="true" /> : <Menu size={22} aria-hidden="true" />}
           </button>
@@ -121,7 +121,7 @@ export function SiteHeader({
       </div>
 
       {open && (
-        <div id="mobile-menu" className="border-t-2 border-ink bg-canvas lg:hidden">
+        <div id="mobile-menu" className="border-t border-line bg-ink lg:hidden">
           <nav aria-label="Mobile" className="shell flex flex-col gap-1 py-4">
             {links.map((item) => (
               <Link
@@ -129,9 +129,9 @@ export function SiteHeader({
                 href={item.href}
                 onClick={() => setOpen(false)}
                 aria-current={isActive(item.href) ? "page" : undefined}
-                className={`rounded-md px-3 py-3 text-lg font-bold ${
-                  isActive(item.href) ? "bg-lilac text-violet-deep" : "text-ink"
-                }`}
+                className={`rounded px-3 py-3 text-lg font-bold ${
+ isActive(item.href) ? "bg-navy text-accent-soft" : "text-paper"
+ }`}
               >
                 {item.label}
               </Link>
@@ -139,7 +139,7 @@ export function SiteHeader({
             <Link
               href={cta.href}
               onClick={() => setOpen(false)}
-              className="mt-3 inline-flex min-h-12 items-center justify-center rounded-md border-2 border-ink bg-coral px-6 py-3 text-base font-bold text-ink shadow-[4px_4px_0_0_var(--color-ink)]"
+              className="mt-3 inline-flex min-h-12 items-center justify-center rounded border border-line bg-accent px-6 py-3 text-base font-bold text-white "
             >
               {cta.label}
             </Link>

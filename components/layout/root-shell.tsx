@@ -26,10 +26,10 @@ export function RootShell({ lang, children }: { lang: Lang; children: ReactNode 
 
   return (
     <html lang={c.htmlLang} className={`${display.variable} ${sans.variable}`}>
-      <body className="bg-canvas font-sans text-ink antialiased">
+      <body className="bg-ink font-sans text-paper antialiased">
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:border-2 focus:border-ink focus:bg-sun focus:px-4 focus:py-2 focus:font-bold"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded focus:border focus:border-line focus:bg-amber focus:px-4 focus:py-2 focus:font-bold focus:text-ink"
         >
           {lang === "en" ? "Skip to content" : "Saltar al contenido"}
         </a>

@@ -4,17 +4,17 @@
 */
 
 export const card =
-  "rounded-xl border-2 border-ink bg-white p-6 shadow-[5px_5px_0_0_var(--color-ink)]";
+  "rounded border border-line bg-raised p-6";
 
 export const eyebrow =
-  "inline-block rounded-md bg-lilac px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-violet-deep";
+  "inline-block rounded bg-navy px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-accent-soft";
 
 export const h2 =
-  "font-display text-3xl font-extrabold leading-tight tracking-tight text-ink md:text-5xl";
+  "font-display text-3xl font-medium leading-tight tracking-tight text-paper md:text-5xl";
 
-export const lead = "text-lg leading-relaxed text-ink-soft md:text-xl";
+export const lead = "text-lg leading-relaxed text-paper/75 md:text-xl";
 
 export const chip =
-  "rounded-full border-2 border-ink bg-white px-3 py-1 text-sm font-semibold text-ink";
+  "rounded-full border border-line bg-raised px-3 py-1 text-sm font-semibold text-paper";
 
-export const section = "border-b-2 border-ink py-16 md:py-24";
+export const section = "border-b border-line py-16 md:py-24";

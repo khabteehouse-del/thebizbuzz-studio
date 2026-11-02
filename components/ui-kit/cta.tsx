@@ -5,16 +5,15 @@ import type { ReactNode } from "react";
 type Variant = "primary" | "dark" | "outline" | "light";
 
 const base =
-  "inline-flex min-h-12 items-center justify-center gap-2 rounded-md border-2 border-ink px-6 py-3 text-base font-bold transition duration-150 hover:translate-x-[2px] hover:translate-y-[2px]";
+  "inline-flex min-h-12 items-center justify-center gap-2 rounded border px-6 py-3 text-base font-semibold transition duration-200";
 
 const variants: Record<Variant, string> = {
   primary:
-    "bg-coral text-ink shadow-[4px_4px_0_0_var(--color-ink)] hover:shadow-[2px_2px_0_0_var(--color-ink)]",
-  dark: "bg-ink text-white shadow-[4px_4px_0_0_var(--color-coral)] hover:shadow-[2px_2px_0_0_var(--color-coral)]",
+    "border-accent bg-accent text-white hover:border-accent-soft hover:bg-accent-soft",
+  dark: "border-paper bg-paper text-ink hover:bg-white",
   outline:
-    "bg-white text-ink shadow-[4px_4px_0_0_var(--color-ink)] hover:shadow-[2px_2px_0_0_var(--color-ink)]",
-  light:
-    "bg-white text-ink shadow-[4px_4px_0_0_var(--color-sun)] hover:shadow-[2px_2px_0_0_var(--color-sun)]",
+    "border-line bg-transparent text-paper hover:border-paper/40 hover:bg-white/5",
+  light: "border-amber bg-amber text-ink hover:bg-white hover:border-white",
 };
 
 type Props = {
@@ -68,7 +67,7 @@ export function TextLink({
   return (
     <Link
       href={href}
-      className="inline-flex items-center gap-1.5 font-bold text-violet-deep underline decoration-2 underline-offset-4 hover:text-ink"
+      className="inline-flex items-center gap-1.5 font-semibold text-accent-soft underline decoration-1 underline-offset-4 hover:text-paper"
     >
       {children}
       <ArrowRight size={16} aria-hidden="true" />

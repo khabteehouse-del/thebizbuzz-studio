@@ -13,6 +13,28 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "pakistan-alibaba-ai-projects-november-2026",
+    title: "Pakistan's PM Sets a November Deadline for Alibaba AI Projects",
+    description:
+      "On October 28, 2026, Prime Minister Shehbaz Sharif told ministries to finish their steps in the Alibaba partnership by November, covering trade, SMEs, agriculture and AI training.",
+    date: "2026-11-02",
+    readTime: "4 min read",
+    tags: ["Tech News", "Pakistan"],
+    image: "/images/blog/pakistan-alibaba-ai-projects-november-2026.jpg",
+    body: [
+      "On October 28, 2026, Prime Minister Shehbaz Sharif chaired a review meeting in Islamabad on using AI and digitisation in government, and on Pakistan's work with Alibaba Group. According to Dawn and Radio Pakistan, he directed that the Alibaba projects have clear targets, defined timelines and effective monitoring. Ministries must complete the necessary measures by November and submit a progress report. No exact day in November was given. The partnership goes back to an MoU signed at Alibaba's Hangzhou headquarters during the Prime Minister's visit to China.",
+      "Several pieces are already live or under way. A system for digitally verifying trade documents through the Pakistan Single Window is operational. A Pakistan Pavilion has been set up on Alibaba's platform to promote Pakistani products abroad. Work is under way on AI-based agriculture models, track-and-trace technology for tobacco, and digital platforms for exporting citrus fruit and olives. The Oil and Gas Regulatory Authority (OGRA) is receiving AI and analytics tools to monitor the petroleum supply chain.",
+      "Two items matter most for people and small firms. SMEDA and Alibaba are launching a two-year programme to give small and medium enterprises access to international markets, training and e-commerce opportunities. Dawn reports no participant numbers or budget. Separately, a 15-day AI training programme for IT graduates is to be launched soon under the IT ministry's Ignite programme, with Alibaba. The meeting also reviewed a proposed AI-assisted cancer detection pilot, and the Prime Minister asked for early implementation, though no date was stated.",
+      "A caution on scope: these are government announcements from one review meeting, and the sources give few figures on budgets, user numbers or results. A November deadline for reports is not the same as finished projects. Dawn also notes the earlier steps, including Pakistan becoming a founding member of the World AI Cooperation Organisation in July and a plan to invest $1 billion in AI by 2030.",
+      "What this means for businesses: if you export from Pakistan, watch for the SMEDA and Alibaba programme details and check whether your products fit the Pakistan Pavilion. Exporters and freight firms should look at how digital trade-document verification through the Single Window changes your paperwork. IT firms and graduates can follow the Ignite AI course announcement. Before relying on any of it, wait for official eligibility terms and dates, and keep your own sales channels in place while the programmes mature.",
+    ],
+    sources: [
+      { label: "Dawn: Secret to country's development lies in AI and digitisation, PM Shehbaz stresses", url: "https://www.dawn.com/news/2040459" },
+      { label: "Radio Pakistan: PM directs clear targets, timelines for Alibaba Group projects", url: "https://www.radio.gov.pk/28-10-2026/pm-directs-clear-targets-timelines-for-alibaba-group-projects" },
+      { label: "Express Tribune: Secret to national development lies in AI and digitisation: PM Shehbaz", url: "https://tribune.com.pk/story/2637409/secret-to-national-development-lies-in-ai-and-digitisation-pm-shehbaz" },
+    ],
+  },
+  {
     slug: "binance-6-3-billion-hack-north-korea-october-2026",
     title: "Binance Reports a $6.3 Billion Hack, the Largest on Record",
     description:

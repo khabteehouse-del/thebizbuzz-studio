@@ -1,15 +1,20 @@
 import type { ReactNode } from "react";
-import { SiteHeader } from "@/components/layout/site-header";
-import { SiteFooter } from "@/components/layout/site-footer";
+import { Nav } from "@/components/layout/nav";
+import { Footer } from "@/components/layout/footer";
+import { SmoothScroll } from "@/components/shared/smooth-scroll";
+import { OffscreenPause } from "@/components/shared/offscreen-pause";
+import { Grain } from "@/components/shared/grain";
+import { Cursor } from "@/components/shared/cursor";
 import { copy } from "@/data/copy";
 import { path, type Lang } from "@/data/i18n";
 import { site } from "@/data/site";
-import { display, sans } from "@/lib/fonts";
+import { sans } from "@/lib/fonts";
 
 /*
-  The whole page frame for one language. Each language group has its own
-  root layout (so the html lang attribute is right from the first byte),
-  and both just hand over to this.
+  The whole page frame for one language, same stack as BizBuzz: smooth
+  scroll, grain, custom cursor, fixed header, footer. Each language group
+  has its own root layout so the html lang attribute is right from the
+  first byte.
 */
 
 export function RootShell({ lang, children }: { lang: Lang; children: ReactNode }) {
@@ -25,18 +30,21 @@ export function RootShell({ lang, children }: { lang: Lang; children: ReactNode 
   ];
 
   return (
-    <html lang={c.htmlLang} className={`${display.variable} ${sans.variable}`}>
-      <body className="bg-ink font-sans text-paper antialiased">
+    <html lang={c.htmlLang} className={sans.variable}>
+      <body className="min-h-dvh bg-ink text-paper antialiased">
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded focus:border focus:border-line focus:bg-amber focus:px-4 focus:py-2 focus:font-bold focus:text-ink"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[200] focus:rounded-[3px] focus:bg-accent focus:px-4 focus:py-2 focus:text-paper"
         >
           {lang === "en" ? "Skip to content" : "Saltar al contenido"}
         </a>
-        <SiteHeader
+        <SmoothScroll />
+        <OffscreenPause />
+        <Grain />
+        <Cursor />
+        <Nav
           lang={lang}
-          brandMain={site.shortName}
-          brandRest={lang === "en" ? "Your Revenue" : "Sus Ingresos"}
+          brand={site.shortName}
           homeHref={path("home", lang)}
           homeLabel={c.nav.home}
           links={links}
@@ -47,7 +55,7 @@ export function RootShell({ lang, children }: { lang: Lang; children: ReactNode 
           menuClose={c.nav.menuClose}
         />
         <main id="main">{children}</main>
-        <SiteFooter lang={lang} />
+        <Footer lang={lang} />
       </body>
     </html>
   );

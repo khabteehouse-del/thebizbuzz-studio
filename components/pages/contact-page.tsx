@@ -1,6 +1,7 @@
 import { ContactForm } from "@/components/forms/contact-form";
-import { Marked } from "@/components/ui-kit/marked";
-import { card, eyebrow, lead } from "@/components/ui-kit/styles";
+import { Orbs } from "@/components/shared/orbs";
+import { Reveal } from "@/components/shared/reveal";
+import { Headline } from "@/components/sections/headline";
 import { copy } from "@/data/copy";
 import type { Lang } from "@/data/i18n";
 
@@ -9,36 +10,35 @@ export function ContactPage({ lang }: { lang: Lang }) {
   const ct = c.contact;
 
   return (
-    <section className="bg-ink py-14 md:py-24">
-      <div className="shell grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
-        <div>
-          <p className={eyebrow}>{ct.eyebrow}</p>
-          <h1 className="mt-6 font-display text-4xl font-medium leading-[1.05] tracking-tight text-paper md:text-6xl">
-            <Marked text={ct.h1} mark={ct.h1Mark} />
+    <section className="relative overflow-hidden bg-ink pb-24 pt-36 md:pb-40 md:pt-52">
+      <Orbs tone="mixed" intensity={0.9} />
+      <div className="shell relative z-10 grid gap-14 lg:grid-cols-[0.95fr_1.05fr] lg:gap-20">
+        <Reveal>
+          <p className="section-label">{ct.eyebrow}</p>
+          <h1 className="mt-8 font-display text-4xl font-medium leading-[1.04] tracking-[-0.04em] text-paper sm:text-5xl md:text-7xl">
+            <Headline text={ct.h1} mark={ct.h1Mark} />
           </h1>
-          <p className={`${lead} mt-6`}>{ct.intro}</p>
+          <p className="mt-8 max-w-lg text-base leading-relaxed text-paper/70 md:text-lg">{ct.intro}</p>
 
-          <div className={`${card} mt-10`}>
-            <p className="font-display text-xl font-medium text-paper">{ct.nextTitle}</p>
-            <ol className="mt-5 space-y-4">
-              {ct.next.map((step, i) => (
-                <li key={step.title} className="flex gap-4">
-                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-line bg-amber font-display font-medium text-ink">
-                    {i + 1}
-                  </span>
-                  <span>
-                    <span className="block font-bold text-paper">{step.title}</span>
-                    <span className="mt-1 block text-base text-paper/75">{step.text}</span>
-                  </span>
-                </li>
-              ))}
-            </ol>
-          </div>
-          <p className="mt-6 text-base font-semibold text-accent-soft">{ct.languageNote}</p>
+          <p className="mt-12 text-xs uppercase tracking-[0.14em] text-muted">{ct.nextTitle}</p>
+          <ol className="mt-5 border-t border-line">
+            {ct.next.map((step, i) => (
+              <li key={step.title} className="flex gap-5 border-b border-line py-5">
+                <span className="font-display text-sm text-[#ffb938]">{String(i + 1).padStart(2, "0")}</span>
+                <span>
+                  <span className="block font-display text-lg font-medium text-paper">{step.title}</span>
+                  <span className="mt-1 block text-sm leading-relaxed text-muted">{step.text}</span>
+                </span>
+              </li>
+            ))}
+          </ol>
+          <p className="mt-8 text-sm text-accent-soft">{ct.languageNote}</p>
           <p className="mt-2 text-sm text-muted">{ct.remoteNote}</p>
-        </div>
+        </Reveal>
 
-        <ContactForm lang={lang} kind="contact" labels={c.form} />
+        <Reveal delay={0.1}>
+          <ContactForm lang={lang} kind="contact" labels={c.form} />
+        </Reveal>
       </div>
     </section>
   );

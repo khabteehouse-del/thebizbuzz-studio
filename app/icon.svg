@@ -1,7 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
-  <rect width="40" height="40" rx="6" fill="#0a1f44"/>
-  <rect x="8" y="22" width="6" height="10" rx="1" fill="#f5f8ff" opacity="0.45"/>
-  <rect x="17" y="16" width="6" height="16" rx="1" fill="#f5f8ff" opacity="0.75"/>
-  <rect x="26" y="8" width="6" height="24" rx="1" fill="#4ea3ec"/>
-  <rect x="23" y="31" width="12" height="3" rx="1.5" fill="#ffbf3f"/>
+  <rect width="40" height="40" rx="8" fill="#0a0e1a"/>
+  <defs>
+    <linearGradient id="g" x1="4" y1="34" x2="36" y2="6" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ff8a3d"/>
+      <stop offset="0.6" stop-color="#ffb938"/>
+      <stop offset="1" stop-color="#ffe6b0"/>
+    </linearGradient>
+  </defs>
+  <path d="M7 30 C 14 29, 21 24, 28 14" stroke="url(#g)" stroke-width="3.4" stroke-linecap="round" fill="none"/>
+  <path d="M22 10 L34 7 L30 19 Z" fill="url(#g)"/>
 </svg>

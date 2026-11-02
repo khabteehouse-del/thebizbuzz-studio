@@ -33,19 +33,19 @@ export function Intro({ lang }: { lang: Lang }) {
   const pulse = usePulse(3000);
 
   return (
-    <section className="relative overflow-hidden border-t border-line py-20 md:py-40">
+    <section className="relative overflow-hidden border-t border-line py-14 md:py-20">
       <div className="pointer-events-none absolute inset-0 -z-[5] bg-ink md:bg-gradient-to-b md:from-ink/85 md:via-ink/92 md:to-ink" />
       <Orbs tone="navy" intensity={0.9} />
 
       <div className="shell relative z-10">
         <Reveal>
-          <p className="max-w-4xl font-display text-xl font-medium leading-[1.4] tracking-[-0.02em] text-paper sm:text-2xl md:text-4xl md:leading-[1.3]">
+          <p className="max-w-4xl font-display text-xl font-medium leading-[1.4] tracking-[-0.02em] text-paper sm:text-2xl md:text-3xl md:leading-[1.3]">
             {h.soundsTitle}
           </p>
         </Reveal>
 
         <Reveal delay={0.08}>
-          <div className="mt-16 grid gap-10 border-t border-line pt-12 md:grid-cols-3 md:gap-16">
+          <div className="mt-10 grid gap-8 border-t border-line pt-8 md:grid-cols-3 md:gap-12">
             {h.sounds.map((item, i) => {
               const Icon = icons[i] ?? Search;
               return (

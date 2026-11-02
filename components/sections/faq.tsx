@@ -12,7 +12,7 @@ export function Faq({ lang }: { lang: Lang }) {
   const h = copy[lang].home;
 
   return (
-    <section className="relative scroll-mt-24 overflow-hidden bg-ink py-20 md:py-36">
+    <section className="relative scroll-mt-24 overflow-hidden bg-ink py-14 md:py-20">
       <Orbs tone="accent" intensity={0.7} />
 
       <div className="shell relative z-10">
@@ -20,7 +20,7 @@ export function Faq({ lang }: { lang: Lang }) {
           <Reveal>
             <div className="md:sticky md:top-32">
               <p className="section-label">{h.faqEyebrow}</p>
-              <h2 className="mt-7 font-display text-3xl font-medium leading-[1.08] tracking-[-0.03em] text-paper sm:text-4xl md:text-5xl">
+              <h2 className="mt-5 font-display text-3xl font-medium leading-[1.08] tracking-[-0.03em] text-paper sm:text-3xl md:text-4xl">
                 {h.faqTitle}
               </h2>
             </div>
@@ -29,7 +29,7 @@ export function Faq({ lang }: { lang: Lang }) {
           <div className="border-t border-line">
             {h.faqs.map((item, index) => (
               <details key={item.q} name="faq" open={index === 0} className="group border-b border-line">
-                <summary className="flex cursor-pointer list-none items-start justify-between gap-6 py-7 text-left transition-colors duration-300 marker:hidden [&::-webkit-details-marker]:hidden">
+                <summary className="flex cursor-pointer list-none items-start justify-between gap-6 py-5 text-left transition-colors duration-300 marker:hidden [&::-webkit-details-marker]:hidden">
                   <span className="flex items-center gap-3">
                     <span className="relative hidden h-1.5 w-1.5 shrink-0 rounded-full bg-accent-soft group-open:block">
                       <span className="absolute inset-0 animate-ping rounded-full bg-accent-soft" />

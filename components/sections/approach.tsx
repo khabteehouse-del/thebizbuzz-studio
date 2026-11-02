@@ -24,11 +24,11 @@ export function Approach({ lang }: { lang: Lang }) {
   const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   return (
-    <section className="relative overflow-hidden bg-deep py-20 md:py-36">
+    <section className="relative overflow-hidden bg-deep py-14 md:py-20">
       <Orbs tone="mixed" intensity={0.55} />
 
       <div className="shell relative z-10">
-        <div className="grid gap-16 md:grid-cols-[0.85fr_1.15fr] md:gap-20">
+        <div className="grid gap-8 md:grid-cols-[0.85fr_1.15fr] md:gap-16">
           <Reveal>
             <div className="relative md:sticky md:top-32">
               <div
@@ -47,7 +47,7 @@ export function Approach({ lang }: { lang: Lang }) {
                 </span>
               </div>
               <p className="section-label relative">{h.stepsEyebrow}</p>
-              <h2 className="relative mt-7 font-display text-3xl font-medium leading-[1.08] tracking-[-0.03em] text-paper sm:text-4xl md:text-6xl">
+              <h2 className="relative mt-5 font-display text-2xl font-medium leading-[1.12] tracking-[-0.03em] text-paper sm:text-3xl md:text-4xl">
                 {h.stepsTitle}
               </h2>
             </div>
@@ -82,7 +82,7 @@ export function Approach({ lang }: { lang: Lang }) {
                       <div
                         onMouseEnter={() => setHovered(index)}
                         onMouseLeave={() => setHovered(null)}
-                        className="group relative rounded-[4px] py-6 pl-[52px] pr-4 transition-colors duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] md:py-9 md:pl-[66px]"
+                        className="group relative rounded-[4px] py-4 pl-[52px] pr-4 transition-colors duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] md:py-6 md:pl-[66px]"
                         style={{
                           backgroundColor: isHovered
                             ? "color-mix(in srgb, var(--color-accent-soft) 7%, transparent)"
@@ -95,7 +95,7 @@ export function Approach({ lang }: { lang: Lang }) {
                           style={{ opacity: isHovered ? 1 : 0 }}
                         />
                         <span
-                          className="absolute left-0 top-6 flex h-11 w-11 shrink-0 items-center justify-center rounded-full border font-display text-sm transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] md:top-9"
+                          className="absolute left-0 top-4 flex h-11 w-11 shrink-0 items-center justify-center rounded-full border font-display text-sm transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] md:top-6"
                           style={{
                             borderColor: isHovered ? "var(--color-accent-soft)" : "var(--color-line)",
                             backgroundColor: isHovered ? "var(--color-accent-soft)" : "var(--color-deep)",

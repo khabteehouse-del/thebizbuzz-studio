@@ -121,7 +121,7 @@ export function Hero({ lang }: { lang: Lang }) {
               }}
               className="relative mt-6 md:mt-8"
             >
-              <h1 className="-ml-[0.06em] font-display text-[clamp(3rem,13.5vw,13rem)] font-medium italic leading-[0.9] tracking-[-0.055em] text-paper md:text-[clamp(4.5rem,11vw,12rem)]">
+              <h1 className="-ml-[0.06em] font-display text-[clamp(2.6rem,11vw,6rem)] font-medium italic leading-[0.92] tracking-[-0.055em] text-paper md:text-[clamp(3.6rem,7.2vw,8rem)]">
                 <span
                   className={`block pb-[0.12em] -mb-[0.12em] pr-[0.08em] ${
                     intro ? "overflow-hidden" : ""
@@ -151,8 +151,8 @@ export function Hero({ lang }: { lang: Lang }) {
                     {h.h1After}
                   </motion.span>
                   <GrowthArrow
-                    size={40}
-                    sizeDesktop={104}
+                    size={34}
+                    sizeDesktop={80}
                     className="-mb-[6px] -ml-5 md:-mb-[13px] md:-ml-10"
                   />
                 </span>
@@ -161,14 +161,14 @@ export function Hero({ lang }: { lang: Lang }) {
 
             <motion.p
               {...rise(0.6)}
-              className="mt-7 max-w-xl text-base leading-relaxed text-paper/75 md:mt-9 md:text-lg"
+              className="mt-6 max-w-xl text-base leading-relaxed text-paper/75 md:mt-7 md:text-lg"
             >
               {h.sub}
             </motion.p>
 
             <motion.div
               {...rise(0.75)}
-              className="relative mt-9 flex flex-wrap items-center gap-3 md:mt-11 md:gap-4"
+              className="relative mt-7 flex flex-wrap items-center gap-3 md:mt-9 md:gap-4"
             >
               <Button
                 href={path("contact", lang)}

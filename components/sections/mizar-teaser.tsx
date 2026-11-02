@@ -11,7 +11,7 @@ export function MizarTeaser({ lang }: { lang: Lang }) {
   const h = c.home;
 
   return (
-    <section className="relative overflow-hidden bg-ocean py-20 md:py-36">
+    <section className="relative overflow-hidden bg-ocean py-14 md:py-20">
       <Orbs tone="mixed" intensity={0.6} />
       <div className="shell relative z-10">
         <Reveal>
@@ -31,7 +31,7 @@ export function MizarTeaser({ lang }: { lang: Lang }) {
                 </span>
                 {h.mizarBadge}
               </span>
-              <h2 className="mt-6 font-display text-3xl font-medium leading-[1.1] tracking-[-0.03em] text-paper md:text-5xl">
+              <h2 className="mt-6 font-display text-2xl font-medium leading-[1.12] tracking-[-0.03em] text-paper md:text-3xl">
                 {h.mizarTitle}
               </h2>
               <p className="mt-5 max-w-md text-base leading-relaxed text-muted">{h.mizarText}</p>

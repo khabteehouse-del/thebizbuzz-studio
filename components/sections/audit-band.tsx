@@ -14,7 +14,7 @@ export function AuditBand({ lang }: { lang: Lang }) {
   const h = c.home;
 
   return (
-    <section className="relative overflow-hidden bg-deep py-20 md:py-36">
+    <section className="relative overflow-hidden bg-deep py-14 md:py-20">
       <Orbs tone="accent" intensity={0.55} />
       <div className="shell relative z-10">
         <Reveal>
@@ -23,10 +23,10 @@ export function AuditBand({ lang }: { lang: Lang }) {
               <p className="section-label" style={{ color: TEAL }}>
                 {h.auditEyebrow}
               </p>
-              <h2 className="mt-7 font-display text-3xl font-medium leading-[1.08] tracking-[-0.03em] text-paper sm:text-4xl md:text-6xl">
+              <h2 className="mt-5 font-display text-2xl font-medium leading-[1.12] tracking-[-0.03em] text-paper sm:text-3xl md:text-4xl">
                 {h.auditTitle}
               </h2>
-              <p className="mt-6 max-w-xl text-base leading-relaxed text-muted md:text-lg">
+              <p className="mt-4 max-w-xl text-base leading-relaxed text-muted md:text-lg">
                 {h.auditText}
               </p>
               <div className="mt-10">

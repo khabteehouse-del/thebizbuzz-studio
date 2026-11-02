@@ -37,10 +37,10 @@ export function MizarPage({ lang }: { lang: Lang }) {
         <p className="mt-10 text-sm text-accent-soft md:text-base">{m.languageNote}</p>
       </Block>
 
-      <section className="relative overflow-hidden bg-deep py-24 md:py-36">
+      <section className="relative overflow-hidden bg-deep py-16 md:py-24">
         <div className="shell relative z-10 grid gap-12 lg:grid-cols-[1fr_1fr] lg:items-start lg:gap-20">
           <Reveal>
-            <h2 className="font-display text-3xl font-medium leading-[1.08] tracking-[-0.035em] text-paper md:text-6xl">
+            <h2 className="font-display text-2xl font-medium leading-[1.1] tracking-[-0.035em] text-paper md:text-4xl">
               {m.formTitle}
             </h2>
             <p className="mt-7 max-w-lg text-base leading-relaxed text-muted md:text-lg">{m.formText}</p>

@@ -23,22 +23,22 @@ export function Services({ lang }: { lang: Lang }) {
   const h = c.home;
 
   return (
-    <section id="services" className="relative scroll-mt-24 overflow-hidden bg-ocean py-20 md:py-36">
+    <section id="services" className="relative scroll-mt-24 overflow-hidden bg-ocean py-14 md:py-20">
       <Orbs tone="mixed" intensity={0.6} />
       <div className="shell relative z-10">
         <Reveal>
           <div className="max-w-3xl">
             <p className="section-label">{h.servicesEyebrow}</p>
-            <h2 className="mt-7 font-display text-3xl font-medium leading-[1.08] tracking-[-0.03em] text-paper sm:text-4xl md:text-6xl">
+            <h2 className="mt-5 font-display text-2xl font-medium leading-[1.12] tracking-[-0.03em] text-paper sm:text-3xl md:text-4xl">
               {h.servicesTitle}
             </h2>
-            <p className="mt-6 max-w-xl text-base leading-relaxed text-muted md:text-lg">
+            <p className="mt-4 max-w-xl text-base leading-relaxed text-muted md:text-lg">
               {h.servicesIntro}
             </p>
           </div>
         </Reveal>
 
-        <ul className="mt-14 grid gap-5 md:mt-20 lg:grid-cols-3">
+        <ul className="mt-8 grid gap-4 md:mt-12 lg:grid-cols-3">
           {items.map(({ key, Icon, colour }, i) => {
             const s = c.services[key];
             const vars = { "--c": colour, "--mark": colour, "--i": i } as CSSProperties;
@@ -48,7 +48,7 @@ export function Services({ lang }: { lang: Lang }) {
                   <Link
                     href={path(key, lang)}
                     style={vars}
-                    className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-paper/[0.03] p-7 transition-[border-color,box-shadow,background-color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-[color-mix(in_srgb,var(--c)_55%,transparent)] hover:bg-paper/[0.05] hover:shadow-[0_0_38px_-10px_var(--c)] md:p-9"
+                    className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-paper/[0.03] p-6 transition-[border-color,box-shadow,background-color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-[color-mix(in_srgb,var(--c)_55%,transparent)] hover:bg-paper/[0.05] hover:shadow-[0_0_38px_-10px_var(--c)] md:p-7"
                   >
                     <span
                       aria-hidden="true"
@@ -72,7 +72,7 @@ export function Services({ lang }: { lang: Lang }) {
                       />
                     </span>
 
-                    <h3 className="relative mt-8 font-display text-2xl font-medium tracking-[-0.02em] text-paper">
+                    <h3 className="relative mt-6 font-display text-xl font-medium tracking-[-0.02em] text-paper md:text-2xl">
                       {s.title}
                     </h3>
                     <p className="relative mt-3 text-sm leading-relaxed text-paper/65 md:text-base">

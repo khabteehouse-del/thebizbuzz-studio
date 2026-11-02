@@ -10,12 +10,12 @@ export function ContactPage({ lang }: { lang: Lang }) {
   const ct = c.contact;
 
   return (
-    <section className="relative overflow-hidden bg-ink pb-24 pt-36 md:pb-40 md:pt-52">
+    <section className="relative overflow-hidden bg-ink pb-16 pt-28 md:pb-24 md:pt-40">
       <Orbs tone="mixed" intensity={0.9} />
       <div className="shell relative z-10 grid gap-14 lg:grid-cols-[0.95fr_1.05fr] lg:gap-20">
         <Reveal>
           <p className="section-label">{ct.eyebrow}</p>
-          <h1 className="mt-8 font-display text-4xl font-medium leading-[1.04] tracking-[-0.04em] text-paper sm:text-5xl md:text-7xl">
+          <h1 className="mt-5 font-display text-3xl font-medium leading-[1.08] tracking-[-0.04em] text-paper sm:text-4xl md:text-5xl">
             <Headline text={ct.h1} mark={ct.h1Mark} />
           </h1>
           <p className="mt-8 max-w-lg text-base leading-relaxed text-paper/70 md:text-lg">{ct.intro}</p>

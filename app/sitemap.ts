@@ -1,24 +1,17 @@
 import type { MetadataRoute } from "next";
-import { blogPosts } from "@/data/blog";
+import { allPairs } from "@/data/i18n";
 import { site } from "@/data/site";
 
-/* Lists every public page so Google can find new blog posts quickly. */
+/* Empty while the site is a noindex preview */
 export default function sitemap(): MetadataRoute.Sitemap {
-  const pages = ["", "/blog", "/work", "/design", "/tools/gbp-check"].map(
-    (path) => ({
-      url: `${site.url}${path}`,
-      lastModified: new Date(),
-      changeFrequency: path === "/blog" || path === "" ? ("daily" as const) : ("monthly" as const),
-      priority: path === "" ? 1 : 0.7,
-    })
-  );
-
-  const posts = blogPosts.map((post) => ({
-    url: `${site.url}/blog/${post.slug}`,
-    lastModified: new Date(post.date),
-    changeFrequency: "monthly" as const,
-    priority: 0.6,
-  }));
-
-  return [...pages, ...posts];
+  if (!site.indexable) return [];
+  return allPairs().flatMap((pair) => [
+    {
+      url: `${site.url}${pair.en === "/" ? "" : pair.en}`,
+      alternates: {
+        languages: { en: `${site.url}${pair.en}`, es: `${site.url}${pair.es}` },
+      },
+    },
+    { url: `${site.url}${pair.es}` },
+  ]);
 }

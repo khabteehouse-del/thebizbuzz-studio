@@ -19,9 +19,9 @@ export const site = {
     which is also shown in the footer. Keyword targets: digital
     marketing, AI solutions.
   */
-  seoTitle: "BizBuzz | Digital Marketing and AI Solutions",
+  seoTitle: "BizBuzz | Digital Marketing Services & AI Solutions",
   seoDescription:
-    "Founder-led studio in Karachi and Dubai. Digital marketing and AI solutions that position your brand: local search, web, brand and production AI.",
+    "Founder-led studio in Karachi and Dubai. Digital Marketing Services & AI Solutions that position your brand: local search, web, brand and production AI.",
   url: "https://www.thebizbuzz.studio",
   email: "contact@thebizbuzz.studio",
   locations: ["Karachi", "Dubai"],

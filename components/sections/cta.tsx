@@ -16,8 +16,8 @@ export function Cta({ lang }: { lang: Lang }) {
       <Orbs tone="mixed" intensity={1} />
       <div className="shell relative py-16 md:py-24">
         <Reveal>
-          <div className="grid gap-14 lg:grid-cols-[1.1fr_1fr] lg:items-stretch lg:gap-20">
-            <div className="flex max-w-3xl flex-col">
+          <div className="grid gap-14 lg:grid-cols-[0.95fr_1fr] lg:items-stretch lg:gap-10">
+            <div className="flex flex-col">
               <p className="section-label">{c.nav.cta}</p>
               <h2 className="mt-8 font-display text-2xl font-medium leading-[1.1] tracking-[-0.035em] text-paper sm:text-3xl md:text-5xl">
                 <Headline text={h.finalTitle} mark={h.h1Mark} />
@@ -26,18 +26,18 @@ export function Cta({ lang }: { lang: Lang }) {
                 {h.finalText}
               </p>
 
-              {/* The BizBuzz presenter, standing beside the form and pointing the way */}
+              {/* The presenter, standing right beside the form and pointing at it */}
               <div
                 aria-hidden="true"
                 className="pointer-events-none relative mt-6 hidden min-h-[22rem] flex-1 lg:block"
               >
-                <span className="absolute bottom-0 left-0 h-64 w-64 rounded-full bg-accent/25 blur-[90px]" />
+                <span className="absolute bottom-0 right-6 h-64 w-64 rounded-full bg-accent/25 blur-[90px]" />
                 <Image
                   src="/images/anchor/women-anchor-v2.png"
                   alt=""
                   fill
-                  sizes="320px"
-                  className="object-contain object-bottom-left opacity-95"
+                  sizes="420px"
+                  className="object-contain object-bottom-right opacity-95"
                 />
               </div>
             </div>

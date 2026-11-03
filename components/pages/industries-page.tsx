@@ -14,7 +14,7 @@ export function IndustriesIndexPage({ lang }: { lang: Lang }) {
       <Block tone="ocean">
         <IndustryRows lang={lang} />
       </Block>
-      <CtaBand title={i.otherTitle} text={i.otherText} label={c.nav.cta} href={path("contact", lang)} />
+      <CtaBand title={i.otherTitle} text={i.otherText} label={c.nav.cta} href={path("gbpCheck", lang)} />
     </>
   );
 }

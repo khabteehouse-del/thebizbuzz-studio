@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 import { motion, useScroll, useTransform } from "motion/react";
 import { Button } from "@/components/shared/button";
 import { GrowthArrow } from "@/components/shared/growth-arrow";
@@ -35,6 +36,7 @@ export function Hero({ lang }: { lang: Lang }) {
   const headlineY = useTransform(scrollYProgress, [0, 1], [0, -60]);
   const contentOpacity = useTransform(scrollYProgress, [0, 0.92], [1, 0]);
   const veilOpacity = useTransform(scrollYProgress, [0, 1], [0, 0.65]);
+  const personY = useTransform(scrollYProgress, [0, 1], [0, -50]);
 
   const lineOne = h.h1Before.trim();
 
@@ -88,7 +90,31 @@ export function Hero({ lang }: { lang: Lang }) {
           />
         </div>
 
-        <div className="shell w-full">
+        {/* The business owner, standing against the headline (desktop) */}
+        <motion.div
+          aria-hidden="true"
+          initial={intro ? { opacity: 0, x: 60 } : false}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
+          style={{
+            opacity: pinned ? contentOpacity : 1,
+            y: pinned ? personY : 0,
+          }}
+          className="pointer-events-none absolute bottom-0 right-0 z-[1] hidden w-[46%] max-w-[46rem] lg:block"
+        >
+          <span className="absolute inset-x-[10%] bottom-[8%] top-[6%] rounded-full bg-[#ffb938]/25 blur-[110px]" />
+          <Image
+            src="/images/hero/worker.webp"
+            alt=""
+            width={1000}
+            height={971}
+            priority
+            sizes="(min-width: 1024px) 46vw, 0px"
+            className="relative h-auto w-full [-webkit-mask-image:linear-gradient(to_bottom,black_82%,transparent_100%)] [mask-image:linear-gradient(to_bottom,black_82%,transparent_100%)]"
+          />
+        </motion.div>
+
+        <div className="shell relative z-10 w-full">
           <motion.div
             className="relative"
             style={{ opacity: pinned ? contentOpacity : 1 }}
@@ -191,6 +217,22 @@ export function Hero({ lang }: { lang: Lang }) {
             <motion.p {...rise(0.9)} className="mt-6 text-sm text-muted">
               {h.note}
             </motion.p>
+
+            {/* Phones: the same figure, cropped to the face and the cash */}
+            <div
+              aria-hidden="true"
+              className="relative mx-auto mt-8 h-[19rem] w-full max-w-sm overflow-hidden lg:hidden"
+            >
+              <span className="absolute inset-x-[12%] top-[8%] h-[70%] rounded-full bg-[#ffb938]/25 blur-[80px]" />
+              <Image
+                src="/images/hero/worker.webp"
+                alt=""
+                width={1000}
+                height={971}
+                sizes="(max-width: 1023px) 24rem, 0px"
+                className="relative h-auto w-full [-webkit-mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)] [mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)]"
+              />
+            </div>
           </motion.div>
         </div>
 

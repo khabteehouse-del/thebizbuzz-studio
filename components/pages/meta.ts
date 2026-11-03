@@ -2,9 +2,7 @@ import type { Metadata } from "next";
 import { copy } from "@/data/copy";
 import { gbpText } from "@/data/gbp-text";
 import {
-  industryPath,
   path,
-  type IndustryKey,
   type Lang,
   type RouteKey,
 } from "@/data/i18n";
@@ -29,8 +27,6 @@ function texts(key: RouteKey, lang: Lang): { title: string; description: string 
       };
     case "gbp":
       return { title: c.services.gbp.metaTitle, description: c.services.gbp.metaDescription };
-    case "industries":
-      return { title: c.industriesIndex.metaTitle, description: c.industriesIndex.metaDescription };
     case "mizar":
       return { title: c.mizar.metaTitle, description: c.mizar.metaDescription };
     case "about":
@@ -49,16 +45,5 @@ export function metaFor(key: RouteKey, lang: Lang): Metadata {
     enPath: path(key, "en"),
     esPath: path(key, "es"),
     ...t,
-  });
-}
-
-export function industryMeta(key: IndustryKey, lang: Lang): Metadata {
-  const ind = copy[lang].industries[key];
-  return pageMetadata({
-    lang,
-    enPath: industryPath(key, "en"),
-    esPath: industryPath(key, "es"),
-    title: ind.metaTitle,
-    description: ind.metaDescription,
   });
 }

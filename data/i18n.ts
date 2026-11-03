@@ -16,7 +16,6 @@ export type RouteKey =
   | "websites"
   | "localSeo"
   | "gbp"
-  | "industries"
   | "mizar"
   | "about"
   | "contact"
@@ -30,7 +29,6 @@ export const routes: Record<RouteKey, Record<Lang, string>> = {
     en: "/google-business-profile",
     es: "/es/perfil-de-negocio-de-google",
   },
-  industries: { en: "/industries", es: "/es/industrias" },
   mizar: { en: "/mizar", es: "/es/mizar" },
   about: { en: "/about", es: "/es/nosotros" },
   contact: { en: "/contact", es: "/es/contacto" },
@@ -40,6 +38,7 @@ export const routes: Record<RouteKey, Record<Lang, string>> = {
   },
 };
 
+/* The kinds of business named in the copy. They are examples, not pages. */
 export const industryKeys = [
   "house-painters",
   "mobile-beauty",
@@ -49,26 +48,6 @@ export const industryKeys = [
 ] as const;
 
 export type IndustryKey = (typeof industryKeys)[number];
-
-/* The last path segment of each industry page, per language */
-export const industrySlug: Record<IndustryKey, Record<Lang, string>> = {
-  "house-painters": { en: "house-painters", es: "pintores" },
-  "mobile-beauty": { en: "mobile-beauty", es: "belleza-movil" },
-  "cleaning-companies": { en: "cleaning-companies", es: "empresas-de-limpieza" },
-  contractors: { en: "contractors", es: "contratistas" },
-  "mobile-pet-services": { en: "mobile-pet-services", es: "mascotas-moviles" },
-};
-
-export function industryPath(key: IndustryKey, lang: Lang): string {
-  return `${routes.industries[lang]}/${industrySlug[key][lang]}`;
-}
-
-export function industryFromSlug(slug: string, lang: Lang): IndustryKey | null {
-  for (const key of industryKeys) {
-    if (industrySlug[key][lang] === slug) return key;
-  }
-  return null;
-}
 
 export function path(key: RouteKey, lang: Lang): string {
   return routes[key][lang];
@@ -80,9 +59,6 @@ export function allPairs(): { en: string; es: string }[] {
   const keys = Object.keys(routes) as RouteKey[];
   for (const key of keys) {
     pairs.push({ en: routes[key].en, es: routes[key].es });
-  }
-  for (const key of industryKeys) {
-    pairs.push({ en: industryPath(key, "en"), es: industryPath(key, "es") });
   }
   return pairs;
 }

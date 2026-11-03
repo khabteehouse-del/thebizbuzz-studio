@@ -92,7 +92,7 @@ export const en: Copy = {
     industriesEyebrow: "Who we help",
     industriesTitle: "Built for local service businesses",
     industriesIntro:
-      "Painters, beauty professionals, cleaners, contractors and pet services. Every business gets the same three services. Pick yours to see how we apply them.",
+      "Painters, beauty professionals, cleaners, contractors and pet services, and any other local business. Every business gets the same three services: a website, local SEO and a Google Business Profile.",
     mizarBadge: "In development",
     mizarTitle: "Mizar: an AI assistant for mobile service professionals",
     mizarText:

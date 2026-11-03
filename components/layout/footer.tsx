@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Wordmark } from "@/components/shared/wordmark";
 import { copy } from "@/data/copy";
-import { industryKeys, industryPath, path, type Lang } from "@/data/i18n";
+import { industryKeys, path, type Lang } from "@/data/i18n";
 import { site } from "@/data/site";
 
 /* The BizBuzz footer: link columns, then the name at scale as a watermark. */
@@ -53,10 +53,8 @@ export function Footer({ lang }: { lang: Lang }) {
             <p className="section-label">{c.footer.industriesTitle}</p>
             <ul className="mt-6 space-y-3">
               {industryKeys.map((key) => (
-                <li key={key}>
-                  <Link href={industryPath(key, lang)} className={link}>
-                    {c.industries[key].name}
-                  </Link>
+                <li key={key} className="text-sm text-muted">
+                  {c.industries[key].name}
                 </li>
               ))}
             </ul>

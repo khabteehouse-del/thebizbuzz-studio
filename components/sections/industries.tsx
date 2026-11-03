@@ -1,11 +1,15 @@
 import { Reveal } from "@/components/shared/reveal";
 import { Orbs } from "@/components/shared/orbs";
-import { IndustryRows } from "@/components/sections/industry-rows";
 import { copy } from "@/data/copy";
-import type { Lang } from "@/data/i18n";
+import { industryKeys, type Lang } from "@/data/i18n";
 
+/*
+  Who we help: a plain list of the kinds of business we work with. Nothing
+  here is clickable, because every business gets the same three services.
+*/
 export function Industries({ lang }: { lang: Lang }) {
-  const h = copy[lang].home;
+  const c = copy[lang];
+  const h = c.home;
   return (
     <section className="relative overflow-hidden bg-ink py-14 md:py-20">
       <Orbs tone="navy" intensity={0.5} />
@@ -21,9 +25,18 @@ export function Industries({ lang }: { lang: Lang }) {
             </p>
           </div>
         </Reveal>
-        <div className="mt-8 md:mt-12">
-          <IndustryRows lang={lang} />
-        </div>
+        <Reveal delay={0.1}>
+          <ul className="mt-8 flex flex-wrap gap-3 md:mt-10">
+            {industryKeys.map((key) => (
+              <li
+                key={key}
+                className="rounded-[3px] border border-line bg-paper/[0.04] px-5 py-3 font-display text-base font-medium tracking-[-0.02em] text-paper md:text-lg"
+              >
+                {c.industries[key].name}
+              </li>
+            ))}
+          </ul>
+        </Reveal>
       </div>
     </section>
   );

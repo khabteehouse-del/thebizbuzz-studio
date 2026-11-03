@@ -24,7 +24,6 @@ export function RootShell({ lang, children }: { lang: Lang; children: ReactNode 
     { label: c.nav.websites, href: path("websites", lang) },
     { label: c.nav.localSeo, href: path("localSeo", lang) },
     { label: c.nav.gbp, href: path("gbp", lang) },
-    { label: c.nav.industries, href: path("industries", lang) },
     { label: c.nav.mizar, href: path("mizar", lang) },
     { label: c.nav.about, href: path("about", lang) },
   ];

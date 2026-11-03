@@ -98,12 +98,22 @@ export function ContactForm({ lang, kind, labels, submitLabel, doneTitle }: Prop
                 aria-checked={active}
                 onClick={() => setTopic(id)}
                 className={`flex min-h-[3.5rem] items-center gap-3 rounded-[3px] border px-4 py-3 text-left text-sm font-medium text-paper transition-colors duration-200 ${
+                  id === "audit" ? "audit-chip border-[#ffb938]/45" : ""
+                } ${
                   active
-                    ? "border-accent-soft bg-accent/15"
-                    : "border-line bg-ink hover:border-paper/25"
+                    ? id === "audit"
+                      ? "bg-accent/15"
+                      : "border-accent-soft bg-accent/15"
+                    : id === "audit"
+                      ? "bg-ink hover:border-[#ffb938]/70"
+                      : "border-line bg-ink hover:border-paper/25"
                 }`}
               >
-                <Icon size={16} aria-hidden="true" className="shrink-0 text-accent-soft" />
+                <Icon
+                  size={16}
+                  aria-hidden="true"
+                  className={`shrink-0 ${id === "audit" ? "text-[#ffb938]" : "text-accent-soft"}`}
+                />
                 {labels.topics[id]}
               </button>
             );

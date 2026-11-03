@@ -98,7 +98,7 @@ export const es: Copy = {
     industriesEyebrow: "A quién ayudamos",
     industriesTitle: "Hecho para negocios locales de servicios",
     industriesIntro:
-      "Pintores, profesionales de belleza, limpieza, contratistas y servicios para mascotas. Elija el suyo para ver lo que hacemos.",
+      "Pintores, profesionales de belleza, limpieza, contratistas y servicios para mascotas. Todos reciben los mismos tres servicios. Elija el suyo para ver cómo los aplicamos.",
     mizarBadge: "En desarrollo",
     mizarTitle: "Mizar: un asistente de IA para profesionales de servicios móviles",
     mizarText:

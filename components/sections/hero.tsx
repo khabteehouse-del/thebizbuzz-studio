@@ -147,7 +147,7 @@ export function Hero({ lang }: { lang: Lang }) {
               }}
               className="relative mt-6 md:mt-8"
             >
-              <h1 className="-ml-[0.06em] font-display text-[clamp(2.6rem,11vw,6rem)] font-medium italic leading-[0.92] tracking-[-0.055em] text-paper md:text-[clamp(3.6rem,7.2vw,8rem)]">
+              <h1 className="-ml-[0.06em] font-display text-[clamp(2.6rem,11vw,6rem)] font-medium italic leading-[0.92] tracking-[-0.055em] text-paper md:text-[clamp(3.6rem,8.6vw,10rem)]">
                 <span
                   className={`block pb-[0.12em] -mb-[0.12em] pr-[0.08em] ${
                     intro ? "overflow-hidden" : ""

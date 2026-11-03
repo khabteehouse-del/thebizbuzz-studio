@@ -179,7 +179,7 @@ export function Hero({ lang }: { lang: Lang }) {
                   <GrowthArrow
                     size={34}
                     sizeDesktop={80}
-                    className="-mb-[6px] -ml-5 md:-mb-[13px] md:-ml-10"
+                    className="-mb-[6px] ml-1 md:-mb-[13px] md:ml-3"
                   />
                 </span>
               </h1>

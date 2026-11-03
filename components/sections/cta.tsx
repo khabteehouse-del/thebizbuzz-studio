@@ -16,7 +16,7 @@ export function Cta({ lang }: { lang: Lang }) {
       <Orbs tone="mixed" intensity={1} />
       <div className="shell relative py-16 md:py-24">
         <Reveal>
-          <div className="grid gap-14 lg:grid-cols-[0.95fr_1fr] lg:items-stretch lg:gap-10">
+          <div className="grid gap-8 lg:grid-cols-[0.95fr_1fr] lg:items-stretch lg:gap-10">
             <div className="flex flex-col">
               <p className="section-label">{c.nav.cta}</p>
               <h2 className="mt-8 font-display text-2xl font-medium leading-[1.1] tracking-[-0.035em] text-paper sm:text-3xl md:text-5xl">
@@ -26,7 +26,26 @@ export function Cta({ lang }: { lang: Lang }) {
                 {h.finalText}
               </p>
 
-              {/* The presenter, standing right beside the form and pointing at it */}
+              {/* Phones: the presenter from the waist up, centred above the form */}
+              <div
+                aria-hidden="true"
+                className="pointer-events-none relative mx-auto mt-6 h-[17rem] w-[72%] max-w-[22rem] lg:hidden"
+              >
+                <span className="absolute inset-x-6 bottom-0 h-44 rounded-full bg-accent/30 blur-[70px]" />
+                <Image
+                  src="/images/anchor/women-anchor-v2.png"
+                  alt=""
+                  fill
+                  sizes="(max-width: 1023px) 72vw, 1px"
+                  className="object-cover object-top opacity-95"
+                  style={{
+                    maskImage: "linear-gradient(to bottom, #000 68%, transparent 100%)",
+                    WebkitMaskImage: "linear-gradient(to bottom, #000 68%, transparent 100%)",
+                  }}
+                />
+              </div>
+
+              {/* Desktop: the presenter, standing right beside the form and pointing at it */}
               <div
                 aria-hidden="true"
                 className="pointer-events-none relative mt-6 hidden min-h-[22rem] flex-1 lg:block"

@@ -1,6 +1,6 @@
 /*
   The Accentuate mark: a rising arrow in the amber gradient, drawn as plain
-  SVG so it needs no image file. The name beside it is set in the same
+  SVG so it needs no image file. The name sits to its left is set in the same
   italic medium weight BizBuzz uses for its own wordmark.
 */
 
@@ -35,10 +35,10 @@ export function ArrowMark({ size = 30 }: { size?: number }) {
 export function Wordmark({ name, className = "" }: { name: string; className?: string }) {
   return (
     <span className={`inline-flex items-center gap-2.5 ${className}`}>
-      <ArrowMark />
       <span className="font-display text-[1.45rem] font-medium italic leading-none tracking-[-0.05em] text-paper">
         {name}
       </span>
+      <ArrowMark />
     </span>
   );
 }

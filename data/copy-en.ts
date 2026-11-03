@@ -28,15 +28,14 @@ export const en: Copy = {
   home: {
     metaTitle: "Websites, Local SEO and Google Business Profile for Texas Businesses",
     metaDescription:
-      "We help Texas service businesses get found on Google, look credible online and turn searches into calls. Websites, local SEO and Google Business Profile, in English and Spanish.",
+      "We help Texas service businesses get found on Google, look credible online and turn searches into calls. Websites, local SEO and Google Business Profile.",
     eyebrow: "Websites · Local SEO · Google Business Profile",
     h1Before: "Accentuate your ",
     h1Mark: "revenue",
     h1After: ".",
     sub: "We help Texas service businesses get found on Google, look credible online, and turn searches into phone calls. Websites, local SEO and Google Business Profile, handled for you.",
-    note: "Free and no obligation. We work in English and Spanish.",
+    note: "Free and no obligation. Plain language, no jargon.",
     chips: [
-      "English and Spanish",
       "Built for phones first",
       "Plain language, no jargon",
     ],
@@ -68,7 +67,7 @@ export const en: Copy = {
     auditPoints: [
       "No cost and no obligation",
       "Plain language, no jargon",
-      "In English or Spanish",
+      "A clear next step",
     ],
     stepsEyebrow: "How it works",
     stepsTitle: "Simple steps, clear from the start",
@@ -109,8 +108,8 @@ export const en: Copy = {
     whyTitle: "Why businesses choose us",
     why: [
       {
-        title: "Bilingual from day one",
-        text: "Your website and your support in English and Spanish, written properly by people, not just translated by a tool.",
+        title: "In your language",
+        text: "Talk to us in the language you are most comfortable with. Everything is written properly by people, not just translated by a tool.",
       },
       {
         title: "Clear and honest",
@@ -155,7 +154,7 @@ export const en: Copy = {
     ],
     finalTitle: "Ready to be easier to find?",
     finalText:
-      "Tell us about your business. We reply with a clear next step, in English or Spanish.",
+      "Tell us about your business. We reply with a clear next step.",
   },
   services: {
     websites: {
@@ -170,7 +169,7 @@ export const en: Copy = {
       ],
       metaTitle: "Website Development for Local Businesses",
       metaDescription:
-        "Professional, mobile-first websites for Texas service businesses, built to bring in calls and quote requests. English and Spanish.",
+        "Professional, mobile-first websites for Texas service businesses, built to bring in calls and quote requests.",
       eyebrow: "Website Development",
       h1: "A website that works as hard as you do",
       h1Mark: "works as hard",
@@ -232,7 +231,7 @@ export const en: Copy = {
       ],
       metaTitle: "Local SEO for Service Businesses",
       metaDescription:
-        "Local SEO that helps Texas service businesses appear when nearby customers search. Clear work, honest reporting, English and Spanish.",
+        "Local SEO that helps Texas service businesses appear when nearby customers search. Clear work, honest reporting.",
       eyebrow: "Local SEO",
       h1: "Be the business customers find nearby",
       h1Mark: "find nearby",
@@ -246,7 +245,7 @@ export const en: Copy = {
         },
         {
           title: "Local keyword targeting",
-          text: "We find the words your customers really use, in English and Spanish, and use them where they count.",
+          text: "We find the words your customers really use, in whatever language they search, and use them where they count.",
         },
         {
           title: "Website SEO",
@@ -294,7 +293,7 @@ export const en: Copy = {
       ],
       metaTitle: "Google Business Profile Management",
       metaDescription:
-        "Profile setup, optimization and management for local businesses, done within Google's guidelines. English and Spanish.",
+        "Profile setup, optimization and management for local businesses, done within Google's guidelines.",
       eyebrow: "Google Business Profile",
       h1: "A Google profile customers trust",
       h1Mark: "customers trust",
@@ -391,7 +390,7 @@ export const en: Copy = {
         "Reviews and trust details in the right places",
       ],
       closing:
-        "Every site is built for phones first, and available in English and Spanish.",
+        "Every site is built for phones first.",
     },
     "mobile-beauty": {
       name: "Mobile Beauty Professionals",
@@ -461,7 +460,7 @@ export const en: Copy = {
         "Simple monthly reports in plain language",
       ],
       closing:
-        "We work in English and Spanish keywords, so you reach customers who search in either language.",
+        "We work with the keywords your customers actually search, in whichever language they use.",
     },
     contractors: {
       name: "Contractors",
@@ -531,7 +530,7 @@ export const en: Copy = {
         "Photos and reviews from happy pet owners",
       ],
       closing:
-        "Built for phones first, and available in English and Spanish.",
+        "Built for phones first.",
     },
   },
   mizar: {
@@ -570,7 +569,7 @@ export const en: Copy = {
       },
       {
         title: "Multilingual from day one",
-        text: "Built to work with customers in English and Spanish.",
+        text: "Built to work with customers in more than one language.",
       },
     ],
     languageNote: "It is being built as a mobile app, first for customers in the US.",
@@ -589,7 +588,7 @@ export const en: Copy = {
     h1: "Digital growth for local service businesses",
     h1Mark: "local service businesses",
     intro:
-      "We help local businesses build a stronger brand, a credible website and a Google profile that works, in English and Spanish.",
+      "We help local businesses build a stronger brand, a credible website and a Google profile that works.",
     storyTitle: "Who we are",
     story: [
       "We are a small, founder-led team and the US arm of BizBuzz, a creative and technology studio. BizBuzz brings together brand, design, web development and AI.",
@@ -636,7 +635,7 @@ export const en: Copy = {
   contact: {
     metaTitle: "Book a Free Consultation",
     metaDescription:
-      "Tell us about your business. Get a free Google profile audit or a free consultation, in English or Spanish.",
+      "Tell us about your business. Get a free Google profile audit or a free consultation.",
     eyebrow: "Contact",
     h1: "Book a free consultation",
     h1Mark: "free consultation",

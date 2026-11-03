@@ -34,15 +34,14 @@ export const es: Copy = {
   home: {
     metaTitle: "Sitios web, SEO local y Perfil de Negocio de Google para negocios de Texas",
     metaDescription:
-      "Ayudamos a los negocios de servicios de Texas a aparecer en Google, verse confiables en línea y convertir las búsquedas en llamadas. Sitios web, SEO local y Perfil de Negocio de Google, en inglés y español.",
+      "Ayudamos a los negocios de servicios de Texas a aparecer en Google, verse confiables en línea y convertir las búsquedas en llamadas. Sitios web, SEO local y Perfil de Negocio de Google.",
     eyebrow: "Sitios web · SEO local · Perfil de Negocio de Google",
     h1Before: "Acentúe sus ",
     h1Mark: "ingresos",
     h1After: ".",
     sub: "Ayudamos a los negocios de servicios de Texas a aparecer en Google, verse confiables en línea y convertir las búsquedas en llamadas. Sitios web, SEO local y Perfil de Negocio de Google, nosotros nos encargamos.",
-    note: "Gratis y sin compromiso. Trabajamos en español y en inglés.",
+    note: "Gratis y sin compromiso. Lenguaje claro, sin tecnicismos.",
     chips: [
-      "Español e inglés",
       "Hecho primero para el celular",
       "Lenguaje claro, sin tecnicismos",
     ],
@@ -74,7 +73,7 @@ export const es: Copy = {
     auditPoints: [
       "Sin costo y sin compromiso",
       "Lenguaje claro, sin tecnicismos",
-      "En español o en inglés",
+      "Un siguiente paso claro",
     ],
     stepsEyebrow: "Cómo funciona",
     stepsTitle: "Pasos sencillos, claros desde el inicio",
@@ -115,8 +114,8 @@ export const es: Copy = {
     whyTitle: "Por qué nos eligen",
     why: [
       {
-        title: "Bilingüe desde el primer día",
-        text: "Su sitio web y su atención en español e inglés, escritos bien por personas, no solo traducidos por una herramienta.",
+        title: "En su idioma",
+        text: "Hable con nosotros en el idioma en que se sienta más cómodo. Todo se escribe bien, por personas, no solo traducido por una herramienta.",
       },
       {
         title: "Claros y honestos",
@@ -161,7 +160,7 @@ export const es: Copy = {
     ],
     finalTitle: "¿Listo para que lo encuentren más fácil?",
     finalText:
-      "Cuéntenos sobre su negocio. Le respondemos con un siguiente paso claro, en español o en inglés.",
+      "Cuéntenos sobre su negocio. Le respondemos con un siguiente paso claro.",
   },
   services: {
     websites: {
@@ -176,7 +175,7 @@ export const es: Copy = {
       ],
       metaTitle: "Desarrollo web para negocios locales",
       metaDescription:
-        "Sitios web profesionales, pensados primero para el celular, para negocios de servicios de Texas. Hechos para atraer llamadas y solicitudes de cotización. En español e inglés.",
+        "Sitios web profesionales, pensados primero para el celular, para negocios de servicios de Texas. Hechos para atraer llamadas y solicitudes de cotización.",
       eyebrow: "Desarrollo web",
       h1: "Un sitio web que trabaja tan duro como usted",
       h1Mark: "trabaja tan duro",
@@ -238,7 +237,7 @@ export const es: Copy = {
       ],
       metaTitle: "SEO local para negocios de servicios",
       metaDescription:
-        "SEO local para que los negocios de servicios de Texas aparezcan cuando los clientes cercanos buscan. Trabajo claro, informes honestos, en español e inglés.",
+        "SEO local para que los negocios de servicios de Texas aparezcan cuando los clientes cercanos buscan. Trabajo claro, informes honestos.",
       eyebrow: "SEO local",
       h1: "Sea el negocio que los clientes encuentran cerca",
       h1Mark: "encuentran cerca",
@@ -252,7 +251,7 @@ export const es: Copy = {
         },
         {
           title: "Palabras clave locales",
-          text: "Encontramos las palabras que sus clientes realmente usan, en español y en inglés, y las ponemos donde cuentan.",
+          text: "Encontramos las palabras que sus clientes realmente usan, en el idioma en que busquen, y las ponemos donde cuentan.",
         },
         {
           title: "SEO de su sitio web",
@@ -300,7 +299,7 @@ export const es: Copy = {
       ],
       metaTitle: "Gestión del Perfil de Negocio de Google",
       metaDescription:
-        "Creación, optimización y gestión del Perfil de Negocio de Google para negocios locales, según las normas de Google. En español e inglés.",
+        "Creación, optimización y gestión del Perfil de Negocio de Google para negocios locales, según las normas de Google.",
       eyebrow: "Perfil de Negocio de Google",
       h1: "Un perfil de Google en el que los clientes confían",
       h1Mark: "los clientes confían",
@@ -397,7 +396,7 @@ export const es: Copy = {
         "Reseñas y datos de confianza en los lugares correctos",
       ],
       closing:
-        "Cada sitio se hace primero para el celular y está disponible en español y en inglés.",
+        "Cada sitio se hace primero para el celular.",
     },
     "mobile-beauty": {
       name: "Belleza móvil",
@@ -467,7 +466,7 @@ export const es: Copy = {
         "Informes mensuales sencillos, en lenguaje claro",
       ],
       closing:
-        "Trabajamos con palabras clave en español y en inglés, para llegar a los clientes que buscan en cualquiera de los dos idiomas.",
+        "Trabajamos con las palabras clave que sus clientes realmente buscan, en el idioma que usen.",
     },
     contractors: {
       name: "Contratistas",
@@ -537,7 +536,7 @@ export const es: Copy = {
         "Fotos y reseñas de dueños de mascotas satisfechos",
       ],
       closing:
-        "Hecho primero para el celular y disponible en español y en inglés.",
+        "Hecho primero para el celular.",
     },
   },
   mizar: {
@@ -576,7 +575,7 @@ export const es: Copy = {
       },
       {
         title: "Multilingüe desde el primer día",
-        text: "Se está creando para atender a clientes en español y en inglés.",
+        text: "Se está creando para atender a clientes en más de un idioma.",
       },
     ],
     languageNote:
@@ -596,7 +595,7 @@ export const es: Copy = {
     h1: "Crecimiento digital para negocios locales de servicios",
     h1Mark: "negocios locales de servicios",
     intro:
-      "Ayudamos a los negocios locales a tener una marca más fuerte, un sitio web creíble y un perfil de Google que funciona, en español y en inglés.",
+      "Ayudamos a los negocios locales a tener una marca más fuerte, un sitio web creíble y un perfil de Google que funciona.",
     storyTitle: "Quiénes somos",
     story: [
       "Somos un equipo pequeño, dirigido por sus fundadores, y la rama en Estados Unidos de BizBuzz, un estudio creativo y de tecnología. BizBuzz une marca, diseño, desarrollo web e inteligencia artificial.",
@@ -643,7 +642,7 @@ export const es: Copy = {
   contact: {
     metaTitle: "Reserve una consulta gratis",
     metaDescription:
-      "Cuéntenos sobre su negocio. Reciba una auditoría gratis de su perfil de Google o una consulta gratis, en español o en inglés.",
+      "Cuéntenos sobre su negocio. Reciba una auditoría gratis de su perfil de Google o una consulta gratis.",
     eyebrow: "Contacto",
     h1: "Reserve una consulta gratis",
     h1Mark: "consulta gratis",

@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { Reveal } from "@/components/shared/reveal";
-import { DecodeText } from "@/components/shared/decode-text";
 import { copy } from "@/data/copy";
 import { industryKeys, industryPath, type Lang } from "@/data/i18n";
 
@@ -28,7 +27,7 @@ export function IndustryRows({ lang }: { lang: Lang }) {
                   className="absolute bottom-3 left-0 top-3 w-[2px] rounded-full bg-accent-soft opacity-0 transition-opacity duration-500 group-hover:opacity-100"
                 />
                 <span className="font-display text-xl font-medium tracking-[-0.025em] text-paper transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-1.5 md:text-2xl">
-                  <DecodeText text={ind.name} hoverOnly />
+                  {ind.name}
                 </span>
                 <span className="text-sm text-muted transition-colors duration-300 group-hover:text-paper/75 md:text-base">
                   {ind.focus}

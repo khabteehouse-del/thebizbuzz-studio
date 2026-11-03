@@ -8,6 +8,7 @@ import {
   type ContactKind,
   type ContactTopic,
 } from "@/app/actions/contact";
+import { GbpChecker } from "@/components/tools/gbp-checker";
 import type { Copy } from "@/data/copy-types";
 import type { Lang } from "@/data/i18n";
 
@@ -79,6 +80,49 @@ export function ContactForm({ lang, kind, labels, submitLabel, doneTitle }: Prop
     setSending(false);
   }
 
+  /* The four topic chips. Choosing the audit swaps the form for the checker. */
+  const chips =
+    kind === "contact" ? (
+      <>
+        <p className={labelClass} id="topic-label">
+          {labels.topicLabel}
+        </p>
+        <div role="radiogroup" aria-labelledby="topic-label" className="mt-3 grid gap-3 sm:grid-cols-2">
+          {TOPICS.map(({ id, Icon }) => {
+            const active = topic === id;
+            return (
+              <button
+                key={id}
+                type="button"
+                role="radio"
+                aria-checked={active}
+                onClick={() => setTopic(id)}
+                className={`flex min-h-[3.5rem] items-center gap-3 rounded-[3px] border px-4 py-3 text-left text-sm font-medium text-paper transition-colors duration-200 ${
+                  active
+                    ? "border-accent-soft bg-accent/15"
+                    : "border-line bg-ink hover:border-paper/25"
+                }`}
+              >
+                <Icon size={16} aria-hidden="true" className="shrink-0 text-accent-soft" />
+                {labels.topics[id]}
+              </button>
+            );
+          })}
+        </div>
+      </>
+    ) : null;
+
+  if (kind === "contact" && topic === "audit") {
+    return (
+      <div className="rounded-[3px] border border-line bg-paper/[0.04] p-6 backdrop-blur-sm md:p-9">
+        {chips}
+        <div className="mt-8 border-t border-line pt-8">
+          <GbpChecker lang={lang} embedded />
+        </div>
+      </div>
+    );
+  }
+
   if (done) {
     return (
       <div role="status" className="rounded-[3px] border border-line bg-paper/[0.04] p-7 md:p-9">
@@ -98,35 +142,7 @@ export function ContactForm({ lang, kind, labels, submitLabel, doneTitle }: Prop
       onSubmit={submit}
       className="rounded-[3px] border border-line bg-paper/[0.04] p-6 backdrop-blur-sm md:p-9"
     >
-      {kind === "contact" && (
-        <>
-          <p className={labelClass} id="topic-label">
-            {labels.topicLabel}
-          </p>
-          <div role="radiogroup" aria-labelledby="topic-label" className="mt-3 grid gap-3 sm:grid-cols-2">
-            {TOPICS.map(({ id, Icon }) => {
-              const active = topic === id;
-              return (
-                <button
-                  key={id}
-                  type="button"
-                  role="radio"
-                  aria-checked={active}
-                  onClick={() => setTopic(id)}
-                  className={`flex min-h-[3.5rem] items-center gap-3 rounded-[3px] border px-4 py-3 text-left text-sm font-medium text-paper transition-colors duration-200 ${
-                    active
-                      ? "border-accent-soft bg-accent/15"
-                      : "border-line bg-ink hover:border-paper/25"
-                  }`}
-                >
-                  <Icon size={16} aria-hidden="true" className="shrink-0 text-accent-soft" />
-                  {labels.topics[id]}
-                </button>
-              );
-            })}
-          </div>
-        </>
-      )}
+      {chips}
 
       <div className={kind === "contact" ? "mt-6 space-y-4" : "space-y-4"}>
         <label className="block">

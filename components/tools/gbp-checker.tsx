@@ -47,7 +47,11 @@ function useAnimateSafe() {
   never before it. Someone who has just seen their score has a reason to
   hand over a way to reach them.
 */
-export function GbpChecker({ lang }: { lang: Lang }) {
+/*
+  embedded: shown inside another card (the contact form), so it drops its own
+  outer card and width limit and fills the space it is given.
+*/
+export function GbpChecker({ lang, embedded = false }: { lang: Lang; embedded?: boolean }) {
   const t = gbpText[lang];
   const ui = t.ui;
   const canAnimate = useAnimateSafe();
@@ -79,8 +83,14 @@ export function GbpChecker({ lang }: { lang: Lang }) {
   /* ---------------------------------------------------- intro */
   if (stage === "intro") {
     return (
-      <div className="mx-auto max-w-xl">
-        <div className="rounded-[3px] border border-line bg-paper/[0.04] p-6 backdrop-blur-sm sm:p-8 md:p-10">
+      <div className={embedded ? "" : "mx-auto max-w-xl"}>
+        <div
+          className={
+            embedded
+              ? ""
+              : "rounded-[3px] border border-line bg-paper/[0.04] p-6 backdrop-blur-sm sm:p-8 md:p-10"
+          }
+        >
           <p className="text-sm leading-relaxed text-muted">{ui.introText}</p>
 
           <div className="mt-8 space-y-5">
@@ -128,7 +138,7 @@ export function GbpChecker({ lang }: { lang: Lang }) {
   /* ------------------------------------------------ questions */
   if (stage === "questions") {
     return (
-      <div className="mx-auto max-w-xl">
+      <div className={embedded ? "" : "mx-auto max-w-xl"}>
         <div className="mb-8">
           <div className="flex items-baseline justify-between text-xs text-muted">
             <span className="uppercase tracking-[0.14em]">{t.sections[def.section]}</span>
@@ -199,7 +209,7 @@ export function GbpChecker({ lang }: { lang: Lang }) {
   const gated = !unlocked && plan.length > 0;
 
   return (
-    <div className="mx-auto max-w-2xl">
+    <div className={embedded ? "" : "mx-auto max-w-2xl"}>
       <motion.div
         initial={canAnimate ? { opacity: 0, y: 20 } : false}
         animate={{ opacity: 1, y: 0 }}

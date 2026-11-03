@@ -110,7 +110,7 @@ export function Hero({ lang }: { lang: Lang }) {
             height={971}
             priority
             sizes="(min-width: 1024px) 46vw, 0px"
-            className="relative h-auto w-full [-webkit-mask-image:linear-gradient(to_bottom,black_82%,transparent_100%)] [mask-image:linear-gradient(to_bottom,black_82%,transparent_100%)]"
+            className="relative h-auto w-full drop-shadow-[0_14px_22px_rgba(0,0,0,0.65)] [-webkit-mask-image:linear-gradient(to_bottom,black_82%,transparent_100%)] [mask-image:linear-gradient(to_bottom,black_82%,transparent_100%)]"
           />
         </motion.div>
 
@@ -218,19 +218,19 @@ export function Hero({ lang }: { lang: Lang }) {
               {h.note}
             </motion.p>
 
-            {/* Phones: the same figure, cropped to the face and the cash */}
+            {/* Phones: the same figure, cropped to the face and the cash. No glow here: a blurred glow gets
+                clipped by the crop and shows up as a grey box. A soft shadow instead. */}
             <div
               aria-hidden="true"
               className="relative mx-auto mt-8 h-[19rem] w-full max-w-sm overflow-hidden lg:hidden"
             >
-              <span className="absolute inset-x-[12%] top-[8%] h-[70%] rounded-full bg-[#ffb938]/25 blur-[80px]" />
               <Image
                 src="/images/hero/worker.webp"
                 alt=""
                 width={1000}
                 height={971}
                 sizes="(max-width: 1023px) 24rem, 0px"
-                className="relative h-auto w-full [-webkit-mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)] [mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)]"
+                className="relative h-auto w-full drop-shadow-[0_14px_22px_rgba(0,0,0,0.65)] [-webkit-mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)] [mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)]"
               />
             </div>
           </motion.div>

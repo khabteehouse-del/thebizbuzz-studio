@@ -26,22 +26,20 @@ export function Cta({ lang }: { lang: Lang }) {
                 {h.finalText}
               </p>
 
-              {/* Phones: the presenter from the waist up, centred above the form */}
+              {/* Phones: a different shot of the presenter, both hands pointing down at the form.
+                  No blurred glow here, the crop would show it as a box. A soft shadow instead. */}
               <div
                 aria-hidden="true"
-                className="pointer-events-none relative mx-auto mt-6 h-[17rem] w-[72%] max-w-[22rem] lg:hidden"
+                className="pointer-events-none relative mx-auto mt-6 w-[78%] max-w-[18rem] lg:hidden"
               >
-                <span className="absolute inset-x-6 bottom-0 h-44 rounded-full bg-accent/30 blur-[70px]" />
                 <Image
-                  src="/images/anchor/women-anchor-v2.png"
+                  src="/images/anchor/specialist-pointing-v4.png"
                   alt=""
-                  fill
-                  sizes="(max-width: 1023px) 72vw, 1px"
-                  className="object-cover object-top opacity-95"
-                  style={{
-                    maskImage: "linear-gradient(to bottom, #000 68%, transparent 100%)",
-                    WebkitMaskImage: "linear-gradient(to bottom, #000 68%, transparent 100%)",
-                  }}
+                  width={1029}
+                  height={969}
+                  quality={90}
+                  sizes="(max-width: 1023px) 18rem, 1px"
+                  className="h-auto w-full drop-shadow-[0_14px_22px_rgba(0,0,0,0.6)] [-webkit-mask-image:linear-gradient(to_bottom,black_93%,transparent_100%)] [mask-image:linear-gradient(to_bottom,black_93%,transparent_100%)]"
                 />
               </div>
 

@@ -18,7 +18,7 @@ export function Footer({ lang }: { lang: Lang }) {
   const company = [
     { label: c.nav.about, href: path("about", lang) },
     { label: c.nav.mizar, href: path("mizar", lang) },
-    { label: c.nav.cta, href: path("contact", lang) },
+    { label: c.nav.cta, href: path("gbpCheck", lang) },
   ];
 
   const link =

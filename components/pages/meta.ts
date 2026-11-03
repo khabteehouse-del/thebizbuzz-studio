@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { copy } from "@/data/copy";
+import { gbpText } from "@/data/gbp-text";
 import {
   industryPath,
   path,
@@ -36,6 +37,8 @@ function texts(key: RouteKey, lang: Lang): { title: string; description: string 
       return { title: c.about.metaTitle, description: c.about.metaDescription };
     case "contact":
       return { title: c.contact.metaTitle, description: c.contact.metaDescription };
+    case "gbpCheck":
+      return { title: gbpText[lang].meta.title, description: gbpText[lang].meta.description };
   }
 }
 

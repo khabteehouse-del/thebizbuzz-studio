@@ -32,7 +32,7 @@ export function AuditBand({ lang }: { lang: Lang }) {
               <div className="mt-10">
                 <Magnetic strength={14}>
                   <Button
-                    href={path("contact", lang)}
+                    href={path("gbpCheck", lang)}
                     variant="primary"
                     size="lg"
                     accent={TEAL}

@@ -13,7 +13,7 @@ export function ServicePage({ lang, service }: { lang: Lang; service: ServiceKey
   return (
     <>
       <PageHero label={s.eyebrow} title={s.h1} mark={s.h1Mark} intro={s.intro}>
-        <Button href={contact} variant="primary" size="lg" className="w-[17rem] justify-between">
+        <Button href={path("gbpCheck", lang)} variant="primary" size="lg" className="w-[17rem] justify-between">
           {c.common.freeAudit}
         </Button>
       </PageHero>

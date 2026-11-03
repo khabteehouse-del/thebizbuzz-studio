@@ -48,7 +48,7 @@ export function RootShell({ lang, children }: { lang: Lang; children: ReactNode 
           homeHref={path("home", lang)}
           homeLabel={c.nav.home}
           links={links}
-          cta={{ label: c.nav.cta, href: path("contact", lang) }}
+          cta={{ label: c.nav.cta, href: path("gbpCheck", lang) }}
           switchLabel={c.nav.switchLabel}
           switchAria={c.nav.switchAria}
           menuOpen={c.nav.menuOpen}

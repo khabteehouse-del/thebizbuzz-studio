@@ -29,7 +29,7 @@ export function AboutPage({ lang }: { lang: Lang }) {
         <Tiles items={[a.familyParent, a.familyAgency, a.familyProduct]} />
       </Block>
 
-      <CtaBand title={a.honestTitle} text={a.honestText} label={c.common.freeAudit} href={path("contact", lang)} />
+      <CtaBand title={a.honestTitle} text={a.honestText} label={c.common.freeAudit} href={path("gbpCheck", lang)} />
     </>
   );
 }

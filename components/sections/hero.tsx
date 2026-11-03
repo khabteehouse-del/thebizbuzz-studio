@@ -197,7 +197,7 @@ export function Hero({ lang }: { lang: Lang }) {
               className="relative mt-7 flex flex-wrap items-center gap-3 md:mt-9 md:gap-4"
             >
               <Button
-                href={path("contact", lang)}
+                href={path("gbpCheck", lang)}
                 variant="primary"
                 size="lg"
                 className="w-[15.5rem] justify-between md:w-[18rem]"

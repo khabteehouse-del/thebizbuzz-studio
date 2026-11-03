@@ -27,7 +27,7 @@ export function IndustryPage({ lang, industry }: { lang: Lang; industry: Industr
   return (
     <>
       <PageHero label={ind.focus} title={ind.h1} mark={ind.h1Mark} intro={ind.intro}>
-        <Button href={contact} variant="primary" size="lg" className="w-[17rem] justify-between">
+        <Button href={path("gbpCheck", lang)} variant="primary" size="lg" className="w-[17rem] justify-between">
           {c.common.freeAudit}
         </Button>
       </PageHero>

@@ -19,7 +19,8 @@ export type RouteKey =
   | "industries"
   | "mizar"
   | "about"
-  | "contact";
+  | "contact"
+  | "gbpCheck";
 
 export const routes: Record<RouteKey, Record<Lang, string>> = {
   home: { en: "/", es: "/es" },
@@ -33,6 +34,10 @@ export const routes: Record<RouteKey, Record<Lang, string>> = {
   mizar: { en: "/mizar", es: "/es/mizar" },
   about: { en: "/about", es: "/es/nosotros" },
   contact: { en: "/contact", es: "/es/contacto" },
+  gbpCheck: {
+    en: "/tools/gbp-check",
+    es: "/es/herramientas/perfil-de-google",
+  },
 };
 
 export const industryKeys = [

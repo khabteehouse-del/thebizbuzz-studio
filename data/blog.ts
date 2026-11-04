@@ -13,6 +13,28 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "cursor-claude-code-extension-ssh-backdoor-october-2026",
+    title: "Tampered Claude Code Extension Hit Up to 5,000 Cursor Users",
+    description:
+      "A modified copy of Anthropic's Claude Code extension sat in Cursor's marketplace for about 11 hours on October 29, 2026, and tried to plant an SSH backdoor on developer machines.",
+    date: "2026-11-04",
+    readTime: "4 min read",
+    tags: ["Cybersecurity", "Developer Tools"],
+    image: "/images/blog/cursor-claude-code-extension-ssh-backdoor-october-2026.jpg",
+    body: [
+      "On October 29, 2026, a tampered version of the Claude Code extension was available in the extension marketplace of the AI code editor Cursor for about 11 hours, from roughly 2:27 a.m. to 1:35 p.m. Pacific Time. Cursor says at most 5,000 users were affected, which is an upper limit and not a confirmed count of compromised machines. Cursor also states the build was not developed by Anthropic. BleepingComputer and Help Net Security both reported it on October 30.",
+      "According to those reports, the malicious build (version 2.1.313) had a small loader added at the start of the extension's main file, while the rest of the code stayed the same. It ran as soon as the extension loaded, with no user action needed. It tried to add an attacker's SSH key to the machine, open a tunnel back to the attacker's server, and set up persistence on macOS, Linux and Windows. It also sent back details such as hostname, username, operating system, public IP, Git email and the names (not the values) of environment variables that look like credentials.",
+      "There is some good news. BleepingComputer reports that coding errors in the SSH setup likely stopped remote access on many machines, and that the script did not directly steal credentials. Help Net Security notes the security firm Phorion warns this is not a real defence, because the backdoor can still work where SSH remote login is already on or is turned on later. Cursor pulled the version, briefly shut down its marketplace, rotated keys, rebuilt it, found no other tampered extensions, and worked with the hosting provider to take the attacker's server offline.",
+      "Several questions are still open. Neither report explains how the package was published under Anthropic's name, or whether Cursor's or Anthropic's systems were breached. Early reports of the same build on other stores were disputed, and BleepingComputer says Cursor was the only confirmed source. We have not seen a statement from Anthropic in the sources we read. Anyone who installed or updated the extension that day should check their SSH authorized keys file for an entry labelled svc-telemetry and follow Cursor's published cleanup steps, because simply uninstalling may not stop leftover scripts.",
+      "What this means for businesses: treat code editor extensions as software with access to your keys, code and cloud accounts. Keep a list of which extensions your developers use, install only from known publishers, and check version numbers after an incident like this. If any developer machine may have run the bad build, isolate it, rotate the credentials it could reach, and rebuild it if in doubt. Limit what a laptop can reach, so one compromised editor does not open your whole infrastructure.",
+    ],
+    sources: [
+      { label: "BleepingComputer: Malicious Claude Code extension on Cursor planted SSH backdoors", url: "https://www.bleepingcomputer.com/news/security/malicious-claude-code-extension-on-cursor-planted-ssh-backdoors/" },
+      { label: "Help Net Security: Claude Code extension poisoned with persistent SSH backdoor", url: "https://www.helpnetsecurity.com/2026/10/30/claude-code-extension-ssh-backdoor/" },
+      { label: "Gulf Daily News (Reuters): Cursor says up to 5,000 users affected by tampered Claude Code extension", url: "https://www.gdnonline.com/Details/1411321/Cursor-says-up-to-5,000-users-affected-by-tampered-Claude-Code-extension" },
+    ],
+  },
+  {
     slug: "pakistan-alibaba-ai-projects-november-2026",
     title: "Pakistan's PM Sets a November Deadline for Alibaba AI Projects",
     description:

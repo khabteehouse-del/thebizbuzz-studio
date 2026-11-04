@@ -13,6 +13,94 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "cursor-claude-code-extension-ssh-backdoor-october-2026",
+    title: "Tampered Claude Code Extension Hit Up to 5,000 Cursor Users",
+    description:
+      "A modified copy of Anthropic's Claude Code extension sat in Cursor's marketplace for about 11 hours on October 29, 2026, and tried to plant an SSH backdoor on developer machines.",
+    date: "2026-11-04",
+    readTime: "4 min read",
+    tags: ["Cybersecurity", "Developer Tools"],
+    image: "/images/blog/cursor-claude-code-extension-ssh-backdoor-october-2026.jpg",
+    body: [
+      "On October 29, 2026, a tampered version of the Claude Code extension was available in the extension marketplace of the AI code editor Cursor for about 11 hours, from roughly 2:27 a.m. to 1:35 p.m. Pacific Time. Cursor says at most 5,000 users were affected, which is an upper limit and not a confirmed count of compromised machines. Cursor also states the build was not developed by Anthropic. BleepingComputer and Help Net Security both reported it on October 30.",
+      "According to those reports, the malicious build (version 2.1.313) had a small loader added at the start of the extension's main file, while the rest of the code stayed the same. It ran as soon as the extension loaded, with no user action needed. It tried to add an attacker's SSH key to the machine, open a tunnel back to the attacker's server, and set up persistence on macOS, Linux and Windows. It also sent back details such as hostname, username, operating system, public IP, Git email and the names (not the values) of environment variables that look like credentials.",
+      "There is some good news. BleepingComputer reports that coding errors in the SSH setup likely stopped remote access on many machines, and that the script did not directly steal credentials. Help Net Security notes the security firm Phorion warns this is not a real defence, because the backdoor can still work where SSH remote login is already on or is turned on later. Cursor pulled the version, briefly shut down its marketplace, rotated keys, rebuilt it, found no other tampered extensions, and worked with the hosting provider to take the attacker's server offline.",
+      "Several questions are still open. Neither report explains how the package was published under Anthropic's name, or whether Cursor's or Anthropic's systems were breached. Early reports of the same build on other stores were disputed, and BleepingComputer says Cursor was the only confirmed source. We have not seen a statement from Anthropic in the sources we read. Anyone who installed or updated the extension that day should check their SSH authorized keys file for an entry labelled svc-telemetry and follow Cursor's published cleanup steps, because simply uninstalling may not stop leftover scripts.",
+      "What this means for businesses: treat code editor extensions as software with access to your keys, code and cloud accounts. Keep a list of which extensions your developers use, install only from known publishers, and check version numbers after an incident like this. If any developer machine may have run the bad build, isolate it, rotate the credentials it could reach, and rebuild it if in doubt. Limit what a laptop can reach, so one compromised editor does not open your whole infrastructure.",
+    ],
+    sources: [
+      { label: "BleepingComputer: Malicious Claude Code extension on Cursor planted SSH backdoors", url: "https://www.bleepingcomputer.com/news/security/malicious-claude-code-extension-on-cursor-planted-ssh-backdoors/" },
+      { label: "Help Net Security: Claude Code extension poisoned with persistent SSH backdoor", url: "https://www.helpnetsecurity.com/2026/10/30/claude-code-extension-ssh-backdoor/" },
+      { label: "Gulf Daily News (Reuters): Cursor says up to 5,000 users affected by tampered Claude Code extension", url: "https://www.gdnonline.com/Details/1411321/Cursor-says-up-to-5,000-users-affected-by-tampered-Claude-Code-extension" },
+    ],
+  },
+  {
+    slug: "pakistan-alibaba-ai-projects-november-2026",
+    title: "Pakistan's PM Sets a November Deadline for Alibaba AI Projects",
+    description:
+      "On October 28, 2026, Prime Minister Shehbaz Sharif told ministries to finish their steps in the Alibaba partnership by November, covering trade, SMEs, agriculture and AI training.",
+    date: "2026-11-02",
+    readTime: "4 min read",
+    tags: ["Tech News", "Pakistan"],
+    image: "/images/blog/pakistan-alibaba-ai-projects-november-2026.jpg",
+    body: [
+      "On October 28, 2026, Prime Minister Shehbaz Sharif chaired a review meeting in Islamabad on using AI and digitisation in government, and on Pakistan's work with Alibaba Group. According to Dawn and Radio Pakistan, he directed that the Alibaba projects have clear targets, defined timelines and effective monitoring. Ministries must complete the necessary measures by November and submit a progress report. No exact day in November was given. The partnership goes back to an MoU signed at Alibaba's Hangzhou headquarters during the Prime Minister's visit to China.",
+      "Several pieces are already live or under way. A system for digitally verifying trade documents through the Pakistan Single Window is operational. A Pakistan Pavilion has been set up on Alibaba's platform to promote Pakistani products abroad. Work is under way on AI-based agriculture models, track-and-trace technology for tobacco, and digital platforms for exporting citrus fruit and olives. The Oil and Gas Regulatory Authority (OGRA) is receiving AI and analytics tools to monitor the petroleum supply chain.",
+      "Two items matter most for people and small firms. SMEDA and Alibaba are launching a two-year programme to give small and medium enterprises access to international markets, training and e-commerce opportunities. Dawn reports no participant numbers or budget. Separately, a 15-day AI training programme for IT graduates is to be launched soon under the IT ministry's Ignite programme, with Alibaba. The meeting also reviewed a proposed AI-assisted cancer detection pilot, and the Prime Minister asked for early implementation, though no date was stated.",
+      "A caution on scope: these are government announcements from one review meeting, and the sources give few figures on budgets, user numbers or results. A November deadline for reports is not the same as finished projects. Dawn also notes the earlier steps, including Pakistan becoming a founding member of the World AI Cooperation Organisation in July and a plan to invest $1 billion in AI by 2030.",
+      "What this means for businesses: if you export from Pakistan, watch for the SMEDA and Alibaba programme details and check whether your products fit the Pakistan Pavilion. Exporters and freight firms should look at how digital trade-document verification through the Single Window changes your paperwork. IT firms and graduates can follow the Ignite AI course announcement. Before relying on any of it, wait for official eligibility terms and dates, and keep your own sales channels in place while the programmes mature.",
+    ],
+    sources: [
+      { label: "Dawn: Secret to country's development lies in AI and digitisation, PM Shehbaz stresses", url: "https://www.dawn.com/news/2040459" },
+      { label: "Radio Pakistan: PM directs clear targets, timelines for Alibaba Group projects", url: "https://www.radio.gov.pk/28-10-2026/pm-directs-clear-targets-timelines-for-alibaba-group-projects" },
+      { label: "Express Tribune: Secret to national development lies in AI and digitisation: PM Shehbaz", url: "https://tribune.com.pk/story/2637409/secret-to-national-development-lies-in-ai-and-digitisation-pm-shehbaz" },
+    ],
+  },
+  {
+    slug: "binance-6-3-billion-hack-north-korea-october-2026",
+    title: "Binance Reports a $6.3 Billion Hack, the Largest on Record",
+    description:
+      "Binance confirmed a security incident on October 29, 2026, and TRM Labs puts the theft at about $6.36 billion across ten blockchains, which it links with high confidence to North Korea's TraderTraitor group.",
+    date: "2026-11-01",
+    readTime: "4 min read",
+    tags: ["Crypto", "Cybersecurity"],
+    image: "/images/blog/binance-6-3-billion-hack-north-korea-october-2026.jpg",
+    body: [
+      "On October 29, 2026, Binance, the world's largest crypto exchange, confirmed a security incident in which hackers took about $6.3 billion in crypto. TRM Labs, a blockchain intelligence firm, estimates roughly $6.36 billion left Binance wallets across ten blockchains, most of it in about 20 minutes starting at 20:05 UTC. TRM calls it the largest crypto theft on record, about four times the $1.5 billion Bybit hack of February 2025. Binance suspended withdrawals on several networks, said user funds are safe, and said it will cover all customer losses.",
+      "On who did it, the sources are careful. TRM attributes the attack with high confidence to TraderTraitor, a North Korean hacking unit linked to the Lazarus Group, and Chainalysis' CEO has said the same. The FBI blamed the 2025 Bybit hack on that unit. Binance itself has not named anyone: co-CEO Richard Teng said its investigation has not attributed responsibility to any individual, and North Korea routinely denies involvement in hacking. Treat the attribution as an assessment by private firms, not a finding by Binance or a government for this case.",
+      "On how, only part is known. Binance first pointed to a possibly compromised engineer's laptop, and later said further investigation found additional points of breach. It says it found no evidence of a wallet private key leak, and it has not published a root cause. TRM's own analysis suggests the attacker likely gained control of Binance's hot wallet signing infrastructure, and that preparation began at least 36 hours earlier. That is TRM's assessment, not a confirmed Binance finding.",
+      "Recovery is under way but incomplete. TRM counts about $2.7 billion frozen as of early October 30 UTC, including about 1.77 billion USDT frozen by Tether and about 825 million USDC frozen by Circle. Reuters, cited by Al Jazeera, puts the total near $3 billion. TRM says the attacker still holds about $2.4 billion in assets beyond issuers' reach and has begun swapping and moving funds. Binance has said the loss figure may continue to increase and that it expects to resume withdrawals shortly. Figures are still moving, so check the sources below for updates.",
+      "What this means for businesses: this was an attack on a major exchange's own signing and wallet systems, not on a retail customer, so the lesson is about operational security. If your company holds crypto or accepts crypto payments, ask how much sits on any single exchange, who holds the approval keys, and what your plan is if withdrawals freeze for days. Staff laptops and developer machines are an entry point, so apply the same access controls, device checks and signing limits you would use for bank credentials. Keep a written incident plan that covers who is told, who pays, and how customers are informed.",
+    ],
+    sources: [
+      { label: "TRM Labs: North Korea Steals USD 6.36 Billion From Binance in the Largest Hack in History", url: "https://www.trmlabs.com/resources/blog/north-korea-steals-usd-6-36-billion-from-binance-in-the-largest-hack-in-history" },
+      { label: "Al Jazeera: Binance says $6.3bn stolen in biggest crypto heist in history", url: "https://www.aljazeera.com/news/2026/10/30/binance-says-6-3bn-stolen-in-biggest-crypto-heist-in-history-what-we-know" },
+      { label: "CBS News: $6.3 billion Binance hack was likely work of North Korea, blockchain intel firms say", url: "https://www.cbsnews.com/news/binance-hack-north-korea/" },
+    ],
+  },
+  {
+    slug: "dubai-ai-festival-scale-ai-sandbox-october-2026",
+    title: "Dubai AI Festival: Scale AI Opens in UAE, New AI Sandbox",
+    description:
+      "At the Dubai AI Festival in late October 2026, Scale AI launched a UAE entity at DIFC, Dubai raised its AI Campus targets and the Dubai Future Foundation opened an AI Sandbox.",
+    date: "2026-10-31",
+    readTime: "4 min read",
+    tags: ["Tech News", "UAE"],
+    image: "/images/blog/dubai-ai-festival-scale-ai-sandbox-october-2026.jpg",
+    body: [
+      "The third Dubai AI Festival was held in downtown Dubai in the last week of October 2026. Fortune reports more than 20,000 participants from 100 countries, 500 investors and 200 exhibitors, including more than 100 Chinese technology companies. Crown Prince Sheikh Hamdan bin Mohammed bin Rashid Al Maktoum toured the pavilions on opening day and raised the targets for the Dubai AI Campus to more than 1,000 specialized AI companies and over 5,000 highly skilled jobs by 2030.",
+      "The biggest corporate news was Scale AI. According to Unite.AI, the company formally launched its UAE entity on October 26, 2026, based at the Dubai International Financial Centre (DIFC). Scale says it builds evaluations and benchmarks for frontier AI labs and will apply the same approach to UAE institutions: define what a system must reliably do, test it before and after launch, build in human oversight, and train local teams to run the systems. Scale also signed a memorandum of understanding with Presight on October 8 at AI Everything in Abu Dhabi, covering agentic AI for government and enterprise and continuous evaluation of AI agents in live operations. An MoU is an intention to explore, not a delivered product.",
+      "A separate announcement targets the regulation problem. On October 28, the Dubai Future Foundation launched an AI Sandbox through Sandbox Dubai, working with government bodies including the Dubai Centre for Artificial Intelligence. It is open to startups, SMEs and established firms building AI products in areas such as education, healthcare, transport, logistics, tourism, media and government services. Products must be at minimum viable product stage or beyond and ready for commercialization. Participants get regulatory guidance and, depending on the case and subject to approval by the relevant authorities, possible regulatory exemptions, while regulators gather evidence on where rules need updating.",
+      "The campus numbers give some scale. Fortune says the Dubai AI Campus, launched in May 2024, now has more than 500 AI companies, over AED 1 billion (about $272 million) in private equity and venture capital investment, and more than 2,000 specialized technology jobs. The Sandbox announcement cites a Microsoft report ranking the UAE first globally for AI use among its working-age population, at 73.3% compared with 18.8% globally. These are figures from the sources named below, and we have not verified them independently.",
+      "What this means for businesses: the Gulf is building the testing, evaluation and regulatory layers around AI, not only the data centers. If you sell or build AI products for UAE customers, check whether the sandbox fits your product stage and sector. If you buy AI, the Scale approach is a useful checklist wherever you operate: define what the system must do, test it before and after launch, keep human review in place and train your own staff. Treat partnership announcements as signals, and look for live deployments before planning around them.",
+    ],
+    sources: [
+      { label: "Unite.AI: Scale AI Formally Launches UAE Entity at Dubai AI Festival", url: "https://www.unite.ai/scale-ai-formally-launches-uae-entity-at-dubai-ai-festival/" },
+      { label: "Fortune: Global AI leaders gather in Dubai as the emirate expands its ambitions", url: "https://fortune.com/2026/10/28/global-ai-leaders-gather-dubai-emirate-expands-ambitions-ai-festival/" },
+      { label: "TechAfrica News: Dubai Future Foundation Launches AI Sandbox", url: "https://techafricanews.com/2026/10/28/dubai-future-foundation-launches-ai-sandbox-to-help-companies-navigate-regulation/" },
+    ],
+  },
+  {
     slug: "chrome-gmail-enhanced-autofill-october-2026",
     title: "Chrome Can Now Fill Forms Using Your Gmail Data",
     description:

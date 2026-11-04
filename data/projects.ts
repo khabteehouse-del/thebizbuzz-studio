@@ -29,6 +29,26 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    id: "sukoon",
+    kind: "product",
+    blurb:
+      "Session companion software that helps psychologists run calmer, better sessions.",
+    name: "Sukoon",
+    category: "SaaS for psychologists and clinics",
+    problem:
+      "Psychologists need a calm way to get a conversation started, especially with children, teens and people who find it hard to talk, and every session should leave a clear record behind.",
+    solution:
+      "A software-as-a-service platform where each institute gets its own private workspace, with invite-code onboarding, individual psychologist accounts, usage limits and an admin console. Clinicians use age-based activities and questionnaires for kids, teens, adults and older adults, and each one ends in a clear summary, printable session notes and take-home exercise cards. It works on phone, tablet and laptop, needs no names, and erases answers automatically when the session ends. Now onboarding institutes through a free pilot. Designed and built by Amrit Hayat for BizBuzz.",
+    stack: ["Multi-institute SaaS", "Admin console", "Invite-code onboarding", "Privacy by design"],
+    image: "/images/work/sukoon.jpg",
+    live: "https://sukoon-ebon.vercel.app",
+    repo: null,
+    stats: [
+      { label: "Age groups covered", value: "4" },
+      { label: "Status", value: "Free pilot" },
+    ],
+  },
+  {
     id: "fluxorx",
     kind: "product",
     blurb:
@@ -69,26 +89,6 @@ export const projects: Project[] = [
     ],
   },
   {
-    id: "pulsariq",
-    kind: "product",
-    blurb:
-      "Cited answers from internal documents in under two seconds, self-hosted.",
-    name: "PulsarIQ",
-    category: "Self-hosted enterprise RAG",
-    problem:
-      "Enterprises want to search internal documents in natural language, but cannot send that data to external model APIs.",
-    solution:
-      "Cited answers in under two seconds, with a self-hosted deployment path for regulated environments where data cannot leave the client's own infrastructure.",
-    stack: ["RAG", "Vector search", "Self-hosted", "Enterprise RBAC"],
-    image: "/images/work/pulsariq.jpg",
-    live: "https://pulsariq.vercel.app",
-    repo: "https://github.com/khabteehouse-del/pulsariq",
-    stats: [
-      { label: "Answer time", value: "< 2 seconds" },
-      { label: "Context precision", value: "93.33% (vs 0.70 target)" },
-    ],
-  },
-  {
     id: "qadir-q",
     kind: "client",
     blurb:
@@ -126,6 +126,26 @@ export const projects: Project[] = [
       { label: "Clinical workup", value: "16 fields" },
       { label: "Outcome variants", value: "3" },
       { label: "Review time", value: "under 5 minutes" },
+    ],
+  },
+  {
+    id: "pulsariq",
+    kind: "product",
+    blurb:
+      "Cited answers from internal documents in under two seconds, self-hosted.",
+    name: "PulsarIQ",
+    category: "Self-hosted enterprise RAG",
+    problem:
+      "Enterprises want to search internal documents in natural language, but cannot send that data to external model APIs.",
+    solution:
+      "Cited answers in under two seconds, with a self-hosted deployment path for regulated environments where data cannot leave the client's own infrastructure.",
+    stack: ["RAG", "Vector search", "Self-hosted", "Enterprise RBAC"],
+    image: "/images/work/pulsariq.jpg",
+    live: "https://pulsariq.vercel.app",
+    repo: "https://github.com/khabteehouse-del/pulsariq",
+    stats: [
+      { label: "Answer time", value: "< 2 seconds" },
+      { label: "Context precision", value: "93.33% (vs 0.70 target)" },
     ],
   },
   {

@@ -13,6 +13,28 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "apple-cuts-employee-ai-budgets-november-2026",
+    title: "Apple Reportedly Cuts Daily AI Spending Limits for Staff",
+    description:
+      "Bloomberg reports that Apple lowered some engineers' daily AI spending cap from $300 to $200 in October 2026 and is weighing deeper cuts, a sign that AI bills are now being managed like any other cost.",
+    date: "2026-11-05",
+    readTime: "4 min read",
+    tags: ["AI News", "Tech News"],
+    image: "/images/blog/apple-cuts-employee-ai-budgets-november-2026.jpg",
+    body: [
+      "On November 4, 2026, Bloomberg reported that Apple is cutting how much its employees can spend on AI tools each day. TechCrunch, MacRumors and 9to5Mac all repeated the story, citing Bloomberg's unnamed sources. Apple had not commented in the coverage we read, so none of the details are confirmed by the company.",
+      "According to the reports, Apple quietly lowered the daily AI spending cap for some engineers from $300 to $200 in October. Many groups outside engineering already have a $100 daily limit. Bloomberg's sources say further cuts are planned, with some engineering allowances possibly falling to $100 a day, and that Apple has considered limits as low as $25 for some teams. Those lower figures are described as plans or options, not final policy.",
+      "The reports add some context. Staff can reportedly use models from Anthropic, OpenAI and Google, and some teams are being encouraged to use cheaper models or models that run on the device itself. Employees who need more budget can ask senior leaders for an exemption. Some employees told Bloomberg that few people use their full $300 allowance, so the savings may be small. MacRumors and 9to5Mac link the move to a wider cost-cutting push under CEO John Ternus, who took over on September 1, and note that some staff worry about restructuring. That worry is not a confirmed plan.",
+      "TechCrunch ties the story to a wider trend. Earlier in 2026, many companies urged staff to use as much AI as possible. Now that the token bills have arrived, more of them are putting limits in place. 9to5Mac cites other reports of the same pattern, including Accenture reportedly cutting a central Claude allowance and Meta discussing per-engineer caps on AI token budgets. We have not independently checked those two reports.",
+      "What this means for businesses: AI usage is a real line in the budget, and it grows quickly when coding tools and assistants are used all day. Set a monthly spending limit per team, review the bills every month, and match the model to the task, because a cheaper or smaller model is often enough for routine work. Track what the spending produces, such as hours saved or work shipped, not just how many tokens were used. If you cut budgets, do it with a clear request process so people who truly need more can get it.",
+    ],
+    sources: [
+      { label: "TechCrunch: Apple is reportedly cutting budgets for its internal AI usage", url: "https://techcrunch.com/2026/11/04/apple-is-reportedly-cutting-budgets-for-its-internal-ai-usage/" },
+      { label: "MacRumors: Apple is Putting Employees on an AI Budget", url: "https://macrumors.com/2026/11/04/apple-reducing-employee-ai-spending" },
+      { label: "9to5Mac: Apple reduces employees' AI token allowances as Ternus moves to cut costs", url: "https://9to5mac.com/2026/11/04/report-apple-reduces-employees-ai-token-allowances-as-ternus-moves-to-cut-costs/" },
+    ],
+  },
+  {
     slug: "cursor-claude-code-extension-ssh-backdoor-october-2026",
     title: "Tampered Claude Code Extension Hit Up to 5,000 Cursor Users",
     description:

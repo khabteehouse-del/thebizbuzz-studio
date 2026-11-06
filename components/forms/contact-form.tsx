@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Check, Clapperboard, Globe, MapPin, Megaphone, Search, Star } from "lucide-react";
 import {
   submitContact,
@@ -53,6 +53,17 @@ export function ContactForm({ lang, kind, labels, submitLabel, doneTitle }: Prop
   const [sending, setSending] = useState(false);
   const [error, setError] = useState<ContactError | "generic" | null>(null);
   const [done, setDone] = useState(false);
+  const doneRef = useRef<HTMLDivElement>(null);
+
+  /* The form is taller than the thank-you box, so after sending, the page
+     shrinks and the box can end up off screen. Bring it into view. */
+  useEffect(() => {
+    if (!done) return;
+    const el = doneRef.current;
+    if (!el) return;
+    el.scrollIntoView({ behavior: "smooth", block: "center" });
+    el.focus({ preventScroll: true });
+  }, [done]);
 
   function errorText(code: ContactError | "generic"): string {
     if (code === "name") return labels.errName;
@@ -137,7 +148,12 @@ export function ContactForm({ lang, kind, labels, submitLabel, doneTitle }: Prop
 
   if (done) {
     return (
-      <div role="status" className="rounded-[3px] border border-line bg-paper/[0.04] p-7 md:p-9">
+      <div
+        ref={doneRef}
+        role="status"
+        tabIndex={-1}
+        className="rounded-[3px] border border-[#4fd1c5]/40 bg-paper/[0.04] p-7 outline-none md:p-9"
+      >
         <span className="flex h-10 w-10 items-center justify-center rounded-full border border-[#4fd1c5]/60 text-[#4fd1c5]">
           <Check size={20} aria-hidden="true" />
         </span>

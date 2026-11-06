@@ -20,10 +20,15 @@ import { sans } from "@/lib/fonts";
 export function RootShell({ lang, children }: { lang: Lang; children: ReactNode }) {
   const c = copy[lang];
 
+  const services = [
+    { label: c.services.websites.navLabel, href: path("websites", lang) },
+    { label: c.services.localSeo.navLabel, href: path("localSeo", lang) },
+    { label: c.services.gbp.navLabel, href: path("gbp", lang) },
+    { label: c.services.ads.navLabel, href: path("ads", lang) },
+    { label: c.services.video.navLabel, href: path("video", lang) },
+  ];
+
   const links = [
-    { label: c.nav.websites, href: path("websites", lang) },
-    { label: c.nav.localSeo, href: path("localSeo", lang) },
-    { label: c.nav.gbp, href: path("gbp", lang) },
     { label: c.nav.mizar, href: path("mizar", lang) },
     { label: c.nav.about, href: path("about", lang) },
   ];
@@ -46,6 +51,8 @@ export function RootShell({ lang, children }: { lang: Lang; children: ReactNode 
           brand={site.shortName}
           homeHref={path("home", lang)}
           homeLabel={c.nav.home}
+          servicesLabel={c.nav.services}
+          services={services}
           links={links}
           cta={{ label: c.nav.cta, href: path("gbpCheck", lang) }}
           switchLabel={c.nav.switchLabel}

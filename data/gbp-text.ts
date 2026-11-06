@@ -363,7 +363,7 @@ const en: GbpText = {
     typeLabel: "What kind of business",
     typePlaceholder: "For example, house painting",
     cityLabel: "City",
-    cityPlaceholder: "Houston",
+    cityPlaceholder: "Your city",
     optional: "optional",
     start: "Start the check",
     startNote:
@@ -700,7 +700,7 @@ const es: GbpText = {
     typeLabel: "Tipo de negocio",
     typePlaceholder: "Por ejemplo, pintura de casas",
     cityLabel: "Ciudad",
-    cityPlaceholder: "Houston",
+    cityPlaceholder: "Su ciudad",
     optional: "opcional",
     start: "Empezar la revisión",
     startNote:

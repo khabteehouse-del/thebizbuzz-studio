@@ -1,15 +1,13 @@
 import { Reveal } from "@/components/shared/reveal";
 import { Orbs } from "@/components/shared/orbs";
-import { Button } from "@/components/shared/button";
 import { TradeStrip } from "@/components/sections/trade-strip";
 import { copy } from "@/data/copy";
-import { path, type Lang } from "@/data/i18n";
+import type { Lang } from "@/data/i18n";
 import { trades } from "@/data/trades";
 
 /*
   Who we help: a slow strip of photos showing the kinds of business we work
-  with. Nothing is a link to another page, because every business gets the
-  same three services. The only action is the free check underneath.
+  with. Nothing here is a link: every business gets the same services.
 */
 export function Industries({ lang }: { lang: Lang }) {
   const c = copy[lang];
@@ -38,16 +36,6 @@ export function Industries({ lang }: { lang: Lang }) {
           <TradeStrip items={items} />
         </div>
 
-        <div className="shell mt-8 md:mt-10">
-          <Button
-            href={path("gbpCheck", lang)}
-            variant="primary"
-            size="lg"
-            className="w-[17rem] justify-between"
-          >
-            {c.common.freeAudit}
-          </Button>
-        </div>
       </div>
     </section>
   );

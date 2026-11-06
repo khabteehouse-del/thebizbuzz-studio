@@ -14,7 +14,7 @@
 */
 
 export type ContactKind = "contact" | "mizar";
-export type ContactTopic = "audit" | "website" | "seo" | "gbp" | "mizar";
+export type ContactTopic = "audit" | "website" | "seo" | "gbp" | "ads" | "video" | "mizar";
 export type ContactError = "name" | "contact" | "message" | "send";
 
 export type ContactInput = {
@@ -36,6 +36,8 @@ const TOPIC_LABEL: Record<ContactTopic, string> = {
   website: "Website",
   seo: "Local SEO",
   gbp: "Google Business Profile",
+  ads: "Ad campaigns",
+  video: "Video and UGC ads",
   mizar: "Mizar early access",
 };
 

@@ -1,5 +1,3 @@
-import type { IndustryKey } from "@/data/i18n";
-
 /*
   The shape of every piece of text on the site. English and Spanish both
   have to fill this shape completely, so a missing Spanish line is a build
@@ -30,32 +28,28 @@ export type ServiceCopy = {
   fit: string[];
   ctaTitle: string;
   ctaText: string;
+  /* One optional plain line shown under the intro */
+  note?: string;
 };
 
-export type IndustryCopy = {
-  name: string;
-  /* Which service this page leads with, shown as a small label */
-  focus: string;
+export type LegalSection = { title: string; text: string[] };
+
+export type LegalCopy = {
   metaTitle: string;
   metaDescription: string;
+  eyebrow: string;
   h1: string;
   h1Mark: string;
   intro: string;
-  painsTitle: string;
-  pains: Feature[];
-  includedTitle: string;
-  included: string[];
-  closing: string;
+  updated: string;
+  sections: LegalSection[];
 };
 
 export type Copy = {
   htmlLang: string;
   locale: string;
   nav: {
-    websites: string;
-    localSeo: string;
-    gbp: string;
-    industries: string;
+    services: string;
     mizar: string;
     about: string;
     cta: string;
@@ -70,8 +64,6 @@ export type Copy = {
     freeAudit: string;
     bookConsultation: string;
     seeServices: string;
-    inDevelopment: string;
-    illustration: string;
   };
   home: {
     metaTitle: string;
@@ -82,14 +74,13 @@ export type Copy = {
     h1After: string;
     sub: string;
     note: string;
-    chips: string[];
-    heroCardTitle: string;
-    heroCardChips: string[];
     soundsTitle: string;
     sounds: Feature[];
     servicesEyebrow: string;
     servicesTitle: string;
     servicesIntro: string;
+    servicesGroupFind: string;
+    servicesGroupGet: string;
     auditEyebrow: string;
     auditTitle: string;
     auditText: string;
@@ -104,13 +95,6 @@ export type Copy = {
     mizarTitle: string;
     mizarText: string;
     mizarCta: string;
-    proofEyebrow: string;
-    proofTitle: string;
-    proofText: string;
-    proofLink: string;
-    proofNote: string;
-    whyTitle: string;
-    why: Feature[];
     faqEyebrow: string;
     faqTitle: string;
     faqs: Faq[];
@@ -121,17 +105,9 @@ export type Copy = {
     websites: ServiceCopy;
     localSeo: ServiceCopy;
     gbp: ServiceCopy;
+    ads: ServiceCopy;
+    video: ServiceCopy;
   };
-  industriesIndex: {
-    metaTitle: string;
-    metaDescription: string;
-    h1: string;
-    h1Mark: string;
-    intro: string;
-    otherTitle: string;
-    otherText: string;
-  };
-  industries: Record<IndustryKey, IndustryCopy>;
   mizar: {
     metaTitle: string;
     metaDescription: string;
@@ -186,7 +162,14 @@ export type Copy = {
   form: {
     title: string;
     topicLabel: string;
-    topics: { audit: string; website: string; seo: string; gbp: string };
+    topics: {
+      audit: string;
+      website: string;
+      seo: string;
+      gbp: string;
+      ads: string;
+      video: string;
+    };
     nameLabel: string;
     contactLabel: string;
     businessLabel: string;
@@ -207,11 +190,13 @@ export type Copy = {
   footer: {
     tagline: string;
     servicesTitle: string;
-    industriesTitle: string;
     companyTitle: string;
+    privacy: string;
+    terms: string;
     remote: string;
     poweredBy: string;
     rights: string;
   };
+  legal: { privacy: LegalCopy; terms: LegalCopy };
   notFound: { title: string; text: string; back: string };
 };

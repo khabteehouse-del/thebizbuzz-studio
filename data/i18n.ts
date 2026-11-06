@@ -19,6 +19,10 @@ export type RouteKey =
   | "mizar"
   | "about"
   | "contact"
+  | "ads"
+  | "video"
+  | "privacy"
+  | "terms"
   | "gbpCheck";
 
 export const routes: Record<RouteKey, Record<Lang, string>> = {
@@ -29,25 +33,18 @@ export const routes: Record<RouteKey, Record<Lang, string>> = {
     en: "/google-business-profile",
     es: "/es/perfil-de-negocio-de-google",
   },
+  ads: { en: "/ad-campaigns", es: "/es/campanas-publicitarias" },
+  video: { en: "/video-and-ugc-ads", es: "/es/video-y-anuncios-ugc" },
   mizar: { en: "/mizar", es: "/es/mizar" },
   about: { en: "/about", es: "/es/nosotros" },
   contact: { en: "/contact", es: "/es/contacto" },
+  privacy: { en: "/privacy", es: "/es/privacidad" },
+  terms: { en: "/terms", es: "/es/terminos" },
   gbpCheck: {
     en: "/tools/gbp-check",
     es: "/es/herramientas/perfil-de-google",
   },
 };
-
-/* The kinds of business named in the copy. They are examples, not pages. */
-export const industryKeys = [
-  "house-painters",
-  "mobile-beauty",
-  "cleaning-companies",
-  "contractors",
-  "mobile-pet-services",
-] as const;
-
-export type IndustryKey = (typeof industryKeys)[number];
 
 export function path(key: RouteKey, lang: Lang): string {
   return routes[key][lang];

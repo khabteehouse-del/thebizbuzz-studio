@@ -4,7 +4,7 @@
 */
 
 export const site = {
-  name: "Accentuate Your Revenue",
+  name: "Accentuate Your Revenues",
   shortName: "Accentuate",
   /* Placeholder domain. Not registered yet. */
   url: "https://accentuatebiz.com",

@@ -3,7 +3,7 @@ import { Button } from "@/components/shared/button";
 import { copy } from "@/data/copy";
 import { path, type Lang } from "@/data/i18n";
 
-export type ServiceKey = "websites" | "localSeo" | "gbp";
+export type ServiceKey = "websites" | "localSeo" | "gbp" | "ads" | "video";
 
 export function ServicePage({ lang, service }: { lang: Lang; service: ServiceKey }) {
   const c = copy[lang];
@@ -13,6 +13,11 @@ export function ServicePage({ lang, service }: { lang: Lang; service: ServiceKey
   return (
     <>
       <PageHero label={s.eyebrow} title={s.h1} mark={s.h1Mark} intro={s.intro}>
+        {s.note && (
+          <p className="w-full max-w-2xl rounded-[3px] border border-line bg-paper/[0.04] p-4 text-sm leading-relaxed text-paper/80 md:text-base">
+            {s.note}
+          </p>
+        )}
         <Button href={path("gbpCheck", lang)} variant="primary" size="lg" className="w-[17rem] justify-between">
           {c.common.freeAudit}
         </Button>

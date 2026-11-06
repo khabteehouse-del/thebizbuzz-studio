@@ -27,6 +27,20 @@ function texts(key: RouteKey, lang: Lang): { title: string; description: string 
       };
     case "gbp":
       return { title: c.services.gbp.metaTitle, description: c.services.gbp.metaDescription };
+    case "ads":
+      return { title: c.services.ads.metaTitle, description: c.services.ads.metaDescription };
+    case "video":
+      return {
+        title: c.services.video.metaTitle,
+        description: c.services.video.metaDescription,
+      };
+    case "privacy":
+      return {
+        title: c.legal.privacy.metaTitle,
+        description: c.legal.privacy.metaDescription,
+      };
+    case "terms":
+      return { title: c.legal.terms.metaTitle, description: c.legal.terms.metaDescription };
     case "mizar":
       return { title: c.mizar.metaTitle, description: c.mizar.metaDescription };
     case "about":

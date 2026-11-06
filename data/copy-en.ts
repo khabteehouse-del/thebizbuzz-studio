@@ -4,10 +4,7 @@ export const en: Copy = {
   htmlLang: "en",
   locale: "en_US",
   nav: {
-    websites: "Websites",
-    localSeo: "Local SEO",
-    gbp: "Google Profile",
-    industries: "Industries",
+    services: "Services",
     mizar: "Mizar",
     about: "About",
     cta: "Free audit",
@@ -22,183 +19,144 @@ export const en: Copy = {
     freeAudit: "Get your free profile audit",
     bookConsultation: "Book a free consultation",
     seeServices: "See what we do",
-    inDevelopment: "In development",
-    illustration: "Illustration",
   },
   home: {
-    metaTitle: "Websites, Local SEO and Google Business Profile for Texas Businesses",
+    metaTitle: "Websites, Local SEO, Ads and Video for US Businesses",
     metaDescription:
-      "We help Texas service businesses get found on Google, look credible online and turn searches into calls. Websites, local SEO and Google Business Profile.",
-    eyebrow: "Websites · Local SEO · Google Business Profile",
+      "We help US businesses get found on Google and win more customers. Websites, local SEO, Google Business Profile, ad campaigns, and video and UGC ads.",
+    eyebrow: "Built for US businesses",
     h1Before: "Accentuate your ",
-    h1Mark: "revenue",
+    h1Mark: "revenues",
     h1After: ".",
-    sub: "We help Texas service businesses get found on Google, look credible online, and turn searches into phone calls. Websites, local SEO and Google Business Profile, handled for you.",
-    note: "Free and no obligation. Plain language, no jargon.",
-    chips: [
-      "Built for phones first",
-      "Plain language, no jargon",
-    ],
-    heroCardTitle: "Your business, easier to find",
-    heroCardChips: ["Found on Google", "More calls", "Trusted reviews"],
-    soundsTitle: "Customers search first. Then they call the business they can find.",
+    sub: "We help US businesses get found online and win more customers. Websites, local search, ads and video, all in one place.",
+    note: "Free to start. Plain language, no jargon.",
+    soundsTitle: "If customers cannot find you, they call someone else.",
     sounds: [
       {
-        title: "Your Google profile is half empty",
+        title: "Your Google profile is thin",
         text: "Missing hours, photos or services make people scroll past you.",
       },
       {
-        title: "Your website struggles on a phone",
-        text: "Most local searches happen on a phone. A slow or confusing site loses the call.",
+        title: "Your website is hard to use on a phone",
+        text: "Most local searches happen on a phone. A slow site loses the call.",
       },
       {
         title: "Competitors show up first",
-        text: "When a customer nearby searches, the businesses at the top get the calls.",
+        text: "The businesses at the top of the results get the calls.",
       },
     ],
     servicesEyebrow: "What we do",
-    servicesTitle: "Three services. One goal: more customers who can find you.",
-    servicesIntro:
-      "We keep it focused on the work that makes a local business visible and easy to choose.",
+    servicesTitle: "Five services. One goal: more customers.",
+    servicesIntro: "Pick one, or put them together.",
+    servicesGroupFind: "Get found",
+    servicesGroupGet: "Get customers",
     auditEyebrow: "Start here",
-    auditTitle: "A free Google Business Profile audit",
+    auditTitle: "Check your Google profile for free",
     auditText:
-      "Send us your business name. We look at your Google profile and tell you, in plain language, what is holding it back and what to fix first.",
-    auditPoints: [
-      "No cost and no obligation",
-      "Plain language, no jargon",
-      "A clear next step",
-    ],
+      "Answer a few quick questions. You get a score and a plain list of what to fix first.",
+    auditPoints: ["Free", "Plain language", "A clear next step"],
     stepsEyebrow: "How it works",
-    stepsTitle: "Simple steps, clear from the start",
+    stepsTitle: "Four simple steps",
     steps: [
       {
-        title: "Free audit and chat",
-        text: "We look at your profile and website, then talk about what you want.",
+        title: "Free check and chat",
+        text: "We look at your business and listen to what you want.",
       },
       {
         title: "Plan and quote",
-        text: "You get a clear plan, a fixed price in US dollars and a timeline in writing.",
+        text: "You get a clear plan and a written quote in US dollars.",
       },
       {
-        title: "We build and optimize",
-        text: "We do the work. You stay focused on your customers.",
+        title: "We do the work",
+        text: "We build and set everything up. You run your business.",
       },
       {
-        title: "Launch and grow",
-        text: "We go live, check the results with you and keep improving.",
+        title: "Launch and improve",
+        text: "We go live, review how it is doing with you, and keep improving.",
       },
     ],
     industriesEyebrow: "Who we help",
-    industriesTitle: "Built for local service businesses",
+    industriesTitle: "Local businesses of every kind",
     industriesIntro:
-      "From painters and handymen to physiotherapists and elderly care, and any other local business. Every business gets the same three services: a website, local SEO and a Google Business Profile.",
-    mizarBadge: "In development",
-    mizarTitle: "Mizar: an AI assistant for mobile service professionals",
+      "From painters and cleaners to clinics and care services. If you serve local customers, we can help.",
+    mizarBadge: "In testing",
+    mizarTitle: "Mizar: an AI assistant for mobile service pros",
     mizarText:
-      "Mizar is being built to answer calls, texts and WhatsApp messages while you are busy with a customer. It is not available yet. Join the early access list and we will tell you when it is ready.",
+      "Mizar answers customers while you are busy on a job. It is in testing and not open to everyone yet.",
     mizarCta: "See Mizar",
-    proofEyebrow: "Our work",
-    proofTitle: "Texas case studies are on the way",
-    proofText:
-      "We are the US arm of BizBuzz, a creative and technology studio. While our Texas case studies are being prepared, you can see the studio's work.",
-    proofLink: "See the BizBuzz portfolio",
-    proofNote:
-      "We will only show real projects here, with the owner's permission.",
-    whyTitle: "Why businesses choose us",
-    why: [
-      {
-        title: "In your language",
-        text: "Talk to us in the language you are most comfortable with. Everything is written properly by people, not just translated by a tool.",
-      },
-      {
-        title: "Clear and honest",
-        text: "Plain language, a written quote and no promises nobody can keep.",
-      },
-      {
-        title: "Creative and technical",
-        text: "Good design and solid engineering together. Brand meets intelligence.",
-      },
-      {
-        title: "Made for phones",
-        text: "Fast, simple pages that work on the small screen your customers use.",
-      },
-    ],
     faqEyebrow: "Questions",
-    faqTitle: "Things people ask us",
+    faqTitle: "Quick answers",
     faqs: [
       {
-        q: "Do you have an office in Texas?",
-        a: "No. We are a remote team that serves Texas businesses. We talk by phone and video, and we work in your time zone when it matters.",
-      },
-      {
-        q: "Is the website available in Spanish?",
-        a: "Yes. Every page has a Spanish version, and we can build your own website in English, Spanish or both.",
-      },
-      {
         q: "How much does it cost?",
-        a: "It depends on what you need. You get a fixed price in US dollars, in writing, before any work starts.",
+        a: "It depends on what you need. You get a written quote in US dollars before any work starts.",
       },
       {
-        q: "Can you guarantee the number one spot on Google?",
-        a: "No honest agency can. We do the work that improves your visibility and show you what changes.",
+        q: "Can you guarantee the top spot on Google?",
+        a: "No. No honest agency can. We do the work that improves your visibility and show you what changed.",
       },
       {
         q: "What is a Google Business Profile?",
-        a: "It is the free listing that appears on Google Search and Maps with your hours, photos, reviews and phone number. For a local business it is often the first thing a customer sees.",
+        a: "It is the free listing on Google Search and Maps with your hours, photos, reviews and phone number. For a local business it is often the first thing a customer sees.",
       },
       {
-        q: "What is Mizar?",
-        a: "Mizar is an AI assistant for mobile service professionals that we are building. It is still in development and not yet for sale. You can join the early access list.",
+        q: "Who pays for the ads?",
+        a: "You do, straight to Google or Meta from your own ad account. We never hold your ad budget. We charge separately for managing the campaigns.",
+      },
+      {
+        q: "Do you have a local office?",
+        a: "No. We are a remote team. We work with US businesses by phone and video.",
+      },
+      {
+        q: "Is there a Spanish version?",
+        a: "Yes. Every page is also available in Spanish, and we can build your own site in English, Spanish or both.",
       },
     ],
-    finalTitle: "Ready to be easier to find?",
-    finalText:
-      "Tell us about your business. We reply with a clear next step.",
+    finalTitle: "Ready to get more customers?",
+    finalText: "Tell us about your business. We reply with a clear next step.",
   },
   services: {
     websites: {
-      navLabel: "Website Development",
-      title: "Website Development",
-      cardLine: "Websites that look professional and bring in calls.",
+      navLabel: "Websites",
+      title: "Websites",
+      cardLine: "A clear, fast website that turns visitors into calls.",
       bullets: [
         "Professional business websites",
-        "Mobile-first and fast",
-        "Landing pages built to get leads",
-        "Designs for your industry",
+        "Built for phones first",
+        "Pages made to get leads",
       ],
-      metaTitle: "Website Development for Local Businesses",
+      metaTitle: "Websites for Local Businesses",
       metaDescription:
-        "Professional, mobile-first websites for Texas service businesses, built to bring in calls and quote requests.",
-      eyebrow: "Website Development",
+        "Professional, mobile-first websites for US local businesses, built to bring in calls and quote requests.",
+      eyebrow: "Websites",
       h1: "A website that works as hard as you do",
       h1Mark: "works as hard",
       intro:
-        "Your website should make a stranger trust you in a few seconds and make it easy to call or ask for a quote. We design and build websites that do exactly that, on every screen.",
+        "People judge your business in a few seconds. We build websites that look professional and make it easy to call or ask for a quote.",
       featuresTitle: "What you get",
       features: [
         {
-          title: "A professional business website",
-          text: "Clear pages for your services, your area and your story, written in plain language.",
+          title: "A professional website",
+          text: "Clear pages for your services, your area and your story.",
         },
         {
-          title: "Mobile-first design",
-          text: "Designed for the phone first, then scaled up. Fast, easy to read and easy to tap.",
+          title: "Phone-first design",
+          text: "Fast, easy to read and easy to tap on a small screen.",
         },
         {
-          title: "Lead-focused landing pages",
-          text: "Pages built around one action, such as calling you or asking for a quote.",
+          title: "Pages that get leads",
+          text: "Each page leads to one action, such as a call or a quote request.",
         },
         {
-          title: "Industry-specific layouts",
-          text: "Structure and wording that fit how painters, cleaners, beauty pros and others get hired.",
+          title: "Wording that fits your trade",
+          text: "Plain words that match how your customers search and hire.",
         },
       ],
       stepsTitle: "How we build it",
       steps: [
         {
           title: "Plan",
-          text: "We agree on pages, wording and the one action each page should drive.",
+          text: "We agree on the pages and the one action each page should drive.",
         },
         {
           title: "Design and build",
@@ -206,7 +164,7 @@ export const en: Copy = {
         },
         {
           title: "Launch",
-          text: "We publish, connect your Google profile and check it on real phones.",
+          text: "We publish, connect your Google profile and test on real phones.",
         },
       ],
       fitTitle: "A good fit if",
@@ -217,43 +175,43 @@ export const en: Copy = {
       ],
       ctaTitle: "Let's plan your website",
       ctaText:
-        "Tell us about your business and we will send you a clear plan and a fixed price.",
+        "Tell us about your business. We will send a clear plan and a written quote.",
     },
     localSeo: {
       navLabel: "Local SEO",
       title: "Local SEO",
-      cardLine: "Show up when customers nearby search for what you do.",
+      cardLine: "Show up when people nearby search for what you do.",
       bullets: [
         "Local search visibility",
-        "Local keyword targeting",
-        "Website SEO optimization",
-        "Search performance improvements",
+        "Keywords for your area",
+        "Show up in AI answers like ChatGPT",
       ],
-      metaTitle: "Local SEO for Service Businesses",
+      metaTitle: "Local SEO for Local Businesses",
       metaDescription:
-        "Local SEO that helps Texas service businesses appear when nearby customers search. Clear work, honest reporting.",
+        "Local SEO that helps US businesses appear when nearby customers search, on Google and in AI answers. Clear work, honest reporting.",
       eyebrow: "Local SEO",
       h1: "Be the business customers find nearby",
       h1Mark: "find nearby",
       intro:
-        "When someone searches for a painter, a cleaner or a groomer near them, a few businesses get the call. Local SEO is the work that puts you among them.",
+        "When someone searches for a service near them, a few businesses get the call. Local SEO is the work that puts you among them.",
+      note: "More people now ask tools like ChatGPT who to hire. We also work on helping your business show up in those answers.",
       featuresTitle: "What we work on",
       features: [
         {
           title: "Local search visibility",
-          text: "We improve how you appear for searches in the cities and neighborhoods you serve.",
+          text: "We improve how you appear in the cities and areas you serve.",
         },
         {
-          title: "Local keyword targeting",
-          text: "We find the words your customers really use, in whatever language they search, and use them where they count.",
+          title: "Local keywords",
+          text: "We find the words your customers really use and put them where they count.",
         },
         {
           title: "Website SEO",
           text: "Page titles, headings, speed and structure that search engines can read.",
         },
         {
-          title: "Search performance",
-          text: "We watch what changes and keep improving, with simple reports you can follow.",
+          title: "Reports you can follow",
+          text: "We watch what changes, keep improving, and explain it simply.",
         },
       ],
       stepsTitle: "How it works",
@@ -279,26 +237,25 @@ export const en: Copy = {
       ],
       ctaTitle: "See where you stand",
       ctaText:
-        "Start with a free audit. No one can promise a number one spot, but we can show you what is holding you back.",
+        "Start with a free audit. No one can promise a number one spot, but we can show you what holds you back.",
     },
     gbp: {
       navLabel: "Google Business Profile",
       title: "Google Business Profile",
       cardLine: "A complete profile that customers trust and choose.",
       bullets: [
-        "Profile setup and optimization",
-        "Business information management",
-        "Local visibility improvements",
-        "Guidance on reviews and reputation",
+        "Setup and optimization",
+        "Correct, consistent details",
+        "Help with reviews",
       ],
       metaTitle: "Google Business Profile Management",
       metaDescription:
-        "Profile setup, optimization and management for local businesses, done within Google's guidelines.",
+        "Profile setup, optimization and review help for US local businesses, done within Google's guidelines.",
       eyebrow: "Google Business Profile",
       h1: "A Google profile customers trust",
       h1Mark: "customers trust",
       intro:
-        "Your Google Business Profile is often the first thing a customer sees. A complete, accurate profile with real photos and good reviews gets more calls than an empty one.",
+        "Your Google profile is often the first thing a customer sees. A complete profile with real photos and good reviews gets more calls than an empty one.",
       featuresTitle: "What we handle",
       features: [
         {
@@ -306,16 +263,16 @@ export const en: Copy = {
           text: "Categories, services, description, photos and hours, filled in properly.",
         },
         {
-          title: "Business information",
-          text: "We keep your name, phone, hours and service area correct and consistent.",
+          title: "Correct details",
+          text: "We keep your name, phone, hours and service area accurate everywhere.",
         },
         {
-          title: "Local visibility",
-          text: "Posts, updates and details that help your profile show for the right searches.",
+          title: "Posts and updates",
+          text: "Fresh details that help your profile show for the right searches.",
         },
         {
-          title: "Reviews and reputation",
-          text: "Honest guidance on asking for reviews and replying to them well.",
+          title: "Reviews",
+          text: "Honest help asking for reviews and replying to them well.",
         },
       ],
       stepsTitle: "How it works",
@@ -326,7 +283,7 @@ export const en: Copy = {
         },
         {
           title: "Fix and complete",
-          text: "We update the profile and follow Google's rules for how a business may be shown.",
+          text: "We update the profile and follow Google's rules.",
         },
         {
           title: "Maintain",
@@ -341,241 +298,176 @@ export const en: Copy = {
       ],
       ctaTitle: "Get your free profile audit",
       ctaText:
-        "Send us your business name and we will tell you what to fix first. Service-area businesses welcome.",
+        "Send us your business name and we will tell you what to fix first. Service-area businesses are welcome.",
     },
-  },
-  industriesIndex: {
-    metaTitle: "Industries We Serve",
-    metaDescription:
-      "Websites, local SEO and Google Business Profile for house painters, mobile beauty professionals, cleaning companies, contractors and mobile pet services.",
-    h1: "Built for local service businesses",
-    h1Mark: "local service",
-    intro:
-      "Different trades get hired in different ways. Pick your industry to see what we do for it.",
-    otherTitle: "Do not see your trade?",
-    otherText:
-      "We work with many local service businesses. Tell us what you do and we will tell you honestly if we can help.",
-  },
-  industries: {
-    "house-painters": {
-      name: "House Painters",
-      focus: "Websites",
-      metaTitle: "Websites for House Painters",
+    ads: {
+      navLabel: "Ad campaigns",
+      title: "Ad campaigns",
+      cardLine: "Google and Facebook/Instagram ads, set up and managed for you.",
+      bullets: [
+        "Google search ads",
+        "Facebook and Instagram ads",
+        "You keep your own ad budget",
+      ],
+      metaTitle: "Google and Facebook Ad Campaigns for Local Businesses",
       metaDescription:
-        "Professional websites for house painters in Texas. Show your work, build trust and get more quote requests.",
-      h1: "Websites for house painters",
-      h1Mark: "house painters",
+        "We set up and manage Google, Facebook and Instagram ads for US local businesses. You pay the platforms directly and keep control of your budget.",
+      eyebrow: "Ad campaigns",
+      h1: "Ads that reach people ready to buy",
+      h1Mark: "ready to buy",
       intro:
-        "Homeowners hire painters they trust, and they check you online first. A clear website with your best work gets you the quote request.",
-      painsTitle: "What holds painters back online",
-      pains: [
+        "We plan, launch and manage your ads on Google and on Facebook and Instagram. You pay the ad platforms from your own account, so your budget stays in your hands.",
+      note: "We never hold your ad money, and we do not promise results. We show you the numbers and what we change.",
+      featuresTitle: "What we handle",
+      features: [
         {
-          title: "No place to show your work",
-          text: "Photos stuck on social media do not build trust the way a clean gallery does.",
+          title: "Campaign setup",
+          text: "Goals, audience, wording and tracking set up properly from day one.",
         },
         {
-          title: "Hard to get a quote",
-          text: "If asking for a quote takes effort, the customer calls the next painter.",
+          title: "Google and Meta ads",
+          text: "Search ads for people looking now, and social ads to reach people nearby.",
         },
         {
-          title: "Not found in your area",
-          text: "People search for a painter near them, and your site has to say where you work.",
+          title: "Ongoing management",
+          text: "We watch the campaigns, cut waste and improve what works.",
+        },
+        {
+          title: "Plain reports",
+          text: "You see what you spent, what came in and what we will try next.",
         },
       ],
-      includedTitle: "What your site includes",
-      included: [
-        "Before and after project gallery",
-        "A quick quote request form and click-to-call",
-        "Pages for the services and areas you cover",
-        "Reviews and trust details in the right places",
+      stepsTitle: "How it works",
+      steps: [
+        {
+          title: "Plan",
+          text: "We agree on your goal, your area and your monthly ad budget.",
+        },
+        {
+          title: "Launch",
+          text: "We build the ads in your own accounts and switch them on.",
+        },
+        {
+          title: "Improve",
+          text: "We review the numbers with you and keep making it better.",
+        },
       ],
-      closing:
-        "Every site is built for phones first.",
+      fitTitle: "A good fit if",
+      fit: [
+        "You want customers sooner than search alone can bring",
+        "You have tried boosting posts and were not sure it worked",
+        "You have a budget and want someone to manage it carefully",
+      ],
+      ctaTitle: "Talk about your ads",
+      ctaText:
+        "Tell us what you sell and where. We will suggest a clear plan and a written quote.",
     },
-    "mobile-beauty": {
-      name: "Mobile Beauty Professionals",
-      focus: "Websites",
-      metaTitle: "Websites for Mobile Beauty Professionals",
+    video: {
+      navLabel: "Video and UGC ads",
+      title: "Video and UGC ads",
+      cardLine: "Short videos for ads and social, made to fit what you need.",
+      bullets: [
+        "Short ad videos",
+        "UGC-style content",
+        "AI-made or hand-edited",
+      ],
+      metaTitle: "Video and UGC Ads for Local Businesses",
       metaDescription:
-        "Websites for mobile beauticians, waxing specialists and mobile salons in Texas. Look professional and make booking easy.",
-      h1: "Websites for mobile beauty professionals",
-      h1Mark: "mobile beauty",
+        "Short video ads and UGC-style content for US local businesses, made with AI tools or edited by hand, depending on what you need.",
+      eyebrow: "Video and UGC ads",
+      h1: "Short videos that stop the scroll",
+      h1Mark: "stop the scroll",
       intro:
-        "You bring the salon to the customer. Your website should feel as polished as your work and make booking simple.",
-      painsTitle: "What holds beauty pros back online",
-      pains: [
+        "Video gets attention on social media and in ads. We make short videos for your business. How we make them depends on what you need.",
+      note: "Some videos are made with AI tools. Others are edited by hand from your own footage. We pick the right way for your goal and your budget, and we tell you which one we use.",
+      featuresTitle: "What we make",
+      features: [
         {
-          title: "A profile, not a brand",
-          text: "Social posts show your style, but a website shows you are a real business.",
+          title: "Short ad videos",
+          text: "Clear, quick videos for Facebook, Instagram, TikTok and YouTube.",
         },
         {
-          title: "Booking takes too many messages",
-          text: "Back and forth over text costs you time and customers.",
+          title: "UGC-style content",
+          text: "Videos that feel natural and personal, like a real customer talking.",
         },
         {
-          title: "Unclear where you travel",
-          text: "Customers want to know quickly if you come to them.",
-        },
-      ],
-      includedTitle: "What your site includes",
-      included: [
-        "A clean services and pricing page",
-        "A simple way to ask for an appointment",
-        "Your service area explained clearly",
-        "Photos and reviews that show your quality",
-      ],
-      closing:
-        "We can set up your Google profile as a service-area business, so you do not need to show a home address.",
-    },
-    "cleaning-companies": {
-      name: "Cleaning Companies",
-      focus: "Local SEO",
-      metaTitle: "Local SEO for Cleaning Companies",
-      metaDescription:
-        "Local SEO for cleaning companies in Texas. Appear when customers search for a cleaner near them.",
-      h1: "Local SEO for cleaning companies",
-      h1Mark: "cleaning companies",
-      intro:
-        "Most people look for a cleaner on their phone and call one of the first few they see. Local SEO helps you be one of them.",
-      painsTitle: "What holds cleaners back online",
-      pains: [
-        {
-          title: "Lots of competition",
-          text: "Many cleaning companies compete for the same searches in every city.",
+          title: "AI-made videos",
+          text: "Made with AI tools when you need speed and variety at a fair cost.",
         },
         {
-          title: "Service areas are unclear",
-          text: "Search engines need to know exactly which areas you cover.",
-        },
-        {
-          title: "Few reviews",
-          text: "Customers choose the cleaner with real reviews they can read.",
+          title: "Hand-edited videos",
+          text: "Cut, captioned and polished by a person, from footage you or we film.",
         },
       ],
-      includedTitle: "What we work on",
-      included: [
-        "Keywords for each city and neighborhood you serve",
-        "Pages for your services, such as home and office cleaning",
-        "Website speed and structure fixes",
-        "Simple monthly reports in plain language",
-      ],
-      closing:
-        "We work with the keywords your customers actually search, in whichever language they use.",
-    },
-    contractors: {
-      name: "Contractors",
-      focus: "Google Business Profile",
-      metaTitle: "Google Business Profile Management for Contractors",
-      metaDescription:
-        "Google Business Profile management for contractors in Texas. A complete profile that earns trust and calls.",
-      h1: "Google Business Profile for contractors",
-      h1Mark: "contractors",
-      intro:
-        "When a homeowner needs a contractor, they check Google first. A complete profile with real project photos earns the call.",
-      painsTitle: "What holds contractors back on Google",
-      pains: [
+      stepsTitle: "How it works",
+      steps: [
         {
-          title: "Incomplete profile",
-          text: "Missing categories, services and photos make you look inactive.",
+          title: "Brief",
+          text: "You tell us your goal. We suggest AI-made, hand-edited, or a mix.",
         },
         {
-          title: "Wrong or old details",
-          text: "Old phone numbers and hours cost you jobs.",
+          title: "Create",
+          text: "We write, make and edit the videos. You review them.",
         },
         {
-          title: "Reviews left unanswered",
-          text: "Replying well to reviews shows you take the work seriously.",
+          title: "Deliver",
+          text: "You get files ready to post or run as ads. We can run the ads too.",
         },
       ],
-      includedTitle: "What we handle",
-      included: [
-        "Full profile setup and optimization",
-        "Services, categories and service area",
-        "Project photos and regular updates",
-        "Guidance on getting and answering reviews",
+      fitTitle: "A good fit if",
+      fit: [
+        "You want fresh videos for your ads without a big production",
+        "You have footage but no time to edit it",
+        "You want to test a few ideas before you spend more",
       ],
-      closing:
-        "We follow Google's guidelines, so your profile is set up the right way from the start.",
-    },
-    "mobile-pet-services": {
-      name: "Mobile Pet Services",
-      focus: "Websites",
-      metaTitle: "Websites for Mobile Pet Services",
-      metaDescription:
-        "Websites for mobile groomers, pet sitters and mobile vets in Texas. Build trust with pet owners and make booking easy.",
-      h1: "Websites for mobile pet services",
-      h1Mark: "mobile pet services",
-      intro:
-        "Pet owners trust you with someone they love. Your website should feel warm, clear and professional, and make booking easy.",
-      painsTitle: "What holds pet businesses back online",
-      pains: [
-        {
-          title: "Trust comes first",
-          text: "Owners want to see who you are, your experience and your care.",
-        },
-        {
-          title: "Questions before booking",
-          text: "Owners ask about pets, places and prices before they call.",
-        },
-        {
-          title: "Not clear where you come to",
-          text: "Mobile services have to say clearly which areas they cover.",
-        },
-      ],
-      includedTitle: "What your site includes",
-      included: [
-        "An About page that builds trust",
-        "Clear services and areas",
-        "A simple booking or contact request",
-        "Photos and reviews from happy pet owners",
-      ],
-      closing:
-        "Built for phones first.",
+      ctaTitle: "Tell us about your video",
+      ctaText:
+        "Send us your goal. We will suggest the best way to make it and give you a written quote.",
     },
   },
   mizar: {
-    metaTitle: "Mizar: AI Assistant for Mobile Service Professionals",
+    metaTitle: "Mizar: AI Assistant for Mobile Service Pros",
     metaDescription:
-      "Mizar is an AI business assistant and receptionist for mobile service professionals. It is in development. Join the early access list.",
-    badge: "In development. Not yet available.",
-    h1: "Mizar, an AI assistant for mobile service professionals",
+      "Mizar is an AI assistant that answers customers while you work. It is in testing. Join the early access list.",
+    badge: "In testing",
+    h1: "Mizar, an AI assistant for mobile service pros",
     h1Mark: "AI assistant",
     intro:
-      "You cannot answer the phone while you are working on a customer. Mizar is being built to answer for you, so the next customer is not lost.",
+      "You cannot answer the phone while you are on a job. Mizar answers for you, so the next customer is not lost.",
     notice:
-      "Mizar is still being built. This page describes what we are designing, not a finished product. There is no price yet.",
-    forTitle: "Designed for",
+      "Mizar is in testing. It is not open to everyone yet, and there is no price.",
+    forTitle: "Made for",
     forList: [
       "Mobile beauticians and waxing specialists",
       "Mobile salons",
       "House painters",
-      "Mobile veterinarians",
-      "Other mobile service professionals",
+      "Mobile vets",
+      "Other mobile service pros",
     ],
-    doesTitle: "What Mizar is being built to do",
-    doesIntro: "These are our goals for the first version.",
+    doesTitle: "What Mizar is built to do",
+    doesIntro: "These are the goals for the first version.",
     does: [
       {
-        title: "Talk to it, do not type",
+        title: "Talk, do not type",
         text: "Run your day by voice, hands free, while you work.",
       },
       {
         title: "An AI receptionist",
-        text: "Answer customers by phone call, WhatsApp, text and email when you are busy.",
+        text: "Answers customers by phone and message when you are busy.",
       },
       {
         title: "Help for you and your customer",
-        text: "It helps you stay organized and gives customers a fast reply.",
+        text: "Keeps you organized and gives customers a fast reply.",
       },
       {
-        title: "Multilingual from day one",
-        text: "Built to work with customers in more than one language.",
+        title: "More than one language",
+        text: "Built to work with customers in English and Spanish.",
       },
     ],
-    languageNote: "It is being built as a mobile app, first for customers in the US.",
+    languageNote: "It is a mobile app, made first for businesses in the US.",
     formTitle: "Join the early access list",
     formText:
-      "Leave your details and we will tell you when Mizar is ready. We will only write to you about Mizar.",
+      "Leave your details and we will tell you when Mizar opens. We only write to you about Mizar.",
     formButton: "Join the list",
     formDone: "You are on the list",
     parentLine: "Mizar is a product of BizBuzz.",
@@ -583,17 +475,17 @@ export const en: Copy = {
   about: {
     metaTitle: "About Us",
     metaDescription:
-      "We help local service businesses in Texas get found and chosen online. Built on BizBuzz, a creative and technology studio.",
+      "We help US businesses get found and chosen online. Built by the team behind BizBuzz, a creative and technology studio.",
     eyebrow: "About us",
-    h1: "Digital growth for local service businesses",
-    h1Mark: "local service businesses",
+    h1: "Digital growth for local businesses",
+    h1Mark: "local businesses",
     intro:
-      "We help local businesses build a stronger brand, a credible website and a Google profile that works.",
+      "We help local businesses get found online and turn searches into customers.",
     storyTitle: "Who we are",
     story: [
-      "We are a small, founder-led team and the US arm of BizBuzz, a creative and technology studio. BizBuzz brings together brand, design, web development and AI.",
+      "We are a small team from BizBuzz, a creative and technology studio that brings together brand, design, web development and AI.",
       "We started this business for a simple reason. Good local businesses lose customers because they are hard to find online. We fix that with clear, honest work.",
-      "We are a remote team. We do not have a Texas office, and we will never pretend to. We talk by phone and video and we work in your language.",
+      "We are a remote team. We do not run a local office. We work by phone and video, in English or Spanish.",
     ],
     valuesTitle: "How we work",
     values: [
@@ -603,7 +495,7 @@ export const en: Copy = {
       },
       {
         title: "Honest promises",
-        text: "We show what we can do and report what changed.",
+        text: "We say what we can do and report what changed.",
       },
       {
         title: "Quality you can see",
@@ -611,26 +503,26 @@ export const en: Copy = {
       },
       {
         title: "Respect for your time",
-        text: "Quick replies, clear timelines and fixed prices in writing.",
+        text: "Quick replies, clear timelines and quotes in writing.",
       },
     ],
     familyTitle: "How the pieces fit together",
     familyIntro: "Three names, each with a clear job.",
     familyParent: {
       title: "BizBuzz",
-      text: "The parent studio. Brand, creative and technology. Where brand meets intelligence.",
+      text: "The parent studio. Brand, creative and technology.",
     },
     familyAgency: {
-      title: "Accentuate Your Revenue",
-      text: "Our customer-facing business. Websites, local SEO and Google Business Profile.",
+      title: "Accentuate Your Revenues",
+      text: "Our business for local companies. Websites, local SEO, Google Business Profile, ads and video.",
     },
     familyProduct: {
       title: "Mizar",
-      text: "A software product from BizBuzz, in development. An AI assistant for mobile service professionals.",
+      text: "A software product from BizBuzz, now in testing. An AI assistant for mobile service pros.",
     },
     honestTitle: "A note on proof",
     honestText:
-      "We are starting our Texas work now. We will publish case studies as we finish them, with each owner's permission, and we will not invent results.",
+      "We are new in this market. We will share case studies when we have them, with each owner's permission. We will not invent results.",
   },
   contact: {
     metaTitle: "Book a Free Consultation",
@@ -640,7 +532,7 @@ export const en: Copy = {
     h1: "Book a free consultation",
     h1Mark: "free consultation",
     intro:
-      "Tell us about your business and what you want to change. We will reply with a clear next step.",
+      "Tell us about your business and what you want to change. We reply with a clear next step.",
     nextTitle: "What happens next",
     next: [
       {
@@ -657,17 +549,18 @@ export const en: Copy = {
       },
     ],
     languageNote: "Write to us in English or Spanish. Either is fine.",
-    remoteNote:
-      "We are a remote team and meet by phone or video. We do not have a Texas office.",
+    remoteNote: "We are a remote team and meet by phone or video.",
   },
   form: {
     title: "Tell us about your business",
     topicLabel: "What do you need?",
     topics: {
-      audit: "Free Google profile audit",
-      website: "A website",
+      audit: "Free profile audit",
+      website: "Website",
       seo: "Local SEO",
-      gbp: "Google Business Profile",
+      gbp: "Google profile",
+      ads: "Ad campaigns",
+      video: "Video and UGC ads",
     },
     nameLabel: "Your name",
     contactLabel: "Email or phone number",
@@ -687,13 +580,139 @@ export const en: Copy = {
     errGeneric: "Something went wrong on our side. Please try again.",
   },
   footer: {
-    tagline: "Websites, local SEO and Google Business Profile for local businesses.",
+    tagline: "Websites, local SEO, ads and video for US local businesses.",
     servicesTitle: "Services",
-    industriesTitle: "Industries",
     companyTitle: "Company",
-    remote: "A remote team serving Texas businesses.",
-    poweredBy: "An Accentuate company, powered by BizBuzz.",
+    privacy: "Privacy Policy",
+    terms: "Terms",
+    remote: "A remote team serving US businesses.",
+    poweredBy: "Part of the BizBuzz family.",
     rights: "All rights reserved.",
+  },
+  legal: {
+    privacy: {
+      metaTitle: "Privacy Policy",
+      metaDescription:
+        "How Accentuate Your Revenues collects, uses and protects the information you send us.",
+      eyebrow: "Legal",
+      h1: "Privacy Policy",
+      h1Mark: "Privacy",
+      intro:
+        "This page explains what information we collect on this website and what we do with it. We keep it short and plain.",
+      updated: "Last updated: November 2026",
+      sections: [
+        {
+          title: "What we collect",
+          text: [
+            "When you use a form on this site, we collect what you type: your name, your email or phone number, your business name and your message.",
+            "If you use the Google profile check and then ask for your plan, we also receive your answers and your score, so we can reply properly.",
+          ],
+        },
+        {
+          title: "How we use it",
+          text: [
+            "We use your details only to reply to you, to give you the audit or quote you asked for, and to run our business.",
+            "If you join the Mizar early access list, we use your details only to tell you about Mizar.",
+            "We do not sell your information. We do not add you to a mailing list unless you ask.",
+          ],
+        },
+        {
+          title: "Who handles it",
+          text: [
+            "We use trusted services to run this site and deliver form messages, such as website hosting and email delivery. They process your information only to provide those services.",
+          ],
+        },
+        {
+          title: "How long we keep it",
+          text: [
+            "We keep your message for as long as we need it to answer you and work with you, and for the time the law requires. You can ask us to delete it at any time.",
+          ],
+        },
+        {
+          title: "Your choices",
+          text: [
+            "You can ask what we hold about you, ask us to correct it, or ask us to delete it. Write to us through the contact page and we will reply.",
+          ],
+        },
+        {
+          title: "Children",
+          text: ["This site is for businesses. It is not meant for children."],
+        },
+        {
+          title: "Changes",
+          text: [
+            "If we change this policy, we will update the date above.",
+          ],
+        },
+      ],
+    },
+    terms: {
+      metaTitle: "Terms",
+      metaDescription:
+        "The terms for using the Accentuate Your Revenues website and our services.",
+      eyebrow: "Legal",
+      h1: "Terms",
+      h1Mark: "Terms",
+      intro:
+        "These terms cover the use of this website and the general basis of our services. Each project also has its own written quote.",
+      updated: "Last updated: November 2026",
+      sections: [
+        {
+          title: "Using this site",
+          text: [
+            "The information on this site is general. Please use it fairly and do not misuse the forms or try to harm the site.",
+          ],
+        },
+        {
+          title: "Our services",
+          text: [
+            "We provide websites, local SEO, Google Business Profile help, ad campaign management, and video and UGC ads. The details, price and timeline of each project are set out in a written quote you approve before work begins.",
+          ],
+        },
+        {
+          title: "No promises about results",
+          text: [
+            "We work hard to improve your visibility and results, but we cannot promise rankings, traffic, leads or sales. Search engines and ad platforms set their own rules and change them often.",
+          ],
+        },
+        {
+          title: "Ad spend",
+          text: [
+            "You pay Google, Meta and other ad platforms directly, from your own accounts. We do not hold your ad budget. Our management fee is separate and is stated in your quote.",
+          ],
+        },
+        {
+          title: "Content and ownership",
+          text: [
+            "You must have the right to use any text, photos, footage and logos you give us. Once you have paid in full, you own the final work made for you, unless your quote says otherwise. We may keep tools, code and methods we use across projects.",
+          ],
+        },
+        {
+          title: "Videos made with AI",
+          text: [
+            "Some videos are made with AI tools. We will tell you when we use them. Please check that the final video is accurate and suitable before you publish it.",
+          ],
+        },
+        {
+          title: "Third-party platforms",
+          text: [
+            "Google, Meta and other platforms have their own terms and can change them. We follow their rules, but we do not control them.",
+          ],
+        },
+        {
+          title: "Our responsibility",
+          text: [
+            "We provide this site and our services with reasonable care. To the extent the law allows, we are not liable for indirect losses, and our total responsibility for any project is limited to the amount you paid us for it.",
+          ],
+        },
+        {
+          title: "Changes",
+          text: [
+            "We may update these terms from time to time. The date above shows the latest version.",
+          ],
+        },
+      ],
+    },
   },
   notFound: {
     title: "We could not find that page",

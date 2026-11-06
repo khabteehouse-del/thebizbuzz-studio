@@ -5,7 +5,7 @@ import { createPortal } from "react-dom";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "motion/react";
-import { Menu, X } from "lucide-react";
+import { ChevronDown, Menu, X } from "lucide-react";
 import { Button } from "@/components/shared/button";
 import { Wordmark } from "@/components/shared/wordmark";
 import { alternatePath, type Lang } from "@/data/i18n";
@@ -23,6 +23,8 @@ type Props = {
   brand: string;
   homeHref: string;
   homeLabel: string;
+  servicesLabel: string;
+  services: NavItem[];
   links: NavItem[];
   cta: NavItem;
   switchLabel: string;
@@ -36,6 +38,8 @@ export function Nav({
   brand,
   homeHref,
   homeLabel,
+  servicesLabel,
+  services,
   links,
   cta,
   switchLabel,
@@ -82,6 +86,35 @@ export function Nav({
         </Link>
 
         <ul className="hidden flex-1 items-center justify-center gap-8 lg:flex">
+          <li className="group/svc relative">
+            <button
+              type="button"
+              aria-haspopup="true"
+              className="flex items-center gap-1.5 text-[0.8125rem] tracking-[0.02em] text-paper/65 transition-colors duration-200 hover:text-paper group-focus-within/svc:text-paper"
+            >
+              {servicesLabel}
+              <ChevronDown
+                size={14}
+                aria-hidden="true"
+                className="transition-transform duration-300 group-hover/svc:rotate-180 group-focus-within/svc:rotate-180"
+              />
+            </button>
+            <div className="invisible absolute left-1/2 top-full z-50 -translate-x-1/2 pt-5 opacity-0 transition-all duration-200 group-hover/svc:visible group-hover/svc:opacity-100 group-focus-within/svc:visible group-focus-within/svc:opacity-100">
+              <ul className="w-64 rounded-[6px] border border-line bg-ink/95 p-2 shadow-[0_18px_40px_-12px_rgba(0,0,0,0.7)] backdrop-blur-xl">
+                {services.map((item) => (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      aria-current={pathname === item.href ? "page" : undefined}
+                      className="block rounded-[4px] px-3 py-2.5 text-[0.8125rem] text-paper/75 transition-colors duration-200 hover:bg-paper/[0.06] hover:text-paper aria-[current=page]:text-accent-soft"
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </li>
           {links.map((link) => (
             <li key={link.href}>
               <Link
@@ -138,6 +171,18 @@ export function Nav({
                 className="fixed inset-x-0 bottom-0 top-20 z-40 overflow-y-auto bg-ink md:top-24 lg:hidden"
               >
                 <div className="shell flex flex-col gap-2 pt-8">
+                  <p className="text-xs uppercase tracking-[0.18em] text-muted">{servicesLabel}</p>
+                  {services.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      onClick={() => setOpen(false)}
+                      className="border-b border-line py-3 font-display text-xl text-paper"
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                  <div className="h-4" />
                   {links.map((link) => (
                     <Link
                       key={link.href}

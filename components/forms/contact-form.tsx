@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Check, Globe, MapPin, Search, Star } from "lucide-react";
+import { Check, Clapperboard, Globe, MapPin, Megaphone, Search, Star } from "lucide-react";
 import {
   submitContact,
   type ContactError,
@@ -33,6 +33,8 @@ const TOPICS: { id: Topic; Icon: typeof Globe }[] = [
   { id: "website", Icon: Globe },
   { id: "seo", Icon: MapPin },
   { id: "gbp", Icon: Star },
+  { id: "ads", Icon: Megaphone },
+  { id: "video", Icon: Clapperboard },
 ];
 
 const field =
@@ -80,14 +82,14 @@ export function ContactForm({ lang, kind, labels, submitLabel, doneTitle }: Prop
     setSending(false);
   }
 
-  /* The four topic chips. Choosing the audit swaps the form for the checker. */
+  /* The six topic chips. Choosing the audit swaps the form for the checker. */
   const chips =
     kind === "contact" ? (
       <>
         <p className={labelClass} id="topic-label">
           {labels.topicLabel}
         </p>
-        <div role="radiogroup" aria-labelledby="topic-label" className="mt-3 grid gap-3 sm:grid-cols-2">
+        <div role="radiogroup" aria-labelledby="topic-label" className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-3">
           {TOPICS.map(({ id, Icon }) => {
             const active = topic === id;
             return (

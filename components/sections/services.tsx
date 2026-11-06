@@ -1,17 +1,24 @@
 import type { CSSProperties } from "react";
 import Link from "next/link";
-import { ArrowUpRight, Globe, MapPin, Star } from "lucide-react";
+import { ArrowUpRight, Clapperboard, Globe, MapPin, Megaphone, Star } from "lucide-react";
 import { Reveal } from "@/components/shared/reveal";
 import { Orbs } from "@/components/shared/orbs";
 import { copy } from "@/data/copy";
 import { path, type Lang } from "@/data/i18n";
 
-type ServiceKey = "websites" | "localSeo" | "gbp";
+type ServiceKey = "websites" | "localSeo" | "gbp" | "ads" | "video";
 
-const items: { key: ServiceKey; Icon: typeof Globe; colour: string }[] = [
+type Item = { key: ServiceKey; Icon: typeof Globe; colour: string };
+
+const find: Item[] = [
   { key: "websites", Icon: Globe, colour: "#ffb938" },
   { key: "localSeo", Icon: MapPin, colour: "#8a9cff" },
   { key: "gbp", Icon: Star, colour: "#4fd1c5" },
+];
+
+const get: Item[] = [
+  { key: "ads", Icon: Megaphone, colour: "#ff8a3d" },
+  { key: "video", Icon: Clapperboard, colour: "#c58aff" },
 ];
 
 /*
@@ -22,24 +29,12 @@ export function Services({ lang }: { lang: Lang }) {
   const c = copy[lang];
   const h = c.home;
 
-  return (
-    <section id="services" className="relative scroll-mt-24 overflow-hidden bg-ocean py-14 md:py-20">
-      <Orbs tone="mixed" intensity={0.6} />
-      <div className="shell relative z-10">
-        <Reveal>
-          <div className="max-w-3xl">
-            <p className="section-label">{h.servicesEyebrow}</p>
-            <h2 className="mt-5 font-display text-2xl font-medium leading-[1.12] tracking-[-0.03em] text-paper sm:text-3xl md:text-4xl">
-              {h.servicesTitle}
-            </h2>
-            <p className="mt-4 max-w-xl text-base leading-relaxed text-muted md:text-lg">
-              {h.servicesIntro}
-            </p>
-          </div>
-        </Reveal>
-
-        <ul className="mt-8 grid gap-4 md:mt-12 lg:grid-cols-3">
-          {items.map(({ key, Icon, colour }, i) => {
+  const renderGroup = (title: string, list: Item[]) => {
+    return (
+      <div key={title} className="mt-8 md:mt-12">
+        <p className="text-xs uppercase tracking-[0.18em] text-muted">{title}</p>
+        <ul className="mt-4 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {list.map(({ key, Icon, colour }, i) => {
             const s = c.services[key];
             const vars = { "--c": colour, "--mark": colour, "--i": i } as CSSProperties;
             return (
@@ -105,6 +100,28 @@ export function Services({ lang }: { lang: Lang }) {
             );
           })}
         </ul>
+      </div>
+    );
+  };
+
+  return (
+    <section id="services" className="relative scroll-mt-24 overflow-hidden bg-ocean py-14 md:py-20">
+      <Orbs tone="mixed" intensity={0.6} />
+      <div className="shell relative z-10">
+        <Reveal>
+          <div className="max-w-3xl">
+            <p className="section-label">{h.servicesEyebrow}</p>
+            <h2 className="mt-5 font-display text-2xl font-medium leading-[1.12] tracking-[-0.03em] text-paper sm:text-3xl md:text-4xl">
+              {h.servicesTitle}
+            </h2>
+            <p className="mt-4 max-w-xl text-base leading-relaxed text-muted md:text-lg">
+              {h.servicesIntro}
+            </p>
+          </div>
+        </Reveal>
+
+        {renderGroup(h.servicesGroupFind, find)}
+        {renderGroup(h.servicesGroupGet, get)}
       </div>
     </section>
   );

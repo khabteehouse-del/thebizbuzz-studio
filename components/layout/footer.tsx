@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Wordmark } from "@/components/shared/wordmark";
 import { copy } from "@/data/copy";
-import { industryKeys, path, type Lang } from "@/data/i18n";
+import { path, type Lang } from "@/data/i18n";
 import { site } from "@/data/site";
 
 /* The BizBuzz footer: link columns, then the name at scale as a watermark. */
@@ -14,6 +14,8 @@ export function Footer({ lang }: { lang: Lang }) {
     { label: c.services.websites.navLabel, href: path("websites", lang) },
     { label: c.services.localSeo.navLabel, href: path("localSeo", lang) },
     { label: c.services.gbp.navLabel, href: path("gbp", lang) },
+    { label: c.services.ads.navLabel, href: path("ads", lang) },
+    { label: c.services.video.navLabel, href: path("video", lang) },
   ];
   const company = [
     { label: c.nav.about, href: path("about", lang) },
@@ -27,7 +29,7 @@ export function Footer({ lang }: { lang: Lang }) {
   return (
     <footer className="relative overflow-hidden border-t border-line bg-ink">
       <div className="shell py-16 md:py-20">
-        <div className="grid gap-10 sm:grid-cols-2 md:gap-8 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
+        <div className="grid gap-10 sm:grid-cols-2 md:gap-8 lg:grid-cols-[1.5fr_1fr_1fr]">
           <div>
             <Wordmark name={site.shortName} />
             <p className="mt-6 max-w-sm text-sm leading-relaxed text-muted">
@@ -50,17 +52,6 @@ export function Footer({ lang }: { lang: Lang }) {
           </div>
 
           <div>
-            <p className="section-label">{c.footer.industriesTitle}</p>
-            <ul className="mt-6 space-y-3">
-              {industryKeys.map((key) => (
-                <li key={key} className="text-sm text-muted">
-                  {c.industries[key].name}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
             <p className="section-label">{c.footer.companyTitle}</p>
             <ul className="mt-6 space-y-3">
               {company.map((item) => (
@@ -77,6 +68,14 @@ export function Footer({ lang }: { lang: Lang }) {
         <div className="mt-16 flex flex-col gap-3 border-t border-line pt-8 text-xs text-muted md:flex-row md:items-center md:justify-between">
           <p>
             {year} {site.name}. {c.footer.rights}
+          </p>
+          <p className="flex flex-wrap gap-x-5 gap-y-2">
+            <Link href={path("privacy", lang)} className="transition-colors hover:text-paper">
+              {c.footer.privacy}
+            </Link>
+            <Link href={path("terms", lang)} className="transition-colors hover:text-paper">
+              {c.footer.terms}
+            </Link>
           </p>
           <p>
             {c.footer.poweredBy}{" "}

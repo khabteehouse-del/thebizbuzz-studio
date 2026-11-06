@@ -13,6 +13,28 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "google-wyoming-17b-data-center-november-2026",
+    title: "Google Plans $17B Wyoming Data Center Powered by Fuel Cells",
+    description:
+      "Google announced on November 5, 2026 a $17 billion data center in Laramie County, Wyoming, with a 702 MW fuel cell power plant and a promise to pay for its own electricity.",
+    date: "2026-11-06",
+    readTime: "4 min read",
+    tags: ["Tech News", "Cloud"],
+    image: "/images/blog/google-wyoming-17b-data-center-november-2026.jpg",
+    body: [
+      "On November 5, 2026, Google announced plans to invest $17 billion in a data center in Laramie County, Wyoming, near Cheyenne. It would be Google's first data center in the state. Bloomberg and Reuters reported the news, citing a Google blog post, and The Next Web and Seoul Economic Daily followed. The figure is a planned investment, not money already spent.",
+      "Power is the central part of the plan. Part of the electricity will come from a 702 megawatt natural gas fuel cell plant using equipment from Bloom Energy. The Next Web reports the plant is being built by American Electric Power (AEP) and that Google will buy its output under a 20-year deal, with full operation expected by the end of 2028. Fuel cells make electricity from gas without burning it. The Next Web also says the carbon from the plant is planned to be stored underground at a nearby Tallgrass Energy site, and that Google says this would remove a large majority of the plant's emissions, without giving a percentage.",
+      "Google also made commitments about cost and local impact. It says it will pay for all the electricity the data center uses and for the grid upgrades its growth requires. The site is to be air cooled to reduce water use. Google expects hundreds of millions of dollars in new property tax revenue and plans a community advisory council with its partners. Seoul Economic Daily notes that the announcement came just after US local ballot measures in which voters backed limits on data centers in 40 of 41 cases, according to Ballotpedia, so local concerns about power, water and costs are clearly part of the context.",
+      "The story shows how much AI growth now depends on physical limits. Cloud capacity is not only about chips. It depends on electricity, cooling water and public approval, and large providers are now building their own power supply and offering to carry the grid costs. Details such as the exact fuel cell timeline and emissions results come from reports on Google's announcement, so treat the finer points as claims to be checked as the project moves forward.",
+      "What this means for businesses: the cost and availability of cloud and AI capacity will keep being shaped by power and local politics, not just by technology. If you rely on cloud AI services, plan for price changes and regional capacity limits over the next few years. Avoid locking critical workloads into a single region or provider, ask your vendors where their capacity comes from, and keep your own AI usage efficient so that you are not paying for compute you do not need.",
+    ],
+    sources: [
+      { label: "The Next Web: Google's first Wyoming data centre will run on gas with carbon capture", url: "https://thenextweb.com/news/google-wyoming-data-centre-17b-fuel-cells-carbon-capture" },
+      { label: "Seoul Economic Daily: Google to Invest $17 Billion in Wyoming Data Center", url: "https://en.sedaily.com/international/2026/11/06/google-to-invest-17-billion-in-wyoming-data-center" },
+      { label: "PANews: Google Plans to Spend $17 Billion Building Data Center in Wyoming", url: "https://panews.io/articles/01a1ad2d-1613-7525-8013-49e64c83feae" },
+    ],
+  },
+  {
     slug: "apple-cuts-employee-ai-budgets-november-2026",
     title: "Apple Reportedly Cuts Daily AI Spending Limits for Staff",
     description:

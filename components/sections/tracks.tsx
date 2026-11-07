@@ -130,7 +130,7 @@ const doors = [
 */
 export function Tracks() {
   return (
-    <section id="tracks" className="relative z-10 bg-ink py-16 md:py-32">
+    <section id="tracks" className="relative z-10 bg-ink pb-16 pt-16 md:pb-32 md:pt-16">
       <div className="shell relative z-10">
         <Reveal>
           <p className="section-label">Two ways in</p>

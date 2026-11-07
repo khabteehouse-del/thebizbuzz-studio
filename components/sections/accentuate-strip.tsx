@@ -14,7 +14,7 @@ const AMBER = "#ffb938";
 
 export function AccentuateStrip() {
   return (
-    <section id="accentuate" className="relative z-10 bg-ink pb-16 md:pb-28">
+    <section id="accentuate" className="relative z-10 bg-ink py-16 md:py-28">
       <div className="shell">
         <Reveal>
           <div

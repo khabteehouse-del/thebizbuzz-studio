@@ -78,11 +78,11 @@ export default function Home() {
       />
       <Hero />
       <Tracks />
-      <AccentuateStrip />
       <Intro />
       <Services />
       <ToolsStrip />
       <Work />
+      <AccentuateStrip />
       <BlogStrip />
       <Approach />
       <Team />

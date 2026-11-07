@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { Reveal } from "@/components/shared/reveal";
 import { Button } from "@/components/shared/button";
 
@@ -41,17 +40,13 @@ export function AccentuateStrip() {
                 </p>
               </div>
               <div className="flex flex-col items-start gap-4">
-                <Button href="/accentuate" size="lg">
-                  See Accentuate
-                </Button>
-                <Link
+                <Button
                   href="https://accentuateyourrevenues.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-muted transition-colors duration-200 hover:text-paper"
+                  size="lg"
+                  external
                 >
-                  Visit accentuateyourrevenues.com
-                </Link>
+                  Visit Accentuate
+                </Button>
               </div>
             </div>
           </div>

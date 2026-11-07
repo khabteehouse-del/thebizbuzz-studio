@@ -4,7 +4,7 @@ import { site } from "@/data/site";
 
 /* Lists every public page so Google can find new blog posts quickly. */
 export default function sitemap(): MetadataRoute.Sitemap {
-  const pages = ["", "/blog", "/work", "/design", "/accentuate", "/tools/gbp-check"].map(
+  const pages = ["", "/blog", "/work", "/design", "/tools/gbp-check"].map(
     (path) => ({
       url: `${site.url}${path}`,
       lastModified: new Date(),

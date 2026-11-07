@@ -13,6 +13,28 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "global-chip-sales-record-q3-2026-november-2026",
+    title: "Global Chip Sales Pass $500B in One Quarter for the First Time",
+    description:
+      "The Semiconductor Industry Association reported on November 3, 2026 that worldwide chip sales reached $517.7 billion in the third quarter, up 24.1% from the second.",
+    date: "2026-11-07",
+    readTime: "4 min read",
+    tags: ["Tech News", "Semiconductors"],
+    image: "/images/blog/global-chip-sales-record-q3-2026-november-2026.jpg",
+    body: [
+      "On November 3, 2026, the Semiconductor Industry Association (SIA) said global semiconductor sales reached $517.7 billion in the third quarter of 2026, up 24.1% from the second quarter. SIA CEO Michael Robbins noted that sales have now grown by more than 20% from the previous quarter for a third quarter in a row. Digitimes described it as the first time quarterly chip sales have topped $500 billion.",
+      "The monthly numbers are just as striking. SIA reports September sales of $172.6 billion (a three-month moving average), up 146.8% from September 2025 and 7.9% from August. Every region grew by more than 70% year over year: the Americas by 191.7%, Asia Pacific and other regions by 141.4%, China by 124.9%, Europe by 102.5% and Japan by 73.4%.",
+      "SIA's release does not name the causes of the growth. Semiconductor Engineering's weekly review, published November 6, cites Counterpoint Research putting third quarter DRAM revenue near $200 billion, up 369% from a year earlier. That points to memory, along with AI hardware, as a major source of the jump, though it is a reading of the data and not a conclusion from SIA. The same review also notes that AMD reported revenue up 45% year over year and Qualcomm down 8%, so the boom is not evenly spread.",
+      "One caution: these are sales figures, which include higher prices as well as higher volumes. A big part of the rise can come from memory and AI chips costing more, not only from more units being shipped. The data also covers the chip industry itself, not the demand of the companies that buy chips.",
+      "What this means for businesses: strong demand for chips and memory can keep prices of servers, laptops, phones and cloud capacity under pressure. If you plan a hardware refresh or a large cloud commitment, ask suppliers for firm quotes, buy earlier where you can, and compare lease or cloud options. Review your cloud and AI spending regularly, since vendors may pass higher component costs on to customers.",
+    ],
+    sources: [
+      { label: "Semiconductor Industry Association: Global Semiconductor Sales Increase 24.1% From Q2 2026 to Q3 2026", url: "https://www.semiconductors.org/global-semiconductor-sales-increase-24-1-from-q2-2026-to-q3-2026/" },
+      { label: "EE Times Asia: Global Semiconductor Sales Up 24% to $517.7B in 3Q 2026", url: "https://www.eetasia.com/global-semiconductor-sales-up-24-to-517-7b-in-3q-2026/" },
+      { label: "Semiconductor Engineering: Chip Industry Week In Review", url: "https://semiengineering.com/chip-industry-week-in-review-163/" },
+    ],
+  },
+  {
     slug: "google-wyoming-17b-data-center-november-2026",
     title: "Google Plans $17B Wyoming Data Center Powered by Fuel Cells",
     description:

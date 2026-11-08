@@ -1,3 +1,4 @@
+import { MizarFlagship } from "@/components/sections/mizar-flagship";
 import { AccentuateStrip } from "@/components/sections/accentuate-strip";
 import { Hero } from "@/components/sections/hero";
 import { site } from "@/data/site";
@@ -80,6 +81,7 @@ export default function Home() {
       <Tracks />
       <Intro />
       <Services />
+      <MizarFlagship />
       <ToolsStrip />
       <Work />
       <AccentuateStrip />

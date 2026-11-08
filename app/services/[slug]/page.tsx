@@ -87,7 +87,11 @@ export default async function ServicePageRoute({ params }: Props) {
         </div>
 
         <p className="section-label mt-12" style={{ color: service.mark }}>
-          {service.track === "local" ? "Local growth" : "Brand and AI"}
+          {service.id === "mizar"
+            ? "Our flagship app"
+            : service.track === "local"
+              ? "Local growth"
+              : "Brand and AI"}
         </p>
         <h1 className="mt-6 max-w-3xl font-display text-3xl font-medium leading-[1.08] tracking-[-0.035em] text-paper sm:text-4xl md:text-6xl">
           {service.title}

@@ -7,6 +7,7 @@ import { site } from "@/data/site";
 import { Button } from "@/components/shared/button";
 import { BreadcrumbSchema } from "@/components/shared/breadcrumb-schema";
 import { ServiceBanner } from "@/components/shared/service-banner";
+import { ServiceScreens } from "@/components/shared/service-screens";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -105,6 +106,13 @@ export default async function ServicePageRoute({ params }: Props) {
             </Button>
           )}
         </div>
+
+        {page.screens && (
+          <section className="mt-20 md:mt-28">
+            <h2 className={h2}>See it on your phone</h2>
+            <ServiceScreens screens={page.screens} accent={service.mark} />
+          </section>
+        )}
 
         <section className="mt-20 md:mt-28">
           <h2 className={h2}>Who this is for</h2>

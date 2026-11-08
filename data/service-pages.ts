@@ -24,6 +24,14 @@ export type ServicePage = {
   faqs: { q: string; a: string }[];
   related: string[];
   banner?: { src: string; alt: string; width: number; height: number };
+  /* Phone screens shown in rounded frames (product pages only). */
+  screens?: {
+    src: string;
+    alt: string;
+    width: number;
+    height: number;
+    caption: string;
+  }[];
 };
 
 export const servicePages: ServicePage[] = [
@@ -334,6 +342,36 @@ export const servicePages: ServicePage[] = [
       { q: "How do I get early access?", a: "Message us on WhatsApp and we will tell you what happens next." },
     ],
     related: ["ai", "local-web", "gbp"],
+    screens: [
+      {
+        src: "/images/mizar/home.webp",
+        alt: "Mizar home screen with a seven day chart of answered calls, message counts for email, texts and WhatsApp, and today's jobs.",
+        width: 640,
+        height: 1276,
+        caption: "Your day at a glance: calls answered, messages in and out, and today's jobs.",
+      },
+      {
+        src: "/images/mizar/talk.webp",
+        alt: "Mizar app screen titled Talk to Sophia, with quick questions such as who called today and what jobs do I have today.",
+        width: 640,
+        height: 1276,
+        caption: "Ask Sophia about your day, by voice or text. She answers from your own calls, jobs and messages.",
+      },
+      {
+        src: "/images/mizar/inbox.webp",
+        alt: "Mizar inbox showing texts and WhatsApp messages in one list, with a customer asking about a leaking kitchen sink.",
+        width: 640,
+        height: 1276,
+        caption: "Texts, WhatsApp and email in one inbox, so no enquiry gets lost.",
+      },
+      {
+        src: "/images/mizar/suite.webp",
+        alt: "Mizar Business Suite menu with approvals, rules, contacts, team and notifications.",
+        width: 640,
+        height: 1276,
+        caption: "Approvals, rules, contacts, your team and notifications, all in one place.",
+      },
+    ],
   },
   {
     id: "ai",

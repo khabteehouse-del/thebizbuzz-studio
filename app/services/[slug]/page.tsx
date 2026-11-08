@@ -230,8 +230,15 @@ export default async function ServicePageRoute({ params }: Props) {
 
         {page.id === "brand" && (
           <section id="gallery" className="mt-20 md:mt-28" aria-label="Design gallery">
-            <h2 className={h2}>Our work</h2>
-            <p className="mt-4 max-w-xl text-sm leading-relaxed text-paper/70">
+            <p className="dz-kicker">BizBuzz Design Studio</p>
+            <h2 className="dz-title dz-display">
+              <span className="dz-line">Where brands</span>
+              <span className="dz-line dz-line--shape">
+                get their <em>shape</em>
+                <span className="dz-morph" aria-hidden="true" />
+              </span>
+            </h2>
+            <p className="mt-5 max-w-xl text-sm leading-relaxed text-paper/70">
               Identity systems, logos, flyers and posters. Filter by discipline, then open any piece full screen.
             </p>
             <div className="mt-8">

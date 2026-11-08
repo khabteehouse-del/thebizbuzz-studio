@@ -580,7 +580,7 @@ export const servicePages: ServicePage[] = [
     related: ["web", "social-media", "ai-content"],
     banner: {
       src: "/images/service-banners/brand.webp",
-      alt: "A designer shapes a glowing abstract emblem in a dark studio, surrounded by floating color swatches and brush strokes.",
+      alt: "A brand designer shapes a glowing crimson emblem in a dark studio, surrounded by floating business cards, a flyer, a poster, color swatches and brush strokes.",
       width: 1584,
       height: 672,
     },

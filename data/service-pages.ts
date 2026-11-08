@@ -342,6 +342,12 @@ export const servicePages: ServicePage[] = [
       { q: "How do I get early access?", a: "Message us on WhatsApp and we will tell you what happens next." },
     ],
     related: ["ai", "local-web", "gbp"],
+    banner: {
+      src: "/images/mizar/banner.webp",
+      alt: "A painter relaxes on a ladder in a half-painted room while a glowing assistant answers his phone and writes down the details on floating cards.",
+      width: 1584,
+      height: 672,
+    },
     screens: [
       {
         src: "/images/mizar/home.webp",

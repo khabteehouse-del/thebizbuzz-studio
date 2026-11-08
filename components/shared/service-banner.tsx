@@ -2,6 +2,7 @@ import Image from "next/image";
 import type { Service } from "@/data/services";
 import type { ServicePage } from "@/data/service-pages";
 import { TileArt } from "@/components/shared/tile-art";
+import { MizarLogo } from "@/components/shared/mizar-logo";
 
 /*
   Banner at the top of a service page. Until the finished picture is
@@ -30,6 +31,10 @@ export function ServiceBanner({
           sizes="(min-width: 1280px) 1200px, 100vw"
           className="h-auto w-full"
         />
+        {/* Products with a drawn logo get the real logo over the clear left side of the picture. */}
+        {service.logo?.animated && (
+          <MizarLogo className="pointer-events-none absolute left-[5%] top-1/2 h-auto w-[30%] -translate-y-1/2" />
+        )}
       </div>
     );
   }

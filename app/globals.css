@@ -2016,3 +2016,63 @@ section[data-offscreen] *::before,
 section[data-offscreen] *::after {
   animation-play-state: paused !important;
 }
+
+
+/* Phone screens in rounded frames (service pages). A thin light travels around the border. */
+@property --shot-a {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.shot-frame {
+  position: relative;
+  border-radius: 28px;
+  padding: 1px;
+  background:
+    conic-gradient(from var(--shot-a), transparent 0 80%, var(--c) 93%, transparent 100%),
+    linear-gradient(color-mix(in srgb, var(--c) 28%, transparent), color-mix(in srgb, var(--c) 28%, transparent));
+  box-shadow:
+    0 30px 60px -22px rgba(0, 0, 0, 0.75),
+    0 0 46px -14px color-mix(in srgb, var(--c) 50%, transparent);
+  animation: shot-spin 9s linear infinite;
+}
+
+.shot-frame > img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 27px;
+}
+
+@keyframes shot-spin {
+  to {
+    --shot-a: 360deg;
+  }
+}
+
+@keyframes shot-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@media (hover: hover) and (min-width: 1024px) {
+  .shot-float {
+    animation: shot-float 7s ease-in-out infinite;
+  }
+  .shot-float:nth-child(even) {
+    animation-delay: -3.5s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shot-frame,
+  .shot-float {
+    animation: none;
+  }
+}

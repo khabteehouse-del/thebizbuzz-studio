@@ -2,7 +2,6 @@ import Link from "next/link";
 import { site } from "@/data/site";
 import { Reveal } from "@/components/shared/reveal";
 import { Orbs } from "@/components/shared/orbs";
-import { Magnetic } from "@/components/shared/magnetic";
 import { Button } from "@/components/shared/button";
 import { SocialLinks } from "@/components/shared/social-links";
 import { EnquiryForm } from "@/components/sections/enquiry-form";
@@ -27,27 +26,23 @@ export function Cta() {
             </p>
 
             <div className="mt-12 flex flex-wrap items-center gap-5">
-              <Magnetic strength={14}>
-                <Button
-                  href={`mailto:${site.email}`}
-                  variant="primary"
-                  size="lg"
-                  external
-                >
-                  {site.email}
-                </Button>
-              </Magnetic>
+              <Button
+                href={`mailto:${site.email}`}
+                variant="primary"
+                size="lg"
+                external
+              >
+                {site.email}
+              </Button>
 
-              <Magnetic strength={14}>
-                <Button
-                  href={site.whatsapp.href}
-                  variant="ghost"
-                  size="lg"
-                  external
-                >
-                  WhatsApp us
-                </Button>
-              </Magnetic>
+              <Button
+                href={site.whatsapp.href}
+                variant="ghost"
+                size="lg"
+                external
+              >
+                WhatsApp us
+              </Button>
 
               <Link
                 href="#work"

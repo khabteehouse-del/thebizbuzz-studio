@@ -4,7 +4,6 @@ import { useEffect, useRef, useState, useTransition } from "react";
 import Image from "next/image";
 import { Users, X } from "lucide-react";
 import { Reveal } from "@/components/shared/reveal";
-import { Magnetic } from "@/components/shared/magnetic";
 import { submitSpecialist } from "@/app/actions/specialist";
 
 /*
@@ -133,8 +132,8 @@ export function SpecialistCard({ index }: { index: number }) {
               />
             </div>
             {/* Same look as the hero buttons: lit fuse around the edge, round arrow
-                badge, drifts toward the pointer. Opens the form instead of a link. */}
-            <Magnetic strength={14} className="mt-1 flex w-full justify-center">
+                badge. Opens the form instead of a link. */}
+            <div className="mt-1 flex w-full justify-center">
               <button
                 type="button"
                 onClick={() => {
@@ -158,7 +157,7 @@ export function SpecialistCard({ index }: { index: number }) {
                   &rarr;
                 </span>
               </button>
-            </Magnetic>
+            </div>
           </div>
         </div>
       </div>

@@ -13,6 +13,72 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "nigeria-cbn-stablecoin-rules-november-2026",
+    title: "Nigeria's Central Bank Sets Stablecoin Licensing Rules",
+    description:
+      "On November 5, 2026 the Central Bank of Nigeria issued rules that license stablecoin issuers, set capital floors and ban algorithmic stablecoins.",
+    date: "2026-11-08",
+    readTime: "4 min read",
+    tags: ["Crypto", "Tech News"],
+    image: "/images/blog/nigeria-cbn-stablecoin-rules-november-2026.jpg",
+    body: [
+      "The Central Bank of Nigeria (CBN) issued a new framework on November 5, 2026 called the Regulations for the Operations of Non-Security Virtual Assets in Nigeria. The Block and Cointelegraph report that it took effect immediately and covers stablecoin issuers, crypto payment providers, exchanges and custodians. The Block adds that it applies to activity in Nigeria even when the operator has no physical presence there.",
+      "Under the rules, stablecoin issuers need a licence, and each token needs approval before it is issued. Naira-linked and foreign-currency-linked stablecoins fall into separate classes. According to The Block, foreign-currency stablecoins can be offered to Nigerians only through a Nigerian-incorporated entity holding the right licence. Cointelegraph and the Rio Times report minimum paid-up capital of 10 billion naira (about $7.4 million) for naira-linked issuers, 15 billion naira (about $11.1 million) for foreign-currency issuers, and 1 billion naira (about $740,000) for other service providers such as exchanges and custodians. Cointelegraph also reports that tokens must be fully backed by reserves, with an extra buffer of at least 2%.",
+      "The rules ban algorithmic stablecoins, meaning tokens that rely mainly on market mechanisms instead of eligible reserve assets to hold their value. Providers also have to run customer checks, sanctions screening and transaction monitoring, including the Travel Rule. Existing operators have 180 days to apply for a licence or authorisation. The Rio Times notes that published summaries describe the deadline details differently, and that it is unclear how tokens already in circulation will be treated while licences are pending.",
+      "The CBN said the framework aims to support responsible innovation while protecting consumers and financial stability, according to Cointelegraph. This is a summary of press reports, not of the regulation text itself, so any firm affected should read the CBN document directly. Nothing here is a view on any token or on the market.",
+      "What this means for businesses: if you pay suppliers, staff or customers in Nigeria with stablecoins, or build products that touch Nigerian users, check whether your payment partners will be licensed before the deadline. Ask them in writing which entity holds the licence and how reserves are held. More broadly, many countries are moving from open questions to licensing rules for digital payments, so keep a compliance contact for any cross-border payment flow, and avoid depending on a single provider.",
+    ],
+    sources: [
+      { label: "The Block: Nigeria's central bank introduces stablecoin licensing rules, bans algorithmic versions", url: "https://www.theblock.co/news/regulation/2026-11-06-nigerias-central-bank-introduces-stablecoin-licensing-rules-bans-algorithmic-versions-435867" },
+      { label: "Cointelegraph: Nigeria Sets Stablecoin Reserve Rules, Bans Algorithmic Tokens", url: "https://cointelegraph.com/news/nigeria-algorithmic-stablecoin-ban-crypto-licensing" },
+      { label: "Rio Times: Nigeria Sets US$11 Million Stablecoin Rule", url: "https://www.riotimesonline.com/nigeria-stablecoin-capital-floor-us11-million-2026/" },
+    ],
+  },
+  {
+    slug: "global-chip-sales-record-q3-2026-november-2026",
+    title: "Global Chip Sales Pass $500B in One Quarter for the First Time",
+    description:
+      "The Semiconductor Industry Association reported on November 3, 2026 that worldwide chip sales reached $517.7 billion in the third quarter, up 24.1% from the second.",
+    date: "2026-11-07",
+    readTime: "4 min read",
+    tags: ["Tech News", "Semiconductors"],
+    image: "/images/blog/global-chip-sales-record-q3-2026-november-2026.jpg",
+    body: [
+      "On November 3, 2026, the Semiconductor Industry Association (SIA) said global semiconductor sales reached $517.7 billion in the third quarter of 2026, up 24.1% from the second quarter. SIA CEO Michael Robbins noted that sales have now grown by more than 20% from the previous quarter for a third quarter in a row. Digitimes described it as the first time quarterly chip sales have topped $500 billion.",
+      "The monthly numbers are just as striking. SIA reports September sales of $172.6 billion (a three-month moving average), up 146.8% from September 2025 and 7.9% from August. Every region grew by more than 70% year over year: the Americas by 191.7%, Asia Pacific and other regions by 141.4%, China by 124.9%, Europe by 102.5% and Japan by 73.4%.",
+      "SIA's release does not name the causes of the growth. Semiconductor Engineering's weekly review, published November 6, cites Counterpoint Research putting third quarter DRAM revenue near $200 billion, up 369% from a year earlier. That points to memory, along with AI hardware, as a major source of the jump, though it is a reading of the data and not a conclusion from SIA. The same review also notes that AMD reported revenue up 45% year over year and Qualcomm down 8%, so the boom is not evenly spread.",
+      "One caution: these are sales figures, which include higher prices as well as higher volumes. A big part of the rise can come from memory and AI chips costing more, not only from more units being shipped. The data also covers the chip industry itself, not the demand of the companies that buy chips.",
+      "What this means for businesses: strong demand for chips and memory can keep prices of servers, laptops, phones and cloud capacity under pressure. If you plan a hardware refresh or a large cloud commitment, ask suppliers for firm quotes, buy earlier where you can, and compare lease or cloud options. Review your cloud and AI spending regularly, since vendors may pass higher component costs on to customers.",
+    ],
+    sources: [
+      { label: "Semiconductor Industry Association: Global Semiconductor Sales Increase 24.1% From Q2 2026 to Q3 2026", url: "https://www.semiconductors.org/global-semiconductor-sales-increase-24-1-from-q2-2026-to-q3-2026/" },
+      { label: "EE Times Asia: Global Semiconductor Sales Up 24% to $517.7B in 3Q 2026", url: "https://www.eetasia.com/global-semiconductor-sales-up-24-to-517-7b-in-3q-2026/" },
+      { label: "Semiconductor Engineering: Chip Industry Week In Review", url: "https://semiengineering.com/chip-industry-week-in-review-163/" },
+    ],
+  },
+  {
+    slug: "google-wyoming-17b-data-center-november-2026",
+    title: "Google Plans $17B Wyoming Data Center Powered by Fuel Cells",
+    description:
+      "Google announced on November 5, 2026 a $17 billion data center in Laramie County, Wyoming, with a 702 MW fuel cell power plant and a promise to pay for its own electricity.",
+    date: "2026-11-06",
+    readTime: "4 min read",
+    tags: ["Tech News", "Cloud"],
+    image: "/images/blog/google-wyoming-17b-data-center-november-2026.jpg",
+    body: [
+      "On November 5, 2026, Google announced plans to invest $17 billion in a data center in Laramie County, Wyoming, near Cheyenne. It would be Google's first data center in the state. Bloomberg and Reuters reported the news, citing a Google blog post, and The Next Web and Seoul Economic Daily followed. The figure is a planned investment, not money already spent.",
+      "Power is the central part of the plan. Part of the electricity will come from a 702 megawatt natural gas fuel cell plant using equipment from Bloom Energy. The Next Web reports the plant is being built by American Electric Power (AEP) and that Google will buy its output under a 20-year deal, with full operation expected by the end of 2028. Fuel cells make electricity from gas without burning it. The Next Web also says the carbon from the plant is planned to be stored underground at a nearby Tallgrass Energy site, and that Google says this would remove a large majority of the plant's emissions, without giving a percentage.",
+      "Google also made commitments about cost and local impact. It says it will pay for all the electricity the data center uses and for the grid upgrades its growth requires. The site is to be air cooled to reduce water use. Google expects hundreds of millions of dollars in new property tax revenue and plans a community advisory council with its partners. Seoul Economic Daily notes that the announcement came just after US local ballot measures in which voters backed limits on data centers in 40 of 41 cases, according to Ballotpedia, so local concerns about power, water and costs are clearly part of the context.",
+      "The story shows how much AI growth now depends on physical limits. Cloud capacity is not only about chips. It depends on electricity, cooling water and public approval, and large providers are now building their own power supply and offering to carry the grid costs. Details such as the exact fuel cell timeline and emissions results come from reports on Google's announcement, so treat the finer points as claims to be checked as the project moves forward.",
+      "What this means for businesses: the cost and availability of cloud and AI capacity will keep being shaped by power and local politics, not just by technology. If you rely on cloud AI services, plan for price changes and regional capacity limits over the next few years. Avoid locking critical workloads into a single region or provider, ask your vendors where their capacity comes from, and keep your own AI usage efficient so that you are not paying for compute you do not need.",
+    ],
+    sources: [
+      { label: "The Next Web: Google's first Wyoming data centre will run on gas with carbon capture", url: "https://thenextweb.com/news/google-wyoming-data-centre-17b-fuel-cells-carbon-capture" },
+      { label: "Seoul Economic Daily: Google to Invest $17 Billion in Wyoming Data Center", url: "https://en.sedaily.com/international/2026/11/06/google-to-invest-17-billion-in-wyoming-data-center" },
+      { label: "PANews: Google Plans to Spend $17 Billion Building Data Center in Wyoming", url: "https://panews.io/articles/01a1ad2d-1613-7525-8013-49e64c83feae" },
+    ],
+  },
+  {
     slug: "apple-cuts-employee-ai-budgets-november-2026",
     title: "Apple Reportedly Cuts Daily AI Spending Limits for Staff",
     description:

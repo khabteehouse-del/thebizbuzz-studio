@@ -286,7 +286,7 @@ export const services: Service[] = [
         "Keeps your day in order, by voice",
       ],
     },
-    badge: "In build",
+    badge: "In testing",
     link: {
       href: site.whatsapp.mizarHref,
       cta: "Message us for early access",

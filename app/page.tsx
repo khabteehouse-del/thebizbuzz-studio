@@ -1,3 +1,4 @@
+import { AccentuateStrip } from "@/components/sections/accentuate-strip";
 import { Hero } from "@/components/sections/hero";
 import { site } from "@/data/site";
 import { Intro } from "@/components/sections/intro";
@@ -81,6 +82,7 @@ export default function Home() {
       <Services />
       <ToolsStrip />
       <Work />
+      <AccentuateStrip />
       <BlogStrip />
       <Approach />
       <Team />

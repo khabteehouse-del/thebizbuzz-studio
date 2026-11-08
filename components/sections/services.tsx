@@ -477,7 +477,7 @@ function Tile({
             href={gallery.href}
             onClick={onLinkClick}
             data-flipped={flipped}
-            aria-label={`${service.title}. Opens the design gallery.`}
+            aria-label={`${service.title}. Opens the brand page and design gallery.`}
             className={tileClass}
           >
             {faces}
@@ -580,7 +580,7 @@ function Tile({
             } inset-x-7 bottom-5 md:inset-x-8 md:bottom-6`}
           />
         )}
-        {servicePageSlug(service.id) && (
+        {servicePageSlug(service.id) && !gallery && (
           <Link
             href={`/services/${servicePageSlug(service.id)}`}
             aria-label={`Learn more about ${service.title}`}

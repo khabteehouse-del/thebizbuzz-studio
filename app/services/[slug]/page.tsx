@@ -8,6 +8,9 @@ import { Button } from "@/components/shared/button";
 import { BreadcrumbSchema } from "@/components/shared/breadcrumb-schema";
 import { ServiceBanner } from "@/components/shared/service-banner";
 import { ServiceScreens } from "@/components/shared/service-screens";
+import { DesignGallery } from "@/components/design/gallery";
+import { designCredit } from "@/data/designs";
+import "@/app/design/design.css";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -67,7 +70,7 @@ export default async function ServicePageRoute({ params }: Props) {
     "font-display text-2xl font-medium leading-tight tracking-[-0.025em] text-paper md:text-4xl";
 
   return (
-    <div className="relative min-h-dvh pb-24 pt-28 md:pb-32 md:pt-40">
+    <div className={`relative min-h-dvh pb-24 pt-28 md:pb-32 md:pt-40${page.id === "brand" ? " dz" : ""}`}>
       <BreadcrumbSchema
         items={[
           { name: "Services", path: "/#tracks" },
@@ -222,6 +225,19 @@ export default async function ServicePageRoute({ params }: Props) {
                 </li>
               ))}
             </ul>
+          </section>
+        )}
+
+        {page.id === "brand" && (
+          <section id="gallery" className="mt-20 md:mt-28" aria-label="Design gallery">
+            <h2 className={h2}>Our work</h2>
+            <p className="mt-4 max-w-xl text-sm leading-relaxed text-paper/70">
+              Identity systems, logos, flyers and posters. Filter by discipline, then open any piece full screen.
+            </p>
+            <div className="mt-8">
+              <DesignGallery />
+            </div>
+            <p className="dz-credit">Crafted by the {designCredit}</p>
           </section>
         )}
 

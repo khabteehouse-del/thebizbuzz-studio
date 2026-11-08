@@ -2076,3 +2076,35 @@ section[data-offscreen] *::after {
     animation: none;
   }
 }
+
+/* Learn more tab under each service tile. Plain CSS on purpose: the tab and its
+   two curved joins share one colour, which follows the tile (front tint, then
+   back tint once it flips). */
+.folder-tab {
+  background-color: var(--tab);
+  transition: background-color 0.3s ease;
+}
+.folder-tab-ear {
+  fill: var(--tab);
+  transition: fill 0.3s ease;
+}
+.group:hover .folder-tab,
+.group[data-flipped="true"] .folder-tab {
+  background-color: var(--tab-hover);
+  transition-delay: 0.3s;
+}
+.group:hover .folder-tab-ear,
+.group[data-flipped="true"] .folder-tab-ear {
+  fill: var(--tab-hover);
+  transition-delay: 0.3s;
+}
+.folder-tab-label {
+  color: var(--mark);
+  transition: color 0.2s ease;
+}
+.folder-tab:hover .folder-tab-label {
+  color: #fff;
+}
+@media (prefers-reduced-motion: reduce) {
+  .folder-tab, .folder-tab-ear { transition: none; }
+}

@@ -111,25 +111,25 @@ function FolderTab({ service }: { service: Service }) {
             "--tab-hover": service.tintHover,
           } as React.CSSProperties
         }
-        className="group/tab relative flex h-10 w-full items-center justify-between gap-4 rounded-b-xl bg-current px-4 text-[var(--tab)] transition-colors duration-300 group-hover/tile:text-[var(--tab-hover)] group-hover/tile:delay-300 group-data-[flipped=true]/tile:text-[var(--tab-hover)] group-data-[flipped=true]/tile:delay-300 focus-visible:outline focus-visible:outline-2 md:w-auto md:min-w-[10.5rem]"
+        className="folder-tab group/tab relative flex h-10 w-full items-center justify-between gap-4 rounded-b-xl px-4 focus-visible:outline focus-visible:outline-2 md:w-auto md:min-w-[10.5rem]"
       >
         <svg
           aria-hidden="true"
           viewBox="0 0 12 12"
-          className="absolute right-full top-0 h-3 w-3 fill-current"
+          className="folder-tab-ear absolute right-full top-0 h-3 w-3"
         >
           <path d="M0 0H12V12A12 12 0 0 0 0 0Z" />
         </svg>
         <svg
           aria-hidden="true"
           viewBox="0 0 12 12"
-          className="absolute left-full top-0 h-3 w-3 -scale-x-100 fill-current"
+          className="folder-tab-ear absolute left-full top-0 h-3 w-3 -scale-x-100"
         >
           <path d="M0 0H12V12A12 12 0 0 0 0 0Z" />
         </svg>
         <span
-          className="font-display text-[11px] uppercase tracking-[0.16em] transition-colors duration-200 group-hover/tab:text-paper"
-          style={{ color: service.mark }}
+          className="folder-tab-label font-display text-[11px] uppercase tracking-[0.16em]"
+          style={{ "--mark": service.mark } as React.CSSProperties}
         >
           Learn more
         </span>

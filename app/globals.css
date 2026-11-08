@@ -2077,27 +2077,29 @@ section[data-offscreen] *::after {
   }
 }
 
-/* Learn more button under each service tile: full tile width, outlined in the
-   tile's colour, fills solid on hover. Plain CSS so it always renders. */
-.learn-btn {
+/* Learn more under each service tile: the words, then a round arrow button.
+   Short and right-aligned. The circle fills with the tile colour on hover.
+   Plain CSS so it always renders. */
+.learn-link {
   color: var(--mark);
-  border: 1px solid color-mix(in srgb, var(--mark) 50%, transparent);
-  background: color-mix(in srgb, var(--mark) 12%, transparent);
-  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
-.learn-btn svg {
-  transition: transform 0.2s ease;
+.learn-dot {
+  border: 1px solid color-mix(in srgb, var(--mark) 55%, transparent);
+  background: color-mix(in srgb, var(--mark) 14%, transparent);
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease,
+    transform 0.2s ease;
 }
-.learn-btn:hover,
-.learn-btn:focus-visible {
+.learn-link:hover .learn-dot,
+.learn-link:focus-visible .learn-dot {
   background: var(--mark);
   border-color: var(--mark);
   color: #0a0e1a;
+  transform: translate(1px, -1px);
 }
-.learn-btn:hover svg,
-.learn-btn:focus-visible svg {
-  transform: translate(2px, -2px);
+.learn-link:hover,
+.learn-link:focus-visible {
+  color: #fff;
 }
 @media (prefers-reduced-motion: reduce) {
-  .learn-btn, .learn-btn svg { transition: none; }
+  .learn-dot { transition: none; }
 }

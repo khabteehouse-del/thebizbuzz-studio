@@ -588,11 +588,11 @@ function Tile({
           <Link
             href={`/services/${servicePageSlug(service.id)}`}
             aria-label={`Learn more about ${service.title}`}
-            className="mt-2 flex items-center justify-end gap-1.5 px-1 font-display text-[11px] uppercase tracking-[0.16em] transition-opacity duration-200 hover:opacity-80"
-            style={{ color: service.mark }}
+            style={{ "--mark": service.mark } as React.CSSProperties}
+            className="learn-btn mt-3 flex h-11 w-full items-center justify-between rounded-xl px-5 font-display text-xs font-semibold uppercase tracking-[0.18em] focus-visible:outline focus-visible:outline-2"
           >
             Learn more
-            <ArrowUpRight size={13} aria-hidden="true" />
+            <ArrowUpRight size={16} aria-hidden="true" />
           </Link>
         )}
       </div>

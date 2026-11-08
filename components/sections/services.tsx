@@ -111,7 +111,7 @@ function FolderTab({ service }: { service: Service }) {
             "--tab-hover": service.tintHover,
           } as React.CSSProperties
         }
-        className="folder-tab group/tab relative flex h-10 w-full items-center justify-between gap-4 rounded-b-xl px-4 focus-visible:outline focus-visible:outline-2 md:w-auto md:min-w-[10.5rem]"
+        className="folder-tab group/tab relative flex h-8 w-full items-center justify-between gap-4 rounded-b-xl px-4 focus-visible:outline focus-visible:outline-2 md:w-auto md:min-w-[10.5rem]"
       >
         <svg
           aria-hidden="true"

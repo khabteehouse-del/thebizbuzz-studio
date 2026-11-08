@@ -10,35 +10,58 @@ import { servicePageSlug } from "@/data/service-pages";
   growing-brands services first, then the local ones, then back to the start.
   Mizar is a product, not a service, so it is not in the loop and its page
   shows no arrows.
+
+  Each side always shows its caption ("Next", "Previous") and the service
+  name, so the visitor knows where the arrow leads. A slow light sweep passes
+  over it now and then; on hover it takes the neighbour's colour.
 */
 const loop: Service[] = [...studioServices, ...localServices].filter(
   (s) => servicePageSlug(s.id),
 );
 
-const trackName = (s: Service) =>
-  s.track === "local" ? "For local businesses" : "For growing brands";
+const trackShort = (s: Service) => (s.track === "local" ? "Local" : "Growth");
 
 function neighbours(id: string) {
   const i = loop.findIndex((s) => s.id === id);
   if (i === -1) return null;
+  const current = loop[i];
   const prev = loop[(i - 1 + loop.length) % loop.length];
   const next = loop[(i + 1) % loop.length];
-  const current = loop[i];
+  /* When the arrow crosses from one group to the other, the caption says so. */
+  const caption = (word: string, s: Service) =>
+    s.track !== current.track ? `${word} · ${trackShort(s)}` : word;
   return {
     prev,
     next,
-    prevLabel:
-      prev.track !== current.track
-        ? `${prev.title} (${trackName(prev)})`
-        : prev.title,
-    nextLabel:
-      next.track !== current.track
-        ? `${next.title} (${trackName(next)})`
-        : next.title,
+    prevCaption: caption("Previous", prev),
+    nextCaption: caption("Next", next),
   };
 }
 
-/* PC: two dim round arrows on the left and right edges of the banner. Place inside a relative wrapper around the banner. */
+function Text({
+  caption,
+  title,
+  align,
+}: {
+  caption: string;
+  title: string;
+  align: "left" | "right";
+}) {
+  return (
+    <span
+      className={`flex min-w-0 flex-col leading-tight ${align === "right" ? "items-end text-right" : "items-start text-left"}`}
+    >
+      <span className="svc-caption text-[9px] font-medium uppercase tracking-[0.18em]">
+        {caption}
+      </span>
+      <span className="max-w-[9rem] truncate text-[12.5px] font-medium text-white lg:max-w-[12.5rem]">
+        {title}
+      </span>
+    </span>
+  );
+}
+
+/* PC: a subtle pill on each edge of the banner. Place inside a relative wrapper around the banner. */
 export function ServiceArrows({ id }: { id: string }) {
   const n = neighbours(id);
   if (!n) return null;
@@ -46,55 +69,55 @@ export function ServiceArrows({ id }: { id: string }) {
     <>
       <Link
         href={`/services/${servicePageSlug(n.prev.id)}`}
-        aria-label={`Previous service: ${n.prevLabel}`}
+        aria-label={`Previous service: ${n.prev.title}`}
         style={{ "--mark": n.prev.mark } as React.CSSProperties}
-        className="svc-arrow absolute left-3 top-1/2 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full md:flex"
+        className="svc-arrow absolute left-3 top-1/2 hidden h-12 -translate-y-1/2 items-center gap-3 rounded-full py-1 pl-1 pr-5 md:flex"
       >
-        <ArrowLeft size={18} aria-hidden="true" />
-        <span className="svc-arrow-label pointer-events-none absolute left-full ml-3 whitespace-nowrap rounded-md px-3 py-1.5 text-xs">
-          Previous: {n.prevLabel}
+        <span className="svc-dot flex h-10 w-10 shrink-0 items-center justify-center rounded-full">
+          <ArrowLeft size={17} aria-hidden="true" />
         </span>
+        <Text caption={n.prevCaption} title={n.prev.title} align="left" />
       </Link>
       <Link
         href={`/services/${servicePageSlug(n.next.id)}`}
-        aria-label={`Next service: ${n.nextLabel}`}
+        aria-label={`Next service: ${n.next.title}`}
         style={{ "--mark": n.next.mark } as React.CSSProperties}
-        className="svc-arrow absolute right-3 top-1/2 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full md:flex"
+        className="svc-arrow absolute right-3 top-1/2 hidden h-12 -translate-y-1/2 items-center gap-3 rounded-full py-1 pl-5 pr-1 md:flex"
       >
-        <ArrowRight size={18} aria-hidden="true" />
-        <span className="svc-arrow-label pointer-events-none absolute right-full mr-3 whitespace-nowrap rounded-md px-3 py-1.5 text-xs">
-          Next: {n.nextLabel}
+        <Text caption={n.nextCaption} title={n.next.title} align="right" />
+        <span className="svc-dot flex h-10 w-10 shrink-0 items-center justify-center rounded-full">
+          <ArrowRight size={17} aria-hidden="true" />
         </span>
       </Link>
     </>
   );
 }
 
-/* Phone: the banner is too short for side arrows, so a slim row sits under it. */
+/* Phone: the banner is too short for side pills, so a slim row sits under it. */
 export function ServiceNavRow({ id }: { id: string }) {
   const n = neighbours(id);
   if (!n) return null;
   const cell =
-    "svc-row flex h-10 min-w-0 flex-1 items-center gap-2 rounded-lg px-3 text-xs";
+    "svc-arrow relative flex h-12 min-w-0 flex-1 items-center gap-2.5 rounded-xl px-3";
   return (
     <div className="mt-3 flex gap-3 md:hidden">
       <Link
         href={`/services/${servicePageSlug(n.prev.id)}`}
-        aria-label={`Previous service: ${n.prevLabel}`}
+        aria-label={`Previous service: ${n.prev.title}`}
         style={{ "--mark": n.prev.mark } as React.CSSProperties}
         className={cell}
       >
-        <ArrowLeft size={15} aria-hidden="true" className="shrink-0" />
-        <span className="truncate">{n.prev.title}</span>
+        <ArrowLeft size={16} aria-hidden="true" className="svc-icon shrink-0" />
+        <Text caption={n.prevCaption} title={n.prev.title} align="left" />
       </Link>
       <Link
         href={`/services/${servicePageSlug(n.next.id)}`}
-        aria-label={`Next service: ${n.nextLabel}`}
+        aria-label={`Next service: ${n.next.title}`}
         style={{ "--mark": n.next.mark } as React.CSSProperties}
-        className={`${cell} justify-end text-right`}
+        className={`${cell} justify-end`}
       >
-        <span className="truncate">{n.next.title}</span>
-        <ArrowRight size={15} aria-hidden="true" className="shrink-0" />
+        <Text caption={n.nextCaption} title={n.next.title} align="right" />
+        <ArrowRight size={16} aria-hidden="true" className="svc-icon shrink-0" />
       </Link>
     </div>
   );

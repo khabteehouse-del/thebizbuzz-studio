@@ -28,6 +28,7 @@ export function ServiceBanner({
           width={page.banner.width}
           height={page.banner.height}
           priority
+          quality={90}
           sizes="(min-width: 1280px) 1200px, 100vw"
           className="h-auto w-full"
         />

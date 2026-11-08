@@ -49,12 +49,12 @@ function Text({
 }) {
   return (
     <span
-      className={`flex min-w-0 flex-col leading-tight ${align === "right" ? "items-end text-right" : "items-start text-left"}`}
+      className={`flex min-w-0 flex-1 flex-col leading-tight ${align === "right" ? "items-end text-right" : "items-start text-left"}`}
     >
       <span className="svc-caption text-[9px] font-medium uppercase tracking-[0.18em]">
         {caption}
       </span>
-      <span className="max-w-[9rem] truncate text-[12.5px] font-medium text-white lg:max-w-[12.5rem]">
+      <span className="line-clamp-2 break-words text-[12.5px] font-medium leading-snug text-white">
         {title}
       </span>
     </span>
@@ -123,7 +123,7 @@ export function ServiceNavRow({ id }: { id: string }) {
   const n = neighbours(id);
   if (!n) return null;
   const cell =
-    "svc-arrow relative flex h-12 min-w-0 flex-1 items-center gap-2.5 rounded-xl px-3";
+    "svc-arrow relative flex min-h-12 min-w-0 flex-1 basis-0 items-center gap-2.5 rounded-xl px-3 py-2";
   return (
     <div className="mt-3 flex gap-3 lg:hidden">
       <Link

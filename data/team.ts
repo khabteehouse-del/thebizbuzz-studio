@@ -83,7 +83,7 @@ export const team: Member[] = [
     name: "Yousuf Paryani",
     role: "Business Development Representative, USA",
     focus:
-      "Leads our outreach to US businesses and starts the conversations that become client projects.",
+      "Leads our outreach to US businesses, with years of US work experience and phone sales behind him.",
     image: "/images/team/yousuf.jpg",
     linkedin: "",
   },

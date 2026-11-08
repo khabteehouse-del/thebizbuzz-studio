@@ -65,10 +65,10 @@ function Text({
 function SideText({ caption, title }: { caption: string; title: string }) {
   return (
     <span className="flex flex-col items-center gap-1 text-center leading-tight">
-      <span className="svc-caption text-[9px] font-medium uppercase tracking-[0.18em]">
+      <span className="svc-caption text-[8.5px] font-medium uppercase tracking-[0.14em]">
         {caption}
       </span>
-      <span className="line-clamp-3 break-words text-[12.5px] font-medium text-white">
+      <span className="line-clamp-3 break-words text-xs font-medium text-white">
         {title}
       </span>
     </span>
@@ -88,16 +88,16 @@ export function ServiceBannerFrame({
   const n = neighbours(id);
   if (!n) return <>{children}</>;
   const side =
-    "svc-arrow relative hidden flex-col items-center justify-center gap-3 rounded-2xl px-3 py-5 lg:flex";
+    "svc-arrow relative hidden flex-col items-center justify-center gap-2.5 rounded-2xl px-2 py-4 lg:flex";
   return (
-    <div className="lg:grid lg:grid-cols-[6.75rem_minmax(0,1fr)_6.75rem] lg:items-center lg:gap-4">
+    <div className="lg:grid lg:grid-cols-[5.5rem_minmax(0,1fr)_5.5rem] lg:items-center lg:gap-4">
       <Link
         href={`/services/${servicePageSlug(n.prev.id)}`}
         aria-label={`Previous service: ${n.prev.title}`}
         style={{ "--mark": n.prev.mark } as React.CSSProperties}
         className={side}
       >
-        <span className="svc-dot flex h-11 w-11 shrink-0 items-center justify-center rounded-full">
+        <span className="svc-dot flex h-10 w-10 shrink-0 items-center justify-center rounded-full">
           <ArrowLeft size={18} aria-hidden="true" />
         </span>
         <SideText caption={n.prevCaption} title={n.prev.title} />
@@ -109,7 +109,7 @@ export function ServiceBannerFrame({
         style={{ "--mark": n.next.mark } as React.CSSProperties}
         className={side}
       >
-        <span className="svc-dot flex h-11 w-11 shrink-0 items-center justify-center rounded-full">
+        <span className="svc-dot flex h-10 w-10 shrink-0 items-center justify-center rounded-full">
           <ArrowRight size={18} aria-hidden="true" />
         </span>
         <SideText caption={n.nextCaption} title={n.next.title} />

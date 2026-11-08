@@ -585,15 +585,19 @@ function Tile({
         )}
         </div>
         {servicePageSlug(service.id) && !gallery && (
-          <Link
-            href={`/services/${servicePageSlug(service.id)}`}
-            aria-label={`Learn more about ${service.title}`}
-            className="mt-2 flex items-center justify-end gap-1.5 px-1 font-display text-[11px] uppercase tracking-[0.16em] transition-opacity duration-200 hover:opacity-80"
-            style={{ color: service.mark }}
-          >
-            Learn more
-            <ArrowUpRight size={13} aria-hidden="true" />
-          </Link>
+          <div className="mt-2 flex justify-end">
+            <Link
+              href={`/services/${servicePageSlug(service.id)}`}
+              aria-label={`Learn more about ${service.title}`}
+              style={{ "--mark": service.mark } as React.CSSProperties}
+              className="learn-link inline-flex items-center gap-3 py-0.5 pl-2 font-display text-[11px] font-semibold uppercase tracking-[0.18em] focus-visible:outline focus-visible:outline-2"
+            >
+              Learn more
+              <span className="learn-dot flex h-[30px] w-[30px] items-center justify-center rounded-full">
+                <ArrowUpRight size={15} aria-hidden="true" />
+              </span>
+            </Link>
+          </div>
         )}
       </div>
     </Reveal>

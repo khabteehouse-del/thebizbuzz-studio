@@ -318,7 +318,7 @@ export function Hero() {
               {/* The page heading. Styled exactly like the text around it, so it reads as part of the paragraph. */}
               <h1 className="inline">
                 Digital Marketing Services &amp; AI Solutions for companies in
-                the Gulf and Pakistan.
+                the US, the Gulf and Pakistan.
               </h1>{" "}
               Scoped in writing, built in measured phases, handed over fully
               owned.

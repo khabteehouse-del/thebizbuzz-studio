@@ -72,7 +72,7 @@ export const faq: FaqItem[] = [
     id: "remote",
     question: "You are in Karachi and Dubai. Does that work for us?",
     answer:
-      "We work remotely by default and have delivered that way for years. Karachi covers Asian and European hours comfortably, and our UAE presence handles Gulf clients in person where it matters.",
+      "We work remotely by default and have delivered that way for years. Karachi covers Asian and European hours comfortably, and our UAE presence handles Gulf clients in person where it matters. We also serve US businesses, with a dedicated representative for American clients.",
   },
   {
     id: "ai",

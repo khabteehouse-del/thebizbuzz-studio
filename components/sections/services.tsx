@@ -92,6 +92,58 @@ function useAutoFlip(
   }, [ref, setFlipped]);
 }
 
+/* Learn more, drawn as a tab that grows out of the bottom of the tile, like a
+   folder tab. It takes the tile's own colours (the front tint, then the back
+   tint once the tile flips) and uses currentColor for the fill and the two
+   curved joins, so card and tab read as one shape. It sits under the straight
+   part of the bottom edge: 2rem in from the side, clear of the 1rem corner. */
+function FolderTab({ service }: { service: Service }) {
+  const slug = servicePageSlug(service.id);
+  if (!slug) return null;
+  return (
+    <div className="relative z-[1] -mt-px flex px-8 md:justify-end">
+      <Link
+        href={`/services/${slug}`}
+        aria-label={`Learn more about ${service.title}`}
+        style={
+          {
+            "--tab": service.tint,
+            "--tab-hover": service.tintHover,
+          } as React.CSSProperties
+        }
+        className="group/tab relative flex h-10 w-full items-center justify-between gap-4 rounded-b-xl bg-current px-4 text-[var(--tab)] transition-colors duration-300 group-hover/tile:text-[var(--tab-hover)] group-hover/tile:delay-300 group-data-[flipped=true]/tile:text-[var(--tab-hover)] group-data-[flipped=true]/tile:delay-300 focus-visible:outline focus-visible:outline-2 md:w-auto md:min-w-[10.5rem]"
+      >
+        <svg
+          aria-hidden="true"
+          viewBox="0 0 12 12"
+          className="absolute right-full top-0 h-3 w-3 fill-current"
+        >
+          <path d="M0 0H12V12A12 12 0 0 0 0 0Z" />
+        </svg>
+        <svg
+          aria-hidden="true"
+          viewBox="0 0 12 12"
+          className="absolute left-full top-0 h-3 w-3 -scale-x-100 fill-current"
+        >
+          <path d="M0 0H12V12A12 12 0 0 0 0 0Z" />
+        </svg>
+        <span
+          className="font-display text-[11px] uppercase tracking-[0.16em] transition-colors duration-200 group-hover/tab:text-paper"
+          style={{ color: service.mark }}
+        >
+          Learn more
+        </span>
+        <ArrowUpRight
+          size={14}
+          aria-hidden="true"
+          className="transition-transform duration-200 group-hover/tab:-translate-y-0.5 group-hover/tab:translate-x-0.5"
+          style={{ color: service.mark }}
+        />
+      </Link>
+    </div>
+  );
+}
+
 function Tile({
   service,
   index,
@@ -585,15 +637,7 @@ function Tile({
         )}
         </div>
         {servicePageSlug(service.id) && !gallery && (
-          <Link
-            href={`/services/${servicePageSlug(service.id)}`}
-            aria-label={`Learn more about ${service.title}`}
-            className="mt-2 flex items-center justify-end gap-1.5 px-1 font-display text-[11px] uppercase tracking-[0.16em] transition-opacity duration-200 hover:opacity-80"
-            style={{ color: service.mark }}
-          >
-            Learn more
-            <ArrowUpRight size={13} aria-hidden="true" />
-          </Link>
+          <FolderTab service={service} />
         )}
       </div>
     </Reveal>

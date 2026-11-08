@@ -93,54 +93,42 @@ function useAutoFlip(
 }
 
 /* Learn more, drawn as a tab that grows out of the bottom of the tile, like a
-   folder tab. It takes the tile's own colours (the front tint, then the back
-   tint once the tile flips) and uses currentColor for the fill and the two
-   curved joins, so card and tab read as one shape. It sits under the straight
-   part of the bottom edge: 2rem in from the side, clear of the 1rem corner. */
-function FolderTab({ service }: { service: Service }) {
-  const slug = servicePageSlug(service.id);
-  if (!slug) return null;
+   folder tab. It lives inside the flipping faces, so it turns with the tile:
+   the front tab matches the front tint, the back tab the back tint and border.
+   The tab hangs below the tile box (top-full) and the real link is an invisible
+   layer over it, with identical geometry. 28px tall, 2rem in from the side so it
+   clears the tile's 1rem corner. */
+const TAB_BOX =
+  "absolute top-[calc(100%-1px)] inset-x-8 h-[29px] md:left-auto md:w-[10.5rem]";
+
+function TabEar({ side, stroke }: { side: "l" | "r"; stroke?: string }) {
   return (
-    <div className="relative z-[1] -mt-px flex px-8 md:justify-end">
-      <Link
-        href={`/services/${slug}`}
-        aria-label={`Learn more about ${service.title}`}
-        style={
-          {
-            "--tab": service.tint,
-            "--tab-hover": service.tintHover,
-          } as React.CSSProperties
-        }
-        className="folder-tab group/tab relative flex h-8 w-full items-center justify-between gap-4 rounded-b-xl px-4 focus-visible:outline focus-visible:outline-2 md:w-auto md:min-w-[10.5rem]"
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 12 12"
+      className={`absolute top-0 h-3 w-3 overflow-visible ${
+        side === "l" ? "right-full" : "left-full -scale-x-100"
+      }`}
+    >
+      <path d="M0 0H12V12A12 12 0 0 0 0 0Z" fill="currentColor" stroke="none" />
+      {stroke && (
+        <path d="M12 12A12 12 0 0 0 0 0" fill="none" stroke={stroke} strokeWidth="1" />
+      )}
+    </svg>
+  );
+}
+
+function TabLabel({ mark }: { mark: string }) {
+  return (
+    <span className="flex h-7 items-center justify-between gap-4 px-4">
+      <span
+        className="font-display text-[11px] uppercase tracking-[0.16em]"
+        style={{ color: mark }}
       >
-        <svg
-          aria-hidden="true"
-          viewBox="0 0 12 12"
-          className="folder-tab-ear absolute right-full top-0 h-3 w-3"
-        >
-          <path d="M0 0H12V12A12 12 0 0 0 0 0Z" />
-        </svg>
-        <svg
-          aria-hidden="true"
-          viewBox="0 0 12 12"
-          className="folder-tab-ear absolute left-full top-0 h-3 w-3 -scale-x-100"
-        >
-          <path d="M0 0H12V12A12 12 0 0 0 0 0Z" />
-        </svg>
-        <span
-          className="folder-tab-label font-display text-[11px] uppercase tracking-[0.16em]"
-          style={{ "--mark": service.mark } as React.CSSProperties}
-        >
-          Learn more
-        </span>
-        <ArrowUpRight
-          size={14}
-          aria-hidden="true"
-          className="transition-transform duration-200 group-hover/tab:-translate-y-0.5 group-hover/tab:translate-x-0.5"
-          style={{ color: service.mark }}
-        />
-      </Link>
-    </div>
+        Learn more
+      </span>
+      <ArrowUpRight size={14} aria-hidden="true" style={{ color: mark }} />
+    </span>
   );
 }
 
@@ -169,6 +157,8 @@ function Tile({
     ? { image: gallery.image, alt: gallery.alt, width: gallery.width, height: gallery.height, fit: "cover" as const, background: "#12030a", position: undefined, bullets: undefined }
     : service.backImage;
   const artCta = gallery?.cta ?? link?.cta;
+  const tabSlug = servicePageSlug(service.id);
+  const hasTab = Boolean(tabSlug) && !gallery;
 
   const toggle = () => {
     if (window.matchMedia("(hover: hover)").matches) return;
@@ -509,6 +499,32 @@ function Tile({
           </span>
         </span>
       )}
+
+      {/* Folder tab, front and back, turning with the tile */}
+      {hasTab && (
+        <>
+          <span
+            className={`${TAB_BOX} rounded-b-xl [backface-visibility:hidden] motion-reduce:opacity-0 motion-reduce:transition-opacity motion-reduce:group-hover:opacity-0 motion-reduce:group-focus-visible:opacity-0 motion-reduce:group-data-[flipped=true]:opacity-0`}
+            style={{ backgroundColor: service.tint, color: service.tint }}
+          >
+            <TabEar side="l" />
+            <TabEar side="r" />
+            <TabLabel mark={service.mark} />
+          </span>
+          <span
+            className={`${TAB_BOX} rounded-b-xl border-x border-b [backface-visibility:hidden] [transform:rotateY(180deg)] motion-reduce:opacity-0 motion-reduce:transition-opacity motion-reduce:[transform:none] motion-reduce:group-hover:opacity-100 motion-reduce:group-focus-visible:opacity-100 motion-reduce:group-data-[flipped=true]:opacity-100`}
+            style={{
+              backgroundColor: service.tintHover,
+              color: service.tintHover,
+              borderColor: `${service.mark}66`,
+            }}
+          >
+            <TabEar side="l" stroke={`${service.mark}66`} />
+            <TabEar side="r" stroke={`${service.mark}66`} />
+            <TabLabel mark={service.mark} />
+          </span>
+        </>
+      )}
     </span>
   );
 
@@ -635,10 +651,16 @@ function Tile({
             } inset-x-7 bottom-5 md:inset-x-8 md:bottom-6`}
           />
         )}
-        </div>
-        {servicePageSlug(service.id) && !gallery && (
-          <FolderTab service={service} />
+        {hasTab && (
+          <Link
+            href={`/services/${tabSlug}`}
+            aria-label={`Learn more about ${service.title}`}
+            className={`${TAB_BOX} z-10 rounded-b-xl transition-colors duration-200 hover:bg-white/[0.07] focus-visible:outline focus-visible:outline-2`}
+          />
         )}
+        </div>
+        {/* Room for the tab, which hangs below the tile box */}
+        {hasTab && <div aria-hidden="true" className="h-7" />}
       </div>
     </Reveal>
   );

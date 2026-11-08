@@ -50,14 +50,16 @@ function Card({
           )}
         </div>
 
-        <div className="min-w-0">
+        <div className="min-w-0 break-words">
           <h3 className="font-display text-lg font-medium tracking-[-0.01em] text-paper">
             {member.name}
           </h3>
           <p className="mt-1 text-[13px] leading-snug text-accent-soft">
             {member.role}
           </p>
-          <p className="mt-1.5 line-clamp-2 text-sm leading-relaxed text-muted">
+          {/* No line clamp: on a phone the text column is narrow, and a clamp
+              was cutting longer descriptions mid-sentence. */}
+          <p className="mt-1.5 text-sm leading-relaxed text-muted">
             {member.focus}
           </p>
 

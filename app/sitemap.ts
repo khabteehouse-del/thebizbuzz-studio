@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { blogPosts } from "@/data/blog";
 import { site } from "@/data/site";
+import { servicePages } from "@/data/service-pages";
 
 /* Lists every public page so Google can find new blog posts quickly. */
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -20,5 +21,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...pages, ...posts];
+  const serviceUrls = servicePages.map((p) => ({
+    url: `${site.url}/services/${p.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+  }));
+
+  return [...pages, ...serviceUrls, ...posts];
 }

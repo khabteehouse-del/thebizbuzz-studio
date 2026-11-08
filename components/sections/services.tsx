@@ -23,6 +23,7 @@ const PreviewModal = dynamic(
 import { PoweredStars } from "@/components/shared/review-card";
 import { ServicesDial } from "@/components/shared/services-dial";
 import { TileArt } from "@/components/shared/tile-art";
+import { servicePageSlug } from "@/data/service-pages";
 
 /* Touch screens cannot hover, and few people tap a tile that does not look
    tappable. So on touch, a tile flips by itself once it has rested under the
@@ -578,6 +579,17 @@ function Tile({
                 : "invisible group-hover/tile:visible group-hover/tile:[transition-delay:700ms,0s,0s]"
             } inset-x-7 bottom-5 md:inset-x-8 md:bottom-6`}
           />
+        )}
+        {servicePageSlug(service.id) && (
+          <Link
+            href={`/services/${servicePageSlug(service.id)}`}
+            aria-label={`Learn more about ${service.title}`}
+            className="mt-2 flex items-center justify-end gap-1.5 px-1 font-display text-[11px] uppercase tracking-[0.16em] transition-opacity duration-200 hover:opacity-80"
+            style={{ color: service.mark }}
+          >
+            Learn more
+            <ArrowUpRight size={13} aria-hidden="true" />
+          </Link>
         )}
       </div>
     </Reveal>

@@ -95,6 +95,12 @@ export const servicePages: ServicePage[] = [
       { q: "Is there a free check?", a: "Yes. Our free Google listing check on this site scans your profile in about a minute." },
     ],
     related: ["local-seo", "reviews", "local-web"],
+    banner: {
+      src: "/images/service-banners/gbp.webp",
+      alt: "A salon owner steps out of her glowing shop at dusk while a luminous map pin and rings of teal light spread over the street.",
+      width: 1584,
+      height: 672,
+    },
   },
   {
     id: "local-seo",
@@ -154,6 +160,12 @@ export const servicePages: ServicePage[] = [
       { q: "Do I need a website for local SEO?", a: "It helps a lot. If you do not have one, our website service builds one that is ready for local search." },
     ],
     related: ["gbp", "reviews", "geo-aeo"],
+    banner: {
+      src: "/images/service-banners/local-seo.webp",
+      alt: "A man places a glowing beacon on a tiny shop in a tabletop model of a city district, with rings of cyan light spreading across the streets.",
+      width: 1584,
+      height: 672,
+    },
   },
   {
     id: "reviews",
@@ -194,6 +206,12 @@ export const servicePages: ServicePage[] = [
       { q: "Do you write reviews for us?", a: "No. Fake reviews break the rules and harm your business when they are found. We make it easier for real customers to write real ones." },
     ],
     related: ["gbp", "local-seo", "social-media"],
+    banner: {
+      src: "/images/service-banners/reviews.webp",
+      alt: "A cafe owner smiles as blue star-shaped lanterns rise from customers' phones into a glowing constellation.",
+      width: 1584,
+      height: 672,
+    },
   },
   {
     id: "local-web",
@@ -237,6 +255,12 @@ export const servicePages: ServicePage[] = [
       { q: "Can you update it later?", a: "Yes, either as small one-off changes or inside a monthly plan." },
     ],
     related: ["local-seo", "web", "gbp"],
+    banner: {
+      src: "/images/service-banners/local-web.webp",
+      alt: "A clinic receptionist greets a patient beside a floating phone showing a website with call, chat and calendar buttons.",
+      width: 1584,
+      height: 672,
+    },
   },
   {
     id: "social-media",
@@ -273,6 +297,12 @@ export const servicePages: ServicePage[] = [
       { q: "Do I approve posts first?", a: "Yes. Nothing goes out without your approval unless you tell us otherwise." },
     ],
     related: ["ugc-ads", "brand", "growth"],
+    banner: {
+      src: "/images/service-banners/social-media.webp",
+      alt: "A content creator films at her desk while holographic post and video cards orbit around her.",
+      width: 1584,
+      height: 672,
+    },
   },
   {
     id: "youtube",
@@ -310,6 +340,12 @@ export const servicePages: ServicePage[] = [
       { q: "Do you buy views or subscribers?", a: "Never. It breaks the rules and damages the channel." },
     ],
     related: ["ai-content", "social-media", "ugc-ads"],
+    banner: {
+      src: "/images/service-banners/youtube.webp",
+      alt: "A creator records in his home studio beside a glass play button sculpture and a rising red growth line.",
+      width: 1584,
+      height: 672,
+    },
   },
   {
     id: "mizar",
@@ -417,6 +453,12 @@ export const servicePages: ServicePage[] = [
       { q: "Where do we start?", a: "With one small, valuable workflow, not a company-wide programme." },
     ],
     related: ["mizar", "geo-aeo", "growth"],
+    banner: {
+      src: "/images/service-banners/ai.webp",
+      alt: "An engineer studies a glowing tree of documents flowing into a core with light guardrails and a checklist.",
+      width: 1584,
+      height: 672,
+    },
   },
   {
     id: "geo-aeo",
@@ -453,6 +495,12 @@ export const servicePages: ServicePage[] = [
       { q: "Can you guarantee mentions in AI answers?", a: "No. These systems change often. We improve your clarity and credibility and measure the result." },
     ],
     related: ["local-seo", "growth", "ai"],
+    banner: {
+      src: "/images/service-banners/geo-aeo.webp",
+      alt: "A man on a balcony asks a glowing assistant orb a question while a lighthouse over the city skyline shines a beam toward it.",
+      width: 1584,
+      height: 672,
+    },
   },
   {
     id: "growth",
@@ -489,6 +537,12 @@ export const servicePages: ServicePage[] = [
       { q: "How soon will I see leads?", a: "Early signals come within weeks. A reliable picture usually takes a few months of testing." },
     ],
     related: ["ugc-ads", "local-web", "geo-aeo"],
+    banner: {
+      src: "/images/service-banners/growth.webp",
+      alt: "A marketer adjusts glowing dials next to a glass funnel that turns scattered points of light into a few golden ones.",
+      width: 1584,
+      height: 672,
+    },
   },
   {
     id: "brand",
@@ -524,6 +578,12 @@ export const servicePages: ServicePage[] = [
       { q: "How many concepts do we see?", a: "We agree the number at the start, so the process stays focused." },
     ],
     related: ["web", "social-media", "ai-content"],
+    banner: {
+      src: "/images/service-banners/brand.webp",
+      alt: "A designer shapes a glowing abstract emblem in a dark studio, surrounded by floating color swatches and brush strokes.",
+      width: 1584,
+      height: 672,
+    },
   },
   {
     id: "ai-content",
@@ -560,6 +620,12 @@ export const servicePages: ServicePage[] = [
       { q: "Will it look obviously AI?", a: "We edit and finish by hand so the result looks deliberate and on brand." },
     ],
     related: ["ugc-ads", "youtube", "brand"],
+    banner: {
+      src: "/images/service-banners/ai-content.webp",
+      alt: "A film director stands between a real set and a generated half made of floating film frames and a sound wave of light.",
+      width: 1584,
+      height: 672,
+    },
   },
   {
     id: "ugc-ads",
@@ -596,6 +662,12 @@ export const servicePages: ServicePage[] = [
       { q: "Do you run the ads too?", a: "Yes, through our growth marketing service, or you can run them yourself." },
     ],
     related: ["growth", "social-media", "ai-content"],
+    banner: {
+      src: "/images/service-banners/ugc-ads.webp",
+      alt: "A creator films a plain skincare bottle while a ring of floating phone screens shows variations of the same video.",
+      width: 1584,
+      height: 672,
+    },
   },
   {
     id: "web",
@@ -633,6 +705,12 @@ export const servicePages: ServicePage[] = [
       { q: "Will I be able to edit the site myself?", a: "Yes. We set up simple editing for the content you change often." },
     ],
     related: ["local-web", "brand", "ai"],
+    banner: {
+      src: "/images/service-banners/web.webp",
+      alt: "A designer and a developer sit back to back as a wireframe layout turns into a finished interface on a laptop and a phone.",
+      width: 1584,
+      height: 672,
+    },
   },
 ];
 

@@ -10,7 +10,7 @@ const LOGO_BLUE = "#1dd5ff";
 const pillars = [
   {
     Icon: Globe2,
-    text: "Karachi and Dubai. Local search for businesses across Pakistan, brand and AI engagements for companies across the Gulf and beyond, delivered remotely by default.",
+    text: "Karachi and Dubai. Local search for businesses across Pakistan, brand and AI engagements for companies across the US, the Gulf and beyond, delivered remotely by default.",
   },
   {
     Icon: UserCheck,

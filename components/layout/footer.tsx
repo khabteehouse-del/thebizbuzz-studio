@@ -77,7 +77,7 @@ export function Footer() {
               Website designed and operated by {site.name}.
             </p>
           </div>
-          <p>Karachi, Pakistan and Dubai, UAE</p>
+          <p>Karachi, Pakistan and Dubai, UAE. Serving the US.</p>
         </div>
       </div>
 

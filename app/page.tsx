@@ -24,6 +24,7 @@ const provider = { "@type": "Organization", name: "The Biz Buzz", url: site.url 
 const areaServed = [
   { "@type": "Country", name: "Pakistan" },
   { "@type": "Country", name: "United Arab Emirates" },
+  { "@type": "Country", name: "United States" },
 ];
 const serviceSchema = [
   {

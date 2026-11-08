@@ -77,6 +77,16 @@ export const team: Member[] = [
     image: "/images/team/naseem.jpg",
     linkedin: "",
   },
+  {
+    id: "yousuf",
+    tier: "specialist",
+    name: "Yousuf Paryani",
+    role: "Business Development Representative, USA",
+    focus:
+      "Leads our outreach to US businesses, with years of US work experience and phone sales behind him.",
+    image: "/images/team/yousuf.jpg",
+    linkedin: "",
+  },
 ];
 
 export const partners = team.filter((member) => member.tier === "partner");

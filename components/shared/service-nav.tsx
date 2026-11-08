@@ -88,9 +88,9 @@ export function ServiceBannerFrame({
   const n = neighbours(id);
   if (!n) return <>{children}</>;
   const side =
-    "svc-arrow relative hidden flex-col items-center justify-center gap-3 rounded-2xl px-3 py-4 lg:flex";
+    "svc-arrow relative hidden flex-col items-center justify-center gap-3 rounded-2xl px-3 py-5 lg:flex";
   return (
-    <div className="lg:grid lg:grid-cols-[6.75rem_minmax(0,1fr)_6.75rem] lg:items-stretch lg:gap-4">
+    <div className="lg:grid lg:grid-cols-[6.75rem_minmax(0,1fr)_6.75rem] lg:items-center lg:gap-4">
       <Link
         href={`/services/${servicePageSlug(n.prev.id)}`}
         aria-label={`Previous service: ${n.prev.title}`}

@@ -28,7 +28,7 @@ function Card({
   return (
     <Reveal delay={index * 0.06}>
       <div className="group flex items-center gap-4 border-b border-line pb-5 sm:gap-5">
-        <div className="relative h-[72px] w-[72px] shrink-0 overflow-hidden rounded-full border border-line bg-paper/[0.03] transition-colors duration-500 group-hover:border-paper/25 sm:h-[88px] sm:w-[88px]">
+        <div className="relative h-[72px] w-[72px] shrink-0 overflow-hidden rounded-xl border border-line bg-paper/[0.03] transition-colors duration-500 group-hover:border-paper/25 sm:h-[88px] sm:w-[88px]">
           {member.image ? (
             <Image
               src={member.image}

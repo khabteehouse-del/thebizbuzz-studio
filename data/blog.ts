@@ -13,6 +13,28 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "nigeria-cbn-stablecoin-rules-november-2026",
+    title: "Nigeria's Central Bank Sets Stablecoin Licensing Rules",
+    description:
+      "On November 5, 2026 the Central Bank of Nigeria issued rules that license stablecoin issuers, set capital floors and ban algorithmic stablecoins.",
+    date: "2026-11-08",
+    readTime: "4 min read",
+    tags: ["Crypto", "Tech News"],
+    image: "/images/blog/nigeria-cbn-stablecoin-rules-november-2026.jpg",
+    body: [
+      "The Central Bank of Nigeria (CBN) issued a new framework on November 5, 2026 called the Regulations for the Operations of Non-Security Virtual Assets in Nigeria. The Block and Cointelegraph report that it took effect immediately and covers stablecoin issuers, crypto payment providers, exchanges and custodians. The Block adds that it applies to activity in Nigeria even when the operator has no physical presence there.",
+      "Under the rules, stablecoin issuers need a licence, and each token needs approval before it is issued. Naira-linked and foreign-currency-linked stablecoins fall into separate classes. According to The Block, foreign-currency stablecoins can be offered to Nigerians only through a Nigerian-incorporated entity holding the right licence. Cointelegraph and the Rio Times report minimum paid-up capital of 10 billion naira (about $7.4 million) for naira-linked issuers, 15 billion naira (about $11.1 million) for foreign-currency issuers, and 1 billion naira (about $740,000) for other service providers such as exchanges and custodians. Cointelegraph also reports that tokens must be fully backed by reserves, with an extra buffer of at least 2%.",
+      "The rules ban algorithmic stablecoins, meaning tokens that rely mainly on market mechanisms instead of eligible reserve assets to hold their value. Providers also have to run customer checks, sanctions screening and transaction monitoring, including the Travel Rule. Existing operators have 180 days to apply for a licence or authorisation. The Rio Times notes that published summaries describe the deadline details differently, and that it is unclear how tokens already in circulation will be treated while licences are pending.",
+      "The CBN said the framework aims to support responsible innovation while protecting consumers and financial stability, according to Cointelegraph. This is a summary of press reports, not of the regulation text itself, so any firm affected should read the CBN document directly. Nothing here is a view on any token or on the market.",
+      "What this means for businesses: if you pay suppliers, staff or customers in Nigeria with stablecoins, or build products that touch Nigerian users, check whether your payment partners will be licensed before the deadline. Ask them in writing which entity holds the licence and how reserves are held. More broadly, many countries are moving from open questions to licensing rules for digital payments, so keep a compliance contact for any cross-border payment flow, and avoid depending on a single provider.",
+    ],
+    sources: [
+      { label: "The Block: Nigeria's central bank introduces stablecoin licensing rules, bans algorithmic versions", url: "https://www.theblock.co/news/regulation/2026-11-06-nigerias-central-bank-introduces-stablecoin-licensing-rules-bans-algorithmic-versions-435867" },
+      { label: "Cointelegraph: Nigeria Sets Stablecoin Reserve Rules, Bans Algorithmic Tokens", url: "https://cointelegraph.com/news/nigeria-algorithmic-stablecoin-ban-crypto-licensing" },
+      { label: "Rio Times: Nigeria Sets US$11 Million Stablecoin Rule", url: "https://www.riotimesonline.com/nigeria-stablecoin-capital-floor-us11-million-2026/" },
+    ],
+  },
+  {
     slug: "global-chip-sales-record-q3-2026-november-2026",
     title: "Global Chip Sales Pass $500B in One Quarter for the First Time",
     description:

@@ -2103,3 +2103,40 @@ section[data-offscreen] *::after {
 @media (prefers-reduced-motion: reduce) {
   .learn-dot { transition: none; }
 }
+
+/* Previous / next service arrows on the service pages. Dim at rest, the
+   neighbour's colour on hover. Plain CSS so it always renders. */
+.svc-arrow {
+  color: #fff;
+  opacity: 0.45;
+  background: rgba(9, 15, 30, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: opacity 0.2s ease, background-color 0.2s ease, color 0.2s ease,
+    border-color 0.2s ease;
+}
+.svc-arrow:hover,
+.svc-arrow:focus-visible {
+  opacity: 1;
+  color: #0a0e1a;
+  background: var(--mark);
+  border-color: var(--mark);
+}
+.svc-arrow-label {
+  opacity: 0;
+  color: #fff;
+  background: rgba(9, 15, 30, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: opacity 0.2s ease;
+}
+.svc-arrow:hover .svc-arrow-label,
+.svc-arrow:focus-visible .svc-arrow-label {
+  opacity: 1;
+}
+.svc-row {
+  color: var(--mark);
+  border: 1px solid color-mix(in srgb, var(--mark) 40%, transparent);
+  background: color-mix(in srgb, var(--mark) 10%, transparent);
+}
+@media (prefers-reduced-motion: reduce) {
+  .svc-arrow, .svc-arrow-label { transition: none; }
+}

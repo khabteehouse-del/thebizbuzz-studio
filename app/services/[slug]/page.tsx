@@ -7,6 +7,7 @@ import { site } from "@/data/site";
 import { Button } from "@/components/shared/button";
 import { BreadcrumbSchema } from "@/components/shared/breadcrumb-schema";
 import { ServiceBanner } from "@/components/shared/service-banner";
+import { ServiceArrows, ServiceNavRow } from "@/components/shared/service-nav";
 import { ServiceScreens } from "@/components/shared/service-screens";
 import { DesignGallery } from "@/components/design/gallery";
 import { designCredit } from "@/data/designs";
@@ -86,7 +87,11 @@ export default async function ServicePageRoute({ params }: Props) {
         </Link>
 
         <div className="mt-6">
-          <ServiceBanner service={service} page={page} />
+          <div className="relative">
+            <ServiceBanner service={service} page={page} />
+            <ServiceArrows id={service.id} />
+          </div>
+          <ServiceNavRow id={service.id} />
         </div>
 
         <p className="section-label mt-12" style={{ color: service.mark }}>

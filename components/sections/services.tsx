@@ -596,6 +596,10 @@ function Tile({
   );
 }
 
+/* Rows hold three tiles. A leftover of one or two tiles is widened to halves so the last row has no gap. */
+const studioRemainder = studioServices.length % 3;
+const halfCount = studioRemainder === 0 ? 0 : studioRemainder === 1 ? 4 : 2;
+
 export function Services() {
   return (
     <section
@@ -643,7 +647,7 @@ export function Services() {
                 key={service.id}
                 service={service}
                 index={index}
-                half={index >= studioServices.length - 2}
+                half={index >= studioServices.length - halfCount}
               />
             ))}
           </div>

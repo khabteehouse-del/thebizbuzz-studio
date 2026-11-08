@@ -472,4 +472,7 @@ export const services: Service[] = [
 ];
 
 export const localServices = services.filter((s) => s.track === "local");
-export const studioServices = services.filter((s) => s.track === "studio");
+/* Mizar is our flagship app, shown in its own section on the homepage, so it is not one of the service tiles. */
+export const studioServices = services.filter(
+  (s) => s.track === "studio" && s.id !== "mizar",
+);

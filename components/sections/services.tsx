@@ -470,8 +470,11 @@ function Tile({
       <div
         ref={tileRef}
         data-flipped={flipped}
-        className="group group/tile relative"
+        className="group group/tile"
       >
+        {/* The hover layers below are positioned against the tile only, so the
+            Learn more link under it cannot push them out of line with the buttons. */}
+        <div className="relative">
         {gallery ? (
           <Link
             href={gallery.href}
@@ -580,6 +583,7 @@ function Tile({
             } inset-x-7 bottom-5 md:inset-x-8 md:bottom-6`}
           />
         )}
+        </div>
         {servicePageSlug(service.id) && !gallery && (
           <Link
             href={`/services/${servicePageSlug(service.id)}`}

@@ -27,14 +27,14 @@ function Card({
 }) {
   return (
     <Reveal delay={index * 0.06}>
-      <div className="group flex items-center gap-4 border-b border-line pb-5 sm:gap-5">
-        <div className="relative h-[72px] w-[72px] shrink-0 overflow-hidden rounded-xl border border-line bg-paper/[0.03] transition-colors duration-500 group-hover:border-paper/25 sm:h-[88px] sm:w-[88px]">
+      <div className="group flex items-center gap-4 sm:gap-5">
+        <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-xl border border-line bg-paper/[0.03] transition-colors duration-500 group-hover:border-paper/25 sm:h-28 sm:w-28">
           {member.image ? (
             <Image
               src={member.image}
               alt={member.name}
               fill
-              sizes="88px"
+              sizes="112px"
               className="object-cover"
             />
           ) : (
@@ -98,7 +98,7 @@ export function Team() {
           </p>
         </Reveal>
 
-        <div className="mt-10 grid gap-x-12 gap-y-6 md:mt-12 md:grid-cols-2">
+        <div className="mt-10 grid gap-x-12 gap-y-7 md:mt-12 md:grid-cols-2">
           {partners.map((member, index) => (
             <Card key={member.id} member={member} index={index} />
           ))}
@@ -110,7 +110,7 @@ export function Team() {
               <p className="section-label">Working with us</p>
             </Reveal>
 
-            <div className="mt-8 grid gap-x-12 gap-y-6 md:grid-cols-2">
+            <div className="mt-8 grid gap-x-12 gap-y-7 md:grid-cols-2">
               {specialists.map((member, index) => (
                 <Card
                   key={member.id}

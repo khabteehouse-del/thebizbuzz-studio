@@ -13,6 +13,28 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "pakistan-services-exports-q1-fy27-november-2026",
+    title: "Pakistan's Services Exports Rise 22.6% to $2.72B in Q1 FY27",
+    description:
+      "Pakistan Bureau of Statistics data shows services exports of $2.72 billion for July to September 2026, with IT and telecom earnings the main driver.",
+    date: "2026-11-09",
+    readTime: "4 min read",
+    tags: ["Tech News", "Pakistan"],
+    image: "/images/blog/pakistan-services-exports-q1-fy27-november-2026.jpg",
+    body: [
+      "Pakistan's services exports reached $2.72 billion in the first quarter of fiscal year 2027 (July to September 2026), up 22.6% from $2.22 billion a year earlier. PhoneWorld, reporting on Pakistan Bureau of Statistics (PBS) figures on November 8, 2026, says the growth came mainly from higher earnings from information technology and other business services.",
+      "The State Bank of Pakistan (SBP) breakdown, as reported by PhoneWorld and TechJuice, puts telecommunications, computer and information services at $1.246 billion for the quarter, up 17.7% from $1.059 billion. That is nearly 46% of total services exports, according to TechJuice. Other business services rose about 28% to $622 million. One caution: the SBP category is broader than software alone, because it also includes telecom services.",
+      "For September alone, IT exports were $435 million, up from $368 million in September 2025. Minute Mirror describes this as the second-highest monthly level on record, and TechJuice reports a 10.4% rise over August's $394 million. PhoneWorld also notes that services imports grew 16.32% to $3.55 billion in the quarter, so the services trade deficit stayed roughly flat at $832 million.",
+      "These are official headline figures, and the sources do not break the totals down by company size or by customer country. They also do not say what drove the quarter beyond the categories above, so any reading beyond the numbers is an estimate.",
+      "What this means for businesses: demand for Pakistan-based software, IT and business services is still growing, which helps companies that outsource development or support. It can also tighten the market for good engineers, so plan contracts, rates and retention with that in mind. If you sell or export services from Pakistan, check that your invoicing and banking channels are set up cleanly, since official figures count only what moves through formal channels.",
+    ],
+    sources: [
+      { label: "PhoneWorld: IT Sector Drives Pakistan's Services Exports to $2.72 Billion in First Quarter of FY27", url: "https://www.phoneworld.com.pk/it-sector-drives-pakistans-services-exports-to-2-72-billion-in-first-quarter-of-fy27/" },
+      { label: "TechJuice: Pakistan's IT & Telecom Exports Hit $1.25 Billion in First Quarter of FY2027", url: "https://techjuice.pk/pakistans-it-telecom-exports-hit-1-25-billion-in-first-quarter-of-fy2027" },
+      { label: "Minute Mirror: Pakistan's IT exports reach second-highest monthly level at $435 million", url: "https://minutemirror.com.pk/pakistans-it-exports-reach-second-highest-monthly-level-at-435-million-645932/" },
+    ],
+  },
+  {
     slug: "nigeria-cbn-stablecoin-rules-november-2026",
     title: "Nigeria's Central Bank Sets Stablecoin Licensing Rules",
     description:

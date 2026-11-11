@@ -40,7 +40,7 @@ export const projects: Project[] = [
     solution:
       "We designed and built it in the clinic's black, gold and grey, with a light option, and Book Consultation, Call and WhatsApp on every page.",
     stack: ["Web design", "English and Urdu", "Light and dark themes"],
-    image: "/images/work/sephora.webp",
+    image: "/images/work/sephora-brand.webp",
     live: "https://sephora-site-six.vercel.app",
     repo: null,
     stats: [

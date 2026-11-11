@@ -460,7 +460,7 @@ export const services: Service[] = [
       cta: "See previews",
       heading: "Sites and apps by BizBuzz",
       items: [
-        { src: "/images/work/sephora.webp", title: "Sephora Aesthetic & Tooth Studio", caption: "Dental and aesthetics clinic", alt: "Sephora Aesthetic and Tooth Studio website, home page hero", width: 1672, height: 941 },
+        { src: "/images/work/sephora-brand.webp", title: "Sephora Aesthetic & Tooth Studio", caption: "Dental and aesthetics clinic", alt: "Sephora Aesthetic and Tooth Studio website, home page hero", width: 1672, height: 941 },
         { src: "/images/work/qadir-q-v2.jpg", title: "Qadir Q", caption: "Handmade bags", alt: "Qadir Q handmade bags website, home page", width: 703, height: 925 },
         { src: "/images/work/mb-autoparts.jpg", title: "MB Auto Parts", caption: "Inventory system", alt: "MB Auto Parts operations dashboard", width: 1827, height: 845 },
         { src: "/images/work/fluxorx-v2.jpg", title: "FluxorX", caption: "Enterprise AI", alt: "FluxorX sign-in page", width: 1600, height: 952 },

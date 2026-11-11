@@ -28,11 +28,11 @@ export function Work() {
 
         <Reveal>
           <p className="mx-auto mt-14 max-w-xl text-center font-display text-xl font-medium leading-snug tracking-[-0.02em] text-paper md:mt-20 md:text-2xl">
-            A premium brand site, built in one night.
+            A clinic website as calm as the clinic.
           </p>
           <p className="mx-auto mt-3 max-w-md text-center text-sm leading-relaxed text-muted">
-            Qadir Q is proof that boutique brands can launch with a site that
-            looks and feels premium, in days instead of months.
+            Sephora Aesthetic & Tooth Studio shows what a private clinic can
+            have: a premium, bilingual site in its own black and gold.
           </p>
           <div className="mt-8 flex justify-center">
             <Button href="/work" size="lg">

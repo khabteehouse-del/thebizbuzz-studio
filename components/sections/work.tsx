@@ -13,10 +13,10 @@ export function Work() {
         <Reveal>
           <p className="section-label">Selected work</p>
           <h2 className="mt-7 max-w-2xl font-display text-3xl font-medium leading-[1.08] tracking-[-0.03em] text-paper sm:text-4xl md:text-6xl">
-            Systems we built and shipped
+            Websites and AI tools we built and shipped
           </h2>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-muted">
-            AI systems and client builds, each with what it does and what it
+            Websites and AI tools, each with what it does and what it
             measured. Point at a tile for the detail, open the live ones and
             judge the engineering before we speak.
           </p>

@@ -41,7 +41,7 @@ export const projects: Project[] = [
       "We designed and built the site in the clinic's black, gold and grey look, with a light option for readers who prefer it. It covers dental care, aesthetics, the doctors and a gallery, and every page keeps Book Consultation, Call and WhatsApp within reach.",
     stack: ["Web design", "English and Urdu", "Light and dark themes", "WhatsApp booking"],
     image: "/images/work/sephora.webp",
-    live: null,
+    live: "https://sephora-site-six.vercel.app",
     repo: null,
     stats: [
       { label: "Languages", value: "English and Urdu" },

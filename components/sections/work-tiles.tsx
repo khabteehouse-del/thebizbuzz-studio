@@ -64,7 +64,7 @@ export function WorkTiles({ items }: { items: Project[] }) {
   return (
     <div ref={gridRef} className="grid gap-x-6 gap-y-12 md:grid-cols-2 md:gap-y-16">
       {items.map((project, index) => (
-        <Reveal key={project.id} delay={(index % 2) * 0.08}>
+        <Reveal key={project.id} delay={(index % 2) * 0.08} className="h-full">
           <Tile project={project} lit={lit === index} order={index % 2} />
         </Reveal>
       ))}
@@ -84,9 +84,11 @@ function Tile({
   const [open, setOpen] = useState(false);
   const client = project.kind === "client";
 
+  /* The header grows to fill the row, so the pictures of two tiles side by side always
+     start at the same height, whatever the title or description length. */
   return (
-    <div>
-      <header className="mb-3 flex items-start justify-between gap-4 px-1 md:mb-4">
+    <div className="flex h-full flex-col">
+      <header className="mb-3 flex flex-1 items-start justify-between gap-4 px-1 md:mb-4">
         <div className="min-w-0">
           <h3 className="font-display text-2xl font-medium tracking-[-0.03em] text-paper md:text-3xl">
             <TileTitle text={project.name} lit={lit} delay={order * 220} />

@@ -29,23 +29,23 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    id: "sukoon",
-    kind: "product",
+    id: "sephora-clinic",
+    kind: "client",
     blurb:
-      "Session companion software that helps psychologists run calmer, better sessions.",
-    name: "Sukoon",
-    category: "SaaS for psychologists and clinics",
+      "A bilingual website for a dental and aesthetics studio in Quetta, in the clinic's own black and gold.",
+    name: "Sephora Aesthetic & Tooth Studio",
+    category: "Web design, dental and aesthetics clinic",
     problem:
-      "Psychologists need a calm way to get a conversation started, especially with children, teens and people who find it hard to talk, and every session should leave a clear record behind.",
+      "A private studio offering specialist dental care and refined aesthetic treatments needed a website as calm and premium as the clinic itself, one that patients could read in English or Urdu.",
     solution:
-      "A software-as-a-service platform where each institute gets its own private workspace, with invite-code onboarding, individual psychologist accounts, usage limits and an admin console. Clinicians use age-based activities and questionnaires for kids, teens, adults and older adults, and each one ends in a clear summary, printable session notes and take-home exercise cards. It works on phone, tablet and laptop, needs no names, and erases answers automatically when the session ends. Now onboarding institutes through a free pilot. Designed and built by Amrit Hayat for BizBuzz.",
-    stack: ["Multi-institute SaaS", "Admin console", "Invite-code onboarding", "Privacy by design"],
-    image: "/images/work/sukoon.jpg",
-    live: "https://sukoon-ebon.vercel.app",
+      "We designed and built the site in the clinic's black, gold and grey look, with a light option for readers who prefer it. It covers dental care, aesthetics, the doctors and a gallery, and every page keeps Book Consultation, Call and WhatsApp within reach.",
+    stack: ["Web design", "English and Urdu", "Light and dark themes", "WhatsApp booking"],
+    image: "/images/work/sephora.webp",
+    live: null,
     repo: null,
     stats: [
-      { label: "Age groups covered", value: "4" },
-      { label: "Status", value: "Free pilot" },
+      { label: "Languages", value: "English and Urdu" },
+      { label: "Looks", value: "Two themes" },
     ],
   },
   {
@@ -89,23 +89,23 @@ export const projects: Project[] = [
     ],
   },
   {
-    id: "sephora-clinic",
-    kind: "client",
+    id: "sukoon",
+    kind: "product",
     blurb:
-      "A bilingual website for a dental and aesthetics studio in Quetta, in the clinic's own black and gold.",
-    name: "Sephora Aesthetic & Tooth Studio",
-    category: "Web design, dental and aesthetics clinic",
+      "Session companion software that helps psychologists run calmer, better sessions.",
+    name: "Sukoon",
+    category: "SaaS for psychologists and clinics",
     problem:
-      "A private studio offering specialist dental care and refined aesthetic treatments needed a website as calm and premium as the clinic itself, one that patients could read in English or Urdu.",
+      "Psychologists need a calm way to get a conversation started, especially with children, teens and people who find it hard to talk, and every session should leave a clear record behind.",
     solution:
-      "We designed and built the site in the clinic's black, gold and grey look, with a light option for readers who prefer it. It covers dental care, aesthetics, the doctors and a gallery, and every page keeps Book Consultation, Call and WhatsApp within reach.",
-    stack: ["Web design", "English and Urdu", "Light and dark themes", "WhatsApp booking"],
-    image: "/images/work/sephora.webp",
-    live: null,
+      "A software-as-a-service platform where each institute gets its own private workspace, with invite-code onboarding, individual psychologist accounts, usage limits and an admin console. Clinicians use age-based activities and questionnaires for kids, teens, adults and older adults, and each one ends in a clear summary, printable session notes and take-home exercise cards. It works on phone, tablet and laptop, needs no names, and erases answers automatically when the session ends. Now onboarding institutes through a free pilot. Designed and built by Amrit Hayat for BizBuzz.",
+    stack: ["Multi-institute SaaS", "Admin console", "Invite-code onboarding", "Privacy by design"],
+    image: "/images/work/sukoon.jpg",
+    live: "https://sukoon-ebon.vercel.app",
     repo: null,
     stats: [
-      { label: "Languages", value: "English and Urdu" },
-      { label: "Looks", value: "Two themes" },
+      { label: "Age groups covered", value: "4" },
+      { label: "Status", value: "Free pilot" },
     ],
   },
   {

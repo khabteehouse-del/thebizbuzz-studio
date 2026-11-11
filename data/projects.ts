@@ -36,10 +36,10 @@ export const projects: Project[] = [
     name: "Sephora Aesthetic & Tooth Studio",
     category: "Web design, dental and aesthetics clinic",
     problem:
-      "A private studio offering specialist dental care and refined aesthetic treatments needed a website as calm and premium as the clinic itself, one that patients could read in English or Urdu.",
+      "A private dental and aesthetics studio needed a website as calm and premium as the clinic itself, readable in English or Urdu.",
     solution:
-      "We designed and built the site in the clinic's black, gold and grey look, with a light option for readers who prefer it. It covers dental care, aesthetics, the doctors and a gallery, and every page keeps Book Consultation, Call and WhatsApp within reach.",
-    stack: ["Web design", "English and Urdu", "Light and dark themes", "WhatsApp booking"],
+      "We designed and built it in the clinic's black, gold and grey, with a light option, and Book Consultation, Call and WhatsApp on every page.",
+    stack: ["Web design", "English and Urdu", "Light and dark themes"],
     image: "/images/work/sephora.webp",
     live: "https://sephora-site-six.vercel.app",
     repo: null,
@@ -56,9 +56,9 @@ export const projects: Project[] = [
     name: "FluxorX",
     category: "Enterprise AI systems",
     problem:
-      "Enterprise AI dashboards fail in two ways. They hallucinate on business-critical numbers, or they cannot handle open-ended questions.",
+      "A private dental and aesthetics studio needed a website as calm and premium as the clinic itself, readable in English or Urdu.",
     solution:
-      "A dual-tier architecture that solves both. Deterministic queries for metrics that must be exact, Claude reasoning for everything conversational. Ships with observability, MCP tool exposure and cloud-native deployment across Docker, Azure and Kubernetes.",
+      "We designed and built it in the clinic's black, gold and grey, with a light option, and Book Consultation, Call and WhatsApp on every page.",
     stack: ["Claude", "MCP", "Docker", "Azure", "Kubernetes"],
     image: "/images/work/fluxorx-v2.jpg",
     live: "https://fluxorx.vercel.app",
@@ -76,9 +76,9 @@ export const projects: Project[] = [
     name: "VeriDoc",
     category: "Autonomous AI agents",
     problem:
-      "Contract review is slow, expensive and inconsistent. Off-the-shelf models speed it up but hallucinate conclusions the contract never contained.",
+      "A private dental and aesthetics studio needed a website as calm and premium as the clinic itself, readable in English or Urdu.",
     solution:
-      "A four-step LangGraph agent that extracts clauses, assesses risk, generates summaries and produces a final report. Every conclusion is verified against source data before it reaches the user.",
+      "We designed and built it in the clinic's black, gold and grey, with a light option, and Book Consultation, Call and WhatsApp on every page.",
     stack: ["LangGraph", "Claude", "Next.js", "Vercel"],
     image: "/images/work/veridoc.jpg",
     live: "https://veridoc-two.vercel.app",
@@ -96,9 +96,9 @@ export const projects: Project[] = [
     name: "Sukoon",
     category: "SaaS for psychologists and clinics",
     problem:
-      "Psychologists need a calm way to get a conversation started, especially with children, teens and people who find it hard to talk, and every session should leave a clear record behind.",
+      "A private dental and aesthetics studio needed a website as calm and premium as the clinic itself, readable in English or Urdu.",
     solution:
-      "A software-as-a-service platform where each institute gets its own private workspace, with invite-code onboarding, individual psychologist accounts, usage limits and an admin console. Clinicians use age-based activities and questionnaires for kids, teens, adults and older adults, and each one ends in a clear summary, printable session notes and take-home exercise cards. It works on phone, tablet and laptop, needs no names, and erases answers automatically when the session ends. Now onboarding institutes through a free pilot. Designed and built by Amrit Hayat for BizBuzz.",
+      "We designed and built it in the clinic's black, gold and grey, with a light option, and Book Consultation, Call and WhatsApp on every page.",
     stack: ["Multi-institute SaaS", "Admin console", "Invite-code onboarding", "Privacy by design"],
     image: "/images/work/sukoon.jpg",
     live: "https://sukoon-ebon.vercel.app",

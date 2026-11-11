@@ -43,10 +43,10 @@ export function AccentuateStrip() {
               className="pointer-events-none absolute bottom-0 right-4 hidden w-[30rem] max-w-[42%] md:block"
             >
               <Image
-                src="/images/accentuate/worker.webp"
+                src="/images/accentuate/owner-cash.webp"
                 alt=""
-                width={800}
-                height={769}
+                width={1000}
+                height={962}
                 sizes="(min-width: 768px) 30rem, 0px"
                 className="h-auto w-full drop-shadow-[0_14px_22px_rgba(0,0,0,0.55)]"
               />

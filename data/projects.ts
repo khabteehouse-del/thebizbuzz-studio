@@ -106,6 +106,26 @@ export const projects: Project[] = [
     stats: [{ label: "Brief to live", value: "One night" }],
   },
   {
+    id: "sephora-clinic",
+    kind: "client",
+    blurb:
+      "A bilingual website for a dental and aesthetics studio in Quetta, in the clinic's own black and gold.",
+    name: "Sephora Aesthetic & Tooth Studio",
+    category: "Web design, dental and aesthetics clinic",
+    problem:
+      "A private studio offering specialist dental care and refined aesthetic treatments needed a website as calm and premium as the clinic itself, one that patients could read in English or Urdu.",
+    solution:
+      "We designed and built the site in the clinic's black, gold and grey look, with a light option for readers who prefer it. It covers dental care, aesthetics, the doctors and a gallery, and every page keeps Book Consultation, Call and WhatsApp within reach.",
+    stack: ["Web design", "English and Urdu", "Light and dark themes", "WhatsApp booking"],
+    image: "/images/work/sephora.webp",
+    live: null,
+    repo: null,
+    stats: [
+      { label: "Languages", value: "English and Urdu" },
+      { label: "Looks", value: "Two themes" },
+    ],
+  },
+  {
     id: "dentivue",
     kind: "product",
     blurb:

@@ -27,14 +27,7 @@ export function Work() {
         </div>
 
         <Reveal>
-          <p className="mx-auto mt-14 max-w-xl text-center font-display text-xl font-medium leading-snug tracking-[-0.02em] text-paper md:mt-20 md:text-2xl">
-            A clinic website as calm as the clinic.
-          </p>
-          <p className="mx-auto mt-3 max-w-md text-center text-sm leading-relaxed text-muted">
-            Sephora Aesthetic & Tooth Studio shows what a private clinic can
-            have: a premium, bilingual site in its own black and gold.
-          </p>
-          <div className="mt-8 flex justify-center">
+          <div className="mt-14 flex justify-center md:mt-20">
             <Button href="/work" size="lg">
               See all work
             </Button>

@@ -1568,7 +1568,7 @@ body {
   transition-delay: calc(0.2s + var(--i, 0) * 0.07s);
 }
 
-@media (hover: hover) {
+@media (hover: hover) and (pointer: fine) {
   .work-tile:hover .work-panel {
     transform: none;
     opacity: 1;

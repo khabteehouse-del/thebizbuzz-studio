@@ -233,7 +233,7 @@ export function Tracks() {
                 from={index === 0 ? "left" : "right"}
                 delay={index * 0.55}
               >
-                <ExpandUp className="h-full">
+                <ExpandUp className="h-full" delay={index * 0.35}>
                 <Link
                   href={door.href}
                   className="group relative flex h-full flex-col overflow-hidden rounded-2xl border p-7 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1.5 sm:p-9 md:p-12"

@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 import { approach } from "@/data/content";
 import { Reveal } from "@/components/shared/reveal";
+import { LineReveal } from "@/components/shared/line-reveal";
 import { Orbs } from "@/components/shared/orbs";
 
 /*
@@ -58,7 +59,7 @@ export function Approach() {
               </div>
               <p className="section-label relative">How we work</p>
               <h2 className="relative mt-7 font-display text-3xl font-medium leading-[1.08] tracking-[-0.03em] text-paper sm:text-4xl md:text-6xl">
-                Fewer surprises, by design
+                <LineReveal text="Fewer surprises, by design" />
               </h2>
               <p className="relative mt-6 max-w-sm text-base leading-relaxed text-muted">
                 The process below is not a philosophy. It is what we do on

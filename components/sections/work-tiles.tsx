@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import type { Project } from "@/data/projects";
-import { Reveal } from "@/components/shared/reveal";
+import { GatherIn } from "@/components/shared/fly-in";
 import { TileTitle } from "@/components/shared/tile-title";
 
 /*
@@ -62,12 +62,15 @@ export function WorkTiles({ items }: { items: Project[] }) {
   }, [items.length]);
 
   return (
-    <div ref={gridRef} className="grid gap-x-6 gap-y-12 md:grid-cols-2 md:gap-y-16">
-      {items.map((project, index) => (
-        <Reveal key={project.id} delay={(index % 2) * 0.08} className="h-full">
-          <Tile project={project} lit={lit === index} order={index % 2} />
-        </Reveal>
-      ))}
+    /* Sideways clip so tiles flying in from the edges never add a horizontal scrollbar */
+    <div className="-mx-3 px-3 [overflow-x:clip]">
+      <div ref={gridRef} className="grid gap-x-6 gap-y-12 md:grid-cols-2 md:gap-y-16">
+        {items.map((project, index) => (
+          <GatherIn key={project.id} index={index} className="h-full">
+            <Tile project={project} lit={lit === index} order={index % 2} />
+          </GatherIn>
+        ))}
+      </div>
     </div>
   );
 }

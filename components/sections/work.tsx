@@ -1,5 +1,6 @@
 import { projects } from "@/data/projects";
 import { Reveal } from "@/components/shared/reveal";
+import { LineReveal } from "@/components/shared/line-reveal";
 import { Button } from "@/components/shared/button";
 import { WorkTiles } from "@/components/sections/work-tiles";
 
@@ -13,7 +14,7 @@ export function Work() {
         <Reveal>
           <p className="section-label">Selected work</p>
           <h2 className="mt-7 max-w-2xl font-display text-3xl font-medium leading-[1.08] tracking-[-0.03em] text-paper sm:text-4xl md:text-6xl">
-            Websites and AI tools we built and shipped
+            <LineReveal text="Websites and AI tools we built and shipped" />
           </h2>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-muted">
             Websites and AI tools, each with what it does and what it

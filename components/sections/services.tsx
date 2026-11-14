@@ -7,6 +7,8 @@ import { ArrowUpRight, Eye, Play } from "lucide-react";
 import type { Service } from "@/data/services";
 import { localServices, studioServices } from "@/data/services";
 import { Reveal } from "@/components/shared/reveal";
+import { FlyIn } from "@/components/shared/fly-in";
+import { LineReveal } from "@/components/shared/line-reveal";
 import { Orbs } from "@/components/shared/orbs";
 import { MizarLogo } from "@/components/shared/mizar-logo";
 import dynamic from "next/dynamic";
@@ -90,6 +92,13 @@ function useAutoFlip(
       calm.removeEventListener("change", start);
     };
   }, [ref, setFlipped]);
+}
+
+/* A stable number from the service id, so every tile keeps its own flight angle */
+function seedOf(id: string) {
+  let h = 7;
+  for (let i = 0; i < id.length; i++) h = (h * 31 + id.charCodeAt(i)) % 9973;
+  return h;
 }
 
 function Tile({
@@ -461,8 +470,8 @@ function Tile({
   );
 
   return (
-    <Reveal
-      delay={index * 0.05}
+    <FlyIn
+      index={seedOf(service.id)}
       className={half ? "lg:col-span-3" : "lg:col-span-2"}
     >
       {/* The wrapper is a hover group too, so a link laid over the tile
@@ -600,7 +609,7 @@ function Tile({
           </div>
         )}
       </div>
-    </Reveal>
+    </FlyIn>
   );
 }
 
@@ -621,7 +630,7 @@ export function Services() {
           <Reveal>
             <p className="section-label">What we do</p>
             <h2 className="mt-7 max-w-2xl font-display text-3xl font-medium leading-[1.08] tracking-[-0.03em] text-paper sm:text-4xl md:text-6xl">
-              Thirteen services, one team, built to ship
+              <LineReveal text="Thirteen services, one team, built to ship" />
             </h2>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-muted">
               Most agencies hand you off between departments. Here the people

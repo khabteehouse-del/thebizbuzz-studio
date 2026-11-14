@@ -3,6 +3,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Reveal } from "@/components/shared/reveal";
+import { LineReveal } from "@/components/shared/line-reveal";
+import { ExpandUp } from "@/components/shared/expand-up";
 
 /*
   The fork. The most important section on the page.
@@ -124,6 +126,82 @@ const doors = [
   },
 ];
 
+/* A figure standing on a slim levitating drum with a glowing band (large screens only). */
+function AnchorFigure({ src, side }: { src: string; side: "left" | "right" }) {
+  const delay = side === "left" ? "0s" : "-1.2s";
+  /* Curved bottom edge shared by the drum body and its glowing band */
+  const curve = "0 0 50% 50% / 0 0 9px 9px";
+
+  return (
+    <div
+      aria-hidden="true"
+      className={`pointer-events-none absolute bottom-0 z-20 hidden h-[330px] w-[140px] lg:block xl:h-[370px] xl:w-[160px] ${
+        side === "left" ? "-left-8 xl:-left-28" : "-right-8 xl:-right-28"
+      }`}
+    >
+      {/* Light on the ground below the drum */}
+      <span
+        className="anchor-ground absolute -bottom-2 left-1/2 h-3 w-[80%] -translate-x-1/2 rounded-[50%] bg-[#4ea3ec] blur-[10px]"
+        style={{ animationDelay: delay }}
+      />
+
+      <div className="anchor-bob absolute inset-0" style={{ animationDelay: delay }}>
+        {/* The figure, lifted so its feet rest on the top face */}
+        <div className="absolute inset-x-0 bottom-[22px] top-0">
+          <Image
+            src={src}
+            alt=""
+            fill
+            className="object-contain object-bottom opacity-90"
+            sizes="160px"
+          />
+        </div>
+
+        {/* The drum: slim cylinder, lit in the middle, dark at the edges */}
+        <div className="absolute bottom-0 left-1/2 h-[30px] w-[96%] -translate-x-1/2">
+          {/* Side wall */}
+          <span
+            className="absolute inset-x-0 bottom-0 h-[24px]"
+            style={{
+              borderRadius: curve,
+              background:
+                "linear-gradient(90deg, #040d1c 0%, #0d3466 28%, #1a5cae 50%, #0d3466 72%, #040d1c 100%)",
+              boxShadow: "0 8px 22px -2px rgba(30,127,214,0.65)",
+            }}
+          />
+          {/* Glowing band around the middle of the side wall */}
+          <span
+            className="absolute inset-x-0 bottom-[7px] h-[9px]"
+            style={{
+              borderRadius: curve,
+              borderBottom: "2px solid #bfe9ff",
+              background:
+                "linear-gradient(180deg, rgba(124,212,255,0) 0%, rgba(124,212,255,0.55) 100%)",
+              boxShadow:
+                "0 3px 9px rgba(124,212,255,0.9), 0 0 18px rgba(78,163,236,0.7)",
+            }}
+          />
+          {/* Top face */}
+          <span
+            className="absolute inset-x-0 top-0 h-[13px] rounded-[50%]"
+            style={{
+              background:
+                "radial-gradient(ellipse at 50% 45%, #e3f5ff 0%, #6fbdf5 45%, #1e7fd6 100%)",
+              boxShadow:
+                "0 0 12px 1px rgba(124,212,255,0.85), inset 0 -2px 3px rgba(10,40,80,0.45)",
+            }}
+          />
+          {/* Thin ring on the top face for the futuristic look */}
+          <span
+            className="absolute inset-x-[12%] top-[3px] h-[7px] rounded-[50%]"
+            style={{ border: "1px solid rgba(255,255,255,0.7)" }}
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
+
 /*
   First fully opaque section on the page. The fixed hero video ends
   here: this background covers it for everything below.
@@ -135,42 +213,27 @@ export function Tracks() {
         <Reveal>
           <p className="section-label">Two ways in</p>
           <h2 className="mt-7 max-w-3xl font-display text-[1.75rem] font-medium leading-[1.15] tracking-[-0.03em] text-paper sm:text-3xl md:text-5xl">
-            Two practices, one standard of work.
+            <LineReveal text="Two practices, one standard of work." />
           </h2>
         </Reveal>
 
         <div className="relative mt-16 grid gap-6 md:grid-cols-2 md:gap-8">
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute -left-8 bottom-0 z-20 hidden h-[300px] w-[140px] lg:block xl:-left-28 xl:h-[340px] xl:w-[160px]"
-          >
-            <Image
-              src="/images/anchor/women-anchor-v2.png"
-              alt=""
-              fill
-              className="object-contain object-bottom opacity-90"
-              sizes="160px"
-            />
-          </div>
-
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute -right-8 bottom-0 z-20 hidden h-[300px] w-[140px] lg:block xl:-right-28 xl:h-[340px] xl:w-[160px]"
-          >
-            <Image
-              src="/images/anchor/man-anchor.png"
-              alt=""
-              fill
-              className="object-contain object-bottom opacity-90"
-              sizes="160px"
-            />
-          </div>
+          <AnchorFigure
+            src="/images/anchor/women-anchor-v2.png"
+            side="left"
+          />
+          <AnchorFigure src="/images/anchor/man-anchor.png" side="right" />
 
           {doors.map((door, index) => {
             const Icon = door.icon;
 
             return (
-              <Reveal key={door.id} delay={index * 0.08}>
+              <Reveal
+                key={door.id}
+                from={index === 0 ? "left" : "right"}
+                delay={index * 0.55}
+              >
+                <ExpandUp className="h-full" delay={index * 0.35}>
                 <Link
                   href={door.href}
                   className="group relative flex h-full flex-col overflow-hidden rounded-2xl border p-7 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1.5 sm:p-9 md:p-12"
@@ -276,6 +339,7 @@ export function Tracks() {
                     </span>
                   </div>
                 </Link>
+                </ExpandUp>
               </Reveal>
             );
           })}

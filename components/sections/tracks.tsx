@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Reveal } from "@/components/shared/reveal";
 import { LineReveal } from "@/components/shared/line-reveal";
-import { ExpandUp } from "@/components/shared/expand-up";
+import { RiseIn } from "@/components/shared/rise-in";
 
 /*
   The fork. The most important section on the page.
@@ -127,7 +127,16 @@ const doors = [
 ];
 
 /* A figure standing on a slim levitating drum with a glowing band (large screens only). */
-function AnchorFigure({ src, side }: { src: string; side: "left" | "right" }) {
+function AnchorFigure({
+  src,
+  side,
+  inside = false,
+}: {
+  src: string;
+  side: "left" | "right";
+  /* inside: sits in the card on phones and tablets; otherwise stands beside the cards on large screens */
+  inside?: boolean;
+}) {
   const delay = side === "left" ? "0s" : "-1.2s";
   /* Curved bottom edge shared by the drum body and its glowing band */
   const curve = "0 0 50% 50% / 0 0 9px 9px";
@@ -135,9 +144,13 @@ function AnchorFigure({ src, side }: { src: string; side: "left" | "right" }) {
   return (
     <div
       aria-hidden="true"
-      className={`pointer-events-none absolute bottom-0 z-20 hidden h-[330px] w-[140px] lg:block xl:h-[370px] xl:w-[160px] ${
-        side === "left" ? "-left-8 xl:-left-28" : "-right-8 xl:-right-28"
-      }`}
+      className={
+        inside
+          ? "pointer-events-none relative z-10 h-[215px] w-[112px] shrink-0 self-end lg:hidden"
+          : `pointer-events-none absolute bottom-0 z-20 hidden h-[330px] w-[140px] lg:block xl:h-[370px] xl:w-[160px] ${
+              side === "left" ? "-left-8 xl:-left-28" : "-right-8 xl:-right-28"
+            }`
+      }
     >
       {/* Light on the ground below the drum */}
       <span
@@ -146,17 +159,6 @@ function AnchorFigure({ src, side }: { src: string; side: "left" | "right" }) {
       />
 
       <div className="anchor-bob absolute inset-0" style={{ animationDelay: delay }}>
-        {/* The figure, lifted so its feet rest on the top face */}
-        <div className="absolute inset-x-0 bottom-[22px] top-0">
-          <Image
-            src={src}
-            alt=""
-            fill
-            className="object-contain object-bottom opacity-90"
-            sizes="160px"
-          />
-        </div>
-
         {/* The drum: slim cylinder, lit in the middle, dark at the edges */}
         <div className="absolute bottom-0 left-1/2 h-[30px] w-[96%] -translate-x-1/2">
           {/* Side wall */}
@@ -181,6 +183,20 @@ function AnchorFigure({ src, side }: { src: string; side: "left" | "right" }) {
                 "0 3px 9px rgba(124,212,255,0.9), 0 0 18px rgba(78,163,236,0.7)",
             }}
           />
+          {/* Light segments that travel around the side wall, so the sides turn while the top stays still */}
+          <span
+            className="anchor-spin absolute inset-x-0 bottom-[7px] h-[9px]"
+            style={{
+              borderRadius: curve,
+              backgroundImage:
+                "linear-gradient(90deg, transparent 0%, transparent 55%, rgba(225,246,255,0.95) 55%, rgba(225,246,255,0.95) 72%, transparent 72%)",
+              backgroundSize: "26px 100%",
+              WebkitMaskImage:
+                "linear-gradient(90deg, transparent 0%, #000 22%, #000 78%, transparent 100%)",
+              maskImage:
+                "linear-gradient(90deg, transparent 0%, #000 22%, #000 78%, transparent 100%)",
+            }}
+          />
           {/* Top face */}
           <span
             className="absolute inset-x-0 top-0 h-[13px] rounded-[50%]"
@@ -195,6 +211,20 @@ function AnchorFigure({ src, side }: { src: string; side: "left" | "right" }) {
           <span
             className="absolute inset-x-[12%] top-[3px] h-[7px] rounded-[50%]"
             style={{ border: "1px solid rgba(255,255,255,0.7)" }}
+          />
+        </div>
+
+        {/* Soft shadow where the feet touch the platform */}
+        <span className="absolute bottom-[19px] left-1/2 h-[9px] w-[36%] -translate-x-1/2 rounded-[50%] bg-black/50 blur-[3px]" />
+
+        {/* The figure stands in front of the top face, soles at its middle */}
+        <div className="absolute inset-x-0 bottom-[21px] top-0">
+          <Image
+            src={src}
+            alt=""
+            fill
+            className="object-contain object-bottom opacity-90"
+            sizes="160px"
           />
         </div>
       </div>
@@ -219,10 +249,10 @@ export function Tracks() {
 
         <div className="relative mt-16 grid gap-6 md:grid-cols-2 md:gap-8">
           <AnchorFigure
-            src="/images/anchor/women-anchor-v2.png"
+            src="/images/anchor/women-anchor-v3.png"
             side="left"
           />
-          <AnchorFigure src="/images/anchor/man-anchor.png" side="right" />
+          <AnchorFigure src="/images/anchor/man-anchor-v2.png" side="right" />
 
           {doors.map((door, index) => {
             const Icon = door.icon;
@@ -233,15 +263,20 @@ export function Tracks() {
                 from={index === 0 ? "left" : "right"}
                 delay={index * 0.55}
               >
-                <ExpandUp className="h-full" delay={index * 0.35}>
-                <Link
-                  href={door.href}
-                  className="group relative flex h-full flex-col overflow-hidden rounded-2xl border p-7 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1.5 sm:p-9 md:p-12"
+                <RiseIn className="h-full" delay={index * 0.35}>
+                <div
+                  className="group relative flex h-full flex-col overflow-hidden rounded-2xl border p-5 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1.5 sm:p-7 md:p-12"
                   style={{
                     backgroundColor: door.tint,
                     borderColor: `${door.mark}33`,
                   }}
                 >
+                  {/* The whole card opens its section. The listing check below is its own link on top. */}
+                  <Link
+                    href={door.href}
+                    aria-label={`${door.cta}: ${door.title}`}
+                    className="absolute inset-0 z-[1]"
+                  />
                   <span
                     aria-hidden="true"
                     className="pointer-events-none absolute -right-3 -top-8 select-none font-display text-[7rem] font-medium leading-none tracking-[-0.05em] transition-opacity duration-500 group-hover:opacity-20 sm:text-[11rem] md:text-[15rem]"
@@ -259,7 +294,7 @@ export function Tracks() {
                     }}
                   />
 
-                  <div className="relative flex h-full flex-col">
+                  <div className="pointer-events-none relative z-[2] flex h-full flex-col">
                     <div className="flex items-center gap-4">
                       <span
                         className="flex h-11 w-11 items-center justify-center rounded-[3px] border transition-colors duration-500"
@@ -278,19 +313,21 @@ export function Tracks() {
                       </p>
                     </div>
 
-                    <h3 className="mt-8 font-display text-2xl font-medium leading-[1.15] tracking-[-0.025em] text-paper sm:text-3xl md:text-4xl">
+                    <h3 className="mt-5 font-display md:mt-8 text-2xl font-medium leading-[1.15] tracking-[-0.025em] text-paper sm:text-3xl md:text-4xl">
                       {door.title}
                     </h3>
 
-                    <p className="mt-4 max-w-sm font-display text-lg leading-snug text-paper/80 md:text-xl">
+                    <p className="mt-3 max-w-sm font-display text-lg leading-snug md:mt-4 text-paper/80 md:text-xl">
                       {door.line}
                     </p>
 
-                    <p className="mt-5 max-w-md text-sm leading-relaxed text-paper/55">
+                    <p className="mt-3 max-w-md text-sm leading-snug text-paper/55 md:mt-5 md:leading-relaxed">
                       {door.body}
                     </p>
 
-                    <ul className="mt-9 grid gap-2.5 border-t border-paper/10 pt-8">
+                    <div className="mt-5 grid grid-cols-[minmax(0,1fr)_auto] gap-x-2 border-t border-paper/10 pt-4 md:mt-9 md:pt-8 lg:block">
+                    <div className="min-w-0">
+                    <ul className="grid gap-2 md:gap-2.5">
                       {door.points.map((point, pointIndex) => (
                         <li
                           key={point}
@@ -312,24 +349,38 @@ export function Tracks() {
                       ))}
                     </ul>
 
-                    <p className="mt-8 text-xs leading-relaxed text-paper/65">
+                    <p className="mt-4 text-xs leading-snug text-paper/65 md:mt-8 md:leading-relaxed">
                       {door.footnote}
                     </p>
 
                     {door.tool && (
-                      <span
-                        className="mt-5 inline-flex w-fit items-center gap-2 rounded-[2px] border px-3 py-2 text-xs transition-colors duration-300"
+                      <Link
+                        href={door.tool.href}
+                        className="pointer-events-auto relative z-10 mt-3 inline-flex w-fit items-center gap-2 rounded-[2px] border px-3 py-2 text-xs transition-colors duration-300 hover:bg-white/10 focus-visible:outline focus-visible:outline-2 md:mt-5"
                         style={{
                           borderColor: `${door.mark}55`,
                           color: door.mark,
                         }}
                       >
                         {door.tool.label}
-                      </span>
+                      </Link>
                     )}
+                    </div>
+
+                    {/* Phones and tablets: the figure stands on its platform inside the card */}
+                    <AnchorFigure
+                      inside
+                      src={
+                        index === 0
+                          ? "/images/anchor/women-anchor-left-v1.png"
+                          : "/images/anchor/man-anchor-v2.png"
+                      }
+                      side={index === 0 ? "left" : "right"}
+                    />
+                    </div>
 
                     <span
-                      className="mt-auto flex items-center gap-3 pt-8 text-xs uppercase tracking-[0.12em] text-paper"
+                      className="mt-auto flex items-center gap-3 pt-4 text-xs uppercase tracking-[0.12em] text-paper md:pt-8"
                     >
                       {door.cta}
                       <span
@@ -338,8 +389,8 @@ export function Tracks() {
                       />
                     </span>
                   </div>
-                </Link>
-                </ExpandUp>
+                </div>
+                </RiseIn>
               </Reveal>
             );
           })}

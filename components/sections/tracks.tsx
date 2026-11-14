@@ -159,17 +159,6 @@ function AnchorFigure({
       />
 
       <div className="anchor-bob absolute inset-0" style={{ animationDelay: delay }}>
-        {/* The figure, lifted so its feet rest on the top face */}
-        <div className="absolute inset-x-0 bottom-[16px] top-0">
-          <Image
-            src={src}
-            alt=""
-            fill
-            className="object-contain object-bottom opacity-90"
-            sizes="160px"
-          />
-        </div>
-
         {/* The drum: slim cylinder, lit in the middle, dark at the edges */}
         <div className="absolute bottom-0 left-1/2 h-[30px] w-[96%] -translate-x-1/2">
           {/* Side wall */}
@@ -222,6 +211,20 @@ function AnchorFigure({
           <span
             className="absolute inset-x-[12%] top-[3px] h-[7px] rounded-[50%]"
             style={{ border: "1px solid rgba(255,255,255,0.7)" }}
+          />
+        </div>
+
+        {/* Soft shadow where the feet touch the platform */}
+        <span className="absolute bottom-[19px] left-1/2 h-[9px] w-[36%] -translate-x-1/2 rounded-[50%] bg-black/50 blur-[3px]" />
+
+        {/* The figure stands in front of the top face, soles at its middle */}
+        <div className="absolute inset-x-0 bottom-[21px] top-0">
+          <Image
+            src={src}
+            alt=""
+            fill
+            className="object-contain object-bottom opacity-90"
+            sizes="160px"
           />
         </div>
       </div>

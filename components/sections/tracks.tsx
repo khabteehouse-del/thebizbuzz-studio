@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Reveal } from "@/components/shared/reveal";
+import { LineReveal } from "@/components/shared/line-reveal";
 
 /*
   The fork. The most important section on the page.
@@ -135,7 +136,7 @@ export function Tracks() {
         <Reveal>
           <p className="section-label">Two ways in</p>
           <h2 className="mt-7 max-w-3xl font-display text-[1.75rem] font-medium leading-[1.15] tracking-[-0.03em] text-paper sm:text-3xl md:text-5xl">
-            Two practices, one standard of work.
+            <LineReveal text="Two practices, one standard of work." />
           </h2>
         </Reveal>
 
@@ -170,7 +171,11 @@ export function Tracks() {
             const Icon = door.icon;
 
             return (
-              <Reveal key={door.id} delay={index * 0.08}>
+              <Reveal
+                key={door.id}
+                from={index === 0 ? "left" : "right"}
+                delay={index * 0.55}
+              >
                 <Link
                   href={door.href}
                   className="group relative flex h-full flex-col overflow-hidden rounded-2xl border p-7 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1.5 sm:p-9 md:p-12"

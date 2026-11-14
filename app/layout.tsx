@@ -4,6 +4,7 @@ import { Space_Grotesk, Geist } from "next/font/google";
 import { Nav } from "@/components/layout/nav";
 import { Footer } from "@/components/layout/footer";
 import { SmoothScroll } from "@/components/shared/smooth-scroll";
+import { ScrollProgress } from "@/components/shared/scroll-progress";
 import { Cursor } from "@/components/shared/cursor";
 import { Grain } from "@/components/shared/grain";
 import { GbpWidget } from "@/components/tools/gbp-widget";
@@ -155,6 +156,7 @@ export default function RootLayout({
           style={{ willChange: "transform, opacity", transform: "translateZ(0)" }}
         >
           <SmoothScroll />
+          <ScrollProgress />
           <OffscreenPause />
           <Grain />
           <Cursor />

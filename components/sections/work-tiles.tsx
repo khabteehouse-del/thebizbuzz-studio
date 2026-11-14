@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import type { Project } from "@/data/projects";
-import { FlyIn } from "@/components/shared/fly-in";
+import { GatherIn } from "@/components/shared/fly-in";
 import { TileTitle } from "@/components/shared/tile-title";
 
 /*
@@ -66,9 +66,9 @@ export function WorkTiles({ items }: { items: Project[] }) {
     <div className="-mx-3 px-3 [overflow-x:clip]">
       <div ref={gridRef} className="grid gap-x-6 gap-y-12 md:grid-cols-2 md:gap-y-16">
         {items.map((project, index) => (
-          <FlyIn key={project.id} index={index} className="h-full">
+          <GatherIn key={project.id} index={index} className="h-full">
             <Tile project={project} lit={lit === index} order={index % 2} />
-          </FlyIn>
+          </GatherIn>
         ))}
       </div>
     </div>

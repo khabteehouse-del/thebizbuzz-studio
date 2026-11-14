@@ -125,6 +125,62 @@ const doors = [
   },
 ];
 
+/* A figure standing on a small levitating glowing platform (large screens only). */
+function AnchorFigure({ src, side }: { src: string; side: "left" | "right" }) {
+  return (
+    <div
+      aria-hidden="true"
+      className={`pointer-events-none absolute bottom-0 z-20 hidden h-[330px] w-[140px] lg:block xl:h-[370px] xl:w-[160px] ${
+        side === "left" ? "-left-8 xl:-left-28" : "-right-8 xl:-right-28"
+      }`}
+    >
+      {/* Light on the ground below the platform */}
+      <span
+        className="anchor-ground absolute -bottom-1 left-1/2 h-3 w-[88%] -translate-x-1/2 rounded-[50%] bg-[#4ea3ec] blur-[10px]"
+        style={{ animationDelay: side === "left" ? "0s" : "-1.2s" }}
+      />
+
+      <div
+        className="anchor-bob absolute inset-0"
+        style={{ animationDelay: side === "left" ? "0s" : "-1.2s" }}
+      >
+        {/* The figure, lifted so its feet rest on the disc */}
+        <div className="absolute inset-x-0 bottom-[16px] top-0">
+          <Image
+            src={src}
+            alt=""
+            fill
+            className="object-contain object-bottom opacity-90"
+            sizes="160px"
+          />
+        </div>
+
+        {/* Glow under the disc */}
+        <span className="absolute bottom-[-6px] left-1/2 h-4 w-[104%] -translate-x-1/2 rounded-[50%] bg-[#1e7fd6]/70 blur-[9px]" />
+
+        {/* The disc: dark underside, bright rim, light top face */}
+        <span
+          className="absolute bottom-0 left-1/2 h-[22px] w-[112%] -translate-x-1/2 rounded-[50%]"
+          style={{
+            background:
+              "linear-gradient(180deg, #0c2a52 0%, #123e78 55%, #0a1f3d 100%)",
+            boxShadow:
+              "0 0 22px 4px rgba(78,163,236,0.55), inset 0 -3px 5px rgba(0,0,0,0.5)",
+          }}
+        />
+        <span
+          className="absolute bottom-[8px] left-1/2 h-[14px] w-[112%] -translate-x-1/2 rounded-[50%]"
+          style={{
+            background:
+              "radial-gradient(ellipse at 50% 40%, #bfe6ff 0%, #4ea3ec 55%, #1e7fd6 100%)",
+            boxShadow: "0 0 14px 1px rgba(124,212,255,0.8)",
+          }}
+        />
+      </div>
+    </div>
+  );
+}
+
 /*
   First fully opaque section on the page. The fixed hero video ends
   here: this background covers it for everything below.
@@ -141,31 +197,11 @@ export function Tracks() {
         </Reveal>
 
         <div className="relative mt-16 grid gap-6 md:grid-cols-2 md:gap-8">
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute -left-8 bottom-0 z-20 hidden h-[300px] w-[140px] lg:block xl:-left-28 xl:h-[340px] xl:w-[160px]"
-          >
-            <Image
-              src="/images/anchor/women-anchor-v2.png"
-              alt=""
-              fill
-              className="object-contain object-bottom opacity-90"
-              sizes="160px"
-            />
-          </div>
-
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute -right-8 bottom-0 z-20 hidden h-[300px] w-[140px] lg:block xl:-right-28 xl:h-[340px] xl:w-[160px]"
-          >
-            <Image
-              src="/images/anchor/man-anchor.png"
-              alt=""
-              fill
-              className="object-contain object-bottom opacity-90"
-              sizes="160px"
-            />
-          </div>
+          <AnchorFigure
+            src="/images/anchor/women-anchor-v2.png"
+            side="left"
+          />
+          <AnchorFigure src="/images/anchor/man-anchor.png" side="right" />
 
           {doors.map((door, index) => {
             const Icon = door.icon;

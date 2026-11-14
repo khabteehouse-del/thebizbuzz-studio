@@ -2161,3 +2161,43 @@ section[data-offscreen] *::after {
   .svc-arrow::after { animation: none; display: none; }
   .svc-arrow, .svc-dot, .svc-icon { transition: none; }
 }
+
+/*
+  Anchor figures stand on a small levitating glowing platform. The figure
+  and disc bob up and down together; the glow on the ground below pulses
+  the other way, so it reads as hovering. Still for reduced motion.
+*/
+@keyframes anchor-bob {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-9px);
+  }
+}
+
+@keyframes anchor-ground {
+  from {
+    opacity: 0.85;
+    transform: translateX(-50%) scaleX(1);
+  }
+  to {
+    opacity: 0.45;
+    transform: translateX(-50%) scaleX(0.82);
+  }
+}
+
+.anchor-bob {
+  animation: anchor-bob 3.6s ease-in-out infinite alternate;
+}
+
+.anchor-ground {
+  animation: anchor-ground 3.6s ease-in-out infinite alternate;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .anchor-bob,
+  .anchor-ground {
+    animation: none;
+  }
+}

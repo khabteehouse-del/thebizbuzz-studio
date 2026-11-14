@@ -86,15 +86,15 @@ export function FlyIn({
 }
 
 /*
-  Gather-in, for the Selected work tiles. Each tile slides in from beyond
-  the edge of the screen on its own side, meets the others in the middle
-  of the screen, then moves out to its own slot and sets down there.
-  Tied to scroll, so scrolling back up reverses it.
+  Slide-in, for the Selected work tiles. Each tile is pulled in from beyond
+  the edge of the screen on its own side (left column from the left, right
+  column from the right) in one smooth movement, and sets down on its own
+  spot. Tied to scroll, so scrolling back up pulls it back out the same
+  way. Tiles never travel through each other's slots.
 
   Same safety as FlyIn: at rest every offset is zero, the tile never drops
-  below 35% opacity, and reduced motion means no movement. Phones have a
-  single column already in the middle, so there each tile just slides in
-  from alternating sides.
+  below 35% opacity, and reduced motion means no movement. On phones the
+  single column slides in from alternating sides.
 */
 export function GatherIn({
   index,
@@ -107,9 +107,9 @@ export function GatherIn({
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const reduce = useReducedMotion();
-  /* Distances in pixels, measured from the unmoved grid, kept in a ref so
-     the scroll functions below always read the latest values */
-  const geo = useRef<{ out: number; mid: number } | null>(null);
+  /* Distance to start from, in pixels, measured from the unmoved grid and
+     kept in a ref so the scroll function always reads the latest value */
+  const out = useRef(0);
 
   useEffect(() => {
     const measure = () => {
@@ -124,13 +124,9 @@ export function GatherIn({
         const gap = 24;
         const colW = (rect.width - gap) / 2;
         const slotLeft = rect.left + (left ? 0 : colW + gap);
-        const slotCenter = slotLeft + colW / 2;
-        geo.current = {
-          out: left ? -(slotLeft + colW + 40) : vw - slotLeft + 40,
-          mid: vw / 2 - slotCenter,
-        };
+        out.current = left ? -(slotLeft + colW + 40) : vw - slotLeft + 40;
       } else {
-        geo.current = { out: left ? -vw : vw, mid: 0 };
+        out.current = left ? -vw : vw;
       }
     };
     measure();
@@ -140,24 +136,11 @@ export function GatherIn({
 
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start end", "start 0.3"],
+    offset: ["start end", "start 0.35"],
   });
 
-  const x = useTransform(scrollYProgress, (p) => {
-    const g = geo.current;
-    if (!g) return 0;
-    if (p < 0.5) return g.out + (g.mid - g.out) * easeOut(p / 0.5);
-    return g.mid * (1 - easeOut((p - 0.5) / 0.5));
-  });
-  const y = useTransform(scrollYProgress, [0, 0.5, 1], [90, 40, 0], { ease: easeOut });
-  const rotate = useTransform(
-    scrollYProgress,
-    [0, 0.5, 1],
-    [index % 2 === 0 ? -7 : 7, 0, 0],
-    { ease: easeOut }
-  );
-  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.9, 0.94, 1], { ease: easeOut });
-  const opacity = useTransform(scrollYProgress, [0, 0.35, 1], [0.35, 1, 1], { ease: easeOut });
+  const x = useTransform(scrollYProgress, (p) => out.current * (1 - easeOut(p)));
+  const opacity = useTransform(scrollYProgress, [0, 0.4, 1], [0.35, 1, 1], { ease: easeOut });
 
   if (reduce) {
     return (
@@ -168,7 +151,7 @@ export function GatherIn({
   }
 
   return (
-    <motion.div ref={ref} style={{ x, y, rotate, scale, opacity }} className={className}>
+    <motion.div ref={ref} style={{ x, opacity }} className={className}>
       {children}
     </motion.div>
   );

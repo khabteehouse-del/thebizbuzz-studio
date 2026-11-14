@@ -125,8 +125,12 @@ const doors = [
   },
 ];
 
-/* A figure standing on a small levitating glowing platform (large screens only). */
+/* A figure standing on a slim levitating drum with a glowing band (large screens only). */
 function AnchorFigure({ src, side }: { src: string; side: "left" | "right" }) {
+  const delay = side === "left" ? "0s" : "-1.2s";
+  /* Curved bottom edge shared by the drum body and its glowing band */
+  const curve = "0 0 50% 50% / 0 0 9px 9px";
+
   return (
     <div
       aria-hidden="true"
@@ -134,18 +138,15 @@ function AnchorFigure({ src, side }: { src: string; side: "left" | "right" }) {
         side === "left" ? "-left-8 xl:-left-28" : "-right-8 xl:-right-28"
       }`}
     >
-      {/* Light on the ground below the platform */}
+      {/* Light on the ground below the drum */}
       <span
-        className="anchor-ground absolute -bottom-1 left-1/2 h-3 w-[88%] -translate-x-1/2 rounded-[50%] bg-[#4ea3ec] blur-[10px]"
-        style={{ animationDelay: side === "left" ? "0s" : "-1.2s" }}
+        className="anchor-ground absolute -bottom-2 left-1/2 h-3 w-[80%] -translate-x-1/2 rounded-[50%] bg-[#4ea3ec] blur-[10px]"
+        style={{ animationDelay: delay }}
       />
 
-      <div
-        className="anchor-bob absolute inset-0"
-        style={{ animationDelay: side === "left" ? "0s" : "-1.2s" }}
-      >
-        {/* The figure, lifted so its feet rest on the disc */}
-        <div className="absolute inset-x-0 bottom-[16px] top-0">
+      <div className="anchor-bob absolute inset-0" style={{ animationDelay: delay }}>
+        {/* The figure, lifted so its feet rest on the top face */}
+        <div className="absolute inset-x-0 bottom-[22px] top-0">
           <Image
             src={src}
             alt=""
@@ -155,27 +156,46 @@ function AnchorFigure({ src, side }: { src: string; side: "left" | "right" }) {
           />
         </div>
 
-        {/* Glow under the disc */}
-        <span className="absolute bottom-[-6px] left-1/2 h-4 w-[104%] -translate-x-1/2 rounded-[50%] bg-[#1e7fd6]/70 blur-[9px]" />
-
-        {/* The disc: dark underside, bright rim, light top face */}
-        <span
-          className="absolute bottom-0 left-1/2 h-[22px] w-[112%] -translate-x-1/2 rounded-[50%]"
-          style={{
-            background:
-              "linear-gradient(180deg, #0c2a52 0%, #123e78 55%, #0a1f3d 100%)",
-            boxShadow:
-              "0 0 22px 4px rgba(78,163,236,0.55), inset 0 -3px 5px rgba(0,0,0,0.5)",
-          }}
-        />
-        <span
-          className="absolute bottom-[8px] left-1/2 h-[14px] w-[112%] -translate-x-1/2 rounded-[50%]"
-          style={{
-            background:
-              "radial-gradient(ellipse at 50% 40%, #bfe6ff 0%, #4ea3ec 55%, #1e7fd6 100%)",
-            boxShadow: "0 0 14px 1px rgba(124,212,255,0.8)",
-          }}
-        />
+        {/* The drum: slim cylinder, lit in the middle, dark at the edges */}
+        <div className="absolute bottom-0 left-1/2 h-[30px] w-[96%] -translate-x-1/2">
+          {/* Side wall */}
+          <span
+            className="absolute inset-x-0 bottom-0 h-[24px]"
+            style={{
+              borderRadius: curve,
+              background:
+                "linear-gradient(90deg, #040d1c 0%, #0d3466 28%, #1a5cae 50%, #0d3466 72%, #040d1c 100%)",
+              boxShadow: "0 8px 22px -2px rgba(30,127,214,0.65)",
+            }}
+          />
+          {/* Glowing band around the middle of the side wall */}
+          <span
+            className="absolute inset-x-0 bottom-[7px] h-[9px]"
+            style={{
+              borderRadius: curve,
+              borderBottom: "2px solid #bfe9ff",
+              background:
+                "linear-gradient(180deg, rgba(124,212,255,0) 0%, rgba(124,212,255,0.55) 100%)",
+              boxShadow:
+                "0 3px 9px rgba(124,212,255,0.9), 0 0 18px rgba(78,163,236,0.7)",
+            }}
+          />
+          {/* Top face */}
+          <span
+            className="absolute inset-x-0 top-0 h-[13px] rounded-[50%]"
+            style={{
+              background:
+                "radial-gradient(ellipse at 50% 45%, #e3f5ff 0%, #6fbdf5 45%, #1e7fd6 100%)",
+              boxShadow:
+                "0 0 12px 1px rgba(124,212,255,0.85), inset 0 -2px 3px rgba(10,40,80,0.45)",
+            }}
+          />
+          {/* Thin ring on the top face for the futuristic look */}
+          <span
+            className="absolute inset-x-[12%] top-[3px] h-[7px] rounded-[50%]"
+            style={{ border: "1px solid rgba(255,255,255,0.7)" }}
+          />
+        </div>
       </div>
     </div>
   );

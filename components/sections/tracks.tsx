@@ -261,14 +261,19 @@ export function Tracks() {
                 delay={index * 0.55}
               >
                 <RiseIn className="h-full" delay={index * 0.35}>
-                <Link
-                  href={door.href}
+                <div
                   className="group relative flex h-full flex-col overflow-hidden rounded-2xl border p-5 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1.5 sm:p-7 md:p-12"
                   style={{
                     backgroundColor: door.tint,
                     borderColor: `${door.mark}33`,
                   }}
                 >
+                  {/* The whole card opens its section. The listing check below is its own link on top. */}
+                  <Link
+                    href={door.href}
+                    aria-label={`${door.cta}: ${door.title}`}
+                    className="absolute inset-0 z-[1]"
+                  />
                   <span
                     aria-hidden="true"
                     className="pointer-events-none absolute -right-3 -top-8 select-none font-display text-[7rem] font-medium leading-none tracking-[-0.05em] transition-opacity duration-500 group-hover:opacity-20 sm:text-[11rem] md:text-[15rem]"
@@ -286,7 +291,7 @@ export function Tracks() {
                     }}
                   />
 
-                  <div className="relative flex h-full flex-col">
+                  <div className="pointer-events-none relative z-[2] flex h-full flex-col">
                     <div className="flex items-center gap-4">
                       <span
                         className="flex h-11 w-11 items-center justify-center rounded-[3px] border transition-colors duration-500"
@@ -346,15 +351,16 @@ export function Tracks() {
                     </p>
 
                     {door.tool && (
-                      <span
-                        className="mt-3 inline-flex w-fit items-center gap-2 rounded-[2px] border px-3 py-2 text-xs transition-colors duration-300 md:mt-5"
+                      <Link
+                        href={door.tool.href}
+                        className="pointer-events-auto relative z-10 mt-3 inline-flex w-fit items-center gap-2 rounded-[2px] border px-3 py-2 text-xs transition-colors duration-300 hover:bg-white/10 focus-visible:outline focus-visible:outline-2 md:mt-5"
                         style={{
                           borderColor: `${door.mark}55`,
                           color: door.mark,
                         }}
                       >
                         {door.tool.label}
-                      </span>
+                      </Link>
                     )}
                     </div>
 
@@ -380,7 +386,7 @@ export function Tracks() {
                       />
                     </span>
                   </div>
-                </Link>
+                </div>
                 </RiseIn>
               </Reveal>
             );

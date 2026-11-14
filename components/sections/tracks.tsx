@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Reveal } from "@/components/shared/reveal";
 import { LineReveal } from "@/components/shared/line-reveal";
-import { ExpandUp } from "@/components/shared/expand-up";
+import { RiseIn } from "@/components/shared/rise-in";
 
 /*
   The fork. The most important section on the page.
@@ -246,7 +246,7 @@ export function Tracks() {
                 from={index === 0 ? "left" : "right"}
                 delay={index * 0.55}
               >
-                <ExpandUp className="h-full" delay={index * 0.35}>
+                <RiseIn className="h-full" delay={index * 0.35}>
                 <Link
                   href={door.href}
                   className="group relative flex h-full flex-col overflow-hidden rounded-2xl border p-5 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1.5 sm:p-7 md:p-12"
@@ -367,7 +367,7 @@ export function Tracks() {
                     </span>
                   </div>
                 </Link>
-                </ExpandUp>
+                </RiseIn>
               </Reveal>
             );
           })}

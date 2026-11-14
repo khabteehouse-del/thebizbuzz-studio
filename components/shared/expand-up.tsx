@@ -5,6 +5,8 @@ import type { ReactNode } from "react";
 import { motion, useAnimate, useReducedMotion } from "motion/react";
 
 /*
+  On phones it is a simple rise and fade instead (see below).
+
   Grows a card from 60% to whole, slowly and smoothly, and folds it back
   the same way. The way it grows depends on where you come from:
 
@@ -44,6 +46,42 @@ export function ExpandUp({
     if (reduce) return;
     const node = scope.current;
     if (!node) return;
+
+    /*
+      Phones: the unfold repaints the whole card every frame and stutters on
+      a phone. There the card just rises and fades in once, which the phone
+      can do on its graphics chip without repainting.
+    */
+    if (window.matchMedia("(max-width: 767px)").matches) {
+      animate(node, { opacity: 0, y: 28 }, { duration: 0 });
+      let shown = false;
+      const show = () => {
+        if (shown) return;
+        shown = true;
+        animate(node, { opacity: 1, y: 0 }, { duration: 0.9, ease: EASE });
+      };
+      let seen: IntersectionObserver | null = null;
+      try {
+        seen = new IntersectionObserver(
+          (entries) => {
+            if (entries.some((entry) => entry.isIntersecting)) {
+              show();
+              seen?.disconnect();
+            }
+          },
+          { rootMargin: "0px 0px -8% 0px", threshold: 0 }
+        );
+        seen.observe(node);
+      } catch {
+        show();
+      }
+      /* Failsafe: never leave a card hidden */
+      const phoneFailsafe = window.setTimeout(show, 2500);
+      return () => {
+        seen?.disconnect();
+        window.clearTimeout(phoneFailsafe);
+      };
+    }
 
     const shape = (kind: "whole" | "foldTop" | "foldBottom") => {
       const hidden = Math.round(node.offsetHeight * HIDDEN_SHARE);

@@ -127,7 +127,16 @@ const doors = [
 ];
 
 /* A figure standing on a slim levitating drum with a glowing band (large screens only). */
-function AnchorFigure({ src, side }: { src: string; side: "left" | "right" }) {
+function AnchorFigure({
+  src,
+  side,
+  inside = false,
+}: {
+  src: string;
+  side: "left" | "right";
+  /* inside: sits in the card on phones and tablets; otherwise stands beside the cards on large screens */
+  inside?: boolean;
+}) {
   const delay = side === "left" ? "0s" : "-1.2s";
   /* Curved bottom edge shared by the drum body and its glowing band */
   const curve = "0 0 50% 50% / 0 0 9px 9px";
@@ -135,9 +144,13 @@ function AnchorFigure({ src, side }: { src: string; side: "left" | "right" }) {
   return (
     <div
       aria-hidden="true"
-      className={`pointer-events-none absolute bottom-0 z-20 hidden h-[330px] w-[140px] lg:block xl:h-[370px] xl:w-[160px] ${
-        side === "left" ? "-left-8 xl:-left-28" : "-right-8 xl:-right-28"
-      }`}
+      className={
+        inside
+          ? "pointer-events-none relative z-10 h-[215px] w-[112px] shrink-0 self-end lg:hidden"
+          : `pointer-events-none absolute bottom-0 z-20 hidden h-[330px] w-[140px] lg:block xl:h-[370px] xl:w-[160px] ${
+              side === "left" ? "-left-8 xl:-left-28" : "-right-8 xl:-right-28"
+            }`
+      }
     >
       {/* Light on the ground below the drum */}
       <span
@@ -236,7 +249,7 @@ export function Tracks() {
                 <ExpandUp className="h-full" delay={index * 0.35}>
                 <Link
                   href={door.href}
-                  className="group relative flex h-full flex-col overflow-hidden rounded-2xl border p-7 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1.5 sm:p-9 md:p-12"
+                  className="group relative flex h-full flex-col overflow-hidden rounded-2xl border p-5 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1.5 sm:p-7 md:p-12"
                   style={{
                     backgroundColor: door.tint,
                     borderColor: `${door.mark}33`,
@@ -278,19 +291,21 @@ export function Tracks() {
                       </p>
                     </div>
 
-                    <h3 className="mt-8 font-display text-2xl font-medium leading-[1.15] tracking-[-0.025em] text-paper sm:text-3xl md:text-4xl">
+                    <h3 className="mt-5 font-display md:mt-8 text-2xl font-medium leading-[1.15] tracking-[-0.025em] text-paper sm:text-3xl md:text-4xl">
                       {door.title}
                     </h3>
 
-                    <p className="mt-4 max-w-sm font-display text-lg leading-snug text-paper/80 md:text-xl">
+                    <p className="mt-3 max-w-sm font-display text-lg leading-snug md:mt-4 text-paper/80 md:text-xl">
                       {door.line}
                     </p>
 
-                    <p className="mt-5 max-w-md text-sm leading-relaxed text-paper/55">
+                    <p className="mt-3 max-w-md text-sm leading-snug text-paper/55 md:mt-5 md:leading-relaxed">
                       {door.body}
                     </p>
 
-                    <ul className="mt-9 grid gap-2.5 border-t border-paper/10 pt-8">
+                    <div className="mt-5 grid grid-cols-[minmax(0,1fr)_auto] gap-x-2 border-t border-paper/10 pt-4 md:mt-9 md:pt-8 lg:block">
+                    <div className="min-w-0">
+                    <ul className="grid gap-2 md:gap-2.5">
                       {door.points.map((point, pointIndex) => (
                         <li
                           key={point}
@@ -312,13 +327,13 @@ export function Tracks() {
                       ))}
                     </ul>
 
-                    <p className="mt-8 text-xs leading-relaxed text-paper/65">
+                    <p className="mt-4 text-xs leading-snug text-paper/65 md:mt-8 md:leading-relaxed">
                       {door.footnote}
                     </p>
 
                     {door.tool && (
                       <span
-                        className="mt-5 inline-flex w-fit items-center gap-2 rounded-[2px] border px-3 py-2 text-xs transition-colors duration-300"
+                        className="mt-3 inline-flex w-fit items-center gap-2 rounded-[2px] border px-3 py-2 text-xs transition-colors duration-300 md:mt-5"
                         style={{
                           borderColor: `${door.mark}55`,
                           color: door.mark,
@@ -327,9 +342,22 @@ export function Tracks() {
                         {door.tool.label}
                       </span>
                     )}
+                    </div>
+
+                    {/* Phones and tablets: the figure stands on its platform inside the card */}
+                    <AnchorFigure
+                      inside
+                      src={
+                        index === 0
+                          ? "/images/anchor/women-anchor-v2.png"
+                          : "/images/anchor/man-anchor.png"
+                      }
+                      side={index === 0 ? "left" : "right"}
+                    />
+                    </div>
 
                     <span
-                      className="mt-auto flex items-center gap-3 pt-8 text-xs uppercase tracking-[0.12em] text-paper"
+                      className="mt-auto flex items-center gap-3 pt-4 text-xs uppercase tracking-[0.12em] text-paper md:pt-8"
                     >
                       {door.cta}
                       <span

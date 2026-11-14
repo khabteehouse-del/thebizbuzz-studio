@@ -2187,6 +2187,19 @@ section[data-offscreen] *::after {
   }
 }
 
+@keyframes anchor-spin {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 26px 0;
+  }
+}
+
+.anchor-spin {
+  animation: anchor-spin 1.8s linear infinite;
+}
+
 .anchor-bob {
   animation: anchor-bob 3.6s ease-in-out infinite alternate;
 }
@@ -2197,7 +2210,8 @@ section[data-offscreen] *::after {
 
 @media (prefers-reduced-motion: reduce) {
   .anchor-bob,
-  .anchor-ground {
+  .anchor-ground,
+  .anchor-spin {
     animation: none;
   }
 }

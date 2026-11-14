@@ -160,7 +160,7 @@ function AnchorFigure({
 
       <div className="anchor-bob absolute inset-0" style={{ animationDelay: delay }}>
         {/* The figure, lifted so its feet rest on the top face */}
-        <div className="absolute inset-x-0 bottom-[22px] top-0">
+        <div className="absolute inset-x-0 bottom-[16px] top-0">
           <Image
             src={src}
             alt=""
@@ -192,6 +192,20 @@ function AnchorFigure({
                 "linear-gradient(180deg, rgba(124,212,255,0) 0%, rgba(124,212,255,0.55) 100%)",
               boxShadow:
                 "0 3px 9px rgba(124,212,255,0.9), 0 0 18px rgba(78,163,236,0.7)",
+            }}
+          />
+          {/* Light segments that travel around the side wall, so the sides turn while the top stays still */}
+          <span
+            className="anchor-spin absolute inset-x-0 bottom-[7px] h-[9px]"
+            style={{
+              borderRadius: curve,
+              backgroundImage:
+                "linear-gradient(90deg, transparent 0%, transparent 55%, rgba(225,246,255,0.95) 55%, rgba(225,246,255,0.95) 72%, transparent 72%)",
+              backgroundSize: "26px 100%",
+              WebkitMaskImage:
+                "linear-gradient(90deg, transparent 0%, #000 22%, #000 78%, transparent 100%)",
+              maskImage:
+                "linear-gradient(90deg, transparent 0%, #000 22%, #000 78%, transparent 100%)",
             }}
           />
           {/* Top face */}
@@ -232,10 +246,10 @@ export function Tracks() {
 
         <div className="relative mt-16 grid gap-6 md:grid-cols-2 md:gap-8">
           <AnchorFigure
-            src="/images/anchor/women-anchor-v2.png"
+            src="/images/anchor/women-anchor-v3.png"
             side="left"
           />
-          <AnchorFigure src="/images/anchor/man-anchor.png" side="right" />
+          <AnchorFigure src="/images/anchor/man-anchor-v2.png" side="right" />
 
           {doors.map((door, index) => {
             const Icon = door.icon;
@@ -349,8 +363,8 @@ export function Tracks() {
                       inside
                       src={
                         index === 0
-                          ? "/images/anchor/women-anchor-v2.png"
-                          : "/images/anchor/man-anchor.png"
+                          ? "/images/anchor/women-anchor-left-v1.png"
+                          : "/images/anchor/man-anchor-v2.png"
                       }
                       side={index === 0 ? "left" : "right"}
                     />

@@ -17,7 +17,8 @@ export function Hero() {
       {/* Replace hero-desktop.webp and hero-mobile.webp with the generated images, same file names. */}
       <motion.div className="bg" style={{ y: bgY, scale: bgScale }}>
         <picture>
-          <source media="(max-width: 760px)" srcSet="/images/pretty-jin/hero-mobile.webp" />
+          {/* Phone uses the desktop image for now. When the matching 4:5 hero exists, restore:
+              <source media="(max-width: 760px)" srcSet="/images/pretty-jin/hero-mobile.webp" /> */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/images/pretty-jin/hero-desktop.webp"

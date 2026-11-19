@@ -3,6 +3,7 @@ import Script from "next/script";
 import { Space_Grotesk, Geist } from "next/font/google";
 import { Nav } from "@/components/layout/nav";
 import { Footer } from "@/components/layout/footer";
+import { SiteChrome } from "@/components/shared/site-chrome";
 import { SmoothScroll } from "@/components/shared/smooth-scroll";
 import { ScrollProgress } from "@/components/shared/scroll-progress";
 import { Cursor } from "@/components/shared/cursor";
@@ -151,25 +152,29 @@ export default function RootLayout({
           />
         </noscript>
 
-        <div
-          className="page-wrap"
-          style={{ willChange: "transform, opacity", transform: "translateZ(0)" }}
-        >
-          <SmoothScroll />
-          <ScrollProgress />
-          <OffscreenPause />
-          <Grain />
-          <Cursor />
-          <Nav />
-          <main>{children}</main>
-          <Footer />
-        </div>
         {/*
-          Kept outside the transformed wrapper on purpose. A transform on an
-          ancestor turns position: fixed into position: absolute relative to
-          that ancestor, which made the panel page-sized and blank on phones.
+          SiteChrome renders the BizBuzz shell everywhere except /demo pages.
+          The floating widget stays outside the transformed wrapper on purpose.
+          A transform on an ancestor turns position: fixed into position:
+          absolute relative to that ancestor, which made the panel page-sized
+          and blank on phones.
         */}
-        <GbpWidget />
+        <SiteChrome
+          top={
+            <>
+              <SmoothScroll />
+              <ScrollProgress />
+              <OffscreenPause />
+              <Grain />
+              <Cursor />
+              <Nav />
+            </>
+          }
+          bottom={<Footer />}
+          floating={<GbpWidget />}
+        >
+          {children}
+        </SiteChrome>
       </body>
     </html>
   );

@@ -6,6 +6,21 @@ const nextConfig: NextConfig = {
   images: {
     qualities: [75, 80, 90],
   },
+  /*
+    Client demo pages under /demo are private previews. This header tells search
+    engines not to index, cache or follow them. They are also left out of the
+    sitemap and linked from nowhere on the site.
+  */
+  async headers() {
+    return [
+      {
+        source: "/demo/:path*",
+        headers: [
+          { key: "X-Robots-Tag", value: "noindex, nofollow, noarchive, nosnippet" },
+        ],
+      },
+    ];
+  },
   /* The design studio now lives on the brand page, below its details. */
   async redirects() {
     return [

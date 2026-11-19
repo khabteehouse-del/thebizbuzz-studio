@@ -1012,3 +1012,14 @@
   transform: translate3d(calc(var(--px, 0) * var(--k, 1) * -28px), calc(var(--py, 0) * var(--k, 1) * -20px), 0);
   transition: transform 0.9s var(--ease);
 }
+
+/*
+  The BizBuzz global CSS sets overflow-x: hidden on html and body, which turns
+  body into a scroll container and stops position: sticky from pinning.
+  On this page only, restore normal viewport scrolling. .pj clips sideways overflow itself.
+*/
+html:has(.pj),
+body:has(.pj) {
+  overflow-x: visible;
+  max-width: none;
+}

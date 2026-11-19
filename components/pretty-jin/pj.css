@@ -1023,3 +1023,13 @@ body:has(.pj) {
   overflow-x: visible;
   max-width: none;
 }
+
+/* Phone hero: portrait photo sits in the top part, headline and buttons below it on cream. */
+@media (max-width: 760px) {
+  .pj-hero { background: var(--cream); }
+  .pj-hero .bg { inset: 0 0 36% 0; }
+  .pj-hero .bg img { object-position: 50% 18%; }
+  .pj-hero::after {
+    background: linear-gradient(0deg, var(--cream) 0%, var(--cream) 34%, rgba(251, 245, 239, 0) 66%);
+  }
+}

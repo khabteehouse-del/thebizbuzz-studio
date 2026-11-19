@@ -21,6 +21,15 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  /* Client demo pages are private links only. Never index them. */
+  async headers() {
+    return [
+      {
+        source: "/demo/:path*",
+        headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow, noarchive" }],
+      },
+    ];
+  },
   /* The design studio now lives on the brand page, below its details. */
   async redirects() {
     return [

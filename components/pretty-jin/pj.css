@@ -1024,12 +1024,16 @@ body:has(.pj) {
   max-width: none;
 }
 
-/* Phone hero: portrait photo sits in the top part, headline and buttons below it on cream. */
+/* Phone hero: photo zoomed out in the top part, bubbles kept to the left away from her face, text below on cream. */
 @media (max-width: 760px) {
   .pj-hero { background: var(--cream); }
-  .pj-hero .bg { inset: 0 0 36% 0; }
+  .pj-hero .bg { inset: 0 0 auto 0; height: 46svh; }
   .pj-hero .bg img { object-position: 72% 22%; }
+  .pj-hero .copy { padding: calc(46svh - 10px) 0 110px; }
   .pj-hero::after {
-    background: linear-gradient(0deg, var(--cream) 0%, var(--cream) 34%, rgba(251, 245, 239, 0) 66%);
+    background: linear-gradient(180deg, rgba(251, 245, 239, 0) 0, rgba(251, 245, 239, 0) 33svh, var(--cream) 46svh, var(--cream) 100%);
   }
+  .pj-hero .pj-scene > div:nth-child(1) { left: 3% !important; top: 9% !important; width: 84px !important; height: 84px !important; }
+  .pj-hero .pj-scene > div:nth-child(2) { left: 20% !important; top: 27% !important; width: 46px !important; height: 46px !important; }
+  .pj-hero .pj-scene > div:nth-child(n + 3) { display: none; }
 }

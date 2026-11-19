@@ -30,10 +30,10 @@ export function Hero() {
       </motion.div>
 
       <div ref={scene} className="pj-scene" aria-hidden>
-        <Orb size="clamp(120px, 19vw, 280px)" x="64%" y="12%" depth={1.4} scroll={scrollYProgress} rise={160} orb="#fff, #f9c4d0 50%, #e58aa5" dur={10} />
-        <Orb size="clamp(54px, 8vw, 120px)" x="52%" y="62%" depth={2} scroll={scrollYProgress} rise={260} orb="#fff, #f3dfae 50%, #d9a94a" delay={1.2} dur={8} />
-        <Orb size="clamp(90px, 12vw, 190px)" x="84%" y="58%" depth={0.8} scroll={scrollYProgress} rise={90} orb="#fff, #f7b9c8 55%, #d9738f" delay={0.6} dur={11} blur={1.5} />
-        <Orb size="clamp(30px, 4vw, 60px)" x="72%" y="40%" depth={2.4} scroll={scrollYProgress} rise={320} orb="#fff, #f3dfae 50%, #c9a15b" delay={2} dur={7} />
+        <Orb size="clamp(120px, 19vw, 280px)" x="30%" y="7%" depth={1.4} scroll={scrollYProgress} rise={160} orb="#fff, #f9c4d0 50%, #e58aa5" dur={10} />
+        <Orb size="clamp(54px, 8vw, 120px)" x="47%" y="74%" depth={2} scroll={scrollYProgress} rise={260} orb="#fff, #f3dfae 50%, #d9a94a" delay={1.2} dur={8} />
+        <Orb size="clamp(90px, 12vw, 190px)" x="8%" y="14%" depth={0.8} scroll={scrollYProgress} rise={90} orb="#fff, #f7b9c8 55%, #d9738f" delay={0.6} dur={11} blur={1.5} />
+        <Orb size="clamp(30px, 4vw, 60px)" x="39%" y="34%" depth={2.4} scroll={scrollYProgress} rise={320} orb="#fff, #f3dfae 50%, #c9a15b" delay={2} dur={7} />
       </div>
       <Petals count={26} />
 

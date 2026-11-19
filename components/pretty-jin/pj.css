@@ -287,7 +287,7 @@
 }
 .pj-hero .bg {
   position: absolute;
-  inset: -6% 0 -6% 0;
+  inset: -3% 0 -3% 0;
   z-index: -3;
   will-change: transform;
 }
@@ -1024,16 +1024,19 @@ body:has(.pj) {
   max-width: none;
 }
 
-/* Phone hero: photo zoomed out in the top part, bubbles kept to the left away from her face, text below on cream. */
+/* Phone hero: photo shown larger and uncropped in the top part, bubbles kept off her face, text below on cream. */
 @media (max-width: 760px) {
   .pj-hero { background: var(--cream); }
-  .pj-hero .bg { inset: 0 0 auto 0; height: 46svh; }
-  .pj-hero .bg img { object-position: 50% 8%; }
-  .pj-hero .copy { padding: calc(46svh - 10px) 0 110px; }
+  .pj-hero .bg { inset: 0 0 auto 0; height: 56svh; }
+  .pj-hero .bg img { object-position: 50% 16%; }
+  .pj-hero .copy { padding: calc(56svh + 4px) 0 90px; }
+  .pj-hero h1 { font-size: clamp(2.9rem, 13.5vw, 4rem); margin: 14px 0 14px; }
+  .pj-hero .lead { font-size: 0.98rem; line-height: 1.55; }
+  .pj-hero .cta { margin-top: 24px; }
   .pj-hero::after {
-    background: linear-gradient(180deg, rgba(251, 245, 239, 0) 0, rgba(251, 245, 239, 0) 33svh, var(--cream) 46svh, var(--cream) 100%);
+    background: linear-gradient(180deg, rgba(251, 245, 239, 0) 0, rgba(251, 245, 239, 0) 45svh, var(--cream) 56svh, var(--cream) 100%);
   }
   .pj-hero .pj-scene > div:nth-child(1) { left: 3% !important; top: 9% !important; width: 84px !important; height: 84px !important; }
-  .pj-hero .pj-scene > div:nth-child(2) { left: 20% !important; top: 27% !important; width: 46px !important; height: 46px !important; }
+  .pj-hero .pj-scene > div:nth-child(2) { left: 20% !important; top: 30% !important; width: 46px !important; height: 46px !important; }
   .pj-hero .pj-scene > div:nth-child(n + 3) { display: none; }
 }

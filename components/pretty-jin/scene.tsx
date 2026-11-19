@@ -188,7 +188,7 @@ export function Petals({ count = 26, tone = "rose" }: { count?: number; tone?: "
 export function useHeroScroll(target: RefObject<HTMLElement | null>) {
   const { scrollYProgress } = useScroll({ target, offset: ["start start", "end start"] });
   const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "16%"]);
-  const bgScale = useTransform(scrollYProgress, [0, 1], [1.02, 1.16]);
+  const bgScale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
   const copyY = useTransform(scrollYProgress, [0, 1], [0, -90]);
   const copyOpacity = useTransform(scrollYProgress, [0, 0.65], [1, 0]);
   return { scrollYProgress, bgY, bgScale, copyY, copyOpacity };

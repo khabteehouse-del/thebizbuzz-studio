@@ -1028,7 +1028,7 @@ body:has(.pj) {
 @media (max-width: 760px) {
   .pj-hero { background: var(--cream); }
   .pj-hero .bg { inset: 0 0 auto 0; height: 46svh; }
-  .pj-hero .bg img { object-position: 72% 22%; }
+  .pj-hero .bg img { object-position: 50% 8%; }
   .pj-hero .copy { padding: calc(46svh - 10px) 0 110px; }
   .pj-hero::after {
     background: linear-gradient(180deg, rgba(251, 245, 239, 0) 0, rgba(251, 245, 239, 0) 33svh, var(--cream) 46svh, var(--cream) 100%);

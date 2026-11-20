@@ -8,6 +8,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { Menu, X } from "lucide-react";
 import { navLinks, site } from "@/data/site";
 import { Button } from "@/components/shared/button";
+import { CapIcon } from "@/components/academy/icons";
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
@@ -62,13 +63,20 @@ export function Nav() {
           />
         </Link>
 
-        <ul className="hidden flex-1 items-center justify-center gap-10 md:flex">
+        <ul className="hidden flex-1 items-center justify-center gap-7 md:flex lg:gap-10">
           {navLinks.map((link) => (
             <li key={link.href}>
               <Link
                 href={link.href}
-                className="group relative text-[0.8125rem] tracking-[0.02em] text-paper/65 transition-colors duration-200 hover:text-paper"
+                className={`group relative text-[0.8125rem] tracking-[0.02em] transition-colors duration-200 hover:text-paper ${
+                  link.icon === "cap"
+                    ? "nav-academy inline-flex items-center gap-1.5 text-[#8fe6ff]"
+                    : "text-paper/65"
+                }`}
               >
+                {link.icon === "cap" && (
+                  <CapIcon className="nav-cap" width={18} height={18} />
+                )}
                 {link.label}
                 <span className="absolute -bottom-1 left-0 h-px w-0 bg-accent transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:w-full" />
               </Link>
@@ -148,8 +156,13 @@ export function Nav() {
                       <Link
                         href={link.href}
                         onClick={() => setOpen(false)}
-                        className="block border-b border-line py-3 font-display text-lg text-paper"
+                        className={`flex items-center gap-2 border-b border-line py-3 font-display text-lg ${
+                          link.icon === "cap" ? "nav-academy text-[#8fe6ff]" : "text-paper"
+                        }`}
                       >
+                        {link.icon === "cap" && (
+                          <CapIcon className="nav-cap" width={22} height={22} />
+                        )}
                         {link.label}
                       </Link>
                     </motion.div>

@@ -39,12 +39,15 @@ export const site = {
 export type NavLink = {
   label: string;
   href: string;
+  /* "cap" draws the glowing graduate cap before the label (the Academy link) */
+  icon?: "cap";
 };
 
 export const navLinks: NavLink[] = [
   { label: "Services", href: "/#tracks" },
   { label: "Work", href: "/#work" },
   { label: "Approach", href: "/#approach" },
+  { label: "Academy", href: "/academy", icon: "cap" },
   { label: "Blog", href: "/blog" },
   { label: "Team", href: "/#team" },
 ];
@@ -85,6 +88,7 @@ export const footerGroups: { title: string; links: FooterLink[] }[] = [
     title: "Company",
     links: [
       { label: "Team", href: "/#team" },
+      { label: "AI Academy", href: "/academy" },
       { label: "Blog", href: "/blog" },
       { label: "Questions", href: "/#faq" },
       { label: "Contact", href: "/#contact" },

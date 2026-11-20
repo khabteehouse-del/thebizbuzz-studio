@@ -65,17 +65,15 @@ export function Nav() {
 
         <ul className="hidden flex-1 items-center justify-center gap-7 md:flex lg:gap-10">
           {navLinks.map((link) => (
-            <li key={link.href}>
+            <li key={link.href} className="flex items-center">
               <Link
                 href={link.href}
-                className={`group relative text-[0.8125rem] tracking-[0.02em] transition-colors duration-200 hover:text-paper ${
-                  link.icon === "cap"
-                    ? "nav-academy inline-flex items-center gap-1.5 text-[#8fe6ff]"
-                    : "text-paper/65"
+                className={`group relative inline-flex h-6 items-center gap-1.5 text-[0.8125rem] leading-none tracking-[0.02em] transition-colors duration-200 hover:text-paper ${
+                  link.icon === "cap" ? "nav-academy text-[#8fe6ff]" : "text-paper/65"
                 }`}
               >
                 {link.icon === "cap" && (
-                  <CapIcon className="nav-cap" width={18} height={18} />
+                  <CapIcon className="nav-cap" width={16} height={16} />
                 )}
                 {link.label}
                 <span className="absolute -bottom-1 left-0 h-px w-0 bg-accent transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:w-full" />

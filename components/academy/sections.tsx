@@ -60,8 +60,9 @@ export function AcademyHero() {
             <span>Build with AI.</span>
           </h1>
           <p className="ac-hero-lead">
-            Practical online AI courses for Bahria Town Karachi. From confident
-            everyday use to building real AI-powered solutions.
+            Practical online AI courses for students, professionals and business
+            owners across Pakistan and beyond. From confident everyday use to
+            building real AI-powered solutions.
           </p>
           <div className="ac-hero-actions">
             <a
@@ -412,7 +413,7 @@ export function AcademyFinalCta() {
     <section className="ac-final" id="enroll" aria-labelledby="ac-final-title">
       <div className="shell ac-final-inner">
         <h2 id="ac-final-title" className="ac-final-title">
-          Your neighbours are learning AI.
+          The world is learning AI.
           <br />
           <span>Are you?</span>
         </h2>

@@ -35,8 +35,8 @@ export function AcademyStrip() {
                 <span>Build with AI.</span>
               </h2>
               <p className="acs-text">
-                Practical online AI courses for Bahria Town Karachi. Three
-                learning paths, from everyday AI use to building real
+                Practical online AI courses, open to learners across Pakistan and
+                beyond. Three learning paths, from everyday AI use to building real
                 AI-powered solutions, with a BizBuzz certificate.
               </p>
               <p className="acs-price">

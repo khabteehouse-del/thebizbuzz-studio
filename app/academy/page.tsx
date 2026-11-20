@@ -18,12 +18,12 @@ import {
 import "./academy.css";
 
 export const metadata: Metadata = {
-  title: "Online AI Courses in Karachi",
+  title: "Online AI Courses in Pakistan",
   description:
-    "BizBuzz AI Academy: practical online AI courses for Bahria Town Karachi. Three paths from AI Essentials to building AI solutions, with hands-on projects and a BizBuzz certificate of completion.",
+    "BizBuzz AI Academy: practical online AI courses open to learners across Pakistan and beyond. Three paths from AI Essentials to building AI solutions, with hands-on projects and a BizBuzz certificate of completion.",
   alternates: { canonical: "/academy" },
   openGraph: {
-    title: "BizBuzz AI Academy | Online AI Courses in Karachi",
+    title: "BizBuzz AI Academy | Online AI Courses in Pakistan",
     description:
       "Learn AI. Build with AI. Three practical online learning paths, from everyday AI use to building AI-powered solutions.",
     url: `${site.url}/academy`,

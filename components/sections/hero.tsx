@@ -121,7 +121,7 @@ export function Hero() {
           The banner replaces the old background video.
 
           Wide screens (1280 and up): the image is as tall as the hero and
-          pinned to the right edge, so both founders stay fully in view and
+          pinned to the right edge and starting below the nav, so both founders stay fully in view with room above their heads, and
           the calm dark left side carries the headline. Its left edge is
           feathered into the page colour, so there is no visible edge.
 
@@ -130,7 +130,7 @@ export function Hero() {
           4:3 crop taken from the right so the founders are never cut off.
         */}
         <div className="relative z-0 w-full pt-24 xl:absolute xl:inset-0 xl:pt-0">
-          <div className="hero-banner-mask relative aspect-[4/3] w-full sm:aspect-[16/9] xl:absolute xl:inset-y-0 xl:right-0 xl:h-full xl:w-auto">
+          <div className="hero-banner-mask relative aspect-[4/3] w-full sm:aspect-[16/9] xl:absolute xl:bottom-0 xl:right-0 xl:top-24 xl:h-auto xl:w-auto">
             <Image
               src="/images/hero/banner.webp"
               alt="Faraz Akhtar and Amrit Hayat, the founders of BizBuzz"

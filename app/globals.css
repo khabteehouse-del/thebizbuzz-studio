@@ -2242,3 +2242,49 @@ section[data-offscreen] *::after {
     animation: none;
   }
 }
+
+
+/*
+  Home hero banner.
+  Below 1280px: only the bottom edge fades into the page.
+  From 1280px: the left edge feathers away as well, and the top softens,
+  so the image has no visible edge. The slow drift is a tiny scale on a
+  long cycle, which the compositor handles cheaply.
+*/
+.hero-banner-mask {
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 78%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 78%, transparent 100%);
+}
+
+@media (min-width: 1280px) {
+  .hero-banner-mask {
+    -webkit-mask-image:
+      linear-gradient(to right, transparent 0%, #000 26%),
+      linear-gradient(to bottom, transparent 0%, #000 9%, #000 84%, transparent 100%);
+    mask-image:
+      linear-gradient(to right, transparent 0%, #000 26%),
+      linear-gradient(to bottom, transparent 0%, #000 9%, #000 84%, transparent 100%);
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;
+  }
+}
+
+.hero-banner-img {
+  transform-origin: 80% 50%;
+  animation: hero-banner-drift 30s ease-in-out infinite alternate;
+}
+
+@keyframes hero-banner-drift {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.035);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-banner-img {
+    animation: none;
+  }
+}

@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
+import Image from "next/image";
 import { motion, useScroll, useTransform } from "motion/react";
 import { Button } from "@/components/shared/button";
 import { GrowthArrow } from "@/components/shared/growth-arrow";
@@ -20,13 +21,6 @@ import { site } from "@/data/site";
   two buttons are taller than the screen, and a fixed height with
   overflow hidden simply cut the bottom off.
 */
-/*
-  Playback speed for the background loop.
-  1 is the file's native speed, 0.5 is half, 0.25 is a quarter.
-  Slowing it here costs nothing: same file, no re-encode, no quality loss.
-*/
-const VIDEO_SPEED = 0.5;
-
 /* Pre-selects the pathway in the enquiry form before the page scrolls to it */
 function choosePathway(pathway: "local" | "ai") {
   window.dispatchEvent(new CustomEvent("enquiry-pathway", { detail: pathway }));
@@ -34,8 +28,8 @@ function choosePathway(pathway: "local" | "ai") {
 
 export function Hero() {
   const ref = useRef<HTMLElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
   const isDesktop = useMediaQuery("(min-width: 768px)");
+  const isWide = useMediaQuery("(min-width: 1280px)");
   const reduceMotion = useMediaQuery("(prefers-reduced-motion: reduce)");
 
   /*
@@ -46,7 +40,7 @@ export function Hero() {
     hero falls back to the normal flowing layout, so nothing is clipped.
   */
   const tallEnough = useMediaQuery("(min-height: 780px)");
-  const pinned = isDesktop && tallEnough && !reduceMotion;
+  const pinned = isWide && tallEnough && !reduceMotion;
 
   /*
     Entry animations run on desktop only.
@@ -57,33 +51,6 @@ export function Hero() {
     mobile. So on phones nothing animates in, it is simply there.
   */
   const intro = isDesktop && !reduceMotion;
-
-  /*
-    Which video file to load. Chosen once on mount, so a desktop never
-    downloads the phone file and a phone never downloads the desktop one.
-    Until then the poster shows, which is also the video's own poster, so
-    nothing visibly changes when the video takes over.
-  */
-  const [videoSrc, setVideoSrc] = useState<string | null>(null);
-  useEffect(() => {
-    const desktop = window.matchMedia("(min-width: 768px)").matches;
-    setVideoSrc(desktop ? "/video/hero.mp4" : "/video/hero-mobile.mp4");
-  }, []);
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    // Applied on mount and again on load, since some browsers
-    // reset playbackRate when the source finishes buffering
-    function applySpeed() {
-      if (video) video.playbackRate = VIDEO_SPEED;
-    }
-
-    applySpeed();
-    video.addEventListener("loadeddata", applySpeed);
-    return () => video.removeEventListener("loadeddata", applySpeed);
-  }, [videoSrc]);
 
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -116,55 +83,14 @@ export function Hero() {
     >
       <div
         className={`${
-          pinned ? "sticky top-0 h-dvh overflow-hidden" : "min-h-dvh py-32"
-        } flex items-center`}
+          pinned
+            ? "sticky top-0 h-dvh overflow-hidden"
+            : "pb-16 xl:min-h-dvh xl:py-32"
+        } flex flex-col xl:flex-row xl:items-center`}
       >
-        {/* Background stack: video, colour blooms, bottom fade, scroll veil */}
+        {/* Background stack: colour blooms and bottom fade. The banner sits above it. */}
         <div className="absolute inset-0 -z-10 bg-ink">
-          {/*
-            Everyone gets the loop. Desktop loads the 1080p file, phones load
-            a smaller portrait file cropped from the centre of the same video.
-
-            The video is absolute inside the hero, not fixed. This page sits
-            inside a transformed wrapper (layout.tsx), and a fixed element
-            inside a transform is sized to the whole page, which zoomed the
-            video about 8x and turned the fine dots into blurry blobs.
-
-            Its width is capped at 2000px and it sits centred. On ultrawide
-            screens it is not stretched to fill the width; the side edges
-            fade into the background instead (see .hero-video in globals.css).
-          */}
-          {/*
-            Video and colour blooms sit in one masked layer that fades to
-            nothing at the bottom, so the hero ends on the plain page
-            colour instead of on the edge of the video. The next section
-            is opaque ink, so any leftover tint here showed as a hard line.
-          */}
           <div className="absolute inset-0 [mask-image:linear-gradient(to_bottom,#000_0%,#000_55%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_bottom,#000_0%,#000_55%,transparent_100%)]">
-            {videoSrc ? (
-              <video
-                key={videoSrc}
-                ref={videoRef}
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="metadata"
-                poster="/images/hero-poster.webp"
-                src={videoSrc}
-                className="hero-video pointer-events-none absolute left-1/2 top-0 h-full w-full max-w-[2000px] -translate-x-1/2 object-cover opacity-40"
-              >
-                {/* Silent background video: empty captions track satisfies accessibility checks */}
-                <track kind="captions" src="/captions/hero.vtt" srcLang="en" label="English" />
-              </video>
-            ) : (
-              <div
-                aria-hidden="true"
-                className="pointer-events-none absolute inset-0 bg-cover bg-center opacity-40"
-                style={{ backgroundImage: "url(/images/hero-poster.webp)" }}
-              />
-            )}
-
             {/* Navy bloom, off-centre so the composition is not symmetrical */}
             <div
               className="absolute left-[-10%] top-[-20%] h-[115vh] w-[80vh] rounded-full opacity-40 blur-[120px]"
@@ -184,20 +110,51 @@ export function Hero() {
             />
           </div>
 
-          {/* Top scrim: gives the nav something to sit on over the video */}
+          {/* Top scrim: gives the nav something to sit on over the banner */}
           <div className="absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-ink via-ink/60 to-transparent" />
 
           {/* Bottom fade so the hero dissolves into the next section */}
           <div className="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-ink to-transparent" />
+        </div>
 
-          {/* Darkens as you scroll, so the headline hands off cleanly */}
-          <motion.div
-            style={{ opacity: pinned ? veilOpacity : 0 }}
-            className="absolute inset-0 bg-ink"
+        {/*
+          The banner replaces the old background video.
+
+          Wide screens (1280 and up): the image is as tall as the hero and
+          pinned to the right edge and nudged down a little so the heads clear the nav, and
+          the calm dark left side carries the headline. Its left edge is
+          feathered into the page colour, so there is no visible edge.
+
+          Below that the banner sits on top and the text follows beneath it,
+          the same stacked layout the Academy page uses. Phones show a
+          4:3 crop taken from the right so the founders are never cut off.
+        */}
+        <div className="relative z-0 w-full pt-24 xl:absolute xl:inset-0 xl:overflow-hidden xl:pt-0">
+          <div className="hero-banner-mask relative aspect-[4/3] w-full sm:aspect-[16/9] xl:absolute xl:right-0 xl:top-[10%] xl:h-full xl:w-auto">
+            <Image
+              src="/images/hero/banner.webp"
+              alt="Faraz Akhtar and Amrit Hayat, the founders of BizBuzz"
+              fill
+              priority
+              sizes="(min-width: 1280px) 1600px, 100vw"
+              className="hero-banner-img object-cover object-right"
+            />
+          </div>
+          {/* Wide screens: darkens the left so the text stays easy to read over the blurred background */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 hidden bg-[linear-gradient(to_right,#0a0e1a_0%,rgba(10,14,26,0.88)_26%,rgba(10,14,26,0.45)_40%,transparent_54%)] xl:block"
           />
         </div>
 
-        <div className="shell w-full">
+        {/* Darkens as you scroll, so the headline hands off cleanly */}
+        <motion.div
+          aria-hidden="true"
+          style={{ opacity: pinned ? veilOpacity : 0 }}
+          className="pointer-events-none absolute inset-0 z-[5] bg-ink"
+        />
+
+        <div className="shell relative z-10 -mt-3 w-full sm:-mt-8 xl:mt-0">
           <motion.div className="relative" style={{ opacity: pinned ? contentOpacity : 1 }}>
             {/*
               Soft light behind the type, breathing on a long cycle.
@@ -248,7 +205,7 @@ export function Hero() {
                   filter:
                     "drop-shadow(0 2px 2px rgba(0,0,0,0.7)) drop-shadow(0 10px 14px rgba(0,0,0,0.5)) drop-shadow(0 28px 44px rgba(0,0,0,0.6))",
                 }}
-              className="relative -ml-[0.12em] flex italic font-display text-[clamp(3rem,16vw,16rem)] font-medium leading-[0.88] tracking-[-0.055em] text-paper md:text-[clamp(5.5rem,15vw,16rem)]"
+              className="relative -ml-[0.12em] flex italic font-display text-[clamp(3rem,16vw,16rem)] font-medium leading-[0.88] tracking-[-0.055em] text-paper md:text-[clamp(5.5rem,15vw,16rem)] xl:text-[clamp(5rem,7.4vw,8.5rem)]"
             >
               {words.map((word, index) => (
                 <span
@@ -287,8 +244,8 @@ export function Hero() {
               */}
               <GrowthArrow
                 size={38}
-                sizeDesktop={96}
-                className="-mb-[5.5px] -ml-6 md:-mb-[12px] md:-ml-12"
+                sizeDesktop={64}
+                className="-mb-[5.5px] -ml-6 md:-mb-[8px] md:-ml-8"
               />
             </div>
 
@@ -339,7 +296,7 @@ export function Hero() {
                   href="#contact"
                   variant="primary"
                   size="lg"
-                  className="w-[15rem] justify-between md:w-[17rem]"
+                  className="w-[15rem] justify-between md:w-[17rem] xl:w-[13.5rem]"
                 >
                   For local businesses
                 </Button>
@@ -350,16 +307,16 @@ export function Hero() {
                   href="#contact"
                   variant="ghost"
                   size="lg"
-                  className="w-[15rem] justify-between md:w-[17rem]"
+                  className="w-[15rem] justify-between md:w-[17rem] xl:w-[13.5rem]"
                 >
                   For AI and software
                 </Button>
               </span>
 
-              {/* The Google Business Profile check launcher lands here on wide screens */}
+              {/* The Google Business Profile check launcher lands here on wide screens, under the buttons so it stays clear of the banner */}
               <div
                 id="gbp-hero-slot"
-                className="absolute left-1/2 top-1/2 ml-10 hidden -translate-y-1/2 xl:block"
+                className="hidden xl:block xl:basis-full"
               />
             </motion.div>
           </motion.div>

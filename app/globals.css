@@ -2215,3 +2215,30 @@ section[data-offscreen] *::after {
     animation: none;
   }
 }
+
+/*
+  Glowing graduate cap on the Academy link in the nav. Colour comes from the
+  link (cyan), the glow is a soft pulsing drop shadow. Opacity-free, so the
+  cap is always visible, and the pulse stops for reduced motion.
+*/
+.nav-cap {
+  flex: none;
+  filter: drop-shadow(0 0 3px rgba(29, 213, 255, 0.9)) drop-shadow(0 0 9px rgba(29, 213, 255, 0.55));
+  animation: nav-cap-glow 2.8s ease-in-out infinite;
+}
+
+@keyframes nav-cap-glow {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 2px rgba(29, 213, 255, 0.7)) drop-shadow(0 0 6px rgba(29, 213, 255, 0.35));
+  }
+  50% {
+    filter: drop-shadow(0 0 4px rgba(29, 213, 255, 1)) drop-shadow(0 0 14px rgba(29, 213, 255, 0.75));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-cap {
+    animation: none;
+  }
+}

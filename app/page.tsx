@@ -1,5 +1,6 @@
 import { MizarFlagship } from "@/components/sections/mizar-flagship";
 import { AccentuateStrip } from "@/components/sections/accentuate-strip";
+import { AcademyStrip } from "@/components/sections/academy-strip";
 import { Hero } from "@/components/sections/hero";
 import { site } from "@/data/site";
 import { Intro } from "@/components/sections/intro";
@@ -86,6 +87,7 @@ export default function Home() {
       <ToolsStrip />
       <Work />
       <AccentuateStrip />
+      <AcademyStrip />
       <BlogStrip />
       <Approach />
       <Team />

@@ -136,7 +136,8 @@ export function Hero() {
               alt="Faraz Akhtar and Amrit Hayat, the founders of BizBuzz"
               fill
               priority
-              sizes="(min-width: 1280px) 1600px, 100vw"
+              sizes="(min-width: 1280px) 1600px, (min-width: 640px) 100vw, 134vw"
+              quality={90}
               className="hero-banner-img object-cover object-right"
             />
           </div>

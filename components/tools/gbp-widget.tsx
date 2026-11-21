@@ -59,6 +59,24 @@ export function GbpWidget() {
     return () => window.clearTimeout(timer);
   }, []);
 
+  /*
+    On the home page the floating launcher (phones and tablets) would sit on
+    top of the founders banner, so it waits until the visitor scrolls a little.
+    Once shown it stays. Other pages, and the hero slot on wide screens, are
+    unchanged.
+  */
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    if (scrolled) return;
+    const onScroll = () => {
+      if (window.scrollY > 120) setScrolled(true);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [scrolled]);
+  const holdForScroll = pathname === "/" && !slot && !scrolled;
+
   useEffect(() => {
     if (!open) return;
     const onKey = (event: KeyboardEvent) => {
@@ -90,7 +108,7 @@ export function GbpWidget() {
 
   const launcher = (
       <AnimatePresence>
-        {ready && !open && (
+        {ready && !open && !holdForScroll && (
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}

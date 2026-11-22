@@ -6,7 +6,7 @@ import { site } from "@/data/site";
 
 /*
   Mizar is our own product, so it has its own section apart from the
-  thirteen services. Honest status: in testing. No plans, no prices.
+  thirteen services. Status: deployed. No plans, no prices.
   Two real app screens sit in rounded frames (the .shot-frame style).
 */
 const BLUE = "#4ea3ec";
@@ -48,7 +48,7 @@ export function MizarFlagship() {
                     className="rounded-full border px-2.5 py-0.5 font-display text-[10px] uppercase tracking-[0.14em]"
                     style={{ color: BLUE, borderColor: `${BLUE}66` }}
                   >
-                    In testing
+                    Deployed
                   </span>
                 </div>
                 <h2 className="mt-8 max-w-xl font-display text-2xl font-medium leading-[1.12] tracking-[-0.03em] text-paper sm:text-3xl md:text-5xl">

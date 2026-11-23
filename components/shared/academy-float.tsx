@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { CapIcon } from "@/components/academy/icons";
 
 /*
-  Floating BizBuzz Academy graduate cap with a small label under it. It keeps
+  Floating BizBuzz Academy graduate cap, with the name written inside the circle. It keeps
   the same right inset as the Google Business Profile launcher, stays hidden
   on first load, and slides in once a visitor has scrolled about one
   screen (and slides out again when they scroll back to the top). Tapping it opens the Academy page. A small "Hide" label (no cross) hides it until the page is reloaded. It is not shown on the Academy
@@ -50,10 +50,13 @@ export function AcademyFloat() {
           <span className="acfloat-ring" aria-hidden="true" />
           <span className="acfloat-ring acfloat-ring--2" aria-hidden="true" />
           <span className="acfloat-disc">
-            <CapIcon className="acfloat-cap" width={30} height={30} />
+            <CapIcon className="acfloat-cap" width={26} height={26} />
+            <span className="acfloat-name" aria-hidden="true">
+              <span>BizBuzz</span>
+              <span>Academy</span>
+            </span>
           </span>
         </span>
-        <span className="acfloat-label">BizBuzz Academy</span>
       </Link>
       <button
         type="button"

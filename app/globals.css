@@ -2370,6 +2370,10 @@ html[data-tile-tapped] .tile-cue {
   right: 1rem;
   bottom: 8.25rem;
   z-index: 30;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
   transform: translateX(calc(100% + 1.5rem));
   opacity: 0;
   pointer-events: none;
@@ -2409,14 +2413,14 @@ html[data-tile-tapped] .tile-cue {
 
 .acfloat-orb {
   position: relative;
-  width: 3.4rem;
-  height: 3.4rem;
+  width: 4.9rem;
+  height: 4.9rem;
 }
 
 @media (min-width: 768px) {
   .acfloat-orb {
-    width: 3.8rem;
-    height: 3.8rem;
+    width: 5.3rem;
+    height: 5.3rem;
   }
 }
 
@@ -2424,8 +2428,10 @@ html[data-tile-tapped] .tile-cue {
   position: absolute;
   inset: 0;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 0.15rem;
   overflow: hidden;
   border-radius: 999px;
   border: 1px solid rgba(29, 213, 255, 0.65);
@@ -2472,24 +2478,25 @@ html[data-tile-tapped] .tile-cue {
   animation-delay: 1.1s;
 }
 
-/* Text under the cap */
-.acfloat-label {
-  padding: 0.22rem 0.55rem;
-  border-radius: 999px;
-  border: 1px solid rgba(29, 213, 255, 0.55);
-  background: rgba(6, 21, 51, 0.92);
-  color: #dff4ff;
-  font-size: 0.6rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
+/* "BizBuzz Academy" written inside the circle, under the cap */
+.acfloat-name {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 0.56rem;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  white-space: nowrap;
-  box-shadow: 0 6px 18px -6px rgba(43, 140, 255, 0.7);
+  color: #ffffff;
+  text-shadow: 0 1px 6px rgba(6, 21, 51, 0.7);
 }
 
 @media (min-width: 768px) {
-  .acfloat-label {
-    font-size: 0.66rem;
+  .acfloat-name {
+    font-size: 0.6rem;
   }
 }
 
@@ -2554,9 +2561,7 @@ html[data-tile-tapped] .tile-cue {
 
 /* Small "Hide" label instead of a cross. Hides the cap until the page is reloaded. */
 .acfloat-hide {
-  position: absolute;
-  top: -0.2rem;
-  left: -0.3rem;
+  position: relative;
   z-index: 2;
   height: 1.4rem;
   padding: 0 0.6rem;

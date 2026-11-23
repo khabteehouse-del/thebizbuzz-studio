@@ -9,6 +9,7 @@ import { ScrollProgress } from "@/components/shared/scroll-progress";
 import { Cursor } from "@/components/shared/cursor";
 import { Grain } from "@/components/shared/grain";
 import { GbpWidget } from "@/components/tools/gbp-widget";
+import { AcademyFloat } from "@/components/shared/academy-float";
 import { OffscreenPause } from "@/components/shared/offscreen-pause";
 import { site, socialLinks } from "@/data/site";
 import "./globals.css";
@@ -171,7 +172,12 @@ export default function RootLayout({
             </>
           }
           bottom={<Footer />}
-          floating={<GbpWidget />}
+          floating={
+            <>
+              <GbpWidget />
+              <AcademyFloat />
+            </>
+          }
         >
           {children}
         </SiteChrome>

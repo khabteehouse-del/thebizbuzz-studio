@@ -13,6 +13,7 @@ import {
   AcademyInstructor,
   AcademyJourney,
   AcademyPlans,
+  AcademySeoSoon,
   AcademyTools,
 } from "@/components/academy/sections";
 import "./academy.css";
@@ -93,6 +94,7 @@ export default function AcademyPage() {
       <AcademyFacts />
       <AcademyGains />
       <AcademyPlans />
+      <AcademySeoSoon />
       <AcademyJourney />
       <AcademyTools />
       <AcademyInstructor />

@@ -215,6 +215,32 @@ export function AcademyPlans() {
   );
 }
 
+/*
+  Placeholder for the SEO course. Only what has been confirmed is shown: it is
+  coming, it is taught by the BizBuzz SEO specialist, and details come later.
+  No price, dates or topic list until they are decided.
+*/
+export function AcademySeoSoon() {
+  return (
+    <section className="ac-sec ac-soon-sec" id="seo-course" aria-labelledby="ac-soon-title">
+      <div className="shell">
+        <div className="ac-soon">
+          <span className="ac-soon-tag">Coming soon</span>
+          <h2 id="ac-soon-title" className="ac-soon-title">
+            Search Engine Optimization (SEO) course
+          </h2>
+          <p className="ac-soon-text">
+            SEO is one of the most in-demand digital skills today. A new SEO
+            course is coming to the BizBuzz AI Academy, taught by our SEO
+            specialist.
+          </p>
+          <p className="ac-soon-note">Courses will be announced shortly.</p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export function AcademyJourney() {
   const steps = [
     { n: "1", title: "Use AI with confidence", plan: academyPlans[0].name },

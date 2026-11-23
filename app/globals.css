@@ -2288,3 +2288,229 @@ section[data-offscreen] *::after {
     animation: none;
   }
 }
+
+/* ---------- Service tiles: "Tap to flip" cue (touch screens only) ---------- */
+
+.tile-cue {
+  display: none;
+  align-items: center;
+  gap: 0.4rem;
+  flex-shrink: 0;
+  padding: 0.3rem 0.7rem 0.3rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--cue) 70%, transparent);
+  background: color-mix(in srgb, var(--cue) 16%, transparent);
+  color: var(--cue);
+  font-family: var(--font-display, inherit);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  animation: tile-cue-ring 2s ease-out infinite;
+}
+
+@media (hover: none) {
+  .tile-cue {
+    display: inline-flex;
+  }
+}
+
+/* The first tap on any tile hides the cue everywhere for the rest of the visit. */
+html[data-tile-tapped] .tile-cue {
+  display: none;
+}
+
+.tile-cue-hand {
+  transform-origin: 50% 90%;
+  animation: tile-cue-tap 1.6s ease-in-out infinite;
+}
+
+@keyframes tile-cue-tap {
+  0%,
+  50%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  68% {
+    transform: translateY(-3px) scale(1.1);
+  }
+  84% {
+    transform: translateY(1px) scale(0.92);
+  }
+}
+
+@keyframes tile-cue-ring {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--cue) 55%, transparent);
+  }
+  70%,
+  100% {
+    box-shadow: 0 0 0 10px transparent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tile-cue,
+  .tile-cue-hand {
+    animation: none;
+  }
+}
+
+/* ---------- Floating BizBuzz Academy button ---------- */
+
+.acfloat {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  z-index: 30;
+  transform: translate(110%, -50%);
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.4s ease;
+}
+
+.acfloat[data-show="true"] {
+  transform: translate(0, -50%);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.acfloat-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  overflow: hidden;
+  padding: 0.7rem 0.9rem 0.7rem 0.8rem;
+  border-radius: 14px 0 0 14px;
+  border: 1px solid rgba(29, 213, 255, 0.55);
+  border-right: 0;
+  background: linear-gradient(135deg, #2b8cff 0%, #0b3a8f 100%);
+  color: #ffffff;
+  text-decoration: none;
+  box-shadow: 0 10px 34px -8px rgba(43, 140, 255, 0.8);
+  animation: acfloat-glow 2.4s ease-in-out infinite;
+}
+
+.acfloat-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.35) 50%,
+    transparent 65%
+  );
+  transform: translateX(-120%);
+  animation: acfloat-sweep 3.4s ease-in-out 1s infinite;
+  pointer-events: none;
+}
+
+.acfloat-link:focus-visible {
+  outline: 2px solid #1dd5ff;
+  outline-offset: 2px;
+}
+
+.acfloat-ico {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  flex-shrink: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.acfloat-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.acfloat-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.acfloat-sub {
+  margin-top: 0.15rem;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #bfeaff;
+}
+
+.acfloat-close {
+  position: absolute;
+  top: -0.55rem;
+  left: -0.55rem;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: #061533;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.acfloat-close:focus-visible {
+  outline: 2px solid #1dd5ff;
+  outline-offset: 2px;
+}
+
+@media (min-width: 768px) {
+  .acfloat-link {
+    gap: 0.75rem;
+    padding: 0.85rem 1.1rem 0.85rem 1rem;
+  }
+  .acfloat-ico {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+  .acfloat-title {
+    font-size: 0.95rem;
+  }
+  .acfloat-sub {
+    font-size: 0.7rem;
+  }
+}
+
+@keyframes acfloat-glow {
+  0%,
+  100% {
+    box-shadow: 0 10px 34px -8px rgba(43, 140, 255, 0.75);
+  }
+  50% {
+    box-shadow: 0 10px 44px -2px rgba(29, 213, 255, 0.95);
+  }
+}
+
+@keyframes acfloat-sweep {
+  0% {
+    transform: translateX(-120%);
+  }
+  45%,
+  100% {
+    transform: translateX(120%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .acfloat,
+  .acfloat-link,
+  .acfloat-link::after {
+    animation: none;
+    transition: none;
+  }
+}

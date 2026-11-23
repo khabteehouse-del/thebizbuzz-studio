@@ -1402,3 +1402,63 @@
     animation: none;
   }
 }
+
+/* ---------- SEO course, coming soon ---------- */
+
+.ac-soon-sec {
+  padding-block: 3.5rem;
+}
+
+.ac-soon {
+  position: relative;
+  max-width: 46rem;
+  margin-inline: auto;
+  padding: 2.2rem 1.6rem;
+  border-radius: 10px;
+  border: 1.5px dashed rgba(30, 127, 214, 0.55);
+  background: var(--ac-white);
+  text-align: center;
+}
+
+.ac-soon-tag {
+  display: inline-block;
+  padding: 0.3rem 0.9rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--ac-bright), var(--ac-royal));
+  color: #fff;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  box-shadow: 0 6px 22px -6px rgba(43, 140, 255, 0.8);
+}
+
+.ac-soon-title {
+  margin-top: 1rem;
+  font-size: clamp(1.4rem, 4.5vw, 2rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--ac-text);
+}
+
+.ac-soon-text {
+  margin: 0.9rem auto 0;
+  max-width: 34rem;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--ac-body);
+}
+
+.ac-soon-note {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ac-blue);
+}
+
+@media (min-width: 700px) {
+  .ac-soon {
+    padding: 2.8rem 3rem;
+  }
+}

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, Eye, Play } from "lucide-react";
@@ -27,73 +27,6 @@ import { ServicesDial } from "@/components/shared/services-dial";
 import { TileArt } from "@/components/shared/tile-art";
 import { servicePageSlug } from "@/data/service-pages";
 
-/* Touch screens cannot hover, and few people tap a tile that does not look
-   tappable. So on touch, a tile flips by itself once it has rested under the
-   middle of the screen. The timings are deliberate:
-   - IN: a fast flick past a tile (over roughly 600px per second) never flips
-     it, because the tile leaves the middle before this delay runs out (tested:
-     800px/s and up never flips, about 500px/s and below does). A
-     slow scroll or a pause flips it.
-   - OUT: a short grace, so a tile does not snap back on a tiny wobble. */
-const AUTO_FLIP_IN_MS = 500;
-const AUTO_FLIP_OUT_MS = 250;
-/* A thin line across the middle of the screen. Only the tile under that line
-   counts, so on a one-column phone layout one tile is flipped at a time. */
-const MIDDLE_LINE = "-49% 0px -49% 0px";
-
-function useAutoFlip(
-  ref: React.RefObject<HTMLElement | null>,
-  setFlipped: (value: boolean) => void,
-) {
-  useEffect(() => {
-    const el = ref.current;
-    if (!el || typeof IntersectionObserver === "undefined") return;
-
-    const touch = window.matchMedia("(hover: none)");
-    const calm = window.matchMedia("(prefers-reduced-motion: reduce)");
-    let io: IntersectionObserver | null = null;
-    let timer: ReturnType<typeof setTimeout> | undefined;
-    let wasInside = false;
-
-    const stop = () => {
-      io?.disconnect();
-      io = null;
-      clearTimeout(timer);
-      wasInside = false;
-    };
-
-    const start = () => {
-      stop();
-      /* Devices that hover keep hover. People who asked for less motion keep
-         tap only, because content that changes by itself is not what they chose. */
-      if (!touch.matches || calm.matches) return;
-      io = new IntersectionObserver(
-        ([entry]) => {
-          const inside = entry.isIntersecting;
-          clearTimeout(timer);
-          if (!inside && !wasInside) return;
-          wasInside = inside;
-          timer = setTimeout(
-            () => setFlipped(inside),
-            inside ? AUTO_FLIP_IN_MS : AUTO_FLIP_OUT_MS,
-          );
-        },
-        { rootMargin: MIDDLE_LINE },
-      );
-      io.observe(el);
-    };
-
-    start();
-    touch.addEventListener("change", start);
-    calm.addEventListener("change", start);
-    return () => {
-      stop();
-      touch.removeEventListener("change", start);
-      calm.removeEventListener("change", start);
-    };
-  }, [ref, setFlipped]);
-}
-
 /* A stable number from the service id, so every tile keeps its own flight angle */
 function seedOf(id: string) {
   let h = 7;
@@ -113,12 +46,15 @@ function Tile({
   half?: boolean;
 }) {
   /* Touch devices have no hover, so a tap flips the tile. On devices that
-     hover, the flip follows the pointer and a click does nothing extra. */
+     hover, the flip follows the pointer and a click does nothing extra.
+     Nothing flips by itself on touch: a tile used to flip when it rested under
+     the middle of the screen, but that was too easy to miss or trigger by
+     accident. A pulsing hand and "Tap to flip" on the front now invite the tap,
+     and go quiet for the whole visit after the first one. */
   const [flipped, setFlipped] = useState(false);
   const [playerOpen, setPlayerOpen] = useState(false);
   const [playerLoaded, setPlayerLoaded] = useState(false);
   const tileRef = useRef<HTMLDivElement>(null);
-  useAutoFlip(tileRef, setFlipped);
   const gallery = service.gallery;
   const link = service.link;
   /* A tile back can be a full picture: the design gallery, or a product shot. */
@@ -127,8 +63,14 @@ function Tile({
     : service.backImage;
   const artCta = gallery?.cta ?? link?.cta;
 
+  /* The first tap anywhere hides every "Tap to flip" cue for the rest of the visit. */
+  const markTapped = () => {
+    document.documentElement.dataset.tileTapped = "1";
+  };
+
   const toggle = () => {
     if (window.matchMedia("(hover: hover)").matches) return;
+    markTapped();
     setFlipped((v) => !v);
   };
 
@@ -137,6 +79,7 @@ function Tile({
      flipped yet flips it first, and the next tap goes in. */
   const onLinkClick = (event: React.MouseEvent) => {
     if (window.matchMedia("(hover: hover)").matches) return;
+    markTapped();
     if (!flipped) {
       event.preventDefault();
       setFlipped(true);
@@ -233,15 +176,42 @@ function Tile({
           >
             {service.summary}
           </span>
-          <span
-            className="mt-auto pt-4 font-display text-[11px] uppercase tracking-[0.18em]"
-            style={{ color: service.mark }}
-          >
-            {gallery
-              ? "See our work +"
-              : link
-                ? "What it does +"
-                : "What is included +"}
+          <span className="mt-auto flex items-end justify-between gap-3 pt-4">
+            <span
+              className="font-display text-[11px] uppercase tracking-[0.18em]"
+              style={{ color: service.mark }}
+            >
+              {gallery
+                ? "See our work +"
+                : link
+                  ? "What it does +"
+                  : "What is included +"}
+            </span>
+            {/* Touch screens only (see .tile-cue in globals.css). */}
+            <span
+              aria-hidden="true"
+              className="tile-cue"
+              style={{ "--cue": service.mark } as React.CSSProperties}
+            >
+              <svg
+                className="tile-cue-hand"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M22 14a8 8 0 0 1-8 8" />
+                <path d="M18 11v-1a2 2 0 0 0-2-2a2 2 0 0 0-2 2" />
+                <path d="M14 10V9a2 2 0 0 0-2-2a2 2 0 0 0-2 2v1" />
+                <path d="M10 9.5V4a2 2 0 0 0-2-2a2 2 0 0 0-2 2v10" />
+                <path d="M18 11a2 2 0 1 1 4 0v3a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15" />
+              </svg>
+              Tap to flip
+            </span>
           </span>
         </span>
       </span>

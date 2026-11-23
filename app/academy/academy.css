@@ -1409,6 +1409,10 @@
   padding-block: 1.6rem 0.4rem;
 }
 
+.ac-soon-wrap--next {
+  padding-block: 0.6rem 0.4rem;
+}
+
 .ac-soon {
   position: relative;
   display: flex;

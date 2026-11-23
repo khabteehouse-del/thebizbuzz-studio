@@ -14,6 +14,7 @@ import {
   AcademyJourney,
   AcademyPlans,
   AcademySeoSoon,
+  AcademyVoiceSoon,
   AcademyTools,
 } from "@/components/academy/sections";
 import "./academy.css";
@@ -93,6 +94,7 @@ export default function AcademyPage() {
       <AcademyHero />
       <AcademyFacts />
       <AcademySeoSoon />
+      <AcademyVoiceSoon />
       <AcademyGains />
       <AcademyPlans />
       <AcademyJourney />

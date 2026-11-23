@@ -244,6 +244,40 @@ export function AcademySeoSoon() {
   );
 }
 
+/*
+  Slim banner for the voice training course, shown under the SEO banner. Only
+  what has been confirmed is stated: it is coming, it is led by Faraz Akhtar,
+  and details follow. No price, dates or topic list yet.
+*/
+export function AcademyVoiceSoon() {
+  return (
+    <section
+      className="ac-soon-wrap ac-soon-wrap--next"
+      id="voice-training"
+      aria-labelledby="ac-voice-title"
+    >
+      <div className="shell">
+        <div className="ac-soon">
+          <div className="ac-soon-tags">
+            <span className="ac-soon-badge">Voice skills</span>
+            <span className="ac-soon-tag">Coming soon</span>
+          </div>
+          <div className="ac-soon-body">
+            <h2 id="ac-voice-title" className="ac-soon-title">
+              Professional Voice Training
+            </h2>
+            <p className="ac-soon-text">
+              Voice, speech and presenting for blogging, talk shows and YouTube,
+              led by Faraz Akhtar with over two decades of voice work. Details
+              announced shortly.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export function AcademyJourney() {
   const steps = [
     { n: "1", title: "Use AI with confidence", plan: academyPlans[0].name },

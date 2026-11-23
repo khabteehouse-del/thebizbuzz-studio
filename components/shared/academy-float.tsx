@@ -3,13 +3,14 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { EyeOff } from "lucide-react";
 import { CapIcon } from "@/components/academy/icons";
 
 /*
   Floating BizBuzz Academy graduate cap, with the name written inside the circle. It keeps
   the same right inset as the Google Business Profile launcher, stays hidden
   on first load, and slides in once a visitor has scrolled about one
-  screen (and slides out again when they scroll back to the top). Tapping it opens the Academy page. A small "Hide" label (no cross) hides it until the page is reloaded. It is not shown on the Academy
+  screen (and slides out again when they scroll back to the top). Tapping it opens the Academy page. A small crossed-out eye (no cross mark) hides it until the page is reloaded. It is not shown on the Academy
   page itself. No magnet or drift on hover.
   Styles: .acfloat in app/globals.css.
 */
@@ -65,7 +66,7 @@ export function AcademyFloat() {
         aria-label="Hide the BizBuzz Academy button until the page is reloaded"
         tabIndex={show ? 0 : -1}
       >
-        Hide
+        <EyeOff size={13} aria-hidden="true" />
       </button>
     </div>
   );

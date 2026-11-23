@@ -2559,20 +2559,19 @@ html[data-tile-tapped] .tile-cue {
   }
 }
 
-/* Small "Hide" label instead of a cross. Hides the cap until the page is reloaded. */
+/* Small crossed-out eye, like the show/hide icon on a password field. Hides the cap until the page is reloaded. */
 .acfloat-hide {
   position: relative;
   z-index: 2;
-  height: 1.4rem;
-  padding: 0 0.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.7rem;
+  height: 1.7rem;
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.3);
   background: #061533;
   color: #cfe6ff;
-  font-size: 0.56rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
   cursor: pointer;
   transition: color 0.2s ease;
 }

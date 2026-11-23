@@ -2368,7 +2368,7 @@ html[data-tile-tapped] .tile-cue {
 .acfloat {
   position: fixed;
   right: 1rem;
-  bottom: 6.75rem;
+  bottom: 8.25rem;
   z-index: 30;
   transform: translateX(calc(100% + 1.5rem));
   opacity: 0;
@@ -2550,4 +2550,33 @@ html[data-tile-tapped] .tile-cue {
   .acfloat-ring {
     display: none;
   }
+}
+
+/* Small "Hide" label instead of a cross. Hides the cap until the page is reloaded. */
+.acfloat-hide {
+  position: absolute;
+  top: -0.2rem;
+  left: -0.3rem;
+  z-index: 2;
+  height: 1.4rem;
+  padding: 0 0.6rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: #061533;
+  color: #cfe6ff;
+  font-size: 0.56rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.acfloat-hide:hover {
+  color: #ffffff;
+}
+
+.acfloat-hide:focus-visible {
+  outline: 2px solid #1dd5ff;
+  outline-offset: 2px;
 }

@@ -131,14 +131,25 @@ export function Hero() {
         */}
         <div className="relative z-0 w-full pt-24 xl:absolute xl:inset-0 xl:overflow-hidden xl:pt-0">
           <div className="hero-banner-mask relative aspect-[4/3] w-full sm:aspect-[16/9] xl:absolute xl:right-0 xl:top-[10%] xl:h-full xl:w-auto">
+            {/* Phones: same banner with the wall logo removed, so no half-cut logo shows. */}
+            <Image
+              src="/images/hero/banner-mobile.webp"
+              alt="Faraz Akhtar and Amrit Hayat, the founders of BizBuzz"
+              fill
+              fetchPriority="high"
+              sizes="134vw"
+              quality={90}
+              className="hero-banner-img object-cover object-right sm:hidden"
+            />
+            {/* Tablet and desktop: the full banner with the logo. */}
             <Image
               src="/images/hero/banner.webp"
               alt="Faraz Akhtar and Amrit Hayat, the founders of BizBuzz"
               fill
-              priority
-              sizes="(min-width: 1280px) 1600px, (min-width: 640px) 100vw, 134vw"
+              fetchPriority="high"
+              sizes="(min-width: 1280px) 1600px, 100vw"
               quality={90}
-              className="hero-banner-img object-cover object-right"
+              className="hero-banner-img hidden object-cover object-right sm:block"
             />
           </div>
           {/* Wide screens: darkens the left so the text stays easy to read over the blurred background */}

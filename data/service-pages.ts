@@ -354,16 +354,16 @@ export const servicePages: ServicePage[] = [
     seoDescription:
       "Mizar answers calls and messages, collects the details, helps book the job and keeps your day in order, for professionals who work at the customer's door.",
     lead:
-      "Mizar is a business assistant in your pocket. It picks up the calls and messages you cannot answer while you are on the job, collects the details and keeps your day in order, by voice.",
+      "Mizar is a business assistant in your pocket, built for professionals who work at the customer's door. It answers the calls and messages you miss, so no enquiry is lost.",
     whoFor: [
       "Beauticians, painters, electricians, plumbers, vets and other professionals who go to the customer",
       "Owner-operators who lose calls while their hands are busy",
       "Small teams that want every enquiry written down in one place",
     ],
     whatWeDo: [
-      { h: "Answers calls you miss", p: "When you cannot pick up, your assistant answers, asks the right questions and records the details of the enquiry." },
-      { h: "Collects the details", p: "Name, number, what the customer needs and when, saved as a clear lead you can act on." },
-      { h: "Keeps your day in order", p: "See your leads, jobs and messages together, and ask about them by voice while you work." },
+      { h: "Answers what you miss", p: "When your hands are busy, the assistant picks up and asks the right questions." },
+      { h: "Turns enquiries into leads", p: "Name, number, what the customer needs and when, saved as a clear lead you can act on." },
+      { h: "Ask Sophia about your day", p: "Your leads, jobs and messages in one place. Ask by voice or text while you work." },
       { h: "Stays inside clear limits", p: "The assistant does not quote prices or make promises for you. You make those decisions." },
     ],
     process: [

@@ -92,9 +92,9 @@ export default function AcademyPage() {
 
       <AcademyHero />
       <AcademyFacts />
+      <AcademySeoSoon />
       <AcademyGains />
       <AcademyPlans />
-      <AcademySeoSoon />
       <AcademyJourney />
       <AcademyTools />
       <AcademyInstructor />

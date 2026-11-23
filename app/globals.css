@@ -2357,20 +2357,19 @@ html[data-tile-tapped] .tile-cue {
   }
 }
 
-/* ---------- Floating BizBuzz Academy button ---------- */
+/* ---------- Floating BizBuzz Academy graduate cap ---------- */
 
 /*
-  Lines up with the Test-your-Google-Business-Profile launcher: same right
-  inset and same corner radius. On phones that launcher is a full-width bar at
-  the bottom (inset 1rem, 1.25rem from the bottom), so this sits right above
-  it. From tablets up that launcher floats top right, so this sits right below.
+  A flashing graduate cap that sticks to the right edge of the screen. On
+  phones it sits just above the Google Business Profile bar, from tablets up
+  it sits just below that launcher, so the two floating items stack neatly.
 */
 .acfloat {
   position: fixed;
-  right: 1rem;
+  right: 0;
   bottom: 6.25rem;
   z-index: 30;
-  transform: translateX(140%);
+  transform: translateX(110%);
   opacity: 0;
   pointer-events: none;
   transition:
@@ -2380,7 +2379,6 @@ html[data-tile-tapped] .tile-cue {
 
 @media (min-width: 768px) {
   .acfloat {
-    right: 1.5rem;
     bottom: auto;
     top: 11.75rem;
   }
@@ -2396,16 +2394,26 @@ html[data-tile-tapped] .tile-cue {
   position: relative;
   display: flex;
   align-items: center;
-  gap: 0.7rem;
+  justify-content: center;
+  width: 3.4rem;
+  height: 3.4rem;
+  padding-left: 0.2rem;
   overflow: hidden;
-  padding: 0.65rem 1rem 0.65rem 0.8rem;
-  border-radius: 7px;
-  border: 1px solid rgba(29, 213, 255, 0.55);
+  border-radius: 999px 0 0 999px;
+  border: 1px solid rgba(29, 213, 255, 0.6);
+  border-right: 0;
   background: linear-gradient(135deg, #2b8cff 0%, #0b3a8f 100%);
   color: #ffffff;
   text-decoration: none;
   box-shadow: 0 10px 34px -8px rgba(43, 140, 255, 0.8);
-  animation: acfloat-glow 2.4s ease-in-out infinite;
+  animation: acfloat-glow 2.2s ease-in-out infinite;
+}
+
+@media (min-width: 768px) {
+  .acfloat-link {
+    width: 3.8rem;
+    height: 3.8rem;
+  }
 }
 
 .acfloat-link::after {
@@ -2415,11 +2423,11 @@ html[data-tile-tapped] .tile-cue {
   background: linear-gradient(
     105deg,
     transparent 35%,
-    rgba(255, 255, 255, 0.35) 50%,
+    rgba(255, 255, 255, 0.4) 50%,
     transparent 65%
   );
   transform: translateX(-120%);
-  animation: acfloat-sweep 3.4s ease-in-out 1s infinite;
+  animation: acfloat-sweep 3s ease-in-out 0.8s infinite;
   pointer-events: none;
 }
 
@@ -2428,64 +2436,39 @@ html[data-tile-tapped] .tile-cue {
   outline-offset: 2px;
 }
 
-.acfloat-ico {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.5rem;
-  height: 2.5rem;
-  flex-shrink: 0;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.18);
-}
-
-.acfloat-text {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.15;
-}
-
-.acfloat-sub {
-  margin-bottom: 0.2rem;
-  font-size: 0.56rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: #bfeaff;
-}
-
-.acfloat-title {
-  font-size: 0.8125rem;
-  font-weight: 600;
-}
-
-/* Small "Hide" label instead of a cross. Hides until the page is reloaded. */
-.acfloat-hide {
-  position: absolute;
-  top: -0.5rem;
-  right: -0.4rem;
+.acfloat-cap {
+  position: relative;
   z-index: 1;
-  height: 1.5rem;
-  padding: 0 0.6rem;
+  transform-origin: 50% 70%;
+  animation: acfloat-cap 2.6s ease-in-out infinite;
+  filter: drop-shadow(0 0 6px rgba(191, 234, 255, 0.9));
+}
+
+/* Soft rings spreading out from the cap, to catch the eye */
+.acfloat-ring {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 3.4rem;
+  height: 3.4rem;
+  margin-top: -1.7rem;
   border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  background: #061533;
-  color: #cfe6ff;
-  font-size: 0.56rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: color 0.2s ease;
+  border: 2px solid rgba(29, 213, 255, 0.7);
+  opacity: 0;
+  pointer-events: none;
+  animation: acfloat-ring 2.2s ease-out infinite;
 }
 
-.acfloat-hide:hover {
-  color: #ffffff;
+.acfloat-ring--2 {
+  animation-delay: 1.1s;
 }
 
-.acfloat-hide:focus-visible {
-  outline: 2px solid #1dd5ff;
-  outline-offset: 2px;
+@media (min-width: 768px) {
+  .acfloat-ring {
+    width: 3.8rem;
+    height: 3.8rem;
+    margin-top: -1.9rem;
+  }
 }
 
 @keyframes acfloat-glow {
@@ -2494,7 +2477,7 @@ html[data-tile-tapped] .tile-cue {
     box-shadow: 0 10px 34px -8px rgba(43, 140, 255, 0.75);
   }
   50% {
-    box-shadow: 0 10px 44px -2px rgba(29, 213, 255, 0.95);
+    box-shadow: 0 10px 46px -2px rgba(29, 213, 255, 1);
   }
 }
 
@@ -2508,11 +2491,41 @@ html[data-tile-tapped] .tile-cue {
   }
 }
 
+@keyframes acfloat-cap {
+  0%,
+  60%,
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
+  72% {
+    transform: rotate(-8deg) scale(1.12);
+  }
+  86% {
+    transform: rotate(6deg) scale(1.06);
+  }
+}
+
+@keyframes acfloat-ring {
+  0% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.7);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .acfloat,
   .acfloat-link,
-  .acfloat-link::after {
+  .acfloat-link::after,
+  .acfloat-cap,
+  .acfloat-ring {
     animation: none;
     transition: none;
+  }
+  .acfloat-ring {
+    display: none;
   }
 }

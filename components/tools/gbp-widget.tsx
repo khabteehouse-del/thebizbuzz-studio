@@ -167,10 +167,10 @@ export function GbpWidget() {
               <button
                 type="button"
                 onClick={() => setDismissed(true)}
-                aria-label="Dismiss"
-                className="absolute -right-2 -top-2 flex h-6 w-6 items-center justify-center rounded-full border border-line bg-ink text-muted transition-colors duration-200 hover:text-paper"
+                aria-label="Hide this until the page is reloaded"
+                className="absolute -right-2 -top-2 flex h-6 items-center justify-center rounded-full border border-line bg-ink px-2.5 text-[9px] font-medium uppercase tracking-[0.12em] text-muted transition-colors duration-200 hover:text-paper"
               >
-                <X size={11} />
+                Hide
               </button>
             </div>
           </motion.div>

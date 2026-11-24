@@ -2316,11 +2316,6 @@ section[data-offscreen] *::after {
   }
 }
 
-/* The first tap on any tile hides the cue everywhere for the rest of the visit. */
-html[data-tile-tapped] .tile-cue {
-  display: none;
-}
-
 .tile-cue-hand {
   transform-origin: 50% 90%;
   animation: tile-cue-tap 1.6s ease-in-out infinite;

@@ -63,14 +63,8 @@ function Tile({
     : service.backImage;
   const artCta = gallery?.cta ?? link?.cta;
 
-  /* The first tap anywhere hides every "Tap to flip" cue for the rest of the visit. */
-  const markTapped = () => {
-    document.documentElement.dataset.tileTapped = "1";
-  };
-
   const toggle = () => {
     if (window.matchMedia("(hover: hover)").matches) return;
-    markTapped();
     setFlipped((v) => !v);
   };
 
@@ -79,7 +73,6 @@ function Tile({
      flipped yet flips it first, and the next tap goes in. */
   const onLinkClick = (event: React.MouseEvent) => {
     if (window.matchMedia("(hover: hover)").matches) return;
-    markTapped();
     if (!flipped) {
       event.preventDefault();
       setFlipped(true);

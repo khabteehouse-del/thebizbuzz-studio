@@ -282,7 +282,7 @@ export function Hero() {
                 delay: 0.65,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="mt-6 max-w-md text-sm leading-relaxed text-muted md:mt-8 md:text-base"
+              className="mt-6 max-w-md text-justify text-sm leading-relaxed text-muted md:mt-8 md:text-left md:text-base"
             >
               {/* The page heading. Styled exactly like the text around it, so it reads as part of the paragraph. */}
               <h1 className="inline">

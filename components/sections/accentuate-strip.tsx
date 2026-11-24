@@ -6,8 +6,9 @@ import { Button } from "@/components/shared/button";
   Homepage band for Accentuate Your Revenues, the US-facing arm of
   BizBuzz. Colours follow the Accentuate site itself: deep navy base,
   electric blue border and glow, amber highlight. The worker sits on
-  the right on desktop and is hidden on phones to keep the tile light.
-  Button goes straight to the standalone site.
+  the right on desktop. On phones the same picture sits under the text,
+  flush with the bottom edge of the tile. Button goes straight to the
+  standalone site.
 */
 const BLUE = "#4f6bff";
 const AMBER = "#ffb938";
@@ -79,6 +80,21 @@ export function AccentuateStrip() {
                   Visit Accentuate
                 </Button>
               </div>
+            </div>
+
+            {/* Phones and small tablets: picture under the text, touching the bottom edge. */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none relative -mb-7 mt-6 flex justify-end sm:-mb-10 md:hidden"
+            >
+              <Image
+                src="/images/accentuate/owner-cash.webp"
+                alt=""
+                width={1000}
+                height={962}
+                sizes="(min-width: 768px) 0px, 75vw"
+                className="h-auto w-[72%] max-w-[19rem] drop-shadow-[0_14px_22px_rgba(0,0,0,0.55)]"
+              />
             </div>
           </div>
         </Reveal>

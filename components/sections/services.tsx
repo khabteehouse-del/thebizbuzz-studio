@@ -49,8 +49,8 @@ function Tile({
      hover, the flip follows the pointer and a click does nothing extra.
      Nothing flips by itself on touch: a tile used to flip when it rested under
      the middle of the screen, but that was too easy to miss or trigger by
-     accident. A pulsing hand and "Tap to flip" on the front now invite the tap,
-     and go quiet for the whole visit after the first one. */
+     accident. A pulsing hand and "Tap to flip" on the front now invite the tap.
+     The cue stays on every tile and shows again when a tile flips back. */
   const [flipped, setFlipped] = useState(false);
   const [playerOpen, setPlayerOpen] = useState(false);
   const [playerLoaded, setPlayerLoaded] = useState(false);

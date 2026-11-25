@@ -120,13 +120,6 @@ export default async function ServicePageRoute({ params }: Props) {
           )}
         </div>
 
-        {page.screens && (
-          <section className="mt-20 md:mt-28">
-            <h2 className={h2}>See it on your phone</h2>
-            <ServiceScreens screens={page.screens} accent={service.mark} />
-          </section>
-        )}
-
         {service.id === "mizar" && (
           <section className="mt-20 md:mt-28">
             <div
@@ -178,6 +171,13 @@ export default async function ServicePageRoute({ params }: Props) {
                 </div>
               </div>
             </div>
+          </section>
+        )}
+
+        {page.screens && (
+          <section className="mt-20 md:mt-28">
+            <h2 className={h2}>See it on your phone</h2>
+            <ServiceScreens screens={page.screens} accent={service.mark} />
           </section>
         )}
 

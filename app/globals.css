@@ -2818,3 +2818,15 @@ section[data-offscreen] *::after {
     animation: none;
   }
 }
+
+/* Hear Sophia on the Mizar details page: a normal button in the flow, not on a phone. */
+.sv-wrap.sv-inline {
+  position: relative;
+  left: auto;
+  top: auto;
+  z-index: auto;
+  width: 100%;
+  max-width: 17rem;
+  transform: none;
+  font-size: 14px;
+}

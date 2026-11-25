@@ -9,6 +9,8 @@ import { BreadcrumbSchema } from "@/components/shared/breadcrumb-schema";
 import { ServiceBanner } from "@/components/shared/service-banner";
 import { ServiceBannerFrame, ServiceNavRow } from "@/components/shared/service-nav";
 import { ServiceScreens } from "@/components/shared/service-screens";
+import { SophiaVoice } from "@/components/sections/sophia-voice";
+import Image from "next/image";
 import { DesignGallery } from "@/components/design/gallery";
 import { designCredit } from "@/data/designs";
 import "@/app/design/design.css";
@@ -122,6 +124,60 @@ export default async function ServicePageRoute({ params }: Props) {
           <section className="mt-20 md:mt-28">
             <h2 className={h2}>See it on your phone</h2>
             <ServiceScreens screens={page.screens} accent={service.mark} />
+          </section>
+        )}
+
+        {service.id === "mizar" && (
+          <section className="mt-20 md:mt-28">
+            <div
+              className="relative overflow-hidden rounded-2xl border p-7 sm:p-10 md:p-14"
+              style={{ backgroundColor: "#0a1220", borderColor: "#4ea3ec40" }}
+            >
+              <div className="relative grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-center lg:gap-16">
+                <div className="mz-sophia mx-auto max-w-sm">
+                  <span className="mz-sophia-glow" aria-hidden="true" />
+                  <Image
+                    src="/images/mizar/sophia.webp"
+                    alt="Sophia, Mizar's AI voice assistant, wearing a headset."
+                    width={900}
+                    height={962}
+                    sizes="(min-width: 1024px) 30vw, 70vw"
+                    className="mz-sophia-img"
+                  />
+                  <span className="mz-sophia-tag">
+                    <span className="mz-sophia-dot" aria-hidden="true" />
+                    Sophia, AI voice assistant
+                  </span>
+                </div>
+                <div>
+                  <p className="section-label" style={{ color: service.mark }}>
+                    Meet Sophia
+                  </p>
+                  <h2 className={h2}>Sophia is the voice and face of Mizar</h2>
+                  <p className="mt-6 max-w-xl text-base leading-relaxed text-paper/75">
+                    Sophia is Mizar&rsquo;s AI voice assistant. She is the assistant that helps your business grow: she
+                    takes your calls and messages while you are on the job, so the next customer is not lost.
+                  </p>
+                  <ul className="mt-8 grid gap-3 sm:grid-cols-2">
+                    {[
+                      ["She takes your calls", "She answers when you cannot, and callers are told she is an automatic assistant."],
+                      ["She collects the details", "Who called and what they need, written down for you."],
+                      ["She answers your questions", "Ask who called today or what jobs you have, and she tells you."],
+                      ["She helps you grow", "Fewer missed calls means more booked jobs."],
+                    ].map(([t, d]) => (
+                      <li key={t} className="rounded-xl border border-paper/10 p-5" style={{ backgroundColor: `${service.mark}0d` }}>
+                        <h3 className="font-display text-base font-medium text-paper">{t}</h3>
+                        <p className="mt-2 text-sm leading-relaxed text-paper/70">{d}</p>
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="mt-8">
+                    <SophiaVoice inline />
+                  </div>
+                  <p className="mt-5 text-sm text-paper/60">Sophia is an automatic assistant, not a real person.</p>
+                </div>
+              </div>
+            </div>
           </section>
         )}
 

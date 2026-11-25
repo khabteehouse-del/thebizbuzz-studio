@@ -8,11 +8,12 @@ import { Play, Pause } from "lucide-react";
   Sophia introducing herself. It never autoplays: it only starts when a
   visitor taps it, and tapping again stops it. The audio file loads only on
   the first tap (preload none), so it costs nothing on a phone connection.
+  With inline set it sits in normal flow (the Mizar details page).
   It sits on the empty chart of the left phone screen and pulses so it reads as a
   button, not as part of the picture. Styles: .sv in app/globals.css.
 */
 
-export function SophiaVoice() {
+export function SophiaVoice({ inline = false }: { inline?: boolean }) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [playing, setPlaying] = useState(false);
 
@@ -41,7 +42,7 @@ export function SophiaVoice() {
   };
 
   return (
-    <div className="sv-wrap">
+    <div className={inline ? "sv-wrap sv-inline" : "sv-wrap"}>
       <button
         type="button"
         className="sv"

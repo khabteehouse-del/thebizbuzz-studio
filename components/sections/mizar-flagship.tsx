@@ -2,12 +2,16 @@ import Image from "next/image";
 import { Reveal } from "@/components/shared/reveal";
 import { Button } from "@/components/shared/button";
 import { MizarLogo } from "@/components/shared/mizar-logo";
+import { SophiaVoice } from "@/components/sections/sophia-voice";
 import { site } from "@/data/site";
 
 /*
   Mizar is our own product, so it has its own section apart from the
   thirteen services. Status: deployed. No plans, no prices.
-  Two real app screens sit in rounded frames (the .shot-frame style).
+  Two real app screens sit in rounded frames (the .shot-frame style), floating in
+  front of Sophia, the assistant, who stands behind them as a transparent cutout.
+  The Hear Sophia button plays a short real voice sample (tap only, no autoplay).
+  Styles: .mz-* in app/globals.css.
 */
 const BLUE = "#4ea3ec";
 
@@ -68,29 +72,44 @@ export function MizarFlagship() {
                     Message us for early access
                   </Button>
                 </div>
+                <SophiaVoice />
               </div>
 
-              <ul
-                className="mx-auto flex w-full max-w-[26rem] items-start gap-5 lg:max-w-none"
-                style={{ "--c": BLUE } as React.CSSProperties}
-              >
-                {screens.map((shot, i) => (
-                  <li
-                    key={shot.src}
-                    className={`shot-float w-1/2 ${i === 1 ? "mt-10" : ""}`}
-                  >
-                    <div className="shot-frame">
-                      <Image
-                        src={shot.src}
-                        alt={shot.alt}
-                        width={640}
-                        height={1276}
-                        sizes="(min-width: 1024px) 20vw, 40vw"
-                      />
-                    </div>
-                  </li>
-                ))}
-              </ul>
+              <div className="mz-visual" style={{ "--c": BLUE } as React.CSSProperties}>
+                <div className="mz-sophia">
+                  <span className="mz-sophia-glow" aria-hidden="true" />
+                  <Image
+                    src="/images/mizar/sophia.webp"
+                    alt="Sophia, Mizar's AI voice assistant, wearing a headset."
+                    width={900}
+                    height={962}
+                    sizes="(min-width: 1024px) 28vw, 70vw"
+                    className="mz-sophia-img"
+                  />
+                  <span className="mz-sophia-tag">
+                    <span className="mz-sophia-dot" aria-hidden="true" />
+                    Sophia, AI voice assistant
+                  </span>
+                </div>
+                <ul className="mz-phones flex items-start gap-5">
+                  {screens.map((shot, i) => (
+                    <li
+                      key={shot.src}
+                      className={`shot-float w-1/2 ${i === 1 ? "mt-10" : ""}`}
+                    >
+                      <div className="shot-frame">
+                        <Image
+                          src={shot.src}
+                          alt={shot.alt}
+                          width={640}
+                          height={1276}
+                          sizes="(min-width: 1024px) 20vw, 40vw"
+                        />
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
         </Reveal>

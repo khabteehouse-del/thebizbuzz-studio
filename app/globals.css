@@ -2581,3 +2581,179 @@ section[data-offscreen] *::after {
   outline: 2px solid #1dd5ff;
   outline-offset: 2px;
 }
+
+/* ---------- Mizar section: Sophia behind the two phones ---------- */
+
+.mz-visual {
+  position: relative;
+  width: 100%;
+  max-width: 26rem;
+  margin-inline: auto;
+}
+
+@media (min-width: 1024px) {
+  .mz-visual {
+    max-width: 30rem;
+  }
+}
+
+.mz-sophia {
+  position: relative;
+  z-index: 0;
+  width: 78%;
+  margin-inline: auto;
+}
+
+.mz-sophia-glow {
+  position: absolute;
+  inset: 4% -8% 0 -8%;
+  z-index: -1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 36%, rgba(78, 163, 236, 0.5), transparent 66%);
+  filter: blur(34px);
+  pointer-events: none;
+}
+
+/* The picture fades out toward the bottom, so the phones sit over a soft edge. */
+.mz-sophia-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  -webkit-mask-image: linear-gradient(to bottom, #000 60%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 60%, transparent 100%);
+}
+
+.mz-sophia-tag {
+  position: absolute;
+  top: 5%;
+  right: -4%;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.3rem 0.7rem;
+  border: 1px solid rgba(78, 163, 236, 0.45);
+  border-radius: 999px;
+  background: rgba(10, 18, 32, 0.82);
+  backdrop-filter: blur(8px);
+  font-family: var(--font-display, inherit);
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #cfe6ff;
+  white-space: nowrap;
+}
+
+.mz-sophia-dot {
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 999px;
+  background: #4ade80;
+  box-shadow: 0 0 8px #4ade80;
+  animation: mz-dot 1.8s ease-in-out infinite;
+}
+
+@keyframes mz-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+/* Phones overlap Sophia from her chin down. */
+.mz-phones {
+  position: relative;
+  z-index: 2;
+  margin-top: -34%;
+}
+
+/* Hear Sophia button */
+.sv-wrap {
+  margin-top: 1.5rem;
+}
+
+.sv {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.55rem 1.1rem 0.55rem 0.55rem;
+  border: 1px solid rgba(78, 163, 236, 0.45);
+  border-radius: 999px;
+  background: rgba(78, 163, 236, 0.08);
+  color: #ffffff;
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.sv:hover,
+.sv[data-playing="true"] {
+  background: rgba(78, 163, 236, 0.18);
+  border-color: rgba(78, 163, 236, 0.8);
+}
+
+.sv:focus-visible {
+  outline: 2px solid #1dd5ff;
+  outline-offset: 3px;
+}
+
+.sv-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 999px;
+  background: #4ea3ec;
+  color: #061533;
+}
+
+.sv-bars {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  height: 1.4rem;
+}
+
+.sv-bars i {
+  display: block;
+  width: 3px;
+  height: 35%;
+  border-radius: 2px;
+  background: #4ea3ec;
+}
+
+.sv[data-playing="true"] .sv-bars i {
+  animation: sv-bar 0.9s ease-in-out infinite;
+}
+
+.sv[data-playing="true"] .sv-bars i:nth-child(2) { animation-delay: 0.15s; }
+.sv[data-playing="true"] .sv-bars i:nth-child(3) { animation-delay: 0.3s; }
+.sv[data-playing="true"] .sv-bars i:nth-child(4) { animation-delay: 0.45s; }
+.sv[data-playing="true"] .sv-bars i:nth-child(5) { animation-delay: 0.6s; }
+
+@keyframes sv-bar {
+  0%, 100% { height: 30%; }
+  50% { height: 100%; }
+}
+
+.sv-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.sv-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.sv-sub {
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sv[data-playing="true"] .sv-bars i,
+  .mz-sophia-dot {
+    animation: none;
+  }
+}

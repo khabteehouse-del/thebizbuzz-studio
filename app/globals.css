@@ -2358,7 +2358,7 @@ section[data-offscreen] *::after {
   A flashing graduate cap with a small "BizBuzz Academy" label under it. It
   keeps the same right inset as the Google Business Profile launcher, so the
   two line up. On phones it sits just above that bar (clear of its Hide
-  label). From tablets up it sits on the right edge, vertically centred.
+  label). From tablets up it sits in the bottom right corner.
 */
 .acfloat {
   position: fixed;
@@ -2378,13 +2378,12 @@ section[data-offscreen] *::after {
 }
 
 @media (min-width: 768px) {
-  /* PC and tablet: pinned to the right edge, vertically centred, clear of the
-     Google Business Profile launcher at the top right. Phones are unchanged. */
+  /* PC and tablet: bottom right corner, far from the Google Business Profile
+     launcher at the top right. Phones are unchanged. */
   .acfloat {
     right: 1.5rem;
-    bottom: auto;
-    top: 50%;
-    margin-top: -3.7rem;
+    bottom: 2rem;
+    top: auto;
   }
 }
 

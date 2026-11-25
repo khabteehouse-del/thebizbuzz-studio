@@ -10,7 +10,8 @@ import { site } from "@/data/site";
   thirteen services. Status: deployed. No plans, no prices.
   Two real app screens sit in rounded frames (the .shot-frame style), floating in
   front of Sophia, the assistant, who stands behind them as a transparent cutout.
-  The Hear Sophia button plays a short real voice sample (tap only, no autoplay).
+  The Hear Sophia button sits on the empty chart of the left phone and plays a short
+  real voice sample (tap only, no autoplay).
   Styles: .mz-* in app/globals.css.
 */
 const BLUE = "#4ea3ec";
@@ -72,7 +73,6 @@ export function MizarFlagship() {
                     Message us for early access
                   </Button>
                 </div>
-                <SophiaVoice />
               </div>
 
               <div className="mz-visual" style={{ "--c": BLUE } as React.CSSProperties}>
@@ -95,7 +95,7 @@ export function MizarFlagship() {
                   {screens.map((shot, i) => (
                     <li
                       key={shot.src}
-                      className={`shot-float w-1/2 ${i === 1 ? "mt-10" : ""}`}
+                      className={`shot-float w-1/2 ${i === 1 ? "mt-10" : "mz-phone-sv"}`}
                     >
                       <div className="shot-frame">
                         <Image
@@ -106,6 +106,7 @@ export function MizarFlagship() {
                           sizes="(min-width: 1024px) 20vw, 40vw"
                         />
                       </div>
+                      {i === 0 ? <SophiaVoice /> : null}
                     </li>
                   ))}
                 </ul>

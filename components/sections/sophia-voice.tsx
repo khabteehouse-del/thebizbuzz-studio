@@ -8,7 +8,8 @@ import { Play, Pause } from "lucide-react";
   Sophia introducing herself. It never autoplays: it only starts when a
   visitor taps it, and tapping again stops it. The audio file loads only on
   the first tap (preload none), so it costs nothing on a phone connection.
-  Styles: .sv in app/globals.css.
+  It sits on the empty chart of the left phone screen and pulses so it reads as a
+  button, not as part of the picture. Styles: .sv in app/globals.css.
 */
 
 export function SophiaVoice() {
@@ -57,7 +58,7 @@ export function SophiaVoice() {
         </span>
         <span className="sv-text">
           <span className="sv-title">{playing ? "Sophia is speaking" : "Hear Sophia"}</span>
-          <span className="sv-sub">{playing ? "Tap to stop" : "13 second voice sample"}</span>
+          <span className="sv-sub">{playing ? "Tap to stop" : "Tap to listen"}</span>
         </span>
       </button>
       <audio

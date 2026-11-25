@@ -2665,29 +2665,55 @@ section[data-offscreen] *::after {
   margin-top: -34%;
 }
 
-/* Hear Sophia button */
+/* Hear Sophia button: sits on the empty chart of the left phone. Sizes follow the phone width. */
+.mz-phone-sv {
+  position: relative;
+  container-type: inline-size;
+}
+
 .sv-wrap {
-  margin-top: 1.5rem;
+  position: absolute;
+  left: 50%;
+  top: 22.6%;
+  z-index: 3;
+  width: 86%;
+  transform: translate(-50%, -50%);
+  font-size: clamp(9px, 5.4cqw, 13.5px);
 }
 
 .sv {
-  display: inline-flex;
+  position: relative;
+  display: flex;
+  width: 100%;
   align-items: center;
-  gap: 0.8rem;
-  padding: 0.55rem 1.1rem 0.55rem 0.55rem;
-  border: 1px solid rgba(78, 163, 236, 0.45);
+  gap: 0.6em;
+  padding: 0.45em 0.8em 0.45em 0.45em;
+  overflow: hidden;
+  border: 1px solid rgba(78, 163, 236, 0.85);
   border-radius: 999px;
-  background: rgba(78, 163, 236, 0.08);
+  background: rgba(6, 21, 51, 0.94);
   color: #ffffff;
+  font: inherit;
   cursor: pointer;
   text-align: left;
-  transition: background-color 0.25s ease, border-color 0.25s ease;
+  box-shadow: 0 0 0 0 rgba(78, 163, 236, 0.6), 0 8px 24px -8px rgba(0, 0, 0, 0.8);
+  animation: sv-ripple 2.2s ease-out infinite;
+  transition: background-color 0.25s ease;
+}
+
+.sv::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, transparent 30%, rgba(255, 255, 255, 0.18) 50%, transparent 70%);
+  transform: translateX(-120%);
+  animation: sv-sheen 3.4s ease-in-out 1s infinite;
+  pointer-events: none;
 }
 
 .sv:hover,
 .sv[data-playing="true"] {
-  background: rgba(78, 163, 236, 0.18);
-  border-color: rgba(78, 163, 236, 0.8);
+  background: rgba(14, 42, 92, 0.96);
 }
 
 .sv:focus-visible {
@@ -2696,64 +2722,99 @@ section[data-offscreen] *::after {
 }
 
 .sv-icon {
+  position: relative;
   display: flex;
+  flex: none;
   align-items: center;
   justify-content: center;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2.5em;
+  height: 2.5em;
   border-radius: 999px;
   background: #4ea3ec;
   color: #061533;
+  animation: sv-beat 1.6s ease-in-out infinite;
+}
+
+.sv-icon svg {
+  width: 1.15em;
+  height: 1.15em;
 }
 
 .sv-bars {
   display: flex;
+  flex: none;
   align-items: center;
-  gap: 3px;
-  height: 1.4rem;
+  gap: 0.2em;
+  height: 1.6em;
 }
 
 .sv-bars i {
   display: block;
-  width: 3px;
-  height: 35%;
+  width: 0.2em;
+  height: 40%;
   border-radius: 2px;
   background: #4ea3ec;
+  animation: sv-bar 1.3s ease-in-out infinite;
+}
+
+.sv-bars i:nth-child(2) { animation-delay: 0.2s; }
+.sv-bars i:nth-child(3) { animation-delay: 0.4s; }
+.sv-bars i:nth-child(4) { animation-delay: 0.6s; }
+.sv-bars i:nth-child(5) { animation-delay: 0.8s; }
+
+.sv[data-playing="true"] {
+  animation: none;
 }
 
 .sv[data-playing="true"] .sv-bars i {
-  animation: sv-bar 0.9s ease-in-out infinite;
+  animation-duration: 0.7s;
+  background: #7fd0ff;
 }
 
-.sv[data-playing="true"] .sv-bars i:nth-child(2) { animation-delay: 0.15s; }
-.sv[data-playing="true"] .sv-bars i:nth-child(3) { animation-delay: 0.3s; }
-.sv[data-playing="true"] .sv-bars i:nth-child(4) { animation-delay: 0.45s; }
-.sv[data-playing="true"] .sv-bars i:nth-child(5) { animation-delay: 0.6s; }
+.sv-text {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.sv-title {
+  font-size: 1em;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.sv-sub {
+  font-size: 0.78em;
+  color: rgba(255, 255, 255, 0.65);
+  white-space: nowrap;
+}
+
+@keyframes sv-ripple {
+  0% { box-shadow: 0 0 0 0 rgba(78, 163, 236, 0.6), 0 8px 24px -8px rgba(0, 0, 0, 0.8); }
+  70%, 100% { box-shadow: 0 0 0 0.9em rgba(78, 163, 236, 0), 0 8px 24px -8px rgba(0, 0, 0, 0.8); }
+}
+
+@keyframes sv-sheen {
+  0% { transform: translateX(-120%); }
+  45%, 100% { transform: translateX(120%); }
+}
+
+@keyframes sv-beat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
 
 @keyframes sv-bar {
   0%, 100% { height: 30%; }
   50% { height: 100%; }
 }
 
-.sv-text {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.2;
-}
-
-.sv-title {
-  font-size: 0.9rem;
-  font-weight: 600;
-}
-
-.sv-sub {
-  font-size: 0.72rem;
-  color: rgba(255, 255, 255, 0.6);
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .sv[data-playing="true"] .sv-bars i,
-  .mz-sophia-dot {
+  .sv,
+  .sv::after,
+  .sv-icon,
+  .sv-bars i {
     animation: none;
   }
 }
